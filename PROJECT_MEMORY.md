@@ -148,7 +148,7 @@ D:\Resume ats cli\
 * **Current Goal:** High-ROI Graduate placement in MY/SG (Targeting Network / Cloud Infra / AI Systems Engineering)
 * **Target Role:** Network Engineer / Cloud Infrastructure / System Integration Specialist / Industrial AI Automation
 * **Resume Version:** v1.0 (HTML/MD/TXT - 100% heuristic keyword match)
-* **Portfolio Status:** Live Simple, Fun & 100% Functional Web App (Live ATS Evaluator + Job Offer Dispatcher + Real-Time Demos) at `http://localhost:8000/portfolio.html` (irfanfahmi.dev)
+* **Portfolio Status:** Live on GitHub Pages at [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/) (Live ATS Evaluator + Job Offer Dispatcher + Real-Time Demos)
 * **Applications Sent:** 7 (Processed across MYFutureJobs, MauKerja, JobStreet, LinkedIn)
 * **Interviews:** 1 (TechNova Solutions)
 * **Offers:** 0
