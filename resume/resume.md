@@ -2,7 +2,7 @@
 **Computer Engineering Graduate | CCNA & Cybersecurity Certified**
 **IT Support | Enterprise Networking | Network Security | Industrial AI Automation**
 
-Puchong, Malaysia | +60 16-243 2023 | fahmilatif87@gmail.com  
+Puchong, Malaysia | +60 16-XXX XXXX | fahmilatif87@gmail.com  
 [linkedin.com/in/mifi99](https://linkedin.com/in/mifi99) | [github.com/l3al3y](https://github.com/l3al3y) | irfanfahmi.dev
 
 ---

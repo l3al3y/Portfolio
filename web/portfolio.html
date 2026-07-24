@@ -20,6 +20,7 @@
                 <li><a href="#contact">Apply / Contact</a></li>
             </ul>
             <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <button id="unlock-employer-btn-nav" class="btn btn-warning">🔓 Employer Access</button>
                 <button id="theme-toggle" class="theme-toggle-btn">☀️ Light Mode</button>
                 <a href="../resume/resume.html" target="_blank" class="btn btn-outline">📄 Download Resume</a>
             </div>
@@ -30,8 +31,9 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-card">
-                <div class="status-badge">
+                <div class="status-badge" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                     <span>🟢 OPEN FOR FULL-TIME ROLES IN MALAYSIA &amp; SINGAPORE</span>
+                    <span class="badge-classified" id="gate-status-badge">🔒 CONTACT INFO MASKED (EMPLOYER GATE ACTIVE)</span>
                 </div>
                 
                 <h1 class="candidate-title">MUHAMMAD IRFAN FAHMI</h1>
@@ -45,7 +47,8 @@
                 </div>
 
                 <div class="hero-btns">
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Download 1-Page ATS Resume (PDF)</a>
+                    <button id="unlock-employer-btn-hero" class="btn btn-warning">🔓 Recruiter Unlock Contact</button>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Download ATS Resume</a>
                     <a href="#ats-tool" class="btn btn-outline">⚡ Test Live ATS Engine</a>
                     <a href="#contact" class="btn btn-success">📩 Send Job Offer / Contact</a>
                 </div>
@@ -185,10 +188,39 @@
     <footer class="section" style="border-top: 1px solid var(--border-card); padding-top: 1.5rem; padding-bottom: 1.5rem;">
         <div class="container" style="text-align: center;">
             <p style="font-size: 0.9rem; font-weight: 700;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</p>
-            <p style="font-family: var(--font-mono); color: var(--color-primary); font-size: 0.85rem; margin-top: 0.25rem;">fahmilatif87@gmail.com | Puchong, Malaysia</p>
+            <p id="footer-contact-line" style="font-family: var(--font-mono); color: var(--color-primary); font-size: 0.85rem; margin-top: 0.25rem;">
+                <span id="footer-email">f***87@gmail.com</span> &bull; 
+                <span id="footer-phone">+60 16-XXX XXXX</span> &bull; 
+                <span id="footer-location">Puchong, Malaysia (Employer Protected)</span>
+            </p>
             <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. Simple &amp; 100% Functional Portfolio Edition.</p>
         </div>
     </footer>
+
+    <!-- EMPLOYER ACCESS PASSCODE MODAL -->
+    <div id="employer-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <span class="badge badge-amber" style="margin-bottom: 0.5rem;">🔐 RECRUITER & EMPLOYER GATE</span>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Unlock Candidate Contact Info</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Enter employer passcode (default: <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">RECRUITER2026</code> or <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">EMPLOYER2026</code>) to instantly unmask phone & email.
+            </p>
+
+            <form id="passcode-form" style="margin-bottom: 1rem;">
+                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">ENTER RECRUITER PASSCODE:</label>
+                <input type="password" id="passcode-input" class="input-field" placeholder="e.g. RECRUITER2026" required>
+                <button type="submit" class="btn btn-warning" style="width: 100%;">🔓 Verify & Unlock Contact Details</button>
+            </form>
+            <div id="passcode-error" style="color: #ef4444; font-size: 0.8rem; font-weight: 600; display: none; margin-bottom: 1rem;">❌ Invalid Passcode. Try 'RECRUITER2026' or submit form below.</div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-card); margin-bottom: 1rem;">
+            
+            <p style="font-size: 0.775rem; color: var(--text-dim); margin: 0;">
+                💡 <strong>Don't have a passcode?</strong> Fill out the Employer Contact Form on the page to automatically unlock candidate access.
+            </p>
+        </div>
+    </div>
 
     <script src="portfolio_script.js"></script>
 </body>

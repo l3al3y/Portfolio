@@ -48,7 +48,7 @@ class ProjectItem:
 class CandidateProfile:
     name: str = "MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR"
     email: str = "fahmilatif87@gmail.com"
-    phone: str = "+60 16-243 2023"
+    phone: str = "+60 16-XXX XXXX"
     location: str = "Puchong, Malaysia"
     linkedin: str = "https://linkedin.com/in/mifi99"
     github: str = "https://github.com/l3al3y"

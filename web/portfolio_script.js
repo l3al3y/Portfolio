@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectDemos();
     initContactForm();
     initSmoothScroll();
+    initEmployerGate();
 });
 
 // Theme Switcher (Light Mode by default, Dark Mode toggle)
@@ -158,4 +159,86 @@ function initSmoothScroll() {
             }
         });
     });
+}
+
+// Recruiter & Employer Passcode Access Gate
+function initEmployerGate() {
+    const modal = document.getElementById('employer-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const navBtn = document.getElementById('unlock-employer-btn-nav');
+    const heroBtn = document.getElementById('unlock-employer-btn-hero');
+    const form = document.getElementById('passcode-form');
+    const input = document.getElementById('passcode-input');
+    const errorMsg = document.getElementById('passcode-error');
+
+    if (!modal) return;
+
+    const validPasscodes = ['RECRUITER2026', 'EMPLOYER2026', 'IRFAN2026', 'UTEM2026'];
+
+    const openModal = () => {
+        modal.classList.add('active');
+        if (input) input.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        if (errorMsg) errorMsg.style.display = 'none';
+    };
+
+    if (navBtn) navBtn.addEventListener('click', openModal);
+    if (heroBtn) heroBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    const unlockContactDetails = () => {
+        sessionStorage.setItem('employer_unlocked', 'true');
+
+        // Update footer contact
+        const emailSpan = document.getElementById('footer-email');
+        const phoneSpan = document.getElementById('footer-phone');
+        const locSpan = document.getElementById('footer-location');
+        const badge = document.getElementById('gate-status-badge');
+
+        if (emailSpan) emailSpan.innerHTML = '<strong>fahmilatif87@gmail.com</strong>';
+        if (phoneSpan) phoneSpan.innerHTML = '<strong>+60 16-243 2023</strong>';
+        if (locSpan) locSpan.innerHTML = 'Puchong, Malaysia';
+        if (badge) {
+            badge.className = 'badge badge-green';
+            badge.innerHTML = '🔓 EMPLOYER ACCESS VERIFIED';
+        }
+
+        if (navBtn) navBtn.innerHTML = '✅ Employer Verified';
+        if (heroBtn) heroBtn.innerHTML = '✅ Unlocked (+60 16-243 2023)';
+    };
+
+    // Check if already unlocked in session
+    if (sessionStorage.getItem('employer_unlocked') === 'true') {
+        unlockContactDetails();
+    }
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = input.value.trim().toUpperCase();
+
+            if (validPasscodes.includes(val)) {
+                unlockContactDetails();
+                closeModal();
+                alert('🔓 Employer Access Verified! Candidate phone (+60 16-243 2023) and direct email (fahmilatif87@gmail.com) are now unmasked.');
+            } else {
+                if (errorMsg) errorMsg.style.display = 'block';
+            }
+        });
+    }
+
+    // Auto unlock when employer submits contact form
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            unlockContactDetails();
+        });
+    }
 }
