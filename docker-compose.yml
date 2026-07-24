@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  career-agent:
+    build: .
+    container_name: autonomous_career_agent
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MIN_MATCH_SCORE=35.0
+    command: python src/sync_all_portals.py
+
+  web-portfolio:
+    image: nginx:alpine
+    container_name: career_portfolio_web
+    ports:
+      - "8000:80"
+    volumes:
+      - ./web:/usr/share/nginx/html:ro

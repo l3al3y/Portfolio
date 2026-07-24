@@ -1,0 +1,3 @@
+playwright>=1.44.0
+openpyxl>=3.1.2
+# anthropic>=0.34.0   # uncomment jika guna LLM API sebenar dalam THINK_LLM state

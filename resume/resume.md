@@ -1,0 +1,134 @@
+# MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
+**Computer Engineering Graduate | CCNA & Cybersecurity Certified**
+**IT Support | Enterprise Networking | Network Security | Industrial AI Automation**
+
+Puchong, Malaysia | +60 16-243 2023 | fahmilatif87@gmail.com  
+[linkedin.com/in/mifi99](https://linkedin.com/in/mifi99) | [github.com/l3al3y](https://github.com/l3al3y) | irfanfahmi.dev
+
+---
+
+## PROFESSIONAL SUMMARY
+High-performing **Computer Engineering Graduate** (Expected Graduation Nov 2026) and **CCNA Certified** technical professional holding specialized Cisco Networking Academy credentials (**Enterprise Networking**, **Routing & Switching**, **Cyber Threat Management**, **Endpoint Security**) and Festo Didactic certification in **Industrial Automation with AI**. 
+
+* **Enterprise Networking & IT Support:** Proven track record in diagnosing network infrastructure issues, configuring enterprise **VLANs**, **OSPF** routing, **Wireshark** packet analysis, and managing **Windows administration**, **desktop support**, **hardware troubleshooting**, and **printer support**.
+* **AI & Industrial Automation:** Skilled in integrating computer vision (**OpenCV**, **YOLOv8**), **IoT** embedded microcontrollers (Arduino), sensor telemetry, and predictive maintenance models for smart manufacturing and process automation.
+* **Problem Solving & Adaptability:** Military reserve background (**Askar Wataniah**) instilling rigorous discipline, rapid adaptability, and effective communication under pressure. Eager to deliver technical excellence in **IT Support Engineer**, **Network Engineer**, **Junior Network Engineer**, **Infrastructure Engineer**, and **NOC Engineer** roles.
+
+---
+
+## TECHNICAL SKILLS
+
+* **Enterprise Networking & Protocols:** Cisco Certified Network Associate (CCNA), TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Cisco IOS, Cisco CLI, Wireshark Packet Analysis, Network Troubleshooting, Cisco Packet Tracer
+* **Cybersecurity & Threat Defense:** Cybersecurity, Endpoint Security, Cyber Threat Management, Host Hardening, Firewall Configuration, Incident Response, Security Monitoring, Threat Mitigation, Risk Assessment
+* **IT Support & Desktop Administration:** Windows Administration, Desktop Support, Technical Support, Hardware Troubleshooting, User Support, Customer Support, Software Installation, Driver Installation, Printer Support, Microsoft Office, Technical Documentation
+* **Industrial Automation & AI:** Industrial Automation, Artificial Intelligence (AI), Predictive Maintenance, Manufacturing Data Analytics, AI Workflow Automation, ChatGPT, Claude, Prompt Engineering, Python Automation
+* **Computer Vision, IoT & Embedded Systems:** OpenCV, YOLOv8, Computer Vision, Arduino, Sensor Integration, IoT, Embedded Systems, Circuit Design
+* **Databases & Development Tools:** MySQL, Git, GitHub, VS Code, EasyEDA (PCB Design)
+* **Programming Languages:** Python, C, C++, SQL
+
+---
+
+## CERTIFICATIONS & PROFESSIONAL TRAINING
+
+**Festo Professional Certificate – Industrial Automation with AI in Manufacturing**  
+*Festo Didactic* — 16 July 2026  
+* Applied AI fundamentals and predictive maintenance algorithms to optimize industrial manufacturing processes, quality inspection, and energy efficiency.
+* Connected production controllers, extracted manufacturing datasets, built predictive AI models, and integrated data analytics into production scenarios.
+
+**CCNA: Enterprise Networking, Security, and Automation**  
+*Cisco Networking Academy | UTeM Fakulti Teknologi Kejuruteraan* — 23 February 2026  
+* Configured wide area network (WAN) technologies, OSPFv2 routing, Quality of Service (QoS) mechanisms, and network virtualization protocols.
+* Mastered network security concepts, threat defense, and network automation principles using REST APIs and configuration management tools.
+
+**CCNA: Switching, Routing, and Wireless Essentials**  
+*Cisco Networking Academy | UTeM Fakulti Teknologi Kejuruteraan* — 23 February 2026  
+* Engineered VLANs, trunking protocols, Inter-VLAN routing, Spanning Tree Protocol (STP), EtherChannel, and WLAN security configurations.
+* Diagnosed enterprise switching and routing issues across IPv4 and IPv6 networks using Cisco Packet Tracer and CLI utilities.
+
+**Endpoint Security Certification**  
+*Cisco Networking Academy* — 12 December 2024  
+* Implemented host-based firewall policies, antimalware protections, device hardening strategies, and access control management.
+* Analysed endpoint telemetry and security logs to identify vulnerabilities and defend network assets against malware and unauthorized intrusion.
+
+**Cyber Threat Management Certification**  
+*Cisco Networking Academy* — 17 November 2024  
+* Applied threat intelligence, vulnerability assessment methods, and incident response frameworks to mitigate cyber threats across enterprise networks.
+* Mastered Security Operations Center (SOC) workflows, threat monitoring techniques, and risk management standards.
+
+**Fiber Optic Splicing & Polishing Training**  
+*Technical Workshop* — 3 February 2018  
+* Gained hands-on experience in optical fiber cable handling, fusion splicing techniques, mechanical polishing, and OTDR signal loss testing.
+* Mastered fiber termination procedures and cable management standards essential for telecommunication and enterprise network backbones.
+
+**Arduino Workshop & Embedded Systems Hands-On**  
+*Workshop Series* — 9 September 2018  
+* Built and programmed sensor-driven microcontrollers, interfacing digital/analog sensors with microcontrollers for real-time telemetry.
+* Applied C/C++ embedded programming principles, pulse-width modulation (PWM), and serial communication protocols (I2C, SPI, UART).
+
+**Kursus Asas Askar Wataniah (Territorial Army Basic Training)**  
+*Malaysian Army Reserve* — Completed 2019  
+* Undertook rigorous physical and tactical military training, developing exceptional discipline, mental resilience, and high-stress problem-solving skills.
+* Mastered team communication tactics, command hierarchy dynamics, and field adaptability under high-pressure environments.
+
+---
+
+## EDUCATION
+
+**Bachelor of Computer Engineering with Honours**  
+*Universiti Teknikal Malaysia Melaka (UTeM)* | October 2022 – Present  
+* Expected Graduation: November 2026  
+* Core Focus: Computer Networks, Operating Systems, Computer Architecture, Microcontroller Systems, Software Engineering, AI & Computer Vision.
+
+**Diploma in Electronic Engineering (Computer)**  
+*Politeknik Port Dickson* | December 2018 – May 2022  
+* Core Focus: Embedded Systems, Digital Electronics, Network Infrastructure, Microcontroller Interfacing, Hardware Maintenance.
+
+**Certificate in Computer Systems and Networking** *(Sijil Sistem Komputer dan Rangkaian)*  
+*Kolej Komuniti Selandar* | July 2017 – February 2019  
+* **CGPA: 3.58 / 4.00** | Awarded Best Student of the Semester (March 2018 Session)  
+* Core Focus: Desktop Hardware Repair, LAN/WAN Networking, Cable Termination, Windows OS Setup.
+
+---
+
+## PROJECTS
+
+**Hybrid Self-Checkout System using Barcode Scanner & Camera (Computer Vision)**  
+*Computer Engineering Capstone Project*  
+* **Situation & Task:** Addressed retail checkout fraud and item scan-evasion by engineering an automated dual-verification system combining USB barcode scanning with real-time camera inference.
+* **Action:** Integrated HD camera module and barcode reader with OpenCV and YOLOv8 object detection model in Python. Developed custom verification logic matching visual bounding boxes against scanned barcode entries in MySQL.
+* **Result:** Achieved 77.4% precision and 72.0% recall over 50 training epochs, effectively flagging mismatched items and preventing retail theft while keeping system inference latency under 150ms.
+
+**Development of Livestock Weight Tracking System Based on IoT**  
+*Award-Winning IoT Project (INOTEK 2025 3rd Place)*  
+* **Situation & Task:** Developed an automated IoT weight tracking platform to replace manual livestock weighing and eliminate data recording errors.
+* **Action:** Designed custom hardware platform incorporating load cell strain gauges, HX711 signal amplifier ICs, and wireless Arduino microcontrollers. Wrote C/C++ firmware to filter mechanical noise and stream calibrated weight records to a central database.
+* **Result:** Won 3rd Place at INOTEK 2025 innovation competition, achieving 98%+ measurement precision and providing real-time telemetry dashboards for automated herd tracking.
+
+---
+
+## AWARDS & ACHIEVEMENTS
+
+* **Third Place** | *INOTEK 2025 (Innovation & Technology Competition Series 1)* — 15 January 2025  
+  * Awarded for project: *"Development of Livestock Weight Tracking System Based on IoT"* in recognition of real-world commercial viability and hardware innovation.
+* **Silver Medal** | *Pertandingan Rekacipta dan Inovasi Pelajar 2018* — 10–11 October 2018  
+  * Project: *"Where Is My Lecturer? (Smart Attendance & Lecturer Tracking System)"* — Designed an automated campus location & availability tracking platform.
+* **Best Student Award** *(Pelajar Terbaik Semester)* | *Kolej Komuniti Selandar* — March 2018 Session  
+  * Recognized for highest overall academic excellence, leadership skills, and practical lab performance.
+* **Outstanding Achievement in Subject** *(Pelajar Cemerlang)* | *Kolej Komuniti Selandar* — Nov 2017 Session  
+  * Received top honors for exceptional academic score in computer systems and network maintenance modules.
+
+---
+
+## LEADERSHIP & EXTRACURRICULAR ACTIVITIES
+
+**Askar Wataniah (Territorial Army Reserve)** | *Member & Trainee*  
+* **Leadership & Teamwork:** Managed team dynamics during field exercises, coordinating group tasks and tactical deployments under strict deadlines.
+* **Communication & Working Under Pressure:** Maintained clear operational communication in fast-paced scenarios, ensuring seamless execution of command objectives under pressure.
+* **Discipline & Adaptability:** Cultivated strong work ethic, punctuality, and rapid adaptability when operating in diverse, challenging working conditions.
+
+---
+
+## LANGUAGES
+
+* **English:** Professional Working Proficiency (Written & Spoken)
+* **Bahasa Malaysia:** Native / Full Professional Proficiency

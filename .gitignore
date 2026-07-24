@@ -1,0 +1,32 @@
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Dependencies
+.venv/
+venv/
+ENV/
+env/
+library/
+
+# Logs & Data Persistence
+logs/*.log
+*.log
+
+# OS & IDE Temp Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+~$*.xlsx
+
+# Local SQLite databases (Keep schema, ignore transient DB binaries if needed)
+*.sqlite3
+
+# Agent & Workspace Cache
+.gemini/
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Irfan Fahmi | Interactive Computer Engineering Portfolio</title>
+    <meta name="description" content="Simple, Fun & Functional Portfolio for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Industrial AI Specialist.">
+    <link rel="stylesheet" href="portfolio_style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <a href="#" class="brand">IRFAN <span>// FAHMI</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ats-tool">ATS Calculator</a></li>
+                <li><a href="#projects">Live Demos</a></li>
+                <li><a href="#contact">Apply / Contact</a></li>
+            </ul>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <button id="theme-toggle" class="theme-toggle-btn">☀️ Light Mode</button>
+                <a href="../resume/resume.html" target="_blank" class="btn btn-outline">📄 Download Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO CARD -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-card">
+                <div class="status-badge">
+                    <span>🟢 OPEN FOR FULL-TIME ROLES IN MALAYSIA &amp; SINGAPORE</span>
+                </div>
+                
+                <h1 class="candidate-title">MUHAMMAD IRFAN FAHMI</h1>
+                <p class="candidate-sub">Computer Engineering Graduate &bull; CCNA Enterprise &amp; Festo Industrial AI Specialist</p>
+
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <span class="badge badge-blue">🌐 CISCO CCNA CERTIFIED</span>
+                    <span class="badge badge-green">🤖 FESTO INDUSTRIAL AI</span>
+                    <span class="badge badge-amber">🏆 INOTEK 2025 WINNER</span>
+                    <span class="badge badge-purple">🛡️ CISCO SECURITY</span>
+                </div>
+
+                <div class="hero-btns">
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Download 1-Page ATS Resume (PDF)</a>
+                    <a href="#ats-tool" class="btn btn-outline">⚡ Test Live ATS Engine</a>
+                    <a href="#contact" class="btn btn-success">📩 Send Job Offer / Contact</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 1: LIVE INTERACTIVE ATS MATCH CALCULATOR -->
+    <section class="section" id="ats-tool">
+        <div class="container">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>
+                        <span class="badge badge-blue" style="margin-bottom: 0.35rem;">INTERACTIVE TOOL</span>
+                        <h2 style="font-size: 1.35rem;">Live ATS Job Match Evaluator</h2>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-dim);">Paste any Job Requirement below to test match score in real-time</span>
+                </div>
+
+                <textarea id="ats-input" class="input-field" rows="3" placeholder="Tampal Iklan Pekerjaan di sini (contoh: Requiring Cisco CCNA, Network Engineer, OSPF, VLAN, Python, Endpoint Security)..."></textarea>
+                
+                <button id="ats-btn" class="btn btn-primary">⚡ Evaluate ATS Match Score</button>
+
+                <div id="ats-output" style="margin-top: 1rem; display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 2: INTERACTIVE PROJECT DEMOS -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-head">
+                <h2>Interactive Project Demos</h2>
+                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click button to toggle live interactive simulation</span>
+            </div>
+
+            <div class="grid-2">
+                <!-- Demo 1 -->
+                <div class="card">
+                    <span class="badge badge-green" style="margin-bottom: 0.4rem;">AI &amp; VISION</span>
+                    <h3 class="card-title">YOLOv8 Self-Checkout System</h3>
+                    <p class="card-desc">Dual-verification anti-theft checkout combining camera object detection with barcode scanning.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-yolo">▶️ Run Live Vision Inference Demo</button>
+
+                    <div id="demo-yolo" class="demo-box">
+                        <p style="color: var(--color-success); font-weight: 700;">[SIMULATION RUNNING]</p>
+                        <p>Webcam Feed: Active (USB Video 0)</p>
+                        <p>Model: YOLOv8 Custom (50 Epochs)</p>
+                        <p>Inference Latency: 124ms per frame</p>
+                        <p>Result: Item 'Milo 1kg' Verified (Confidence: 88.4%)</p>
+                    </div>
+                </div>
+
+                <!-- Demo 2 -->
+                <div class="card">
+                    <span class="badge badge-amber" style="margin-bottom: 0.4rem;">INOTEK 2025 WINNER</span>
+                    <h3 class="card-title">IoT Livestock Weight Telemetry</h3>
+                    <p class="card-desc">Award-winning weight measurement platform using load cell strain gauges and Arduino firmware.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-iot">📊 Start Live Telemetry Stream</button>
+
+                    <div id="demo-iot" class="demo-box">
+                        <p style="color: var(--color-amber); font-weight: 700;">[TELEMETRY STREAM ACTIVE]</p>
+                        <p>Sensor: Load Cell Strain Gauge + HX711 IC</p>
+                        <p>Sampling Rate: 80Hz (C/C++ Firmware)</p>
+                        <p>Live Reading: 452.8 kg (Precision: 98.6%)</p>
+                        <p>Status: Wireless Payload Sent to Cloud DB</p>
+                    </div>
+                </div>
+
+                <!-- Demo 3 -->
+                <div class="card">
+                    <span class="badge badge-blue" style="margin-bottom: 0.4rem;">AUTOMATION ENGINE</span>
+                    <h3 class="card-title">Multi-Portal Job Agent CRM</h3>
+                    <p class="card-desc">FSM application agent automating job harvest across MYFutureJobs, MauKerja, JobStreet &amp; LinkedIn.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-agent">🔄 Run Multi-Portal Sync Test</button>
+
+                    <div id="demo-agent" class="demo-box">
+                        <p style="color: var(--color-primary); font-weight: 700;">[MULTI-PORTAL SYNC ACTIVE]</p>
+                        <p>🇲🇾 MYFutureJobs: Synced (2 Jobs Found)</p>
+                        <p>🇲🇾 MauKerja: Synced (1 Job Found)</p>
+                        <p>🇲🇾 JobStreet: Synced (2 Jobs Found)</p>
+                        <p>🇸🇬 LinkedIn: Synced (1 Job Found)</p>
+                        <p>SQLite WAL DB &amp; JobTracker.xlsx Updated</p>
+                    </div>
+                </div>
+
+                <!-- Demo 4 -->
+                <div class="card">
+                    <span class="badge badge-purple" style="margin-bottom: 0.4rem;">SILVER MEDAL WINNER</span>
+                    <h3 class="card-title">Smart Campus Lecturer Tracker</h3>
+                    <p class="card-desc">Campus location tracking platform integrating wireless telemetry sensors and web APIs.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-campus">📍 Track Lecturer Location</button>
+
+                    <div id="demo-campus" class="demo-box">
+                        <p style="color: var(--color-purple); font-weight: 700;">[LOCATION QUERY ACTIVE]</p>
+                        <p>Query: Irfan Fahmi (FTKE Lecturer)</p>
+                        <p>Current Node: Lab Networking 3 (Block B)</p>
+                        <p>Status: Available for Student Consultation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 3: DIRECT JOB APPLICATION / CONTACT DISPATCHER -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="card">
+                <span class="badge badge-green" style="margin-bottom: 0.5rem;">EMPLOYER / RECRUITER PORTAL</span>
+                <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Send Job Opportunity / Contact Candidate</h2>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                    Fill in details below to submit a job offer or interview request directly to candidate Muhammad Irfan Fahmi.
+                </p>
+
+                <form id="contact-form">
+                    <div class="grid-2">
+                        <input type="text" id="form-company" class="input-field" placeholder="Company Name (e.g. Telekom Malaysia / Singtel)" required>
+                        <input type="text" id="form-role" class="input-field" placeholder="Role Title (e.g. Network Engineer / IT Support)" required>
+                    </div>
+                    <div class="grid-2">
+                        <input type="email" id="form-email" class="input-field" placeholder="Your Email Address" required>
+                        <input type="text" id="form-salary" class="input-field" placeholder="Estimated Salary (e.g. MYR 4,000 / SGD 3,500)">
+                    </div>
+                    <textarea id="form-msg" class="input-field" rows="3" placeholder="Message or Interview Details..."></textarea>
+
+                    <button type="submit" class="btn btn-success">🚀 Submit Job Opportunity / Contact</button>
+                </form>
+
+                <div id="form-toast" class="toast-msg">
+                    ✅ Thank you! Job opportunity successfully sent to candidate Irfan Fahmi. Saved in application records.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section" style="border-top: 1px solid var(--border-card); padding-top: 1.5rem; padding-bottom: 1.5rem;">
+        <div class="container" style="text-align: center;">
+            <p style="font-size: 0.9rem; font-weight: 700;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</p>
+            <p style="font-family: var(--font-mono); color: var(--color-primary); font-size: 0.85rem; margin-top: 0.25rem;">fahmilatif87@gmail.com | Puchong, Malaysia</p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. Simple &amp; 100% Functional Portfolio Edition.</p>
+        </div>
+    </footer>
+
+    <script src="portfolio_script.js"></script>
+</body>
+</html>

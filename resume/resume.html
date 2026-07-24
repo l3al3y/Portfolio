@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Page Resume - MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</title>
+    <style>
+        /* STRICT 1-PAGE ATS RESUME STYLES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+            line-height: 1.32;
+            font-size: 8.2pt;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .page {
+            background-color: #ffffff;
+            width: 210mm;
+            height: 297mm; /* Strict A4 Height */
+            margin: 10px auto;
+            padding: 9mm 11mm;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            overflow: hidden; /* Prevents overflow beyond 1 page */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            border-bottom: 1.5px solid #0f172a;
+            padding-bottom: 3px;
+            margin-bottom: 5px;
+        }
+
+        .name {
+            font-size: 14.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+        }
+
+        .headline {
+            font-size: 8.8pt;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 1px;
+        }
+
+        .contact-info {
+            font-size: 7.8pt;
+            color: #334155;
+            margin-top: 2px;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 4px;
+        }
+
+        .section-title {
+            font-size: 9pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #0f172a;
+            border-bottom: 1px solid #64748b;
+            padding-bottom: 1px;
+            margin-bottom: 2px;
+        }
+
+        .summary {
+            font-size: 8pt;
+            text-align: justify;
+            color: #1e293b;
+        }
+
+        /* SKILLS GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2px 6px;
+            font-size: 7.8pt;
+        }
+
+        .skills-category {
+            font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+        }
+
+        .skills-items {
+            color: #1e293b;
+        }
+
+        /* EXPERIENCE & ENTRIES */
+        .entry {
+            margin-bottom: 3px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry-title {
+            font-size: 8.2pt;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .entry-date {
+            font-size: 7.8pt;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .entry-subtitle {
+            font-size: 7.8pt;
+            font-style: italic;
+            color: #334155;
+        }
+
+        .bullets {
+            padding-left: 11px;
+            font-size: 7.8pt;
+        }
+
+        .bullets li {
+            margin-bottom: 1px;
+        }
+
+        /* TWO-COLUMN COMPACT LAYOUT FOR CERTIFICATIONS & EDUCATION */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .cert-item {
+            font-size: 7.8pt;
+            margin-bottom: 1px;
+        }
+
+        .cert-name {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .cert-issuer {
+            color: #475569;
+            font-size: 7.2pt;
+        }
+
+        /* PRINT MEDIA STYLES - STRICT 1 PAGE PRINT */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .page {
+                width: 100%;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+
+            @page {
+                size: A4 portrait;
+                margin: 7mm 9mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <!-- HEADER -->
+        <header class="header">
+            <h1 class="name">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
+            <div class="headline">Computer Engineering Graduate &bull; CCNA & Cybersecurity Certified &bull; Industrial AI</div>
+            <div class="contact-info">
+                Puchong, Malaysia &bull; +60 16-243 2023 &bull; fahmilatif87@gmail.com &bull; 
+                linkedin.com/in/mifi99 &bull; github.com/l3al3y &bull; irfanfahmi.dev
+            </div>
+        </header>
+
+        <!-- SUMMARY -->
+        <section class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary">
+                High-performing <strong>Computer Engineering Graduate</strong> (Expected Nov 2026) and <strong>CCNA Certified</strong> engineer with Cisco Networking Academy credentials (<strong>Enterprise Networking</strong>, <strong>Switching & Routing</strong>, <strong>Cyber Threat Management</strong>, <strong>Endpoint Security</strong>) and Festo certification in <strong>Industrial Automation with AI</strong>. Experienced in <strong>network troubleshooting</strong>, <strong>VLAN</strong>, <strong>OSPF</strong>, <strong>Wireshark</strong>, <strong>Windows administration</strong>, <strong>desktop support</strong>, <strong>hardware troubleshooting</strong>, <strong>printer support</strong>, <strong>incident response</strong>, <strong>computer vision</strong> (<strong>OpenCV</strong>, <strong>YOLOv8</strong>), <strong>IoT</strong>, <strong>predictive maintenance</strong>, and <strong>technical documentation</strong>. Military reserve background (Askar Wataniah) instilling strong discipline, adaptability, and high-pressure analytical <strong>problem solving</strong> for <strong>IT Support Engineer</strong>, <strong>Network Engineer</strong>, and <strong>Infrastructure</strong> roles.
+            </p>
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skills-category">Networking & Protocols:</span>
+                <span class="skills-items">CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Wireshark, Cisco Packet Tracer, Network Troubleshooting</span>
+
+                <span class="skills-category">Cybersecurity:</span>
+                <span class="skills-items">Cybersecurity, Endpoint Security, Cyber Threat Management, Host Hardening, Firewall, Incident Response, Security Monitoring, Threat Mitigation</span>
+
+                <span class="skills-category">IT Support & Admin:</span>
+                <span class="skills-items">Windows Administration, Desktop Support, Technical Support, Hardware Troubleshooting, User Support, Customer Support, Software & Driver Installation, Printer Support, Microsoft Office, Technical Documentation</span>
+
+                <span class="skills-category">Industrial AI & IoT:</span>
+                <span class="skills-items">Industrial Automation, Artificial Intelligence (AI), Predictive Maintenance, Manufacturing Data Analytics, OpenCV, YOLOv8, Computer Vision, Arduino, Sensor Integration, IoT, Embedded Systems</span>
+
+                <span class="skills-category">Programming & Tools:</span>
+                <span class="skills-items">Python, C, C++, SQL, MySQL, Git, GitHub, VS Code, EasyEDA</span>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Bachelor of Computer Engineering with Honours</span>
+                    <span class="entry-date">Oct 2022 – Present </span>
+                </div>
+                <div class="entry-subtitle">Universiti Teknikal Malaysia Melaka (UTeM)</div>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Diploma in Electronic Engineering (Computer)</span>
+                    <span class="entry-date">Dec 2018 – May 2022</span>
+                </div>
+                <div class="entry-subtitle">Politeknik Port Dickson | <strong>CGPA: 3.26 / 4.00</strong></div>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)</span>
+                    <span class="entry-date">Jul 2017 – Feb 2019</span>
+                </div>
+                <div class="entry-subtitle">Kolej Komuniti Selandar | <strong>CGPA: 3.58 / 4.00</strong> (Best Student Award)</div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="section">
+            <h2 class="section-title">Certifications & Professional Training</h2>
+            <div class="grid-2col">
+                <div class="cert-item">
+                    <div class="cert-name">Festo Industrial Automation with AI</div>
+                    <div class="cert-issuer">Festo Didactic &bull; 16 July 2026</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">CCNA: Enterprise Networking & Automation</div>
+                    <div class="cert-issuer">Cisco Networking Academy / UTeM &bull; 23 Feb 2026</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">CCNA: Switching, Routing & Wireless</div>
+                    <div class="cert-issuer">Cisco Networking Academy / UTeM &bull; 23 Feb 2026</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">Endpoint Security Certification</div>
+                    <div class="cert-issuer">Cisco Networking Academy &bull; 12 Dec 2024</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">Cyber Threat Management</div>
+                    <div class="cert-issuer">Cisco Networking Academy &bull; 17 Nov 2024</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">Fiber Optic Splicing & Polishing</div>
+                    <div class="cert-issuer">Technical Workshop &bull; 3 Feb 2018</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section">
+            <h2 class="section-title">Engineering Projects</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)</span>
+                    <span class="entry-date">Capstone Project</span>
+                </div>
+                <ul class="bullets">
+                    <li>Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.</li>
+                    <li>Achieved <strong>77.4% precision</strong> and <strong>72.0% recall</strong> at 50 epochs, eliminating scan evasion with &lt;150ms inference latency.</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">IoT Livestock Weight Tracking System</span>
+                    <span class="entry-date">INOTEK 2025 (3rd Place Winner)</span>
+                </div>
+                <ul class="bullets">
+                    <li>Designed IoT load-cell weighing platform with Arduino microcontrollers, HX711 amplifiers, and C/C++ signal filtering firmware.</li>
+                    <li>Delivered real-time telemetry dashboards with <strong>98%+ measurement precision</strong>, winning 3rd Place at INOTEK 2025.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- AWARDS & ACHIEVEMENTS -->
+        <section class="section">
+            <h2 class="section-title">Awards & Leadership</h2>
+            <div class="grid-2col">
+                <div class="cert-item">
+                    <div class="cert-name">Third Place &bull; INOTEK 2025</div>
+                    <div class="cert-issuer">IoT Livestock System Innovation &bull; 15 Jan 2025</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">Silver Medal &bull; Student Innovation 2018</div>
+                    <div class="cert-issuer">Smart Lecturer Tracking System &bull; Oct 2018</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">Best Student Award &bull; Semester 2018</div>
+                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-name">Askar Wataniah Military Reserve</div>
+                    <div class="cert-issuer">Territorial Army Basic Training &bull; 2019</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LANGUAGES -->
+        <section class="section" style="margin-bottom: 0;">
+            <h2 class="section-title">Languages</h2>
+            <p class="summary" style="font-size: 7.8pt;">
+                <strong>English:</strong> Professional Working Proficiency (Written & Spoken) &bull; 
+                <strong>Bahasa Malaysia:</strong> Native / Full Professional Proficiency
+            </p>
+        </section>
+    </div>
+
+</body>
+</html>
