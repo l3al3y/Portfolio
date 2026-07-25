@@ -52,7 +52,7 @@ class CandidateProfile:
     location: str = "Puchong, Malaysia"
     linkedin: str = "https://linkedin.com/in/mifi99"
     github: str = "https://github.com/l3al3y"
-    portfolio: str = "irfanfahmi.dev"
+    portfolio: str = "https://l3al3y.github.io/ResumeAgent/"
 
     education: List[EducationItem] = field(default_factory=list)
     certifications: List[CertificationItem] = field(default_factory=list)

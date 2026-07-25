@@ -6,7 +6,7 @@
 **Location:** Puchong, Malaysia  
 **LinkedIn:** https://linkedin.com/in/mifi99  
 **GitHub:** https://github.com/l3al3y  
-**Portfolio:** irfanfahmi.dev  
+**Portfolio:** https://l3al3y.github.io/ResumeAgent/ (Live 3D Web Experience & Agentic Portfolio)  
 
 ---
 
@@ -139,8 +139,8 @@ D:\Resume ats cli\
 
 ## 🤖 CAREER INTELLIGENCE AGENT CONFIGURATION & DASHBOARD
 
-**Active System Prompt:** `antigravity-career-agent-system-prompt (1).md` (v2.0 Extended Framework)  
-**Last Memory Sync:** 2026-07-24  
+**Active System Prompt:** `docs/system-prompt-v2.md` (v2.0 Extended Framework & Agent-Native Specification v0.1)  
+**Last Memory Sync:** 2026-07-25  
 **Operational Modes Enabled:** Recruiter, Hiring Manager, Career Strategist, Technical Mentor, Market Researcher, Project Reviewer, Interview Coach  
 
 ### 📊 Active Career Dashboard
@@ -164,7 +164,7 @@ D:\Resume ats cli\
   - 🇲🇾 **JobStreet Malaysia** (`jobstreet.com.my`)
   - 🇸🇬 **LinkedIn Southeast Asia** (`linkedin.com/jobs`)
 * **Skills to Learn:** AWS Certified Solutions Architect / Cisco DevNet / Linux Enterprise Admin
-* **Current ATS Score:** 100% (Heuristic 42-keyword match via `generate_resume.py` local parser)
+* **Current ATS Score:** 100% (Heuristic 48-keyword match via `cli.py ats verify` local parser)
 * **Estimated Market Salary:** MYR 3,500 – MYR 5,000 / SGD 3,200 – SGD 4,200 (Entry Level B.Eng)
 * **Top Missing Skill:** Cloud Networking (AWS VPC, Hybrid Cloud) & NetDevOps Automation (Ansible/Terraform)
 * **Priority This Week:** Continuous retraining & multi-portal scraper connector synchronization
@@ -198,14 +198,14 @@ D:\Resume ats cli\
 
 ---
 
-## 🏗️ OPEN-SOURCE PRODUCTION ENGINEERING ARCHITECTURE (v3.0 RELEASE)
+## 🏗️ AGENT-NATIVE PRODUCTION ENGINEERING ARCHITECTURE (v4.0 RELEASE)
 
-1. **Centralized Configuration:** Managed in `config/settings.py` (Base paths, thresholds, currency, logging options).
-2. **Data & Code Decoupling:** Runtime databases and master spreadsheets stored in `data/` (`data/job_agent.db`, `data/JobTracker.xlsx`).
-3. **Automated Unit Testing Suite:** `tests/` directory with 100% passing tests (`test_candidate.py`, `test_database.py`, `test_portals.py`).
-4. **CI/CD Pipeline:** GitHub Actions workflow configured in `.github/workflows/ci.yml`.
-5. **Containerization:** Docker containerization via `Dockerfile` and `docker-compose.yml`.
-6. **Production `.gitignore` & `requirements.txt`:** Standardized Python package management excluding virtualenv binaries.
+1. **Agent Self-Description Contract (`agent/`):** Identity summary (`agent/brief.md`), rules (`agent/rules/trigger.md`, `workflow.md`, `writeback.md`), and skills (`agent/skills/*.md`).
+2. **Root AI Agent Guidelines:** `AGENTS.md` at root specifying certification level (Agent-Native), exit codes, reserved flags, and execution contracts.
+3. **Dual Output Mode CLI (`cli.py` & `src/cli.py`):** Default `--agent` mode (JSON) and `--human` mode (Rich terminal UI with colored panels, tables, and gauges).
+4. **Offline Feedback & Issue System (`src/issue.py`):** Subcommands `issue create`, `issue list`, `issue resolve` for offline feedback and bug reporting.
+5. **Decoupled Data Storage:** Database and master spreadsheets stored under `data/` (`data/job_agent.db` with WAL mode, `data/JobTracker.xlsx`).
+6. **Comprehensive Automated Unit Testing Suite:** `tests/` directory with 10 passing tests (`test_candidate.py`, `test_database.py`, `test_portals.py`, `test_cli.py`, `test_issue.py`).
 
 ---
 
@@ -214,6 +214,10 @@ D:\Resume ats cli\
 | Sync Date | Trigger / Event | Active Prompt | Multi-Portal Status | Primary DB & Excel Artifacts |
 | :--- | :--- | :--- | :--- | :--- |
 | **2026-07-24** | Applied Open-Source Product Architecture v3.0 & Unit Test Suite | `docs/system-prompt-v2.md` | MYFutureJobs, MauKerja, JobStreet, LinkedIn Synced | `data/job_agent.db` & `data/JobTracker.xlsx` |
+| **2026-07-25** | Upgraded to Agent-Native CLI Architecture v4.0 (Agent CLI Spec v0.1 Compliant), Added `agent/` contract, `AGENTS.md`, Offline Issue Tracker, Rich UI `--human` mode, and Expanded 100% Passing Test Suite | `docs/system-prompt-v2.md` & `agent/brief.md` | MYFutureJobs, MauKerja, JobStreet, LinkedIn Synced | `data/job_agent.db` & `data/JobTracker.xlsx` |
+| **2026-07-25** | Deployed Standalone Root 3D Web Experience Portfolio (`index.html`, `web/portfolio.html`, `web/index.html`) with Three.js WebGL Engine, Glassmorphic Design, 3D Particle Starfield, 4 Interactive Tech Nodes, and Employer Gate for `https://l3al3y.github.io/ResumeAgent/` | `agent/brief.md` & `3d-web-experience` | MYFutureJobs, MauKerja, JobStreet, LinkedIn Synced | `web/portfolio.html` & `index.html` |
+
+
 
 
 

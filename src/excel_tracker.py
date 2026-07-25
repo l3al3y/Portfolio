@@ -303,6 +303,7 @@ class ExcelTracker:
             return "Embedded/IoT"
         return "General IT/Eng"
 
+
     @staticmethod
     def _auto_fit_columns(ws: openpyxl.worksheet.worksheet.Worksheet) -> None:
         for col in ws.columns:
@@ -313,3 +314,10 @@ class ExcelTracker:
                 if val_str:
                     max_len = max(max_len, len(val_str))
             ws.column_dimensions[col_letter].width = max(max_len + 4, 12)
+
+
+def export_job_tracker_excel(db_path: str = "job_agent.db", output_file: str = "JobTracker.xlsx") -> Path:
+    """Helper top-level function to export Excel tracker."""
+    tracker = ExcelTracker(output_path=output_file)
+    return tracker.sync_from_db(db_path=db_path)
+

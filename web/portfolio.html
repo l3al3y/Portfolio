@@ -3,41 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Irfan Fahmi | Interactive Computer Engineering Portfolio</title>
-    <meta name="description" content="Simple, Fun & Functional Portfolio for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Industrial AI Specialist.">
+    <title>Muhammad Irfan Fahmi | 3D Agentic Engineering & Portfolio Experience</title>
+    <meta name="description" content="Immersive 3D Interactive Portfolio for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Industrial AI Specialist. Integrated with Autonomous Career Agent.">
+    
+    <!-- Google Fonts & Style -->
     <link rel="stylesheet" href="portfolio_style.css">
+
+    <!-- Three.js 3D Web Engine & GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
+<body class="dark-theme">
+
+    <!-- BACKGROUND 3D WEBGL CANVAS -->
+    <canvas id="webgl-bg-canvas"></canvas>
 
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-flex">
-            <a href="#" class="brand">IRFAN <span>// FAHMI</span></a>
+            <a href="#" class="brand">IRFAN <span>// 3D AGENT</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#ats-tool">ATS Calculator</a></li>
+                <li><a href="#home">3D Core</a></li>
+                <li><a href="#pillars">Tech Pillars</a></li>
+                <li><a href="#ats-tool">ATS Engine</a></li>
                 <li><a href="#projects">Live Demos</a></li>
-                <li><a href="#contact">Apply / Contact</a></li>
+                <li><a href="#contact">Contact / Apply</a></li>
             </ul>
             <div style="display: flex; gap: 0.75rem; align-items: center;">
                 <button id="unlock-employer-btn-nav" class="btn btn-warning">🔓 Employer Access</button>
-                <button id="theme-toggle" class="theme-toggle-btn">☀️ Light Mode</button>
-                <a href="../resume/resume.html" target="_blank" class="btn btn-outline">📄 Download Resume</a>
+                <button id="theme-toggle" class="theme-toggle-btn">☀️ Light / 🌙 Dark</button>
+                <a href="../resume/resume.html" target="_blank" class="btn btn-outline">📄 Resume</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO CARD -->
+    <!-- HERO SECTION WITH INTERACTIVE 3D CANVAS -->
     <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-card">
+        <div class="container hero-grid">
+            <!-- Left Column: Hero Information -->
+            <div class="hero-card glassmorphism">
                 <div class="status-badge" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <span>🟢 OPEN FOR FULL-TIME ROLES IN MALAYSIA &amp; SINGAPORE</span>
-                    <span class="badge-classified" id="gate-status-badge">🔒 CONTACT INFO MASKED (EMPLOYER GATE ACTIVE)</span>
+                    <span>🟢 OPEN FOR ROLES IN MALAYSIA &amp; SINGAPORE</span>
+                    <span class="badge-classified" id="gate-status-badge">🔒 CONTACT MASKED (RECRUITER GATE ACTIVE)</span>
                 </div>
                 
                 <h1 class="candidate-title">MUHAMMAD IRFAN FAHMI</h1>
-                <p class="candidate-sub">Computer Engineering Graduate &bull; CCNA Enterprise &amp; Festo Industrial AI Specialist</p>
+                <p class="candidate-sub">Computer Engineer &bull; CCNA Enterprise &amp; Festo Industrial AI Specialist</p>
+                <p class="hero-tagline">
+                    Engineered with autonomous AI agent capabilities, computer vision models (<span style="color: var(--color-success); font-weight:700;">77.4% Precision</span>), IoT telemetry systems (<span style="color: var(--color-amber); font-weight:700;">INOTEK 2025 Winner</span>), and Cisco enterprise network architecture.
+                </p>
 
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                     <span class="badge badge-blue">🌐 CISCO CCNA CERTIFIED</span>
@@ -47,10 +61,71 @@
                 </div>
 
                 <div class="hero-btns">
-                    <button id="unlock-employer-btn-hero" class="btn btn-warning">🔓 Recruiter Unlock Contact</button>
+                    <button id="unlock-employer-btn-hero" class="btn btn-warning">🔓 Unlock Recruiter Contact</button>
                     <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Download ATS Resume</a>
                     <a href="#ats-tool" class="btn btn-outline">⚡ Test Live ATS Engine</a>
-                    <a href="#contact" class="btn btn-success">📩 Send Job Offer / Contact</a>
+                    <a href="#contact" class="btn btn-success">📩 Send Job Opportunity</a>
+                </div>
+            </div>
+
+            <!-- Right Column: 3D Interactive Controller Container -->
+            <div class="hero-3d-container glassmorphism">
+                <div class="hero-3d-header">
+                    <span class="badge badge-purple">3D AGENTIC CORE SCENE</span>
+                    <span style="font-size: 0.75rem; color: var(--text-dim);">[Drag / Hover to Interact in 3D Space]</span>
+                </div>
+                <!-- Embedded 3D Canvas -->
+                <div id="hero-3d-canvas-wrapper"></div>
+                <div class="3d-controls-overlay">
+                    <button id="reset-camera-btn" class="btn-3d-sm">🔄 Reset 3D View</button>
+                    <button id="toggle-orbit-btn" class="btn-3d-sm">🌀 Auto Rotate</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D TECHNICAL PILLAR INTERACTIVE HUB -->
+    <section class="section" id="pillars">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="badge badge-blue">INTERACTIVE 3D NODES</span>
+                    <h2>Engineering Competency Pillars</h2>
+                </div>
+                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click any 3D node card to focus camera and inspect credentials</span>
+            </div>
+
+            <div class="grid-4">
+                <!-- Node 1: Networking -->
+                <div class="card pillar-card" data-node="networking">
+                    <div class="pillar-icon">🌐</div>
+                    <span class="badge badge-blue">CCNA CERTIFIED</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Enterprise Networking</h3>
+                    <p class="card-desc">Cisco Routing &amp; Switching, WAN, OSPFv2, VLANs, Wireshark, Python Automation.</p>
+                </div>
+
+                <!-- Node 2: AI & Vision -->
+                <div class="card pillar-card" data-node="ai">
+                    <div class="pillar-icon">🤖</div>
+                    <span class="badge badge-green">FESTO AI CERTIFIED</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Industrial AI &amp; Vision</h3>
+                    <p class="card-desc">YOLOv8 Object Detection (50 epochs), OpenCV, Festo Industrial AI, Predictive Maintenance.</p>
+                </div>
+
+                <!-- Node 3: IoT & Embedded -->
+                <div class="card pillar-card" data-node="iot">
+                    <div class="pillar-icon">⚡</div>
+                    <span class="badge badge-amber">INOTEK 2025 WINNER</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">IoT &amp; Embedded Systems</h3>
+                    <p class="card-desc">Arduino Microcontrollers, Load Cell Strain Gauges, HX711 ICs, C/C++ Firmware, Wireless Telemetry.</p>
+                </div>
+
+                <!-- Node 4: Cybersecurity -->
+                <div class="card pillar-card" data-node="security">
+                    <div class="pillar-icon">🛡️</div>
+                    <span class="badge badge-purple">CISCO SECURITY</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Endpoint Security</h3>
+                    <p class="card-desc">Cisco Endpoint Security, Cyber Threat Management, Firewall Telemetry, SOC Workflows.</p>
                 </div>
             </div>
         </div>
@@ -59,16 +134,16 @@
     <!-- FUNCTIONAL WIDGET 1: LIVE INTERACTIVE ATS MATCH CALCULATOR -->
     <section class="section" id="ats-tool">
         <div class="container">
-            <div class="card">
+            <div class="card glassmorphism">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>
-                        <span class="badge badge-blue" style="margin-bottom: 0.35rem;">INTERACTIVE TOOL</span>
+                        <span class="badge badge-blue" style="margin-bottom: 0.35rem;">INTERACTIVE AGENTIC TOOL</span>
                         <h2 style="font-size: 1.35rem;">Live ATS Job Match Evaluator</h2>
                     </div>
                     <span style="font-size: 0.8rem; color: var(--text-dim);">Paste any Job Requirement below to test match score in real-time</span>
                 </div>
 
-                <textarea id="ats-input" class="input-field" rows="3" placeholder="Tampal Iklan Pekerjaan di sini (contoh: Requiring Cisco CCNA, Network Engineer, OSPF, VLAN, Python, Endpoint Security)..."></textarea>
+                <textarea id="ats-input" class="input-field" rows="3" placeholder="Paste Job Description here (e.g., Requiring Cisco CCNA, Network Engineer, OSPF, VLAN, Python, Endpoint Security)..."></textarea>
                 
                 <button id="ats-btn" class="btn btn-primary">⚡ Evaluate ATS Match Score</button>
 
@@ -87,7 +162,7 @@
 
             <div class="grid-2">
                 <!-- Demo 1 -->
-                <div class="card">
+                <div class="card glassmorphism">
                     <span class="badge badge-green" style="margin-bottom: 0.4rem;">AI &amp; VISION</span>
                     <h3 class="card-title">YOLOv8 Self-Checkout System</h3>
                     <p class="card-desc">Dual-verification anti-theft checkout combining camera object detection with barcode scanning.</p>
@@ -103,7 +178,7 @@
                 </div>
 
                 <!-- Demo 2 -->
-                <div class="card">
+                <div class="card glassmorphism">
                     <span class="badge badge-amber" style="margin-bottom: 0.4rem;">INOTEK 2025 WINNER</span>
                     <h3 class="card-title">IoT Livestock Weight Telemetry</h3>
                     <p class="card-desc">Award-winning weight measurement platform using load cell strain gauges and Arduino firmware.</p>
@@ -119,7 +194,7 @@
                 </div>
 
                 <!-- Demo 3 -->
-                <div class="card">
+                <div class="card glassmorphism">
                     <span class="badge badge-blue" style="margin-bottom: 0.4rem;">AUTOMATION ENGINE</span>
                     <h3 class="card-title">Multi-Portal Job Agent CRM</h3>
                     <p class="card-desc">FSM application agent automating job harvest across MYFutureJobs, MauKerja, JobStreet &amp; LinkedIn.</p>
@@ -136,7 +211,7 @@
                 </div>
 
                 <!-- Demo 4 -->
-                <div class="card">
+                <div class="card glassmorphism">
                     <span class="badge badge-purple" style="margin-bottom: 0.4rem;">SILVER MEDAL WINNER</span>
                     <h3 class="card-title">Smart Campus Lecturer Tracker</h3>
                     <p class="card-desc">Campus location tracking platform integrating wireless telemetry sensors and web APIs.</p>
@@ -156,7 +231,7 @@
     <!-- FUNCTIONAL WIDGET 3: DIRECT JOB APPLICATION / CONTACT DISPATCHER -->
     <section class="section" id="contact">
         <div class="container">
-            <div class="card">
+            <div class="card glassmorphism">
                 <span class="badge badge-green" style="margin-bottom: 0.5rem;">EMPLOYER / RECRUITER PORTAL</span>
                 <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Send Job Opportunity / Contact Candidate</h2>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
@@ -193,13 +268,13 @@
                 <span id="footer-phone">+60 16-XXX XXXX</span> &bull; 
                 <span id="footer-location">Puchong, Malaysia (Employer Protected)</span>
             </p>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. Simple &amp; 100% Functional Portfolio Edition.</p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. 3D Web Experience &amp; Agentic Portfolio Edition.</p>
         </div>
     </footer>
 
     <!-- EMPLOYER ACCESS PASSCODE MODAL -->
     <div id="employer-modal" class="modal-overlay">
-        <div class="modal-box">
+        <div class="modal-box glassmorphism">
             <button id="modal-close" class="modal-close-btn">&times;</button>
             <span class="badge badge-amber" style="margin-bottom: 0.5rem;">🔐 RECRUITER & EMPLOYER GATE</span>
             <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Unlock Candidate Contact Info</h3>
@@ -222,6 +297,7 @@
         </div>
     </div>
 
+    <!-- 3D WEB PORTFOLIO CONTROLLER SCRIPT -->
     <script src="portfolio_script.js"></script>
 </body>
 </html>

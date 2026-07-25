@@ -3,339 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATS Resume | MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</title>
+    <title>Muhammad Irfan Fahmi | 3D Interactive Computer Engineering Portfolio</title>
+    <meta name="description" content="Immersive 3D Interactive Web Experience Portfolio for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Industrial AI Specialist. Built with Three.js & Autonomous Agent Engine.">
+    
+    <!-- Google Fonts & Styling -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio_style.css">
 
-    <!-- Control Bar (Hidden when Printing) -->
-    <header class="toolbar no-print">
-        <div class="toolbar-container">
-            <div class="logo">
-                <span class="badge">ATS Verified</span>
-                <h1>Resume Builder & PDF Exporter</h1>
-            </div>
-            <div class="actions">
-                <button id="btn-edit" class="btn btn-secondary">✏️ Edit Contact Info</button>
-                <button id="btn-copy" class="btn btn-secondary">📋 Copy ATS Text</button>
-                <button id="btn-print" class="btn btn-primary">🖨️ Print / Save as PDF</button>
+    <!-- Three.js 3D Web Engine & GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="dark-theme">
+
+    <!-- BACKGROUND 3D WEBGL CANVAS -->
+    <canvas id="webgl-bg-canvas"></canvas>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <a href="#" class="brand">IRFAN <span>// 3D AGENT</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">3D Core</a></li>
+                <li><a href="#pillars">Tech Pillars</a></li>
+                <li><a href="#ats-tool">ATS Engine</a></li>
+                <li><a href="#projects">Live Demos</a></li>
+                <li><a href="#contact">Contact / Apply</a></li>
+            </ul>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <button id="unlock-employer-btn-nav" class="btn btn-warning">🔓 Employer Access</button>
+                <button id="theme-toggle" class="theme-toggle-btn">☀️ Light / 🌙 Dark</button>
+                <a href="../resume/resume.html" target="_blank" class="btn btn-outline">📄 Resume</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Modal for Editing Contact Info -->
-    <div id="edit-modal" class="modal no-print hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Edit Contact Details</h2>
-                <button id="btn-close-modal" class="close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="input-name" value="MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR">
+    <!-- HERO SECTION WITH INTERACTIVE 3D CANVAS -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <!-- Left Column: Hero Information -->
+            <div class="hero-card glassmorphism">
+                <div class="status-badge" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span>🟢 OPEN FOR ROLES IN MALAYSIA &amp; SINGAPORE</span>
+                    <span class="badge-classified" id="gate-status-badge">🔒 CONTACT MASKED (RECRUITER GATE ACTIVE)</span>
                 </div>
-                <div class="form-group">
-                    <label>Location</label>
-                    <input type="text" id="input-location" value="Puchong, Malaysia">
+                
+                <h1 class="candidate-title">MUHAMMAD IRFAN FAHMI</h1>
+                <p class="candidate-sub">Computer Engineer &bull; CCNA Enterprise &amp; Festo Industrial AI Specialist</p>
+                <p class="hero-tagline">
+                    Engineered with autonomous AI agent capabilities, computer vision models (<span style="color: var(--color-success); font-weight:700;">77.4% Precision</span>), IoT telemetry systems (<span style="color: var(--color-amber); font-weight:700;">INOTEK 2025 Winner</span>), and Cisco enterprise network architecture.
+                </p>
+
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <span class="badge badge-blue">🌐 CISCO CCNA CERTIFIED</span>
+                    <span class="badge badge-green">🤖 FESTO INDUSTRIAL AI</span>
+                    <span class="badge badge-amber">🏆 INOTEK 2025 WINNER</span>
+                    <span class="badge badge-purple">🛡️ CISCO SECURITY</span>
                 </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="text" id="input-phone" value="+60 16-243 2023">
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="input-email" value="fahmilatif87@gmail.com">
-                </div>
-                <div class="form-group">
-                    <label>LinkedIn URL</label>
-                    <input type="text" id="input-linkedin" value="linkedin.com/in/mifi99">
-                </div>
-                <div class="form-group">
-                    <label>GitHub URL</label>
-                    <input type="text" id="input-github" value="github.com/l3al3y">
-                </div>
-                <div class="form-group">
-                    <label>Portfolio / Website</label>
-                    <input type="text" id="input-portfolio" value="irfanfahmi.dev">
+
+                <div class="hero-btns">
+                    <button id="unlock-employer-btn-hero" class="btn btn-warning">🔓 Unlock Recruiter Contact</button>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Download ATS Resume</a>
+                    <a href="#ats-tool" class="btn btn-outline">⚡ Test Live ATS Engine</a>
+                    <a href="#contact" class="btn btn-success">📩 Send Job Opportunity</a>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button id="btn-save-contact" class="btn btn-primary">Save Changes</button>
+
+            <!-- Right Column: 3D Interactive Controller Container -->
+            <div class="hero-3d-container glassmorphism">
+                <div class="hero-3d-header">
+                    <span class="badge badge-purple">3D AGENTIC CORE SCENE</span>
+                    <span style="font-size: 0.75rem; color: var(--text-dim);">[Drag / Hover to Interact in 3D Space]</span>
+                </div>
+                <!-- Embedded 3D Canvas -->
+                <div id="hero-3d-canvas-wrapper"></div>
+                <div class="controls-overlay">
+                    <button id="reset-camera-btn" class="btn-3d-sm">🔄 Reset 3D View</button>
+                    <button id="toggle-orbit-btn" class="btn-3d-sm">🌀 Auto Rotate</button>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 3D TECHNICAL PILLAR INTERACTIVE HUB -->
+    <section class="section" id="pillars">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="badge badge-blue">INTERACTIVE 3D NODES</span>
+                    <h2>Engineering Competency Pillars</h2>
+                </div>
+                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click any 3D node card to focus camera and inspect credentials</span>
+            </div>
+
+            <div class="grid-4">
+                <!-- Node 1: Networking -->
+                <div class="card pillar-card glassmorphism" data-node="networking">
+                    <div class="pillar-icon">🌐</div>
+                    <span class="badge badge-blue">CCNA CERTIFIED</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Enterprise Networking</h3>
+                    <p class="card-desc">Cisco Routing &amp; Switching, WAN, OSPFv2, VLANs, Wireshark, Python Automation.</p>
+                </div>
+
+                <!-- Node 2: AI & Vision -->
+                <div class="card pillar-card glassmorphism" data-node="ai">
+                    <div class="pillar-icon">🤖</div>
+                    <span class="badge badge-green">FESTO AI CERTIFIED</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Industrial AI &amp; Vision</h3>
+                    <p class="card-desc">YOLOv8 Object Detection (50 epochs), OpenCV, Festo Industrial AI, Predictive Maintenance.</p>
+                </div>
+
+                <!-- Node 3: IoT & Embedded -->
+                <div class="card pillar-card glassmorphism" data-node="iot">
+                    <div class="pillar-icon">⚡</div>
+                    <span class="badge badge-amber">INOTEK 2025 WINNER</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">IoT &amp; Embedded Systems</h3>
+                    <p class="card-desc">Arduino Microcontrollers, Load Cell Strain Gauges, HX711 ICs, C/C++ Firmware, Wireless Telemetry.</p>
+                </div>
+
+                <!-- Node 4: Cybersecurity -->
+                <div class="card pillar-card glassmorphism" data-node="security">
+                    <div class="pillar-icon">🛡️</div>
+                    <span class="badge badge-purple">CISCO SECURITY</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Endpoint Security</h3>
+                    <p class="card-desc">Cisco Endpoint Security, Cyber Threat Management, Firewall Telemetry, SOC Workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 1: LIVE INTERACTIVE ATS MATCH CALCULATOR -->
+    <section class="section" id="ats-tool">
+        <div class="container">
+            <div class="card glassmorphism">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>
+                        <span class="badge badge-blue" style="margin-bottom: 0.35rem;">INTERACTIVE AGENTIC TOOL</span>
+                        <h2 style="font-size: 1.35rem;">Live ATS Job Match Evaluator</h2>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-dim);">Paste any Job Requirement below to test match score in real-time</span>
+                </div>
+
+                <textarea id="ats-input" class="input-field" rows="3" placeholder="Paste Job Description here (e.g., Requiring Cisco CCNA, Network Engineer, OSPF, VLAN, Python, Endpoint Security)..."></textarea>
+                
+                <button id="ats-btn" class="btn btn-primary">⚡ Evaluate ATS Match Score</button>
+
+                <div id="ats-output" style="margin-top: 1rem; display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 2: INTERACTIVE PROJECT DEMOS -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-head">
+                <h2>Interactive Project Demos</h2>
+                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click button to toggle live interactive simulation</span>
+            </div>
+
+            <div class="grid-2">
+                <!-- Demo 1 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-green" style="margin-bottom: 0.4rem;">AI &amp; VISION</span>
+                    <h3 class="card-title">YOLOv8 Self-Checkout System</h3>
+                    <p class="card-desc">Dual-verification anti-theft checkout combining camera object detection with barcode scanning.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-yolo">▶️ Run Live Vision Inference Demo</button>
+
+                    <div id="demo-yolo" class="demo-box">
+                        <p style="color: var(--color-success); font-weight: 700;">[SIMULATION RUNNING]</p>
+                        <p>Webcam Feed: Active (USB Video 0)</p>
+                        <p>Model: YOLOv8 Custom (50 Epochs)</p>
+                        <p>Inference Latency: 124ms per frame</p>
+                        <p>Result: Item 'Milo 1kg' Verified (Confidence: 88.4%)</p>
+                    </div>
+                </div>
+
+                <!-- Demo 2 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-amber" style="margin-bottom: 0.4rem;">INOTEK 2025 WINNER</span>
+                    <h3 class="card-title">IoT Livestock Weight Telemetry</h3>
+                    <p class="card-desc">Award-winning weight measurement platform using load cell strain gauges and Arduino firmware.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-iot">📊 Start Live Telemetry Stream</button>
+
+                    <div id="demo-iot" class="demo-box">
+                        <p style="color: var(--color-amber); font-weight: 700;">[TELEMETRY STREAM ACTIVE]</p>
+                        <p>Sensor: Load Cell Strain Gauge + HX711 IC</p>
+                        <p>Sampling Rate: 80Hz (C/C++ Firmware)</p>
+                        <p>Live Reading: 452.8 kg (Precision: 98.6%)</p>
+                        <p>Status: Wireless Payload Sent to Cloud DB</p>
+                    </div>
+                </div>
+
+                <!-- Demo 3 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-blue" style="margin-bottom: 0.4rem;">AUTOMATION ENGINE</span>
+                    <h3 class="card-title">Multi-Portal Job Agent CRM</h3>
+                    <p class="card-desc">FSM application agent automating job harvest across MYFutureJobs, MauKerja, JobStreet &amp; LinkedIn.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-agent">🔄 Run Multi-Portal Sync Test</button>
+
+                    <div id="demo-agent" class="demo-box">
+                        <p style="color: var(--color-primary); font-weight: 700;">[MULTI-PORTAL SYNC ACTIVE]</p>
+                        <p>🇲🇾 MYFutureJobs: Synced (2 Jobs Found)</p>
+                        <p>🇲🇾 MauKerja: Synced (1 Job Found)</p>
+                        <p>🇲🇾 JobStreet: Synced (2 Jobs Found)</p>
+                        <p>🇸🇬 LinkedIn: Synced (1 Job Found)</p>
+                        <p>SQLite WAL DB &amp; JobTracker.xlsx Updated</p>
+                    </div>
+                </div>
+
+                <!-- Demo 4 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-purple" style="margin-bottom: 0.4rem;">SILVER MEDAL WINNER</span>
+                    <h3 class="card-title">Smart Campus Lecturer Tracker</h3>
+                    <p class="card-desc">Campus location tracking platform integrating wireless telemetry sensors and web APIs.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-campus">📍 Track Lecturer Location</button>
+
+                    <div id="demo-campus" class="demo-box">
+                        <p style="color: var(--color-purple); font-weight: 700;">[LOCATION QUERY ACTIVE]</p>
+                        <p>Query: Irfan Fahmi (FTKE Lecturer)</p>
+                        <p>Current Node: Lab Networking 3 (Block B)</p>
+                        <p>Status: Available for Student Consultation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 3: DIRECT JOB APPLICATION / CONTACT DISPATCHER -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="card glassmorphism">
+                <span class="badge badge-green" style="margin-bottom: 0.5rem;">EMPLOYER / RECRUITER PORTAL</span>
+                <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Send Job Opportunity / Contact Candidate</h2>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                    Fill in details below to submit a job offer or interview request directly to candidate Muhammad Irfan Fahmi.
+                </p>
+
+                <form id="contact-form">
+                    <div class="grid-2">
+                        <input type="text" id="form-company" class="input-field" placeholder="Company Name (e.g. Telekom Malaysia / Singtel)" required>
+                        <input type="text" id="form-role" class="input-field" placeholder="Role Title (e.g. Network Engineer / IT Support)" required>
+                    </div>
+                    <div class="grid-2">
+                        <input type="email" id="form-email" class="input-field" placeholder="Your Email Address" required>
+                        <input type="text" id="form-salary" class="input-field" placeholder="Estimated Salary (e.g. MYR 4,000 / SGD 3,500)">
+                    </div>
+                    <textarea id="form-msg" class="input-field" rows="3" placeholder="Message or Interview Details..."></textarea>
+
+                    <button type="submit" class="btn btn-success">🚀 Submit Job Opportunity / Contact</button>
+                </form>
+
+                <div id="form-toast" class="toast-msg">
+                    ✅ Thank you! Job opportunity successfully sent to candidate Irfan Fahmi. Saved in application records.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section" style="border-top: 1px solid var(--border-card); padding-top: 1.5rem; padding-bottom: 1.5rem;">
+        <div class="container" style="text-align: center;">
+            <p style="font-size: 0.9rem; font-weight: 700;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</p>
+            <p id="footer-contact-line" style="font-family: var(--font-mono); color: var(--color-primary); font-size: 0.85rem; margin-top: 0.25rem;">
+                <span id="footer-email">f***87@gmail.com</span> &bull; 
+                <span id="footer-phone">+60 16-XXX XXXX</span> &bull; 
+                <span id="footer-location">Puchong, Malaysia (Employer Protected)</span>
+            </p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. 3D Web Experience &amp; Agentic Portfolio Edition.</p>
+        </div>
+    </footer>
+
+    <!-- EMPLOYER ACCESS PASSCODE MODAL -->
+    <div id="employer-modal" class="modal-overlay">
+        <div class="modal-box glassmorphism">
+            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <span class="badge badge-amber" style="margin-bottom: 0.5rem;">🔐 RECRUITER & EMPLOYER GATE</span>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Unlock Candidate Contact Info</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Enter employer passcode (default: <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">RECRUITER2026</code> or <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">EMPLOYER2026</code>) to instantly unmask phone & email.
+            </p>
+
+            <form id="passcode-form" style="margin-bottom: 1rem;">
+                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">ENTER RECRUITER PASSCODE:</label>
+                <input type="password" id="passcode-input" class="input-field" placeholder="e.g. RECRUITER2026" required>
+                <button type="submit" class="btn btn-warning" style="width: 100%;">🔓 Verify & Unlock Contact Details</button>
+            </form>
+            <div id="passcode-error" style="color: #ef4444; font-size: 0.8rem; font-weight: 600; display: none; margin-bottom: 1rem;">❌ Invalid Passcode. Try 'RECRUITER2026' or submit form below.</div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-card); margin-bottom: 1rem;">
+            
+            <p style="font-size: 0.775rem; color: var(--text-dim); margin: 0;">
+                💡 <strong>Don't have a passcode?</strong> Fill out the Employer Contact Form on the page to automatically unlock candidate access.
+            </p>
         </div>
     </div>
 
-    <!-- Main Document Container -->
-    <main class="resume-wrapper">
-        <article class="resume-page" id="resume-content">
-            
-            <!-- HEADER -->
-            <header class="resume-header">
-                <h1 class="candidate-name" id="disp-name">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
-                <div class="candidate-headline">
-                    <strong>Computer Engineering Graduate</strong> &bull; <strong>CCNA & Cybersecurity Certified</strong>
-                </div>
-                <div class="candidate-subhead">
-                    IT Support | Enterprise Networking | Network Security | Industrial AI Automation
-                </div>
-                <div class="contact-line">
-                    <span id="disp-location">Puchong, Malaysia</span> &bull;
-                    <span id="disp-phone">+60 16-243 2023</span> &bull;
-                    <span id="disp-email">fahmilatif87@gmail.com</span>
-                </div>
-                <div class="contact-line links">
-                    <span id="disp-linkedin">linkedin.com/in/mifi99</span> &bull;
-                    <span id="disp-github">github.com/l3al3y</span> &bull;
-                    <span id="disp-portfolio">irfanfahmi.dev</span>
-                </div>
-            </header>
-
-            <hr class="section-divider">
-
-            <!-- PROFESSIONAL SUMMARY -->
-            <section class="resume-section">
-                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
-                <p class="summary-text">
-                    High-performing <strong>Computer Engineering Graduate</strong> (Expected Graduation Nov 2026) and <strong>CCNA Certified</strong> technical professional holding specialized Cisco Networking Academy credentials (<strong>Enterprise Networking</strong>, <strong>Routing & Switching</strong>, <strong>Cyber Threat Management</strong>, <strong>Endpoint Security</strong>) and Festo Didactic certification in <strong>Industrial Automation with AI</strong>.
-                </p>
-                <ul class="entry-bullets" style="margin-top: 0.35rem;">
-                    <li><strong>Enterprise Networking & IT Support:</strong> Proven track record in diagnosing network infrastructure issues, configuring enterprise <strong>VLANs</strong>, <strong>OSPF</strong> routing, <strong>Wireshark</strong> packet analysis, and managing <strong>Windows administration</strong>, <strong>desktop support</strong>, <strong>hardware troubleshooting</strong>, and <strong>printer support</strong>.</li>
-                    <li><strong>AI & Industrial Automation:</strong> Skilled in integrating computer vision (<strong>OpenCV</strong>, <strong>YOLOv8</strong>), <strong>IoT</strong> embedded microcontrollers (Arduino), sensor telemetry, and predictive maintenance models for smart manufacturing and process automation.</li>
-                    <li><strong>Problem Solving & Adaptability:</strong> Military reserve background (<strong>Askar Wataniah</strong>) instilling rigorous discipline, rapid adaptability, and effective communication under pressure. Eager to deliver technical excellence in <strong>IT Support Engineer</strong>, <strong>Network Engineer</strong>, <strong>Junior Network Engineer</strong>, <strong>Infrastructure Engineer</strong>, and <strong>NOC Engineer</strong> roles.</li>
-                </ul>
-            </section>
-
-            <!-- TECHNICAL SKILLS -->
-            <section class="resume-section">
-                <h2 class="section-title">TECHNICAL SKILLS</h2>
-                <ul class="skills-list">
-                    <li><strong>Enterprise Networking & Protocols:</strong> Cisco Certified Network Associate (CCNA), TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Cisco IOS, Cisco CLI, Wireshark Packet Analysis, Network Troubleshooting, Cisco Packet Tracer</li>
-                    <li><strong>Cybersecurity & Threat Defense:</strong> Cybersecurity, Endpoint Security, Cyber Threat Management, Host Hardening, Firewall Configuration, Incident Response, Security Monitoring, Threat Mitigation, Risk Assessment</li>
-                    <li><strong>IT Support & Desktop Administration:</strong> Windows Administration, Desktop Support, Technical Support, Hardware Troubleshooting, User Support, Software Installation, Driver Installation, Printer Support, Microsoft Office, Technical Documentation</li>
-                    <li><strong>Industrial Automation & AI:</strong> Industrial Automation, Artificial Intelligence (AI), Predictive Maintenance, Manufacturing Data Analytics, AI Workflow Automation, ChatGPT, Claude, Prompt Engineering, Python Automation</li>
-                    <li><strong>Computer Vision, IoT & Embedded Systems:</strong> OpenCV, YOLOv8, Computer Vision, Arduino, Sensor Integration, IoT, Embedded Systems, Circuit Design</li>
-                    <li><strong>Databases & Development Tools:</strong> MySQL, Git, GitHub, VS Code, EasyEDA (PCB Design)</li>
-                    <li><strong>Programming Languages:</strong> Python, C, C++, SQL</li>
-                </ul>
-            </section>
-
-            <!-- CERTIFICATIONS & PROFESSIONAL TRAINING -->
-            <section class="resume-section">
-                <h2 class="section-title">CERTIFICATIONS & PROFESSIONAL TRAINING</h2>
-                
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Festo Professional Certificate – Industrial Automation with AI in Manufacturing</span>
-                        <span class="entry-date">16 July 2026</span>
-                    </div>
-                    <div class="entry-subtitle">Festo Didactic</div>
-                    <ul class="entry-bullets">
-                        <li>Applied AI fundamentals and predictive maintenance algorithms to optimize industrial manufacturing processes, quality inspection, and energy efficiency.</li>
-                        <li>Connected production controllers, extracted manufacturing datasets, built predictive AI models, and integrated data analytics into production scenarios.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">CCNA: Enterprise Networking, Security, and Automation</span>
-                        <span class="entry-date">23 Feb 2026</span>
-                    </div>
-                    <div class="entry-subtitle">Cisco Networking Academy | UTeM Fakulti Teknologi Kejuruteraan</div>
-                    <ul class="entry-bullets">
-                        <li>Configured wide area network (WAN) technologies, OSPFv2 routing, Quality of Service (QoS) mechanisms, and network virtualization protocols.</li>
-                        <li>Mastered network security concepts, threat defense, and network automation principles using REST APIs and configuration management tools.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">CCNA: Switching, Routing, and Wireless Essentials</span>
-                        <span class="entry-date">23 Feb 2026</span>
-                    </div>
-                    <div class="entry-subtitle">Cisco Networking Academy | UTeM Fakulti Teknologi Kejuruteraan</div>
-                    <ul class="entry-bullets">
-                        <li>Engineered VLANs, trunking protocols, Inter-VLAN routing, Spanning Tree Protocol (STP), EtherChannel, and WLAN security configurations.</li>
-                        <li>Diagnosed enterprise switching and routing issues across IPv4 and IPv6 networks using Cisco Packet Tracer and CLI utilities.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Endpoint Security Certification</span>
-                        <span class="entry-date">12 Dec 2024</span>
-                    </div>
-                    <div class="entry-subtitle">Cisco Networking Academy</div>
-                    <ul class="entry-bullets">
-                        <li>Implemented host-based firewall policies, antimalware protections, device hardening strategies, and access control management.</li>
-                        <li>Analysed endpoint telemetry and security logs to identify vulnerabilities and defend network assets against malware and unauthorized intrusion.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Cyber Threat Management Certification</span>
-                        <span class="entry-date">17 Nov 2024</span>
-                    </div>
-                    <div class="entry-subtitle">Cisco Networking Academy</div>
-                    <ul class="entry-bullets">
-                        <li>Applied threat intelligence, vulnerability assessment methods, and incident response frameworks to mitigate cyber threats across enterprise networks.</li>
-                        <li>Mastered Security Operations Center (SOC) workflows, threat monitoring techniques, and risk management standards.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Fiber Optic Splicing & Polishing Training</span>
-                        <span class="entry-date">3 Feb 2018</span>
-                    </div>
-                    <ul class="entry-bullets">
-                        <li>Gained hands-on experience in optical fiber cable handling, fusion splicing techniques, mechanical polishing, and OTDR signal loss testing.</li>
-                        <li>Mastered fiber termination procedures and cable management standards essential for telecommunication and enterprise network backbones.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Arduino Workshop & Embedded Systems Hands-On</span>
-                        <span class="entry-date">9 Sept 2018</span>
-                    </div>
-                    <ul class="entry-bullets">
-                        <li>Built and programmed sensor-driven microcontrollers, interfacing digital/analog sensors with microcontrollers for real-time telemetry.</li>
-                        <li>Applied C/C++ embedded programming principles, pulse-width modulation (PWM), and serial communication protocols (I2C, SPI, UART).</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Kursus Asas Askar Wataniah (Territorial Army Basic Training)</span>
-                        <span class="entry-date">Completed 2019</span>
-                    </div>
-                    <ul class="entry-bullets">
-                        <li>Undertook rigorous physical and tactical military training, developing exceptional discipline, mental resilience, and high-stress problem-solving skills.</li>
-                        <li>Mastered team communication tactics, command hierarchy dynamics, and field adaptability under high-pressure environments.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- EDUCATION -->
-            <section class="resume-section">
-                <h2 class="section-title">EDUCATION</h2>
-                
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Bachelor of Computer Engineering with Honours</span>
-                        <span class="entry-date">Oct 2022 – Present</span>
-                    </div>
-                    <div class="entry-subtitle">Universiti Teknikal Malaysia Melaka (UTeM) | Expected Graduation: November 2026</div>
-                    <ul class="entry-bullets">
-                        <li>Core Focus: Computer Networks, Operating Systems, Computer Architecture, Microcontroller Systems, Software Engineering, AI & Computer Vision.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Diploma in Electronic Engineering (Computer)</span>
-                        <span class="entry-date">Dec 2018 – May 2022</span>
-                    </div>
-                    <div class="entry-subtitle">Politeknik Port Dickson</div>
-                    <ul class="entry-bullets">
-                        <li>Core Focus: Embedded Systems, Digital Electronics, Network Infrastructure, Microcontroller Interfacing, Hardware Maintenance.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)</span>
-                        <span class="entry-date">Jul 2017 – Feb 2019</span>
-                    </div>
-                    <div class="entry-subtitle">Kolej Komuniti Selandar | <strong>CGPA: 3.58 / 4.00</strong></div>
-                    <ul class="entry-bullets">
-                        <li>Awarded Best Student of the Semester (March 2018 Session).</li>
-                        <li>Core Focus: Desktop Hardware Repair, LAN/WAN Networking, Cable Termination, Windows OS Setup.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- PROJECTS -->
-            <section class="resume-section">
-                <h2 class="section-title">PROJECTS</h2>
-                
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Hybrid Self-Checkout System using Barcode Scanner & Camera (Computer Vision)</span>
-                        <span class="entry-date">Engineering Capstone</span>
-                    </div>
-                    <ul class="entry-bullets">
-                        <li><strong>Situation & Task:</strong> Addressed retail checkout fraud and item scan-evasion by engineering an automated dual-verification system combining USB barcode scanning with real-time camera inference.</li>
-                        <li><strong>Action:</strong> Integrated HD camera module and barcode reader with OpenCV and YOLOv8 object detection model in Python. Developed custom verification logic matching visual bounding boxes against scanned barcode entries in MySQL.</li>
-                        <li><strong>Result:</strong> Achieved 77.4% precision and 72.0% recall over 50 training epochs, effectively flagging mismatched items and preventing retail theft while keeping system inference latency under 150ms.</li>
-                    </ul>
-                </div>
-
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Development of Livestock Weight Tracking System Based on IoT</span>
-                        <span class="entry-date">Award Winner (INOTEK 2025)</span>
-                    </div>
-                    <ul class="entry-bullets">
-                        <li><strong>Situation & Task:</strong> Developed an automated IoT weight tracking platform to replace manual livestock weighing and eliminate data recording errors.</li>
-                        <li><strong>Action:</strong> Designed custom hardware platform incorporating load cell strain gauges, HX711 signal amplifier ICs, and wireless Arduino microcontrollers. Wrote C/C++ firmware to filter mechanical noise and stream calibrated weight records to a central database.</li>
-                        <li><strong>Result:</strong> Won 3rd Place at INOTEK 2025 innovation competition, achieving 98%+ measurement precision and providing real-time telemetry dashboards for automated herd tracking.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- AWARDS & ACHIEVEMENTS -->
-            <section class="resume-section">
-                <h2 class="section-title">AWARDS & ACHIEVEMENTS</h2>
-                <ul class="entry-bullets">
-                    <li><strong>Third Place</strong> &bull; <em>INOTEK 2025 (Innovation & Technology Competition Series 1)</em> — 15 Jan 2025<br>
-                        <span class="sub-text">Awarded for project: "Development of Livestock Weight Tracking System Based on IoT" for practical innovation and hardware design.</span>
-                    </li>
-                    <li><strong>Silver Medal</strong> &bull; <em>Pertandingan Rekacipta dan Inovasi Pelajar 2018</em> — 10–11 Oct 2018<br>
-                        <span class="sub-text">Project: "Where Is My Lecturer? (Smart Attendance & Lecturer Tracking System)" — Designed campus tracking platform.</span>
-                    </li>
-                    <li><strong>Best Student Award</strong> <em>(Pelajar Terbaik Semester)</em> &bull; <em>Kolej Komuniti Selandar</em> — March 2018 Session<br>
-                        <span class="sub-text">Recognized for highest overall academic excellence, leadership skills, and practical lab performance.</span>
-                    </li>
-                    <li><strong>Outstanding Achievement in Subject</strong> <em>(Pelajar Cemerlang)</em> &bull; <em>Kolej Komuniti Selandar</em> — Nov 2017 Session<br>
-                        <span class="sub-text">Received top honors for academic excellence in computer systems and network maintenance modules.</span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- LEADERSHIP & EXTRACURRICULAR -->
-            <section class="resume-section">
-                <h2 class="section-title">LEADERSHIP & EXTRACURRICULAR ACTIVITIES</h2>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Askar Wataniah (Territorial Army Reserve)</span>
-                        <span class="entry-date">Member & Trainee</span>
-                    </div>
-                    <ul class="entry-bullets">
-                        <li><strong>Leadership & Teamwork:</strong> Managed team dynamics during field exercises, coordinating group tasks and tactical deployments under strict deadlines.</li>
-                        <li><strong>Communication & Working Under Pressure:</strong> Maintained clear operational communication in fast-paced scenarios, ensuring seamless execution of command objectives under pressure.</li>
-                        <li><strong>Discipline & Adaptability:</strong> Cultivated strong work ethic, punctuality, and rapid adaptability when operating in diverse, challenging working conditions.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- LANGUAGES -->
-            <section class="resume-section">
-                <h2 class="section-title">LANGUAGES</h2>
-                <ul class="entry-bullets inline-list">
-                    <li><strong>English:</strong> Professional Working Proficiency (Written & Spoken)</li>
-                    <li><strong>Bahasa Malaysia:</strong> Native / Full Professional Proficiency</li>
-                </ul>
-            </section>
-
-        </article>
-    </main>
-
-    <script src="script.js"></script>
+    <!-- 3D WEB PORTFOLIO CONTROLLER SCRIPT -->
+    <script src="portfolio_script.js"></script>
 </body>
 </html>

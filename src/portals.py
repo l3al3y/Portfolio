@@ -228,3 +228,24 @@ class MultiPortalAggregator:
                 logger.error("Ralat apabila menarik data daripada [%s]: %s", name, e)
 
         return all_jobs
+
+    def sync_all_portals(self, target_portal: str = "all") -> Dict[str, Any]:
+        """Syncs all portals and returns status summary."""
+        summary = {}
+        target_portal = target_portal.lower()
+
+        for name, connector in self.connectors.items():
+            if target_portal != "all" and target_portal not in name.lower():
+                continue
+            try:
+                jobs = connector.fetch_job_postings(PortalJobQuery())
+                summary[name] = {"status": "SUCCESS", "jobs_found": len(jobs)}
+            except Exception as e:
+                summary[name] = {"status": "FAILED", "error": str(e), "jobs_found": 0}
+
+        return summary
+
+
+# Alias for backward compatibility & CLI access
+MultiPortalConnector = MultiPortalAggregator
+

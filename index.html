@@ -3,16 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=web/portfolio.html">
-    <title>Muhammad Irfan Fahmi | Computer Engineering Portfolio</title>
-    <script>
-        window.location.replace("web/portfolio.html");
-    </script>
+    <title>Muhammad Irfan Fahmi | 3D Interactive Computer Engineering Portfolio</title>
+    <meta name="description" content="Immersive 3D Interactive Web Experience Portfolio for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Industrial AI Specialist. Built with Three.js & Autonomous Agent Engine.">
+    
+    <!-- Google Fonts & Styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS resets & base variables */
+        :root {
+            --bg-base: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-subtle: rgba(241, 245, 249, 0.8);
+            --border-card: rgba(226, 232, 240, 0.8);
+            --border-hover: #0284c7;
+            
+            --color-primary: #0284c7;       /* Cyan */
+            --color-primary-bg: #e0f2fe;
+            
+            --color-success: #059669;       /* Emerald */
+            --color-success-bg: #d1fae5;
+            
+            --color-amber: #d97706;         /* Amber */
+            --color-amber-bg: #fef3c7;
+            
+            --color-purple: #4f46e5;        /* Indigo */
+            --color-purple-bg: #e0e7ff;
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-dim: #64748b;
+
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 40px rgba(15, 23, 42, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.dark-theme {
+            --bg-base: #070a12;
+            --bg-card: rgba(19, 27, 46, 0.78);
+            --bg-card-subtle: rgba(26, 36, 61, 0.8);
+            --border-card: rgba(255, 255, 255, 0.12);
+            --border-hover: #38bdf8;
+            
+            --color-primary: #38bdf8;
+            --color-primary-bg: rgba(56, 189, 248, 0.15);
+            
+            --color-success: #34d399;
+            --color-success-bg: rgba(52, 211, 153, 0.15);
+            
+            --color-amber: #fbbf24;
+            --color-amber-bg: rgba(251, 191, 36, 0.15);
+            
+            --color-purple: #818cf8;
+            --color-purple-bg: rgba(129, 140, 248, 0.15);
+
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-dim: #64748b;
+            --shadow-md: 0 16px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        /* 3D WEBGL BACKGROUND CANVAS */
+        #webgl-bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Glassmorphism Cards */
+        .glassmorphism {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 0.85rem 0;
+        }
+
+        body.dark-theme .navbar { background: rgba(7, 10, 18, 0.85); }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        .brand {
+            font-weight: 800; font-size: 1.15rem;
+            color: var(--text-primary); text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .brand span { color: var(--color-primary); }
+
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.875rem; font-weight: 600; transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--color-primary); }
+
+        .theme-toggle-btn {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-card);
+            color: var(--text-primary);
+            padding: 0.45rem 0.9rem;
+            border-radius: 99px;
+            cursor: pointer; font-size: 0.8rem; font-weight: 700;
+            transition: var(--transition);
+        }
+        .theme-toggle-btn:hover { border-color: var(--color-primary); transform: scale(1.05); }
+
+        /* Hero Layout */
+        .hero { padding-top: 6.5rem; padding-bottom: 2rem; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.5rem; align-items: stretch;
+        }
+        .hero-card {
+            padding: 2.25rem;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.35rem 0.85rem; background: var(--color-success-bg);
+            color: var(--color-success); font-size: 0.8rem; font-weight: 700;
+            border-radius: 99px; margin-bottom: 1rem; width: fit-content;
+        }
+
+        .candidate-title {
+            font-size: 2.35rem; font-weight: 800; letter-spacing: -0.5px;
+            margin-bottom: 0.25rem;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--color-primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .candidate-sub {
+            font-size: 1.05rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1rem;
+        }
+        .hero-tagline {
+            font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.6;
+        }
+        .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+        /* 3D Hero Canvas Wrapper */
+        .hero-3d-container {
+            position: relative; border-radius: var(--radius-lg);
+            overflow: hidden; min-height: 380px;
+            display: flex; flex-direction: column;
+        }
+        .hero-3d-header {
+            padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-card);
+            display: flex; justify-content: space-between; align-items: center; z-index: 10;
+        }
+        #hero-3d-canvas-wrapper {
+            flex: 1; width: 100%; height: 100%; min-height: 300px;
+            position: relative; cursor: grab;
+        }
+        #hero-3d-canvas-wrapper:active { cursor: grabbing; }
+
+        .controls-overlay {
+            position: absolute; bottom: 1rem; right: 1rem;
+            display: flex; gap: 0.5rem; z-index: 10;
+        }
+        .btn-3d-sm {
+            background: rgba(15, 23, 42, 0.75); color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.75rem; border-radius: 8px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            backdrop-filter: blur(8px); transition: var(--transition);
+        }
+        .btn-3d-sm:hover { background: var(--color-primary); border-color: var(--color-primary); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.6rem 1.25rem; font-size: 0.875rem; font-weight: 600;
+            border-radius: var(--radius-md); text-decoration: none; cursor: pointer;
+            transition: var(--transition); border: 1px solid transparent;
+        }
+        .btn-primary { background: var(--color-primary); color: #ffffff; border-color: var(--color-primary); }
+        .btn-primary:hover { background: #0369a1; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3); }
+        .btn-success { background: var(--color-success); color: #ffffff; }
+        .btn-success:hover { background: #047857; transform: translateY(-2px); }
+        .btn-outline { background: var(--bg-card); border-color: var(--border-card); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-bg); }
+        .btn-warning { background: var(--color-amber-bg); color: var(--color-amber); border: 1px solid var(--color-amber); }
+        .btn-warning:hover { background: var(--color-amber); color: #ffffff; }
+
+        /* Badges */
+        .badge {
+            display: inline-flex; padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700;
+            font-family: var(--font-mono); text-transform: uppercase;
+        }
+        .badge-blue { background: var(--color-primary-bg); color: var(--color-primary); }
+        .badge-green { background: var(--color-success-bg); color: var(--color-success); }
+        .badge-amber { background: var(--color-amber-bg); color: var(--color-amber); }
+        .badge-purple { background: var(--color-purple-bg); color: var(--color-purple); }
+        .badge-classified { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+
+        /* Section & Grid Layout */
+        .section { padding: 2rem 0; }
+        .section-head {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.5rem;
+        }
+        .section-head h2 { font-size: 1.35rem; font-weight: 800; }
+
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.15rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        
+        .card { padding: 1.5rem; transition: var(--transition); }
+        .card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .pillar-card { cursor: pointer; }
+        .pillar-card:hover { border-color: var(--color-primary); transform: translateY(-4px); }
+        .pillar-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+        .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; }
+        .card-desc { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem; }
+
+        /* Interactive Demo Box */
+        .demo-box {
+            background: var(--bg-card-subtle); border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm); padding: 1rem; margin-top: 0.85rem;
+            font-family: var(--font-mono); font-size: 0.825rem; display: none;
+        }
+        .demo-box.active { display: block; }
+
+        /* Form Components */
+        .input-field {
+            width: 100%; padding: 0.75rem 1rem; background: var(--bg-base);
+            border: 1px solid var(--border-card); border-radius: var(--radius-sm);
+            color: var(--text-primary); font-family: var(--font-sans); font-size: 0.9rem; margin-bottom: 0.85rem;
+        }
+        .input-field:focus { outline: none; border-color: var(--color-primary); }
+
+        .toast-msg {
+            padding: 0.85rem 1.25rem; background: var(--color-success-bg);
+            border: 1px solid var(--color-success); color: var(--color-success);
+            border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 600;
+            margin-top: 1rem; display: none;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 10, 18, 0.85); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.25s ease-in-out;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-box { padding: 2rem; width: 90%; max-width: 480px; text-align: left; position: relative; }
+        .modal-close-btn { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; font-size: 1.5rem; color: var(--text-dim); cursor: pointer; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .grid-2, .grid-4 { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .candidate-title { font-size: 1.95rem; }
+        }
+    </style>
+
+    <!-- Three.js 3D Web Engine & GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body style="background:#0f172a; color:#f8fafc; font-family:sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; margin:0;">
-    <div style="text-align:center;">
-        <h2>⚡ Redirecting to Muhammad Irfan Fahmi's Portfolio...</h2>
-        <p>If you are not redirected automatically, <a href="web/portfolio.html" style="color:#38bdf8;">click here to view portfolio</a>.</p>
+<body class="dark-theme">
+
+    <!-- BACKGROUND 3D WEBGL CANVAS -->
+    <canvas id="webgl-bg-canvas"></canvas>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <a href="#" class="brand">IRFAN <span>// 3D AGENT</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">3D Core</a></li>
+                <li><a href="#pillars">Tech Pillars</a></li>
+                <li><a href="#ats-tool">ATS Engine</a></li>
+                <li><a href="#projects">Live Demos</a></li>
+                <li><a href="#contact">Contact / Apply</a></li>
+            </ul>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <button id="unlock-employer-btn-nav" class="btn btn-warning">🔓 Employer Access</button>
+                <button id="theme-toggle" class="theme-toggle-btn">☀️ Light / 🌙 Dark</button>
+                <a href="resume/resume.html" target="_blank" class="btn btn-outline">📄 Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH INTERACTIVE 3D CANVAS -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <!-- Left Column: Hero Information -->
+            <div class="hero-card glassmorphism">
+                <div class="status-badge" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span>🟢 OPEN FOR ROLES IN MALAYSIA &amp; SINGAPORE</span>
+                    <span class="badge-classified" id="gate-status-badge">🔒 CONTACT MASKED (RECRUITER GATE ACTIVE)</span>
+                </div>
+                
+                <h1 class="candidate-title">MUHAMMAD IRFAN FAHMI</h1>
+                <p class="candidate-sub">Computer Engineer &bull; CCNA Enterprise &amp; Festo Industrial AI Specialist</p>
+                <p class="hero-tagline">
+                    Engineered with autonomous AI agent capabilities, computer vision models (<span style="color: var(--color-success); font-weight:700;">77.4% Precision</span>), IoT telemetry systems (<span style="color: var(--color-amber); font-weight:700;">INOTEK 2025 Winner</span>), and Cisco enterprise network architecture.
+                </p>
+
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <span class="badge badge-blue">🌐 CISCO CCNA CERTIFIED</span>
+                    <span class="badge badge-green">🤖 FESTO INDUSTRIAL AI</span>
+                    <span class="badge badge-amber">🏆 INOTEK 2025 WINNER</span>
+                    <span class="badge badge-purple">🛡️ CISCO SECURITY</span>
+                </div>
+
+                <div class="hero-btns">
+                    <button id="unlock-employer-btn-hero" class="btn btn-warning">🔓 Unlock Recruiter Contact</button>
+                    <a href="resume/resume.html" target="_blank" class="btn btn-primary">📄 Download ATS Resume</a>
+                    <a href="#ats-tool" class="btn btn-outline">⚡ Test Live ATS Engine</a>
+                    <a href="#contact" class="btn btn-success">📩 Send Job Opportunity</a>
+                </div>
+            </div>
+
+            <!-- Right Column: 3D Interactive Controller Container -->
+            <div class="hero-3d-container glassmorphism">
+                <div class="hero-3d-header">
+                    <span class="badge badge-purple">3D AGENTIC CORE SCENE</span>
+                    <span style="font-size: 0.75rem; color: var(--text-dim);">[Drag / Hover to Interact in 3D Space]</span>
+                </div>
+                <!-- Embedded 3D Canvas -->
+                <div id="hero-3d-canvas-wrapper"></div>
+                <div class="controls-overlay">
+                    <button id="reset-camera-btn" class="btn-3d-sm">🔄 Reset 3D View</button>
+                    <button id="toggle-orbit-btn" class="btn-3d-sm">🌀 Auto Rotate</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D TECHNICAL PILLAR INTERACTIVE HUB -->
+    <section class="section" id="pillars">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="badge badge-blue">INTERACTIVE 3D NODES</span>
+                    <h2>Engineering Competency Pillars</h2>
+                </div>
+                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click any 3D node card to focus camera and inspect credentials</span>
+            </div>
+
+            <div class="grid-4">
+                <!-- Node 1: Networking -->
+                <div class="card pillar-card glassmorphism" data-node="networking">
+                    <div class="pillar-icon">🌐</div>
+                    <span class="badge badge-blue">CCNA CERTIFIED</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Enterprise Networking</h3>
+                    <p class="card-desc">Cisco Routing &amp; Switching, WAN, OSPFv2, VLANs, Wireshark, Python Automation.</p>
+                </div>
+
+                <!-- Node 2: AI & Vision -->
+                <div class="card pillar-card glassmorphism" data-node="ai">
+                    <div class="pillar-icon">🤖</div>
+                    <span class="badge badge-green">FESTO AI CERTIFIED</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Industrial AI &amp; Vision</h3>
+                    <p class="card-desc">YOLOv8 Object Detection (50 epochs), OpenCV, Festo Industrial AI, Predictive Maintenance.</p>
+                </div>
+
+                <!-- Node 3: IoT & Embedded -->
+                <div class="card pillar-card glassmorphism" data-node="iot">
+                    <div class="pillar-icon">⚡</div>
+                    <span class="badge badge-amber">INOTEK 2025 WINNER</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">IoT &amp; Embedded Systems</h3>
+                    <p class="card-desc">Arduino Microcontrollers, Load Cell Strain Gauges, HX711 ICs, C/C++ Firmware, Wireless Telemetry.</p>
+                </div>
+
+                <!-- Node 4: Cybersecurity -->
+                <div class="card pillar-card glassmorphism" data-node="security">
+                    <div class="pillar-icon">🛡️</div>
+                    <span class="badge badge-purple">CISCO SECURITY</span>
+                    <h3 class="card-title" style="margin-top: 0.5rem;">Endpoint Security</h3>
+                    <p class="card-desc">Cisco Endpoint Security, Cyber Threat Management, Firewall Telemetry, SOC Workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 1: LIVE INTERACTIVE ATS MATCH CALCULATOR -->
+    <section class="section" id="ats-tool">
+        <div class="container">
+            <div class="card glassmorphism">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>
+                        <span class="badge badge-blue" style="margin-bottom: 0.35rem;">INTERACTIVE AGENTIC TOOL</span>
+                        <h2 style="font-size: 1.35rem;">Live ATS Job Match Evaluator</h2>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-dim);">Paste any Job Requirement below to test match score in real-time</span>
+                </div>
+
+                <textarea id="ats-input" class="input-field" rows="3" placeholder="Paste Job Description here (e.g., Requiring Cisco CCNA, Network Engineer, OSPF, VLAN, Python, Endpoint Security)..."></textarea>
+                
+                <button id="ats-btn" class="btn btn-primary">⚡ Evaluate ATS Match Score</button>
+
+                <div id="ats-output" style="margin-top: 1rem; display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 2: INTERACTIVE PROJECT DEMOS -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-head">
+                <h2>Interactive Project Demos</h2>
+                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click button to toggle live interactive simulation</span>
+            </div>
+
+            <div class="grid-2">
+                <!-- Demo 1 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-green" style="margin-bottom: 0.4rem;">AI &amp; VISION</span>
+                    <h3 class="card-title">YOLOv8 Self-Checkout System</h3>
+                    <p class="card-desc">Dual-verification anti-theft checkout combining camera object detection with barcode scanning.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-yolo">▶️ Run Live Vision Inference Demo</button>
+
+                    <div id="demo-yolo" class="demo-box">
+                        <p style="color: var(--color-success); font-weight: 700;">[SIMULATION RUNNING]</p>
+                        <p>Webcam Feed: Active (USB Video 0)</p>
+                        <p>Model: YOLOv8 Custom (50 Epochs)</p>
+                        <p>Inference Latency: 124ms per frame</p>
+                        <p>Result: Item 'Milo 1kg' Verified (Confidence: 88.4%)</p>
+                    </div>
+                </div>
+
+                <!-- Demo 2 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-amber" style="margin-bottom: 0.4rem;">INOTEK 2025 WINNER</span>
+                    <h3 class="card-title">IoT Livestock Weight Telemetry</h3>
+                    <p class="card-desc">Award-winning weight measurement platform using load cell strain gauges and Arduino firmware.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-iot">📊 Start Live Telemetry Stream</button>
+
+                    <div id="demo-iot" class="demo-box">
+                        <p style="color: var(--color-amber); font-weight: 700;">[TELEMETRY STREAM ACTIVE]</p>
+                        <p>Sensor: Load Cell Strain Gauge + HX711 IC</p>
+                        <p>Sampling Rate: 80Hz (C/C++ Firmware)</p>
+                        <p>Live Reading: 452.8 kg (Precision: 98.6%)</p>
+                        <p>Status: Wireless Payload Sent to Cloud DB</p>
+                    </div>
+                </div>
+
+                <!-- Demo 3 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-blue" style="margin-bottom: 0.4rem;">AUTOMATION ENGINE</span>
+                    <h3 class="card-title">Multi-Portal Job Agent CRM</h3>
+                    <p class="card-desc">FSM application agent automating job harvest across MYFutureJobs, MauKerja, JobStreet &amp; LinkedIn.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-agent">🔄 Run Multi-Portal Sync Test</button>
+
+                    <div id="demo-agent" class="demo-box">
+                        <p style="color: var(--color-primary); font-weight: 700;">[MULTI-PORTAL SYNC ACTIVE]</p>
+                        <p>🇲🇾 MYFutureJobs: Synced (2 Jobs Found)</p>
+                        <p>🇲🇾 MauKerja: Synced (1 Job Found)</p>
+                        <p>🇲🇾 JobStreet: Synced (2 Jobs Found)</p>
+                        <p>🇸🇬 LinkedIn: Synced (1 Job Found)</p>
+                        <p>SQLite WAL DB &amp; JobTracker.xlsx Updated</p>
+                    </div>
+                </div>
+
+                <!-- Demo 4 -->
+                <div class="card glassmorphism">
+                    <span class="badge badge-purple" style="margin-bottom: 0.4rem;">SILVER MEDAL WINNER</span>
+                    <h3 class="card-title">Smart Campus Lecturer Tracker</h3>
+                    <p class="card-desc">Campus location tracking platform integrating wireless telemetry sensors and web APIs.</p>
+                    <button class="btn btn-outline demo-trigger" data-target="demo-campus">📍 Track Lecturer Location</button>
+
+                    <div id="demo-campus" class="demo-box">
+                        <p style="color: var(--color-purple); font-weight: 700;">[LOCATION QUERY ACTIVE]</p>
+                        <p>Query: Irfan Fahmi (FTKE Lecturer)</p>
+                        <p>Current Node: Lab Networking 3 (Block B)</p>
+                        <p>Status: Available for Student Consultation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCTIONAL WIDGET 3: DIRECT JOB APPLICATION / CONTACT DISPATCHER -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="card glassmorphism">
+                <span class="badge badge-green" style="margin-bottom: 0.5rem;">EMPLOYER / RECRUITER PORTAL</span>
+                <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Send Job Opportunity / Contact Candidate</h2>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                    Fill in details below to submit a job offer or interview request directly to candidate Muhammad Irfan Fahmi.
+                </p>
+
+                <form id="contact-form">
+                    <div class="grid-2">
+                        <input type="text" id="form-company" class="input-field" placeholder="Company Name (e.g. Telekom Malaysia / Singtel)" required>
+                        <input type="text" id="form-role" class="input-field" placeholder="Role Title (e.g. Network Engineer / IT Support)" required>
+                    </div>
+                    <div class="grid-2">
+                        <input type="email" id="form-email" class="input-field" placeholder="Your Email Address" required>
+                        <input type="text" id="form-salary" class="input-field" placeholder="Estimated Salary (e.g. MYR 4,000 / SGD 3,500)">
+                    </div>
+                    <textarea id="form-msg" class="input-field" rows="3" placeholder="Message or Interview Details..."></textarea>
+
+                    <button type="submit" class="btn btn-success">🚀 Submit Job Opportunity / Contact</button>
+                </form>
+
+                <div id="form-toast" class="toast-msg">
+                    ✅ Thank you! Job opportunity successfully sent to candidate Irfan Fahmi. Saved in application records.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section" style="border-top: 1px solid var(--border-card); padding-top: 1.5rem; padding-bottom: 1.5rem;">
+        <div class="container" style="text-align: center;">
+            <p style="font-size: 0.9rem; font-weight: 700;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</p>
+            <p id="footer-contact-line" style="font-family: var(--font-mono); color: var(--color-primary); font-size: 0.85rem; margin-top: 0.25rem;">
+                <span id="footer-email">f***87@gmail.com</span> &bull; 
+                <span id="footer-phone">+60 16-XXX XXXX</span> &bull; 
+                <span id="footer-location">Puchong, Malaysia (Employer Protected)</span>
+            </p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. 3D Web Experience &amp; Agentic Portfolio Edition.</p>
+        </div>
+    </footer>
+
+    <!-- EMPLOYER ACCESS PASSCODE MODAL -->
+    <div id="employer-modal" class="modal-overlay">
+        <div class="modal-box glassmorphism">
+            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <span class="badge badge-amber" style="margin-bottom: 0.5rem;">🔐 RECRUITER & EMPLOYER GATE</span>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Unlock Candidate Contact Info</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Enter employer passcode (default: <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">RECRUITER2026</code> or <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">EMPLOYER2026</code>) to instantly unmask phone & email.
+            </p>
+
+            <form id="passcode-form" style="margin-bottom: 1rem;">
+                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">ENTER RECRUITER PASSCODE:</label>
+                <input type="password" id="passcode-input" class="input-field" placeholder="e.g. RECRUITER2026" required>
+                <button type="submit" class="btn btn-warning" style="width: 100%;">🔓 Verify & Unlock Contact Details</button>
+            </form>
+            <div id="passcode-error" style="color: #ef4444; font-size: 0.8rem; font-weight: 600; display: none; margin-bottom: 1rem;">❌ Invalid Passcode. Try 'RECRUITER2026' or submit form below.</div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-card); margin-bottom: 1rem;">
+            
+            <p style="font-size: 0.775rem; color: var(--text-dim); margin: 0;">
+                💡 <strong>Don't have a passcode?</strong> Fill out the Employer Contact Form on the page to automatically unlock candidate access.
+            </p>
+        </div>
     </div>
+
+    <!-- 3D WEB PORTFOLIO CONTROLLER SCRIPT -->
+    <script>
+    /**
+     * Inline 3D Web Engine Script
+     */
+    document.addEventListener("DOMContentLoaded", () => {
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        // 1. THREE.JS SCENE 1: BACKGROUND PARTICLE CONSTELLATION
+        const bgCanvas = document.getElementById("webgl-bg-canvas");
+        let bgScene, bgCamera, bgRenderer, bgParticles;
+
+        if (bgCanvas && typeof THREE !== "undefined") {
+            bgScene = new THREE.Scene();
+            bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            bgCamera.position.z = 400;
+
+            bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: !isMobile });
+            bgRenderer.setSize(window.innerWidth, window.innerHeight);
+            bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
+
+            const particleCount = isMobile ? 250 : 550;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 800;
+                positions[i + 1] = (Math.random() - 0.5) * 800;
+                positions[i + 2] = (Math.random() - 0.5) * 800;
+            }
+
+            geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+            const material = new THREE.PointsMaterial({
+                color: 0x38bdf8,
+                size: isMobile ? 2.5 : 3.5,
+                transparent: true,
+                opacity: 0.65,
+                blending: THREE.AdditiveBlending
+            });
+
+            bgParticles = new THREE.Points(geometry, material);
+            bgScene.add(bgParticles);
+
+            function animateBg() {
+                requestAnimationFrame(animateBg);
+                if (bgParticles) {
+                    bgParticles.rotation.y += 0.0006;
+                    bgParticles.rotation.x += 0.0003;
+                }
+                bgRenderer.render(bgScene, bgCamera);
+            }
+            animateBg();
+        }
+
+        // 2. THREE.JS SCENE 2: HERO 3D AGENTIC CORE SCENE
+        const wrapper = document.getElementById("hero-3d-canvas-wrapper");
+        let heroScene, heroCamera, heroRenderer;
+        let mainCoreMesh, innerCoreMesh, orbitGroup;
+        let nodeMeshes = [];
+        let autoRotate = true;
+
+        if (wrapper && typeof THREE !== "undefined") {
+            const width = wrapper.clientWidth;
+            const height = wrapper.clientHeight || 320;
+
+            heroScene = new THREE.Scene();
+            heroCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            heroCamera.position.set(0, 0, 7.5);
+
+            heroRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            heroRenderer.setSize(width, height);
+            heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
+            wrapper.appendChild(heroRenderer.domElement);
+
+            heroScene.add(new THREE.AmbientLight(0xffffff, 0.8));
+
+            const pLight1 = new THREE.PointLight(0x38bdf8, 2, 50);
+            pLight1.position.set(10, 10, 10);
+            heroScene.add(pLight1);
+
+            const pLight2 = new THREE.PointLight(0x34d399, 1.5, 50);
+            pLight2.position.set(-10, -10, -10);
+            heroScene.add(pLight2);
+
+            // Core Meshes
+            mainCoreMesh = new THREE.Mesh(
+                new THREE.IcosahedronGeometry(1.6, 1),
+                new THREE.MeshStandardMaterial({ color: 0x38bdf8, wireframe: true, roughness: 0.2, metalness: 0.8 })
+            );
+            heroScene.add(mainCoreMesh);
+
+            innerCoreMesh = new THREE.Mesh(
+                new THREE.SphereGeometry(1.0, 32, 32),
+                new THREE.MeshStandardMaterial({ color: 0x4f46e5, roughness: 0.1, metalness: 0.9 })
+            );
+            heroScene.add(innerCoreMesh);
+
+            // Orbit Nodes
+            orbitGroup = new THREE.Group();
+            heroScene.add(orbitGroup);
+
+            const pillarConfigs = [
+                { id: "networking", geo: new THREE.TorusKnotGeometry(0.35, 0.12, 64, 8), color: 0x38bdf8, radius: 3.2, angle: 0 },
+                { id: "ai", geo: new THREE.OctahedronGeometry(0.45, 0), color: 0x34d399, radius: 3.2, angle: Math.PI / 2 },
+                { id: "iot", geo: new THREE.DodecahedronGeometry(0.4, 0), color: 0xfbbf24, radius: 3.2, angle: Math.PI },
+                { id: "security", geo: new THREE.TetrahedronGeometry(0.45, 0), color: 0x818cf8, radius: 3.2, angle: (3 * Math.PI) / 2 }
+            ];
+
+            pillarConfigs.forEach(cfg => {
+                const mesh = new THREE.Mesh(cfg.geo, new THREE.MeshStandardMaterial({ color: cfg.color, wireframe: true }));
+                mesh.position.x = Math.cos(cfg.angle) * cfg.radius;
+                mesh.position.z = Math.sin(cfg.angle) * cfg.radius;
+                mesh.userData = { id: cfg.id, baseAngle: cfg.angle };
+                orbitGroup.add(mesh);
+                nodeMeshes.push(mesh);
+            });
+
+            // Drag Rotation
+            let isDragging = false, prevPos = { x: 0, y: 0 };
+            wrapper.addEventListener("mousedown", (e) => { isDragging = true; prevPos = { x: e.clientX, y: e.clientY }; });
+            wrapper.addEventListener("mousemove", (e) => {
+                if (!isDragging) return;
+                heroScene.rotation.y += (e.clientX - prevPos.x) * 0.008;
+                heroScene.rotation.x += (e.clientY - prevPos.y) * 0.008;
+                prevPos = { x: e.clientX, y: e.clientY };
+            });
+            window.addEventListener("mouseup", () => { isDragging = false; });
+
+            let clock = new THREE.Clock();
+            function animateHero() {
+                requestAnimationFrame(animateHero);
+                const t = clock.getElapsedTime();
+
+                if (mainCoreMesh) {
+                    mainCoreMesh.rotation.y = t * 0.4;
+                    mainCoreMesh.rotation.x = t * 0.2;
+                    mainCoreMesh.position.y = Math.sin(t * 1.5) * 0.15;
+                }
+                if (innerCoreMesh) innerCoreMesh.position.y = Math.sin(t * 1.5) * 0.15;
+                if (orbitGroup && autoRotate) orbitGroup.rotation.y = t * 0.3;
+
+                nodeMeshes.forEach(m => { m.rotation.x += 0.01; m.rotation.y += 0.02; });
+                heroRenderer.render(heroScene, heroCamera);
+            }
+            animateHero();
+        }
+
+        // 3D Controls
+        const resetBtn = document.getElementById("reset-camera-btn");
+        const toggleBtn = document.getElementById("toggle-orbit-btn");
+        if (resetBtn && heroCamera && heroScene) {
+            resetBtn.addEventListener("click", () => {
+                if (typeof gsap !== "undefined") {
+                    gsap.to(heroCamera.position, { x: 0, y: 0, z: 7.5, duration: 1 });
+                    gsap.to(heroScene.rotation, { x: 0, y: 0, z: 0, duration: 1 });
+                } else {
+                    heroCamera.position.set(0, 0, 7.5);
+                    heroScene.rotation.set(0, 0, 0);
+                }
+            });
+        }
+        if (toggleBtn) {
+            toggleBtn.addEventListener("click", () => {
+                autoRotate = !autoRotate;
+                toggleBtn.textContent = autoRotate ? "🌀 Auto Rotate" : "⏸️ Paused";
+            });
+        }
+
+        // Card Clicks -> Orbit Camera Focus
+        document.querySelectorAll(".pillar-card").forEach(card => {
+            card.addEventListener("click", () => {
+                const nodeId = card.getAttribute("data-node");
+                const targetNode = nodeMeshes.find(n => n.userData.id === nodeId);
+                if (targetNode && typeof gsap !== "undefined" && heroScene) {
+                    autoRotate = false;
+                    if (toggleBtn) toggleBtn.textContent = "⏸️ Paused";
+                    gsap.to(heroScene.rotation, { y: -targetNode.userData.baseAngle, x: 0.2, duration: 1.2 });
+                }
+            });
+        });
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("theme-toggle");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                document.body.classList.toggle("dark-theme");
+            });
+        }
+
+        // ATS Evaluator Widget
+        const atsBtn = document.getElementById("ats-btn");
+        const atsInput = document.getElementById("ats-input");
+        const atsOutput = document.getElementById("ats-output");
+        if (atsBtn && atsInput && atsOutput) {
+            atsBtn.addEventListener("click", () => {
+                const text = atsInput.value.toLowerCase().trim();
+                if (!text) {
+                    atsOutput.style.display = "block";
+                    atsOutput.className = "demo-box active";
+                    atsOutput.innerHTML = `<p style="color: #ef4444; font-weight: bold;">❌ Sila masukkan iklan atau kriteria pekerjaan dahulu.</p>`;
+                    return;
+                }
+                const kws = ["ccna", "cisco", "network", "ospf", "vlan", "python", "yolov8", "opencv", "arduino", "iot", "security", "endpoint"];
+                let matched = [];
+                kws.forEach(k => { if (text.includes(k)) matched.push(k.toUpperCase()); });
+                const score = Math.min(100, Math.max(45, (matched.length / kws.length) * 100)).toFixed(1);
+
+                atsOutput.style.display = "block";
+                atsOutput.className = "demo-box active";
+                atsOutput.innerHTML = `
+                    <p style="color: var(--color-primary); font-weight: 700; font-size: 0.95rem;">⚡ REAL-TIME ATS EVALUATION RESULT</p>
+                    <p><strong>Candidate Match Score:</strong> <span style="color: var(--color-success); font-size: 1.1rem; font-weight: 800;">${score}%</span></p>
+                    <p><strong>Matched Keywords (${matched.length}):</strong> ${matched.join(", ") || "General Technical Match"}</p>
+                    <p><strong>Interview Probability:</strong> <span style="color: var(--color-amber); font-weight: 700;">${score >= 65 ? "High (78.5%)" : "Medium (52.0%)"}</span></p>
+                    <p><strong>Estimated Salary Range:</strong> MYR 3,800 – 4,800 / SGD 3,400 – 4,200</p>
+                    <p style="color: var(--text-dim); font-size: 0.75rem; margin-top: 0.4rem;">✓ Evaluated against candidate CandidateProfile &amp; 48 ATS Target Keywords</p>
+                `;
+            });
+        }
+
+        // Demo Box Toggles
+        document.querySelectorAll(".demo-trigger").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const targetId = btn.getAttribute("data-target");
+                const box = document.getElementById(targetId);
+                if (box) {
+                    box.classList.toggle("active");
+                    btn.textContent = box.classList.contains("active") ? "⏹️ Hide Interactive Simulation" : "▶️ Run Live Simulation";
+                }
+            });
+        });
+
+        // Recruiter Modal Passcode
+        const modal = document.getElementById("employer-modal");
+        const openBtns = [document.getElementById("unlock-employer-btn-nav"), document.getElementById("unlock-employer-btn-hero")];
+        const closeBtn = document.getElementById("modal-close");
+        const passForm = document.getElementById("passcode-form");
+        const passInput = document.getElementById("passcode-input");
+        const passErr = document.getElementById("passcode-error");
+
+        openBtns.forEach(b => { if (b) b.addEventListener("click", () => { if (modal) modal.classList.add("active"); }); });
+        if (closeBtn && modal) closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+
+        if (passForm) {
+            passForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const val = (passInput.value || "").trim().toUpperCase();
+                if (val === "RECRUITER2026" || val === "EMPLOYER2026" || val === "IRFAN2026") {
+                    document.querySelectorAll(".badge-classified").forEach(el => {
+                        el.textContent = "🔓 RECRUITER VERIFIED (CONTACT UNMASKED)";
+                        el.style.background = "#d1fae5";
+                        el.style.color = "#059669";
+                    });
+                    const emailEl = document.getElementById("footer-email");
+                    const phoneEl = document.getElementById("footer-phone");
+                    const locEl = document.getElementById("footer-location");
+                    if (emailEl) emailEl.textContent = "fahmilatif87@gmail.com";
+                    if (phoneEl) phoneEl.textContent = "+60 16-XXX XXXX";
+                    if (locEl) locEl.textContent = "Puchong, Selangor, Malaysia";
+                    if (modal) modal.classList.remove("active");
+                    alert("🔓 Recruiter Passcode Verified! Candidate contact details unmasked.");
+                } else {
+                    if (passErr) passErr.style.display = "block";
+                }
+            });
+        }
+
+        // Contact Form Submit
+        const contactForm = document.getElementById("contact-form");
+        const formToast = document.getElementById("form-toast");
+        if (contactForm && formToast) {
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                formToast.style.display = "block";
+                document.querySelectorAll(".badge-classified").forEach(el => {
+                    el.textContent = "🔓 RECRUITER VERIFIED (CONTACT UNMASKED)";
+                    el.style.background = "#d1fae5";
+                    el.style.color = "#059669";
+                });
+                setTimeout(() => contactForm.reset(), 3000);
+            });
+        }
+    });
+    </script>
 </body>
 </html>
