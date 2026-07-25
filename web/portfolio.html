@@ -1546,7 +1546,37 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
-            // Dedicated fallback for Salary & Compensation (not present in RESUME_DATA schema)
+            // 1. GREETING CHECK FIRST (Word boundary or unicode match)
+            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat)\b/i.test(q) || q.includes('你好') || q.includes('வணக்கம்');
+            if (isGreeting && q.length <= 25) {
+                if (lang === 'bm') {
+                    return `Salam / Hai! 👋 Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
+                } else if (lang === 'cn') {
+                    return `您好！👋 今天有什么我可以帮您的？欢迎咨询关于 Irfan 的计算机工程背景、CCNA 认证或毕业项目！`;
+                } else if (lang === 'in') {
+                    return `வணக்கம்! 👋 நான் உங்களுக்கு எவ்வாறு உதவ முடியும்? இர்பானின் கல்வி மற்றும் சான்றிதழ்கள் பற்றி எது வேண்டுமானாலும் கேட்கலாம்!`;
+                } else {
+                    return `Hello! 👋 How can I help you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!`;
+                }
+            }
+
+            // 2. IDENTITY CHECK
+            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்')) {
+                if (lang === 'bm') {
+                    return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan beliau menyesuaikan diri dengan cepat.`;
+                }
+                return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
+            }
+
+            // 3. AGE CHECK
+            if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁')) {
+                if (lang === 'bm') {
+                    return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
+                }
+                return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
+            }
+
+            // 4. DEDICATED FALLBACKS FOR NON-RESUME TOPICS (Salary & Shift)
             if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout')) {
                 if (lang === 'bm') {
                     return `Mengenai julat gaji dan pakej imbuhan, Irfan bersikap sangat terbuka untuk berbincang secara terus semasa sesi temuduga atau melalui borang hubungan rasmi.`;
@@ -1559,7 +1589,6 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            // Dedicated fallback for Shift & Work Flexibility (not present in RESUME_DATA schema)
             if (q.includes('shift') || q.includes('syif') || q.includes('overtime') || q.includes('waktu kerja') || q.includes('working hours') || q.includes('relocate') || q.includes('outstation')) {
                 if (lang === 'bm') {
                     return `Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.`;
@@ -1572,6 +1601,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
+            // 5. GENERAL RESUME_DATA KEYWORD OVERLAP SCORING (Content words only)
             const scores = {
                 diploma_cgpa: 0,
                 cert_sijil_cgpa: 0,
@@ -1583,9 +1613,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 skills_networking: 0,
                 skills_cybersecurity: 0,
                 skills_it_support: 0,
-                skills_industrial_ai: 0,
-                identity: 0,
-                age: 0
+                skills_industrial_ai: 0
             };
 
             // Narrow sub-question flags
