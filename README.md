@@ -2,6 +2,7 @@
 
 [![Agent-Native Spec](https://img.shields.io/badge/Agent--Native-Spec_v0.1_Certified-0284c7.svg?style=for-the-badge&logo=openai)](AGENTS.md)
 [![ATS Score](https://img.shields.io/badge/ATS_Keyword_Match-100.0%25-34d399.svg?style=for-the-badge&logo=checkmarx)](resume/verify_ats.py)
+[![Chatbot Accuracy](https://img.shields.io/badge/Chatbot_Benchmark-100.0%25_Pass-8b5cf6.svg?style=for-the-badge&logo=probot)](scripts/evaluate_chatbot.py)
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-fbbf24.svg?style=for-the-badge&logo=python)](cli.py)
 [![License](https://img.shields.io/badge/License-MIT-a855f7.svg?style=for-the-badge)](LICENSE)
 [![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-38bdf8.svg?style=for-the-badge&logo=github)](https://l3al3y.github.io/ResumeAgent/)
@@ -12,7 +13,7 @@
 
 ## 🌐 Live Portfolio & Interactive App
 - 🔗 **Live Web Application:** [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)
-- 📱 **Mobile-First Responsive Architecture:** Features 3D WebGL Constellation (Three.js), Floating Circle FAB Multilingual AI Assistant Widget, Employer CAPTCHA Contact Protection, and 4-Language Adaptability Switcher.
+- 📱 **Mobile-First Responsive Architecture:** Features 3D WebGL Constellation (Three.js), Floating Circle FAB Multilingual AI Assistant Widget, Cloudflare Turnstile CAPTCHA Contact Protection, and 4-Language Adaptability Switcher (EN, BM, CN, IN).
 
 ---
 
@@ -41,18 +42,17 @@ Military:    Askar Wataniah Reserve (Malaysian Army - High Discipline & Stress R
 - **Human Mode (`--human`):** Rich terminal UI with colored gauges, tables, and panels powered by `rich`.
 - **Fail-Fast Standard & Standard Exit Codes:** Structured JSON error payloads to `stderr` with strict exit codes (`0`: Success, `2`: Missing Param, `20`: Not Found).
 
-### 2. 📱 Mobile-First 3D Portfolio & Floating AI Assistant Widget
-- **Floating Circle FAB Chatbot Widget:** Bottom-right interactive floating AI assistant with multilingual support (EN, BM, CN, IN).
-- **Clean Mobile Navigation:** Top header right actions strictly contain Theme Toggle (`☀️`/`🌙`) & Mobile Drawer Menu (`☰`).
-- **Employer CAPTCHA Security Gate:** Protects candidate email & phone against automated scraping bots via a 1-second human verification modal.
+### 2. 🧠 100.0% Verified Multilingual AI Chatbot & Benchmark Harness
+- **Structured Retrieval Engine over `RESUME_DATA`:** 20+ spontaneous intent categories spanning English, Bahasa Melayu (🇲🇾), Chinese 华语 (🇨🇳), and Tamil தமிழ் (🇮🇳).
+- **Automated Benchmark Suite (`scripts/evaluate_chatbot.py`):** Tests 117 challenge stress-test queries (slang, Manglish, behavioral interview questions, technical deep-dives) achieving **100.0% Pass Accuracy (117/117 passed)**.
 
-### 3. 📄 100.0% Verified ATS Resume Suite (`verify_ats.py`)
+### 3. 🔒 Cloudflare Turnstile CAPTCHA Contact Protection
+- Deployed Cloudflare Worker `contact-gate-worker` (`0x4AAAAAAD9nlicfqO7QQsBk` sitekey) to perform server-side siteverify before revealing candidate Email & Phone.
+- **Zero Plaintext Leakage:** No plaintext or base64 contact strings exist in client-side HTML source files.
+
+### 4. 📄 100.0% Verified ATS Resume Suite (`verify_ats.py`)
 - Standardized 1-Page A4 printable HTML resume (`resume/resume.html`), Markdown (`resume/resume.md`), and Plain Text (`resume/resume.txt`).
 - **Empirically Verified Score:** `100.0% Keyword Match` (42/42 target network, AI, and IT support keywords).
-
-### 4. 📊 Multi-Portal Job Connector & Master Excel Tracker
-- Automates candidate application tracking across **MYFutureJobs, MauKerja, JobStreet, and LinkedIn**.
-- SQLite database with Write-Ahead Logging (`src/job_agent.db`) and multi-sheet Excel export (`JobTracker.xlsx`).
 
 ---
 
@@ -68,25 +68,28 @@ python cli.py ats evaluate --title "Network Engineer" --desc "Cisco CCNA OSPF VL
 # 3. Verify ATS Resume Keyword Match Score (100% Target)
 python cli.py ats verify
 
-# 4. Generate Standard ATS Resume Formats (HTML / MD / TXT)
+# 4. Run Automated Chatbot Intelligence Benchmark (100% Target)
+python scripts/evaluate_chatbot.py
+
+# 5. Generate Standard ATS Resume Formats (HTML / MD / TXT)
 python cli.py resume generate --format md --out resume/resume.md
 
-# 5. List Application Pipeline & Add Applications
+# 6. List Application Pipeline & Add Applications
 python cli.py job list
 python cli.py job add --title "DevOps Engineer" --company "CloudCorp" --url "https://example.com" --desc "AWS Linux Python"
 
-# 6. Execute Multi-Portal Sync Engine
+# 7. Execute Multi-Portal Sync Engine
 python cli.py portal sync --portal all
 
-# 7. Export Master Excel Tracker (JobTracker.xlsx)
+# 8. Export Master Excel Tracker (JobTracker.xlsx)
 python cli.py tracker export
 
-# 8. Manage Offline Feedback Issues
+# 9. Manage Offline Feedback Issues
 python cli.py issue create --title "Score anomaly" --category bug --desc "Score dropped unexpectedly"
 python cli.py issue list --status open
 python cli.py issue resolve --id ISSUE-1 --notes "Fixed keyword dictionary"
 
-# 9. Launch Autonomous Agent Execution Loop
+# 10. Launch Autonomous Agent Execution Loop
 python cli.py agent run
 ```
 
@@ -111,6 +114,8 @@ ResumeAgent/
 │   ├── sync_all_portals.py           # Multi-Portal Launcher
 │   ├── issue.py                      # Offline Feedback Issue System
 │   └── job_agent.db                  # SQLite Database
+├── scripts/                          # Evaluation & Benchmark Harnesses
+│   └── evaluate_chatbot.py           # 117-Query Chatbot Intelligence Evaluator (100.0% Benchmark)
 ├── web/                              # Web Application Mirrors
 │   ├── index.html                    # Synced Entrypoint
 │   └── portfolio.html                # Synced Entrypoint
@@ -119,13 +124,15 @@ ResumeAgent/
 │   ├── resume.md                     # Markdown ATS Resume
 │   ├── resume.txt                    # Plain Text ATS Resume
 │   └── verify_ats.py                 # Keyword Verification Tool (100.0% Match)
-├── tests/                            # Unit Test Suite (10/10 Passed)
+├── tests/                            # Unit Test Suite (11/11 Passed)
 │   ├── test_candidate.py
+│   ├── test_chatbot_engine.py        # Automated Chatbot Intent Benchmark Test
 │   ├── test_cli.py
 │   ├── test_database.py
 │   ├── test_issue.py
 │   └── test_portals.py
 └── data/                             # Data Storage
+    ├── chatbot_benchmark_report.json # Benchmark Report Log (100.0% Pass Report)
     ├── job_agent.db                  # Local Audit Database
     └── JobTracker.xlsx               # Master Excel Spreadsheet
 ```
@@ -139,8 +146,11 @@ ResumeAgent/
 git clone https://github.com/l3al3y/ResumeAgent.git
 cd ResumeAgent
 
-# Run Unit Test Suite (10/10 Passed)
+# Run Unit Test Suite (11/11 Passed)
 python -m unittest discover -s tests
+
+# Run Chatbot Intelligence Benchmark (100% Target)
+python scripts/evaluate_chatbot.py
 
 # Start Local Web Server
 python -m http.server 8000
@@ -152,7 +162,7 @@ python -m http.server 8000
 ## 🛡️ Dual Confidence Metrics Standard
 
 - **Execution Confidence:** `100%` (Empirically verified runtime, SQLite DB write, and Excel file export)
-- **Analysis Confidence:** `100%` (ATS heuristic keyword match score via `python resume/verify_ats.py`)
+- **Analysis Confidence:** `100%` (100% ATS keyword match & 100% Chatbot benchmark accuracy score)
 
 ---
 
