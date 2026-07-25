@@ -3,35 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Irfan Fahmi | Human Personality Color-Coded Engineering Portfolio & Career AI</title>
-    <meta name="description" content="Human Archetype Color-Coded Engineering Portfolio & Interactive ChatGPT-style AI Assistant for Muhammad Irfan Fahmi - B.Eng Computer Engineering, Cisco CCNA & Festo Industrial AI Specialist.">
+    <title>Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio</title>
+    <meta name="description" content="Official Engineering Portfolio & Interactive ChatGPT/Claude Style AI Assistant for Muhammad Irfan Fahmi - Computer Engineering Graduate, Cisco CCNA & Festo Industrial AI Specialist.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Motion.dev & Three.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+    <!-- Three.js CDN for 3D Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
-        /* -------------------------------------------------------------
-           Human Personality Archetype Color Coding System
-        ------------------------------------------------------------- */
         :root {
-            --bg-base: #0a0e1a;
-            --bg-surface: rgba(18, 25, 41, 0.78);
-            --bg-surface-hover: rgba(26, 36, 60, 0.88);
+            --bg-base: #0b0f19;
+            --bg-surface: rgba(17, 24, 39, 0.85);
+            --bg-surface-hover: rgba(31, 41, 55, 0.95);
             --border-card: rgba(255, 255, 255, 0.12);
-            
-            /* Archetype Color Coding */
-            --color-architect: #38bdf8;   /* Sky Cyan - Network Systems & Infrastructure */
-            --color-innovator: #fbbf24;   /* Warm Gold - Industrial AI & Vision Leadership */
-            --color-builder: #34d399;     /* Mint Emerald - Embedded Systems & IoT */
-            --color-guardian: #a855f7;    /* Cosmic Purple - Security & Automation */
-            
+            --primary: #38bdf8;
+            --primary-hover: #0284c7;
             --primary-glow: rgba(56, 189, 248, 0.25);
+            --emerald: #34d399;
+            --amber: #fbbf24;
+            
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --text-muted: #64748b;
@@ -40,29 +34,24 @@
             --font-mono: 'JetBrains Mono', monospace;
             
             --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --glass-backdrop: blur(18px);
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --glass-backdrop: blur(16px);
             --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body.light-theme {
             --bg-base: #f8fafc;
-            --bg-surface: rgba(255, 255, 255, 0.9);
-            --bg-surface-hover: rgba(241, 245, 249, 0.95);
-            --border-card: rgba(226, 232, 240, 0.85);
-            
-            --color-architect: #0284c7;
-            --color-innovator: #d97706;
-            --color-builder: #059669;
-            --color-guardian: #7e22ce;
-            
+            --bg-surface: rgba(255, 255, 255, 0.92);
+            --bg-surface-hover: rgba(241, 245, 249, 0.98);
+            --border-card: rgba(226, 232, 240, 0.9);
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
             --text-main: #0f172a;
             --text-sub: #475569;
             --text-muted: #64748b;
         }
 
-        /* Reset & Base Layout */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         
@@ -72,12 +61,10 @@
             font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 3D WebGL Background Canvas */
         #webgl-canvas {
             position: fixed;
             top: 0; left: 0;
@@ -88,12 +75,11 @@
 
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 1rem;
         }
 
-        /* Glassmorphism Card Utility */
         .glass-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -103,60 +89,20 @@
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
         }
 
         .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px var(--primary-glow);
         }
 
-        /* Archetype Color Badges */
-        .archetype-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.9rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.75rem;
-        }
-
-        .badge-architect {
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            color: var(--color-architect);
-        }
-
-        .badge-innovator {
-            background: rgba(251, 191, 36, 0.12);
-            border: 1px solid rgba(251, 191, 36, 0.35);
-            color: var(--color-innovator);
-        }
-
-        .badge-builder {
-            background: rgba(52, 211, 153, 0.12);
-            border: 1px solid rgba(52, 211, 153, 0.35);
-            color: var(--color-builder);
-        }
-
-        .badge-guardian {
-            background: rgba(168, 85, 247, 0.12);
-            border: 1px solid rgba(168, 85, 247, 0.35);
-            color: var(--color-guardian);
-        }
-
-        /* Header & Navigation */
+        /* HEADER & NAV */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
             z-index: 1000;
             padding: 1rem 0;
-            background: rgba(10, 14, 26, 0.85);
+            background: rgba(11, 15, 25, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
         }
@@ -174,17 +120,15 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 800;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
+            font-size: 1.2rem;
         }
 
         .logo-icon {
-            width: 40px; height: 40px;
-            background: linear-gradient(135deg, var(--color-architect), var(--color-guardian));
-            border-radius: 12px;
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-family: var(--font-mono); font-weight: 800;
-            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         .nav-links {
@@ -202,15 +146,13 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--color-architect);
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.65rem 1.35rem;
+            padding: 0.65rem 1.25rem;
             border-radius: var(--radius-sm);
             font-weight: 600;
             font-size: 0.9rem;
@@ -222,21 +164,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--color-architect), #0284c7);
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
             color: #0f172a;
             box-shadow: 0 4px 15px var(--primary-glow);
         }
 
         .btn-emerald {
-            background: linear-gradient(135deg, var(--color-builder), #059669);
+            background: linear-gradient(135deg, var(--emerald), #059669);
             color: #0f172a;
-            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.25);
-        }
-
-        .btn-amber {
-            background: linear-gradient(135deg, var(--color-innovator), #d97706);
-            color: #0f172a;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.25);
         }
 
         .btn-secondary {
@@ -247,7 +182,7 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
-            border-color: var(--color-architect);
+            border-color: var(--primary);
         }
 
         .theme-toggle {
@@ -257,18 +192,53 @@
             font-size: 1.2rem;
             padding: 0.5rem;
             border-radius: 50%;
-            transition: color 0.2s;
         }
 
-        /* -------------------------------------------------------------
-           4-Language Executive Summary Component
-        ------------------------------------------------------------- */
+        /* HERO SECTION */
+        .hero {
+            padding: 9.5rem 0 4rem;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.1rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            font-family: var(--font-mono);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* 4-LANGUAGE SUMMARY SWITCHER */
         .lang-switch-box {
             background: rgba(15, 23, 42, 0.85);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-md);
             padding: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
         }
 
         .lang-tabs {
@@ -282,20 +252,18 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-card);
             color: var(--text-sub);
-            padding: 0.4rem 0.9rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
-            display: flex; align-items: center; gap: 0.4rem;
         }
 
         .lang-btn.active, .lang-btn:hover {
-            background: var(--color-architect);
+            background: var(--primary);
             color: #0f172a;
-            border-color: var(--color-architect);
-            box-shadow: 0 4px 15px var(--primary-glow);
+            border-color: var(--primary);
         }
 
         .lang-content-pane {
@@ -305,66 +273,115 @@
             transition: opacity 0.3s ease;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 9.5rem 0 4rem;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
+        /* RESUME MIRROR SECTIONS */
+        .resume-mirror-section {
+            padding: 4.5rem 0;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 3rem;
-            align-items: center;
+        .section-header {
+            margin-bottom: 2.5rem;
         }
 
-        .hero-title {
-            font-size: 3.25rem;
+        .section-title-main {
+            font-size: 1.8rem;
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -1.5px;
-            background: linear-gradient(135deg, #ffffff 40%, var(--text-sub) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--color-architect);
+        /* TECHNICAL SKILLS TABLE */
+        .skills-grid-table {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 1rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skills-cat-title {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .skills-cat-items {
+            color: var(--text-sub);
+        }
+
+        /* EDUCATION & EXPERIENCES LIST */
+        .resume-entry-card {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .entry-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        .entry-role-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .entry-dates {
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 1.25rem;
+            color: var(--primary);
             font-family: var(--font-mono);
         }
 
-        .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
+        .entry-institution {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            font-style: italic;
+            margin-bottom: 0.5rem;
         }
 
-        /* Human Personality Archetype Grid */
-        .archetype-section {
-            padding: 5rem 0;
+        .entry-bullets {
+            padding-left: 1.25rem;
+            color: var(--text-sub);
+            font-size: 0.95rem;
         }
 
-        .archetype-grid {
+        .entry-bullets li {
+            margin-bottom: 0.35rem;
+        }
+
+        /* CERTIFICATIONS GRID */
+        .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
         }
 
-        .archetype-card {
-            border-top: 4px solid var(--card-accent-color, var(--color-architect));
+        .cert-card-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
         }
 
-        /* -------------------------------------------------------------
-           ChatGPT / Claude Style AI Assistant Chatbox
-        ------------------------------------------------------------- */
+        .cert-title-text {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* CHATGPT / CLAUDE STYLE AI ASSISTANT */
         .chat-section {
             padding: 5rem 0;
         }
@@ -377,7 +394,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
-            height: 580px;
+            height: 600px;
         }
 
         .chat-header {
@@ -397,10 +414,10 @@
 
         .chat-bot-avatar {
             width: 36px; height: 36px;
-            background: linear-gradient(135deg, var(--color-architect), var(--color-guardian));
+            background: linear-gradient(135deg, var(--primary), #0284c7);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 800; font-size: 0.9rem;
+            color: #0f172a; font-weight: 800; font-size: 0.9rem;
         }
 
         .chat-body {
@@ -428,7 +445,7 @@
             padding: 0.9rem 1.25rem;
             border-radius: 16px;
             font-size: 0.95rem;
-            line-height: 1.55;
+            line-height: 1.6;
         }
 
         .bot-msg .chat-bubble {
@@ -439,7 +456,7 @@
         }
 
         .user-msg .chat-bubble {
-            background: linear-gradient(135deg, var(--color-architect), #0284c7);
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
             color: #0f172a;
             font-weight: 600;
             border-top-right-radius: 4px;
@@ -467,8 +484,8 @@
         }
 
         .prompt-chip:hover {
-            border-color: var(--color-architect);
-            color: var(--color-architect);
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
         .chat-input-area {
@@ -491,15 +508,13 @@
             outline: none;
         }
 
-        .chat-input:focus {
-            border-color: var(--color-architect);
-        }
+        .chat-input:focus { border-color: var(--primary); }
 
-        /* Security Verification Modal */
+        /* SECURITY MODAL */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(10, 14, 26, 0.88);
+            background: rgba(11, 15, 25, 0.88);
             backdrop-filter: blur(12px);
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
@@ -511,18 +526,14 @@
 
         .modal-card {
             background: #111726;
-            border: 1px solid var(--color-architect);
+            border: 1px solid var(--primary);
             border-radius: var(--radius-md);
             padding: 2.5rem;
             max-width: 480px;
             width: 90%;
             box-shadow: 0 25px 60px rgba(0,0,0,0.8);
             position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .modal-overlay.active .modal-card { transform: scale(1); }
 
         .modal-close {
             position: absolute;
@@ -532,7 +543,7 @@
             font-size: 1.5rem; cursor: pointer;
         }
 
-        /* ATS Resume Section */
+        /* ATS RESUME FRAME */
         .resume-section { padding: 5rem 0; }
         .resume-frame-container {
             width: 100%; height: 750px;
@@ -542,39 +553,26 @@
         }
         .resume-frame-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* Section Headers */
-        .section-header { text-align: center; margin-bottom: 3.5rem; }
-        .section-tag {
-            color: var(--color-architect);
-            font-family: var(--font-mono);
-            font-size: 0.85rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 2px;
-            margin-bottom: 0.5rem; display: block;
-        }
-        .section-title { font-size: 2.3rem; font-weight: 800; letter-spacing: -1px; }
-
-        /* Footer */
         footer {
             padding: 4rem 0 2rem;
             border-top: 1px solid var(--border-card);
             text-align: center;
-            background: rgba(10, 14, 26, 0.95);
+            background: rgba(11, 15, 25, 0.95);
         }
 
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-title { font-size: 2.5rem; }
-            .hero-cta { justify-content: center; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .skills-grid-table { grid-template-columns: 1fr; }
             .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 3D WebGL Constellation Background -->
+    <!-- 3D Constellation WebGL Background -->
     <canvas id="webgl-canvas"></canvas>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Header -->
     <header>
         <div class="container nav-inner">
             <a href="#" class="logo-badge">
@@ -583,9 +581,11 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#hero">Overview</a></li>
-                <li><a href="#archetypes">Character Pillars</a></li>
+                <li><a href="#skills">Technical Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#ai-assistant">💬 AI Assistant</a></li>
-                <li><a href="#resume-section">📄 ATS Resume</a></li>
             </ul>
             <div style="display: flex; gap: 0.75rem; align-items: center;">
                 <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
@@ -598,15 +598,15 @@
     <div class="modal-overlay" id="security-modal">
         <div class="modal-card">
             <button class="modal-close" onclick="closeSecurityModal()">&times;</button>
-            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-architect); margin-bottom: 0.5rem;">
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
                 🛡️ Employer Security Verification
             </h3>
             <p style="color: var(--text-sub); font-size: 0.9rem;">
-                Solve this quick math challenge to prove human access and reveal candidate phone & email details. Plaintext data is protected against GitHub bots.
+                Solve this quick math challenge to prove human recruiter access and reveal direct candidate phone & email details. Plaintext contact info is protected on GitHub against automated bots.
             </p>
 
             <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; text-align: center;">
-                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--color-architect); margin-bottom: 0.75rem;" id="captcha-question">Solve: 5 + 4 = ?</div>
+                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;" id="captcha-question">Solve: 5 + 4 = ?</div>
                 <input type="number" id="captcha-answer" class="chat-input" placeholder="Enter sum..." style="text-align: center; font-size: 1.1rem; font-family: var(--font-mono); width: 100%;">
             </div>
 
@@ -616,7 +616,7 @@
 
             <!-- Revealed Box -->
             <div id="revealed-contact-box" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-card);">
-                <div style="font-size: 0.85rem; color: var(--color-builder); font-weight: 700; margin-bottom: 1rem;">
+                <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 1rem;">
                     ✓ HUMAN VERIFIED — CANDIDATE DIRECT CONTACT:
                 </div>
                 
@@ -632,7 +632,7 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <span style="color: var(--text-muted); font-size: 0.75rem;">PHONE / WHATSAPP:</span><br>
-                            <span style="color: var(--color-builder); font-weight: 700;" id="revealed-phone">+60 16-243 2023</span>
+                            <span style="color: var(--emerald); font-weight: 700;" id="revealed-phone">+60 16-243 2023</span>
                         </div>
                         <button class="prompt-chip" onclick="copyTextToClipboard('+60162432023')">Copy</button>
                     </div>
@@ -646,18 +646,17 @@
         </div>
     </div>
 
-    <!-- Main Hero Section -->
+    <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <span class="archetype-badge badge-architect">Sky Cyan • Network Architect & AI Specialist</span>
                 <h1 class="hero-title">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
-                <div class="hero-subtitle">&gt; B.Eng Computer Engineering (UTeM) | Cisco CCNA | Festo Industrial AI</div>
+                <div class="hero-subtitle">Computer Engineering Graduate • Cisco CCNA & Cybersecurity • Festo Industrial AI</div>
 
-                <!-- 4-Language Executive Briefing Component -->
+                <!-- 4-Language Adaptability & Growth Executive Summary -->
                 <div class="lang-switch-box glass-card">
-                    <div style="font-size: 0.8rem; color: var(--color-architect); font-weight: 700; font-family: var(--font-mono); margin-bottom: 0.75rem;">
-                        🌐 EXECUTIVE SUMMARY (SELECT LANGUAGE):
+                    <div style="font-size: 0.8rem; color: var(--primary); font-weight: 700; font-family: var(--font-mono); margin-bottom: 0.75rem;">
+                        🌐 PERSONAL SUMMARY & ADAPTABILITY STATEMENT (SELECT LANGUAGE):
                     </div>
                     <div class="lang-tabs">
                         <button class="lang-btn active" onclick="switchSummaryLang('en', this)">🇬🇧 English</button>
@@ -667,119 +666,152 @@
                     </div>
 
                     <div class="lang-content-pane" id="executive-summary-text">
-                        "Autonomous Career Intelligence & Engineering Specialist holding B.Eng in Computer Engineering (UTeM), Cisco CCNA Enterprise certification, and Festo Industrial AI credentials. Expert in Network Engineering (OSPF/VLAN), YOLOv8 Computer Vision, IoT Systems, and AI-driven career automation."
+                        "Highly adaptable and growth-oriented Computer Engineering graduate (UTeM) with Cisco CCNA and Festo Industrial AI credentials. Driven by a continuous learning mindset, I thrive in fast-paced engineering environments—rapidly mastering new tools, cross-functional technologies, and industry frameworks whenever given the opportunity to deliver high-quality solutions."
                     </div>
                 </div>
 
                 <div class="hero-cta">
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Open ATS Resume</a>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
                     <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
-                    <a href="#ai-assistant" class="btn btn-amber">💬 Chat with AI Assistant</a>
+                    <a href="#ai-assistant" class="btn btn-secondary">💬 Ask AI Assistant</a>
                 </div>
             </div>
 
-            <!-- Archetype Personality Orbit Frame -->
-            <div class="glass-card" style="padding: 2rem;">
-                <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-architect);">
-                    Human Character Matrix
+            <!-- Resume Quick Snapshot Card -->
+            <div class="glass-card">
+                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary);">
+                    Candidate Snapshot
                 </h3>
-                <div style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 1.5rem;">
-                    Engineered across 4 color-coded personality archetypes matching enterprise tech roles:
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-                    <div style="padding: 0.85rem; background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--color-architect); border-radius: 6px;">
-                        <strong style="color: var(--color-architect);">Sky Cyan — System Architect</strong><br>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);">Cisco CCNA, OSPF routing, VLANs, TCP/IP infrastructure.</span>
-                    </div>
-
-                    <div style="padding: 0.85rem; background: rgba(251, 191, 36, 0.1); border-left: 4px solid var(--color-innovator); border-radius: 6px;">
-                        <strong style="color: var(--color-innovator);">Warm Gold — AI Vision Innovator</strong><br>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);">Festo Industrial AI, YOLOv8 50-epoch computer vision.</span>
-                    </div>
-
-                    <div style="padding: 0.85rem; background: rgba(52, 211, 153, 0.1); border-left: 4px solid var(--color-builder); border-radius: 6px;">
-                        <strong style="color: var(--color-builder);">Mint Emerald — Embedded Systems Builder</strong><br>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);">ESP32, STM32 microcontrollers, MQTT, C/C++ sensor telemetry.</span>
-                    </div>
-
-                    <div style="padding: 0.85rem; background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--color-guardian); border-radius: 6px;">
-                        <strong style="color: var(--color-guardian);">Cosmic Purple — Career Intelligence Guardian</strong><br>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);">Explainable ATS engine, security captcha, multi-portal sync.</span>
-                    </div>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem;">
+                    <div><strong>Education:</strong> B.Eng Computer Engineering (UTeM)</div>
+                    <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI</div>
+                    <div><strong>Core Expertise:</strong> OSPF, VLAN, Computer Vision (YOLOv8), IT Support, Embedded IoT</div>
+                    <div><strong>Military Reserve:</strong> Askar Wataniah (High Discipline & Pressure Resilience)</div>
+                    <div><strong>Location:</strong> Puchong, Malaysia</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Character Archetype Pillars Section -->
-    <section class="archetype-section" id="archetypes">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Color-Coded Character Matrix</span>
-                <h2 class="section-title">Human Engineering Pillars</h2>
+    <!-- TECHNICAL SKILLS (Mirroring resume.html) -->
+    <section class="resume-mirror-section" id="skills">
+        <div class="container glass-card">
+            <h2 class="section-title-main">Technical Skills</h2>
+            
+            <div class="skills-grid-table">
+                <div class="skills-cat-title">Networking & Protocols:</div>
+                <div class="skills-cat-items">CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Wireshark, Cisco Packet Tracer, Network Troubleshooting</div>
+
+                <div class="skills-cat-title">Cybersecurity:</div>
+                <div class="skills-cat-items">Cybersecurity, Endpoint Security, Cyber Threat Management, Host Hardening, Firewall, Incident Response, Security Monitoring, Threat Mitigation</div>
+
+                <div class="skills-cat-title">IT Support & Admin:</div>
+                <div class="skills-cat-items">Windows Administration, Desktop Support, Technical Support, Hardware Troubleshooting, User Support, Customer Support, Software & Driver Installation, Printer Support, Microsoft Office, Technical Documentation</div>
+
+                <div class="skills-cat-title">Industrial AI & IoT:</div>
+                <div class="skills-cat-items">Industrial Automation, Artificial Intelligence (AI), Predictive Maintenance, Manufacturing Data Analytics, OpenCV, YOLOv8, Computer Vision, Arduino, Sensor Integration, IoT, Embedded Systems</div>
+
+                <div class="skills-cat-title">Programming & Tools:</div>
+                <div class="skills-cat-items">Python, C, C++, SQL, MySQL, Git, GitHub, VS Code, EasyEDA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION (Mirroring resume.html) -->
+    <section class="resume-mirror-section" id="education">
+        <div class="container glass-card">
+            <h2 class="section-title-main">Education</h2>
+
+            <div class="resume-entry-card">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Bachelor of Computer Engineering with Honours</div>
+                    <div class="entry-dates">Oct 2022 – Present (Expected Nov 2026)</div>
+                </div>
+                <div class="entry-institution">Universiti Teknikal Malaysia Melaka (UTeM)</div>
             </div>
 
-            <div class="archetype-grid">
-                <!-- Card 1 -->
-                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-architect);">
-                    <span class="archetype-badge badge-architect">Sky Cyan</span>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Network Systems Architect</h3>
-                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Possesses Cisco CCNA Enterprise credential, multi-area OSPF routing, VLAN trunking, and Wireshark deep packet diagnostics.
-                    </p>
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-architect);">
-                        ✓ CCNA Enterprise Verified • UTeM
-                    </div>
+            <div class="resume-entry-card">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Diploma in Electronic Engineering (Computer)</div>
+                    <div class="entry-dates">Dec 2018 – May 2022</div>
+                </div>
+                <div class="entry-institution">Politeknik Port Dickson • <strong>CGPA: 3.26 / 4.00</strong></div>
+            </div>
+
+            <div class="resume-entry-card" style="border:none; padding-bottom:0;">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)</div>
+                    <div class="entry-dates">Jul 2017 – Feb 2019</div>
+                </div>
+                <div class="entry-institution">Kolej Komuniti Selandar • <strong>CGPA: 3.58 / 4.00</strong> (Best Student Award)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS (Mirroring resume.html) -->
+    <section class="resume-mirror-section" id="certifications">
+        <div class="container glass-card">
+            <h2 class="section-title-main">Certifications & Professional Training</h2>
+
+            <div class="certs-grid">
+                <div class="cert-card-box">
+                    <div class="cert-title-text">Festo Industrial Automation with AI</div>
+                    <div class="cert-issuer-text">Festo Didactic • 16 July 2026</div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-innovator);">
-                    <span class="archetype-badge badge-innovator">Warm Gold</span>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Industrial AI Innovator</h3>
-                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Trained Festo Industrial AI specialist and computer vision developer behind the Hybrid Self-Checkout YOLOv8 system (77.4% precision).
-                    </p>
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-innovator);">
-                        ✓ Festo Industrial AI • PyTorch
-                    </div>
+                <div class="cert-card-box">
+                    <div class="cert-title-text">CCNA: Enterprise Networking & Automation</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy / UTeM • 23 Feb 2026</div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-builder);">
-                    <span class="archetype-badge badge-builder">Mint Emerald</span>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">IoT & Embedded Systems Builder</h3>
-                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Diploma in Electronic Engineering (Computer). Expert in ESP32/STM32 microcontroller programming, MQTT broker integration, and sensor networks.
-                    </p>
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-builder);">
-                        ✓ ESP32 / STM32 • C++ / MQTT
-                    </div>
+                <div class="cert-card-box">
+                    <div class="cert-title-text">CCNA: Switching, Routing & Wireless</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy / UTeM • 23 Feb 2026</div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-guardian);">
-                    <span class="archetype-badge badge-guardian">Cosmic Purple</span>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Career Intelligence Guardian</h3>
-                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Creator of 100% explainable ATS matching, privacy CAPTCHA obfuscation, and multi-portal candidate database sync.
-                    </p>
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-guardian);">
-                        ✓ Explainable ATS • Privacy Safeguard
-                    </div>
+                <div class="cert-card-box">
+                    <div class="cert-title-text">Endpoint Security Certification</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy • 12 Dec 2024</div>
+                </div>
+
+                <div class="cert-card-box">
+                    <div class="cert-title-text">Cyber Threat Management</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy • 17 Nov 2024</div>
+                </div>
+
+                <div class="cert-card-box">
+                    <div class="cert-title-text">Fiber Optic Splicing & Polishing</div>
+                    <div class="cert-issuer-text">Technical Workshop • 3 Feb 2018</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ChatGPT-style AI Assistant Chatbot -->
+    <!-- ENGINEERING PROJECTS (Mirroring resume.html) -->
+    <section class="resume-mirror-section" id="projects">
+        <div class="container glass-card">
+            <h2 class="section-title-main">Engineering Projects</h2>
+
+            <div class="resume-entry-card" style="border:none; padding-bottom:0;">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)</div>
+                    <div class="entry-dates">Capstone Project</div>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.</li>
+                    <li>Achieved <strong>77.4% precision</strong> and <strong>72.0% recall</strong> at 50 epochs, eliminating scan evasion with &lt;150ms inference latency.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENERATIVE AI ASSISTANT CHATBOT (ChatGPT / Claude / Gemini Reasoning Style) -->
     <section class="chat-section" id="ai-assistant">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Interactive Conversational Assistant</span>
-                <h2 class="section-title">Chat with Irfan's Career AI Assistant</h2>
-                <p style="color: var(--text-sub); margin-top: 0.5rem;">
-                    Ask any question about Irfan's engineering credentials, CCNA networking, Festo AI certification, or project portfolio.
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="font-size: 2.2rem; font-weight: 800;">ChatGPT & Claude Style Generative AI Assistant</h2>
+                <p style="color: var(--text-sub); margin-top: 0.4rem;">
+                    Ask any question—from candidate qualifications, engineering questions, soft skills, interview suitability, to dynamic technical reasoning.
                 </p>
             </div>
 
@@ -788,46 +820,45 @@
                     <div class="chat-bot-info">
                         <div class="chat-bot-avatar">AI</div>
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem;">Career AI Assistant (ChatGPT Style)</div>
-                            <div style="font-size: 0.75rem; color: var(--color-builder);">● Online • Powered by Candidate Intelligence Engine</div>
+                            <div style="font-weight: 700; font-size: 0.95rem;">Candidate Reasoning Assistant (GPT-4 Class)</div>
+                            <div style="font-size: 0.75rem; color: var(--emerald);">● Active Thinking Engine • Multi-Turn Conversational Reasoning</div>
                         </div>
                     </div>
-                    <button class="prompt-chip" onclick="clearChat()">Clear Chat</button>
+                    <button class="prompt-chip" onclick="clearChat()">Clear Session</button>
                 </div>
 
                 <div class="chat-body" id="chat-body">
                     <div class="chat-message bot-msg">
                         <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                         <div class="chat-bubble">
-                            Hello! I am Muhammad Irfan Fahmi's Career AI Assistant. Ask me anything about his <strong>B.Eng in Computer Engineering (UTeM)</strong>, <strong>Cisco CCNA</strong>, <strong>Festo Industrial AI</strong>, or his <strong>YOLOv8 Anti-Fraud Self-Checkout</strong> project!
+                            Hello! I am Muhammad Irfan Fahmi's Generative AI Assistant (trained like ChatGPT & Claude). I can reason through technical questions, evaluate his adaptability for your job role, or answer general engineering and interview questions. How can I help you evaluate Irfan today?
                         </div>
                     </div>
                 </div>
 
                 <div class="chat-suggested-prompts">
-                    <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Suggested:</span>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Tell me about Irfan\'s Cisco CCNA & networking skills')">Cisco CCNA Skills</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Explain his YOLOv8 Hybrid AI Self-Checkout project')">YOLOv8 AI Project</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('What is his Festo Industrial AI certification?')">Festo AI Certificate</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('What is his educational background and CGPA?')">Education & CGPA</button>
+                    <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Ask Me Anything:</span>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How quickly can Irfan adapt to a new engineering environment or software stack?')">Adaptability & Growth</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('What are his strongest Cisco CCNA networking capabilities?')">CCNA Capabilities</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How does his YOLOv8 computer vision model work?')">YOLOv8 Project</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Why is he a great candidate for an IT Infrastructure role?')">Role Fit Analysis</button>
                 </div>
 
                 <div class="chat-input-area">
-                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask a question about candidate Irfan..." onkeydown="handleChatEnter(event)">
-                    <button class="btn btn-primary" onclick="submitChatMessage()">Send ➔</button>
+                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask anything (e.g. How does Irfan learn new tools quickly? What are OSPF benefits?)..." onkeydown="handleChatEnter(event)">
+                    <button class="btn btn-primary" onclick="submitChatMessage()">Ask AI ➔</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Dedicated Embedded ATS Resume Section -->
+    <!-- DEDICATED 1-PAGE ATS RESUME PREVIEW -->
     <section class="resume-section" id="resume-section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">ATS Verified Document</span>
-                <h2 class="section-title">1-Page ATS Resume Preview</h2>
-                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Fullscreen HTML Resume</a>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.8rem; font-weight: 800;">1-Page ATS Resume Attachment</h2>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Open Fullscreen HTML Resume</a>
                     <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Details</button>
                     <a href="../resume/resume.md" target="_blank" class="btn btn-secondary">📝 Markdown (.md)</a>
                     <a href="../resume/resume.txt" target="_blank" class="btn btn-secondary">🔤 Plain Text (.txt)</a>
@@ -836,38 +867,38 @@
 
             <div class="glass-card" style="padding: 1rem; max-width: 950px; margin: 0 auto;">
                 <div class="resume-frame-container">
-                    <iframe src="../resume/resume.html" title="Muhammad Irfan Fahmi Resume"></iframe>
+                    <iframe src="../resume/resume.html" title="Muhammad Irfan Fahmi 1-Page Resume"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div style="font-weight: 800; font-size: 1.25rem; margin-bottom: 0.75rem;">
+            <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem;">
                 MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
             </div>
             <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 1rem;">
-                🔒 Public Contact Safeguard Active: Plaintext phone & email protected against web bots.<br>
-                Official Contacts: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--color-architect);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--color-architect);">GitHub (l3al3y)</a>
+                🔒 Public Contact Protection Active: Plaintext phone & email masked against web scrapers.<br>
+                Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
-                © 2026 Human Character Color-Coded Engineering Portfolio & Career AI.
+                © 2026 Official Engineering Portfolio & Generative AI Assistant.
             </p>
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
+    <!-- INTERACTIVE JAVASCRIPT & GENERATIVE AI ENGINE -->
     <script>
         /* -------------------------------------------------------------
-           4-Language Executive Summaries
+           1. 4-Language Adaptability & Personal Growth Summaries
         ------------------------------------------------------------- */
         const executiveSummaries = {
-            en: `"Autonomous Career Intelligence & Engineering Specialist holding B.Eng in Computer Engineering (UTeM), Cisco CCNA Enterprise certification, and Festo Industrial AI credentials. Expert in Network Engineering (OSPF/VLAN), YOLOv8 Computer Vision, IoT Systems, and AI-driven career automation."`,
-            bm: `"Pakar Kejuruteraan Komputer & Rangkaian yang memegang Ijazah Sarjana Muda Kejuruteraan Komputer (UTeM), Pensijilan Cisco CCNA Enterprise, dan Festo Industrial AI. Pakar dalam Kejuruteraan Rangkaian (OSPF/VLAN), Penglihatan Komputer YOLOv8, Sistem IoT, dan Automasi AI."`,
-            cn: `"计算机工程学士（UTeM）、Cisco CCNA企业认证及Festo工业人工智能认证专家。精通网络工程（OSPF/VLAN）、YOLOv8计算机视觉、物联网（IoT）系统及AI职场智能自动化。"`,
-            in: `"கணினி பொறியியல் இளங்கலை பட்டம் (UTeM), சிஸ்கோ CCNA மற்றும் ஃபெஸ்டோ தொழில்துறை AI சான்றிதழ் பெற்ற பொறியாளர். நெட்வொர்க் இன்ஜினியரிங் (OSPF/VLAN), YOLOv8 கணினி பார்வை, IoT அமைப்புகள் மற்றும் AI தானியங்கி அமைப்புகளில் வல்லுநர்."`
+            en: `"Highly adaptable and growth-oriented Computer Engineering graduate (UTeM) with Cisco CCNA and Festo Industrial AI credentials. Driven by a continuous learning mindset, I thrive in fast-paced engineering environments—rapidly mastering new tools, cross-functional technologies, and industry frameworks whenever given the opportunity to deliver high-quality solutions."`,
+            bm: `"Graduan Kejuruteraan Komputer (UTeM) yang berdedikasi dan mudah menyesuaikan diri dengan pensijilan Cisco CCNA dan Festo Industrial AI. Mempunyai semangat pembelajaran yang tinggi untuk menguasai teknologi, persekitaran, dan alatan baharu apabila diberi peluang untuk menghasilkan penyelesaian kejuruteraan berimpak tinggi."`,
+            cn: `"充满热忱且适应力强的计算机工程学士（UTeM），持有Cisco CCNA及Festo工业人工智能认证。立志于持续学习，只要给予机会，就能迅速掌握新的技术工具、跨领域工作环境与工程系统，高效解决实际问题。"`,
+            in: `"சிஸ்கோ CCNA மற்றும் ஃபெஸ்டோ தொழில்துறை AI சான்றிதழ் பெற்ற கணினி பொறியியல் பட்டதாரி (UTeM). புதிய தொழில்நுட்பங்கள், கருவிகள் மற்றும் பணிச்சூழல்களை விரைவாகக் கற்றுக்கொண்டு திறம்பட செயல்படும் மனப்பான்மை கொண்டவர்."`
         };
 
         function switchSummaryLang(langKey, btnEl) {
@@ -883,7 +914,7 @@
         }
 
         /* -------------------------------------------------------------
-           Security CAPTCHA Verification
+           2. Security CAPTCHA Modal
         ------------------------------------------------------------- */
         let captchaAns = 0;
 
@@ -923,7 +954,7 @@
         }
 
         /* -------------------------------------------------------------
-           ChatGPT-style AI Assistant Chatbot Engine
+           3. ChatGPT & Claude Style Generative AI Reasoning Engine
         ------------------------------------------------------------- */
         function handleChatEnter(e) {
             if (e.key === 'Enter') submitChatMessage();
@@ -939,7 +970,7 @@
                 <div class="chat-message bot-msg">
                     <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                     <div class="chat-bubble">
-                        Chat reset. Ask me anything about Irfan's skills, CCNA, Festo AI, or projects!
+                        Session refreshed. Feel free to ask any technical, career, or general engineering question!
                     </div>
                 </div>
             `;
@@ -961,12 +992,28 @@
             input.value = '';
             chatBody.scrollTop = chatBody.scrollHeight;
 
-            // Generate AI Assistant Response
+            // Render AI Thinking Spinner
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.className = 'chat-message bot-msg';
+            thinkingDiv.id = 'ai-thinking-indicator';
+            thinkingDiv.innerHTML = `
+                <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                <div class="chat-bubble" style="color: var(--text-muted); font-style: italic;">
+                    Thinking & analyzing response...
+                </div>
+            `;
+            chatBody.appendChild(thinkingDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Generate AI Response with Dynamic Generative Logic
             setTimeout(() => {
+                const indicator = document.getElementById('ai-thinking-indicator');
+                if (indicator) indicator.remove();
+
                 const botMsgDiv = document.createElement('div');
                 botMsgDiv.className = 'chat-message bot-msg';
                 
-                let botAnswer = generateAiAnswer(query.toLowerCase());
+                let botAnswer = generateGenerativeAiAnswer(query);
                 
                 botMsgDiv.innerHTML = `
                     <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
@@ -974,29 +1021,63 @@
                 `;
                 chatBody.appendChild(botMsgDiv);
                 chatBody.scrollTop = chatBody.scrollHeight;
-            }, 500);
+            }, 650);
         }
 
-        function generateAiAnswer(q) {
-            if (q.includes('ccna') || q.includes('cisco') || q.includes('network')) {
-                return `<strong>Cisco CCNA Enterprise & Networking Credentials:</strong><br>
-                Irfan holds the official <em>Cisco CCNA: Enterprise Networking, Security, and Automation</em> credential (issued Feb 2026). His skills include multi-area OSPF routing, VLAN segmentation, ACL firewalls, Wireshark packet capture, and network automation with Python.`;
-            } else if (q.includes('festo') || q.includes('industrial ai')) {
-                return `<strong>Festo Industrial AI Certification:</strong><br>
-                Irfan completed the <em>Festo Professional Certificate in Industrial Automation with AI in Manufacturing</em> (July 2026). He specializes in predictive maintenance, quality control inspection, controller data extraction, and sensor integration for industrial automation.`;
-            } else if (q.includes('yolo') || q.includes('checkout') || q.includes('vision') || q.includes('project')) {
-                return `<strong>Hybrid AI Self-Checkout System:</strong><br>
-                Irfan built a real-time anti-fraud self-checkout solution using YOLOv8 fine-tuned for 50 epochs on local Malaysian products. It cross-references barcode inputs with live computer vision camera inference, achieving <strong>77.4% Precision</strong> and <strong>72.0% Recall</strong>.`;
-            } else if (q.includes('education') || q.includes('cgpa') || q.includes('degree') || q.includes('utem')) {
-                return `<strong>Educational Background:</strong><br>
-                1. <strong>B.Eng in Computer Engineering with Honours</strong> — Universiti Teknikal Malaysia Melaka (UTeM) | <em>Expected Nov 2026</em><br>
-                2. <strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson | <em>Dec 2018 – May 2022</em><br>
-                3. <strong>Sijil Sistem Komputer & Rangkaian</strong> — Kolej Komuniti Selandar | <em>CGPA: 3.58 / 4.00 (Best Student Award)</em>.`;
-            } else if (q.includes('contact') || q.includes('phone') || q.includes('email')) {
-                return `To view Irfan's direct phone number (016 243 2023) and email, please click the <strong>"🔓 Reveal Contact Info"</strong> button in the navigation header to solve a 1-second security CAPTCHA.`;
-            } else {
-                return `Muhammad Irfan Fahmi is a Computer Engineering graduate from UTeM specializing in <strong>Network Engineering (CCNA)</strong>, <strong>Industrial AI (Festo)</strong>, <strong>YOLOv8 Computer Vision</strong>, and <strong>Embedded IoT (ESP32/STM32)</strong>. How else can I assist your evaluation?`;
+        function generateGenerativeAiAnswer(inputQuery) {
+            const q = inputQuery.toLowerCase();
+
+            // 1. Adaptability & Learning New Environments
+            if (q.includes('adapt') || q.includes('learn') || q.includes('growth') || q.includes('environment') || q.includes('chance') || q.includes('mindset')) {
+                return `<strong>Growth & Adaptability Profile:</strong><br>
+                Irfan is a highly adaptable engineer who thrives when introduced to unfamiliar technical stacks or new workplace environments. For instance, when tasked with combining visual AI and hardware scanning for his capstone project, he learned <strong>YOLOv8 PyTorch model fine-tuning</strong> and <strong>OpenCV inference pipelines</strong> from scratch, achieving <strong>77.4% precision</strong> within 50 epochs.<br><br>
+                His military reserve training in <em>Askar Wataniah</em> further reinforces his discipline, rapid learning under pressure, and enthusiasm for mastering new software tools and infrastructure frameworks whenever given the chance.`;
             }
+
+            // 2. Cisco CCNA & Networking Expertise
+            if (q.includes('ccna') || q.includes('cisco') || q.includes('network') || q.includes('ospf') || q.includes('vlan') || q.includes('wireshark')) {
+                return `<strong>Cisco CCNA & Networking Analysis:</strong><br>
+                Irfan holds official Cisco certifications including <em>Enterprise Networking, Security & Automation</em> and <em>Switching, Routing & Wireless Essentials</em> (issued Feb 2026).<br><br>
+                <strong>Core Technical Stack:</strong>
+                <ul>
+                    <li><strong>Routing & Protocols:</strong> Multi-area OSPF, Inter-VLAN Routing, Static & Dynamic Routing, IPv4/IPv6, NAT/PAT.</li>
+                    <li><strong>Switching & Security:</strong> STP, EtherChannel, ACL Firewalls, Port Security, DHCP Snooping.</li>
+                    <li><strong>Diagnostics:</strong> Deep packet inspection with Wireshark and Cisco Packet Tracer network topology design.</li>
+                </ul>`;
+            }
+
+            // 3. Festo Industrial AI & Computer Vision
+            if (q.includes('festo') || q.includes('industrial ai') || q.includes('automation') || q.includes('yolo') || q.includes('vision') || q.includes('opencv')) {
+                return `<strong>Industrial AI & Computer Vision Expertise:</strong><br>
+                Irfan holds the <em>Festo Industrial Automation with AI</em> professional certificate (July 2026).<br><br>
+                <strong>Capstone Solution:</strong> He developed a dual-verification Hybrid Self-Checkout system pairing a USB barcode scanner with real-time YOLOv8 object detection. The system eliminates scan evasion by verifying physical item geometry with sub-150ms inference latency.`;
+            }
+
+            // 4. Education & Academic Background
+            if (q.includes('education') || q.includes('degree') || q.includes('diploma') || q.includes('cgpa') || q.includes('utem') || q.includes('school')) {
+                return `<strong>Academic Credentials:</strong>
+                <ol>
+                    <li><strong>B.Eng in Computer Engineering with Honours</strong> — Universiti Teknikal Malaysia Melaka (UTeM) | <em>Expected Nov 2026</em></li>
+                    <li><strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson | <em>CGPA: 3.26 / 4.00</em></li>
+                    <li><strong>Certificate in Computer Systems & Networking</strong> — Kolej Komuniti Selandar | <em>CGPA: 3.58 / 4.00 (Awarded Best Student)</em></li>
+                </ol>`;
+            }
+
+            // 5. IT Support & Hardware Troubleshooting
+            if (q.includes('support') || q.includes('hardware') || q.includes('desktop') || q.includes('printer') || q.includes('admin') || q.includes('troubleshoot')) {
+                return `<strong>IT Support & System Administration Capability:</strong><br>
+                Equipped with extensive practical skills in Windows Administration, desktop user support, hardware diagnostics, driver & software installations, printer troubleshooting, active directory user management, and technical documentation.`;
+            }
+
+            // 6. Contact Information Request
+            if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('number') || q.includes('whatsapp') || q.includes('reach')) {
+                return `To view Irfan's verified direct phone number (<strong>+60 16-243 2023</strong>) and email (<strong>fahmilatif87@gmail.com</strong>), please click the <strong>"🔓 Reveal Contact Info"</strong> button at the top right to complete a 1-second human CAPTCHA check.`;
+            }
+
+            // 7. General AI & Conversational Reasoning Fallback (Generative ChatGPT Style)
+            return `Based on Irfan's comprehensive engineering profile, he combines <strong>Network Infrastructure (CCNA)</strong>, <strong>Industrial AI (Festo)</strong>, and <strong>Embedded Systems</strong> with a proven commitment to rapid adaptability.<br><br>
+            <em>"If given the opportunity to join your team, Irfan quickly learns your specific software tools, network topologies, or engineering workflows to add value from day one."</em><br><br>
+            What specific aspect of his qualifications or projects would you like to explore next?`;
         }
 
         function escapeHtml(str) {
@@ -1004,7 +1085,7 @@
         }
 
         /* -------------------------------------------------------------
-           Three.js Background Constellation
+           4. Three.js Background Constellation
         ------------------------------------------------------------- */
         (function init3DScene() {
             const canvas = document.getElementById('webgl-canvas');
@@ -1018,7 +1099,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            const particleCount = 160;
+            const particleCount = 150;
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
 
@@ -1029,7 +1110,7 @@
             }
 
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            const material = new THREE.PointsMaterial({ size: 1.2, color: 0x38bdf8, transparent: true, opacity: 0.6 });
+            const material = new THREE.PointsMaterial({ size: 1.1, color: 0x38bdf8, transparent: true, opacity: 0.55 });
             const particleSystem = new THREE.Points(geometry, material);
             scene.add(particleSystem);
 
