@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Irfan Fahmi | Motion.dev 3D Interactive Portfolio & Agentic Engine</title>
+    <title>Muhammad Irfan Fahmi | Motion.dev 3D Interactive Portfolio & ATS Engine</title>
     <meta name="description" content="Next-Generation Motion.dev 3D Interactive Portfolio & Autonomous Career Intelligence Engine for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Festo Industrial AI Specialist.">
     
     <!-- Google Fonts -->
@@ -238,6 +238,20 @@
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            color: var(--accent-emerald);
+            font-size: 0.78rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
         }
 
         .theme-toggle {
@@ -513,6 +527,27 @@
             background: rgba(239, 68, 68, 0.15);
             color: #f87171;
             border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Resume Embedded Section */
+        .resume-section {
+            padding: 6rem 0;
+        }
+
+        .resume-frame-container {
+            width: 100%;
+            height: 750px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid var(--border-card);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .resume-frame-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Projects Section */
@@ -800,14 +835,16 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#hero">Overview</a></li>
+                <li><a href="#resume-section">📄 ATS Resume</a></li>
                 <li><a href="#ats-analyzer">ATS Engine</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#cli-terminal">Agent CLI</a></li>
             </ul>
             <div class="nav-actions">
+                <span class="security-badge">🔒 Privacy Guard</span>
                 <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme">🌙</button>
-                <a href="#cli-terminal" class="btn btn-primary">Launch Agent CLI</a>
+                <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume</a>
             </div>
         </div>
     </header>
@@ -817,7 +854,7 @@
         <div class="container hero-grid">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <span>⚡ Powered by Motion.dev & Three.js 3D Engine</span>
+                    <span>⚡ Motion.dev Connected • 3D Interactive Portfolio</span>
                 </div>
                 <h1 class="hero-title">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
                 <div class="hero-subtitle">&gt; B.Eng Computer Engineering | Cisco CCNA | Festo Industrial AI</div>
@@ -826,14 +863,14 @@
                 </p>
 
                 <div class="hero-cta">
-                    <a href="#ats-analyzer" class="btn btn-primary">
-                        <span>🎯 Live ATS Matcher</span>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">
+                        <span>📄 View ATS Resume (HTML)</span>
+                    </a>
+                    <a href="#ats-analyzer" class="btn btn-secondary">
+                        <span>🎯 Test ATS Matcher</span>
                     </a>
                     <a href="#cli-terminal" class="btn btn-secondary">
                         <span>💻 Run Agent CLI</span>
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        <span>🚀 View Projects</span>
                     </a>
                 </div>
 
@@ -866,16 +903,50 @@
                         <span>🤖 Agent CLI v0.1</span>
                     </div>
 
-                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">Candidate Intelligence Card</h3>
-                    <p style="color: var(--text-sub); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                        Interactive verification profile configured for high-explainability ATS matching and real-time portal automation.
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Verified Candidate Profile</h3>
+                    <div style="font-size: 0.8rem; color: var(--accent-emerald); font-family: var(--font-mono); margin-bottom: 1rem;">
+                        🔒 Phone: +60 1X-XXX XXXX [PROTECTED]<br>
+                        🔒 Email: f********7@gmail.com [PROTECTED]
+                    </div>
+                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        Contact details are protected against unauthorized web scraping. Connect securely via official LinkedIn or GitHub.
                     </p>
 
                     <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem;">
                         <div style="color: var(--accent-emerald);">$ python cli.py ats verify</div>
-                        <div style="color: var(--text-sub); margin-top: 0.4rem;">✓ Coverage: 100% (48/48 Keywords)</div>
-                        <div style="color: var(--primary); margin-top: 0.2rem;">✓ Status: Ready for Enterprise Deployment</div>
+                        <div style="color: var(--text-sub); margin-top: 0.4rem;">✓ Resume HTML: Linked & Verified</div>
+                        <div style="color: var(--primary); margin-top: 0.2rem;">✓ Security Status: Public Privacy Active</div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicated Embedded ATS Resume Section -->
+    <section class="resume-section" id="resume-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ATS Verified Document</span>
+                <h2 class="section-title">1-Page ATS Resume Viewer</h2>
+                <p style="color: var(--text-sub); margin-top: 0.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">
+                    Directly attached 1-page ATS HTML resume (`resume/resume.html`). Fully parsed and verified for enterprise ATS compliance with security-censored contact data.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">
+                        <span>📄 Fullscreen HTML Resume</span>
+                    </a>
+                    <a href="../resume/resume.md" target="_blank" class="btn btn-secondary">
+                        <span>📝 Markdown Version (.md)</span>
+                    </a>
+                    <a href="../resume/resume.txt" target="_blank" class="btn btn-secondary">
+                        <span>🔤 Plain Text Version (.txt)</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 1rem; max-width: 950px; margin: 0 auto; border-radius: var(--radius-md);">
+                <div class="resume-frame-container">
+                    <iframe src="../resume/resume.html" title="Muhammad Irfan Fahmi Resume Preview"></iframe>
                 </div>
             </div>
         </div>
@@ -1170,11 +1241,12 @@
     <footer>
         <div class="container">
             <div class="motion-connector-badge">
-                <span>✨ Connected with Motion.dev (Motion Animation Engine)</span>
+                <span>✨ Connected with Motion.dev & Security Guard Active</span>
             </div>
             <div class="footer-brand">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</div>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                B.Eng Computer Engineering (UTeM) • Cisco CCNA Enterprise • Festo Industrial AI Specialist
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 1rem;">
+                🔒 Public Contact Safeguard Active: Phone & Email Protected against Web Scraping Bots.<br>
+                Official Verification Channels: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
                 © 2026 Autonomous Career Intelligence System. Built with Motion.dev, Three.js 3D & Agent-Native CLI Spec v0.1.

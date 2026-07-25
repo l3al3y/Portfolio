@@ -47,8 +47,8 @@ class ProjectItem:
 @dataclass
 class CandidateProfile:
     name: str = "MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR"
-    email: str = "fahmilatif87@gmail.com"
-    phone: str = "+60 16-XXX XXXX"
+    email: str = "f********7@gmail.com [PROTECTED]"
+    phone: str = "+60 1X-XXX XXXX [PROTECTED]"
     location: str = "Puchong, Malaysia"
     linkedin: str = "https://linkedin.com/in/mifi99"
     github: str = "https://github.com/l3al3y"

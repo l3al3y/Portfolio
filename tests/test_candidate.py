@@ -17,7 +17,7 @@ class TestCandidateProfile(unittest.TestCase):
     def test_candidate_profile_defaults(self):
         profile = CandidateProfile._create_default_profile()
         self.assertEqual(profile.name, "MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR")
-        self.assertIn("fahmilatif87@gmail.com", profile.email)
+        self.assertIn("f********7@gmail.com", profile.email)
         self.assertGreaterEqual(len(profile.education), 3)
         self.assertGreaterEqual(len(profile.certifications), 5)
 
