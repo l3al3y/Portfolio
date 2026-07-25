@@ -1200,27 +1200,85 @@
         }
 
         /* -------------------------------------------------------------
-           4. AI Engine Integration
+           4. AI Engine Single Source of Truth & Knowledge Grounding
         ------------------------------------------------------------- */
-        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant, grounded in the Agentic Architecture from C:/Users/l3al3/Desktop/agentic-awesome-skills.
+        const RESUME_DATA = {
+            profile: {
+                name: "MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR",
+                age: "26–27 years old (Born 1999)",
+                location: "Puchong, Selangor, Malaysia",
+                degree: "Bachelor of Computer Engineering with Honours",
+                institution: "Universiti Teknikal Malaysia Melaka (UTeM)",
+                expectedGraduation: "November 2026",
+                military: "Askar Wataniah (Territorial Army Reserve - High Discipline & Stress Resilience)",
+                linkedin: "https://linkedin.com/in/mifi99",
+                github: "https://github.com/l3al3y"
+            },
+            education: [
+                {
+                    degree: "Bachelor of Computer Engineering with Honours",
+                    institution: "Universiti Teknikal Malaysia Melaka (UTeM)",
+                    dates: "Oct 2022 – Present (Expected Nov 2026)",
+                    notes: "Focus on Computer Networks, Systems, Computer Vision & AI"
+                },
+                {
+                    degree: "Diploma in Electronic Engineering (Computer)",
+                    institution: "Politeknik Port Dickson",
+                    dates: "Dec 2018 – May 2022",
+                    cgpa: "3.26 / 4.00"
+                },
+                {
+                    degree: "Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)",
+                    institution: "Kolej Komuniti Selandar",
+                    dates: "Jul 2017 – Feb 2019",
+                    cgpa: "3.58 / 4.00",
+                    awards: "Best Student Award (Anugerah Pelajar Terbaik) & Outstanding Achievement"
+                }
+            ],
+            certifications: [
+                { title: "Festo Industrial Automation with AI", issuer: "Festo Didactic", date: "16 July 2026" },
+                { title: "CCNA: Enterprise Networking & Automation", issuer: "Cisco Networking Academy / UTeM", date: "23 Feb 2026" },
+                { title: "CCNA: Switching, Routing & Wireless", issuer: "Cisco Networking Academy / UTeM", date: "23 Feb 2026" },
+                { title: "Endpoint Security Certification", issuer: "Cisco Networking Academy", date: "12 Dec 2024" },
+                { title: "Cyber Threat Management", issuer: "Cisco Networking Academy", date: "17 Nov 2024" },
+                { title: "Fiber Optic Splicing & Polishing", issuer: "Technical Workshop", date: "3 Feb 2018" }
+            ],
+            skills: {
+                networking: ["CCNA", "TCP/IP", "IPv4/IPv6", "VLAN", "Inter-VLAN Routing", "OSPF", "Switching", "LAN", "WAN", "STP", "EtherChannel", "DHCP", "DNS", "NAT", "ACL", "WLAN", "Wireshark", "Cisco Packet Tracer", "Network Troubleshooting"],
+                cybersecurity: ["Cybersecurity", "Endpoint Security", "Cyber Threat Management", "Host Hardening", "Firewall", "Incident Response", "Security Monitoring", "Threat Mitigation"],
+                itSupport: ["Windows Administration", "Desktop Support", "Technical Support", "Hardware Troubleshooting", "User Support", "Customer Support", "Software & Driver Installation", "Printer Support", "Microsoft Office", "Technical Documentation"],
+                industrialAI: ["Industrial Automation", "Artificial Intelligence (AI)", "Predictive Maintenance", "Manufacturing Data Analytics", "OpenCV", "YOLOv8", "Computer Vision", "Arduino", "Sensor Integration", "IoT", "Embedded Systems"],
+                programming: ["Python", "C", "C++", "SQL", "MySQL", "Git", "GitHub", "VS Code", "EasyEDA"]
+            },
+            projects: [
+                {
+                    title: "Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)",
+                    type: "Capstone Project",
+                    metrics: "77.4% precision, 72.0% recall at 50 epochs, under 150ms inference latency",
+                    bullets: [
+                        "Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.",
+                        "Achieved 77.4% precision and 72.0% recall at 50 epochs, eliminating scan evasion with under 150ms inference latency."
+                    ]
+                }
+            ],
+            summaries: {
+                en: `"I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology."`,
+                bm: `"Saya merupakan graduan Kejuruteraan Komputer yang bersemangat merealisasikan idea kepada penyelesaian praktikal melalui perisian, rangkaian, dan kecerdasan buatan (AI). Minat saya merangkumi sokongan IT, pembangunan web full-stack, teknologi awan (cloud), dan automasi, serta sentiasa mencari peluang untuk mempelajari dan mengaplikasikan alatan baharu. Saya gemar membina projek yang menaik taraf aliran kerja, memperkukuh kemahiran teknikal, dan mempamerkan penyelesaian masalah dunia sebenar. Matlamat saya adalah untuk berkembang sebagai jurutera yang merapatkan jurang antara perkakasan, perisian, dan kecerdasan buatan bagi menghasilkan teknologi yang boleh dipercayai dan berimpak tinggi."`,
+                cn: `"我是计算机工程系的毕业生，热衷于通过软件、网络和人工智能将创意转化为实用解决方案。我的兴趣涵盖IT支持、全栈Web开发、云技术和自动化，并始终寻找学习和应用新工具的机会。我喜欢开发能够优化工作流程、提升技术能力并解决现实难题的项目。我的目标是成长为一名融汇硬件、软件和人工智能的工程师，创造出可靠且具备深远影响力的技术。"`,
+                in: `"நான் மென்பொருள், நெட்வொர்க்கிங் மற்றும் AI மூலம் யோசனைகளை நடைமுறை தீர்வுகளாக மாற்றுவதை விரும்பும் கணினி பொறியியல் பட்டதாரி. எனது ஆர்வங்கள் IT ஆதரவு, முழு-ஸ்டாக் வலை உருவாக்கம், மேகக்கணி தொழில்நுட்பங்கள் மற்றும் தானியங்கி அமைப்புகளை உள்ளடக்கியது. வன்பொருள், மென்பொருள் மற்றும் செயற்கை நுண்ணறிவை இணைத்து நம்பகமான தொழில்நுட்பத்தை உருவாக்குவதே எனது இலக்காகும்."`
+            }
+        };
 
-Candidate Profile:
-- Name: Muhammad Irfan Fahmi bin Samsul Kamar
-- Age: 26–27 years old (Born 1999)
-- Location: Puchong, Selangor, Malaysia
-- Degree: Bachelor of Computer Engineering with Honours (Universiti Teknikal Malaysia Melaka - UTeM, expected Nov 2026)
-- Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
-- Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
-- Key Mindset: Turning ideas into practical solutions through software, networking, and AI. Interests span IT support, full-stack web development, cloud technologies, automation, and bridging hardware, software, and AI to create reliable, impactful technology. Military reserve training in Askar Wataniah (high discipline & stress resilience).
-- Agentic Standard: Complies with Agent-Native CLI Spec v0.1 (agent/ brief.md, rules/, skills/, issue system) learned from C:/Users/l3al3/Desktop/agentic-awesome-skills.
-- Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
+        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant.
+Here is Irfan's complete single-source-of-truth structured background:
+${JSON.stringify(RESUME_DATA, null, 2)}
 
 CONVERSATIONAL LEAP & MULTILINGUAL RULES:
-1. STRICT DYNAMIC USER LANGUAGE MATCHING: Detect the exact language used in the user's input prompt (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், Japanese, Spanish, etc.) and respond STRICTLY in that EXACT SAME language with deep humanlike fluency and warmth.
-2. IDENTITY HANDLING: If asked "who you", "who are you", "siapa awak", "siapa anda", "你是谁", or similar, identify yourself warmly as Irfan's Conversational AI Assistant. Explain your role in helping recruiters evaluate Irfan's engineering background, age (26–27), CCNA credentials, and rapid adaptability.
-3. AGE HANDLING: If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
-4. HUGE LEAP IN CONVERSATION: Provide insightful, articulate, empathetic, and multi-turn conversational responses. Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
-5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the human CAPTCHA check.`;
+1. DYNAMIC USER LANGUAGE MATCHING: Detect the exact language used in the user's input prompt (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், etc.) and respond STRICTLY in that EXACT SAME language with deep humanlike fluency and warmth.
+2. TRUTHFUL GROUNDING: Answer ANY question about Irfan's resume accurately based on RESUME_DATA above (e.g. Diploma CGPA 3.26 at Politeknik Port Dickson, Certificate CGPA 3.58 at Kolej Komuniti Selandar with Best Student Award, Capstone YOLOv8 77.4% precision / 72.0% recall at 50 epochs with <150ms latency, CCNA dates 23 Feb 2026, Festo 16 July 2026, all skills like OSPF, VLAN, Python, C++, etc.).
+3. IDENTITY & AGE: Irfan is 26–27 years old (born 1999). Identify yourself as Irfan's AI Assistant.
+4. HUGE LEAP IN CONVERSATION: Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
+5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the Turnstile CAPTCHA check.`;
 
         // Initialize API Key Input on page load
         window.addEventListener('DOMContentLoaded', () => {
@@ -1276,7 +1334,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             if (/[\u0e00-\u0e7f]/.test(text)) return 'th'; // Thai
             if (/[\u0600-\u06ff]/.test(text)) return 'ar'; // Arabic
             
-            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat'];
+            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh'];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
             
@@ -1430,69 +1488,148 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             return text.replace(/\n/g, "<br>");
         }
 
+        /* Structured Retrieval Engine over RESUME_DATA (Last-Resort Fallback) */
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
-            // 1. IDENTITY & WHO YOU INQUIRIES (FUZZY & MULTILINGUAL)
-            if (q.includes('who you') || q.includes('who are you') || q.includes('who r u') || q.includes('siapa awak') || q.includes('siapa kamu') || q.includes('siapa anda') || q.includes('siapa ni') || q.includes('你是谁') || q.includes('你是什么') || q.includes('நீ யார்')) {
-                if (lang === 'bm') {
-                    return `Salam! 👋 Saya Pembantu AI Khas untuk Muhammad Irfan Fahmi.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (26–27 tahun), serta kebolehan beliau menyesuaikan diri dengan cepat dalam persekitaran baharu.<br><br>Ada apa soalan yang ingin anda tanya mengenai Irfan?`;
-                } else if (lang === 'cn') {
-                    return `您好！👋 我是 Muhammad Irfan Fahmi 的 AI 智能助理。<br><br>我致力于帮助招聘者和雇主全面了解 Irfan 的计算机工程背景、Cisco CCNA 网络认证、Festo 工业AI项目、年龄（26-27岁）以及他在新工具和工作环境中的快速适应与学习能力。<br><br>请问有什么关于 Irfan 的问题我可以为您解答？`;
-                } else if (lang === 'in') {
-                    return `வணக்கம்! 👋 நான் முஹம்மது இர்பான் ஃபஹ்மியின் AI உதவியாளர்.<br><br>இர்பானின் கணினி பொறியியல் பின்னணி, சிஸ்கோ CCNA சான்றிதழ்கள், வயது (26-27) மற்றும் புதிய தொழில்நுட்பங்களைக் கற்றுக்கொள்ளும் திறன் பற்றி அறிய நான் உங்களுக்கு உதவுகிறேன்!`;
-                } else {
-                    return `Hello! 👋 I am Muhammad Irfan Fahmi's Conversational AI Assistant.<br><br>I'm here to help recruiters and employers evaluate Irfan's Computer Engineering background (UTeM), Cisco CCNA & Festo Industrial AI credentials, age (26–27 years old), and how rapidly he masters new tools and engineering environments whenever given the opportunity.<br><br>What would you like to know about Irfan?`;
+            const scores = {
+                diploma_cgpa: 0,
+                cert_sijil_cgpa: 0,
+                degree_utem: 0,
+                capstone_metrics: 0,
+                ccna_dates: 0,
+                festo_cert: 0,
+                skills_programming: 0,
+                skills_networking: 0,
+                skills_cybersecurity: 0,
+                skills_it_support: 0,
+                skills_industrial_ai: 0,
+                identity: 0,
+                age: 0
+            };
+
+            if (q.includes('diploma') || q.includes('port dickson') || q.includes('3.26')) scores.diploma_cgpa += 5;
+            if (q.includes('cgpa') || q.includes('gred') || q.includes('grade') || q.includes('pointer')) {
+                scores.diploma_cgpa += 3;
+                scores.cert_sijil_cgpa += 3;
+            }
+
+            if (q.includes('sijil') || q.includes('certificate') || q.includes('komuniti') || q.includes('selandar') || q.includes('3.58') || q.includes('best student') || q.includes('terbaik')) scores.cert_sijil_cgpa += 5;
+            if (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor') || q.includes(' honours') || q.includes('sarjana muda')) scores.degree_utem += 5;
+
+            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode')) scores.capstone_metrics += 5;
+
+            if (q.includes('ccna') || q.includes('cisco')) {
+                scores.ccna_dates += 4;
+                scores.skills_networking += 3;
+            }
+            if (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila') || q.includes('dapat')) {
+                scores.ccna_dates += 2;
+                scores.festo_cert += 2;
+            }
+
+            if (q.includes('festo') || q.includes('didactic')) scores.festo_cert += 5;
+
+            if (q.includes('programming') || q.includes('python') || q.includes('c++') || q.includes('coding') || q.includes('language') || q.includes('languages') || q.includes('bahasa pengaturcaraan') || q.includes('kod') || q.includes('sql') || q.includes('mysql') || q.includes('git')) scores.skills_programming += 5;
+
+            if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching')) scores.skills_networking += 5;
+
+            if (q.includes('cybersecurity') || q.includes('keselamatan') || q.includes('firewall') || q.includes('threat') || q.includes('endpoint')) scores.skills_cybersecurity += 5;
+
+            if (q.includes('support') || q.includes('desktop') || q.includes('windows') || q.includes('sokongan') || q.includes('hardware')) scores.skills_it_support += 5;
+
+            if (q.includes('industrial ai') || q.includes('automation') || q.includes('iot') || q.includes('arduino')) scores.skills_industrial_ai += 5;
+
+            if (q.includes('who') || q.includes('siapa') || q.includes('identity') || q.includes('你是谁')) scores.identity += 5;
+            if (q.includes('age') || q.includes('umur') || q.includes('tahun') || q.includes('lahir') || q.includes('born') || q.includes('old') || q.includes('几岁')) scores.age += 5;
+
+            let maxCategory = "";
+            let maxScore = 0;
+            for (const [cat, score] of Object.entries(scores)) {
+                if (score > maxScore) {
+                    maxScore = score;
+                    maxCategory = cat;
                 }
             }
 
-            // 2. AGE & BIRTH INQUIRIES (MULTILINGUAL)
-            if (q === 'age' || q.includes('how old') || q.includes('umur') || q.includes('几岁') || q.includes('年龄') || q.includes('வயது') || q.includes('lahir') || q.includes('born')) {
-                if (lang === 'bm') {
-                    return `Irfan berumur <strong>26–27 tahun</strong> (lahir pada tahun 1999). Beliau kini menamatkan pengajian Ijazah Sarjana Muda Kejuruteraan Komputer (Kepujian) di Universiti Teknikal Malaysia Melaka (UTeM), dijangka bergraduan pada November 2026.`;
-                } else if (lang === 'cn') {
-                    return `Irfan现年 <strong>26–27 岁</strong>（1999年出生）。他目前正在马来西亚马六甲技术大学（UTeM）攻读计算机工程荣誉学士学位，预计于2026年11月毕业。`;
-                } else if (lang === 'in') {
-                    return `இர்பானுக்கு <strong>26–27 வயது</strong> (1999 இல் பிறந்தார்). அவர் மலேசிய தொழில்நுட்ப பல்கலைக்கழகத்தில் (UTeM) கணினி பொறியியல் பட்டப்படிப்பை முடித்து வருகிறார்.`;
-                } else {
-                    return `Irfan is <strong>26–27 years old</strong> (born in 1999). He is completing his Bachelor of Computer Engineering (Honours) at Universiti Teknikal Malaysia Melaka (UTeM), expected to graduate in November 2026.`;
+            if (maxScore >= 3) {
+                switch (maxCategory) {
+                    case 'diploma_cgpa':
+                    case 'cert_sijil_cgpa':
+                    case 'degree_utem': {
+                        const dip = RESUME_DATA.education[1];
+                        const cert = RESUME_DATA.education[2];
+                        const deg = RESUME_DATA.education[0];
+                        if (lang === 'bm') {
+                            return `<strong>Maklumat Pendidikan & CGPA Irfan:</strong><br>• <strong>${deg.degree}</strong> di ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> di ${dip.institution} (${dip.dates}) — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> di ${cert.institution} (${cert.dates}) — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                        } else {
+                            return `<strong>Irfan's Academic Education & CGPA:</strong><br>• <strong>${deg.degree}</strong> at ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> at ${dip.institution} (${dip.dates}) — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> at ${cert.institution} (${cert.dates}) — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                        }
+                    }
+                    case 'capstone_metrics': {
+                        const proj = RESUME_DATA.projects[0];
+                        if (lang === 'bm') {
+                            return `<strong>Projek Capstone (Hybrid Self-Checkout System):</strong><br>• Irfan membangunkan sistem dwi-pengesahan menggunakan OpenCV, YOLOv8 PyTorch, pengimbas kod bar USB, dan integrasi pangkalan data MySQL.<br>• Keputusan Model (50 epochs): <strong>${proj.metrics}</strong>.`;
+                        } else {
+                            return `<strong>Capstone Project (${proj.title}):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>${proj.metrics}</strong>.`;
+                        }
+                    }
+                    case 'ccna_dates':
+                    case 'festo_cert': {
+                        const certList = RESUME_DATA.certifications.map(c => `• <strong>${c.title}</strong> — ${c.issuer} (${c.date})`).join('<br>');
+                        if (lang === 'bm') {
+                            return `<strong>Tarikh Pensijilan Profesional Irfan:</strong><br>${certList}`;
+                        } else {
+                            return `<strong>Irfan's Professional Certification Dates:</strong><br>${certList}`;
+                        }
+                    }
+                    case 'skills_programming': {
+                        const progs = RESUME_DATA.skills.programming.join(', ');
+                        if (lang === 'bm') {
+                            return `<strong>Senarai Bahasa Pengaturcaraan & Alatan Irfan:</strong><br>• Bahasa & Pangkalan Data: ${progs}`;
+                        } else {
+                            return `<strong>Irfan's Full Programming Languages & Tools:</strong><br>• Languages & Databases: ${progs}`;
+                        }
+                    }
+                    case 'skills_networking': {
+                        const nets = RESUME_DATA.skills.networking.join(', ');
+                        if (lang === 'bm') {
+                            return `<strong>Kemahiran Rangkaian & Protokol Irfan (termasuk OSPF & VLAN):</strong><br>• Irfan menguasai protokol dan alatan berikut: ${nets}. Beliau memegang pensijilan Cisco CCNA Enterprise.`;
+                        } else {
+                            return `<strong>Irfan's Networking Protocols & Skills (including OSPF & VLAN):</strong><br>• Irfan is proficient in: ${nets}. He holds official Cisco CCNA Enterprise certifications.`;
+                        }
+                    }
+                    case 'skills_cybersecurity':
+                    case 'skills_it_support':
+                    case 'skills_industrial_ai': {
+                        if (lang === 'bm') {
+                            return `<strong>Ringkasan Kepakaran Teknikal Irfan:</strong><br>• <strong>Rangkaian:</strong> ${RESUME_DATA.skills.networking.slice(0, 8).join(', ')}<br>• <strong>Pengaturcaraan:</strong> ${RESUME_DATA.skills.programming.join(', ')}<br>• <strong>Cybersecurity:</strong> ${RESUME_DATA.skills.cybersecurity.join(', ')}<br>• <strong>Industrial AI & IoT:</strong> ${RESUME_DATA.skills.industrialAI.join(', ')}`;
+                        } else {
+                            return `<strong>Irfan's Technical Expertise Overview:</strong><br>• <strong>Networking:</strong> ${RESUME_DATA.skills.networking.slice(0, 8).join(', ')}<br>• <strong>Programming:</strong> ${RESUME_DATA.skills.programming.join(', ')}<br>• <strong>Cybersecurity:</strong> ${RESUME_DATA.skills.cybersecurity.join(', ')}<br>• <strong>Industrial AI & IoT:</strong> ${RESUME_DATA.skills.industrialAI.join(', ')}`;
+                        }
+                    }
+                    case 'identity': {
+                        if (lang === 'bm') {
+                            return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan beliau menyesuaikan diri dengan cepat.`;
+                        } else {
+                            return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
+                        }
+                    }
+                    case 'age': {
+                        if (lang === 'bm') {
+                            return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
+                        } else {
+                            return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
+                        }
+                    }
                 }
             }
 
-            // 3. GREETINGS (MULTILINGUAL)
-            if (q === 'hi' || q === 'hello' || q === 'hai' || q.includes('selamat') || q.includes('你好') || q.includes('வணக்கம்')) {
-                if (lang === 'bm') {
-                    return `Salam & Selamat Sejahtera! 👋 Saya Pembantu AI Irfan. Saya sedia menjawab sebarang soalan mengenai kelayakan kejuruteraan Irfan, umur beliau (26-27 tahun), pensijilan Cisco CCNA, atau soalan umum secara spontan! Ada apa yang boleh saya bantu?`;
-                } else if (lang === 'cn') {
-                    return `您好！👋 我是 AI 智能助手。无论是关于 Irfan 的计算机工程背景、年龄（26-27岁）、Cisco CCNA 认证，还是任何其他自选话题，我都能为您解答！请问有什么我可以帮您？`;
-                } else if (lang === 'in') {
-                    return `வணக்கம்! 👋 நான் இர்பானின் AI உதவியாளர். இர்பானின் கல்வி, சிஸ்கோ CCNA சான்றிதழ்கள், வயது அல்லது ஏதேனும் கேள்விகளுக்கு பதிலளிக்க நான் தயாராக இருக்கிறேன்!`;
-                } else {
-                    return `Hello! 👋 I am Irfan's AI Assistant. Ask me anything about Irfan's engineering qualifications, CCNA credentials, age (26–27), or any spontaneous topic! How can I help you today?`;
-                }
-            }
-
-            // 4. SKILLS & PROFILE (MULTILINGUAL)
-            if (q.includes('skills') || q.includes('kemahiran') || q.includes('技能') || q.includes('திறன்கள்') || q.includes('ccna') || q.includes('cisco')) {
-                if (lang === 'bm') {
-                    return `<strong>Kemahiran Utama Irfan:</strong><br>• <strong>Rangkaian & Protokol:</strong> Cisco CCNA Enterprise, Switching & Routing, OSPF, VLAN, TCP/IP, Wireshark.<br>• <strong>Kecerdasan Buatan (AI) & IoT:</strong> Festo Industrial AI, YOLOv8 PyTorch (Pengesahan Visual), OpenCV.<br>• <strong>Penyesuaian Diri Tinggi:</strong> Cepat menguasai teknologi dan alatan baharu jika diberi peluang.`;
-                } else if (lang === 'cn') {
-                    return `<strong>Irfan 的核心专业技能：</strong><br>• <strong>网络工程：</strong> Cisco CCNA 企业级认证、交换与路由、OSPF、VLAN、TCP/IP、Wireshark 数据包分析。<br>• <strong>工业人工智能与视觉：</strong> Festo 工业AI认证、YOLOv8 深度学习模型、OpenCV 图像处理。<br>• <strong>高适应力：</strong> 具备极强的学习能力，能够快速掌握全新的工具与工程环境。`;
-                } else if (lang === 'in') {
-                    return `<strong>இர்பானின் முதன்மை திறன்கள்:</strong><br>• சிஸ்கோ CCNA நெட்வொர்க்கிங் & OSPF, VLAN.<br>• ஃபெஸ்டோ தொழில்துறை AI & YOLOv8 கணினி பார்வை.<br>• புதிய தொழில்நுட்பங்களை விரைவாகக் கற்றுக்கொள்ளும் திறன்.`;
-                }
-            }
-
-            // 5. SPONTANEOUS GENERAL KNOWLEDGE FALLBACK (MULTILINGUAL NATIVE)
             if (lang === 'bm') {
-                return `Soalan yang sangat menarik! Mengenai soalan anda: "${escapeHtml(inputQuery)}", sebagai pembantu AI yang bijak, saya sedia membincangkan pelbagai topik sama ada berkenaan kejuruteraan Irfan atau soalan umum secara spontan. Sila tanya soalan seterusnya!`;
-            } else if (lang === 'cn') {
-                return `这是一个非常有趣的问题！关于您提到的：“${escapeHtml(inputQuery)}”，作为一个智能AI助手，我不仅熟悉 Irfan 的工程背景与专业认证，也能顺畅地解答各种跨领域与日常话题。请随时继续提问！`;
-            } else if (lang === 'in') {
-                return `சிறப்பான கேள்வி! நீங்கள் கேட்ட கேள்வி பற்றி: "${escapeHtml(inputQuery)}", நான் இர்பானின் விவரங்கள் மற்றும் பொதுவான கேள்விகளுக்கு பதிலளிக்க தயாராக இருக்கிறேன்.`;
+                return `Saya tidak mempunyai maklumat khusus mengenai soalan itu, tetapi ini ringkasan kelayakan kejuruteraan Irfan:<br>• <strong>Ijazah:</strong> ${RESUME_DATA.profile.degree} (${RESUME_DATA.profile.institution})<br>• <strong>Diploma:</strong> Diploma Kejuruteraan Elektronik (Komputer) — CGPA ${RESUME_DATA.education[1].cgpa}<br>• <strong>Sijil Komuniti:</strong> CGPA ${RESUME_DATA.education[2].cgpa} (Best Student Award)<br>• <strong>Projek Capstone:</strong> Hybrid Self-Checkout System (${RESUME_DATA.projects[0].metrics})<br>• <strong>Pensijilan:</strong> Cisco CCNA & Festo Industrial AI.`;
             }
 
-            return `That's a great question! Regarding: "${escapeHtml(inputQuery)}", as a spontaneous AI assistant, I can naturally discuss general topics, engineering concepts, or candidate qualifications. What else would you like to explore?`;
+            return `I don't have that exact detail, but here is a summary of Irfan's key engineering background:<br>• <strong>Degree:</strong> ${RESUME_DATA.profile.degree} (${RESUME_DATA.profile.institution})<br>• <strong>Diploma:</strong> Diploma in Electronic Engineering (Computer) — CGPA ${RESUME_DATA.education[1].cgpa}<br>• <strong>Certificate:</strong> Computer Systems & Networking — CGPA ${RESUME_DATA.education[2].cgpa} (Best Student Award)<br>• <strong>Capstone Project:</strong> Hybrid Self-Checkout System (${RESUME_DATA.projects[0].metrics})<br>• <strong>Certifications:</strong> Cisco CCNA Enterprise & Festo Industrial AI.`;
         }
 
         function escapeHtml(str) {
