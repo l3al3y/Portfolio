@@ -139,9 +139,10 @@ D:\Resume ats cli\
 
 ## 📱 MOBILE & CROSS-DEVICE OPTIMIZATION & ATS VERIFICATION
 
-* **Mobile Responsive Navigation Drawer (`☰` / `✕`):** Interactive hamburger toggle menu for viewports `<992px` in `index.html`, `web/index.html`, and `web/portfolio.html`. Smooth scrolling and auto-close drawer behavior.
+* **Clean Mobile Navigation Header (`☀️`/`🌙` Theme + `☰` Drawer):** Top header right actions contain strictly the Theme Toggle and Hamburger Menu. The `🔓 Reveal Contact` button is located below the 4-Language Personal Summary box and inside the navigation drawer dropdown.
+* **Floating Action Button (FAB) Circle AI Chatbot Widget:** Chatbot converted to a floating bottom-right circle widget (`🌙` / `AI` badge). Tapping the circle toggles open a mobile-optimized modal chat window. All Kimi text clutter removed for a clean UI.
+* **Removed Duplicate 1-Page ATS Resume Section:** Deleted the redundant iframe resume preview section at the bottom of the page; ATS resume remains accessible via header actions, hero CTA buttons (`📄 View ATS Resume`), and direct links.
 * **Fluid Typography & Touch Target Standard:** Uses CSS `clamp()` (`clamp(1.75rem, 5vw, 3.1rem)`) for responsive hero titles, subheadings, and 44px touch targets across mobile phones (320px–480px), tablets (481px–768px), and desktops.
-* **Responsive Kimi K2.5 Chat & Security Modal:** Height-adapted chat cards (`500px` on small devices) and scaled employer CAPTCHA verification modal (`width: 95%`).
 * **100% ATS Keyword Verification (`python resume/verify_ats.py`):**
   - `resume.html`: **100.0% Match** (42/42 target keywords matched)
   - `resume.md`: **100.0% Match** (42/42 target keywords matched)
