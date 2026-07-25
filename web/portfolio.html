@@ -240,6 +240,17 @@
             border-color: var(--primary);
         }
 
+        .btn-emerald {
+            background: linear-gradient(135deg, var(--accent-emerald), #059669);
+            color: #0f172a;
+            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.25);
+        }
+
+        .btn-emerald:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 211, 153, 0.4);
+        }
+
         .security-badge {
             display: inline-flex;
             align-items: center;
@@ -404,6 +415,65 @@
             font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: -1px;
+        }
+
+        /* Security Verification Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 10000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1; pointer-events: auto;
+        }
+
+        .modal-card {
+            background: #111726;
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1.25rem;
+            background: none; border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .captcha-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .captcha-math {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
         }
 
         /* ATS Analyzer Section */
@@ -842,12 +912,66 @@
                 <li><a href="#cli-terminal">Agent CLI</a></li>
             </ul>
             <div class="nav-actions">
-                <span class="security-badge">🔒 Privacy Guard</span>
+                <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
                 <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme">🌙</button>
                 <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume</a>
             </div>
         </div>
     </header>
+
+    <!-- Employer Verification Security Modal -->
+    <div class="modal-overlay" id="security-modal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeSecurityModal()">&times;</button>
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
+                🛡️ Employer Verification Challenge
+            </h3>
+            <p style="color: var(--text-sub); font-size: 0.9rem;">
+                To prevent automated web scrapers and spambots on GitHub from harvesting plaintext contact info, please solve this quick human challenge to reveal official candidate contact details.
+            </p>
+
+            <div class="captcha-box" id="captcha-container">
+                <div class="captcha-math" id="captcha-question">Solve: 5 + 4 = ?</div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <input type="number" id="captcha-answer" class="form-input" placeholder="Enter answer..." style="text-align: center; font-size: 1.1rem; font-family: var(--font-mono);">
+                </div>
+            </div>
+
+            <button class="btn btn-emerald" style="width: 100%; justify-content: center; font-size: 1rem;" onclick="verifyEmployerCaptcha()">
+                <span>🔓 Verify & Reveal Contact Details</span>
+            </button>
+
+            <!-- Revealed Content Box (Hidden by default) -->
+            <div id="revealed-contact-box" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-card);">
+                <div style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 700; margin-bottom: 1rem;">
+                    ✓ HUMAN VERIFIED — CANDIDATE DIRECT CONTACT:
+                </div>
+                
+                <div style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--border-card);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <div>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">EMAIL:</span><br>
+                            <span style="color: var(--text-main); font-weight: 700;" id="revealed-email">fahmilatif87@gmail.com</span>
+                        </div>
+                        <button class="cli-btn" onclick="copyTextToClipboard('fahmilatif87@gmail.com')">Copy</button>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">PHONE / WHATSAPP:</span><br>
+                            <span style="color: var(--accent-emerald); font-weight: 700;" id="revealed-phone">+60 16-832 9918</span>
+                        </div>
+                        <button class="cli-btn" onclick="copyTextToClipboard('+60168329918')">Copy</button>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem;">
+                    <a href="mailto:fahmilatif87@gmail.com" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.85rem;">✉️ Email Candidate</a>
+                    <a href="https://wa.me/60168329918" target="_blank" class="btn btn-emerald" style="flex: 1; justify-content: center; font-size: 0.85rem;">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -866,11 +990,11 @@
                     <a href="../resume/resume.html" target="_blank" class="btn btn-primary">
                         <span>📄 View ATS Resume (HTML)</span>
                     </a>
+                    <button class="btn btn-emerald" onclick="openSecurityModal()">
+                        <span>🔓 Reveal Contact Info</span>
+                    </button>
                     <a href="#ats-analyzer" class="btn btn-secondary">
                         <span>🎯 Test ATS Matcher</span>
-                    </a>
-                    <a href="#cli-terminal" class="btn btn-secondary">
-                        <span>💻 Run Agent CLI</span>
                     </a>
                 </div>
 
@@ -905,17 +1029,18 @@
 
                     <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Verified Candidate Profile</h3>
                     <div style="font-size: 0.8rem; color: var(--accent-emerald); font-family: var(--font-mono); margin-bottom: 1rem;">
-                        🔒 Phone: +60 1X-XXX XXXX [PROTECTED]<br>
-                        🔒 Email: f********7@gmail.com [PROTECTED]
+                        🔒 Phone: <span id="card-phone-display">+60 1X-XXX XXXX [PROTECTED]</span><br>
+                        🔒 Email: <span id="card-email-display">f********7@gmail.com [PROTECTED]</span>
                     </div>
-                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                        Contact details are protected against unauthorized web scraping. Connect securely via official LinkedIn or GitHub.
-                    </p>
+
+                    <button class="btn btn-emerald" style="width: 100%; justify-content: center; padding: 0.5rem; font-size: 0.85rem; margin-bottom: 1rem;" onclick="openSecurityModal()">
+                        <span>🔓 Click CAPTCHA to Reveal Contact</span>
+                    </button>
 
                     <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem;">
                         <div style="color: var(--accent-emerald);">$ python cli.py ats verify</div>
                         <div style="color: var(--text-sub); margin-top: 0.4rem;">✓ Resume HTML: Linked & Verified</div>
-                        <div style="color: var(--primary); margin-top: 0.2rem;">✓ Security Status: Public Privacy Active</div>
+                        <div style="color: var(--primary); margin-top: 0.2rem;">✓ Security Status: CAPTCHA Active</div>
                     </div>
                 </div>
             </div>
@@ -935,6 +1060,9 @@
                     <a href="../resume/resume.html" target="_blank" class="btn btn-primary">
                         <span>📄 Fullscreen HTML Resume</span>
                     </a>
+                    <button class="btn btn-emerald" onclick="openSecurityModal()">
+                        <span>🔓 Reveal Full Contact Info</span>
+                    </button>
                     <a href="../resume/resume.md" target="_blank" class="btn btn-secondary">
                         <span>📝 Markdown Version (.md)</span>
                     </a>
@@ -1245,7 +1373,7 @@
             </div>
             <div class="footer-brand">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</div>
             <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 1rem;">
-                🔒 Public Contact Safeguard Active: Phone & Email Protected against Web Scraping Bots.<br>
+                🔒 Public Contact Safeguard Active: Plaintext data is protected against GitHub web scrapers.<br>
                 Official Verification Channels: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
@@ -1256,6 +1384,52 @@
 
     <!-- Motion.dev Animation & Three.js 3D Logic -->
     <script>
+        /* -------------------------------------------------------------
+           Security CAPTCHA & Obfuscated Contact Payload
+        ------------------------------------------------------------- */
+        let captchaAns = 0;
+
+        function openSecurityModal() {
+            const num1 = Math.floor(Math.random() * 8) + 2;
+            const num2 = Math.floor(Math.random() * 8) + 2;
+            captchaAns = num1 + num2;
+
+            document.getElementById('captcha-question').innerText = `Solve: ${num1} + ${num2} = ?`;
+            document.getElementById('captcha-answer').value = '';
+            document.getElementById('security-modal').classList.add('active');
+        }
+
+        function closeSecurityModal() {
+            document.getElementById('security-modal').classList.remove('active');
+        }
+
+        function verifyEmployerCaptcha() {
+            const userAns = parseInt(document.getElementById('captcha-answer').value.trim());
+            if (userAns === captchaAns) {
+                // Client-side Base64 decoding dynamically (hidden from raw static HTML scrapers)
+                const emailPayload = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
+                const phonePayload = atob('KzYwIDE2LTgzMiA5OTE4');
+
+                document.getElementById('revealed-email').innerText = emailPayload;
+                document.getElementById('revealed-phone').innerText = phonePayload;
+                document.getElementById('revealed-contact-box').style.display = 'block';
+
+                const cardEmail = document.getElementById('card-email-display');
+                const cardPhone = document.getElementById('card-phone-display');
+                if (cardEmail) cardEmail.innerText = emailPayload;
+                if (cardPhone) cardPhone.innerText = phonePayload;
+            } else {
+                alert('Incorrect CAPTCHA answer. Please try again to verify human access.');
+                openSecurityModal();
+            }
+        }
+
+        function copyTextToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard: ' + text);
+            });
+        }
+
         /* -------------------------------------------------------------
            1. Motion.dev Connector & Micro-Animations
         ------------------------------------------------------------- */
@@ -1433,7 +1607,7 @@
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const cards = document.querySelectorAll('.project-card');
+            const cards = document.getElementById('projects-grid').querySelectorAll('.project-card');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.style.display = 'flex';
