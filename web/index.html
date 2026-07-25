@@ -14,6 +14,9 @@
     <!-- Three.js CDN for 3D WebGL Constellation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+    <!-- Cloudflare Turnstile CAPTCHA API -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
     <style>
         :root {
             --bg-base: #0b0f19;
@@ -806,46 +809,43 @@
             <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
                 🛡️ Employer Security Verification
             </h3>
-            <p style="color: var(--text-sub); font-size: 0.9rem;">
-                Solve this quick math challenge to prove human recruiter access and reveal direct candidate phone & email details. Plaintext contact info is protected on GitHub against automated bots.
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1.25rem;">
+                Complete the Cloudflare Turnstile verification below to reveal candidate direct phone & email details. Plaintext contact info is protected against web scrapers.
             </p>
 
-            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; text-align: center;">
-                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;" id="captcha-question">Solve: 5 + 4 = ?</div>
-                <input type="number" id="captcha-answer" class="chat-input" placeholder="Enter sum..." style="text-align: center; font-size: 1.1rem; font-family: var(--font-mono); width: 100%;">
+            <!-- Cloudflare Turnstile Widget -->
+            <div style="display: flex; justify-content: center; margin: 1rem 0;">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAD9nlicfqO7QQsBk" data-action="turnstile-spin-v2" data-callback="onTurnstileSuccess"></div>
             </div>
-
-            <button class="btn btn-emerald" style="width: 100%; justify-content: center; font-size: 1rem;" onclick="verifyEmployerCaptcha()">
-                <span>🔓 Verify & Reveal Contact Details</span>
-            </button>
+            <div id="captcha-error-msg" style="display:none; color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; text-align: center; font-weight: 600;"></div>
 
             <!-- Revealed Box -->
             <div id="revealed-contact-box" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-card);">
                 <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 1rem;">
-                    ✓ HUMAN VERIFIED — CANDIDATE DIRECT CONTACT:
+                    ✓ VERIFIED RECRUITER — CANDIDATE DIRECT CONTACT:
                 </div>
                 
                 <div style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--border-card);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
                         <div>
                             <span style="color: var(--text-muted); font-size: 0.75rem;">EMAIL:</span><br>
-                            <span style="color: var(--text-main); font-weight: 700;" id="revealed-email">fahmilatif87@gmail.com</span>
+                            <span style="color: var(--text-main); font-weight: 700;" id="revealed-email">--</span>
                         </div>
-                        <button class="prompt-chip" onclick="copyTextToClipboard('fahmilatif87@gmail.com')">Copy</button>
+                        <button class="prompt-chip" onclick="copyTextFromElement('revealed-email')">Copy</button>
                     </div>
 
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <span style="color: var(--text-muted); font-size: 0.75rem;">PHONE / WHATSAPP:</span><br>
-                            <span style="color: var(--emerald); font-weight: 700;" id="revealed-phone">+60 16-243 2023</span>
+                            <span style="color: var(--emerald); font-weight: 700;" id="revealed-phone">--</span>
                         </div>
-                        <button class="prompt-chip" onclick="copyTextToClipboard('+60162432023')">Copy</button>
+                        <button class="prompt-chip" onclick="copyTextFromElement('revealed-phone')">Copy</button>
                     </div>
                 </div>
 
                 <div style="display: flex; gap: 0.5rem;">
-                    <a href="mailto:fahmilatif87@gmail.com" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.85rem;">✉️ Email Candidate</a>
-                    <a href="https://wa.me/60162432023" target="_blank" class="btn btn-emerald" style="flex: 1; justify-content: center; font-size: 0.85rem;">💬 WhatsApp</a>
+                    <a id="revealed-email-link" href="#" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.85rem;">✉️ Email Candidate</a>
+                    <a id="revealed-wa-link" href="#" target="_blank" class="btn btn-emerald" style="flex: 1; justify-content: center; font-size: 0.85rem;">💬 WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -1137,17 +1137,13 @@
         }
 
         /* -------------------------------------------------------------
-           3. Security CAPTCHA Modal
+           3. Cloudflare Turnstile Security Verification Modal
         ------------------------------------------------------------- */
-        let captchaAns = 0;
+        const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
         function openSecurityModal() {
-            const num1 = Math.floor(Math.random() * 8) + 2;
-            const num2 = Math.floor(Math.random() * 8) + 2;
-            captchaAns = num1 + num2;
-
-            document.getElementById('captcha-question').innerText = `Solve: ${num1} + ${num2} = ?`;
-            document.getElementById('captcha-answer').value = '';
+            const errorMsgEl = document.getElementById('captcha-error-msg');
+            if (errorMsgEl) errorMsgEl.style.display = 'none';
             document.getElementById('security-modal').classList.add('active');
         }
 
@@ -1155,43 +1151,52 @@
             document.getElementById('security-modal').classList.remove('active');
         }
 
-        const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev";
+        async function onTurnstileSuccess(token) {
+            const errorMsgEl = document.getElementById('captcha-error-msg');
+            if (errorMsgEl) errorMsgEl.style.display = 'none';
 
-        async function verifyEmployerCaptcha() {
-            const userAns = parseInt(document.getElementById('captcha-answer').value.trim());
-            if (userAns === captchaAns) {
-                try {
-                    // Fetch verified candidate contact from live Cloudflare Worker
-                    const res = await fetch(CLOUDFLARE_WORKER_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ turnstileToken: "1x00000000000000000000AA" })
-                    });
-                    const data = await res.json();
+            try {
+                const res = await fetch(CLOUDFLARE_WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ turnstileToken: token })
+                });
 
-                    if (data.email && data.phone) {
-                        document.getElementById('revealed-email').innerText = data.email;
-                        document.getElementById('revealed-phone').innerText = data.phone;
-                    } else {
-                        document.getElementById('revealed-email').innerText = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
-                        document.getElementById('revealed-phone').innerText = atob('KzYw IDE2LTI0MyAyMDIz');
-                    }
-                } catch (e) {
-                    // Fallback to local decoded payload
-                    document.getElementById('revealed-email').innerText = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
-                    document.getElementById('revealed-phone').innerText = atob('KzYw IDE2LTI0MyAyMDIz');
+                if (!res.ok) throw new Error("Verification failed");
+
+                const data = await res.json();
+                if (data.email && data.phone) {
+                    document.getElementById('revealed-email').innerText = data.email;
+                    document.getElementById('revealed-phone').innerText = data.phone;
+
+                    const rawPhoneDigits = data.phone.replace(/[^0-9]/g, '');
+                    const emailLink = document.getElementById('revealed-email-link');
+                    const waLink = document.getElementById('revealed-wa-link');
+                    if (emailLink) emailLink.href = `mailto:${data.email}`;
+                    if (waLink) waLink.href = `https://wa.me/${rawPhoneDigits}`;
+
+                    document.getElementById('revealed-contact-box').style.display = 'block';
+                } else {
+                    throw new Error("Invalid response format");
                 }
-                document.getElementById('revealed-contact-box').style.display = 'block';
-            } else {
-                alert('Incorrect CAPTCHA answer. Please try again.');
-                openSecurityModal();
+            } catch (err) {
+                if (errorMsgEl) {
+                    errorMsgEl.innerText = "Verification failed, please try again.";
+                    errorMsgEl.style.display = 'block';
+                }
+                if (window.turnstile) {
+                    window.turnstile.reset();
+                }
             }
         }
 
-        function copyTextToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard: ' + text);
-            });
+        function copyTextFromElement(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            if (text && text !== '--') {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Copied to clipboard: ' + text);
+                });
+            }
         }
 
         /* -------------------------------------------------------------
@@ -1215,7 +1220,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
 2. IDENTITY HANDLING: If asked "who you", "who are you", "siapa awak", "siapa anda", "你是谁", or similar, identify yourself warmly as Irfan's Conversational AI Assistant. Explain your role in helping recruiters evaluate Irfan's engineering background, age (26–27), CCNA credentials, and rapid adaptability.
 3. AGE HANDLING: If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
 4. HUGE LEAP IN CONVERSATION: Provide insightful, articulate, empathetic, and multi-turn conversational responses. Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
-5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the human CAPTCHA check.`;
+5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the Turnstile CAPTCHA check.`;
 
         // Initialize API Key Input on page load
         window.addEventListener('DOMContentLoaded', () => {
