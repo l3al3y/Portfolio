@@ -1155,14 +1155,32 @@
             document.getElementById('security-modal').classList.remove('active');
         }
 
-        function verifyEmployerCaptcha() {
+        const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev";
+
+        async function verifyEmployerCaptcha() {
             const userAns = parseInt(document.getElementById('captcha-answer').value.trim());
             if (userAns === captchaAns) {
-                const emailPayload = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
-                const phonePayload = atob('KzYw IDE2LTI0MyAyMDIz');
+                try {
+                    // Fetch verified candidate contact from live Cloudflare Worker
+                    const res = await fetch(`${CLOUDFLARE_WORKER_URL}/api/verify-captcha`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ token: "human_verified_" + Date.now() })
+                    });
+                    const data = await res.json();
 
-                document.getElementById('revealed-email').innerText = emailPayload;
-                document.getElementById('revealed-phone').innerText = phonePayload;
+                    if (data.success && data.contact) {
+                        document.getElementById('revealed-email').innerText = data.contact.email;
+                        document.getElementById('revealed-phone').innerText = data.contact.phone;
+                    } else {
+                        document.getElementById('revealed-email').innerText = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
+                        document.getElementById('revealed-phone').innerText = atob('KzYw IDE2LTI0MyAyMDIz');
+                    }
+                } catch (e) {
+                    // Fallback to local decoded payload
+                    document.getElementById('revealed-email').innerText = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
+                    document.getElementById('revealed-phone').innerText = atob('KzYw IDE2LTI0MyAyMDIz');
+                }
                 document.getElementById('revealed-contact-box').style.display = 'block';
             } else {
                 alert('Incorrect CAPTCHA answer. Please try again.');
