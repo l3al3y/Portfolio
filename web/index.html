@@ -1547,8 +1547,8 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
-            // 1. GREETING CHECK FIRST (Word boundary or unicode match)
-            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat)\b/i.test(q) || q.includes('你好') || q.includes('வணக்கம்');
+            // 1. GREETINGS & CASUAL CHAT
+            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|apa khabar|how are you)\b/i.test(q) || q.includes('你好') || q.includes('வணக்கம்');
             if (isGreeting && q.length <= 25) {
                 if (lang === 'bm') {
                     return `Salam / Hai! 👋 Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
@@ -1561,15 +1561,15 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            // 2. IDENTITY CHECK
+            // 2. IDENTITY
             if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்')) {
                 if (lang === 'bm') {
-                    return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan beliau menyesuaikan diri dengan cepat.`;
+                    return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan teknikal beliau.`;
                 }
                 return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
             }
 
-            // 3. AGE CHECK
+            // 3. AGE
             if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁')) {
                 if (lang === 'bm') {
                     return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
@@ -1577,7 +1577,39 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
             }
 
-            // 4. DEDICATED FALLBACKS FOR NON-RESUME TOPICS (Salary & Shift)
+            // 4. MILITARY RESERVE (ASKAR WATANIAH)
+            if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience')) {
+                if (lang === 'bm') {
+                    return `Irfan berkhidmat sebagai anggota simpanan <strong>Askar Wataniah (Tentera Darat Malaysia)</strong>. Latihan ketenteraan ini mengukuhkan disiplin diri yang tinggi, ketahanan mental di bawah tekanan, kerja berpasukan, dan kepimpinan teknikal.`;
+                }
+                return `Irfan serves in the <strong>Askar Wataniah (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.`;
+            }
+
+            // 5. LOCATION & RELOCATION
+            if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah')) {
+                if (lang === 'bm') {
+                    return `Irfan menetap di <strong>Puchong, Selangor, Malaysia</strong>. Beliau bersikap terbuka untuk lokasi kerja On-site, Hybrid, atau Remote, serta bersedia untuk tugasan luar kawasan (travel/outstation) dan penempatan semula jika diperlukan.`;
+                }
+                return `Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is open to On-site, Hybrid, or Remote roles, and willing to travel outstation or relocate for suitable engineering opportunities.`;
+            }
+
+            // 6. AVAILABILITY & GRADUATION
+            if (q.includes('available') || q.includes('start') || q.includes('bila boleh') || q.includes('notice') || q.includes('graduation') || q.includes('graduat') || q.includes('bila habis') || q.includes('expected')) {
+                if (lang === 'bm') {
+                    return `Irfan dijangka bergraduan pada <strong>November 2026</strong> dari UTeM. Beliau sedia membincangkan tarikh mula kerja dan penyertaan latihan industri/sepenuh masa mengikut jadual universiti dan keperluan majikan.`;
+                }
+                return `Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.`;
+            }
+
+            // 7. WHY HIRE IRFAN / STRENGTHS
+            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik')) {
+                if (lang === 'bm') {
+                    return `<strong>Kelebihan Utama Irfan:</strong><br>1. <strong>Penguasaan Dwi-Bidang:</strong> Merapatkan jurang Perkakasan (IoT/Embedded), Rangkaian (Cisco CCNA), & Perisian/AI (YOLOv8 PyTorch).<br>2. <strong>Pencapaian Terbukti:</strong> Anugerah Pelajar Terbaik Kolej Komuniti (CGPA 3.58) & Projek Capstone AI (77.4% precision).<br>3. <strong>Disiplin Askar Wataniah:</strong> Berdaya tahan tinggi di bawah tekanan dan mempunyai etika kerja cemerlang.`;
+                }
+                return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.`;
+            }
+
+            // 8. SALARY & REMUNERATION
             if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout')) {
                 if (lang === 'bm') {
                     return `Mengenai julat gaji dan pakej imbuhan, Irfan bersikap sangat terbuka untuk berbincang secara terus semasa sesi temuduga atau melalui borang hubungan rasmi.`;
@@ -1590,6 +1622,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
+            // 9. SHIFT & FLEXIBILITY
             if (q.includes('shift') || q.includes('syif') || q.includes('overtime') || q.includes('waktu kerja') || q.includes('working hours') || q.includes('relocate') || q.includes('outstation')) {
                 if (lang === 'bm') {
                     return `Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.`;
@@ -1602,7 +1635,31 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            // 5. GENERAL RESUME_DATA KEYWORD OVERLAP SCORING (Content words only)
+            // 10. HARDWARE & IOT & EMBEDDED
+            if (q.includes('iot') || q.includes('arduino') || q.includes('embedded') || q.includes('sensor') || q.includes('sensors') || q.includes('hardware') || q.includes('electronic') || q.includes('electronics') || q.includes('easyeda') || q.includes('pcb')) {
+                if (lang === 'bm') {
+                    return `Irfan mempunyai kemahiran kukuh dalam <strong>Sistem Terbenam (Embedded Systems), IoT, Arduino, Integrasi Sensor, dan Reka Bentuk Litar EasyEDA</strong> berasaskan pengajian Diploma Kejuruteraan Elektronik (Komputer) di Politeknik Port Dickson.`;
+                }
+                return `Irfan possesses solid hands-on experience in <strong>Embedded Systems, IoT, Arduino, Sensor Integration, and EasyEDA Circuit Design</strong> gained during his Electronic Engineering (Computer) Diploma at Politeknik Port Dickson.`;
+            }
+
+            // 11. WEB DEV & FULLSTACK
+            if (q.includes('web') || q.includes('fullstack') || q.includes('full stack') || q.includes('frontend') || q.includes('backend') || q.includes('html') || q.includes('css') || q.includes('javascript') || q.includes('react') || q.includes('node')) {
+                if (lang === 'bm') {
+                    return `Irfan membina aplikasi web modern menggunakan <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Design), JavaScript (ES6+), Node.js, dan Integrasi RESTful API</strong>.`;
+                }
+                return `Irfan builds modern web applications utilizing <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Layouts), JavaScript (ES6+), Node.js, and RESTful API Integration</strong>.`;
+            }
+
+            // 12. LANGUAGES SPOKEN
+            if (q.includes('languages spoken') || q.includes('cakap bahasa') || q.includes('bisa bahasa') || q.includes('mandarin') || q.includes('fluency') || q.includes('bahasa apa')) {
+                if (lang === 'bm') {
+                    return `Irfan fasih dalam <strong>Bahasa Melayu & English</strong>, serta mempunyai pemahaman asas bahasa ketiga.`;
+                }
+                return `Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with foundational understanding of regional languages.`;
+            }
+
+            // 13. GENERAL RESUME_DATA KEYWORD OVERLAP SCORING (Content words only)
             const scores = {
                 diploma_cgpa: 0,
                 cert_sijil_cgpa: 0,
