@@ -2,6 +2,7 @@
 
 **Candidate Name:** MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR  
 **Age:** 26–27 years old (Born 1999)  
+**Personal Summary:** A cheerful and confident student leader who enjoys connecting with people and working as a team. Skilled in communication, event coordination, and building positive relationships. Always takes initiative and stays committed to every responsibility given. Passionate about leadership and corporate relations, aiming to represent student voices, strengthen teamwork, and create a supportive environment for everyone to grow together.  
 **Email:** fahmilatif87@gmail.com  
 **Phone:** +60 16-243 2023 (Employer CAPTCHA Protected)  
 **Location:** Puchong, Selangor, Malaysia  
