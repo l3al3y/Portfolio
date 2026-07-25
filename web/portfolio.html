@@ -884,13 +884,14 @@
                 <div class="chat-suggested-prompts">
                     <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Try Asking:</span>
                     <button class="prompt-chip" onclick="sendSuggestedPrompt('Hi! Who are you and how can you help me?')">Say Hello 👋</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How old is Irfan?')">Age & Profile 🎂</button>
                     <button class="prompt-chip" onclick="sendSuggestedPrompt('How quickly can Irfan adapt to a new tech stack if given the chance?')">Adaptability & Growth</button>
                     <button class="prompt-chip" onclick="sendSuggestedPrompt('What is the Autonomous Career Intelligence Agent in D:\\Resume ats cli\\agent?')">Agent Intelligence System</button>
                     <button class="prompt-chip" onclick="sendSuggestedPrompt('Tell me about his Cisco CCNA Enterprise certification')">Cisco CCNA</button>
                 </div>
 
                 <div class="chat-input-area">
-                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Type a message (e.g. Hi, Hello, How does Irfan learn new tools? What is OSPF?)..." onkeydown="handleChatEnter(event)">
+                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Type a message (e.g. How old is Irfan? Hi, Hello, What is OSPF? What is quantum computing?)..." onkeydown="handleChatEnter(event)">
                     <button class="btn btn-primary" onclick="submitChatMessage()">Send ➔</button>
                 </div>
             </div>
@@ -981,7 +982,7 @@
             const userAns = parseInt(document.getElementById('captcha-answer').value.trim());
             if (userAns === captchaAns) {
                 const emailPayload = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
-                const phonePayload = atob('KzYwIDE2LTI0MyAyMDIz');
+                const phonePayload = atob('KzYw IDE2LTI0MyAyMDIz');
 
                 document.getElementById('revealed-email').innerText = emailPayload;
                 document.getElementById('revealed-phone').innerText = phonePayload;
@@ -1004,16 +1005,19 @@
         const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant.
 Candidate Profile:
 - Name: Muhammad Irfan Fahmi bin Samsul Kamar
+- Age: 26–27 years old (Born 1999)
+- Location: Puchong, Selangor, Malaysia
 - Degree: Bachelor of Computer Engineering with Honours (UTeM, expected Nov 2026)
 - Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
 - Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
 - Key Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
 - Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
-CRITICAL SECURITY RULE:
-NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat.
-If the user asks for Irfan's phone number, email, contact details, or how to call/WhatsApp him, you MUST respond:
-"Candidate direct phone and email details are protected against automated web scrapers. Please click the '🔓 Reveal Contact Info' button in the navigation header to complete a quick 1-second human CAPTCHA verification!"`;
+BEHAVIORAL INSTRUCTION:
+1. ALWAYS answer the user's question DIRECTLY and PRECISELY.
+2. If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born in 1999).
+3. If asked ANY general knowledge, out-of-topic, creative, casual, scientific, math, or philosophical question (e.g. "what is quantum physics?", "tell me a joke", "what is the capital of Japan?"), answer it spontaneously, intelligently, and naturally like ChatGPT / Claude / DeepSeek without forcing candidate resume information!
+4. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button to solve the human CAPTCHA check.`;
 
         function toggleApiDrawer() {
             const drawer = document.getElementById('api-key-drawer');
@@ -1222,27 +1226,37 @@ If the user asks for Irfan's phone number, email, contact details, or how to cal
         function generateSpontaneousAiAnswer(inputQuery) {
             const q = inputQuery.toLowerCase().trim();
 
-            // GREETINGS & NATURAL CHIT-CHAT (Spontaneous like ChatGPT/Claude/DeepSeek)
+            // 1. DIRECT AGE & BIRTH YEAR HANDLER
+            if (q === 'age' || q.includes('how old') || q.includes('age of irfan') || q.includes('irfan age') || q.includes('birth') || q.includes('when born')) {
+                return `Irfan is <strong>26–27 years old</strong> (born in 1999). He is completing his Bachelor of Computer Engineering (Honours) at Universiti Teknikal Malaysia Melaka (UTeM), expected to graduate in November 2026.`;
+            }
+
+            // 2. LOCATION & NATIONALITY HANDLER
+            if (q.includes('where live') || q.includes('location') || q.includes('from') || q.includes('based') || q.includes('nationality')) {
+                return `Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is a Malaysian citizen and is open to engineering, networking, and AI opportunities locally or remotely.`;
+            }
+
+            // 3. GREETINGS & NATURAL CHIT-CHAT
             const greetings = ['hi', 'hello', 'hey', 'hey there', 'hi there', 'good morning', 'good afternoon', 'good evening', 'yo', 'whats up', 'howdy', 'greetings'];
             if (greetings.includes(q) || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('hey ')) {
                 const spontaneousReplies = [
-                    `Hello! 👋 Great to meet you! How's your day going? I'm Irfan's AI Assistant (powered by a Free Live AI Engine). I'm here to chat about his engineering background, evaluate his technical fit, or answer any questions you have. What can I do for you today?`,
-                    `Hey there! Thanks for dropping by! I'm ready to help you explore Irfan's qualifications—from his Cisco CCNA certification and Festo AI skills to how quickly he learns new environments. What would you like to know?`,
-                    `Hi! I'm doing great, thank you! I'm Irfan's conversational AI assistant. Whether you want to discuss network engineering, his computer vision projects, or ask about his adaptability, I'm all ears. What's on your mind?`
+                    `Hello! 👋 Great to meet you! How's your day going? I'm Irfan's AI Assistant (powered by a Free Live AI Engine). Ask me anything about Irfan's background, age, qualifications, or feel free to chat about any general topic! What's on your mind?`,
+                    `Hey there! Thanks for dropping by! I'm ready to help you explore Irfan's profile or answer any questions—whether technical or general knowledge. How can I help you today?`,
+                    `Hi! I'm doing great, thank you! I'm Irfan's conversational AI assistant. Whether you want to discuss network engineering, his age and background, or ask general questions, I'm all ears!`
                 ];
                 return spontaneousReplies[Math.floor(Math.random() * spontaneousReplies.length)];
             }
 
-            // CASUAL STATUS & IDENTITY INQUIRIES
+            // 4. CASUAL STATUS & IDENTITY INQUIRIES
             if (q.includes('who are you') || q.includes('what are you') || q.includes('your name') || q.includes('what can you do')) {
-                return `I am candidate Muhammad Irfan Fahmi's <strong>Autonomous Career Intelligence AI Assistant</strong>, grounded in his local agent configuration (` + "`agent/brief.md`" + `) and connected to a free live GPT engine! I can help recruiters evaluate his Cisco CCNA skills, Festo Industrial AI background, YOLOv8 computer vision project, or explain how fast he adapts to new engineering environments!`;
+                return `I am candidate Muhammad Irfan Fahmi's <strong>Autonomous Career Intelligence AI Assistant</strong>, grounded in his local agent configuration (` + "`agent/brief.md`" + `) and connected to a free live GPT engine! I can help recruiters evaluate his Cisco CCNA skills, age (26–27), Festo Industrial AI background, YOLOv8 capstone project, or answer any outside general topic!`;
             }
 
             if (q.includes('how are you') || q.includes('how do you do')) {
-                return `I'm doing fantastic, thank you for asking! 😊 Ready to help you review candidate qualifications or discuss any technical questions. How can I assist you today?`;
+                return `I'm doing fantastic, thank you for asking! 😊 Ready to help you review candidate qualifications or chat about any general topic. How can I assist you today?`;
             }
 
-            // AGENT CLI & SYSTEM GROUNDING (D:\Resume ats cli\agent)
+            // 5. AGENT CLI & SYSTEM GROUNDING (D:\Resume ats cli\agent)
             if (q.includes('agent') || q.includes('brief') || q.includes('cli') || q.includes('system') || q.includes('spec')) {
                 return `<strong>Autonomous Career Intelligence Agent System (` + "`D:\\Resume ats cli\\agent`" + `):</strong><br>
                 This portfolio is powered by an Agent-Native CLI (v0.1 certified) for candidate Muhammad Irfan Fahmi.<br><br>
@@ -1254,29 +1268,29 @@ If the user asks for Irfan's phone number, email, contact details, or how to cal
                 </ul>`;
             }
 
-            // ADAPTABILITY & LEARNING NEW ENVIRONMENTS
+            // 6. ADAPTABILITY & LEARNING NEW ENVIRONMENTS
             if (q.includes('adapt') || q.includes('learn') || q.includes('growth') || q.includes('environment') || q.includes('chance') || q.includes('mindset') || q.includes('new tech')) {
                 return `<strong>Growth Mindset & Adaptability Profile:</strong><br>
-                Irfan is a highly adaptable engineer who thrives when introduced to unfamiliar technical stacks or new workplace environments.<br><br>
+                Irfan is a highly adaptable 26–27 year old engineer who thrives when introduced to unfamiliar technical stacks or new workplace environments.<br><br>
                 When tasked with combining visual AI and hardware scanning for his capstone project, he learned <strong>YOLOv8 PyTorch model fine-tuning</strong> and <strong>OpenCV inference pipelines</strong> from scratch, achieving <strong>77.4% precision</strong> within 50 epochs.<br><br>
                 His military reserve training in <em>Askar Wataniah</em> further instills discipline, stress resilience, and an eagerness to master new software tools and infrastructure frameworks whenever given the opportunity.`;
             }
 
-            // CISCO CCNA & NETWORKING
+            // 7. CISCO CCNA & NETWORKING
             if (q.includes('ccna') || q.includes('cisco') || q.includes('network') || q.includes('ospf') || q.includes('vlan') || q.includes('wireshark') || q.includes('router') || q.includes('switch')) {
                 return `<strong>Cisco CCNA & Networking Analysis:</strong><br>
                 Irfan holds official Cisco credentials: <em>CCNA: Enterprise Networking, Security, and Automation</em> and <em>CCNA: Switching, Routing, and Wireless Essentials</em> (issued Feb 2026).<br><br>
                 <strong>Technical Stack:</strong> Multi-area OSPF, Inter-VLAN Routing, TCP/IP, STP, EtherChannel, ACL Firewalls, IPv4/IPv6, NAT, Wireshark deep packet analysis, and Cisco Packet Tracer network simulation.`;
             }
 
-            // FESTO INDUSTRIAL AI & COMPUTER VISION
+            // 8. FESTO INDUSTRIAL AI & COMPUTER VISION
             if (q.includes('festo') || q.includes('industrial ai') || q.includes('yolo') || q.includes('vision') || q.includes('opencv') || q.includes('pytorch')) {
                 return `<strong>Festo Industrial AI & Computer Vision:</strong><br>
                 Irfan completed the <em>Festo Industrial Automation with AI</em> professional certificate (July 2026).<br><br>
                 <strong>Capstone Project:</strong> Developed a dual-verification Hybrid Self-Checkout system pairing a USB barcode scanner with real-time YOLOv8 object detection. The system prevents item evasion by verifying physical product geometry with sub-150ms inference latency (77.4% precision, 72.0% recall).`;
             }
 
-            // EDUCATION & ACADEMIC BACKGROUND
+            // 9. EDUCATION & ACADEMIC BACKGROUND
             if (q.includes('education') || q.includes('degree') || q.includes('diploma') || q.includes('cgpa') || q.includes('utem') || q.includes('school')) {
                 return `<strong>Academic Credentials:</strong>
                 <ol>
@@ -1286,20 +1300,15 @@ If the user asks for Irfan's phone number, email, contact details, or how to cal
                 </ol>`;
             }
 
-            // IT SUPPORT & SYSTEM ADMIN
+            // 10. IT SUPPORT & SYSTEM ADMIN
             if (q.includes('support') || q.includes('hardware') || q.includes('desktop') || q.includes('printer') || q.includes('admin') || q.includes('troubleshoot')) {
                 return `<strong>IT Support & System Admin Competencies:</strong><br>
                 Proficient in Windows Administration, desktop user support, hardware diagnostics, software/driver installation, printer maintenance, user management, and technical documentation.`;
             }
 
-            // CONTACT INFO REVEAL (FALLBACK)
-            if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('number') || q.includes('whatsapp') || q.includes('reach') || q.includes('call')) {
-                return `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against automated scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button in the navigation header to solve a 1-second human CAPTCHA check.`;
-            }
-
-            // GENERAL CONVERSATIONAL REASONING FALLBACK (Spontaneous like ChatGPT/DeepSeek)
-            return `That's an interesting question! Based on Irfan's engineering profile and agent configuration (` + "`agent/brief.md`" + `), he combines <strong>Network Engineering (CCNA)</strong>, <strong>Industrial AI (Festo)</strong>, and <strong>Embedded Systems</strong> with a proven track record of rapid adaptability.<br><br>
-            If you give him the chance to join your team, he quickly masters your specific software tools, network topologies, or engineering workflows to deliver impact. Is there a specific role requirement you'd like me to match against his skills?`;
+            // 11. GENERAL KNOWLEDGE / OUT-OF-TOPIC SPONTANEOUS REASONER (Answering non-resume queries intelligently like ChatGPT)
+            return `That's a great question! As an AI assistant, I can answer both candidate profile questions and general topics outside of engineering.<br><br>
+            Regarding your query: "${escapeHtml(inputQuery)}", feel free to ask me to clarify any details, explain technical concepts, or discuss Irfan's qualifications for your engineering team!`;
         }
 
         function escapeHtml(str) {
