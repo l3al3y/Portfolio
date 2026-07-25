@@ -997,7 +997,7 @@
         /* -------------------------------------------------------------
            3. Kimi K2.5 AI Engine + Agentic Skill Integration
         ------------------------------------------------------------- */
-        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant, powered by the Kimi K2.5 / Moonshot AI Conversational Engine and grounded in the Agentic Architecture from C:\\Users\\l3al3\\Desktop\\agentic-awesome-skills.
+        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant, powered by the Kimi K2.5 / Moonshot AI Conversational Engine and grounded in the Agentic Architecture from C:/Users/l3al3/Desktop/agentic-awesome-skills.
 
 Candidate Profile:
 - Name: Muhammad Irfan Fahmi bin Samsul Kamar
@@ -1007,7 +1007,7 @@ Candidate Profile:
 - Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
 - Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
 - Key Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
-- Agentic Standard: Complies with Agent-Native CLI Spec v0.1 (agent/ brief.md, rules/, skills/, issue system) learned from C:\\Users\\l3al3\\Desktop\\agentic-awesome-skills.
+- Agentic Standard: Complies with Agent-Native CLI Spec v0.1 (agent/ brief.md, rules/, skills/, issue system) learned from C:/Users/l3al3/Desktop/agentic-awesome-skills.
 - Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
 CONVERSATIONAL LEAP & MULTILINGUAL RULES:
@@ -1298,45 +1298,49 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
            4. Three.js Background Constellation
         ------------------------------------------------------------- */
         (function init3DScene() {
-            const canvas = document.getElementById('webgl-canvas');
-            if (!canvas || typeof THREE === 'undefined') return;
+            try {
+                const canvas = document.getElementById('webgl-canvas');
+                if (!canvas || typeof THREE === 'undefined') return;
 
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 30;
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 30;
 
-            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            const particleCount = 150;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-
-            for (let i = 0; i < particleCount * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 80;
-                positions[i + 1] = (Math.random() - 0.5) * 80;
-                positions[i + 2] = (Math.random() - 0.5) * 80;
-            }
-
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            const material = new THREE.PointsMaterial({ size: 1.1, color: 0xa855f7, transparent: true, opacity: 0.55 });
-            const particleSystem = new THREE.Points(geometry, material);
-            scene.add(particleSystem);
-
-            function animate3D() {
-                requestAnimationFrame(animate3D);
-                particleSystem.rotation.y += 0.0008;
-                particleSystem.rotation.x += 0.0004;
-                renderer.render(scene, camera);
-            }
-            animate3D();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
                 renderer.setSize(window.innerWidth, window.innerHeight);
-            });
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                const particleCount = 150;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    positions[i] = (Math.random() - 0.5) * 80;
+                    positions[i + 1] = (Math.random() - 0.5) * 80;
+                    positions[i + 2] = (Math.random() - 0.5) * 80;
+                }
+
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const material = new THREE.PointsMaterial({ size: 1.1, color: 0xa855f7, transparent: true, opacity: 0.55 });
+                const particleSystem = new THREE.Points(geometry, material);
+                scene.add(particleSystem);
+
+                function animate3D() {
+                    requestAnimationFrame(animate3D);
+                    particleSystem.rotation.y += 0.0008;
+                    particleSystem.rotation.x += 0.0004;
+                    renderer.render(scene, camera);
+                }
+                animate3D();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            } catch (e) {
+                console.warn("3D WebGL background skipped:", e);
+            }
         })();
 
         document.getElementById('theme-toggle-btn').addEventListener('click', () => {
