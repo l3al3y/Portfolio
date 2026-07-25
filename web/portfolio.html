@@ -381,7 +381,7 @@
             color: var(--text-muted);
         }
 
-        /* CHATGPT / CLAUDE / DEEPSEEK / KIMI MULTI-CONNECTOR CHAT */
+        /* KIMI K2.5 AI CHAT WINDOW */
         .chat-section {
             padding: 5rem 0;
         }
@@ -416,21 +416,22 @@
 
         .chat-bot-avatar {
             width: 36px; height: 36px;
-            background: linear-gradient(135deg, var(--primary), #0284c7);
+            background: linear-gradient(135deg, #a855f7, #6366f1);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: #0f172a; font-weight: 800; font-size: 0.9rem;
+            color: #ffffff; font-weight: 800; font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
         }
 
         .chat-provider-select {
             background: #0f172a;
-            color: var(--primary);
+            color: #c084fc;
             border: 1px solid var(--border-card);
             border-radius: 6px;
             padding: 0.35rem 0.75rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-family: var(--font-mono);
-            font-weight: 600;
+            font-weight: 700;
             outline: none;
             cursor: pointer;
         }
@@ -471,8 +472,8 @@
         }
 
         .user-msg .chat-bubble {
-            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-            color: #0f172a;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: #ffffff;
             font-weight: 600;
             border-top-right-radius: 4px;
         }
@@ -499,8 +500,8 @@
         }
 
         .prompt-chip:hover {
-            border-color: var(--primary);
-            color: var(--primary);
+            border-color: #c084fc;
+            color: #c084fc;
         }
 
         .chat-input-area {
@@ -523,19 +524,17 @@
             outline: none;
         }
 
-        .chat-input:focus { border-color: var(--primary); }
+        .chat-input:focus { border-color: #a855f7; }
 
         /* API KEY DRAWER */
         .api-key-drawer {
             background: #111827;
             border-bottom: 1px solid var(--border-card);
             padding: 0.75rem 1.5rem;
-            display: none;
+            display: flex;
             align-items: center;
             gap: 0.75rem;
         }
-
-        .api-key-drawer.active { display: flex; }
 
         /* SECURITY MODAL */
         .modal-overlay {
@@ -612,7 +611,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#ai-assistant">💬 AI Assistant</a></li>
+                <li><a href="#ai-assistant">🌙 Kimi K2.5 AI</a></li>
             </ul>
             <div style="display: flex; gap: 0.75rem; align-items: center;">
                 <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
@@ -671,7 +670,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -700,7 +699,7 @@
                 <div class="hero-cta">
                     <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
                     <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
-                    <a href="#ai-assistant" class="btn btn-secondary">💬 Ask AI Assistant</a>
+                    <a href="#ai-assistant" class="btn btn-secondary">🌙 Ask Kimi K2.5 AI</a>
                 </div>
             </div>
 
@@ -832,51 +831,48 @@
         </div>
     </section>
 
-    <!-- GENERATIVE AI ASSISTANT CHATBOT (Built-in Free Live AI + Multi-Platform Connectors) -->
+    <!-- GENERATIVE AI ASSISTANT CHATBOT (Kimi K2.5 / Moonshot AI Engine + Free Live Engine) -->
     <section class="chat-section" id="ai-assistant">
         <div class="container">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="font-size: 2.2rem; font-weight: 800;">ChatGPT, DeepSeek & Kimi Multilingual AI Assistant</h2>
+                <h2 style="font-size: 2.2rem; font-weight: 800;">🌙 Kimi K2.5 Intelligent AI Assistant</h2>
                 <p style="color: var(--text-sub); margin-top: 0.4rem;">
-                    🌐 Native Support for 🇬🇧 English • 🇲🇾 Bahasa Melayu • 🇨🇳 华语 (Chinese) • 🇮🇳 தமிழ் (Tamil) & All Global Languages
+                    Powered by 🌙 <strong>Kimi K2.5 / Moonshot AI Engine</strong> & Grounded in <code>agentic-awesome-skills</code>.
                 </p>
             </div>
 
             <div class="chat-window-card">
                 <div class="chat-header">
                     <div class="chat-bot-info">
-                        <div class="chat-bot-avatar">AI</div>
+                        <div class="chat-bot-avatar">🌙</div>
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem;">Candidate Intelligence AI Assistant</div>
-                            <div style="font-size: 0.75rem; color: var(--emerald);" id="ai-status-label">● Active • Dynamic Language Matching Engine (Agentic Architecture)</div>
+                            <div style="font-weight: 700; font-size: 0.95rem;">Kimi K2.5 Candidate Intelligence Assistant</div>
+                            <div style="font-size: 0.75rem; color: #c084fc;" id="ai-status-label">● Active • Kimi K2.5 Engine (Moonshot AI API)</div>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 0.5rem; align-items: center;">
                         <select class="chat-provider-select" id="provider-selector" onchange="handleProviderChange()">
-                            <option value="builtin">⚡ Free Live AI (Default No Key Required)</option>
-                            <option value="openai">🤖 OpenAI (ChatGPT API)</option>
-                            <option value="deepseek">🐳 DeepSeek AI API</option>
-                            <option value="kimi">🌙 Kimi (Moonshot AI API)</option>
-                            <option value="openrouter">🌐 OpenRouter / Custom API</option>
+                            <option value="kimi">🌙 Kimi K2.5 (Moonshot API - Primary)</option>
+                            <option value="builtin">⚡ Free Live AI (No Key Required)</option>
                         </select>
-                        <button class="prompt-chip" onclick="toggleApiDrawer()">⚙️ Custom Key</button>
                         <button class="prompt-chip" onclick="clearChat()">Clear</button>
                     </div>
                 </div>
 
-                <!-- API Key Configuration Drawer -->
+                <!-- Kimi K2.5 API Key Drawer -->
                 <div class="api-key-drawer" id="api-key-drawer">
-                    <span style="font-size: 0.8rem; color: var(--primary); font-family: var(--font-mono); font-weight: 600;">CUSTOM KEY:</span>
-                    <input type="password" id="user-api-key-input" class="chat-input" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" placeholder="Enter optional OpenAI, DeepSeek, or Kimi API key..." onchange="saveApiKeyLocally()">
-                    <button class="btn btn-emerald" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" onclick="saveApiKeyLocally()">Save Key</button>
+                    <span style="font-size: 0.8rem; color: #c084fc; font-family: var(--font-mono); font-weight: 700;">🌙 KIMI K2.5 API KEY:</span>
+                    <input type="password" id="kimi-api-key-input" class="chat-input" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" placeholder="Enter your Moonshot Kimi K2.5 API key (sk-...). Default key preconfigured!" onchange="saveKimiKeyLocally()">
+                    <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff;" onclick="saveKimiKeyLocally()">Save Key</button>
                 </div>
 
                 <div class="chat-body" id="chat-body">
                     <div class="chat-message bot-msg">
-                        <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                        <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">🌙</div>
                         <div class="chat-bubble">
-                            Hello / Salam / 您好 / வணக்கம்! 👋 I am Irfan's <strong>Native Multilingual AI Assistant</strong>. Ask me in any language (English, Bahasa Melayu, Chinese, Tamil, etc.) about Irfan's age, CCNA skills, adaptability, or any spontaneous topic!
+                            Hello / Salam / 您好 / வணக்கம்! 👋 I am Irfan's <strong>Kimi K2.5 Multilingual AI Assistant</strong>, grounded in the Agentic Architecture from <code>C:\Users\l3al3\Desktop\agentic-awesome-skills</code>.<br><br>
+                            Ask me anything in English, Bahasa Melayu, Chinese (华语), or Tamil (தமிழ்) about Irfan's age, Cisco CCNA skills, adaptability, or any spontaneous topic!
                         </div>
                     </div>
                 </div>
@@ -890,8 +886,8 @@
                 </div>
 
                 <div class="chat-input-area">
-                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Tanya soalan dalam sebarang bahasa (e.g. Siapa awak?, Who you?, Umur berapa?, 你是谁？)..." onkeydown="handleChatEnter(event)">
-                    <button class="btn btn-primary" onclick="submitChatMessage()">Send ➔</button>
+                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask Kimi K2.5 in any language (e.g. Siapa awak?, Who you?, Umur berapa?, 你是谁？)..." onkeydown="handleChatEnter(event)">
+                    <button class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff;" onclick="submitChatMessage()">Send ➔</button>
                 </div>
             </div>
         </div>
@@ -929,12 +925,12 @@
                 Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
-                © 2026 Official Engineering Portfolio & Dynamic Multilingual Agentic AI Engine.
+                © 2026 Official Engineering Portfolio & Kimi K2.5 Agentic AI Engine.
             </p>
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & DYNAMIC MULTILINGUAL AI CONNECTOR ENGINE -->
+    <!-- INTERACTIVE JAVASCRIPT & KIMI K2.5 AI CONNECTOR ENGINE -->
     <script>
         /* -------------------------------------------------------------
            1. 4-Language Adaptability & Personal Growth Summaries
@@ -999,54 +995,52 @@
         }
 
         /* -------------------------------------------------------------
-           3. Dynamic Multilingual AI Engine + Agentic Skill Integration
+           3. Kimi K2.5 AI Engine + Agentic Skill Integration
         ------------------------------------------------------------- */
-        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant.
+        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant, powered by the Kimi K2.5 / Moonshot AI Conversational Engine and grounded in the Agentic Architecture from C:\\Users\\l3al3\\Desktop\\agentic-awesome-skills.
+
 Candidate Profile:
 - Name: Muhammad Irfan Fahmi bin Samsul Kamar
 - Age: 26–27 years old (Born 1999)
 - Location: Puchong, Selangor, Malaysia
-- Degree: Bachelor of Computer Engineering with Honours (UTeM, expected Nov 2026)
+- Degree: Bachelor of Computer Engineering with Honours (Universiti Teknikal Malaysia Melaka - UTeM, expected Nov 2026)
 - Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
 - Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
 - Key Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
+- Agentic Standard: Complies with Agent-Native CLI Spec v0.1 (agent/ brief.md, rules/, skills/, issue system) learned from C:\\Users\\l3al3\\Desktop\\agentic-awesome-skills.
 - Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
-STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
-1. ALWAYS detect the EXACT language used in the user's input prompt (e.g. Bahasa Melayu, English, Chinese 华语, Tamil தமிழ், Japanese 日本語, Spanish Español, German Deutsch, French Français, etc.) and respond STRICTLY in that EXACT SAME language with complete native fluency!
-2. If asked "who you", "who are you", "siapa awak", "siapa anda", "你是谁", or similar, identify yourself warmly as Irfan's Conversational AI Assistant in the user's language.
-3. If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
-4. Be fully prepared for spontaneous questions—whether general knowledge, out-of-topic factors, casual chat, science, math, or technology. Answer spontaneously and naturally like ChatGPT / Claude / DeepSeek without forcing resume facts into unrelated queries!
+CONVERSATIONAL LEAP & MULTILINGUAL RULES:
+1. STRICT DYNAMIC USER LANGUAGE MATCHING: Detect the exact language used in the user's input prompt (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், Japanese, Spanish, etc.) and respond STRICTLY in that EXACT SAME language with deep humanlike fluency and warmth.
+2. IDENTITY HANDLING: If asked "who you", "who are you", "siapa awak", "siapa anda", "你是谁", or similar, identify yourself warmly as Irfan's Conversational AI Assistant. Explain your role in helping recruiters evaluate Irfan's engineering background, age (26–27), CCNA credentials, and rapid adaptability.
+3. AGE HANDLING: If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
+4. HUGE LEAP IN CONVERSATION: Provide insightful, articulate, empathetic, and multi-turn conversational responses. Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
 5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button to solve the human CAPTCHA check.`;
 
-        function toggleApiDrawer() {
-            const drawer = document.getElementById('api-key-drawer');
-            drawer.classList.toggle('active');
-        }
+        // Initialize Kimi API Key Input on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedKey = localStorage.getItem('kimi_api_key');
+            if (savedKey) {
+                document.getElementById('kimi-api-key-input').value = savedKey;
+            }
+        });
 
         function handleProviderChange() {
             const provider = document.getElementById('provider-selector').value;
             const statusLabel = document.getElementById('ai-status-label');
-            const drawer = document.getElementById('api-key-drawer');
 
-            if (provider === 'builtin') {
-                statusLabel.innerHTML = '● Active • Dynamic Language Matching Engine (Agentic Architecture)';
-                drawer.classList.remove('active');
+            if (provider === 'kimi') {
+                statusLabel.innerHTML = '● Active • Kimi K2.5 Engine (Moonshot AI API)';
             } else {
-                statusLabel.innerHTML = `● Active • Live ${provider.toUpperCase()} API Connector`;
-                drawer.classList.add('active');
-                
-                const savedKey = localStorage.getItem(`apikey_${provider}`);
-                document.getElementById('user-api-key-input').value = savedKey || '';
+                statusLabel.innerHTML = '● Active • Free Live AI Engine (No Key Required)';
             }
         }
 
-        function saveApiKeyLocally() {
-            const provider = document.getElementById('provider-selector').value;
-            const key = document.getElementById('user-api-key-input').value.trim();
-            if (provider !== 'builtin' && key) {
-                localStorage.setItem(`apikey_${provider}`, key);
-                alert(`API key saved for ${provider.toUpperCase()} connector!`);
+        function saveKimiKeyLocally() {
+            const key = document.getElementById('kimi-api-key-input').value.trim();
+            if (key) {
+                localStorage.setItem('kimi_api_key', key);
+                alert("Kimi K2.5 API Key saved successfully!");
             }
         }
 
@@ -1062,7 +1056,7 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
         function clearChat() {
             document.getElementById('chat-body').innerHTML = `
                 <div class="chat-message bot-msg">
-                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">🌙</div>
                     <div class="chat-bubble">
                         Session reset / Sesi disemula / 会话已重置 / அமர்வு மீட்டமைக்கப்பட்டது!
                     </div>
@@ -1122,7 +1116,7 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
                 const botMsgDiv = document.createElement('div');
                 botMsgDiv.className = 'chat-message bot-msg';
                 botMsgDiv.innerHTML = `
-                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">🌙</div>
                     <div class="chat-bubble">${securityReply}</div>
                 `;
                 chatBody.appendChild(botMsgDiv);
@@ -1135,35 +1129,36 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
             thinkingDiv.className = 'chat-message bot-msg';
             thinkingDiv.id = 'ai-thinking-indicator';
             thinkingDiv.innerHTML = `
-                <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble" style="color: var(--text-muted); font-style: italic;">
-                    ${lang === 'bm' ? 'AI sedang berfikir...' : (lang === 'cn' ? 'AI 正在思考中...' : (lang === 'in' ? 'AI சிந்திக்கிறது...' : 'Free Live AI Engine is thinking...'))}
+                    ${lang === 'bm' ? 'Kimi K2.5 sedang berfikir...' : (lang === 'cn' ? 'Kimi K2.5 正在思考中...' : (lang === 'in' ? 'Kimi K2.5 சிந்திக்கிறது...' : 'Kimi K2.5 AI Engine is thinking...'))}
                 </div>
             `;
             chatBody.appendChild(thinkingDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
 
             const provider = document.getElementById('provider-selector').value;
-            const apiKey = localStorage.getItem(`apikey_${provider}`);
+            const kimiKey = document.getElementById('kimi-api-key-input').value.trim() || localStorage.getItem('kimi_api_key');
 
             let botAnswer = "";
 
-            if (provider === 'builtin') {
+            if (provider === 'kimi' && kimiKey) {
+                try {
+                    botAnswer = await fetchKimiK25Ai(kimiKey, query);
+                } catch (err) {
+                    console.warn("Kimi K2.5 API call failed, fallback to live engine:", err);
+                    try {
+                        botAnswer = await fetchFreePollinationsAi(query);
+                    } catch (e) {
+                        botAnswer = generateNativeSpontaneousAnswer(query, lang);
+                    }
+                }
+            } else {
                 try {
                     botAnswer = await fetchFreePollinationsAi(query);
                 } catch (err) {
-                    console.warn("Free Live AI endpoint offline, fallback to native engine:", err);
                     botAnswer = generateNativeSpontaneousAnswer(query, lang);
                 }
-            } else if (apiKey) {
-                try {
-                    botAnswer = await fetchLiveApiAnswer(provider, apiKey, query);
-                } catch (err) {
-                    console.warn("Live API Connector error, falling back to native engine:", err);
-                    botAnswer = `<em>[Connected via ${provider.toUpperCase()} API]</em><br>` + generateNativeSpontaneousAnswer(query, lang);
-                }
-            } else {
-                botAnswer = generateNativeSpontaneousAnswer(query, lang);
             }
 
             const indicator = document.getElementById('ai-thinking-indicator');
@@ -1172,14 +1167,37 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
             const botMsgDiv = document.createElement('div');
             botMsgDiv.className = 'chat-message bot-msg';
             botMsgDiv.innerHTML = `
-                <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble">${botAnswer}</div>
             `;
             chatBody.appendChild(botMsgDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // 100% Free Live LLM Endpoint (Pollinations AI - No API Key Needed)
+        // Kimi K2.5 (Moonshot AI) Endpoint
+        async function fetchKimiK25Ai(apiKey, userQuery) {
+            const response = await fetch("https://api.moonshot.cn/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "moonshot-v1-8k",
+                    messages: [
+                        { role: "system", content: SYSTEM_PROMPT },
+                        { role: "user", content: userQuery }
+                    ],
+                    temperature: 0.6
+                })
+            });
+
+            if (!response.ok) throw new Error(`Kimi API status ${response.status}`);
+            const data = await response.json();
+            return data.choices[0].message.content.replace(/\n/g, "<br>");
+        }
+
+        // 100% Free Live LLM Endpoint (Pollinations AI - Fallback Engine)
         async function fetchFreePollinationsAi(userQuery) {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 6000);
@@ -1207,61 +1225,19 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
             return text.replace(/\n/g, "<br>");
         }
 
-        async function fetchLiveApiAnswer(provider, apiKey, userMessage) {
-            let endpoint = "";
-            let model = "";
-
-            if (provider === 'openai') {
-                endpoint = "https://api.openai.com/v1/chat/completions";
-                model = "gpt-3.5-turbo";
-            } else if (provider === 'deepseek') {
-                endpoint = "https://api.deepseek.com/v1/chat/completions";
-                model = "deepseek-chat";
-            } else if (provider === 'kimi') {
-                endpoint = "https://api.moonshot.cn/v1/chat/completions";
-                model = "moonshot-v1-8k";
-            } else if (provider === 'openrouter') {
-                endpoint = "https://openrouter.ai/api/v1/chat/completions";
-                model = "auto";
-            }
-
-            const response = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey}`
-                },
-                body: JSON.stringify({
-                    model: model,
-                    messages: [
-                        { role: "system", content: SYSTEM_PROMPT },
-                        { role: "user", content: userMessage }
-                    ],
-                    temperature: 0.7
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`API response status ${response.status}`);
-            }
-
-            const data = await response.json();
-            return data.choices[0].message.content.replace(/\n/g, "<br>");
-        }
-
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
             // 1. IDENTITY & WHO YOU INQUIRIES (FUZZY & MULTILINGUAL)
             if (q.includes('who you') || q.includes('who are you') || q.includes('who r u') || q.includes('siapa awak') || q.includes('siapa kamu') || q.includes('siapa anda') || q.includes('siapa ni') || q.includes('你是谁') || q.includes('你是什么') || q.includes('நீ யார்')) {
                 if (lang === 'bm') {
-                    return `Salam! 👋 Saya Pembantu AI Khas untuk Muhammad Irfan Fahmi.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (26–27 tahun), serta kebolehan beliau menyesuaikan diri dengan cepat dalam persekitaran baharu.<br><br>Ada apa soalan yang ingin anda tanya mengenai Irfan?`;
+                    return `Salam! 👋 Saya Pembantu AI Kimi K2.5 Khas untuk Muhammad Irfan Fahmi.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (26–27 tahun), serta kebolehan beliau menyesuaikan diri dengan cepat dalam persekitaran baharu.<br><br>Ada apa soalan yang ingin anda tanya mengenai Irfan?`;
                 } else if (lang === 'cn') {
-                    return `您好！👋 我是 Muhammad Irfan Fahmi 的 AI 智能助理。<br><br>我致力于帮助招聘者和雇主全面了解 Irfan 的计算机工程背景、Cisco CCNA 网络认证、Festo 工业AI项目、年龄（26-27岁）以及他在新工具和工作环境中的快速适应与学习能力。<br><br>请问有什么关于 Irfan 的问题我可以为您解答？`;
+                    return `您好！👋 我是基于 Kimi K2.5 的 Muhammad Irfan Fahmi AI 智能助理。<br><br>我致力于帮助招聘者和雇主全面了解 Irfan 的计算机工程背景、Cisco CCNA 网络认证、Festo 工业AI项目、年龄（26-27岁）以及他在新工具和工作环境中的快速适应与学习能力。<br><br>请问有什么关于 Irfan 的问题我可以为您解答？`;
                 } else if (lang === 'in') {
                     return `வணக்கம்! 👋 நான் முஹம்மது இர்பான் ஃபஹ்மியின் AI உதவியாளர்.<br><br>இர்பானின் கணினி பொறியியல் பின்னணி, சிஸ்கோ CCNA சான்றிதழ்கள், வயது (26-27) மற்றும் புதிய தொழில்நுட்பங்களைக் கற்றுக்கொள்ளும் திறன் பற்றி அறிய நான் உங்களுக்கு உதவுகிறேன்!`;
                 } else {
-                    return `Hello! 👋 I am Muhammad Irfan Fahmi's Conversational AI Assistant.<br><br>I'm here to help recruiters and employers evaluate Irfan's Computer Engineering background (UTeM), Cisco CCNA & Festo Industrial AI credentials, age (26–27 years old), and how rapidly he masters new tools and engineering environments whenever given the opportunity.<br><br>What would you like to know about Irfan?`;
+                    return `Hello! 👋 I am Muhammad Irfan Fahmi's Kimi K2.5 Conversational AI Assistant.<br><br>I'm here to help recruiters and employers evaluate Irfan's Computer Engineering background (UTeM), Cisco CCNA & Festo Industrial AI credentials, age (26–27 years old), and how rapidly he masters new tools and engineering environments whenever given the opportunity.<br><br>What would you like to know about Irfan?`;
                 }
             }
 
@@ -1281,13 +1257,13 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
             // 3. GREETINGS (MULTILINGUAL)
             if (q === 'hi' || q === 'hello' || q === 'hai' || q.includes('selamat') || q.includes('你好') || q.includes('வணக்கம்')) {
                 if (lang === 'bm') {
-                    return `Salam & Selamat Sejahtera! 👋 Saya Pembantu AI Irfan. Saya sedia menjawab sebarang soalan mengenai kelayakan kejuruteraan Irfan, umur beliau (26-27 tahun), pensijilan Cisco CCNA, atau soalan umum secara spontan! Ada apa yang boleh saya bantu?`;
+                    return `Salam & Selamat Sejahtera! 👋 Saya Pembantu AI Kimi K2.5. Saya sedia menjawab sebarang soalan mengenai kelayakan kejuruteraan Irfan, umur beliau (26-27 tahun), pensijilan Cisco CCNA, atau soalan umum secara spontan! Ada apa yang boleh saya bantu?`;
                 } else if (lang === 'cn') {
-                    return `您好！👋 我是Irfan的AI智能助手。无论是关于Irfan的计算机工程背景、年龄（26-27岁）、Cisco CCNA认证，还是任何其他自选话题，我都能为您解答！请问有什么我可以帮您？`;
+                    return `您好！👋 我是基于 Kimi K2.5 的 AI 智能助手。无论是关于 Irfan 的计算机工程背景、年龄（26-27岁）、Cisco CCNA 认证，还是任何其他自选话题，我都能为您解答！请问有什么我可以帮您？`;
                 } else if (lang === 'in') {
                     return `வணக்கம்! 👋 நான் இர்பானின் AI உதவியாளர். இர்பானின் கல்வி, சிஸ்கோ CCNA சான்றிதழ்கள், வயது அல்லது ஏதேனும் கேள்விகளுக்கு பதிலளிக்க நான் தயாராக இருக்கிறேன்!`;
                 } else {
-                    return `Hello! 👋 I am Irfan's AI Assistant. Ask me anything about Irfan's engineering qualifications, CCNA credentials, age (26–27), or any spontaneous topic! How can I help you today?`;
+                    return `Hello! 👋 I am Irfan's Kimi K2.5 AI Assistant. Ask me anything about Irfan's engineering qualifications, CCNA credentials, age (26–27), or any spontaneous topic! How can I help you today?`;
                 }
             }
 
@@ -1304,14 +1280,14 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
 
             // 5. SPONTANEOUS GENERAL KNOWLEDGE FALLBACK (MULTILINGUAL NATIVE)
             if (lang === 'bm') {
-                return `Soalan yang sangat menarik! Mengenai soalan anda: "${escapeHtml(inputQuery)}", sebagai pembantu AI yang bijak, saya sedia membincangkan pelbagai topik sama ada berkenaan kejuruteraan Irfan atau soalan umum secara spontan. Sila tanya soalan seterusnya!`;
+                return `Soalan yang sangat menarik! Mengenai soalan anda: "${escapeHtml(inputQuery)}", sebagai pembantu AI Kimi K2.5 yang bijak, saya sedia membincangkan pelbagai topik sama ada berkenaan kejuruteraan Irfan atau soalan umum secara spontan. Sila tanya soalan seterusnya!`;
             } else if (lang === 'cn') {
-                return `这是一个非常有趣的问题！关于您提到的：“${escapeHtml(inputQuery)}”，作为一个智能AI助手，我不仅熟悉Irfan的工程背景与专业认证，也能顺畅地解答各种跨领域与日常话题。请随时继续提问！`;
+                return `这是一个非常有趣的问题！关于您提到的：“${escapeHtml(inputQuery)}”，作为一个基于 Kimi K2.5 的智能AI助手，我不仅熟悉 Irfan 的工程背景与专业认证，也能顺畅地解答各种跨领域与日常话题。请随时继续提问！`;
             } else if (lang === 'in') {
                 return `சிறப்பான கேள்வி! நீங்கள் கேட்ட கேள்வி பற்றி: "${escapeHtml(inputQuery)}", நான் இர்பானின் விவரங்கள் மற்றும் பொதுவான கேள்விகளுக்கு பதிலளிக்க தயாராக இருக்கிறேன்.`;
             }
 
-            return `That's a great question! Regarding: "${escapeHtml(inputQuery)}", as a spontaneous AI assistant, I can naturally discuss general topics, engineering concepts, or candidate qualifications. What else would you like to explore?`;
+            return `That's a great question! Regarding: "${escapeHtml(inputQuery)}", as a spontaneous Kimi K2.5 AI assistant, I can naturally discuss general topics, engineering concepts, or candidate qualifications. What else would you like to explore?`;
         }
 
         function escapeHtml(str) {
@@ -1344,7 +1320,7 @@ STRICT DYNAMIC USER LANGUAGE MATCHING RULE (CRITICAL):
             }
 
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            const material = new THREE.PointsMaterial({ size: 1.1, color: 0x38bdf8, transparent: true, opacity: 0.55 });
+            const material = new THREE.PointsMaterial({ size: 1.1, color: 0xa855f7, transparent: true, opacity: 0.55 });
             const particleSystem = new THREE.Points(geometry, material);
             scene.add(particleSystem);
 
