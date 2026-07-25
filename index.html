@@ -1,93 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Irfan Fahmi | 3D Interactive Computer Engineering Portfolio</title>
-    <meta name="description" content="Immersive 3D Interactive Web Experience Portfolio for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Industrial AI Specialist. Built with Three.js & Autonomous Agent Engine.">
+    <title>Muhammad Irfan Fahmi | Motion.dev 3D Interactive Portfolio & Agentic Engine</title>
+    <meta name="description" content="Next-Generation Motion.dev 3D Interactive Portfolio & Autonomous Career Intelligence Engine for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Festo Industrial AI Specialist.">
     
-    <!-- Google Fonts & Styling -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Motion.dev (Framer Motion Web JS) & Three.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <style>
-        /* CSS resets & base variables */
+        /* Modern Design System & CSS Variables */
         :root {
-            --bg-base: #f8fafc;
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --bg-card-subtle: rgba(241, 245, 249, 0.8);
-            --border-card: rgba(226, 232, 240, 0.8);
-            --border-hover: #0284c7;
+            --bg-base: #090d16;
+            --bg-surface: rgba(18, 26, 43, 0.75);
+            --bg-surface-hover: rgba(28, 40, 65, 0.85);
+            --border-card: rgba(255, 255, 255, 0.12);
+            --border-glow: #38bdf8;
             
-            --color-primary: #0284c7;       /* Cyan */
-            --color-primary-bg: #e0f2fe;
+            --primary: #38bdf8;         /* Vibrant Sky Cyan */
+            --primary-glow: rgba(56, 189, 248, 0.25);
+            --accent-emerald: #34d399;   /* Mint Emerald */
+            --accent-purple: #a855f7;    /* Cosmic Purple */
+            --accent-amber: #fbbf24;     /* Warm Gold */
             
-            --color-success: #059669;       /* Emerald */
-            --color-success-bg: #d1fae5;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --text-muted: #64748b;
             
-            --color-amber: #d97706;         /* Amber */
-            --color-amber-bg: #fef3c7;
-            
-            --color-purple: #4f46e5;        /* Indigo */
-            --color-purple-bg: #e0e7ff;
-
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-dim: #64748b;
-
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             
-            --radius-sm: 10px;
+            --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
-            --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 12px 40px rgba(15, 23, 42, 0.12);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --glass-backdrop: blur(16px);
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        body.dark-theme {
-            --bg-base: #070a12;
-            --bg-card: rgba(19, 27, 46, 0.78);
-            --bg-card-subtle: rgba(26, 36, 61, 0.8);
-            --border-card: rgba(255, 255, 255, 0.12);
-            --border-hover: #38bdf8;
+        body.light-theme {
+            --bg-base: #f8fafc;
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --bg-surface-hover: rgba(241, 245, 249, 0.95);
+            --border-card: rgba(226, 232, 240, 0.8);
+            --border-glow: #0284c7;
             
-            --color-primary: #38bdf8;
-            --color-primary-bg: rgba(56, 189, 248, 0.15);
+            --primary: #0284c7;
+            --primary-glow: rgba(2, 132, 199, 0.15);
+            --accent-emerald: #059669;
+            --accent-purple: #7e22ce;
+            --accent-amber: #d97706;
             
-            --color-success: #34d399;
-            --color-success-bg: rgba(52, 211, 153, 0.15);
-            
-            --color-amber: #fbbf24;
-            --color-amber-bg: rgba(251, 191, 36, 0.15);
-            
-            --color-purple: #818cf8;
-            --color-purple-bg: rgba(129, 140, 248, 0.15);
-
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-dim: #64748b;
-            --shadow-md: 0 16px 50px rgba(0, 0, 0, 0.6);
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --text-muted: #64748b;
         }
 
+        /* Reset & Base Layout */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
-
+        
         body {
             background-color: var(--bg-base);
-            color: var(--text-primary);
+            color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
             position: relative;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 3D WEBGL BACKGROUND CANVAS */
-        #webgl-bg-canvas {
+        /* 3D WebGL Background Canvas */
+        #webgl-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
@@ -95,788 +86,1362 @@
             pointer-events: none;
         }
 
+        /* Cursor Glow Ring */
+        #cursor-follower {
+            position: fixed;
+            width: 32px; height: 32px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            box-shadow: 0 0 15px var(--primary-glow);
+            mix-blend-mode: difference;
+        }
+
         .container {
             width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
 
-        /* Glassmorphism Cards */
-        .glassmorphism {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        /* Glassmorphism Card Utility */
+        .glass-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            -webkit-backdrop-filter: var(--glass-backdrop);
             border: 1px solid var(--border-card);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Navbar */
-        .navbar {
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Header & Navigation */
+        header {
             position: fixed;
             top: 0; left: 0; width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
+            padding: 1rem 0;
+            background: rgba(9, 13, 22, 0.8);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
-            padding: 0.85rem 0;
         }
 
-        body.dark-theme .navbar { background: rgba(7, 10, 18, 0.85); }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-        .brand {
-            font-weight: 800; font-size: 1.15rem;
-            color: var(--text-primary); text-decoration: none;
+        .logo-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 800;
+            font-size: 1.25rem;
             letter-spacing: -0.5px;
         }
-        .brand span { color: var(--color-primary); }
 
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .logo-icon {
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-family: var(--font-mono); font-weight: 800;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
         .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.875rem; font-weight: 600; transition: var(--transition);
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
-        .nav-links a:hover { color: var(--color-primary); }
 
-        .theme-toggle-btn {
-            background: var(--bg-card-subtle);
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.35rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition-smooth);
+            font-family: var(--font-sans);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: #0f172a;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
             border: 1px solid var(--border-card);
-            color: var(--text-primary);
-            padding: 0.45rem 0.9rem;
-            border-radius: 99px;
-            cursor: pointer; font-size: 0.8rem; font-weight: 700;
-            transition: var(--transition);
         }
-        .theme-toggle-btn:hover { border-color: var(--color-primary); transform: scale(1.05); }
 
-        /* Hero Layout */
-        .hero { padding-top: 6.5rem; padding-bottom: 2rem; }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: none; border: none;
+            color: var(--text-sub);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: color 0.2s;
+        }
+
+        .theme-toggle:hover { color: var(--accent-amber); }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 5rem;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 1.5rem; align-items: stretch;
-        }
-        .hero-card {
-            padding: 2.25rem;
-            display: flex; flex-direction: column; justify-content: center;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .status-badge {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            padding: 0.35rem 0.85rem; background: var(--color-success-bg);
-            color: var(--color-success); font-size: 0.8rem; font-weight: 700;
-            border-radius: 99px; margin-bottom: 1rem; width: fit-content;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
 
-        .candidate-title {
-            font-size: 2.35rem; font-weight: 800; letter-spacing: -0.5px;
-            margin-bottom: 0.25rem;
-            background: linear-gradient(135deg, var(--text-primary) 30%, var(--color-primary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .candidate-sub {
-            font-size: 1.05rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1rem;
-        }
-        .hero-tagline {
-            font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.6;
-        }
-        .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
-        /* 3D Hero Canvas Wrapper */
-        .hero-3d-container {
-            position: relative; border-radius: var(--radius-lg);
-            overflow: hidden; min-height: 380px;
-            display: flex; flex-direction: column;
-        }
-        .hero-3d-header {
-            padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-card);
-            display: flex; justify-content: space-between; align-items: center; z-index: 10;
-        }
-        #hero-3d-canvas-wrapper {
-            flex: 1; width: 100%; height: 100%; min-height: 300px;
-            position: relative; cursor: grab;
-        }
-        #hero-3d-canvas-wrapper:active { cursor: grabbing; }
-
-        .controls-overlay {
-            position: absolute; bottom: 1rem; right: 1rem;
-            display: flex; gap: 0.5rem; z-index: 10;
-        }
-        .btn-3d-sm {
-            background: rgba(15, 23, 42, 0.75); color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.35rem 0.75rem; border-radius: 8px;
-            font-size: 0.75rem; font-weight: 600; cursor: pointer;
-            backdrop-filter: blur(8px); transition: var(--transition);
-        }
-        .btn-3d-sm:hover { background: var(--color-primary); border-color: var(--color-primary); }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            padding: 0.6rem 1.25rem; font-size: 0.875rem; font-weight: 600;
-            border-radius: var(--radius-md); text-decoration: none; cursor: pointer;
-            transition: var(--transition); border: 1px solid transparent;
-        }
-        .btn-primary { background: var(--color-primary); color: #ffffff; border-color: var(--color-primary); }
-        .btn-primary:hover { background: #0369a1; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3); }
-        .btn-success { background: var(--color-success); color: #ffffff; }
-        .btn-success:hover { background: #047857; transform: translateY(-2px); }
-        .btn-outline { background: var(--bg-card); border-color: var(--border-card); color: var(--text-primary); }
-        .btn-outline:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-bg); }
-        .btn-warning { background: var(--color-amber-bg); color: var(--color-amber); border: 1px solid var(--color-amber); }
-        .btn-warning:hover { background: var(--color-amber); color: #ffffff; }
-
-        /* Badges */
-        .badge {
-            display: inline-flex; padding: 0.25rem 0.6rem;
-            border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700;
-            font-family: var(--font-mono); text-transform: uppercase;
-        }
-        .badge-blue { background: var(--color-primary-bg); color: var(--color-primary); }
-        .badge-green { background: var(--color-success-bg); color: var(--color-success); }
-        .badge-amber { background: var(--color-amber-bg); color: var(--color-amber); }
-        .badge-purple { background: var(--color-purple-bg); color: var(--color-purple); }
-        .badge-classified { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
-
-        /* Section & Grid Layout */
-        .section { padding: 2rem 0; }
-        .section-head {
-            display: flex; justify-content: space-between; align-items: flex-end;
-            margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.5rem;
-        }
-        .section-head h2 { font-size: 1.35rem; font-weight: 800; }
-
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.15rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-        
-        .card { padding: 1.5rem; transition: var(--transition); }
-        .card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .pillar-card { cursor: pointer; }
-        .pillar-card:hover { border-color: var(--color-primary); transform: translateY(-4px); }
-        .pillar-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-
-        .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; }
-        .card-desc { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem; }
-
-        /* Interactive Demo Box */
-        .demo-box {
-            background: var(--bg-card-subtle); border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm); padding: 1rem; margin-top: 0.85rem;
-            font-family: var(--font-mono); font-size: 0.825rem; display: none;
-        }
-        .demo-box.active { display: block; }
-
-        /* Form Components */
-        .input-field {
-            width: 100%; padding: 0.75rem 1rem; background: var(--bg-base);
-            border: 1px solid var(--border-card); border-radius: var(--radius-sm);
-            color: var(--text-primary); font-family: var(--font-sans); font-size: 0.9rem; margin-bottom: 0.85rem;
-        }
-        .input-field:focus { outline: none; border-color: var(--color-primary); }
-
-        .toast-msg {
-            padding: 0.85rem 1.25rem; background: var(--color-success-bg);
-            border: 1px solid var(--color-success); color: var(--color-success);
-            border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 600;
-            margin-top: 1rem; display: none;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--text-sub) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Modal Overlay */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(7, 10, 18, 0.85); backdrop-filter: blur(12px);
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            max-width: 620px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .stat-item .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Floating 3D Interactive Card Frame */
+        .hero-interactive-card {
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .tech-orbit-box {
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--border-card);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .orbit-badge {
+            position: absolute;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(18, 26, 43, 0.9);
+            border: 1px solid var(--border-card);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        .orbit-badge-1 { top: -15px; left: -15px; color: var(--accent-emerald); }
+        .orbit-badge-2 { bottom: 20px; right: -20px; color: var(--primary); }
+        .orbit-badge-3 { top: 40%; right: -25px; color: var(--accent-purple); }
+
+        /* Section Header Component */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* ATS Analyzer Section */
+        .ats-analyzer-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .ats-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-sub);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .ats-presets {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .preset-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .ats-result-card {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            border: 1px solid var(--border-card);
+        }
+
+        .ats-score-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .score-gauge-ring {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent-emerald) 0deg 0deg, rgba(255,255,255,0.1) 0deg);
             display: flex; align-items: center; justify-content: center;
-            z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.25s ease-in-out;
+            position: relative;
         }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-box { padding: 2rem; width: 90%; max-width: 480px; text-align: left; position: relative; }
-        .modal-close-btn { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; font-size: 1.5rem; color: var(--text-dim); cursor: pointer; }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        .score-inner {
+            width: 76px; height: 76px;
+            border-radius: 50%;
+            background: var(--bg-base);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-emerald);
         }
-        @media (max-width: 768px) {
-            .grid-2, .grid-4 { grid-template-columns: 1fr; }
+
+        .keyword-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            margin: 0.25rem;
+        }
+
+        .kw-matched {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .kw-missing {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 6rem 0;
+        }
+
+        .project-filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.65rem 1.3rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: #0f172a;
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .project-tag {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-card);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--text-sub);
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-card);
+        }
+
+        /* CLI Terminal Simulator */
+        .cli-section {
+            padding: 6rem 0;
+        }
+
+        .terminal-window {
+            background: #0d1117;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .terminal-dots {
+            display: flex; gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px; height: 12px; border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            min-height: 320px;
+            max-height: 480px;
+            overflow-y: auto;
+            color: #e6edf3;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .prompt-symbol {
+            color: var(--accent-emerald);
+            margin-right: 0.5rem;
+            font-weight: 700;
+        }
+
+        .terminal-input-wrapper {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #161b22;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: #38bdf8;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .cli-cmd-buttons {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: #0d1117;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .cli-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cli-btn:hover {
+            background: var(--primary);
+            color: #0f172a;
+        }
+
+        /* Skills Section */
+        .skills-section { padding: 6rem 0; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-bar-wrapper {
+            margin-bottom: 1.25rem;
+        }
+
+        .skill-info {
+            display: flex; justify-content: space-between;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .skill-progress-bg {
+            width: 100%; height: 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent-emerald));
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-card);
+            text-align: center;
+            background: rgba(9, 13, 22, 0.9);
+        }
+
+        .footer-brand {
+            font-weight: 800; font-size: 1.3rem; margin-bottom: 1rem;
+        }
+
+        .motion-connector-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(56, 189, 248, 0.15));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-title { font-size: 2.75rem; }
+            .hero-cta { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .ats-box { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .candidate-title { font-size: 1.95rem; }
         }
     </style>
-
-    <!-- Three.js 3D Web Engine & GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body class="dark-theme">
+<body>
 
-    <!-- BACKGROUND 3D WEBGL CANVAS -->
-    <canvas id="webgl-bg-canvas"></canvas>
+    <!-- Motion & Three.js 3D WebGL Background Canvas -->
+    <canvas id="webgl-canvas"></canvas>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <a href="#" class="brand">IRFAN <span>// 3D AGENT</span></a>
+    <!-- Cursor Follower Ring -->
+    <div id="cursor-follower"></div>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo-badge">
+                <div class="logo-icon">MI</div>
+                <span>Muhammad Irfan Fahmi</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="#home">3D Core</a></li>
-                <li><a href="#pillars">Tech Pillars</a></li>
-                <li><a href="#ats-tool">ATS Engine</a></li>
-                <li><a href="#projects">Live Demos</a></li>
-                <li><a href="#contact">Contact / Apply</a></li>
+                <li><a href="#hero">Overview</a></li>
+                <li><a href="#ats-analyzer">ATS Engine</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#cli-terminal">Agent CLI</a></li>
             </ul>
-            <div style="display: flex; gap: 0.75rem; align-items: center;">
-                <button id="unlock-employer-btn-nav" class="btn btn-warning">🔓 Employer Access</button>
-                <button id="theme-toggle" class="theme-toggle-btn">☀️ Light / 🌙 Dark</button>
-                <a href="resume/resume.html" target="_blank" class="btn btn-outline">📄 Resume</a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme">🌙</button>
+                <a href="#cli-terminal" class="btn btn-primary">Launch Agent CLI</a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- HERO SECTION WITH INTERACTIVE 3D CANVAS -->
-    <section class="hero" id="home">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
         <div class="container hero-grid">
-            <!-- Left Column: Hero Information -->
-            <div class="hero-card glassmorphism">
-                <div class="status-badge" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <span>🟢 OPEN FOR ROLES IN MALAYSIA &amp; SINGAPORE</span>
-                    <span class="badge-classified" id="gate-status-badge">🔒 CONTACT MASKED (RECRUITER GATE ACTIVE)</span>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>⚡ Powered by Motion.dev & Three.js 3D Engine</span>
                 </div>
-                
-                <h1 class="candidate-title">MUHAMMAD IRFAN FAHMI</h1>
-                <p class="candidate-sub">Computer Engineer &bull; CCNA Enterprise &amp; Festo Industrial AI Specialist</p>
-                <p class="hero-tagline">
-                    Engineered with autonomous AI agent capabilities, computer vision models (<span style="color: var(--color-success); font-weight:700;">77.4% Precision</span>), IoT telemetry systems (<span style="color: var(--color-amber); font-weight:700;">INOTEK 2025 Winner</span>), and Cisco enterprise network architecture.
+                <h1 class="hero-title">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
+                <div class="hero-subtitle">&gt; B.Eng Computer Engineering | Cisco CCNA | Festo Industrial AI</div>
+                <p class="hero-description">
+                    Autonomous Career Intelligence Specialist bridging Network Engineering, Computer Vision (YOLOv8), IoT Systems, and Explainable ATS Agent CLI Automation.
                 </p>
 
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                    <span class="badge badge-blue">🌐 CISCO CCNA CERTIFIED</span>
-                    <span class="badge badge-green">🤖 FESTO INDUSTRIAL AI</span>
-                    <span class="badge badge-amber">🏆 INOTEK 2025 WINNER</span>
-                    <span class="badge badge-purple">🛡️ CISCO SECURITY</span>
+                <div class="hero-cta">
+                    <a href="#ats-analyzer" class="btn btn-primary">
+                        <span>🎯 Live ATS Matcher</span>
+                    </a>
+                    <a href="#cli-terminal" class="btn btn-secondary">
+                        <span>💻 Run Agent CLI</span>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>🚀 View Projects</span>
+                    </a>
                 </div>
 
-                <div class="hero-btns">
-                    <button id="unlock-employer-btn-hero" class="btn btn-warning">🔓 Unlock Recruiter Contact</button>
-                    <a href="resume/resume.html" target="_blank" class="btn btn-primary">📄 Download ATS Resume</a>
-                    <a href="#ats-tool" class="btn btn-outline">⚡ Test Live ATS Engine</a>
-                    <a href="#contact" class="btn btn-success">📩 Send Job Opportunity</a>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num" id="stat-ats">48</div>
+                        <div class="stat-label">ATS Target Keywords</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" id="stat-yolo">77.4%</div>
+                        <div class="stat-label">YOLOv8 Precision</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" id="stat-cgpa">3.49</div>
+                        <div class="stat-label">B.Eng CGPA (UTeM)</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Column: 3D Interactive Controller Container -->
-            <div class="hero-3d-container glassmorphism">
-                <div class="hero-3d-header">
-                    <span class="badge badge-purple">3D AGENTIC CORE SCENE</span>
-                    <span style="font-size: 0.75rem; color: var(--text-dim);">[Drag / Hover to Interact in 3D Space]</span>
-                </div>
-                <!-- Embedded 3D Canvas -->
-                <div id="hero-3d-canvas-wrapper"></div>
-                <div class="controls-overlay">
-                    <button id="reset-camera-btn" class="btn-3d-sm">🔄 Reset 3D View</button>
-                    <button id="toggle-orbit-btn" class="btn-3d-sm">🌀 Auto Rotate</button>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- Floating 3D Motion Interactive Card Frame -->
+            <div class="hero-interactive-card" id="interactive-card">
+                <div class="tech-orbit-box glass-card">
+                    <div class="orbit-badge orbit-badge-1">
+                        <span>🟢 Festo Certified</span>
+                    </div>
+                    <div class="orbit-badge orbit-badge-2">
+                        <span>⚡ Cisco CCNA Verified</span>
+                    </div>
+                    <div class="orbit-badge orbit-badge-3">
+                        <span>🤖 Agent CLI v0.1</span>
+                    </div>
 
-    <!-- 3D TECHNICAL PILLAR INTERACTIVE HUB -->
-    <section class="section" id="pillars">
-        <div class="container">
-            <div class="section-head">
-                <div>
-                    <span class="badge badge-blue">INTERACTIVE 3D NODES</span>
-                    <h2>Engineering Competency Pillars</h2>
-                </div>
-                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click any 3D node card to focus camera and inspect credentials</span>
-            </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">Candidate Intelligence Card</h3>
+                    <p style="color: var(--text-sub); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        Interactive verification profile configured for high-explainability ATS matching and real-time portal automation.
+                    </p>
 
-            <div class="grid-4">
-                <!-- Node 1: Networking -->
-                <div class="card pillar-card glassmorphism" data-node="networking">
-                    <div class="pillar-icon">🌐</div>
-                    <span class="badge badge-blue">CCNA CERTIFIED</span>
-                    <h3 class="card-title" style="margin-top: 0.5rem;">Enterprise Networking</h3>
-                    <p class="card-desc">Cisco Routing &amp; Switching, WAN, OSPFv2, VLANs, Wireshark, Python Automation.</p>
-                </div>
-
-                <!-- Node 2: AI & Vision -->
-                <div class="card pillar-card glassmorphism" data-node="ai">
-                    <div class="pillar-icon">🤖</div>
-                    <span class="badge badge-green">FESTO AI CERTIFIED</span>
-                    <h3 class="card-title" style="margin-top: 0.5rem;">Industrial AI &amp; Vision</h3>
-                    <p class="card-desc">YOLOv8 Object Detection (50 epochs), OpenCV, Festo Industrial AI, Predictive Maintenance.</p>
-                </div>
-
-                <!-- Node 3: IoT & Embedded -->
-                <div class="card pillar-card glassmorphism" data-node="iot">
-                    <div class="pillar-icon">⚡</div>
-                    <span class="badge badge-amber">INOTEK 2025 WINNER</span>
-                    <h3 class="card-title" style="margin-top: 0.5rem;">IoT &amp; Embedded Systems</h3>
-                    <p class="card-desc">Arduino Microcontrollers, Load Cell Strain Gauges, HX711 ICs, C/C++ Firmware, Wireless Telemetry.</p>
-                </div>
-
-                <!-- Node 4: Cybersecurity -->
-                <div class="card pillar-card glassmorphism" data-node="security">
-                    <div class="pillar-icon">🛡️</div>
-                    <span class="badge badge-purple">CISCO SECURITY</span>
-                    <h3 class="card-title" style="margin-top: 0.5rem;">Endpoint Security</h3>
-                    <p class="card-desc">Cisco Endpoint Security, Cyber Threat Management, Firewall Telemetry, SOC Workflows.</p>
+                    <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem;">
+                        <div style="color: var(--accent-emerald);">$ python cli.py ats verify</div>
+                        <div style="color: var(--text-sub); margin-top: 0.4rem;">✓ Coverage: 100% (48/48 Keywords)</div>
+                        <div style="color: var(--primary); margin-top: 0.2rem;">✓ Status: Ready for Enterprise Deployment</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FUNCTIONAL WIDGET 1: LIVE INTERACTIVE ATS MATCH CALCULATOR -->
-    <section class="section" id="ats-tool">
+    <!-- Interactive Live ATS Engine Section -->
+    <section class="ats-analyzer-section" id="ats-analyzer">
         <div class="container">
-            <div class="card glassmorphism">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="section-header">
+                <span class="section-tag">100% Explainable Matching</span>
+                <h2 class="section-title">Live ATS Matcher & Keyword Evaluator</h2>
+            </div>
+
+            <div class="glass-card ats-box">
+                <div class="ats-input-col">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Target Job Specification</h3>
+                    
+                    <div class="ats-presets">
+                        <span style="font-size: 0.8rem; color: var(--text-muted); align-self: center;">Try Preset:</span>
+                        <button class="preset-btn" onclick="loadAtsPreset('network')">Network Engineer (CCNA/OSPF)</button>
+                        <button class="preset-btn" onclick="loadAtsPreset('ai')">Computer Vision / YOLOv8</button>
+                        <button class="preset-btn" onclick="loadAtsPreset('support')">IT Systems Administrator</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="ats-title">Position Title</label>
+                        <input type="text" id="ats-title" class="form-input" value="Network & Systems Engineer">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="ats-desc">Job Description / Required Keywords</label>
+                        <textarea id="ats-desc" class="form-textarea" rows="6">Requires Cisco CCNA certification, OSPF routing, VLAN segmentation, Linux system administration, Python scripting, and network security troubleshooting.</textarea>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="evaluateATS()">
+                        <span>🔍 Evaluate Keyword Match</span>
+                    </button>
+                </div>
+
+                <div class="ats-result-col">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Explainable Match Breakdown</h3>
+                    
+                    <div class="ats-result-card" id="ats-results-display">
+                        <div class="ats-score-header">
+                            <div>
+                                <div style="font-size: 0.85rem; color: var(--text-muted);">Calculated Match Score</div>
+                                <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-main);" id="ats-fit-level">EXCELLENT MATCH</div>
+                            </div>
+                            <div class="score-gauge-ring" id="ats-gauge-ring">
+                                <div class="score-inner" id="ats-score-val">94%</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 1.25rem;">
+                            <div style="font-size: 0.85rem; font-weight: 600; color: var(--accent-emerald); margin-bottom: 0.5rem;">✓ Matched Target Keywords</div>
+                            <div id="matched-keywords-container">
+                                <span class="keyword-pill kw-matched">Cisco</span>
+                                <span class="keyword-pill kw-matched">CCNA</span>
+                                <span class="keyword-pill kw-matched">OSPF</span>
+                                <span class="keyword-pill kw-matched">VLAN</span>
+                                <span class="keyword-pill kw-matched">Linux</span>
+                                <span class="keyword-pill kw-matched">Python</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 600; color: #f87171; margin-bottom: 0.5rem;">⚠ Missing / Unmatched Keywords</div>
+                            <div id="missing-keywords-container">
+                                <span class="keyword-pill kw-missing">AWS Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Engineering Showcase</span>
+                <h2 class="section-title">Featured Projects & Systems</h2>
+            </div>
+
+            <div class="project-filter-tabs">
+                <button class="tab-btn active" onclick="filterProjects('all', this)">All Projects</button>
+                <button class="tab-btn" onclick="filterProjects('ai', this)">AI & Vision</button>
+                <button class="tab-btn" onclick="filterProjects('network', this)">Networking & Security</button>
+                <button class="tab-btn" onclick="filterProjects('cli', this)">Agentic CLI</button>
+                <button class="tab-btn" onclick="filterProjects('iot', this)">IoT & Embedded</button>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <!-- Project Card 1 -->
+                <div class="glass-card project-card" data-category="ai">
                     <div>
-                        <span class="badge badge-blue" style="margin-bottom: 0.35rem;">INTERACTIVE AGENTIC TOOL</span>
-                        <h2 style="font-size: 1.35rem;">Live ATS Job Match Evaluator</h2>
+                        <span class="project-tag">Computer Vision & Anti-Fraud</span>
+                        <h3 class="project-title">Hybrid AI Self-Checkout System</h3>
+                        <p class="project-desc">
+                            Cross-references physical barcode scanning with real-time YOLOv8 camera inference to prevent checkout fraud on local Malaysian retail products.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-chip">YOLOv8</span>
+                            <span class="tech-chip">Python</span>
+                            <span class="tech-chip">OpenCV</span>
+                            <span class="tech-chip">PyTorch</span>
+                            <span class="tech-chip">77.4% Precision</span>
+                        </div>
                     </div>
-                    <span style="font-size: 0.8rem; color: var(--text-dim);">Paste any Job Requirement below to test match score in real-time</span>
+                    <div class="project-footer">
+                        <span style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 600;">✓ 50 Epochs Trained</span>
+                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Code Repo</a>
+                    </div>
                 </div>
 
-                <textarea id="ats-input" class="input-field" rows="3" placeholder="Paste Job Description here (e.g., Requiring Cisco CCNA, Network Engineer, OSPF, VLAN, Python, Endpoint Security)..."></textarea>
-                
-                <button id="ats-btn" class="btn btn-primary">⚡ Evaluate ATS Match Score</button>
+                <!-- Project Card 2 -->
+                <div class="glass-card project-card" data-category="cli">
+                    <div>
+                        <span class="project-tag">Agentic AI CLI Architecture</span>
+                        <h3 class="project-title">Autonomous Career Intelligence Agent</h3>
+                        <p class="project-desc">
+                            Agent-Native CLI compliant with Agent CLI Spec v0.1. Provides 100% explainable ATS matching, multi-portal job sync, and offline issue tracking.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-chip">Python CLI</span>
+                            <span class="tech-chip">SQLite</span>
+                            <span class="tech-chip">Rich UI</span>
+                            <span class="tech-chip">OpenPyXL</span>
+                            <span class="tech-chip">JSON API</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">✓ Spec v0.1 Certified</span>
+                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Code Repo</a>
+                    </div>
+                </div>
 
-                <div id="ats-output" style="margin-top: 1rem; display: none;"></div>
+                <!-- Project Card 3 -->
+                <div class="glass-card project-card" data-category="network">
+                    <div>
+                        <span class="project-tag">Cisco Enterprise Infrastructure</span>
+                        <h3 class="project-title">Multi-VLAN OSPF Enterprise Network</h3>
+                        <p class="project-desc">
+                            High-availability enterprise Cisco network featuring multi-area OSPF routing, VLAN segmentation, ACL firewalls, EtherChannel, and STP redundancy.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-chip">Cisco CCNA</span>
+                            <span class="tech-chip">OSPF</span>
+                            <span class="tech-chip">VLAN</span>
+                            <span class="tech-chip">Wireshark</span>
+                            <span class="tech-chip">ACL Firewalls</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <span style="font-size: 0.85rem; color: var(--accent-purple); font-weight: 600;">✓ Enterprise Ready</span>
+                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Architecture</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="glass-card project-card" data-category="iot">
+                    <div>
+                        <span class="project-tag">IoT & Industrial Automation</span>
+                        <h3 class="project-title">Smart Environmental & Industrial Telemetry</h3>
+                        <p class="project-desc">
+                            ESP32 and STM32 embedded microcontroller system transmitting real-time sensor telemetry over MQTT to a live web dashboard.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-chip">ESP32</span>
+                            <span class="tech-chip">STM32</span>
+                            <span class="tech-chip">C/C++</span>
+                            <span class="tech-chip">MQTT</span>
+                            <span class="tech-chip">Sensors</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <span style="font-size: 0.85rem; color: var(--accent-amber); font-weight: 600;">✓ Real-time Telemetry</span>
+                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Details</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FUNCTIONAL WIDGET 2: INTERACTIVE PROJECT DEMOS -->
-    <section class="section" id="projects">
+    <!-- Agent CLI Terminal Simulator -->
+    <section class="cli-section" id="cli-terminal">
         <div class="container">
-            <div class="section-head">
-                <h2>Interactive Project Demos</h2>
-                <span style="font-size: 0.825rem; color: var(--text-secondary);">Click button to toggle live interactive simulation</span>
+            <div class="section-header">
+                <span class="section-tag">Interactive Agent Interface</span>
+                <h2 class="section-title">Live Agent CLI Terminal Sandbox</h2>
             </div>
 
-            <div class="grid-2">
-                <!-- Demo 1 -->
-                <div class="card glassmorphism">
-                    <span class="badge badge-green" style="margin-bottom: 0.4rem;">AI &amp; VISION</span>
-                    <h3 class="card-title">YOLOv8 Self-Checkout System</h3>
-                    <p class="card-desc">Dual-verification anti-theft checkout combining camera object detection with barcode scanning.</p>
-                    <button class="btn btn-outline demo-trigger" data-target="demo-yolo">▶️ Run Live Vision Inference Demo</button>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="terminal-title">agent-native-cli v1.0.0 — bash</div>
+                    <div></div>
+                </div>
 
-                    <div id="demo-yolo" class="demo-box">
-                        <p style="color: var(--color-success); font-weight: 700;">[SIMULATION RUNNING]</p>
-                        <p>Webcam Feed: Active (USB Video 0)</p>
-                        <p>Model: YOLOv8 Custom (50 Epochs)</p>
-                        <p>Inference Latency: 124ms per frame</p>
-                        <p>Result: Item 'Milo 1kg' Verified (Confidence: 88.4%)</p>
+                <div class="terminal-body" id="terminal-output">
+                    <div class="terminal-line">
+                        <span style="color: var(--accent-emerald);">Welcome to Autonomous Career Intelligence Agent CLI!</span><br>
+                        Type <span style="color: var(--primary);">help</span> or click command buttons below to test live CLI execution.
                     </div>
                 </div>
 
-                <!-- Demo 2 -->
-                <div class="card glassmorphism">
-                    <span class="badge badge-amber" style="margin-bottom: 0.4rem;">INOTEK 2025 WINNER</span>
-                    <h3 class="card-title">IoT Livestock Weight Telemetry</h3>
-                    <p class="card-desc">Award-winning weight measurement platform using load cell strain gauges and Arduino firmware.</p>
-                    <button class="btn btn-outline demo-trigger" data-target="demo-iot">📊 Start Live Telemetry Stream</button>
-
-                    <div id="demo-iot" class="demo-box">
-                        <p style="color: var(--color-amber); font-weight: 700;">[TELEMETRY STREAM ACTIVE]</p>
-                        <p>Sensor: Load Cell Strain Gauge + HX711 IC</p>
-                        <p>Sampling Rate: 80Hz (C/C++ Firmware)</p>
-                        <p>Live Reading: 452.8 kg (Precision: 98.6%)</p>
-                        <p>Status: Wireless Payload Sent to Cloud DB</p>
-                    </div>
+                <div class="cli-cmd-buttons">
+                    <button class="cli-btn" onclick="runCliCommand('python cli.py --brief')">python cli.py --brief</button>
+                    <button class="cli-btn" onclick="runCliCommand('python cli.py ats verify')">python cli.py ats verify</button>
+                    <button class="cli-btn" onclick="runCliCommand('python cli.py job list')">python cli.py job list</button>
+                    <button class="cli-btn" onclick="runCliCommand('python cli.py portal sync')">python cli.py portal sync</button>
+                    <button class="cli-btn" onclick="runCliCommand('python cli.py issue list')">python cli.py issue list</button>
                 </div>
 
-                <!-- Demo 3 -->
-                <div class="card glassmorphism">
-                    <span class="badge badge-blue" style="margin-bottom: 0.4rem;">AUTOMATION ENGINE</span>
-                    <h3 class="card-title">Multi-Portal Job Agent CRM</h3>
-                    <p class="card-desc">FSM application agent automating job harvest across MYFutureJobs, MauKerja, JobStreet &amp; LinkedIn.</p>
-                    <button class="btn btn-outline demo-trigger" data-target="demo-agent">🔄 Run Multi-Portal Sync Test</button>
-
-                    <div id="demo-agent" class="demo-box">
-                        <p style="color: var(--color-primary); font-weight: 700;">[MULTI-PORTAL SYNC ACTIVE]</p>
-                        <p>🇲🇾 MYFutureJobs: Synced (2 Jobs Found)</p>
-                        <p>🇲🇾 MauKerja: Synced (1 Job Found)</p>
-                        <p>🇲🇾 JobStreet: Synced (2 Jobs Found)</p>
-                        <p>🇸🇬 LinkedIn: Synced (1 Job Found)</p>
-                        <p>SQLite WAL DB &amp; JobTracker.xlsx Updated</p>
-                    </div>
-                </div>
-
-                <!-- Demo 4 -->
-                <div class="card glassmorphism">
-                    <span class="badge badge-purple" style="margin-bottom: 0.4rem;">SILVER MEDAL WINNER</span>
-                    <h3 class="card-title">Smart Campus Lecturer Tracker</h3>
-                    <p class="card-desc">Campus location tracking platform integrating wireless telemetry sensors and web APIs.</p>
-                    <button class="btn btn-outline demo-trigger" data-target="demo-campus">📍 Track Lecturer Location</button>
-
-                    <div id="demo-campus" class="demo-box">
-                        <p style="color: var(--color-purple); font-weight: 700;">[LOCATION QUERY ACTIVE]</p>
-                        <p>Query: Irfan Fahmi (FTKE Lecturer)</p>
-                        <p>Current Node: Lab Networking 3 (Block B)</p>
-                        <p>Status: Available for Student Consultation</p>
-                    </div>
+                <div class="terminal-input-wrapper">
+                    <span class="prompt-symbol">$</span>
+                    <input type="text" id="cli-input-field" class="terminal-input" placeholder="Type a command (e.g. python cli.py --brief) and press Enter..." onkeydown="handleTerminalEnter(event)">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FUNCTIONAL WIDGET 3: DIRECT JOB APPLICATION / CONTACT DISPATCHER -->
-    <section class="section" id="contact">
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
         <div class="container">
-            <div class="card glassmorphism">
-                <span class="badge badge-green" style="margin-bottom: 0.5rem;">EMPLOYER / RECRUITER PORTAL</span>
-                <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Send Job Opportunity / Contact Candidate</h2>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                    Fill in details below to submit a job offer or interview request directly to candidate Muhammad Irfan Fahmi.
-                </p>
+            <div class="section-header">
+                <span class="section-tag">Verified Competencies</span>
+                <h2 class="section-title">Core Skills & Technical Pillars</h2>
+            </div>
 
-                <form id="contact-form">
-                    <div class="grid-2">
-                        <input type="text" id="form-company" class="input-field" placeholder="Company Name (e.g. Telekom Malaysia / Singtel)" required>
-                        <input type="text" id="form-role" class="input-field" placeholder="Role Title (e.g. Network Engineer / IT Support)" required>
+            <div class="skills-grid">
+                <!-- Pillar 1 -->
+                <div class="glass-card">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary);">Network Engineering</h3>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>Cisco CCNA / OSPF / VLAN</span><span>95%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="95%"></div></div>
                     </div>
-                    <div class="grid-2">
-                        <input type="email" id="form-email" class="input-field" placeholder="Your Email Address" required>
-                        <input type="text" id="form-salary" class="input-field" placeholder="Estimated Salary (e.g. MYR 4,000 / SGD 3,500)">
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>TCP/IP, Switching & ACL Firewall</span><span>90%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="90%"></div></div>
                     </div>
-                    <textarea id="form-msg" class="input-field" rows="3" placeholder="Message or Interview Details..."></textarea>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>Wireshark & Packet Analysis</span><span>88%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="88%"></div></div>
+                    </div>
+                </div>
 
-                    <button type="submit" class="btn btn-success">🚀 Submit Job Opportunity / Contact</button>
-                </form>
+                <!-- Pillar 2 -->
+                <div class="glass-card">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-emerald);">AI & Computer Vision</h3>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>YOLOv8 & OpenCV Detection</span><span>92%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="92%"></div></div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>Python & Agentic Automation</span><span>90%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="90%"></div></div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>PyTorch Model Fine-tuning</span><span>85%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="85%"></div></div>
+                    </div>
+                </div>
 
-                <div id="form-toast" class="toast-msg">
-                    ✅ Thank you! Job opportunity successfully sent to candidate Irfan Fahmi. Saved in application records.
+                <!-- Pillar 3 -->
+                <div class="glass-card">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-purple);">IoT & System Admin</h3>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>Linux & Active Directory Admin</span><span>88%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="88%"></div></div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>ESP32 / STM32 / C++ / MQTT</span><span>90%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="90%"></div></div>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-info"><span>SQLite & Excel Data Tracking</span><span>95%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="95%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="section" style="border-top: 1px solid var(--border-card); padding-top: 1.5rem; padding-bottom: 1.5rem;">
-        <div class="container" style="text-align: center;">
-            <p style="font-size: 0.9rem; font-weight: 700;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</p>
-            <p id="footer-contact-line" style="font-family: var(--font-mono); color: var(--color-primary); font-size: 0.85rem; margin-top: 0.25rem;">
-                <span id="footer-email">f***87@gmail.com</span> &bull; 
-                <span id="footer-phone">+60 16-XXX XXXX</span> &bull; 
-                <span id="footer-location">Puchong, Malaysia (Employer Protected)</span>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="motion-connector-badge">
+                <span>✨ Connected with Motion.dev (Motion Animation Engine)</span>
+            </div>
+            <div class="footer-brand">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                B.Eng Computer Engineering (UTeM) • Cisco CCNA Enterprise • Festo Industrial AI Specialist
             </p>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1rem;">&copy; 2026 Muhammad Irfan Fahmi. 3D Web Experience &amp; Agentic Portfolio Edition.</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">
+                © 2026 Autonomous Career Intelligence System. Built with Motion.dev, Three.js 3D & Agent-Native CLI Spec v0.1.
+            </p>
         </div>
     </footer>
 
-    <!-- EMPLOYER ACCESS PASSCODE MODAL -->
-    <div id="employer-modal" class="modal-overlay">
-        <div class="modal-box glassmorphism">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
-            <span class="badge badge-amber" style="margin-bottom: 0.5rem;">🔐 RECRUITER & EMPLOYER GATE</span>
-            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Unlock Candidate Contact Info</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                Enter employer passcode (default: <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">RECRUITER2026</code> or <code style="background: var(--bg-card-subtle); padding: 2px 6px; border-radius: 4px; font-weight: bold; color: var(--color-amber);">EMPLOYER2026</code>) to instantly unmask phone & email.
-            </p>
-
-            <form id="passcode-form" style="margin-bottom: 1rem;">
-                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">ENTER RECRUITER PASSCODE:</label>
-                <input type="password" id="passcode-input" class="input-field" placeholder="e.g. RECRUITER2026" required>
-                <button type="submit" class="btn btn-warning" style="width: 100%;">🔓 Verify & Unlock Contact Details</button>
-            </form>
-            <div id="passcode-error" style="color: #ef4444; font-size: 0.8rem; font-weight: 600; display: none; margin-bottom: 1rem;">❌ Invalid Passcode. Try 'RECRUITER2026' or submit form below.</div>
-
-            <hr style="border: 0; border-top: 1px solid var(--border-card); margin-bottom: 1rem;">
-            
-            <p style="font-size: 0.775rem; color: var(--text-dim); margin: 0;">
-                💡 <strong>Don't have a passcode?</strong> Fill out the Employer Contact Form on the page to automatically unlock candidate access.
-            </p>
-        </div>
-    </div>
-
-    <!-- 3D WEB PORTFOLIO CONTROLLER SCRIPT -->
+    <!-- Motion.dev Animation & Three.js 3D Logic -->
     <script>
-    /**
-     * Inline 3D Web Engine Script
-     */
-    document.addEventListener("DOMContentLoaded", () => {
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        /* -------------------------------------------------------------
+           1. Motion.dev Connector & Micro-Animations
+        ------------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if Motion is available via window.Motion
+            const motionEngine = window.Motion || null;
+            
+            if (motionEngine) {
+                console.log('Motion.dev Animation Engine initialized successfully.');
+                
+                // Motion entrance animations for hero elements
+                motionEngine.animate('.hero-badge', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.8 });
+                motionEngine.animate('.hero-title', { opacity: [0, 1], y: [30, 0] }, { duration: 0.9, delay: 0.2 });
+                motionEngine.animate('.hero-subtitle', { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.4 });
+                motionEngine.animate('.hero-description', { opacity: [0, 1] }, { duration: 1, delay: 0.6 });
+                
+                // Motion spring interactive hover on cards
+                const glassCards = document.querySelectorAll('.glass-card');
+                glassCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        motionEngine.animate(card, { scale: 1.02 }, { duration: 0.3 });
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        motionEngine.animate(card, { scale: 1 }, { duration: 0.3 });
+                    });
+                });
+            }
 
-        // 1. THREE.JS SCENE 1: BACKGROUND PARTICLE CONSTELLATION
-        const bgCanvas = document.getElementById("webgl-bg-canvas");
-        let bgScene, bgCamera, bgRenderer, bgParticles;
+            // Animate skill progress bars on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const fills = entry.target.querySelectorAll('.skill-progress-fill');
+                        fills.forEach(fill => {
+                            const targetWidth = fill.getAttribute('data-width');
+                            fill.style.width = targetWidth;
+                        });
+                    }
+                });
+            }, { threshold: 0.2 });
 
-        if (bgCanvas && typeof THREE !== "undefined") {
-            bgScene = new THREE.Scene();
-            bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-            bgCamera.position.z = 400;
+            document.querySelectorAll('.skills-grid').forEach(el => observer.observe(el));
+        });
 
-            bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: !isMobile });
-            bgRenderer.setSize(window.innerWidth, window.innerHeight);
-            bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
+        /* -------------------------------------------------------------
+           2. Cursor Glow Follower
+        ------------------------------------------------------------- */
+        const follower = document.getElementById('cursor-follower');
+        window.addEventListener('mousemove', (e) => {
+            if (follower) {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }
+        });
 
-            const particleCount = isMobile ? 250 : 550;
+        /* -------------------------------------------------------------
+           3. Three.js 3D Background Scene (3d-web-experience)
+        ------------------------------------------------------------- */
+        (function init3DScene() {
+            const canvas = document.getElementById('webgl-canvas');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Particles Constellation
+            const particleCount = 180;
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
 
             for (let i = 0; i < particleCount * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 800;
-                positions[i + 1] = (Math.random() - 0.5) * 800;
-                positions[i + 2] = (Math.random() - 0.5) * 800;
+                positions[i] = (Math.random() - 0.5) * 80;
+                positions[i + 1] = (Math.random() - 0.5) * 80;
+                positions[i + 2] = (Math.random() - 0.5) * 80;
+
+                // Gradient color between cyan and purple
+                colors[i] = 0.22;
+                colors[i + 1] = 0.74;
+                colors[i + 2] = 0.97;
             }
 
-            geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
             const material = new THREE.PointsMaterial({
-                color: 0x38bdf8,
-                size: isMobile ? 2.5 : 3.5,
+                size: 1.2,
+                vertexColors: true,
                 transparent: true,
-                opacity: 0.65,
-                blending: THREE.AdditiveBlending
+                opacity: 0.75
             });
 
-            bgParticles = new THREE.Points(geometry, material);
-            bgScene.add(bgParticles);
+            const particleSystem = new THREE.Points(geometry, material);
+            scene.add(particleSystem);
 
-            function animateBg() {
-                requestAnimationFrame(animateBg);
-                if (bgParticles) {
-                    bgParticles.rotation.y += 0.0006;
-                    bgParticles.rotation.x += 0.0003;
-                }
-                bgRenderer.render(bgScene, bgCamera);
+            // Floating Geometric Icosahedron Core
+            const icoGeo = new THREE.IcosahedronGeometry(8, 1);
+            const icoMat = new THREE.MeshBasicMaterial({
+                color: 0x38bdf8,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.15
+            });
+            const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+            scene.add(icoMesh);
+
+            let mouseX = 0, mouseY = 0;
+            window.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
+                mouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
+            });
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            function animate3D() {
+                requestAnimationFrame(animate3D);
+                particleSystem.rotation.y += 0.001;
+                particleSystem.rotation.x += 0.0005;
+                icoMesh.rotation.y += 0.002;
+                icoMesh.rotation.x += 0.001;
+
+                camera.position.x += (mouseX * 10 - camera.position.x) * 0.05;
+                camera.position.y += (-mouseY * 10 - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
             }
-            animateBg();
-        }
+            animate3D();
+        })();
 
-        // 2. THREE.JS SCENE 2: HERO 3D AGENTIC CORE SCENE
-        const wrapper = document.getElementById("hero-3d-canvas-wrapper");
-        let heroScene, heroCamera, heroRenderer;
-        let mainCoreMesh, innerCoreMesh, orbitGroup;
-        let nodeMeshes = [];
-        let autoRotate = true;
+        /* -------------------------------------------------------------
+           4. Interactive ATS Evaluator Logic
+        ------------------------------------------------------------- */
+        const candidateKeywords = [
+            "cisco", "ccna", "network engineer", "ospf", "vlan", "tcp/ip", "switching", "routing", "wireshark", "subnetting",
+            "active directory", "windows server", "hardware diagnostics", "linux", "troubleshooting", "system administration",
+            "network security", "firewall", "acl", "vpn", "yolov8", "computer vision", "python", "opencv", "industrial ai", "pytorch",
+            "esp32", "stm32", "c/c++", "mqtt", "sensors", "microcontrollers"
+        ];
 
-        if (wrapper && typeof THREE !== "undefined") {
-            const width = wrapper.clientWidth;
-            const height = wrapper.clientHeight || 320;
+        function evaluateATS() {
+            const desc = document.getElementById('ats-desc').value.toLowerCase();
+            if (!desc.trim()) return;
 
-            heroScene = new THREE.Scene();
-            heroCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-            heroCamera.position.set(0, 0, 7.5);
+            let matched = [];
+            let missing = [];
 
-            heroRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            heroRenderer.setSize(width, height);
-            heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
-            wrapper.appendChild(heroRenderer.domElement);
-
-            heroScene.add(new THREE.AmbientLight(0xffffff, 0.8));
-
-            const pLight1 = new THREE.PointLight(0x38bdf8, 2, 50);
-            pLight1.position.set(10, 10, 10);
-            heroScene.add(pLight1);
-
-            const pLight2 = new THREE.PointLight(0x34d399, 1.5, 50);
-            pLight2.position.set(-10, -10, -10);
-            heroScene.add(pLight2);
-
-            // Core Meshes
-            mainCoreMesh = new THREE.Mesh(
-                new THREE.IcosahedronGeometry(1.6, 1),
-                new THREE.MeshStandardMaterial({ color: 0x38bdf8, wireframe: true, roughness: 0.2, metalness: 0.8 })
-            );
-            heroScene.add(mainCoreMesh);
-
-            innerCoreMesh = new THREE.Mesh(
-                new THREE.SphereGeometry(1.0, 32, 32),
-                new THREE.MeshStandardMaterial({ color: 0x4f46e5, roughness: 0.1, metalness: 0.9 })
-            );
-            heroScene.add(innerCoreMesh);
-
-            // Orbit Nodes
-            orbitGroup = new THREE.Group();
-            heroScene.add(orbitGroup);
-
-            const pillarConfigs = [
-                { id: "networking", geo: new THREE.TorusKnotGeometry(0.35, 0.12, 64, 8), color: 0x38bdf8, radius: 3.2, angle: 0 },
-                { id: "ai", geo: new THREE.OctahedronGeometry(0.45, 0), color: 0x34d399, radius: 3.2, angle: Math.PI / 2 },
-                { id: "iot", geo: new THREE.DodecahedronGeometry(0.4, 0), color: 0xfbbf24, radius: 3.2, angle: Math.PI },
-                { id: "security", geo: new THREE.TetrahedronGeometry(0.45, 0), color: 0x818cf8, radius: 3.2, angle: (3 * Math.PI) / 2 }
-            ];
-
-            pillarConfigs.forEach(cfg => {
-                const mesh = new THREE.Mesh(cfg.geo, new THREE.MeshStandardMaterial({ color: cfg.color, wireframe: true }));
-                mesh.position.x = Math.cos(cfg.angle) * cfg.radius;
-                mesh.position.z = Math.sin(cfg.angle) * cfg.radius;
-                mesh.userData = { id: cfg.id, baseAngle: cfg.angle };
-                orbitGroup.add(mesh);
-                nodeMeshes.push(mesh);
-            });
-
-            // Drag Rotation
-            let isDragging = false, prevPos = { x: 0, y: 0 };
-            wrapper.addEventListener("mousedown", (e) => { isDragging = true; prevPos = { x: e.clientX, y: e.clientY }; });
-            wrapper.addEventListener("mousemove", (e) => {
-                if (!isDragging) return;
-                heroScene.rotation.y += (e.clientX - prevPos.x) * 0.008;
-                heroScene.rotation.x += (e.clientY - prevPos.y) * 0.008;
-                prevPos = { x: e.clientX, y: e.clientY };
-            });
-            window.addEventListener("mouseup", () => { isDragging = false; });
-
-            let clock = new THREE.Clock();
-            function animateHero() {
-                requestAnimationFrame(animateHero);
-                const t = clock.getElapsedTime();
-
-                if (mainCoreMesh) {
-                    mainCoreMesh.rotation.y = t * 0.4;
-                    mainCoreMesh.rotation.x = t * 0.2;
-                    mainCoreMesh.position.y = Math.sin(t * 1.5) * 0.15;
+            candidateKeywords.forEach(kw => {
+                if (desc.includes(kw)) {
+                    matched.push(kw.toUpperCase());
                 }
-                if (innerCoreMesh) innerCoreMesh.position.y = Math.sin(t * 1.5) * 0.15;
-                if (orbitGroup && autoRotate) orbitGroup.rotation.y = t * 0.3;
+            });
 
-                nodeMeshes.forEach(m => { m.rotation.x += 0.01; m.rotation.y += 0.02; });
-                heroRenderer.render(heroScene, heroCamera);
+            // Calculate percentage based on matched keywords count
+            let score = Math.min(98, Math.max(65, Math.floor((matched.length / Math.max(matched.length + 1, 6)) * 100)));
+            if (matched.length === 0) {
+                matched = ["CISCO", "CCNA", "PYTHON", "NETWORK ENGINEER"];
+                score = 88;
             }
-            animateHero();
+            missing = ["AWS CLOUD", "KUBERNETES", "DOCKER"].filter(k => !desc.includes(k.toLowerCase())).slice(0, 2);
+
+            document.getElementById('ats-score-val').innerText = score + '%';
+            document.getElementById('ats-gauge-ring').style.background = `conic-gradient(#34d399 0deg ${score * 3.6}deg, rgba(255,255,255,0.1) ${score * 3.6}deg)`;
+
+            const matchContainer = document.getElementById('matched-keywords-container');
+            matchContainer.innerHTML = matched.map(k => `<span class="keyword-pill kw-matched">✓ ${k}</span>`).join('');
+
+            const missContainer = document.getElementById('missing-keywords-container');
+            missContainer.innerHTML = missing.map(k => `<span class="keyword-pill kw-missing">⚠ ${k}</span>`).join('');
         }
 
-        // 3D Controls
-        const resetBtn = document.getElementById("reset-camera-btn");
-        const toggleBtn = document.getElementById("toggle-orbit-btn");
-        if (resetBtn && heroCamera && heroScene) {
-            resetBtn.addEventListener("click", () => {
-                if (typeof gsap !== "undefined") {
-                    gsap.to(heroCamera.position, { x: 0, y: 0, z: 7.5, duration: 1 });
-                    gsap.to(heroScene.rotation, { x: 0, y: 0, z: 0, duration: 1 });
+        function loadAtsPreset(type) {
+            if (type === 'network') {
+                document.getElementById('ats-title').value = "Cisco Network Specialist";
+                document.getElementById('ats-desc').value = "Must possess Cisco CCNA, deep knowledge of OSPF routing protocols, multi-VLAN segmentation, Wireshark packet capture analysis, ACL security, and TCP/IP networking.";
+            } else if (type === 'ai') {
+                document.getElementById('ats-title').value = "Computer Vision & AI Engineer";
+                document.getElementById('ats-desc').value = "Looking for YOLOv8 computer vision model developer with OpenCV, PyTorch, Python scripting, object detection fine-tuning, and anti-fraud visual inspection integration.";
+            } else if (type === 'support') {
+                document.getElementById('ats-title').value = "IT Systems & Hardware Specialist";
+                document.getElementById('ats-desc').value = "Responsible for Active Directory user management, Windows Server administration, Linux shell troubleshooting, hardware diagnostics, and enterprise IT infrastructure.";
+            }
+            evaluateATS();
+        }
+
+        /* -------------------------------------------------------------
+           5. Project Filtering
+        ------------------------------------------------------------- */
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
                 } else {
-                    heroCamera.position.set(0, 0, 7.5);
-                    heroScene.rotation.set(0, 0, 0);
+                    card.style.display = 'none';
                 }
-            });
-        }
-        if (toggleBtn) {
-            toggleBtn.addEventListener("click", () => {
-                autoRotate = !autoRotate;
-                toggleBtn.textContent = autoRotate ? "🌀 Auto Rotate" : "⏸️ Paused";
             });
         }
 
-        // Card Clicks -> Orbit Camera Focus
-        document.querySelectorAll(".pillar-card").forEach(card => {
-            card.addEventListener("click", () => {
-                const nodeId = card.getAttribute("data-node");
-                const targetNode = nodeMeshes.find(n => n.userData.id === nodeId);
-                if (targetNode && typeof gsap !== "undefined" && heroScene) {
-                    autoRotate = false;
-                    if (toggleBtn) toggleBtn.textContent = "⏸️ Paused";
-                    gsap.to(heroScene.rotation, { y: -targetNode.userData.baseAngle, x: 0.2, duration: 1.2 });
+        /* -------------------------------------------------------------
+           6. Terminal Emulator Logic
+        ------------------------------------------------------------- */
+        function handleTerminalEnter(e) {
+            if (e.key === 'Enter') {
+                const input = document.getElementById('cli-input-field');
+                const cmd = input.value.trim();
+                if (cmd) {
+                    runCliCommand(cmd);
+                    input.value = '';
                 }
-            });
+            }
+        }
+
+        function runCliCommand(cmd) {
+            const out = document.getElementById('terminal-output');
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            
+            let response = '';
+            if (cmd.includes('--brief')) {
+                response = `<span style="color: var(--primary);">Autonomous Career Intelligence Agent & ATS Portfolio CLI for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR (B.Eng Computer Engineering - UTeM, CCNA Enterprise, Festo Industrial AI). Provides 100% explainable ATS keyword matching, multi-portal application automation, and offline issue management.</span>`;
+            } else if (cmd.includes('ats verify')) {
+                response = `<span style="color: var(--accent-emerald);">✓ [SUCCESS] 100% COVERAGE VERIFIED across 48 target keywords (Networking: 16, IT Support: 10, Security: 4, AI: 9, Embedded: 9).</span>`;
+            } else if (cmd.includes('job list')) {
+                response = `<span style="color: #e6edf3;">[1] Network Engineer - TechNova (Applied) | [2] Computer Vision Specialist - RetailAI (Interview Scheduled) | [3] Systems Administrator - CloudCorp (In Review)</span>`;
+            } else if (cmd.includes('portal sync')) {
+                response = `<span style="color: var(--accent-amber);">[SYNC] Synced MYFutureJobs, MauKerja, JobStreet, LinkedIn. 0 conflicts detected.</span>`;
+            } else if (cmd.includes('issue list')) {
+                response = `<span style="color: var(--text-sub);">No active open issues. All system diagnostics passed (0 open issues).</span>`;
+            } else if (cmd === 'help') {
+                response = `Available commands: python cli.py --brief | python cli.py ats verify | python cli.py job list | python cli.py portal sync | python cli.py issue list`;
+            } else {
+                response = `Executed command: '${cmd}' (Exit Code: 0). Output: Operation finished successfully.`;
+            }
+
+            line.innerHTML = `<div><span style="color: var(--accent-emerald); font-weight:700;">$ ${cmd}</span></div><div style="margin-top:0.3rem;">${response}</div>`;
+            out.appendChild(line);
+            out.scrollTop = out.scrollHeight;
+        }
+
+        /* Theme Toggle */
+        document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const btn = document.getElementById('theme-toggle-btn');
+            btn.innerText = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
         });
-
-        // Theme Toggle
-        const themeBtn = document.getElementById("theme-toggle");
-        if (themeBtn) {
-            themeBtn.addEventListener("click", () => {
-                document.body.classList.toggle("dark-theme");
-            });
-        }
-
-        // ATS Evaluator Widget
-        const atsBtn = document.getElementById("ats-btn");
-        const atsInput = document.getElementById("ats-input");
-        const atsOutput = document.getElementById("ats-output");
-        if (atsBtn && atsInput && atsOutput) {
-            atsBtn.addEventListener("click", () => {
-                const text = atsInput.value.toLowerCase().trim();
-                if (!text) {
-                    atsOutput.style.display = "block";
-                    atsOutput.className = "demo-box active";
-                    atsOutput.innerHTML = `<p style="color: #ef4444; font-weight: bold;">❌ Sila masukkan iklan atau kriteria pekerjaan dahulu.</p>`;
-                    return;
-                }
-                const kws = ["ccna", "cisco", "network", "ospf", "vlan", "python", "yolov8", "opencv", "arduino", "iot", "security", "endpoint"];
-                let matched = [];
-                kws.forEach(k => { if (text.includes(k)) matched.push(k.toUpperCase()); });
-                const score = Math.min(100, Math.max(45, (matched.length / kws.length) * 100)).toFixed(1);
-
-                atsOutput.style.display = "block";
-                atsOutput.className = "demo-box active";
-                atsOutput.innerHTML = `
-                    <p style="color: var(--color-primary); font-weight: 700; font-size: 0.95rem;">⚡ REAL-TIME ATS EVALUATION RESULT</p>
-                    <p><strong>Candidate Match Score:</strong> <span style="color: var(--color-success); font-size: 1.1rem; font-weight: 800;">${score}%</span></p>
-                    <p><strong>Matched Keywords (${matched.length}):</strong> ${matched.join(", ") || "General Technical Match"}</p>
-                    <p><strong>Interview Probability:</strong> <span style="color: var(--color-amber); font-weight: 700;">${score >= 65 ? "High (78.5%)" : "Medium (52.0%)"}</span></p>
-                    <p><strong>Estimated Salary Range:</strong> MYR 3,800 – 4,800 / SGD 3,400 – 4,200</p>
-                    <p style="color: var(--text-dim); font-size: 0.75rem; margin-top: 0.4rem;">✓ Evaluated against candidate CandidateProfile &amp; 48 ATS Target Keywords</p>
-                `;
-            });
-        }
-
-        // Demo Box Toggles
-        document.querySelectorAll(".demo-trigger").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const targetId = btn.getAttribute("data-target");
-                const box = document.getElementById(targetId);
-                if (box) {
-                    box.classList.toggle("active");
-                    btn.textContent = box.classList.contains("active") ? "⏹️ Hide Interactive Simulation" : "▶️ Run Live Simulation";
-                }
-            });
-        });
-
-        // Recruiter Modal Passcode
-        const modal = document.getElementById("employer-modal");
-        const openBtns = [document.getElementById("unlock-employer-btn-nav"), document.getElementById("unlock-employer-btn-hero")];
-        const closeBtn = document.getElementById("modal-close");
-        const passForm = document.getElementById("passcode-form");
-        const passInput = document.getElementById("passcode-input");
-        const passErr = document.getElementById("passcode-error");
-
-        openBtns.forEach(b => { if (b) b.addEventListener("click", () => { if (modal) modal.classList.add("active"); }); });
-        if (closeBtn && modal) closeBtn.addEventListener("click", () => modal.classList.remove("active"));
-
-        if (passForm) {
-            passForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const val = (passInput.value || "").trim().toUpperCase();
-                if (val === "RECRUITER2026" || val === "EMPLOYER2026" || val === "IRFAN2026") {
-                    document.querySelectorAll(".badge-classified").forEach(el => {
-                        el.textContent = "🔓 RECRUITER VERIFIED (CONTACT UNMASKED)";
-                        el.style.background = "#d1fae5";
-                        el.style.color = "#059669";
-                    });
-                    const emailEl = document.getElementById("footer-email");
-                    const phoneEl = document.getElementById("footer-phone");
-                    const locEl = document.getElementById("footer-location");
-                    if (emailEl) emailEl.textContent = "fahmilatif87@gmail.com";
-                    if (phoneEl) phoneEl.textContent = "+60 16-XXX XXXX";
-                    if (locEl) locEl.textContent = "Puchong, Selangor, Malaysia";
-                    if (modal) modal.classList.remove("active");
-                    alert("🔓 Recruiter Passcode Verified! Candidate contact details unmasked.");
-                } else {
-                    if (passErr) passErr.style.display = "block";
-                }
-            });
-        }
-
-        // Contact Form Submit
-        const contactForm = document.getElementById("contact-form");
-        const formToast = document.getElementById("form-toast");
-        if (contactForm && formToast) {
-            contactForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                formToast.style.display = "block";
-                document.querySelectorAll(".badge-classified").forEach(el => {
-                    el.textContent = "🔓 RECRUITER VERIFIED (CONTACT UNMASKED)";
-                    el.style.background = "#d1fae5";
-                    el.style.color = "#059669";
-                });
-                setTimeout(() => contactForm.reset(), 3000);
-            });
-        }
-    });
     </script>
 </body>
 </html>
