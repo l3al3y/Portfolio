@@ -1162,16 +1162,16 @@
             if (userAns === captchaAns) {
                 try {
                     // Fetch verified candidate contact from live Cloudflare Worker
-                    const res = await fetch(`${CLOUDFLARE_WORKER_URL}/api/verify-captcha`, {
+                    const res = await fetch(CLOUDFLARE_WORKER_URL, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ token: "human_verified_" + Date.now() })
+                        body: JSON.stringify({ turnstileToken: "1x00000000000000000000AA" })
                     });
                     const data = await res.json();
 
-                    if (data.success && data.contact) {
-                        document.getElementById('revealed-email').innerText = data.contact.email;
-                        document.getElementById('revealed-phone').innerText = data.contact.phone;
+                    if (data.email && data.phone) {
+                        document.getElementById('revealed-email').innerText = data.email;
+                        document.getElementById('revealed-phone').innerText = data.phone;
                     } else {
                         document.getElementById('revealed-email').innerText = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
                         document.getElementById('revealed-phone').innerText = atob('KzYw IDE2LTI0MyAyMDIz');
