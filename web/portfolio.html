@@ -1624,6 +1624,58 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 return `Irfan is a <strong>rapid, self-driven learner</strong>. He independently mastered YOLOv8 PyTorch computer vision, Cloudflare Workers, and Festo Industrial AI within weeks to execute high-precision technical projects.`;
             }
 
+            // 10. JOB SUITABILITY & RECOMMENDATION (SUGGESTION CHIP TARGET)
+            if (q.includes('recommend') || q.includes('suitable') || q.includes('fit') || q.includes('sesuai') || q.includes('job ni') || q.includes('适合') || q.includes('岗位') || q.includes('பொருத்த') || q.includes('வேலை')) {
+                if (lang === 'bm') {
+                    return `<strong>Sangat Disyorkan untuk Peranan Kejuruteraan!</strong> 🚀<br><br>Irfan mempunyai profil yang sangat lengkap untuk peranan Jurutera Rangkaian, Jurutera Sistem Terbenam, Sokongan IT, dan Automasi AI. Beliau menggabungkan pensijilan Cisco CCNA, penguasaan YOLOv8 PyTorch, dan disiplin kepimpinan Askar Wataniah.`;
+                } else if (lang === 'cn') {
+                    return `<strong>非常适合工程与技术岗位！</strong> 🚀<br><br>Irfan 在网络工程、嵌入式系统、IT 技术支持和 AI 自动化方面具备全面技能。他拥有 Cisco CCNA 认证、YOLOv8 深度学习项目经验，以及陆军后备部队（Askar Wataniah）的严谨纪律。`;
+                } else if (lang === 'in') {
+                    return `<strong>பொறியியல் பணிகளுக்கு மிகவும் பொருத்தமானவர்!</strong> 🚀<br><br>இர்பான் நெட்வொர்க்கிங், IoT, IT ஆதரவு மற்றும் AI அமைப்புகளில் வலுவான திறன்களைக் கொண்டுள்ளார். அவர் Cisco CCNA சான்றிதழ் மற்றும் Askar Wataniah இராணுவ ஒழுக்கத்தைக் கொண்டுள்ளார்.`;
+                } else {
+                    return `<strong>Highly Recommended for Engineering Roles!</strong> 🚀<br><br>Irfan is an exceptional candidate for Network Engineering, Embedded Systems, IT Support, and Industrial AI roles. He bridges Cisco CCNA networking credentials, YOLOv8 PyTorch computer vision, and Askar Wataniah military reserve discipline.`;
+                }
+            }
+
+            // 11. SECRET SKILL / SUPERPOWER (SUGGESTION CHIP TARGET)
+            if (q.includes('secret') || q.includes('rahsia') || q.includes('隐藏') || q.includes('மறைமுக') || q.includes('hidden')) {
+                if (lang === 'bm') {
+                    return `<strong>Skill Rahsia Irfan:</strong> 💡<br>Kemampuan menguasai teknologi baharu secara berdikari dalam masa beberapa hari sahaja, digabungkan dengan ketahanan mental Askar Wataniah yang tenang di bawah tekanan projek berisiko tinggi.`;
+                } else if (lang === 'cn') {
+                    return `<strong>Irfan 的隐藏技能：</strong> 💡<br>能够在数天内自学并精通全新的复杂技术（如 Cloudflare Workers、YOLOv8 和 Festo AI），同时具备陆军后备军训练带来的高压下冷静应对能力。`;
+                } else if (lang === 'in') {
+                    return `<strong>இர்பானின் மறைமுக திறன்:</strong> 💡<br>புதிய தொழில்நுட்பங்களை விரைவாகக் கற்றுக்கொள்ளும் திறன் மற்றும் அழுத்தமான சூழ்நிலையிலும் அமைதியாக செயல்படும் திறன்.`;
+                } else {
+                    return `<strong>Irfan's Secret Skill:</strong> 💡<br>Rapid self-learning capability — mastering complex new frameworks (Cloudflare Workers, Festo Industrial AI, YOLOv8 PyTorch) within days while maintaining operational composure forged in military reserve training.`;
+                }
+            }
+
+            // 12. OPEN INVITATION / ASK ANYTHING (SUGGESTION CHIP TARGET)
+            if (q.includes('ask me anything') || q.includes('tanya je') || q.includes('随便问') || q.includes('எதைப் பற்றி') || (q.includes('anything') && q.length <= 25)) {
+                if (lang === 'bm') {
+                    return `Sila tanya apa-apa soalan! 😊 Anda boleh bertanya tentang CGPA diploma Irfan, pensijilan Cisco CCNA, projek capstone YOLOv8, lokasi di Puchong, atau ketersediaan tarikh mula kerja!`;
+                } else if (lang === 'cn') {
+                    return `欢迎随意提问！😊 您可以询问关于 Irfan 的文凭 CGPA、Cisco CCNA 认证、YOLOv8 毕业项目、在 Puchong 的居住地或随时到岗时间！`;
+                } else if (lang === 'in') {
+                    return `எதைப் பற்றி வேண்டுமானாலும் கேட்கலாம்! 😊 இர்பானின் கல்வி, சான்றிதழ்கள், திட்டங்கள் அல்லது வேலைக்கான தகுதி பற்றி கேட்கலாம்!`;
+                } else {
+                    return `Ask away! 😊 Feel free to ask anything about Irfan's Diploma CGPA, Cisco CCNA certification, YOLOv8 capstone project, location in Puchong, or employment availability!`;
+                }
+            }
+
+            // 13. MULTILINGUAL PROMPT NUDGE (SUGGESTION CHIP TARGET)
+            if (q.includes('cuba tanya') || q.includes('try asking') || q.includes('试试') || q.includes('கேட்கலாம்') || q.includes('bahasa or') || q.includes('malay or')) {
+                if (lang === 'bm') {
+                    return `Ya! Pembantu AI ini menyokong 4 bahasa secara natively! 🌐 Sila taip soalan anda dalam <strong>Bahasa Melayu, English, Chinese (华语), atau Tamil (தமிழ்)</strong>.`;
+                } else if (lang === 'cn') {
+                    return `是的！AI 助手原生支持 4 种语言！🌐 您可以用 <strong>华语、English、Bahasa Melayu 或 Tamil (தமிழ்)</strong> 随时提问。`;
+                } else if (lang === 'in') {
+                    return `ஆம்! AI உதவியாளர் 4 மொழிகளை ஆதரிக்கிறது! 🌐 <strong>ஆங்கிலம், மலாய், சீனம் அல்லது தமிழ்</strong> மொழிகளில் கேட்கலாம்.`;
+                } else {
+                    return `Yes! This AI Assistant natively supports 4 languages! 🌐 Feel free to ask questions in <strong>English, Bahasa Melayu, Chinese (华语), or Tamil (தமிழ்)</strong>.`;
+                }
+            }
+
             // 10. LOCATION & RELOCATION
             if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah') || q.includes('where') || q.includes('located') || q.includes('mana') || q.includes('duduk')) {
                 if (lang === 'bm') {
@@ -1633,11 +1685,16 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 11. WHY HIRE IRFAN / STRENGTHS
-            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil') || q.includes('pilih') || q.includes('patut') || q.includes('kenapa')) {
+            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil') || q.includes('pilih') || q.includes('patut') || q.includes('kenapa') || q.includes('亮点') || q.includes('சிறப்பு') || q.includes('அம்சம்')) {
                 if (lang === 'bm') {
                     return `<strong>Kelebihan Utama Irfan:</strong><br>1. <strong>Penguasaan Dwi-Bidang:</strong> Merapatkan jurang Perkakasan (IoT/Embedded), Rangkaian (Cisco CCNA), & Perisian/AI (YOLOv8 PyTorch).<br>2. <strong>Pencapaian Terbukti:</strong> Anugerah Pelajar Terbaik Kolej Komuniti (CGPA 3.58) & Projek Capstone AI (77.4% precision).<br>3. <strong>Disiplin Askar Wataniah:</strong> Berdaya tahan tinggi di bawah tekanan dan mempunyai etika kerja cemerlang.`;
+                } else if (lang === 'cn') {
+                    return `<strong>Irfan 的核心优势：</strong><br>1. <strong>跨领域综合能力：</strong> 融合硬件 (IoT/嵌入式)、网络 (Cisco CCNA) 与 AI/软件 (YOLOv8 PyTorch)。<br>2. <strong>优异学术与项目实绩：</strong> Kolej Komuniti 最佳学生奖（CGPA 3.58）及 77.4% 高精度毕业 AI 项目。<br>3. <strong>陆军后备军纪律：</strong> Askar Wataniah 军训赋予的高压下抗压与团队协作能力。`;
+                } else if (lang === 'in') {
+                    return `<strong>இர்பானின் முதன்மை சிறப்பம்சங்கள்:</strong><br>1. <strong>வன்பொருள், நெட்வொர்க்கிங் & AI இணைப்பு:</strong> Cisco CCNA Enterprise, IoT/Embedded அமைப்புகள் மற்றும் YOLOv8 PyTorch கணினி பார்வையில் திறமையானவர்.<br>2. <strong>சிறந்த கல்வி சாதனை:</strong> சிறந்த மாணவர் விருது (CGPA 3.58) & உயர் துல்லியமான Capstone திட்டம் (77.4% துல்லியம்).<br>3. <strong>இராணுவ ஒழுக்கம்:</strong> Askar Wataniah இருப்புப்படை பயிற்சி மூலம் உயர் அழுத்தத்தை தாங்கும் திறன்.`;
+                } else {
+                    return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.`;
                 }
-                return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.`;
             }
 
             // 11. WEB DEV & FULLSTACK

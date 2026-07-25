@@ -167,7 +167,44 @@ CHALLENGE_BENCHMARK_QUERIES = [
     {"query": "terima kasih banyak", "expected": "gratitude"},
     {"query": "thanks for the info", "expected": "gratitude"},
     {"query": "goodbye", "expected": "gratitude"},
-    {"query": "jumpa lagi", "expected": "gratitude"}
+    {"query": "jumpa lagi", "expected": "gratitude"},
+
+    # 23. All 32 Interactive Suggestion Prompt Chips (EN, BM, CN, IN)
+    {"query": "Recommend me for this job? 🚀", "expected": "chip_recommend"},
+    {"query": "What makes you different? ✨", "expected": "chip_strengths"},
+    {"query": "Test my CCNA networking knowledge! 🔌", "expected": "chip_networking"},
+    {"query": "Try asking in Bahasa or 华语! 🌐", "expected": "chip_multilingual"},
+    {"query": "Did your capstone AI project work? 🤖", "expected": "chip_capstone"},
+    {"query": "What's your secret skill? 💡", "expected": "chip_secret"},
+    {"query": "Ask me anything 👀", "expected": "chip_ask_anything"},
+    {"query": "Diploma CGPA & background? 🎓", "expected": "chip_diploma"},
+
+    {"query": "Sesuai ke Irfan untuk job ni? 🚀", "expected": "chip_recommend"},
+    {"query": "Apa kelebihan utama Irfan? ✨", "expected": "chip_strengths"},
+    {"query": "Uji ilmu networking Cisco saya! 🔌", "expected": "chip_networking"},
+    {"query": "Cuba tanya dalam English atau 华语! 🌐", "expected": "chip_multilingual"},
+    {"query": "Jadi ke projek AI capstone Irfan? 🤖", "expected": "chip_capstone"},
+    {"query": "Apa skill rahsia Irfan? 💡", "expected": "chip_secret"},
+    {"query": "Tanya je apa-apa 👀", "expected": "chip_ask_anything"},
+    {"query": "CGPA Diploma & latar belakang? 🎓", "expected": "chip_diploma"},
+
+    {"query": "我适合这个岗位吗？🚀", "expected": "chip_recommend"},
+    {"query": "你最大的亮点是什么？✨", "expected": "chip_strengths"},
+    {"query": "考考我的 Cisco 网络知识！🔌", "expected": "chip_networking"},
+    {"query": "试试用 Malay 或 English 提问！🌐", "expected": "chip_multilingual"},
+    {"query": "毕业 AI 项目效果怎么样？🤖", "expected": "chip_capstone"},
+    {"query": "有什么隐藏技能吗？💡", "expected": "chip_secret"},
+    {"query": "随便问，什么都可以 👀", "expected": "chip_ask_anything"},
+    {"query": "文凭 CGPA 和学历背景？🎓", "expected": "chip_diploma"},
+
+    {"query": "இந்த வேலைக்கு நான் பொருத்தமானவனா? 🚀", "expected": "chip_recommend"},
+    {"query": "உங்களின் சிறப்பு அம்சம் என்ன? ✨", "expected": "chip_strengths"},
+    {"query": "எனது சிஸ்கோ நெட்வொர்க்கிங் அறிவை சோதியுங்கள்! 🔌", "expected": "chip_networking"},
+    {"query": "ஆங்கிலம் அல்லது மலாய் மொழியிலும் கேட்கலாம்! 🌐", "expected": "chip_multilingual"},
+    {"query": "உங்கள் AI திட்டம் வெற்றிபெற்றதா? 🤖", "expected": "chip_capstone"},
+    {"query": "உங்களிடம் உள்ள மறைமுக திறன் என்ன? 💡", "expected": "chip_secret"},
+    {"query": "எதைப் பற்றி வேண்டுமானாலும் கேட்கலாம் 👀", "expected": "chip_ask_anything"},
+    {"query": "டிப்ளமோ CGPA மற்றும் கல்வி தகுதி? 🎓", "expected": "chip_diploma"}
 ]
 
 def run_evaluation():
