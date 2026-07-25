@@ -24,10 +24,10 @@ D:\Resume ats cli\
 │   ├── sync_all_portals.py           # Multi-Portal Sync Engine Launcher
 │   └── job_agent.db                  # SQLite Audit Persistence Database
 │
-├── web/                              # Web Applications & Interactive Mockups
-│   ├── portfolio.html                # Modern Glassmorphic Developer & Engineering Portfolio
-│   ├── portfolio_style.css           # Glassmorphic Styling & Color System
-│   ├── portfolio_script.js          # Interactive Filtering, Modals, & Live ATS Calculator
+├── web/                              # Web Applications & 3D Interactive Mockups
+│   ├── portfolio.html                # Immersive 3D Web Experience Engineering Portfolio (Three.js WebGL)
+│   ├── portfolio_style.css           # Glassmorphic Design System & 3D Responsive Styling
+│   ├── portfolio_script.js          # Three.js 3D Engine, Particle Starfield, Live ATS & Employer Gate
 │   ├── index.html                    # Interactive ATS Resume Builder & PDF Exporter
 │   ├── style.css                     # Resume Builder Styling
 │   └── script.js                     # Resume Builder PDF Export Logic
