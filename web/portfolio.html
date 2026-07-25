@@ -97,13 +97,13 @@
             box-shadow: 0 15px 35px var(--primary-glow);
         }
 
-        /* HEADER & NAV */
+        /* HEADER & NAV - MOBILE FIRST CLEAN DESIGN */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
             z-index: 1000;
-            padding: 0.85rem 0;
-            background: rgba(11, 15, 25, 0.88);
+            padding: 0.75rem 0;
+            background: rgba(11, 15, 25, 0.92);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
         }
@@ -117,26 +117,31 @@
         .logo-badge {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
             text-decoration: none;
             color: var(--text-main);
             font-weight: 800;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
         }
 
         .logo-icon {
-            width: 38px; height: 38px;
+            width: 36px; height: 36px;
             background: linear-gradient(135deg, var(--primary), #0284c7);
-            border-radius: 10px;
+            border-radius: 9px;
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-family: var(--font-mono); font-weight: 800;
             flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .logo-name-text {
+            white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.75rem;
             list-style: none;
         }
 
@@ -150,13 +155,37 @@
 
         .nav-links a:hover { color: var(--primary); }
 
-        .mobile-menu-btn {
-            display: none;
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle {
+            width: 38px; height: 38px;
+            display: inline-flex; align-items: center; justify-content: center;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border-card);
             color: var(--text-main);
-            font-size: 1.3rem;
-            padding: 0.4rem 0.75rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-radius: var(--radius-sm);
+            transition: 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            width: 38px; height: 38px;
+            align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            font-size: 1.25rem;
             border-radius: var(--radius-sm);
             cursor: pointer;
             line-height: 1;
@@ -231,18 +260,9 @@
             border-color: var(--primary);
         }
 
-        .theme-toggle {
-            background: none; border: none;
-            color: var(--text-sub);
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0.4rem;
-            border-radius: 50%;
-        }
-
         /* HERO SECTION */
         .hero {
-            padding: 9.5rem 0 4rem;
+            padding: 8.5rem 0 4rem;
             min-height: 85vh;
             display: flex;
             align-items: center;
@@ -645,20 +665,20 @@
             background: rgba(11, 15, 25, 0.95);
         }
 
-        /* MOBILE & CROSS-DEVICE RESPONSIVE BREAKPOINTS */
+        /* MOBILE-FIRST RESPONSIVE BREAKPOINTS */
         @media (max-width: 992px) {
-            .hero { padding: 7.5rem 0 3rem; min-height: auto; }
+            .hero { padding: 6.5rem 0 3rem; min-height: auto; }
             .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
             .skills-grid-table { grid-template-columns: 1fr; gap: 0.75rem; }
             .nav-links { display: none; }
-            .mobile-menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+            .mobile-menu-btn { display: inline-flex; }
             .section-title-main { font-size: 1.5rem; }
         }
 
         @media (max-width: 768px) {
             .hero-title { font-size: 2.1rem; }
             .hero-subtitle { font-size: 1rem; }
-            .logo-badge span { font-size: 1rem; }
+            .logo-name-text { font-size: 0.95rem; }
             .chat-window-card { height: 550px; }
             .chat-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
             .chat-message { max-width: 92%; }
@@ -669,7 +689,7 @@
 
         @media (max-width: 480px) {
             .container { width: 95%; padding: 0 0.5rem; }
-            .hero { padding: 6.5rem 0 2rem; }
+            .hero { padding: 6rem 0 2rem; }
             .hero-title { font-size: 1.75rem; letter-spacing: normal; }
             .hero-subtitle { font-size: 0.95rem; }
             .hero-cta { flex-direction: column; width: 100%; }
@@ -691,13 +711,15 @@
     <!-- 3D Constellation WebGL Background -->
     <canvas id="webgl-canvas"></canvas>
 
-    <!-- Navigation Header -->
+    <!-- Navigation Header (Mobile-First Clean Header: Logo, Dark Mode, Hamburger Menu Only) -->
     <header>
         <div class="container nav-inner">
             <a href="../index.html" class="logo-badge">
                 <div class="logo-icon">MI</div>
-                <span>Muhammad Irfan Fahmi</span>
+                <span class="logo-name-text">Muhammad Irfan Fahmi</span>
             </a>
+
+            <!-- Desktop Links -->
             <ul class="nav-links">
                 <li><a href="#hero">Overview</a></li>
                 <li><a href="#skills">Technical Skills</a></li>
@@ -706,9 +728,10 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#ai-assistant">🌙 Kimi K2.5 AI</a></li>
             </ul>
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
-                <button class="btn btn-emerald" style="padding: 0.5rem 0.85rem; font-size: 0.85rem;" onclick="openSecurityModal()">🔓 Reveal Contact</button>
-                <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme">🌙</button>
+
+            <!-- Clean Top Actions: Light/Dark Mode + Hamburger Menu Only -->
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Light and Dark Mode">🌙</button>
                 <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
             </div>
         </div>
@@ -723,6 +746,7 @@
                 <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
                 <li><a href="#ai-assistant" onclick="closeMobileMenu()">🌙 Kimi K2.5 AI Assistant</a></li>
                 <li><a href="#resume-section" onclick="closeMobileMenu()">📄 1-Page ATS Resume</a></li>
+                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openSecurityModal();" style="color: var(--emerald); font-weight: 700;">🔓 Reveal Contact Info</a></li>
             </ul>
         </div>
     </header>
@@ -803,9 +827,10 @@
                     </div>
                 </div>
 
+                <!-- Action Buttons Below Personal Summary -->
                 <div class="hero-cta">
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
                     <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
                     <a href="#ai-assistant" class="btn btn-secondary">🌙 Ask Kimi K2.5 AI</a>
                 </div>
             </div>
@@ -1142,7 +1167,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
 2. IDENTITY HANDLING: If asked "who you", "who are you", "siapa awak", "siapa anda", "你是谁", or similar, identify yourself warmly as Irfan's Conversational AI Assistant. Explain your role in helping recruiters evaluate Irfan's engineering background, age (26–27), CCNA credentials, and rapid adaptability.
 3. AGE HANDLING: If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
 4. HUGE LEAP IN CONVERSATION: Provide insightful, articulate, empathetic, and multi-turn conversational responses. Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
-5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button to solve the human CAPTCHA check.`;
+5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the human CAPTCHA check.`;
 
         // Initialize Kimi API Key Input on page load
         window.addEventListener('DOMContentLoaded', () => {
@@ -1231,13 +1256,13 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             if (qLower.includes('phone') || qLower.includes('number') || qLower.includes('email') || qLower.includes('whatsapp') || qLower.includes('contact') || qLower.includes('call') || qLower.includes('reach') || qLower.includes('telefon') || qLower.includes('emel') || qLower.includes('hubungi') || qLower.includes('电话') || qLower.includes('邮箱') || qLower.includes('தொலைபேசி')) {
                 let securityReply = "";
                 if (lang === 'bm') {
-                    securityReply = `🔒 <strong>Pengesahan Keselamatan Diperlukan:</strong><br>Maklumat hubungan terus calon (nombor telefon & emel) dilindungi daripada bot carian automatik.<br><br>Sila tekan butang <strong>"🔓 Reveal Contact Info"</strong> di bahagian atas untuk melengkapkan semakan CAPTCHA 1 saat.`;
+                    securityReply = `🔒 <strong>Pengesahan Keselamatan Diperlukan:</strong><br>Maklumat hubungan terus calon (nombor telefon & emel) dilindungi daripada bot carian automatik.<br><br>Sila tekan butang <strong>"🔓 Reveal Contact Info"</strong> di bawah ringkasan peribadi untuk melengkapkan semakan CAPTCHA 1 saat.`;
                 } else if (lang === 'cn') {
-                    securityReply = `🔒 <strong>需要安全验证：</strong><br>候选人的直接联系方式（电话和电子邮件）已受到保护，防止自动网络爬虫抓取。<br><br>请点击顶部导航栏中的 <strong>“🔓 Reveal Contact Info”</strong> 按钮，完成1秒钟的人类验证码（CAPTCHA）验证以解锁联系方式！`;
+                    securityReply = `🔒 <strong>需要安全验证：</strong><br>候选人的直接联系方式（电话和电子邮件）已受到保护，防止自动网络爬虫抓取。<br><br>请点击个人总结下方的 <strong>“🔓 Reveal Contact Info”</strong> 按钮，完成1秒钟的人类验证码（CAPTCHA）验证以解锁联系方式！`;
                 } else if (lang === 'in') {
-                    securityReply = `🔒 <strong>பாதுகாப்பு சரிபார்ப்பு தேவை:</strong><br>நேரடி தொடர்பு விவரங்கள் (தொலைபேசி & மின்னஞ்சல்) தானியங்கி போட்களிலிருந்து பாதுகாக்கப்படுகிறது.<br><br>தயவுசெய்து மேல் பகுதியிலுள்ள <strong>"🔓 Reveal Contact Info"</strong> பொத்தானைக் கிளிக் செய்யவும்.`;
+                    securityReply = `🔒 <strong>பாதுகாப்பு சரிபார்ப்பு தேவை:</strong><br>நேரடி தொடர்பு விவரங்கள் (தொலைபேசி & மின்னஞ்சல்) தானியங்கி போட்களிலிருந்து பாதுகாக்கப்படுகிறது.<br><br>தயவுசெய்து சுயவிவரக் குறிப்புக்குக் கீழுள்ள <strong>"🔓 Reveal Contact Info"</strong> பொத்தானைக் கிளிக் செய்யவும்.`;
                 } else {
-                    securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details (phone & email) are protected against automated web scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button in the top navigation header to complete a quick 1-second human CAPTCHA verification and unlock direct details!`;
+                    securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details (phone & email) are protected against automated web scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button below the personal summary to complete a quick 1-second human CAPTCHA verification and unlock direct details!`;
                 }
 
                 const botMsgDiv = document.createElement('div');
