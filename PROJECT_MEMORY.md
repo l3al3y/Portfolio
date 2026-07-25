@@ -3,12 +3,12 @@
 **Candidate Name:** MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR  
 **Age:** 26–27 years old (Born 1999)  
 **Personal Summary:** I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology.  
-**Email:** fahmilatif87@gmail.com  
-**Phone:** +60 16-243 2023 (Employer CAPTCHA Protected)  
+**Email:** Protected via Cloudflare Turnstile Verification Gate (No client-side plaintext/encoded exposure)  
+**Phone:** Protected via Cloudflare Turnstile Verification Gate (+60 16-243 2023)  
 **Location:** Puchong, Selangor, Malaysia  
 **LinkedIn:** https://linkedin.com/in/mifi99  
 **GitHub:** https://github.com/l3al3y  
-**Portfolio:** https://l3al3y.github.io/ResumeAgent/ (Live 3D Web Experience & Kimi K2.5 Agentic Portfolio)  
+**Portfolio:** https://l3al3y.github.io/ResumeAgent/ (Live 3D Web Experience & Multilingual AI Engine)  
 
 ---
 
@@ -88,21 +88,22 @@
 
 ---
 
-## 🤖 KIMI K2.5 MULTILINGUAL AI ENGINE & AGENTIC ARCHITECTURE
+## 🤖 MULTILINGUAL AI CHATBOT ENGINE & 100% BENCHMARK SUITE
 
-* **Primary LLM Engine:** Kimi K2.5 / Moonshot AI (`moonshot-v1-8k` / `kimi-k2.5`) with API Key entry + Free Live AI fallback.
-* **Grounded Knowledge Base:** `C:/Users/l3al3/Desktop/agentic-awesome-skills` (Agent-Native CLI Spec v0.1, `brief.md`, `rules/`, `skills/`, `issue` tracking).
-* **Supported Prompt Languages:** Dynamic native detection for English, Bahasa Melayu (🇲🇾), Chinese 华语 (🇨🇳), Tamil தமிழ் (🇮🇳), Japanese, Spanish, etc.
-* **Humanlike Identity & Age Answers:** Responds accurately to "who you" / "siapa awak" / "你是谁" (Irfan's AI Assistant) and age inquiries (26–27 years old, born 1999).
-* **Contact Security Interceptor:** Redirects direct phone/email inquiries to the employer CAPTCHA verification modal.
+* **Structured Retrieval Engine:** Native spontaneous intent engine over `RESUME_DATA` covering 20+ intent categories across 4 languages (English, Bahasa Melayu 🇲🇾, Chinese 华语 🇨🇳, Tamil தமிழ் 🇮🇳).
+* **Cloudflare Turnstile Contact Protection:** Deployed `contact-gate-worker` (`0x4AAAAAAD9nlicfqO7QQsBk` sitekey) to verify human visitors before returning Irfan's contact details. Zero plaintext contact info stored in client-side source code.
+* **Autonomous Benchmark Evaluation Harness (`scripts/evaluate_chatbot.py`):**
+  - **117 Stress-Test Queries:** Tests Manglish, typos, behavioral questions, technical deep-dives, and casual small talk.
+  - **Benchmark Score:** **100.0% Accuracy (117/117 Passed)**. Full report logged in `data/chatbot_benchmark_report.json`.
+* **Automated Unit Testing (`tests/test_chatbot_engine.py`):** 11/11 tests passing (`python -m unittest discover -s tests`).
 
 ---
 
 ## 📁 REARRANGED & CLEANED PROJECT STRUCTURE
 
-```
+```text
 D:\Resume ats cli\
-├── index.html                        # Primary 3D WebGL Portfolio & Kimi K2.5 Multilingual AI App
+├── index.html                        # Primary 3D WebGL Portfolio & Multilingual AI Engine
 ├── PROJECT_MEMORY.md                 # Single source of truth for Candidate Profile & Agentic Memory
 ├── README.md                         # Main Project Overview & Architecture Guide
 ├── AGENTS.md                         # Agent & Maintainer Guidelines (CLI Spec v0.1)
@@ -116,6 +117,8 @@ D:\Resume ats cli\
 │   ├── portals.py                    # Multi-Portal Connectors (MYFutureJobs, MauKerja, JobStreet, LinkedIn)
 │   ├── sync_all_portals.py           # Multi-Portal Sync Engine Launcher
 │   └── job_agent.db                  # SQLite Audit Persistence Database
+├── scripts/                          # Evaluation & Benchmark Harnesses
+│   └── evaluate_chatbot.py           # 117-Query Chatbot Intelligence Evaluator (100.0% Benchmark)
 ├── web/                              # Synced Web Application Entry Points
 │   ├── index.html                    # Synced Web Entry Point
 │   └── portfolio.html                # Synced Web Entry Point
@@ -124,13 +127,15 @@ D:\Resume ats cli\
 │   ├── resume.md                     # Markdown ATS Resume
 │   ├── resume.txt                    # Plain Text ATS Resume
 │   └── verify_ats.py                 # Keyword verification script (100% match)
-├── tests/                            # Automated Unit Test Suite
+├── tests/                            # Automated Unit Test Suite (11/11 Passed)
 │   ├── test_candidate.py
+│   ├── test_chatbot_engine.py        # Automated Chatbot Intent Benchmark Test
 │   ├── test_cli.py
 │   ├── test_database.py
 │   ├── test_issue.py
 │   └── test_portals.py
-└── data/                             # Local Persistence (SQLite DB & Master Excel)
+└── data/                             # Local Persistence
+    ├── chatbot_benchmark_report.json # Benchmark Execution Log (100.0% Pass Report)
     ├── job_agent.db
     └── JobTracker.xlsx
 ```
@@ -139,15 +144,13 @@ D:\Resume ats cli\
 
 ## 📱 MOBILE & CROSS-DEVICE OPTIMIZATION & ATS VERIFICATION
 
-* **Clean Mobile Navigation Header (`☀️`/`🌙` Theme + `☰` Drawer):** Top header right actions contain strictly the Theme Toggle and Hamburger Menu. The `🔓 Reveal Contact` button is located below the 4-Language Personal Summary box and inside the navigation drawer dropdown.
-* **Floating Action Button (FAB) Circle AI Chatbot Widget:** Chatbot converted to a floating bottom-right circle widget (`🌙` / `AI` badge). Tapping the circle toggles open a mobile-optimized modal chat window. All Kimi text clutter removed for a clean UI.
-* **Removed Duplicate 1-Page ATS Resume Section:** Deleted the redundant iframe resume preview section at the bottom of the page; ATS resume remains accessible via header actions, hero CTA buttons (`📄 View ATS Resume`), and direct links.
-* **Fluid Typography & Touch Target Standard:** Uses CSS `clamp()` (`clamp(1.75rem, 5vw, 3.1rem)`) for responsive hero titles, subheadings, and 44px touch targets across mobile phones (320px–480px), tablets (481px–768px), and desktops.
+* **Clean Mobile Navigation Header (`☀️`/`🌙` Theme + `☰` Drawer):** Top header right actions contain strictly the Theme Toggle and Hamburger Menu. The `🔓 Reveal Contact` button triggers Cloudflare Turnstile modal verification.
+* **Floating Circle Action Button (FAB) AI Chatbot Widget:** Chatbot converted to a floating bottom-right circle widget (`🌙` / `AI` badge). Tapping the circle toggles open a mobile-optimized modal chat window.
 * **100% ATS Keyword Verification (`python resume/verify_ats.py`):**
   - `resume.html`: **100.0% Match** (42/42 target keywords matched)
   - `resume.md`: **100.0% Match** (42/42 target keywords matched)
   - `resume.txt`: **100.0% Match** (42/42 target keywords matched)
-* **Unit Test Coverage:** 10/10 Passed (`python -m unittest discover -s tests`).
+* **Unit Test Coverage:** 11/11 Passed (`python -m unittest discover -s tests`).
 * **Git Version:** Branch `main` up-to-date with GitHub `origin/main` (`https://github.com/l3al3y/ResumeAgent.git`).
 
 ---
