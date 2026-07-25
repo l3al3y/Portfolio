@@ -2,7 +2,7 @@
 
 **Candidate Name:** MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR  
 **Email:** fahmilatif87@gmail.com  
-**Phone:** +60 16-XXX XXXX (Employer Protected)  
+**Phone:** +60 16-243 2023 (Employer Protected)  
 **Location:** Puchong, Malaysia  
 **LinkedIn:** https://linkedin.com/in/mifi99  
 **GitHub:** https://github.com/l3al3y  
