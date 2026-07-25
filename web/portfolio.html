@@ -1053,11 +1053,8 @@
             </div>
         </div>
 
-        <div class="chat-suggested-prompts">
-            <button class="prompt-chip" onclick="sendSuggestedPrompt('Siapa awak?')">🇲🇾 Siapa Awak</button>
-            <button class="prompt-chip" onclick="sendSuggestedPrompt('Berapa umur Irfan?')">🇲🇾 Umur Irfan</button>
-            <button class="prompt-chip" onclick="sendSuggestedPrompt('你是谁？')">🇨🇳 你是谁？</button>
-            <button class="prompt-chip" onclick="sendSuggestedPrompt('Who are you?')">🇬🇧 Who are you?</button>
+        <div class="chat-suggested-prompts" id="chat-suggested-chips">
+            <!-- Dynamically populated from SUGGESTION_CHIPS on open/reset -->
         </div>
 
         <div class="chat-input-area">
@@ -1110,12 +1107,73 @@
                 chatWin.classList.toggle('active');
                 if (chatWin.classList.contains('active')) {
                     document.getElementById('chat-user-input').focus();
+                    renderRandomChips();
                 }
             }
         }
 
         /* -------------------------------------------------------------
-           2. 4-Language Adaptability & Personal Growth Summaries
+           2. Suggestion Chip Pool & Dynamic Rotation System
+        ------------------------------------------------------------- */
+        const SUGGESTION_CHIPS = {
+            en: [
+                "Recommend me for this job? 🚀",
+                "What makes you different? ✨",
+                "Test my CCNA networking knowledge! 🔌",
+                "Try asking in Bahasa or 华语! 🌐",
+                "Did your capstone AI project work? 🤖",
+                "What's your secret skill? 💡",
+                "Ask me anything 👀",
+                "Diploma CGPA & background? 🎓"
+            ],
+            bm: [
+                "Sesuai ke Irfan untuk job ni? 🚀",
+                "Apa kelebihan utama Irfan? ✨",
+                "Uji ilmu networking Cisco saya! 🔌",
+                "Cuba tanya dalam English atau 华语! 🌐",
+                "Jadi ke projek AI capstone Irfan? 🤖",
+                "Apa skill rahsia Irfan? 💡",
+                "Tanya je apa-apa 👀",
+                "CGPA Diploma & latar belakang? 🎓"
+            ],
+            cn: [
+                "我适合这个岗位吗？🚀",
+                "你最大的亮点是什么？✨",
+                "考考我的 Cisco 网络知识！🔌",
+                "试试用 Malay 或 English 提问！🌐",
+                "毕业 AI 项目效果怎么样？🤖",
+                "有什么隐藏技能吗？💡",
+                "随便问，什么都可以 👀",
+                "文凭 CGPA 和学历背景？🎓"
+            ],
+            in: [
+                "இந்த வேலைக்கு நான் பொருத்தமானவனா? 🚀",
+                "உங்களின் சிறப்பு அம்சம் என்ன? ✨",
+                "எனது சிஸ்கோ நெட்வொர்க்கிங் அறிவை சோதியுங்கள்! 🔌",
+                "ஆங்கிலம் அல்லது மலாய் மொழியிலும் கேட்கலாம்! 🌐",
+                "உங்கள் AI திட்டம் வெற்றிபெற்றதா? 🤖",
+                "உங்களிடம் உள்ள மறைமுக திறன் என்ன? 💡",
+                "எதைப் பற்றி வேண்டுமானாலும் கேட்கலாம் 👀",
+                "டிப்ளமோ CGPA மற்றும் கல்வி தகுதி? 🎓"
+            ]
+        };
+
+        function renderRandomChips(lang = 'en') {
+            const container = document.getElementById('chat-suggested-chips');
+            if (!container) return;
+
+            const pool = SUGGESTION_CHIPS[lang] || SUGGESTION_CHIPS.en;
+            const shuffled = [...pool].sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 4);
+
+            container.innerHTML = selected.map(chipText => {
+                const escaped = escapeHtml(chipText);
+                return `<button class="prompt-chip" onclick="sendSuggestedPrompt('${escaped.replace(/'/g, "\\'")}')">${escaped}</button>`;
+            }).join('');
+        }
+
+        /* -------------------------------------------------------------
+           3. 4-Language Adaptability & Personal Growth Summaries
         ------------------------------------------------------------- */
         const executiveSummaries = {
             en: `"I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology."`,
@@ -1137,7 +1195,7 @@
         }
 
         /* -------------------------------------------------------------
-           3. Cloudflare Turnstile Security Verification Modal
+           4. Cloudflare Turnstile Security Verification Modal
         ------------------------------------------------------------- */
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
@@ -1180,12 +1238,10 @@
                     throw new Error("Invalid response format");
                 }
             } catch (err) {
+                console.error("Turnstile reveal error:", err);
                 if (errorMsgEl) {
-                    errorMsgEl.innerText = "Verification failed, please try again.";
+                    errorMsgEl.innerText = "Security verification failed. Please try again.";
                     errorMsgEl.style.display = 'block';
-                }
-                if (window.turnstile) {
-                    window.turnstile.reset();
                 }
             }
         }
@@ -1200,7 +1256,7 @@
         }
 
         /* -------------------------------------------------------------
-           4. AI Engine Single Source of Truth & Knowledge Grounding
+           5. AI Engine Single Source of Truth & Knowledge Grounding
         ------------------------------------------------------------- */
         const RESUME_DATA = {
             profile: {
@@ -1275,12 +1331,13 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
 5. HUGE LEAP IN CONVERSATION: Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
 6. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the Turnstile CAPTCHA check.`;
 
-        // Initialize API Key Input on page load
+        // Initialize API Key Input & Chips on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedKey = localStorage.getItem('kimi_api_key');
             if (savedKey) {
                 document.getElementById('kimi-api-key-input').value = savedKey;
             }
+            renderRandomChips('en');
         });
 
         function handleProviderChange() {
@@ -1320,6 +1377,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                     </div>
                 </div>
             `;
+            renderRandomChips('en');
         }
 
         function detectUserLanguage(text) {
@@ -1329,7 +1387,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             if (/[\u0e00-\u0e7f]/.test(text)) return 'th'; // Thai
             if (/[\u0600-\u06ff]/.test(text)) return 'ar'; // Arabic
             
-            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh'];
+            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit'];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
             
@@ -1356,6 +1414,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             chatBody.scrollTop = chatBody.scrollHeight;
 
             const lang = detectUserLanguage(query);
+            renderRandomChips(lang);
             const qLower = query.toLowerCase();
 
             // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES (MULTILINGUAL)
@@ -1487,6 +1546,32 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
+            // Dedicated fallback for Salary & Compensation (not present in RESUME_DATA schema)
+            if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout')) {
+                if (lang === 'bm') {
+                    return `Mengenai julat gaji dan pakej imbuhan, Irfan bersikap sangat terbuka untuk berbincang secara terus semasa sesi temuduga atau melalui borang hubungan rasmi.`;
+                } else if (lang === 'cn') {
+                    return `关于薪资期望与福利待遇，Irfan 态度非常开放，欢迎在面试阶段或通过解锁联系方式直接沟通。`;
+                } else if (lang === 'in') {
+                    return `சம்பள எதிர்பார்ப்பு பற்றிய தகவல்களுக்கு, நேர்காணலின் போது அல்லது தொடர்பு படிவம் மூலம் நேரடியாக விவாதிக்கலாம்.`;
+                } else {
+                    return `Regarding salary expectations and compensation packages, Irfan is open for discussion during interview sessions or direct professional communication.`;
+                }
+            }
+
+            // Dedicated fallback for Shift & Work Flexibility (not present in RESUME_DATA schema)
+            if (q.includes('shift') || q.includes('syif') || q.includes('overtime') || q.includes('waktu kerja') || q.includes('working hours') || q.includes('relocate') || q.includes('outstation')) {
+                if (lang === 'bm') {
+                    return `Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.`;
+                } else if (lang === 'cn') {
+                    return `Irfan 对工作安排具备极高的灵活性（包括轮班制、现场派驻及加班），这得益于他在 Askar Wataniah 预备役中接受的高强度纪律与抗压训练。`;
+                } else if (lang === 'in') {
+                    return `இர்பான் பணி நேர மாற்றங்கள் (Shift work), தள வரிசைப்படுத்தல்கள் மற்றும் கூடுதல் நேரம் பணிபுரிவதில் மிகவும் நெகிழ்வானவர்.`;
+                } else {
+                    return `Irfan is highly flexible with work arrangements (including shift work, site deployment, and overtime), honed by his disciplined military reserve training in Askar Wataniah (high stress resilience).`;
+                }
+            }
+
             const scores = {
                 diploma_cgpa: 0,
                 cert_sijil_cgpa: 0,
@@ -1505,7 +1590,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
 
             // Narrow sub-question flags
             const isDiplomaSpecific = (q.includes('diploma') || q.includes('port dickson')) && !q.includes('sijil') && !q.includes('degree');
-            const isCertificateSpecific = (q.includes('sijil') || q.includes('certificate') || q.includes('komuniti') || q.includes('selandar')) && !q.includes('diploma') && !q.includes('degree');
+            const isCertificateSpecific = (q.includes('sijil') || q.includes('certificate') || q.includes('certificates') || q.includes('cert') || q.includes('certs') || q.includes('komuniti') || q.includes('selandar')) && !q.includes('diploma') && !q.includes('degree');
             const isDegreeSpecific = (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor')) && !q.includes('diploma');
             
             const isPrecisionSpecific = q.includes('precision') && !q.includes('recall') && !q.includes('all');
@@ -1521,7 +1606,10 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 scores.cert_sijil_cgpa += 4;
             }
 
-            if (q.includes('sijil') || q.includes('certificate') || q.includes('komuniti') || q.includes('selandar') || q.includes('3.58') || q.includes('best student') || q.includes('terbaik')) scores.cert_sijil_cgpa += 5;
+            if (q.includes('sijil') || q.includes('certificate') || q.includes('certificates') || q.includes('cert') || q.includes('certs') || q.includes('komuniti') || q.includes('selandar') || q.includes('3.58') || q.includes('best student') || q.includes('terbaik')) {
+                scores.cert_sijil_cgpa += 5;
+                scores.ccna_dates += 4;
+            }
             if (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor') || q.includes(' honours') || q.includes('sarjana muda')) scores.degree_utem += 5;
 
             if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode')) scores.capstone_metrics += 5;
@@ -1537,7 +1625,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
 
             if (q.includes('festo') || q.includes('didactic')) scores.festo_cert += 5;
 
-            if (q.includes('programming') || q.includes('python') || q.includes('c++') || q.includes('coding') || q.includes('language') || q.includes('languages') || q.includes('bahasa pengaturcaraan') || q.includes('kod') || q.includes('sql') || q.includes('mysql') || q.includes('git')) scores.skills_programming += 5;
+            if (q.includes('programming') || q.includes('python') || q.includes('c++') || q.includes('coding') || q.includes('language') || q.includes('languages') || q.includes('bahasa pengaturcaraan') || q.includes('kod') || q.includes('sql') || q.includes('mysql') || q.includes('git') || q.includes('pandai') || q.includes('coder') || q.includes('code')) scores.skills_programming += 5;
 
             if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching')) scores.skills_networking += 5;
 
@@ -1559,7 +1647,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            if (maxScore >= 3) {
+            if (maxScore >= 2) {
                 const dip = RESUME_DATA.education[1];
                 const cert = RESUME_DATA.education[2];
                 const deg = RESUME_DATA.education[0];
@@ -1664,7 +1752,6 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                         }
                         return `<strong>Irfan's Networking Protocols & Skills (including OSPF & VLAN):</strong><br>• Irfan is proficient in: ${nets}. He holds official Cisco CCNA Enterprise certifications.`;
                     }
-                    case 'skills_cybersecurity':
                     case 'skills_it_support':
                     case 'skills_industrial_ai': {
                         if (lang === 'bm') {
@@ -1675,16 +1762,14 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                     case 'identity': {
                         if (lang === 'bm') {
                             return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan beliau menyesuaikan diri dengan cepat.`;
-                        } else {
-                            return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
                         }
+                        return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
                     }
                     case 'age': {
                         if (lang === 'bm') {
                             return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
-                        } else {
-                            return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
                         }
+                        return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
                     }
                 }
             }
