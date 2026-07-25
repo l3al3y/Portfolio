@@ -1547,28 +1547,36 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             const q = inputQuery.toLowerCase().trim();
 
             // 1. GREETINGS & CASUAL CHAT
-            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|apa khabar|how are you)\b/i.test(q) || q.includes('你好') || q.includes('வணக்கம்');
-            if (isGreeting && q.length <= 25) {
+            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening)\b/i.test(q) || q.includes('你好') || q.includes('வணக்கம்');
+            if (isGreeting && q.length <= 35) {
                 if (lang === 'bm') {
-                    return `Salam / Hai! 👋 Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
+                    return `Salam / Hai! 👋 Senang dapat berhubung dengan anda. Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
                 } else if (lang === 'cn') {
-                    return `您好！👋 今天有什么我可以帮您的？欢迎咨询关于 Irfan 的计算机工程背景、CCNA 认证或毕业项目！`;
+                    return `您好！👋 很高兴与您交流！今天有什么我可以帮您的？欢迎咨询关于 Irfan 的计算机工程背景、CCNA 认证或毕业项目！`;
                 } else if (lang === 'in') {
                     return `வணக்கம்! 👋 நான் உங்களுக்கு எவ்வாறு உதவ முடியும்? இர்பானின் கல்வி மற்றும் சான்றிதழ்கள் பற்றி எது வேண்டுமானாலும் கேட்கலாம்!`;
                 } else {
-                    return `Hello! 👋 How can I help you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!`;
+                    return `Hello there! 👋 Great to connect with you. How can I assist you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!`;
                 }
             }
 
-            // 2. IDENTITY
-            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background')) {
+            // 2. GRATITUDE & POLITE SIGN-OFFS
+            if (q.includes('thank') || q.includes('thanks') || q.includes('terima kasih') || q.includes('kasih') || q.includes('goodbye') || q.includes('bye')) {
+                if (lang === 'bm') {
+                    return `Sama-sama! 😊 Terima kasih kerana melawat portfolio Irfan. Sila gunakan borang hubungan di atas jika anda ingin menjadualkan temuduga atau perbincangan lanjut!`;
+                }
+                return `You're very welcome! 😊 Thank you for exploring Irfan's portfolio. Feel free to use the contact form above if you'd like to schedule an interview or discuss potential opportunities!`;
+            }
+
+            // 3. IDENTITY
+            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background') || q.includes('ceritakan') || q.includes('latar belakang')) {
                 if (lang === 'bm') {
                     return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan teknikal beliau.`;
                 }
                 return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
             }
 
-            // 3. AGE
+            // 4. AGE
             if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁')) {
                 if (lang === 'bm') {
                     return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
@@ -1576,15 +1584,47 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
             }
 
-            // 4. MILITARY RESERVE (ASKAR WATANIAH)
-            if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience')) {
+            // 5. MILITARY RESERVE & STRESS RESILIENCE
+            if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience') || q.includes('stress') || q.includes('pressure') || q.includes('tekanan')) {
                 if (lang === 'bm') {
                     return `Irfan berkhidmat sebagai anggota simpanan <strong>Askar Wataniah (Tentera Darat Malaysia)</strong>. Latihan ketenteraan ini mengukuhkan disiplin diri yang tinggi, ketahanan mental di bawah tekanan, kerja berpasukan, dan kepimpinan teknikal.`;
                 }
                 return `Irfan serves in the <strong>Askar Wataniah (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.`;
             }
 
-            // 5. LOCATION & RELOCATION
+            // 6. CAREER GOALS & FUTURE VISION
+            if (q.includes('goal') || q.includes('goals') || q.includes('future') || q.includes('matlamat') || q.includes('cita') || q.includes('cita-cita') || q.includes('5 years') || q.includes('aspire') || q.includes('vision')) {
+                if (lang === 'bm') {
+                    return `<strong>Matlamat Kerjaya Irfan:</strong><br>Irfan berhasrat untuk berkembang sebagai Jurutera Sistem Terbenam & Rangkaian terkemuka, mengintegrasikan AI Industri dan automasi Pintar untuk menyelesaikan cabaran industri sebenar.`;
+                }
+                return `<strong>Irfan's Career Aspirations:</strong><br>Irfan aims to grow into a senior Systems & Network Engineer, bridging Industrial AI, IoT hardware, and Cisco Enterprise networking to build resilient automation solutions.`;
+            }
+
+            // 7. PROBLEM-SOLVING METHODOLOGY & TROUBLESHOOTING
+            if (q.includes('troubleshoot') || q.includes('troubleshooting') || q.includes('bug') || q.includes('bugs') || q.includes('selesaikan masalah') || q.includes('problem solving') || q.includes('methodology')) {
+                if (lang === 'bm') {
+                    return `<strong>Pendekatan Penyelesaian Masalah Irfan:</strong><br>1. <strong>Pengasingan Ralat:</strong> Menggunakan analisis log & Wireshark/Console traceback.<br>2. <strong>Ujian Terkawal:</strong> Membina persekitaran ujian terasing (Packet Tracer / Sandbox).<br>3. <strong>Penyelesaian Kekal:</strong> Menulis kod modular dan membuat pengesahan berulang.`;
+                }
+                return `<strong>Irfan's Troubleshooting & Problem-Solving Approach:</strong><br>1. <strong>Root-Cause Isolation:</strong> Systematic inspection using raw log tracebacks, Wireshark packet captures, or logic analyzers.<br>2. <strong>Controlled Sandbox Testing:</strong> Reproducing bugs in isolated environments.<br>3. <strong>Permanent Mitigation:</strong> Writing clean modular fixes backed by automated regression verification.`;
+            }
+
+            // 8. TEAMWORK & LEADERSHIP STYLE
+            if (q.includes('team') || q.includes('teamwork') || q.includes('leadership') || q.includes('leader') || q.includes('pasukan') || q.includes('berpasukan')) {
+                if (lang === 'bm') {
+                    return `Irfan seorang <strong>pemain berpasukan yang hebat dan berdisiplin tinggi</strong>. Pengalaman kepimpinan tentera simpanan Askar Wataniah melatih beliau mengutamakan komunikasi berkesan, tanggungjawab bersama, dan menyokong rakan sepasukan.`;
+                }
+                return `Irfan is a <strong>highly disciplined team player and empathetic communicator</strong>. His reserve military leadership in Askar Wataniah taught him to prioritize clear team communication, mutual accountability, and supporting team members.`;
+            }
+
+            // 9. FAST LEARNING & ADAPTABILITY
+            if (q.includes('fast learner') || q.includes('learn') || q.includes('belajar cepat') || q.includes('cepat') || q.includes('adapt')) {
+                if (lang === 'bm') {
+                    return `Irfan seorang <strong>pembelajar yang sangat cepat</strong>. Beliau menguasai YOLOv8 PyTorch, Cloudflare Workers, dan Festo Industrial AI secara berdikari dalam masa singkat untuk menyempurnakan projek beliau.`;
+                }
+                return `Irfan is a <strong>rapid, self-driven learner</strong>. He independently mastered YOLOv8 PyTorch computer vision, Cloudflare Workers, and Festo Industrial AI within weeks to execute high-precision technical projects.`;
+            }
+
+            // 10. LOCATION & RELOCATION
             if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah') || q.includes('where') || q.includes('located') || q.includes('mana')) {
                 if (lang === 'bm') {
                     return `Irfan menetap di <strong>Puchong, Selangor, Malaysia</strong>. Beliau bersikap terbuka untuk lokasi kerja On-site, Hybrid, atau Remote, serta bersedia untuk tugasan luar kawasan (travel/outstation) dan penempatan semula jika diperlukan.`;
