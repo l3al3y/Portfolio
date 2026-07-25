@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Irfan Fahmi | Motion.dev 3D Interactive Portfolio & ATS Engine</title>
-    <meta name="description" content="Next-Generation Motion.dev 3D Interactive Portfolio & Autonomous Career Intelligence Engine for Muhammad Irfan Fahmi - B.Eng Computer Engineering, CCNA & Festo Industrial AI Specialist.">
+    <title>Muhammad Irfan Fahmi | Human Personality Color-Coded Engineering Portfolio & Career AI</title>
+    <meta name="description" content="Human Archetype Color-Coded Engineering Portfolio & Interactive ChatGPT-style AI Assistant for Muhammad Irfan Fahmi - B.Eng Computer Engineering, Cisco CCNA & Festo Industrial AI Specialist.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Motion.dev (Framer Motion Web JS) & Three.js CDN -->
+    <!-- Motion.dev & Three.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
-        /* Modern Design System & CSS Variables */
+        /* -------------------------------------------------------------
+           Human Personality Archetype Color Coding System
+        ------------------------------------------------------------- */
         :root {
-            --bg-base: #090d16;
-            --bg-surface: rgba(18, 26, 43, 0.75);
-            --bg-surface-hover: rgba(28, 40, 65, 0.85);
+            --bg-base: #0a0e1a;
+            --bg-surface: rgba(18, 25, 41, 0.78);
+            --bg-surface-hover: rgba(26, 36, 60, 0.88);
             --border-card: rgba(255, 255, 255, 0.12);
-            --border-glow: #38bdf8;
             
-            --primary: #38bdf8;         /* Vibrant Sky Cyan */
+            /* Archetype Color Coding */
+            --color-architect: #38bdf8;   /* Sky Cyan - Network Systems & Infrastructure */
+            --color-innovator: #fbbf24;   /* Warm Gold - Industrial AI & Vision Leadership */
+            --color-builder: #34d399;     /* Mint Emerald - Embedded Systems & IoT */
+            --color-guardian: #a855f7;    /* Cosmic Purple - Security & Automation */
+            
             --primary-glow: rgba(56, 189, 248, 0.25);
-            --accent-emerald: #34d399;   /* Mint Emerald */
-            --accent-purple: #a855f7;    /* Cosmic Purple */
-            --accent-amber: #fbbf24;     /* Warm Gold */
-            
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --text-muted: #64748b;
@@ -40,22 +42,20 @@
             --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
-            --glass-backdrop: blur(16px);
+            --glass-backdrop: blur(18px);
             --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body.light-theme {
             --bg-base: #f8fafc;
-            --bg-surface: rgba(255, 255, 255, 0.85);
+            --bg-surface: rgba(255, 255, 255, 0.9);
             --bg-surface-hover: rgba(241, 245, 249, 0.95);
-            --border-card: rgba(226, 232, 240, 0.8);
-            --border-glow: #0284c7;
+            --border-card: rgba(226, 232, 240, 0.85);
             
-            --primary: #0284c7;
-            --primary-glow: rgba(2, 132, 199, 0.15);
-            --accent-emerald: #059669;
-            --accent-purple: #7e22ce;
-            --accent-amber: #d97706;
+            --color-architect: #0284c7;
+            --color-innovator: #d97706;
+            --color-builder: #059669;
+            --color-guardian: #7e22ce;
             
             --text-main: #0f172a;
             --text-sub: #475569;
@@ -86,20 +86,6 @@
             pointer-events: none;
         }
 
-        /* Cursor Glow Ring */
-        #cursor-follower {
-            position: fixed;
-            width: 32px; height: 32px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-            box-shadow: 0 0 15px var(--primary-glow);
-            mix-blend-mode: difference;
-        }
-
         .container {
             width: 90%;
             max-width: 1200px;
@@ -115,30 +101,53 @@
             border: 1px solid var(--border-card);
             border-radius: var(--radius-md);
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
         }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: 0.5s;
-            pointer-events: none;
-        }
-
-        .glass-card:hover::before {
-            left: 100%;
-        }
-
         .glass-card:hover {
-            border-color: var(--border-glow);
             transform: translateY(-4px);
             box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Archetype Color Badges */
+        .archetype-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-architect {
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--color-architect);
+        }
+
+        .badge-innovator {
+            background: rgba(251, 191, 36, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            color: var(--color-innovator);
+        }
+
+        .badge-builder {
+            background: rgba(52, 211, 153, 0.12);
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            color: var(--color-builder);
+        }
+
+        .badge-guardian {
+            background: rgba(168, 85, 247, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            color: var(--color-guardian);
         }
 
         /* Header & Navigation */
@@ -147,7 +156,7 @@
             top: 0; left: 0; width: 100%;
             z-index: 1000;
             padding: 1rem 0;
-            background: rgba(9, 13, 22, 0.8);
+            background: rgba(10, 14, 26, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
         }
@@ -170,9 +179,9 @@
         }
 
         .logo-icon {
-            width: 38px; height: 38px;
-            background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-            border-radius: 10px;
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--color-architect), var(--color-guardian));
+            border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-family: var(--font-mono); font-weight: 800;
             box-shadow: 0 0 15px var(--primary-glow);
@@ -194,13 +203,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            color: var(--color-architect);
         }
 
         .btn {
@@ -219,14 +222,21 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #0284c7);
+            background: linear-gradient(135deg, var(--color-architect), #0284c7);
             color: #0f172a;
             box-shadow: 0 4px 15px var(--primary-glow);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+        .btn-emerald {
+            background: linear-gradient(135deg, var(--color-builder), #059669);
+            color: #0f172a;
+            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.25);
+        }
+
+        .btn-amber {
+            background: linear-gradient(135deg, var(--color-innovator), #d97706);
+            color: #0f172a;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.25);
         }
 
         .btn-secondary {
@@ -237,32 +247,7 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .btn-emerald {
-            background: linear-gradient(135deg, var(--accent-emerald), #059669);
-            color: #0f172a;
-            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.25);
-        }
-
-        .btn-emerald:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(52, 211, 153, 0.4);
-        }
-
-        .security-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            background: rgba(52, 211, 153, 0.1);
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            color: var(--accent-emerald);
-            font-size: 0.78rem;
-            font-weight: 600;
-            font-family: var(--font-mono);
+            border-color: var(--color-architect);
         }
 
         .theme-toggle {
@@ -275,40 +260,68 @@
             transition: color 0.2s;
         }
 
-        .theme-toggle:hover { color: var(--accent-amber); }
+        /* -------------------------------------------------------------
+           4-Language Executive Summary Component
+        ------------------------------------------------------------- */
+        .lang-switch-box {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .lang-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--color-architect);
+            color: #0f172a;
+            border-color: var(--color-architect);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .lang-content-pane {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            transition: opacity 0.3s ease;
+        }
 
         /* Hero Section */
         .hero {
-            padding: 10rem 0 5rem;
+            padding: 9.5rem 0 4rem;
             min-height: 90vh;
             display: flex;
             align-items: center;
-            position: relative;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 3rem;
             align-items: center;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.25rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1rem;
@@ -319,109 +332,174 @@
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--primary);
+            font-size: 1.2rem;
+            color: var(--color-architect);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             font-family: var(--font-mono);
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-sub);
-            margin-bottom: 2rem;
-            max-width: 620px;
         }
 
         .hero-cta {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .hero-stats {
+        /* Human Personality Archetype Grid */
+        .archetype-section {
+            padding: 5rem 0;
+        }
+
+        .archetype-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-card);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.75rem;
         }
 
-        .stat-item .stat-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-main);
-            font-family: var(--font-mono);
+        .archetype-card {
+            border-top: 4px solid var(--card-accent-color, var(--color-architect));
         }
 
-        .stat-item .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        /* -------------------------------------------------------------
+           ChatGPT / Claude Style AI Assistant Chatbox
+        ------------------------------------------------------------- */
+        .chat-section {
+            padding: 5rem 0;
         }
 
-        /* Floating 3D Interactive Card Frame */
-        .hero-interactive-card {
-            position: relative;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .tech-orbit-box {
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+        .chat-window-card {
+            background: #0f172a;
             border: 1px solid var(--border-card);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            height: 580px;
         }
 
-        .orbit-badge {
-            position: absolute;
-            padding: 0.6rem 1.2rem;
+        .chat-header {
+            background: #1e293b;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .chat-bot-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chat-bot-avatar {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--color-architect), var(--color-guardian));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 800; font-size: 0.9rem;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            background: #090d16;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 85%;
+        }
+
+        .chat-message.user-msg {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .chat-bubble {
+            padding: 0.9rem 1.25rem;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+
+        .bot-msg .chat-bubble {
+            background: #1e293b;
+            color: #f8fafc;
+            border-top-left-radius: 4px;
+            border: 1px solid var(--border-card);
+        }
+
+        .user-msg .chat-bubble {
+            background: linear-gradient(135deg, var(--color-architect), #0284c7);
+            color: #0f172a;
+            font-weight: 600;
+            border-top-right-radius: 4px;
+        }
+
+        .chat-suggested-prompts {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #0f172a;
+            overflow-x: auto;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .prompt-chip {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            padding: 0.35rem 0.8rem;
             border-radius: 50px;
             font-size: 0.8rem;
-            font-weight: 700;
-            background: rgba(18, 26, 43, 0.9);
+            white-space: nowrap;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .prompt-chip:hover {
+            border-color: var(--color-architect);
+            color: var(--color-architect);
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 0.85rem 1.5rem;
+            background: #1e293b;
+            border-top: 1px solid var(--border-card);
+            gap: 0.75rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #0f172a;
             border: 1px solid var(--border-card);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            display: flex; align-items: center; gap: 0.5rem;
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
         }
 
-        .orbit-badge-1 { top: -15px; left: -15px; color: var(--accent-emerald); }
-        .orbit-badge-2 { bottom: 20px; right: -20px; color: var(--primary); }
-        .orbit-badge-3 { top: 40%; right: -25px; color: var(--accent-purple); }
-
-        /* Section Header Component */
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            color: var(--primary);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+        .chat-input:focus {
+            border-color: var(--color-architect);
         }
 
         /* Security Verification Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(9, 13, 22, 0.85);
+            background: rgba(10, 14, 26, 0.88);
             backdrop-filter: blur(12px);
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
@@ -429,13 +507,11 @@
             transition: opacity 0.3s ease;
         }
 
-        .modal-overlay.active {
-            opacity: 1; pointer-events: auto;
-        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal-card {
             background: #111726;
-            border: 1px solid var(--border-glow);
+            border: 1px solid var(--color-architect);
             border-radius: var(--radius-md);
             padding: 2.5rem;
             max-width: 480px;
@@ -446,455 +522,57 @@
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .modal-overlay.active .modal-card {
-            transform: scale(1);
-        }
+        .modal-overlay.active .modal-card { transform: scale(1); }
 
         .modal-close {
             position: absolute;
             top: 1rem; right: 1.25rem;
             background: none; border: none;
             color: var(--text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
+            font-size: 1.5rem; cursor: pointer;
         }
 
-        .captcha-box {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm);
-            padding: 1.25rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .captcha-math {
-            font-family: var(--font-mono);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-        }
-
-        /* ATS Analyzer Section */
-        .ats-analyzer-section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .ats-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-sub);
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            transition: var(--transition-smooth);
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        .ats-presets {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .preset-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-card);
-            color: var(--text-sub);
-            padding: 0.35rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .preset-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .ats-result-card {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: var(--radius-md);
-            padding: 1.75rem;
-            border: 1px solid var(--border-card);
-        }
-
-        .ats-score-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-card);
-        }
-
-        .score-gauge-ring {
-            width: 90px; height: 90px;
-            border-radius: 50%;
-            background: conic-gradient(var(--accent-emerald) 0deg 0deg, rgba(255,255,255,0.1) 0deg);
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
-
-        .score-inner {
-            width: 76px; height: 76px;
-            border-radius: 50%;
-            background: var(--bg-base);
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--accent-emerald);
-        }
-
-        .keyword-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-family: var(--font-mono);
-            margin: 0.25rem;
-        }
-
-        .kw-matched {
-            background: rgba(52, 211, 153, 0.15);
-            color: var(--accent-emerald);
-            border: 1px solid rgba(52, 211, 153, 0.3);
-        }
-
-        .kw-missing {
-            background: rgba(239, 68, 68, 0.15);
-            color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-
-        /* Resume Embedded Section */
-        .resume-section {
-            padding: 6rem 0;
-        }
-
+        /* ATS Resume Section */
+        .resume-section { padding: 5rem 0; }
         .resume-frame-container {
-            width: 100%;
-            height: 750px;
+            width: 100%; height: 750px;
             border-radius: var(--radius-md);
-            overflow: hidden;
-            background: #ffffff;
+            overflow: hidden; background: #fff;
             border: 1px solid var(--border-card);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
+        .resume-frame-container iframe { width: 100%; height: 100%; border: none; }
 
-        .resume-frame-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Projects Section */
-        .projects-section {
-            padding: 6rem 0;
-        }
-
-        .project-filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 0.65rem 1.3rem;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-card);
-            color: var(--text-sub);
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--primary);
-            color: #0f172a;
-            border-color: var(--primary);
-            box-shadow: 0 4px 15px var(--primary-glow);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .project-tag {
+        /* Section Headers */
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-tag {
+            color: var(--color-architect);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            display: block;
+            font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 0.5rem; display: block;
         }
-
-        .project-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .project-desc {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .project-tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-chip {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-card);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-family: var(--font-mono);
-            color: var(--text-sub);
-        }
-
-        .project-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-card);
-        }
-
-        /* CLI Terminal Simulator */
-        .cli-section {
-            padding: 6rem 0;
-        }
-
-        .terminal-window {
-            background: #0d1117;
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-        }
-
-        .terminal-header {
-            background: #161b22;
-            padding: 0.75rem 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-card);
-        }
-
-        .terminal-dots {
-            display: flex; gap: 0.5rem;
-        }
-
-        .dot {
-            width: 12px; height: 12px; border-radius: 50%;
-        }
-
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-
-        .terminal-title {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .terminal-body {
-            padding: 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            min-height: 320px;
-            max-height: 480px;
-            overflow-y: auto;
-            color: #e6edf3;
-        }
-
-        .terminal-line {
-            margin-bottom: 0.75rem;
-            line-height: 1.5;
-        }
-
-        .prompt-symbol {
-            color: var(--accent-emerald);
-            margin-right: 0.5rem;
-            font-weight: 700;
-        }
-
-        .terminal-input-wrapper {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1.5rem;
-            background: #161b22;
-            border-top: 1px solid var(--border-card);
-        }
-
-        .terminal-input {
-            background: transparent;
-            border: none;
-            color: #38bdf8;
-            font-family: var(--font-mono);
-            font-size: 0.95rem;
-            width: 100%;
-            outline: none;
-        }
-
-        .cli-cmd-buttons {
-            display: flex;
-            gap: 0.5rem;
-            padding: 1rem 1.5rem;
-            background: #0d1117;
-            flex-wrap: wrap;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .cli-btn {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: var(--primary);
-            padding: 0.3rem 0.75rem;
-            border-radius: 4px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .cli-btn:hover {
-            background: var(--primary);
-            color: #0f172a;
-        }
-
-        /* Skills Section */
-        .skills-section { padding: 6rem 0; }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-bar-wrapper {
-            margin-bottom: 1.25rem;
-        }
-
-        .skill-info {
-            display: flex; justify-content: space-between;
-            margin-bottom: 0.4rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .skill-progress-bg {
-            width: 100%; height: 8px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent-emerald));
-            width: 0%;
-            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 4px;
-        }
+        .section-title { font-size: 2.3rem; font-weight: 800; letter-spacing: -1px; }
 
         /* Footer */
         footer {
             padding: 4rem 0 2rem;
             border-top: 1px solid var(--border-card);
             text-align: center;
-            background: rgba(9, 13, 22, 0.9);
+            background: rgba(10, 14, 26, 0.95);
         }
 
-        .footer-brand {
-            font-weight: 800; font-size: 1.3rem; margin-bottom: 1rem;
-        }
-
-        .motion-connector-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(56, 189, 248, 0.15));
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            color: var(--accent-purple);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Responsive Breakpoints */
         @media (max-width: 992px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-title { font-size: 2.75rem; }
+            .hero-title { font-size: 2.5rem; }
             .hero-cta { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .ats-box { grid-template-columns: 1fr; }
             .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Motion & Three.js 3D WebGL Background Canvas -->
+    <!-- 3D WebGL Constellation Background -->
     <canvas id="webgl-canvas"></canvas>
-
-    <!-- Cursor Follower Ring -->
-    <div id="cursor-follower"></div>
 
     <!-- Navigation Bar -->
     <header>
@@ -905,45 +583,40 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#hero">Overview</a></li>
+                <li><a href="#archetypes">Character Pillars</a></li>
+                <li><a href="#ai-assistant">💬 AI Assistant</a></li>
                 <li><a href="#resume-section">📄 ATS Resume</a></li>
-                <li><a href="#ats-analyzer">ATS Engine</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#cli-terminal">Agent CLI</a></li>
             </ul>
-            <div class="nav-actions">
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
                 <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
                 <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme">🌙</button>
-                <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume</a>
             </div>
         </div>
     </header>
 
-    <!-- Employer Verification Security Modal -->
+    <!-- Security Contact Verification Modal -->
     <div class="modal-overlay" id="security-modal">
         <div class="modal-card">
             <button class="modal-close" onclick="closeSecurityModal()">&times;</button>
-            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
-                🛡️ Employer Verification Challenge
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-architect); margin-bottom: 0.5rem;">
+                🛡️ Employer Security Verification
             </h3>
             <p style="color: var(--text-sub); font-size: 0.9rem;">
-                To prevent automated web scrapers and spambots on GitHub from harvesting plaintext contact info, please solve this quick human challenge to reveal official candidate contact details.
+                Solve this quick math challenge to prove human access and reveal candidate phone & email details. Plaintext data is protected against GitHub bots.
             </p>
 
-            <div class="captcha-box" id="captcha-container">
-                <div class="captcha-math" id="captcha-question">Solve: 5 + 4 = ?</div>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <input type="number" id="captcha-answer" class="form-input" placeholder="Enter answer..." style="text-align: center; font-size: 1.1rem; font-family: var(--font-mono);">
-                </div>
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; text-align: center;">
+                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--color-architect); margin-bottom: 0.75rem;" id="captcha-question">Solve: 5 + 4 = ?</div>
+                <input type="number" id="captcha-answer" class="chat-input" placeholder="Enter sum..." style="text-align: center; font-size: 1.1rem; font-family: var(--font-mono); width: 100%;">
             </div>
 
             <button class="btn btn-emerald" style="width: 100%; justify-content: center; font-size: 1rem;" onclick="verifyEmployerCaptcha()">
                 <span>🔓 Verify & Reveal Contact Details</span>
             </button>
 
-            <!-- Revealed Content Box (Hidden by default) -->
+            <!-- Revealed Box -->
             <div id="revealed-contact-box" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-card);">
-                <div style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 700; margin-bottom: 1rem;">
+                <div style="font-size: 0.85rem; color: var(--color-builder); font-weight: 700; margin-bottom: 1rem;">
                     ✓ HUMAN VERIFIED — CANDIDATE DIRECT CONTACT:
                 </div>
                 
@@ -953,15 +626,15 @@
                             <span style="color: var(--text-muted); font-size: 0.75rem;">EMAIL:</span><br>
                             <span style="color: var(--text-main); font-weight: 700;" id="revealed-email">fahmilatif87@gmail.com</span>
                         </div>
-                        <button class="cli-btn" onclick="copyTextToClipboard('fahmilatif87@gmail.com')">Copy</button>
+                        <button class="prompt-chip" onclick="copyTextToClipboard('fahmilatif87@gmail.com')">Copy</button>
                     </div>
 
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <span style="color: var(--text-muted); font-size: 0.75rem;">PHONE / WHATSAPP:</span><br>
-                            <span style="color: var(--accent-emerald); font-weight: 700;" id="revealed-phone">+60 16-243 2023</span>
+                            <span style="color: var(--color-builder); font-weight: 700;" id="revealed-phone">+60 16-243 2023</span>
                         </div>
-                        <button class="cli-btn" onclick="copyTextToClipboard('+60162432023')">Copy</button>
+                        <button class="prompt-chip" onclick="copyTextToClipboard('+60162432023')">Copy</button>
                     </div>
                 </div>
 
@@ -973,75 +646,175 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Main Hero Section -->
     <section class="hero" id="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span>⚡ Motion.dev Connected • 3D Interactive Portfolio</span>
-                </div>
+                <span class="archetype-badge badge-architect">Sky Cyan • Network Architect & AI Specialist</span>
                 <h1 class="hero-title">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
-                <div class="hero-subtitle">&gt; B.Eng Computer Engineering | Cisco CCNA | Festo Industrial AI</div>
-                <p class="hero-description">
-                    Autonomous Career Intelligence Specialist bridging Network Engineering, Computer Vision (YOLOv8), IoT Systems, and Explainable ATS Agent CLI Automation.
-                </p>
+                <div class="hero-subtitle">&gt; B.Eng Computer Engineering (UTeM) | Cisco CCNA | Festo Industrial AI</div>
+
+                <!-- 4-Language Executive Briefing Component -->
+                <div class="lang-switch-box glass-card">
+                    <div style="font-size: 0.8rem; color: var(--color-architect); font-weight: 700; font-family: var(--font-mono); margin-bottom: 0.75rem;">
+                        🌐 EXECUTIVE SUMMARY (SELECT LANGUAGE):
+                    </div>
+                    <div class="lang-tabs">
+                        <button class="lang-btn active" onclick="switchSummaryLang('en', this)">🇬🇧 English</button>
+                        <button class="lang-btn" onclick="switchSummaryLang('bm', this)">🇲🇾 Bahasa Melayu</button>
+                        <button class="lang-btn" onclick="switchSummaryLang('cn', this)">🇨🇳 华语 (Chinese)</button>
+                        <button class="lang-btn" onclick="switchSummaryLang('in', this)">🇮🇳 தமிழ் (Tamil)</button>
+                    </div>
+
+                    <div class="lang-content-pane" id="executive-summary-text">
+                        "Autonomous Career Intelligence & Engineering Specialist holding B.Eng in Computer Engineering (UTeM), Cisco CCNA Enterprise certification, and Festo Industrial AI credentials. Expert in Network Engineering (OSPF/VLAN), YOLOv8 Computer Vision, IoT Systems, and AI-driven career automation."
+                    </div>
+                </div>
 
                 <div class="hero-cta">
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">
-                        <span>📄 View ATS Resume (HTML)</span>
-                    </a>
-                    <button class="btn btn-emerald" onclick="openSecurityModal()">
-                        <span>🔓 Reveal Contact Info</span>
-                    </button>
-                    <a href="#ats-analyzer" class="btn btn-secondary">
-                        <span>🎯 Test ATS Matcher</span>
-                    </a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-num" id="stat-ats">48</div>
-                        <div class="stat-label">ATS Target Keywords</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-num" id="stat-yolo">77.4%</div>
-                        <div class="stat-label">YOLOv8 Precision</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-num" id="stat-cgpa">3.49</div>
-                        <div class="stat-label">B.Eng CGPA (UTeM)</div>
-                    </div>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Open ATS Resume</a>
+                    <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
+                    <a href="#ai-assistant" class="btn btn-amber">💬 Chat with AI Assistant</a>
                 </div>
             </div>
 
-            <!-- Floating 3D Motion Interactive Card Frame -->
-            <div class="hero-interactive-card" id="interactive-card">
-                <div class="tech-orbit-box glass-card">
-                    <div class="orbit-badge orbit-badge-1">
-                        <span>🟢 Festo Certified</span>
-                    </div>
-                    <div class="orbit-badge orbit-badge-2">
-                        <span>⚡ Cisco CCNA Verified</span>
-                    </div>
-                    <div class="orbit-badge orbit-badge-3">
-                        <span>🤖 Agent CLI v0.1</span>
+            <!-- Archetype Personality Orbit Frame -->
+            <div class="glass-card" style="padding: 2rem;">
+                <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-architect);">
+                    Human Character Matrix
+                </h3>
+                <div style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 1.5rem;">
+                    Engineered across 4 color-coded personality archetypes matching enterprise tech roles:
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                    <div style="padding: 0.85rem; background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--color-architect); border-radius: 6px;">
+                        <strong style="color: var(--color-architect);">Sky Cyan — System Architect</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);">Cisco CCNA, OSPF routing, VLANs, TCP/IP infrastructure.</span>
                     </div>
 
-                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Verified Candidate Profile</h3>
-                    <div style="font-size: 0.8rem; color: var(--accent-emerald); font-family: var(--font-mono); margin-bottom: 1rem;">
-                        🔒 Phone: <span id="card-phone-display">+60 1X-XXX XXXX [PROTECTED]</span><br>
-                        🔒 Email: <span id="card-email-display">f********7@gmail.com [PROTECTED]</span>
+                    <div style="padding: 0.85rem; background: rgba(251, 191, 36, 0.1); border-left: 4px solid var(--color-innovator); border-radius: 6px;">
+                        <strong style="color: var(--color-innovator);">Warm Gold — AI Vision Innovator</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);">Festo Industrial AI, YOLOv8 50-epoch computer vision.</span>
                     </div>
 
-                    <button class="btn btn-emerald" style="width: 100%; justify-content: center; padding: 0.5rem; font-size: 0.85rem; margin-bottom: 1rem;" onclick="openSecurityModal()">
-                        <span>🔓 Click CAPTCHA to Reveal Contact</span>
-                    </button>
-
-                    <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem;">
-                        <div style="color: var(--accent-emerald);">$ python cli.py ats verify</div>
-                        <div style="color: var(--text-sub); margin-top: 0.4rem;">✓ Resume HTML: Linked & Verified</div>
-                        <div style="color: var(--primary); margin-top: 0.2rem;">✓ Security Status: CAPTCHA Active</div>
+                    <div style="padding: 0.85rem; background: rgba(52, 211, 153, 0.1); border-left: 4px solid var(--color-builder); border-radius: 6px;">
+                        <strong style="color: var(--color-builder);">Mint Emerald — Embedded Systems Builder</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);">ESP32, STM32 microcontrollers, MQTT, C/C++ sensor telemetry.</span>
                     </div>
+
+                    <div style="padding: 0.85rem; background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--color-guardian); border-radius: 6px;">
+                        <strong style="color: var(--color-guardian);">Cosmic Purple — Career Intelligence Guardian</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);">Explainable ATS engine, security captcha, multi-portal sync.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Archetype Pillars Section -->
+    <section class="archetype-section" id="archetypes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Color-Coded Character Matrix</span>
+                <h2 class="section-title">Human Engineering Pillars</h2>
+            </div>
+
+            <div class="archetype-grid">
+                <!-- Card 1 -->
+                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-architect);">
+                    <span class="archetype-badge badge-architect">Sky Cyan</span>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Network Systems Architect</h3>
+                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Possesses Cisco CCNA Enterprise credential, multi-area OSPF routing, VLAN trunking, and Wireshark deep packet diagnostics.
+                    </p>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-architect);">
+                        ✓ CCNA Enterprise Verified • UTeM
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-innovator);">
+                    <span class="archetype-badge badge-innovator">Warm Gold</span>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Industrial AI Innovator</h3>
+                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Trained Festo Industrial AI specialist and computer vision developer behind the Hybrid Self-Checkout YOLOv8 system (77.4% precision).
+                    </p>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-innovator);">
+                        ✓ Festo Industrial AI • PyTorch
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-builder);">
+                    <span class="archetype-badge badge-builder">Mint Emerald</span>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">IoT & Embedded Systems Builder</h3>
+                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Diploma in Electronic Engineering (Computer). Expert in ESP32/STM32 microcontroller programming, MQTT broker integration, and sensor networks.
+                    </p>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-builder);">
+                        ✓ ESP32 / STM32 • C++ / MQTT
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card archetype-card" style="--card-accent-color: var(--color-guardian);">
+                    <span class="archetype-badge badge-guardian">Cosmic Purple</span>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;">Career Intelligence Guardian</h3>
+                    <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Creator of 100% explainable ATS matching, privacy CAPTCHA obfuscation, and multi-portal candidate database sync.
+                    </p>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-guardian);">
+                        ✓ Explainable ATS • Privacy Safeguard
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ChatGPT-style AI Assistant Chatbot -->
+    <section class="chat-section" id="ai-assistant">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Interactive Conversational Assistant</span>
+                <h2 class="section-title">Chat with Irfan's Career AI Assistant</h2>
+                <p style="color: var(--text-sub); margin-top: 0.5rem;">
+                    Ask any question about Irfan's engineering credentials, CCNA networking, Festo AI certification, or project portfolio.
+                </p>
+            </div>
+
+            <div class="chat-window-card">
+                <div class="chat-header">
+                    <div class="chat-bot-info">
+                        <div class="chat-bot-avatar">AI</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.95rem;">Career AI Assistant (ChatGPT Style)</div>
+                            <div style="font-size: 0.75rem; color: var(--color-builder);">● Online • Powered by Candidate Intelligence Engine</div>
+                        </div>
+                    </div>
+                    <button class="prompt-chip" onclick="clearChat()">Clear Chat</button>
+                </div>
+
+                <div class="chat-body" id="chat-body">
+                    <div class="chat-message bot-msg">
+                        <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                        <div class="chat-bubble">
+                            Hello! I am Muhammad Irfan Fahmi's Career AI Assistant. Ask me anything about his <strong>B.Eng in Computer Engineering (UTeM)</strong>, <strong>Cisco CCNA</strong>, <strong>Festo Industrial AI</strong>, or his <strong>YOLOv8 Anti-Fraud Self-Checkout</strong> project!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-suggested-prompts">
+                    <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Suggested:</span>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Tell me about Irfan\'s Cisco CCNA & networking skills')">Cisco CCNA Skills</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Explain his YOLOv8 Hybrid AI Self-Checkout project')">YOLOv8 AI Project</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('What is his Festo Industrial AI certification?')">Festo AI Certificate</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('What is his educational background and CGPA?')">Education & CGPA</button>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask a question about candidate Irfan..." onkeydown="handleChatEnter(event)">
+                    <button class="btn btn-primary" onclick="submitChatMessage()">Send ➔</button>
                 </div>
             </div>
         </div>
@@ -1052,314 +825,18 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">ATS Verified Document</span>
-                <h2 class="section-title">1-Page ATS Resume Viewer</h2>
-                <p style="color: var(--text-sub); margin-top: 0.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">
-                    Directly attached 1-page ATS HTML resume (`resume/resume.html`). Fully parsed and verified for enterprise ATS compliance with security-censored contact data.
-                </p>
+                <h2 class="section-title">1-Page ATS Resume Preview</h2>
                 <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">
-                        <span>📄 Fullscreen HTML Resume</span>
-                    </a>
-                    <button class="btn btn-emerald" onclick="openSecurityModal()">
-                        <span>🔓 Reveal Full Contact Info</span>
-                    </button>
-                    <a href="../resume/resume.md" target="_blank" class="btn btn-secondary">
-                        <span>📝 Markdown Version (.md)</span>
-                    </a>
-                    <a href="../resume/resume.txt" target="_blank" class="btn btn-secondary">
-                        <span>🔤 Plain Text Version (.txt)</span>
-                    </a>
+                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Fullscreen HTML Resume</a>
+                    <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Details</button>
+                    <a href="../resume/resume.md" target="_blank" class="btn btn-secondary">📝 Markdown (.md)</a>
+                    <a href="../resume/resume.txt" target="_blank" class="btn btn-secondary">🔤 Plain Text (.txt)</a>
                 </div>
             </div>
 
-            <div class="glass-card" style="padding: 1rem; max-width: 950px; margin: 0 auto; border-radius: var(--radius-md);">
+            <div class="glass-card" style="padding: 1rem; max-width: 950px; margin: 0 auto;">
                 <div class="resume-frame-container">
-                    <iframe src="../resume/resume.html" title="Muhammad Irfan Fahmi Resume Preview"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Live ATS Engine Section -->
-    <section class="ats-analyzer-section" id="ats-analyzer">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">100% Explainable Matching</span>
-                <h2 class="section-title">Live ATS Matcher & Keyword Evaluator</h2>
-            </div>
-
-            <div class="glass-card ats-box">
-                <div class="ats-input-col">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Target Job Specification</h3>
-                    
-                    <div class="ats-presets">
-                        <span style="font-size: 0.8rem; color: var(--text-muted); align-self: center;">Try Preset:</span>
-                        <button class="preset-btn" onclick="loadAtsPreset('network')">Network Engineer (CCNA/OSPF)</button>
-                        <button class="preset-btn" onclick="loadAtsPreset('ai')">Computer Vision / YOLOv8</button>
-                        <button class="preset-btn" onclick="loadAtsPreset('support')">IT Systems Administrator</button>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="ats-title">Position Title</label>
-                        <input type="text" id="ats-title" class="form-input" value="Network & Systems Engineer">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="ats-desc">Job Description / Required Keywords</label>
-                        <textarea id="ats-desc" class="form-textarea" rows="6">Requires Cisco CCNA certification, OSPF routing, VLAN segmentation, Linux system administration, Python scripting, and network security troubleshooting.</textarea>
-                    </div>
-
-                    <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="evaluateATS()">
-                        <span>🔍 Evaluate Keyword Match</span>
-                    </button>
-                </div>
-
-                <div class="ats-result-col">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Explainable Match Breakdown</h3>
-                    
-                    <div class="ats-result-card" id="ats-results-display">
-                        <div class="ats-score-header">
-                            <div>
-                                <div style="font-size: 0.85rem; color: var(--text-muted);">Calculated Match Score</div>
-                                <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-main);" id="ats-fit-level">EXCELLENT MATCH</div>
-                            </div>
-                            <div class="score-gauge-ring" id="ats-gauge-ring">
-                                <div class="score-inner" id="ats-score-val">94%</div>
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom: 1.25rem;">
-                            <div style="font-size: 0.85rem; font-weight: 600; color: var(--accent-emerald); margin-bottom: 0.5rem;">✓ Matched Target Keywords</div>
-                            <div id="matched-keywords-container">
-                                <span class="keyword-pill kw-matched">Cisco</span>
-                                <span class="keyword-pill kw-matched">CCNA</span>
-                                <span class="keyword-pill kw-matched">OSPF</span>
-                                <span class="keyword-pill kw-matched">VLAN</span>
-                                <span class="keyword-pill kw-matched">Linux</span>
-                                <span class="keyword-pill kw-matched">Python</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div style="font-size: 0.85rem; font-weight: 600; color: #f87171; margin-bottom: 0.5rem;">⚠ Missing / Unmatched Keywords</div>
-                            <div id="missing-keywords-container">
-                                <span class="keyword-pill kw-missing">AWS Cloud</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Engineering Showcase</span>
-                <h2 class="section-title">Featured Projects & Systems</h2>
-            </div>
-
-            <div class="project-filter-tabs">
-                <button class="tab-btn active" onclick="filterProjects('all', this)">All Projects</button>
-                <button class="tab-btn" onclick="filterProjects('ai', this)">AI & Vision</button>
-                <button class="tab-btn" onclick="filterProjects('network', this)">Networking & Security</button>
-                <button class="tab-btn" onclick="filterProjects('cli', this)">Agentic CLI</button>
-                <button class="tab-btn" onclick="filterProjects('iot', this)">IoT & Embedded</button>
-            </div>
-
-            <div class="projects-grid" id="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="glass-card project-card" data-category="ai">
-                    <div>
-                        <span class="project-tag">Computer Vision & Anti-Fraud</span>
-                        <h3 class="project-title">Hybrid AI Self-Checkout System</h3>
-                        <p class="project-desc">
-                            Cross-references physical barcode scanning with real-time YOLOv8 camera inference to prevent checkout fraud on local Malaysian retail products.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-chip">YOLOv8</span>
-                            <span class="tech-chip">Python</span>
-                            <span class="tech-chip">OpenCV</span>
-                            <span class="tech-chip">PyTorch</span>
-                            <span class="tech-chip">77.4% Precision</span>
-                        </div>
-                    </div>
-                    <div class="project-footer">
-                        <span style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 600;">✓ 50 Epochs Trained</span>
-                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Code Repo</a>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="glass-card project-card" data-category="cli">
-                    <div>
-                        <span class="project-tag">Agentic AI CLI Architecture</span>
-                        <h3 class="project-title">Autonomous Career Intelligence Agent</h3>
-                        <p class="project-desc">
-                            Agent-Native CLI compliant with Agent CLI Spec v0.1. Provides 100% explainable ATS matching, multi-portal job sync, and offline issue tracking.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-chip">Python CLI</span>
-                            <span class="tech-chip">SQLite</span>
-                            <span class="tech-chip">Rich UI</span>
-                            <span class="tech-chip">OpenPyXL</span>
-                            <span class="tech-chip">JSON API</span>
-                        </div>
-                    </div>
-                    <div class="project-footer">
-                        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">✓ Spec v0.1 Certified</span>
-                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Code Repo</a>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="glass-card project-card" data-category="network">
-                    <div>
-                        <span class="project-tag">Cisco Enterprise Infrastructure</span>
-                        <h3 class="project-title">Multi-VLAN OSPF Enterprise Network</h3>
-                        <p class="project-desc">
-                            High-availability enterprise Cisco network featuring multi-area OSPF routing, VLAN segmentation, ACL firewalls, EtherChannel, and STP redundancy.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-chip">Cisco CCNA</span>
-                            <span class="tech-chip">OSPF</span>
-                            <span class="tech-chip">VLAN</span>
-                            <span class="tech-chip">Wireshark</span>
-                            <span class="tech-chip">ACL Firewalls</span>
-                        </div>
-                    </div>
-                    <div class="project-footer">
-                        <span style="font-size: 0.85rem; color: var(--accent-purple); font-weight: 600;">✓ Enterprise Ready</span>
-                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Architecture</a>
-                    </div>
-                </div>
-
-                <!-- Project Card 4 -->
-                <div class="glass-card project-card" data-category="iot">
-                    <div>
-                        <span class="project-tag">IoT & Industrial Automation</span>
-                        <h3 class="project-title">Smart Environmental & Industrial Telemetry</h3>
-                        <p class="project-desc">
-                            ESP32 and STM32 embedded microcontroller system transmitting real-time sensor telemetry over MQTT to a live web dashboard.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-chip">ESP32</span>
-                            <span class="tech-chip">STM32</span>
-                            <span class="tech-chip">C/C++</span>
-                            <span class="tech-chip">MQTT</span>
-                            <span class="tech-chip">Sensors</span>
-                        </div>
-                    </div>
-                    <div class="project-footer">
-                        <span style="font-size: 0.85rem; color: var(--accent-amber); font-weight: 600;">✓ Real-time Telemetry</span>
-                        <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Agent CLI Terminal Simulator -->
-    <section class="cli-section" id="cli-terminal">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Interactive Agent Interface</span>
-                <h2 class="section-title">Live Agent CLI Terminal Sandbox</h2>
-            </div>
-
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <div class="dot dot-red"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
-                    </div>
-                    <div class="terminal-title">agent-native-cli v1.0.0 — bash</div>
-                    <div></div>
-                </div>
-
-                <div class="terminal-body" id="terminal-output">
-                    <div class="terminal-line">
-                        <span style="color: var(--accent-emerald);">Welcome to Autonomous Career Intelligence Agent CLI!</span><br>
-                        Type <span style="color: var(--primary);">help</span> or click command buttons below to test live CLI execution.
-                    </div>
-                </div>
-
-                <div class="cli-cmd-buttons">
-                    <button class="cli-btn" onclick="runCliCommand('python cli.py --brief')">python cli.py --brief</button>
-                    <button class="cli-btn" onclick="runCliCommand('python cli.py ats verify')">python cli.py ats verify</button>
-                    <button class="cli-btn" onclick="runCliCommand('python cli.py job list')">python cli.py job list</button>
-                    <button class="cli-btn" onclick="runCliCommand('python cli.py portal sync')">python cli.py portal sync</button>
-                    <button class="cli-btn" onclick="runCliCommand('python cli.py issue list')">python cli.py issue list</button>
-                </div>
-
-                <div class="terminal-input-wrapper">
-                    <span class="prompt-symbol">$</span>
-                    <input type="text" id="cli-input-field" class="terminal-input" placeholder="Type a command (e.g. python cli.py --brief) and press Enter..." onkeydown="handleTerminalEnter(event)">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Verified Competencies</span>
-                <h2 class="section-title">Core Skills & Technical Pillars</h2>
-            </div>
-
-            <div class="skills-grid">
-                <!-- Pillar 1 -->
-                <div class="glass-card">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary);">Network Engineering</h3>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>Cisco CCNA / OSPF / VLAN</span><span>95%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="95%"></div></div>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>TCP/IP, Switching & ACL Firewall</span><span>90%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="90%"></div></div>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>Wireshark & Packet Analysis</span><span>88%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="88%"></div></div>
-                    </div>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="glass-card">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-emerald);">AI & Computer Vision</h3>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>YOLOv8 & OpenCV Detection</span><span>92%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="92%"></div></div>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>Python & Agentic Automation</span><span>90%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="90%"></div></div>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>PyTorch Model Fine-tuning</span><span>85%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="85%"></div></div>
-                    </div>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="glass-card">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-purple);">IoT & System Admin</h3>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>Linux & Active Directory Admin</span><span>88%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="88%"></div></div>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>ESP32 / STM32 / C++ / MQTT</span><span>90%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="90%"></div></div>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-info"><span>SQLite & Excel Data Tracking</span><span>95%</span></div>
-                        <div class="skill-progress-bg"><div class="skill-progress-fill" data-width="95%"></div></div>
-                    </div>
+                    <iframe src="../resume/resume.html" title="Muhammad Irfan Fahmi Resume"></iframe>
                 </div>
             </div>
         </div>
@@ -1368,24 +845,45 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="motion-connector-badge">
-                <span>✨ Connected with Motion.dev & Security Guard Active</span>
+            <div style="font-weight: 800; font-size: 1.25rem; margin-bottom: 0.75rem;">
+                MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
             </div>
-            <div class="footer-brand">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</div>
             <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 1rem;">
-                🔒 Public Contact Safeguard Active: Plaintext data is protected against GitHub web scrapers.<br>
-                Official Verification Channels: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
+                🔒 Public Contact Safeguard Active: Plaintext phone & email protected against web bots.<br>
+                Official Contacts: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--color-architect);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--color-architect);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
-                © 2026 Autonomous Career Intelligence System. Built with Motion.dev, Three.js 3D & Agent-Native CLI Spec v0.1.
+                © 2026 Human Character Color-Coded Engineering Portfolio & Career AI.
             </p>
         </div>
     </footer>
 
-    <!-- Motion.dev Animation & Three.js 3D Logic -->
+    <!-- Interactive Scripts -->
     <script>
         /* -------------------------------------------------------------
-           Security CAPTCHA & Obfuscated Contact Payload
+           4-Language Executive Summaries
+        ------------------------------------------------------------- */
+        const executiveSummaries = {
+            en: `"Autonomous Career Intelligence & Engineering Specialist holding B.Eng in Computer Engineering (UTeM), Cisco CCNA Enterprise certification, and Festo Industrial AI credentials. Expert in Network Engineering (OSPF/VLAN), YOLOv8 Computer Vision, IoT Systems, and AI-driven career automation."`,
+            bm: `"Pakar Kejuruteraan Komputer & Rangkaian yang memegang Ijazah Sarjana Muda Kejuruteraan Komputer (UTeM), Pensijilan Cisco CCNA Enterprise, dan Festo Industrial AI. Pakar dalam Kejuruteraan Rangkaian (OSPF/VLAN), Penglihatan Komputer YOLOv8, Sistem IoT, dan Automasi AI."`,
+            cn: `"计算机工程学士（UTeM）、Cisco CCNA企业认证及Festo工业人工智能认证专家。精通网络工程（OSPF/VLAN）、YOLOv8计算机视觉、物联网（IoT）系统及AI职场智能自动化。"`,
+            in: `"கணினி பொறியியல் இளங்கலை பட்டம் (UTeM), சிஸ்கோ CCNA மற்றும் ஃபெஸ்டோ தொழில்துறை AI சான்றிதழ் பெற்ற பொறியாளர். நெட்வொர்க் இன்ஜினியரிங் (OSPF/VLAN), YOLOv8 கணினி பார்வை, IoT அமைப்புகள் மற்றும் AI தானியங்கி அமைப்புகளில் வல்லுநர்."`
+        };
+
+        function switchSummaryLang(langKey, btnEl) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+
+            const textPane = document.getElementById('executive-summary-text');
+            textPane.style.opacity = 0;
+            setTimeout(() => {
+                textPane.innerText = executiveSummaries[langKey] || executiveSummaries.en;
+                textPane.style.opacity = 1;
+            }, 150);
+        }
+
+        /* -------------------------------------------------------------
+           Security CAPTCHA Verification
         ------------------------------------------------------------- */
         let captchaAns = 0;
 
@@ -1406,20 +904,14 @@
         function verifyEmployerCaptcha() {
             const userAns = parseInt(document.getElementById('captcha-answer').value.trim());
             if (userAns === captchaAns) {
-                // Client-side Base64 decoding dynamically (hidden from raw static HTML scrapers)
                 const emailPayload = atob('ZmFobWlsYXRpZjg3QGdtYWlsLmNvbQ==');
                 const phonePayload = atob('KzYwIDE2LTI0MyAyMDIz');
 
                 document.getElementById('revealed-email').innerText = emailPayload;
                 document.getElementById('revealed-phone').innerText = phonePayload;
                 document.getElementById('revealed-contact-box').style.display = 'block';
-
-                const cardEmail = document.getElementById('card-email-display');
-                const cardPhone = document.getElementById('card-phone-display');
-                if (cardEmail) cardEmail.innerText = emailPayload;
-                if (cardPhone) cardPhone.innerText = phonePayload;
             } else {
-                alert('Incorrect CAPTCHA answer. Please try again to verify human access.');
+                alert('Incorrect CAPTCHA answer. Please try again.');
                 openSecurityModal();
             }
         }
@@ -1431,55 +923,89 @@
         }
 
         /* -------------------------------------------------------------
-           1. Motion.dev Connector & Micro-Animations
+           ChatGPT-style AI Assistant Chatbot Engine
         ------------------------------------------------------------- */
-        document.addEventListener('DOMContentLoaded', () => {
-            const motionEngine = window.Motion || null;
-            
-            if (motionEngine) {
-                console.log('Motion.dev Animation Engine initialized successfully.');
+        function handleChatEnter(e) {
+            if (e.key === 'Enter') submitChatMessage();
+        }
+
+        function sendSuggestedPrompt(promptText) {
+            document.getElementById('chat-user-input').value = promptText;
+            submitChatMessage();
+        }
+
+        function clearChat() {
+            document.getElementById('chat-body').innerHTML = `
+                <div class="chat-message bot-msg">
+                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                    <div class="chat-bubble">
+                        Chat reset. Ask me anything about Irfan's skills, CCNA, Festo AI, or projects!
+                    </div>
+                </div>
+            `;
+        }
+
+        function submitChatMessage() {
+            const input = document.getElementById('chat-user-input');
+            const query = input.value.trim();
+            if (!query) return;
+
+            const chatBody = document.getElementById('chat-body');
+
+            // Render User Message
+            const userMsgDiv = document.createElement('div');
+            userMsgDiv.className = 'chat-message user-msg';
+            userMsgDiv.innerHTML = `<div class="chat-bubble">${escapeHtml(query)}</div>`;
+            chatBody.appendChild(userMsgDiv);
+
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Generate AI Assistant Response
+            setTimeout(() => {
+                const botMsgDiv = document.createElement('div');
+                botMsgDiv.className = 'chat-message bot-msg';
                 
-                motionEngine.animate('.hero-badge', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.8 });
-                motionEngine.animate('.hero-title', { opacity: [0, 1], y: [30, 0] }, { duration: 0.9, delay: 0.2 });
-                motionEngine.animate('.hero-subtitle', { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.4 });
-                motionEngine.animate('.hero-description', { opacity: [0, 1] }, { duration: 1, delay: 0.6 });
+                let botAnswer = generateAiAnswer(query.toLowerCase());
                 
-                const glassCards = document.querySelectorAll('.glass-card');
-                glassCards.forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        motionEngine.animate(card, { scale: 1.02 }, { duration: 0.3 });
-                    });
-                    card.addEventListener('mouseleave', () => {
-                        motionEngine.animate(card, { scale: 1 }, { duration: 0.3 });
-                    });
-                });
+                botMsgDiv.innerHTML = `
+                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                    <div class="chat-bubble">${botAnswer}</div>
+                `;
+                chatBody.appendChild(botMsgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+        }
+
+        function generateAiAnswer(q) {
+            if (q.includes('ccna') || q.includes('cisco') || q.includes('network')) {
+                return `<strong>Cisco CCNA Enterprise & Networking Credentials:</strong><br>
+                Irfan holds the official <em>Cisco CCNA: Enterprise Networking, Security, and Automation</em> credential (issued Feb 2026). His skills include multi-area OSPF routing, VLAN segmentation, ACL firewalls, Wireshark packet capture, and network automation with Python.`;
+            } else if (q.includes('festo') || q.includes('industrial ai')) {
+                return `<strong>Festo Industrial AI Certification:</strong><br>
+                Irfan completed the <em>Festo Professional Certificate in Industrial Automation with AI in Manufacturing</em> (July 2026). He specializes in predictive maintenance, quality control inspection, controller data extraction, and sensor integration for industrial automation.`;
+            } else if (q.includes('yolo') || q.includes('checkout') || q.includes('vision') || q.includes('project')) {
+                return `<strong>Hybrid AI Self-Checkout System:</strong><br>
+                Irfan built a real-time anti-fraud self-checkout solution using YOLOv8 fine-tuned for 50 epochs on local Malaysian products. It cross-references barcode inputs with live computer vision camera inference, achieving <strong>77.4% Precision</strong> and <strong>72.0% Recall</strong>.`;
+            } else if (q.includes('education') || q.includes('cgpa') || q.includes('degree') || q.includes('utem')) {
+                return `<strong>Educational Background:</strong><br>
+                1. <strong>B.Eng in Computer Engineering with Honours</strong> — Universiti Teknikal Malaysia Melaka (UTeM) | <em>Expected Nov 2026</em><br>
+                2. <strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson | <em>Dec 2018 – May 2022</em><br>
+                3. <strong>Sijil Sistem Komputer & Rangkaian</strong> — Kolej Komuniti Selandar | <em>CGPA: 3.58 / 4.00 (Best Student Award)</em>.`;
+            } else if (q.includes('contact') || q.includes('phone') || q.includes('email')) {
+                return `To view Irfan's direct phone number (016 243 2023) and email, please click the <strong>"🔓 Reveal Contact Info"</strong> button in the navigation header to solve a 1-second security CAPTCHA.`;
+            } else {
+                return `Muhammad Irfan Fahmi is a Computer Engineering graduate from UTeM specializing in <strong>Network Engineering (CCNA)</strong>, <strong>Industrial AI (Festo)</strong>, <strong>YOLOv8 Computer Vision</strong>, and <strong>Embedded IoT (ESP32/STM32)</strong>. How else can I assist your evaluation?`;
             }
+        }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const fills = entry.target.querySelectorAll('.skill-progress-fill');
-                        fills.forEach(fill => {
-                            const targetWidth = fill.getAttribute('data-width');
-                            fill.style.width = targetWidth;
-                        });
-                    }
-                });
-            }, { threshold: 0.2 });
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
 
-            document.querySelectorAll('.skills-grid').forEach(el => observer.observe(el));
-        });
-
-        /* Cursor Follower */
-        const follower = document.getElementById('cursor-follower');
-        window.addEventListener('mousemove', (e) => {
-            if (follower) {
-                follower.style.left = e.clientX + 'px';
-                follower.style.top = e.clientY + 'px';
-            }
-        });
-
-        /* Three.js 3D Background */
+        /* -------------------------------------------------------------
+           Three.js Background Constellation
+        ------------------------------------------------------------- */
         (function init3DScene() {
             const canvas = document.getElementById('webgl-canvas');
             if (!canvas) return;
@@ -1492,168 +1018,35 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            const particleCount = 180;
+            const particleCount = 160;
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
 
             for (let i = 0; i < particleCount * 3; i += 3) {
                 positions[i] = (Math.random() - 0.5) * 80;
                 positions[i + 1] = (Math.random() - 0.5) * 80;
                 positions[i + 2] = (Math.random() - 0.5) * 80;
-
-                colors[i] = 0.22;
-                colors[i + 1] = 0.74;
-                colors[i + 2] = 0.97;
             }
 
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            const material = new THREE.PointsMaterial({
-                size: 1.2,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.75
-            });
-
+            const material = new THREE.PointsMaterial({ size: 1.2, color: 0x38bdf8, transparent: true, opacity: 0.6 });
             const particleSystem = new THREE.Points(geometry, material);
             scene.add(particleSystem);
 
-            const icoGeo = new THREE.IcosahedronGeometry(8, 1);
-            const icoMat = new THREE.MeshBasicMaterial({
-                color: 0x38bdf8,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.15
-            });
-            const icoMesh = new THREE.Mesh(icoGeo, icoMat);
-            scene.add(icoMesh);
-
-            let mouseX = 0, mouseY = 0;
-            window.addEventListener('mousemove', (e) => {
-                mouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
-                mouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
-            });
+            function animate3D() {
+                requestAnimationFrame(animate3D);
+                particleSystem.rotation.y += 0.0008;
+                particleSystem.rotation.x += 0.0004;
+                renderer.render(scene, camera);
+            }
+            animate3D();
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
-
-            function animate3D() {
-                requestAnimationFrame(animate3D);
-                particleSystem.rotation.y += 0.001;
-                particleSystem.rotation.x += 0.0005;
-                icoMesh.rotation.y += 0.002;
-                icoMesh.rotation.x += 0.001;
-
-                camera.position.x += (mouseX * 10 - camera.position.x) * 0.05;
-                camera.position.y += (-mouseY * 10 - camera.position.y) * 0.05;
-                camera.lookAt(scene.position);
-
-                renderer.render(scene, camera);
-            }
-            animate3D();
         })();
-
-        /* ATS Logic */
-        const candidateKeywords = [
-            "cisco", "ccna", "network engineer", "ospf", "vlan", "tcp/ip", "switching", "routing", "wireshark", "subnetting",
-            "active directory", "windows server", "hardware diagnostics", "linux", "troubleshooting", "system administration",
-            "network security", "firewall", "acl", "vpn", "yolov8", "computer vision", "python", "opencv", "industrial ai", "pytorch",
-            "esp32", "stm32", "c/c++", "mqtt", "sensors", "microcontrollers"
-        ];
-
-        function evaluateATS() {
-            const desc = document.getElementById('ats-desc').value.toLowerCase();
-            if (!desc.trim()) return;
-
-            let matched = [];
-            candidateKeywords.forEach(kw => {
-                if (desc.includes(kw)) matched.push(kw.toUpperCase());
-            });
-
-            let score = Math.min(98, Math.max(65, Math.floor((matched.length / Math.max(matched.length + 1, 6)) * 100)));
-            if (matched.length === 0) {
-                matched = ["CISCO", "CCNA", "PYTHON", "NETWORK ENGINEER"];
-                score = 88;
-            }
-            let missing = ["AWS CLOUD", "KUBERNETES", "DOCKER"].filter(k => !desc.includes(k.toLowerCase())).slice(0, 2);
-
-            document.getElementById('ats-score-val').innerText = score + '%';
-            document.getElementById('ats-gauge-ring').style.background = `conic-gradient(#34d399 0deg ${score * 3.6}deg, rgba(255,255,255,0.1) ${score * 3.6}deg)`;
-
-            document.getElementById('matched-keywords-container').innerHTML = matched.map(k => `<span class="keyword-pill kw-matched">✓ ${k}</span>`).join('');
-            document.getElementById('missing-keywords-container').innerHTML = missing.map(k => `<span class="keyword-pill kw-missing">⚠ ${k}</span>`).join('');
-        }
-
-        function loadAtsPreset(type) {
-            if (type === 'network') {
-                document.getElementById('ats-title').value = "Cisco Network Specialist";
-                document.getElementById('ats-desc').value = "Must possess Cisco CCNA, deep knowledge of OSPF routing protocols, multi-VLAN segmentation, Wireshark packet capture analysis, ACL security, and TCP/IP networking.";
-            } else if (type === 'ai') {
-                document.getElementById('ats-title').value = "Computer Vision & AI Engineer";
-                document.getElementById('ats-desc').value = "Looking for YOLOv8 computer vision model developer with OpenCV, PyTorch, Python scripting, object detection fine-tuning, and anti-fraud visual inspection integration.";
-            } else if (type === 'support') {
-                document.getElementById('ats-title').value = "IT Systems & Hardware Specialist";
-                document.getElementById('ats-desc').value = "Responsible for Active Directory user management, Windows Server administration, Linux shell troubleshooting, hardware diagnostics, and enterprise IT infrastructure.";
-            }
-            evaluateATS();
-        }
-
-        function filterProjects(category, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const cards = document.getElementById('projects-grid').querySelectorAll('.project-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function handleTerminalEnter(e) {
-            if (e.key === 'Enter') {
-                const input = document.getElementById('cli-input-field');
-                const cmd = input.value.trim();
-                if (cmd) {
-                    runCliCommand(cmd);
-                    input.value = '';
-                }
-            }
-        }
-
-        function runCliCommand(cmd) {
-            const out = document.getElementById('terminal-output');
-            const line = document.createElement('div');
-            line.className = 'terminal-line';
-            
-            let response = '';
-            if (cmd.includes('--brief')) {
-                response = `<span style="color: var(--primary);">Autonomous Career Intelligence Agent & ATS Portfolio CLI for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR (B.Eng Computer Engineering - UTeM, CCNA Enterprise, Festo Industrial AI). Provides 100% explainable ATS keyword matching, multi-portal application automation, and offline issue management.</span>`;
-            } else if (cmd.includes('ats verify')) {
-                response = `<span style="color: var(--accent-emerald);">✓ [SUCCESS] 100% COVERAGE VERIFIED across 48 target keywords (Networking: 16, IT Support: 10, Security: 4, AI: 9, Embedded: 9).</span>`;
-            } else if (cmd.includes('job list')) {
-                response = `<span style="color: #e6edf3;">[1] Network Engineer - TechNova (Applied) | [2] Computer Vision Specialist - RetailAI (Interview Scheduled) | [3] Systems Administrator - CloudCorp (In Review)</span>`;
-            } else if (cmd.includes('portal sync')) {
-                response = `<span style="color: var(--accent-amber);">[SYNC] Synced MYFutureJobs, MauKerja, JobStreet, LinkedIn. 0 conflicts detected.</span>`;
-            } else if (cmd.includes('issue list')) {
-                response = `<span style="color: var(--text-sub);">No active open issues. All system diagnostics passed (0 open issues).</span>`;
-            } else if (cmd === 'help') {
-                response = `Available commands: python cli.py --brief | python cli.py ats verify | python cli.py job list | python cli.py portal sync | python cli.py issue list`;
-            } else {
-                response = `Executed command: '${cmd}' (Exit Code: 0). Output: Operation finished successfully.`;
-            }
-
-            line.innerHTML = `<div><span style="color: var(--accent-emerald); font-weight:700;">$ ${cmd}</span></div><div style="margin-top:0.3rem;">${response}</div>`;
-            out.appendChild(line);
-            out.scrollTop = out.scrollHeight;
-        }
 
         document.getElementById('theme-toggle-btn').addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
