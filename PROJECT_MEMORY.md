@@ -2,7 +2,7 @@
 
 **Candidate Name:** MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR  
 **Age:** 26–27 years old (Born 1999)  
-**Personal Summary:** A cheerful and confident student leader who enjoys connecting with people and working as a team. Skilled in communication, event coordination, and building positive relationships. Always takes initiative and stays committed to every responsibility given. Passionate about leadership and corporate relations, aiming to represent student voices, strengthen teamwork, and create a supportive environment for everyone to grow together.  
+**Personal Summary:** I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology.  
 **Email:** fahmilatif87@gmail.com  
 **Phone:** +60 16-243 2023 (Employer CAPTCHA Protected)  
 **Location:** Puchong, Selangor, Malaysia  

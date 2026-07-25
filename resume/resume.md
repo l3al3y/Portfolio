@@ -8,7 +8,7 @@ Puchong, Malaysia | +60 1X-XXX XXXX [PROTECTED] | f********7@gmail.com [PROTECTE
 ---
 
 ## PROFESSIONAL SUMMARY
-High-performing **Computer Engineering Graduate** (Expected Graduation Nov 2026) and **CCNA Certified** technical professional holding specialized Cisco Networking Academy credentials (**Enterprise Networking**, **Routing & Switching**, **Cyber Threat Management**, **Endpoint Security**) and Festo Didactic certification in **Industrial Automation with AI**. 
+I'm a **Computer Engineering Graduate** who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span **IT support**, **full-stack web development**, **cloud technologies**, and **automation**, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology.
 
 * **Enterprise Networking & IT Support:** Proven track record in diagnosing network infrastructure issues, configuring enterprise **VLANs**, **OSPF** routing, **Wireshark** packet analysis, and managing **Windows administration**, **desktop support**, **hardware troubleshooting**, and **printer support**.
 * **AI & Industrial Automation:** Skilled in integrating computer vision (**OpenCV**, **YOLOv8**), **IoT** embedded microcontrollers (Arduino), sensor telemetry, and predictive maintenance models for smart manufacturing and process automation.
