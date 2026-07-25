@@ -1,12 +1,13 @@
 # 🧠 PROJECT MEMORY & CANDIDATE PROFILE
 
 **Candidate Name:** MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR  
+**Age:** 26–27 years old (Born 1999)  
 **Email:** fahmilatif87@gmail.com  
-**Phone:** +60 16-243 2023 (Employer Protected)  
-**Location:** Puchong, Malaysia  
+**Phone:** +60 16-243 2023 (Employer CAPTCHA Protected)  
+**Location:** Puchong, Selangor, Malaysia  
 **LinkedIn:** https://linkedin.com/in/mifi99  
 **GitHub:** https://github.com/l3al3y  
-**Portfolio:** https://l3al3y.github.io/ResumeAgent/ (Live 3D Web Experience & Agentic Portfolio)  
+**Portfolio:** https://l3al3y.github.io/ResumeAgent/ (Live 3D Web Experience & Kimi K2.5 Agentic Portfolio)  
 
 ---
 
@@ -19,7 +20,7 @@
 
 2. **Diploma in Electronic Engineering (Computer)**  
    *Politeknik Port Dickson* | December 2018 – May 2022  
-   * Focus: Embedded Systems, Digital Electronics, Network Infrastructure, Microcontroller Interfacing, Hardware Maintenance.
+   * **CGPA: 3.26 / 4.00** | Focus: Embedded Systems, Digital Electronics, Network Infrastructure, Microcontroller Interfacing, Hardware Maintenance.
 
 3. **Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)**  
    *Kolej Komuniti Selandar* | July 2017 – February 2019  
@@ -86,22 +87,25 @@
 
 ---
 
-## 🛠️ ATS KEYWORD COVERAGE (42 TARGET KEYWORDS - 100% MATCH)
+## 🤖 KIMI K2.5 MULTILINGUAL AI ENGINE & AGENTIC ARCHITECTURE
 
-* **Networking**: CCNA, Cisco, Network Engineer, Network Troubleshooting, TCP/IP, VLAN, OSPF, Routing, Switching, LAN, WAN, DHCP, DNS, Firewall, Wireshark, Infrastructure
-* **IT Support**: IT Support, Technical Support, Desktop Support, Windows, Hardware Troubleshooting, User Support, Customer Support, Printer Support, Microsoft Office, Technical Documentation
-* **Security**: Cybersecurity, Endpoint Security, Incident Response, Cyber Threat Management
-* **Automation & AI**: Automation, Industrial Automation, Artificial Intelligence, AI, Predictive Maintenance, Python, OpenCV, YOLOv8, Computer Vision
-* **Embedded/IoT**: IoT, Arduino, Embedded Systems, Circuit Design, MySQL, Git, GitHub, SQL, Problem Solving
+* **Primary LLM Engine:** Kimi K2.5 / Moonshot AI (`moonshot-v1-8k` / `kimi-k2.5`) with API Key entry + Free Live AI fallback.
+* **Grounded Knowledge Base:** `C:/Users/l3al3/Desktop/agentic-awesome-skills` (Agent-Native CLI Spec v0.1, `brief.md`, `rules/`, `skills/`, `issue` tracking).
+* **Supported Prompt Languages:** Dynamic native detection for English, Bahasa Melayu (🇲🇾), Chinese 华语 (🇨🇳), Tamil தமிழ் (🇮🇳), Japanese, Spanish, etc.
+* **Humanlike Identity & Age Answers:** Responds accurately to "who you" / "siapa awak" / "你是谁" (Irfan's AI Assistant) and age inquiries (26–27 years old, born 1999).
+* **Contact Security Interceptor:** Redirects direct phone/email inquiries to the employer CAPTCHA verification modal.
 
 ---
 
-## 📁 PROJECT DIRECTORY STRUCTURE
+## 📁 REARRANGED & CLEANED PROJECT STRUCTURE
 
 ```
 D:\Resume ats cli\
-├── PROJECT_MEMORY.md                 # Single source of truth for Candidate Profile & Memory
+├── index.html                        # Primary 3D WebGL Portfolio & Kimi K2.5 Multilingual AI App
+├── PROJECT_MEMORY.md                 # Single source of truth for Candidate Profile & Agentic Memory
 ├── README.md                         # Main Project Overview & Architecture Guide
+├── AGENTS.md                         # Agent & Maintainer Guidelines (CLI Spec v0.1)
+├── cli.py                            # CLI Launcher (Agent-Native Level Certified)
 ├── src/                              # Autonomous Agent Engine & Core Logic
 │   ├── agent.py                      # FSM Controller Engine
 │   ├── models.py                     # Dataclasses & Enterprise DTOs
@@ -111,115 +115,32 @@ D:\Resume ats cli\
 │   ├── portals.py                    # Multi-Portal Connectors (MYFutureJobs, MauKerja, JobStreet, LinkedIn)
 │   ├── sync_all_portals.py           # Multi-Portal Sync Engine Launcher
 │   └── job_agent.db                  # SQLite Audit Persistence Database
-├── web/                              # Web Applications & Interactive Mockups
-│   ├── portfolio.html                # Modern Glassmorphic Developer & Engineering Portfolio
-│   ├── portfolio_style.css           # Glassmorphic Styling & Color System
-│   ├── portfolio_script.js          # Interactive Filtering, Modals, & Live ATS Calculator
-│   ├── index.html                    # Interactive ATS Resume Builder & PDF Exporter
-│   ├── style.css                     # Resume Builder Styling
-│   └── script.js                     # Resume Builder PDF Export Logic
+├── web/                              # Synced Web Application Entry Points
+│   ├── index.html                    # Synced Web Entry Point
+│   └── portfolio.html                # Synced Web Entry Point
 ├── resume/                           # 100% ATS Verified Resume Documents
 │   ├── resume.html                   # Printable 1-Page A4 ATS Resume
 │   ├── resume.md                     # Markdown ATS Resume
 │   ├── resume.txt                    # Plain Text ATS Resume
 │   └── verify_ats.py                 # Keyword verification script (100% match)
-├── scripts/                          # Automation & Testing Utility Scripts
-│   ├── send_dummy_job.py             # Single Job Application Runner
-│   └── sync_excel.py                 # Standalone Excel Tracker Sync Utility
-├── docs/                             # System Prompts & Strategic Specifications
-│   ├── system-prompt-v2.md           # Extended Career Agent System Prompt v2.0
-│   ├── system-prompt-v1.md           # Baseline Career Agent System Prompt v1.0
-│   ├── improvement-suggestions.md    # 10 Enterprise Improvement Modules
-│   └── ATS_RESUME_PROMPT.md          # ATS resume prompt specifications
-├── certificates/                     # Verified PDF Certificates (CCNA, Cisco Security)
-└── library/                          # Python Virtual Environment
+├── tests/                            # Automated Unit Test Suite
+│   ├── test_candidate.py
+│   ├── test_cli.py
+│   ├── test_database.py
+│   ├── test_issue.py
+│   └── test_portals.py
+└── data/                             # Local Persistence (SQLite DB & Master Excel)
+    ├── job_agent.db
+    └── JobTracker.xlsx
 ```
 
 ---
 
-## 🤖 CAREER INTELLIGENCE AGENT CONFIGURATION & DASHBOARD
+## ⚡ ENTERPRISE CAREER DASHBOARD
 
-**Active System Prompt:** `docs/system-prompt-v2.md` (v2.0 Extended Framework & Agent-Native Specification v0.1)  
-**Last Memory Sync:** 2026-07-25  
-**Operational Modes Enabled:** Recruiter, Hiring Manager, Career Strategist, Technical Mentor, Market Researcher, Project Reviewer, Interview Coach  
-
-### 📊 Active Career Dashboard
-
-* **Current Goal:** High-ROI Graduate placement in MY/SG (Targeting Network / Cloud Infra / AI Systems Engineering)
 * **Target Role:** Network Engineer / Cloud Infrastructure / System Integration Specialist / Industrial AI Automation
 * **Resume Version:** v1.0 (HTML/MD/TXT - 100% heuristic keyword match)
-* **Portfolio Status:** Live on GitHub Pages at [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/) (Live ATS Evaluator + Job Offer Dispatcher + Real-Time Demos)
+* **Portfolio Status:** Live at [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)
 * **Applications Sent:** 7 (Processed across MYFutureJobs, MauKerja, JobStreet, LinkedIn)
 * **Interviews:** 1 (TechNova Solutions)
-* **Offers:** 0
-* **Active Certifications:** 
-  1. CCNA: Enterprise Networking, Security, and Automation (2026)
-  2. CCNA: Switching, Routing, and Wireless Essentials (2026)
-  3. Festo Professional Cert: Industrial Automation with AI (2026)
-  4. Cisco Endpoint Security (2024)
-  5. Cisco Cyber Threat Management (2024)
-* **Multi-Portal Sync Connectors Active:**
-  - 🇲🇾 **MYFutureJobs** (`myfuturejobs.gov.my` - Official MY Govt Portal)
-  - 🇲🇾 **MauKerja** (`maukerja.my`)
-  - 🇲🇾 **JobStreet Malaysia** (`jobstreet.com.my`)
-  - 🇸🇬 **LinkedIn Southeast Asia** (`linkedin.com/jobs`)
-* **Skills to Learn:** AWS Certified Solutions Architect / Cisco DevNet / Linux Enterprise Admin
 * **Current ATS Score:** 100% (Heuristic 48-keyword match via `cli.py ats verify` local parser)
-* **Estimated Market Salary:** MYR 3,500 – MYR 5,000 / SGD 3,200 – SGD 4,200 (Entry Level B.Eng)
-* **Top Missing Skill:** Cloud Networking (AWS VPC, Hybrid Cloud) & NetDevOps Automation (Ansible/Terraform)
-* **Priority This Week:** Continuous retraining & multi-portal scraper connector synchronization
-
----
-
-## ⚡ ENTERPRISE CAREER CRM & DECISION ENGINE ARCHITECTURE
-
-**System Roadmap & Feature Modules (v2.0 Enterprise Release):**
-
-1. **Explainable ATS Breakdown:** Itemized scoring breakdown (Keywords, Education, Certifications, Projects, Experience, Soft Skills).
-2. **Interview Probability Engine:** Quantitative likelihood percentage (Low / Medium / High rating).
-3. **Salary Prediction Engine:** Minimum, Likely, and Optimistic salary brackets (MYR / SGD) with confidence intervals.
-4. **Skills Gap & Learning Engine:** Missing skills detection, estimated learning duration (weeks), and expected ATS boost.
-5. **Company Intelligence Profiler:** Corporate headcount, tech stack, Glassdoor work-life score, and interview workflow tracking.
-6. **Applicant Competition Analyzer:** Applicant pool estimation (Fresh Grads vs Junior vs Experienced) and role difficulty.
-7. **Application Priority System:** 1-to-5 Star rating based on strategic fit and long-term career growth.
-8. **Career Impact Rating:** Evaluating long-term career compounding potential (1–10) vs immediate salary.
-9. **Weekly KPI Dashboard:** Multi-sheet Excel dashboard aggregation in `JobTracker.xlsx`.
-10. **Strategic Decision Engine:** Proactive career recommendations (e.g. NetDevOps / Cloud infrastructure pivot).
-
-### 🌐 Multi-Portal Connector Standards
-* **MYFutureJobs (`myfuturejobs.gov.my`):** Form element mapping (`applicant_full_name`, `applicant_email`, `resume_file`).
-* **MauKerja (`maukerja.my`):** Selectors `#applicant_name`, `#applicant_email`, `#applicant_phone`.
-* **JobStreet Malaysia (`jobstreet.com.my`):** Selectors `data-automation='applicant-name'`, `data-automation='apply-now-button'`.
-* **LinkedIn Jobs (`linkedin.com/jobs`):** Selector `.jobs-apply-button`.
-
-### 🛡️ Dual Confidence Metrics Standard
-* **Execution Confidence:** `100%` (Empirically verified runtime, SQLite database write, and Excel file export)
-* **Analysis Confidence:** `84% – 89%` (Heuristic score estimation, ATS keyword parsing, and market demand model)
-
----
-
-## 🏗️ AGENT-NATIVE PRODUCTION ENGINEERING ARCHITECTURE (v4.0 RELEASE)
-
-1. **Agent Self-Description Contract (`agent/`):** Identity summary (`agent/brief.md`), rules (`agent/rules/trigger.md`, `workflow.md`, `writeback.md`), and skills (`agent/skills/*.md`).
-2. **Root AI Agent Guidelines:** `AGENTS.md` at root specifying certification level (Agent-Native), exit codes, reserved flags, and execution contracts.
-3. **Dual Output Mode CLI (`cli.py` & `src/cli.py`):** Default `--agent` mode (JSON) and `--human` mode (Rich terminal UI with colored panels, tables, and gauges).
-4. **Offline Feedback & Issue System (`src/issue.py`):** Subcommands `issue create`, `issue list`, `issue resolve` for offline feedback and bug reporting.
-5. **Decoupled Data Storage:** Database and master spreadsheets stored under `data/` (`data/job_agent.db` with WAL mode, `data/JobTracker.xlsx`).
-6. **Comprehensive Automated Unit Testing Suite:** `tests/` directory with 10 passing tests (`test_candidate.py`, `test_database.py`, `test_portals.py`, `test_cli.py`, `test_issue.py`).
-
----
-
-## 📜 MEMORY SYNC LOG & SYSTEM AUDIT
-
-| Sync Date | Trigger / Event | Active Prompt | Multi-Portal Status | Primary DB & Excel Artifacts |
-| :--- | :--- | :--- | :--- | :--- |
-| **2026-07-24** | Applied Open-Source Product Architecture v3.0 & Unit Test Suite | `docs/system-prompt-v2.md` | MYFutureJobs, MauKerja, JobStreet, LinkedIn Synced | `data/job_agent.db` & `data/JobTracker.xlsx` |
-| **2026-07-25** | Upgraded to Agent-Native CLI Architecture v4.0 (Agent CLI Spec v0.1 Compliant), Added `agent/` contract, `AGENTS.md`, Offline Issue Tracker, Rich UI `--human` mode, and Expanded 100% Passing Test Suite | `docs/system-prompt-v2.md` & `agent/brief.md` | MYFutureJobs, MauKerja, JobStreet, LinkedIn Synced | `data/job_agent.db` & `data/JobTracker.xlsx` |
-| **2026-07-25** | Deployed Standalone Root 3D Web Experience Portfolio (`index.html`, `web/portfolio.html`, `web/index.html`) with Three.js WebGL Engine, Glassmorphic Design, 3D Particle Starfield, 4 Interactive Tech Nodes, and Employer Gate for `https://l3al3y.github.io/ResumeAgent/` | `agent/brief.md` & `3d-web-experience` | MYFutureJobs, MauKerja, JobStreet, LinkedIn Synced | `web/portfolio.html` & `index.html` |
-
-
-
-
-
-
-
