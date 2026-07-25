@@ -54,7 +54,7 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
         
         body {
             background-color: var(--bg-base);
@@ -102,8 +102,8 @@
             position: fixed;
             top: 0; left: 0; width: 100%;
             z-index: 1000;
-            padding: 1rem 0;
-            background: rgba(11, 15, 25, 0.85);
+            padding: 0.85rem 0;
+            background: rgba(11, 15, 25, 0.88);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
         }
@@ -121,7 +121,7 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
         }
 
         .logo-icon {
@@ -130,6 +130,7 @@
             border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-family: var(--font-mono); font-weight: 800;
+            flex-shrink: 0;
         }
 
         .nav-links {
@@ -149,6 +150,49 @@
 
         .nav-links a:hover { color: var(--primary); }
 
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            font-size: 1.3rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            line-height: 1;
+            transition: 0.2s;
+        }
+
+        .mobile-nav-drawer {
+            display: none;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .mobile-nav-drawer.active {
+            display: block;
+        }
+
+        .mobile-nav-drawer ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mobile-nav-drawer a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -162,6 +206,7 @@
             border: none;
             transition: var(--transition-smooth);
             font-family: var(--font-sans);
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -191,7 +236,7 @@
             color: var(--text-sub);
             cursor: pointer;
             font-size: 1.2rem;
-            padding: 0.5rem;
+            padding: 0.4rem;
             border-radius: 50%;
         }
 
@@ -211,15 +256,16 @@
         }
 
         .hero-title {
-            font-size: 3.1rem;
+            font-size: clamp(1.8rem, 5vw, 3.1rem);
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 0.75rem;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
+            word-break: break-word;
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: clamp(0.95rem, 3vw, 1.15rem);
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 1.25rem;
@@ -253,12 +299,15 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-card);
             color: var(--text-sub);
-            padding: 0.35rem 0.85rem;
+            padding: 0.4rem 0.85rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
         }
 
         .lang-btn.active, .lang-btn:hover {
@@ -310,6 +359,7 @@
 
         .skills-cat-items {
             color: var(--text-sub);
+            word-break: break-word;
         }
 
         /* EDUCATION & EXPERIENCES LIST */
@@ -324,6 +374,8 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .entry-role-title {
@@ -359,7 +411,7 @@
         /* CERTIFICATIONS GRID */
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.25rem;
         }
 
@@ -422,6 +474,7 @@
             display: flex; align-items: center; justify-content: center;
             color: #ffffff; font-weight: 800; font-size: 0.9rem;
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            flex-shrink: 0;
         }
 
         .chat-provider-select {
@@ -463,6 +516,7 @@
             border-radius: 16px;
             font-size: 0.95rem;
             line-height: 1.6;
+            word-break: break-word;
         }
 
         .bot-msg .chat-bubble {
@@ -486,18 +540,20 @@
             background: #0f172a;
             overflow-x: auto;
             border-top: 1px solid rgba(255,255,255,0.05);
+            -webkit-overflow-scrolling: touch;
         }
 
         .prompt-chip {
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--border-card);
             color: var(--text-sub);
-            padding: 0.35rem 0.8rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 50px;
             font-size: 0.8rem;
             white-space: nowrap;
             cursor: pointer;
             transition: 0.2s;
+            flex-shrink: 0;
         }
 
         .prompt-chip:hover {
@@ -535,6 +591,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            flex-wrap: wrap;
         }
 
         /* SECURITY MODAL */
@@ -547,6 +604,7 @@
             display: flex; align-items: center; justify-content: center;
             opacity: 0; pointer-events: none;
             transition: opacity 0.3s ease;
+            padding: 1rem;
         }
 
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
@@ -557,7 +615,7 @@
             border-radius: var(--radius-md);
             padding: 2.5rem;
             max-width: 480px;
-            width: 90%;
+            width: 100%;
             box-shadow: 0 25px 60px rgba(0,0,0,0.8);
             position: relative;
         }
@@ -587,10 +645,44 @@
             background: rgba(11, 15, 25, 0.95);
         }
 
+        /* MOBILE & CROSS-DEVICE RESPONSIVE BREAKPOINTS */
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            .skills-grid-table { grid-template-columns: 1fr; }
+            .hero { padding: 7.5rem 0 3rem; min-height: auto; }
+            .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .skills-grid-table { grid-template-columns: 1fr; gap: 0.75rem; }
             .nav-links { display: none; }
+            .mobile-menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+            .section-title-main { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.1rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .logo-badge span { font-size: 1rem; }
+            .chat-window-card { height: 550px; }
+            .chat-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .chat-message { max-width: 92%; }
+            .certs-grid { grid-template-columns: 1fr; }
+            .api-key-drawer { flex-wrap: wrap; }
+            .resume-frame-container { height: 540px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { width: 95%; padding: 0 0.5rem; }
+            .hero { padding: 6.5rem 0 2rem; }
+            .hero-title { font-size: 1.75rem; letter-spacing: normal; }
+            .hero-subtitle { font-size: 0.95rem; }
+            .hero-cta { flex-direction: column; width: 100%; }
+            .hero-cta .btn { width: 100%; justify-content: center; min-height: 44px; font-size: 0.95rem; }
+            .lang-switch-box { padding: 1rem; }
+            .lang-btn { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+            .glass-card { padding: 1.25rem; border-radius: var(--radius-sm); }
+            .chat-window-card { height: 500px; }
+            .chat-input-area { padding: 0.65rem 0.85rem; gap: 0.5rem; }
+            .chat-input { font-size: 0.85rem; padding: 0.6rem 0.75rem; }
+            .prompt-chip { font-size: 0.75rem; padding: 0.35rem 0.7rem; }
+            .resume-frame-container { height: 420px; }
+            .modal-card { padding: 1.5rem 1.1rem; max-width: 95%; width: 95%; }
         }
     </style>
 </head>
@@ -614,10 +706,24 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#ai-assistant">🌙 Kimi K2.5 AI</a></li>
             </ul>
-            <div style="display: flex; gap: 0.75rem; align-items: center;">
-                <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <button class="btn btn-emerald" style="padding: 0.5rem 0.85rem; font-size: 0.85rem;" onclick="openSecurityModal()">🔓 Reveal Contact</button>
                 <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme">🌙</button>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
             </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer Dropdown -->
+        <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+            <ul>
+                <li><a href="#hero" onclick="closeMobileMenu()">Overview</a></li>
+                <li><a href="#skills" onclick="closeMobileMenu()">Technical Skills</a></li>
+                <li><a href="#education" onclick="closeMobileMenu()">Education</a></li>
+                <li><a href="#certifications" onclick="closeMobileMenu()">Certifications</a></li>
+                <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="#ai-assistant" onclick="closeMobileMenu()">🌙 Kimi K2.5 AI Assistant</a></li>
+                <li><a href="#resume-section" onclick="closeMobileMenu()">📄 1-Page ATS Resume</a></li>
+            </ul>
         </div>
     </header>
 
@@ -671,7 +777,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -836,8 +942,8 @@
     <section class="chat-section" id="ai-assistant">
         <div class="container">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="font-size: 2.2rem; font-weight: 800;">🌙 Kimi K2.5 Intelligent AI Assistant</h2>
-                <p style="color: var(--text-sub); margin-top: 0.4rem;">
+                <h2 style="font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800;">🌙 Kimi K2.5 Intelligent AI Assistant</h2>
+                <p style="color: var(--text-sub); margin-top: 0.4rem; font-size: 0.95rem;">
                     Powered by 🌙 <strong>Kimi K2.5 / Moonshot AI Engine</strong> & Grounded in <code>agentic-awesome-skills</code>.
                 </p>
             </div>
@@ -852,7 +958,7 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
                         <select class="chat-provider-select" id="provider-selector" onchange="handleProviderChange()">
                             <option value="kimi">🌙 Kimi K2.5 (Moonshot API - Primary)</option>
                             <option value="builtin">⚡ Free Live AI (No Key Required)</option>
@@ -898,8 +1004,8 @@
     <section class="resume-section" id="resume-section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 1.5rem;">
-                <h2 style="font-size: 1.8rem; font-weight: 800;">1-Page ATS Resume Attachment</h2>
-                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
+                <h2 style="font-size: clamp(1.5rem, 4vw, 1.8rem); font-weight: 800;">1-Page ATS Resume Attachment</h2>
+                <div style="display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
                     <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 Open Fullscreen HTML Resume</a>
                     <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Details</button>
                     <a href="../resume/resume.md" target="_blank" class="btn btn-secondary">📝 Markdown (.md)</a>
@@ -907,7 +1013,7 @@
                 </div>
             </div>
 
-            <div class="glass-card" style="padding: 1rem; max-width: 950px; margin: 0 auto;">
+            <div class="glass-card" style="padding: 0.75rem; max-width: 950px; margin: 0 auto;">
                 <div class="resume-frame-container">
                     <iframe src="../resume/resume.html" title="Muhammad Irfan Fahmi 1-Page Resume"></iframe>
                 </div>
@@ -934,7 +1040,27 @@
     <!-- INTERACTIVE JAVASCRIPT & KIMI K2.5 AI CONNECTOR ENGINE -->
     <script>
         /* -------------------------------------------------------------
-           1. 4-Language Adaptability & Personal Growth Summaries
+           1. Mobile Menu Drawer Toggle
+        ------------------------------------------------------------- */
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+
+        if (mobileMenuToggle && mobileNavDrawer) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileNavDrawer.classList.toggle('active');
+                mobileMenuToggle.innerText = mobileNavDrawer.classList.contains('active') ? '✕' : '☰';
+            });
+        }
+
+        function closeMobileMenu() {
+            if (mobileNavDrawer) {
+                mobileNavDrawer.classList.remove('active');
+                if (mobileMenuToggle) mobileMenuToggle.innerText = '☰';
+            }
+        }
+
+        /* -------------------------------------------------------------
+           2. 4-Language Adaptability & Personal Growth Summaries
         ------------------------------------------------------------- */
         const executiveSummaries = {
             en: `"I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology."`,
@@ -956,7 +1082,7 @@
         }
 
         /* -------------------------------------------------------------
-           2. Security CAPTCHA Modal
+           3. Security CAPTCHA Modal
         ------------------------------------------------------------- */
         let captchaAns = 0;
 
@@ -996,7 +1122,7 @@
         }
 
         /* -------------------------------------------------------------
-           3. Kimi K2.5 AI Engine + Agentic Skill Integration
+           4. Kimi K2.5 AI Engine + Agentic Skill Integration
         ------------------------------------------------------------- */
         const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant, powered by the Kimi K2.5 / Moonshot AI Conversational Engine and grounded in the Agentic Architecture from C:/Users/l3al3/Desktop/agentic-awesome-skills.
 
@@ -1007,7 +1133,7 @@ Candidate Profile:
 - Degree: Bachelor of Computer Engineering with Honours (Universiti Teknikal Malaysia Melaka - UTeM, expected Nov 2026)
 - Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
 - Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
-- Key Mindset: Cheerful and confident student leader who enjoys connecting with people and working as a team. Skilled in communication, event coordination, building positive relationships, leadership, and corporate relations. Always takes initiative and stays committed to every responsibility given. High stress resilience with military reserve training in Askar Wataniah.
+- Key Mindset: Turning ideas into practical solutions through software, networking, and AI. Interests span IT support, full-stack web development, cloud technologies, automation, and bridging hardware, software, and AI to create reliable, impactful technology. Military reserve training in Askar Wataniah (high discipline & stress resilience).
 - Agentic Standard: Complies with Agent-Native CLI Spec v0.1 (agent/ brief.md, rules/, skills/, issue system) learned from C:/Users/l3al3/Desktop/agentic-awesome-skills.
 - Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
@@ -1296,7 +1422,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
         }
 
         /* -------------------------------------------------------------
-           4. Three.js Background Constellation
+           5. Three.js Background Constellation
         ------------------------------------------------------------- */
         (function init3DScene() {
             try {
