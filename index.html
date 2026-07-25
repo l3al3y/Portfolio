@@ -1007,11 +1007,13 @@ Candidate Profile:
 - Degree: Bachelor of Computer Engineering with Honours (UTeM, expected Nov 2026)
 - Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
 - Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
-- Key Mindset / Personal Summary: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
-- Contact: Phone +60 16-243 2023, Email fahmilatif87@gmail.com (protected by human CAPTCHA on portfolio).
+- Key Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
+- Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
-Instruction:
-Be warm, conversational, spontaneous, and intelligent like ChatGPT/Claude/DeepSeek. Answer employer questions, evaluate technical fit, and chat naturally about networking, AI, software engineering, and Irfan's career agent (agent/brief.md).`;
+CRITICAL SECURITY RULE:
+NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat.
+If the user asks for Irfan's phone number, email, contact details, or how to call/WhatsApp him, you MUST respond:
+"Candidate direct phone and email details are protected against automated web scrapers. Please click the '🔓 Reveal Contact Info' button in the navigation header to complete a quick 1-second human CAPTCHA verification!"`;
 
         function toggleApiDrawer() {
             const drawer = document.getElementById('api-key-drawer');
@@ -1080,6 +1082,24 @@ Be warm, conversational, spontaneous, and intelligent like ChatGPT/Claude/DeepSe
             input.value = '';
             chatBody.scrollTop = chatBody.scrollHeight;
 
+            // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES
+            const qLower = query.toLowerCase();
+            if (qLower.includes('phone') || qLower.includes('number') || qLower.includes('email') || qLower.includes('whatsapp') || qLower.includes('contact') || qLower.includes('call') || qLower.includes('reach')) {
+                const botMsgDiv = document.createElement('div');
+                botMsgDiv.className = 'chat-message bot-msg';
+                botMsgDiv.innerHTML = `
+                    <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
+                    <div class="chat-bubble">
+                        🔒 <strong>Security Verification Required:</strong><br>
+                        Candidate direct contact details (phone & email) are protected against automated web scraping bots.<br><br>
+                        Please click the <strong>"🔓 Reveal Contact Info"</strong> button in the top navigation header to complete a quick 1-second human CAPTCHA verification and unlock direct details!
+                    </div>
+                `;
+                chatBody.appendChild(botMsgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                return;
+            }
+
             // Render AI Thinking Spinner
             const thinkingDiv = document.createElement('div');
             thinkingDiv.className = 'chat-message bot-msg';
@@ -1099,7 +1119,6 @@ Be warm, conversational, spontaneous, and intelligent like ChatGPT/Claude/DeepSe
             let botAnswer = "";
 
             if (provider === 'builtin') {
-                // TRY FREE LIVE AI ENDPOINT (Pollinations AI) -> FALLBACK TO INTERNAL SPONTANEOUS ENGINE
                 try {
                     botAnswer = await fetchFreePollinationsAi(query);
                 } catch (err) {
@@ -1133,7 +1152,7 @@ Be warm, conversational, spontaneous, and intelligent like ChatGPT/Claude/DeepSe
         // 100% Free Live LLM Endpoint (Pollinations AI - No API Key Needed)
         async function fetchFreePollinationsAi(userQuery) {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 6000); // 6s timeout
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
 
             const response = await fetch('https://text.pollinations.ai/', {
                 method: 'POST',
@@ -1273,9 +1292,9 @@ Be warm, conversational, spontaneous, and intelligent like ChatGPT/Claude/DeepSe
                 Proficient in Windows Administration, desktop user support, hardware diagnostics, software/driver installation, printer maintenance, user management, and technical documentation.`;
             }
 
-            // CONTACT INFO REVEAL
+            // CONTACT INFO REVEAL (FALLBACK)
             if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('number') || q.includes('whatsapp') || q.includes('reach') || q.includes('call')) {
-                return `To view Irfan's direct phone number (<strong>+60 16-243 2023</strong>) and email (<strong>fahmilatif87@gmail.com</strong>), please click the <strong>"🔓 Reveal Contact Info"</strong> button in the navigation header to solve a 1-second human CAPTCHA check.`;
+                return `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against automated scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button in the navigation header to solve a 1-second human CAPTCHA check.`;
             }
 
             // GENERAL CONVERSATIONAL REASONING FALLBACK (Spontaneous like ChatGPT/DeepSeek)
