@@ -1,0 +1,449 @@
+{
+  "total_queries": 55,
+  "passed": 55,
+  "failed": 0,
+  "accuracy_percent": 100.0,
+  "failed_queries": [],
+  "results": [
+    {
+      "query": "hi",
+      "expected": "greeting",
+      "lang": "en",
+      "answer": "Hello! 👋 How can I help you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "hello there",
+      "expected": "greeting",
+      "lang": "en",
+      "answer": "Hello! 👋 How can I help you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "hai bro",
+      "expected": "greeting",
+      "lang": "bm",
+      "answer": "Salam / Hai! 👋 Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "selamat pagi",
+      "expected": "greeting",
+      "lang": "bm",
+      "answer": "Salam / Hai! 👋 Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "apa khabar",
+      "expected": "greeting",
+      "lang": "bm",
+      "answer": "Salam / Hai! 👋 Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "你好",
+      "expected": "greeting",
+      "lang": "cn",
+      "answer": "您好！👋 今天有什么我可以帮您的？欢迎咨询关于 Irfan 的计算机工程背景、CCNA 认证或毕业项目！",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "வணக்கம்",
+      "expected": "greeting",
+      "lang": "in",
+      "answer": "வணக்கம்! 👋 நான் உங்களுக்கு எவ்வாறு உதவ முடியும்? இர்பானின் கல்வி மற்றும் சான்றிதழ்கள் பற்றி எது வேண்டுமானாலும் கேட்கலாம்!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "who is irfan",
+      "expected": "identity",
+      "lang": "en",
+      "answer": "Hello! 👋 I am the official AI Assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (Bachelor of Computer Engineering with Honours), CCNA credentials, age (26–27 years old (Born 1999)), and technical capabilities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "siapa irfan ni",
+      "expected": "identity",
+      "lang": "bm",
+      "answer": "Salam! 👋 Saya Pembantu AI Khas untuk MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (26–27 years old (Born 1999)), serta kebolehan teknikal beliau.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "tell me about yourself",
+      "expected": "identity",
+      "lang": "en",
+      "answer": "Hello! 👋 I am the official AI Assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (Bachelor of Computer Engineering with Honours), CCNA credentials, age (26–27 years old (Born 1999)), and technical capabilities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "你是谁",
+      "expected": "identity",
+      "lang": "cn",
+      "answer": "Hello! 👋 I am the official AI Assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (Bachelor of Computer Engineering with Honours), CCNA credentials, age (26–27 years old (Born 1999)), and technical capabilities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "how old is irfan",
+      "expected": "age",
+      "lang": "en",
+      "answer": "Irfan is <strong>26–27 years old (Born 1999)</strong>. He is completing his Bachelor of Computer Engineering with Honours at Universiti Teknikal Malaysia Melaka (UTeM) (expected graduation November 2026).",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "umur irfan berapa",
+      "expected": "age",
+      "lang": "bm",
+      "answer": "Irfan berumur <strong>26–27 years old (Born 1999)</strong>. Beliau kini berada di tahun akhir pengajian Bachelor of Computer Engineering with Honours di Universiti Teknikal Malaysia Melaka (UTeM) (dijangka bergraduan pada November 2026).",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "tahun bila lahir",
+      "expected": "age",
+      "lang": "bm",
+      "answer": "Irfan berumur <strong>26–27 years old (Born 1999)</strong>. Beliau kini berada di tahun akhir pengajian Bachelor of Computer Engineering with Honours di Universiti Teknikal Malaysia Melaka (UTeM) (dijangka bergraduan pada November 2026).",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "几岁",
+      "expected": "age",
+      "lang": "cn",
+      "answer": "Irfan is <strong>26–27 years old (Born 1999)</strong>. He is completing his Bachelor of Computer Engineering with Honours at Universiti Teknikal Malaysia Melaka (UTeM) (expected graduation November 2026).",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "army service",
+      "expected": "military",
+      "lang": "en",
+      "answer": "Irfan serves in the <strong>Askar Wataniah (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "askar wataniah",
+      "expected": "military",
+      "lang": "en",
+      "answer": "Irfan serves in the <strong>Askar Wataniah (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "tentera darat",
+      "expected": "military",
+      "lang": "en",
+      "answer": "Irfan serves in the <strong>Askar Wataniah (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "stress resilience",
+      "expected": "military",
+      "lang": "en",
+      "answer": "Irfan serves in the <strong>Askar Wataniah (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "where are you located",
+      "expected": "location",
+      "lang": "en",
+      "answer": "Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is open to On-site, Hybrid, or Remote roles, and willing to travel outstation or relocate for suitable engineering opportunities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "tinggal kat mana",
+      "expected": "location",
+      "lang": "en",
+      "answer": "Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is open to On-site, Hybrid, or Remote roles, and willing to travel outstation or relocate for suitable engineering opportunities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "willing to relocate to KL",
+      "expected": "location",
+      "lang": "en",
+      "answer": "Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is open to On-site, Hybrid, or Remote roles, and willing to travel outstation or relocate for suitable engineering opportunities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "can work remote",
+      "expected": "location",
+      "lang": "en",
+      "answer": "Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is open to On-site, Hybrid, or Remote roles, and willing to travel outstation or relocate for suitable engineering opportunities.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "when do you graduate",
+      "expected": "availability",
+      "lang": "en",
+      "answer": "Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "bila habis study",
+      "expected": "availability",
+      "lang": "bm",
+      "answer": "Irfan dijangka bergraduan pada <strong>November 2026</strong> dari UTeM. Beliau sedia membincangkan tarikh mula kerja dan penyertaan latihan industri/sepenuh masa mengikut jadual universiti dan keperluan majikan.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "available date",
+      "expected": "availability",
+      "lang": "en",
+      "answer": "Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "notice period",
+      "expected": "availability",
+      "lang": "en",
+      "answer": "Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "why should we hire you",
+      "expected": "strengths",
+      "lang": "en",
+      "answer": "<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "sebab apa kena ambil irfan",
+      "expected": "strengths",
+      "lang": "bm",
+      "answer": "<strong>Kelebihan Utama Irfan:</strong><br>1. <strong>Penguasaan Dwi-Bidang:</strong> Merapatkan jurang Perkakasan (IoT/Embedded), Rangkaian (Cisco CCNA), & Perisian/AI (YOLOv8 PyTorch).<br>2. <strong>Pencapaian Terbukti:</strong> Anugerah Pelajar Terbaik Kolej Komuniti (CGPA 3.58) & Projek Capstone AI (77.4% precision).<br>3. <strong>Disiplin Askar Wataniah:</strong> Berdaya tahan tinggi di bawah tekanan dan mempunyai etika kerja cemerlang.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "what makes irfan special",
+      "expected": "strengths",
+      "lang": "en",
+      "answer": "<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "irfan strengths",
+      "expected": "strengths",
+      "lang": "en",
+      "answer": "<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "salary expectations",
+      "expected": "salary",
+      "lang": "en",
+      "answer": "Regarding salary expectations and compensation packages, Irfan is open for discussion during interview sessions or direct professional communication.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "gaji berapa nak",
+      "expected": "salary",
+      "lang": "bm",
+      "answer": "Mengenai julat gaji dan pakej imbuhan, Irfan bersikap sangat terbuka untuk berbincang secara terus semasa sesi temuduga atau melalui borang hubungan rasmi.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "can work night shift",
+      "expected": "shift",
+      "lang": "bm",
+      "answer": "Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "boleh kerja syif malam",
+      "expected": "shift",
+      "lang": "bm",
+      "answer": "Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "tell me about YOLOv8 project",
+      "expected": "capstone",
+      "lang": "en",
+      "answer": "<strong>Capstone Project (Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>77.4% precision, 72.0% recall at 50 epochs, under 150ms inference latency</strong>.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "self checkout precision rate",
+      "expected": "capstone",
+      "lang": "en",
+      "answer": "The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>77.4% precision</strong> (along with 72.0% recall at 50 epochs with under 150ms inference latency).",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "projek capstone ape",
+      "expected": "capstone",
+      "lang": "bm",
+      "answer": "<strong>Projek Capstone (Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)):</strong><br>• Irfan membangunkan sistem dwi-pengesahan menggunakan OpenCV, YOLOv8 PyTorch, pengimbas kod bar USB, dan pangkalan data MySQL.<br>• Prestasi Model: <strong>77.4% precision, 72.0% recall at 50 epochs, under 150ms inference latency</strong>.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "computer vision experience",
+      "expected": "capstone",
+      "lang": "en",
+      "answer": "<strong>Capstone Project (Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>77.4% precision, 72.0% recall at 50 epochs, under 150ms inference latency</strong>.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "do you have CCNA certification",
+      "expected": "ccna",
+      "lang": "en",
+      "answer": "<strong>Irfan's Professional Certification Dates:</strong><br>• <strong>Festo Industrial Automation with AI</strong> — Festo Didactic (16 July 2026)<br>• <strong>CCNA: Enterprise Networking & Automation</strong> — Cisco Networking Academy / UTeM (23 Feb 2026)<br>• <strong>CCNA: Switching, Routing & Wireless</strong> — Cisco Networking Academy / UTeM (23 Feb 2026)<br>• <strong>Endpoint Security Certification</strong> — Cisco Networking Academy (12 Dec 2024)<br>• <strong>Cyber Threat Management</strong> — Cisco Networking Academy (17 Nov 2024)<br>• <strong>Fiber Optic Splicing & Polishing</strong> — Technical Workshop (3 Feb 2018)",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "sijil cisco ada tak",
+      "expected": "ccna",
+      "lang": "bm",
+      "answer": "<strong>Tarikh Pensijilan Profesional Irfan:</strong><br>• <strong>Festo Industrial Automation with AI</strong> — Festo Didactic (16 July 2026)<br>• <strong>CCNA: Enterprise Networking & Automation</strong> — Cisco Networking Academy / UTeM (23 Feb 2026)<br>• <strong>CCNA: Switching, Routing & Wireless</strong> — Cisco Networking Academy / UTeM (23 Feb 2026)<br>• <strong>Endpoint Security Certification</strong> — Cisco Networking Academy (12 Dec 2024)<br>• <strong>Cyber Threat Management</strong> — Cisco Networking Academy (17 Nov 2024)<br>• <strong>Fiber Optic Splicing & Polishing</strong> — Technical Workshop (3 Feb 2018)",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "OSPF and VLAN experience",
+      "expected": "networking",
+      "lang": "en",
+      "answer": "<strong>Irfan's Networking Protocols & Skills (including OSPF & VLAN):</strong><br>• Irfan is proficient in: CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Wireshark, Cisco Packet Tracer, Network Troubleshooting. He holds official Cisco CCNA Enterprise certifications.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "networking knowledge",
+      "expected": "networking",
+      "lang": "en",
+      "answer": "<strong>Irfan's Networking Protocols & Skills (including OSPF & VLAN):</strong><br>• Irfan is proficient in: CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Wireshark, Cisco Packet Tracer, Network Troubleshooting. He holds official Cisco CCNA Enterprise certifications.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "festo industrial ai cert",
+      "expected": "festo",
+      "lang": "en",
+      "answer": "<strong>Irfan's Academic Education & CGPA:</strong><br>• <strong>Bachelor of Computer Engineering with Honours</strong> at Universiti Teknikal Malaysia Melaka (UTeM) (Oct 2022 – Present (Expected Nov 2026)).<br>• <strong>Diploma in Electronic Engineering (Computer)</strong> at Politeknik Port Dickson — <strong>CGPA: 3.26 / 4.00</strong>.<br>• <strong>Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)</strong> at Kolej Komuniti Selandar — <strong>CGPA: 3.58 / 4.00</strong> (Best Student Award (Anugerah Pelajar Terbaik) & Outstanding Achievement).",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "predictive maintenance",
+      "expected": "festo",
+      "lang": "en",
+      "answer": "<strong>Irfan's Professional Certification Dates:</strong><br>• <strong>Festo Industrial Automation with AI</strong> — Festo Didactic (16 July 2026)<br>• <strong>CCNA: Enterprise Networking & Automation</strong> — Cisco Networking Academy / UTeM (23 Feb 2026)<br>• <strong>CCNA: Switching, Routing & Wireless</strong> — Cisco Networking Academy / UTeM (23 Feb 2026)<br>• <strong>Endpoint Security Certification</strong> — Cisco Networking Academy (12 Dec 2024)<br>• <strong>Cyber Threat Management</strong> — Cisco Networking Academy (17 Nov 2024)<br>• <strong>Fiber Optic Splicing & Polishing</strong> — Technical Workshop (3 Feb 2018)",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "arduino and iot experience",
+      "expected": "hardware",
+      "lang": "en",
+      "answer": "Irfan possesses solid hands-on experience in <strong>Embedded Systems, IoT, Arduino, Sensor Integration, and EasyEDA Circuit Design</strong> gained during his Electronic Engineering (Computer) Diploma at Politeknik Port Dickson.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "sensor integration and pcb",
+      "expected": "hardware",
+      "lang": "en",
+      "answer": "Irfan possesses solid hands-on experience in <strong>Embedded Systems, IoT, Arduino, Sensor Integration, and EasyEDA Circuit Design</strong> gained during his Electronic Engineering (Computer) Diploma at Politeknik Port Dickson.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "pandai hardware tak",
+      "expected": "hardware",
+      "lang": "bm",
+      "answer": "Irfan mempunyai kemahiran kukuh dalam <strong>Sistem Terbenam (Embedded Systems), IoT, Arduino, Integrasi Sensor, dan Reka Bentuk Litar EasyEDA</strong> berasaskan pengajian Diploma Kejuruteraan Elektronik (Komputer) di Politeknik Port Dickson.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "web development stack",
+      "expected": "webdev",
+      "lang": "en",
+      "answer": "Irfan builds modern web applications utilizing <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Layouts), JavaScript (ES6+), Node.js, and RESTful API Integration</strong>.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "javascript and html css",
+      "expected": "webdev",
+      "lang": "en",
+      "answer": "Irfan builds modern web applications utilizing <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Layouts), JavaScript (ES6+), Node.js, and RESTful API Integration</strong>.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "what languages can you speak",
+      "expected": "languages",
+      "lang": "en",
+      "answer": "<strong>Irfan's Full Programming Languages & Tools:</strong><br>• Languages & Databases: Python, C, C++, SQL, MySQL, Git, GitHub, VS Code, EasyEDA",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "boleh cakap bahasa inggeris",
+      "expected": "languages",
+      "lang": "bm",
+      "answer": "Irfan fasih dalam <strong>Bahasa Melayu & English</strong>, serta mempunyai pemahaman asas bahasa ketiga.",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "how to contact irfan",
+      "expected": "contact",
+      "lang": "en",
+      "answer": "You can complete the Cloudflare Turnstile verification in the Contact modal to reveal Irfan's official Email & Phone number directly!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "nombor telefon irfan",
+      "expected": "contact",
+      "lang": "bm",
+      "answer": "Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!",
+      "is_fallback": false,
+      "passed": true
+    },
+    {
+      "query": "email address",
+      "expected": "contact",
+      "lang": "en",
+      "answer": "You can complete the Cloudflare Turnstile verification in the Contact modal to reveal Irfan's official Email & Phone number directly!",
+      "is_fallback": false,
+      "passed": true
+    }
+  ]
+}

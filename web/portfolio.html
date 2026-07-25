@@ -1561,7 +1561,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 2. IDENTITY
-            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்')) {
+            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background')) {
                 if (lang === 'bm') {
                     return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan teknikal beliau.`;
                 }
@@ -1585,7 +1585,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 5. LOCATION & RELOCATION
-            if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah')) {
+            if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah') || q.includes('where') || q.includes('located') || q.includes('mana')) {
                 if (lang === 'bm') {
                     return `Irfan menetap di <strong>Puchong, Selangor, Malaysia</strong>. Beliau bersikap terbuka untuk lokasi kerja On-site, Hybrid, atau Remote, serta bersedia untuk tugasan luar kawasan (travel/outstation) dan penempatan semula jika diperlukan.`;
                 }
@@ -1601,7 +1601,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 7. WHY HIRE IRFAN / STRENGTHS
-            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik')) {
+            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil')) {
                 if (lang === 'bm') {
                     return `<strong>Kelebihan Utama Irfan:</strong><br>1. <strong>Penguasaan Dwi-Bidang:</strong> Merapatkan jurang Perkakasan (IoT/Embedded), Rangkaian (Cisco CCNA), & Perisian/AI (YOLOv8 PyTorch).<br>2. <strong>Pencapaian Terbukti:</strong> Anugerah Pelajar Terbaik Kolej Komuniti (CGPA 3.58) & Projek Capstone AI (77.4% precision).<br>3. <strong>Disiplin Askar Wataniah:</strong> Berdaya tahan tinggi di bawah tekanan dan mempunyai etika kerja cemerlang.`;
                 }
@@ -1658,7 +1658,15 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 return `Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with foundational understanding of regional languages.`;
             }
 
-            // 13. GENERAL RESUME_DATA KEYWORD OVERLAP SCORING (Content words only)
+            // 13. CONTACT DETAILS
+            if (q.includes('contact') || q.includes('telefon') || q.includes('nombor') || q.includes('phone') || q.includes('email') || q.includes('emel') || q.includes('hubungi') || q.includes('reach') || q.includes('call') || q.includes('whatsapp')) {
+                if (lang === 'bm') {
+                    return `Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!`;
+                }
+                return `You can complete the Cloudflare Turnstile verification in the Contact modal to reveal Irfan's official Email & Phone number directly!`;
+            }
+
+            // 14. GENERAL RESUME_DATA KEYWORD OVERLAP SCORING (Content words only)
             const scores = {
                 diploma_cgpa: 0,
                 cert_sijil_cgpa: 0,
@@ -1697,7 +1705,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
             if (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor') || q.includes(' honours') || q.includes('sarjana muda')) scores.degree_utem += 5;
 
-            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode')) scores.capstone_metrics += 5;
+            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing')) scores.capstone_metrics += 5;
 
             if (q.includes('ccna') || q.includes('cisco')) {
                 scores.ccna_dates += 4;
@@ -1708,11 +1716,11 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 scores.festo_cert += 2;
             }
 
-            if (q.includes('festo') || q.includes('didactic')) scores.festo_cert += 5;
+            if (q.includes('festo') || q.includes('didactic') || q.includes('predictive') || q.includes('maintenance')) scores.festo_cert += 5;
 
             if (q.includes('programming') || q.includes('python') || q.includes('c++') || q.includes('coding') || q.includes('language') || q.includes('languages') || q.includes('bahasa pengaturcaraan') || q.includes('kod') || q.includes('sql') || q.includes('mysql') || q.includes('git') || q.includes('pandai') || q.includes('coder') || q.includes('code')) scores.skills_programming += 5;
 
-            if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching')) scores.skills_networking += 5;
+            if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching') || q.includes('networking') || q.includes('network')) scores.skills_networking += 5;
 
             if (q.includes('cybersecurity') || q.includes('keselamatan') || q.includes('firewall') || q.includes('threat') || q.includes('endpoint')) scores.skills_cybersecurity += 5;
 
