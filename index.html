@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio</title>
-    <meta name="description" content="Official Engineering Portfolio & Interactive ChatGPT/Claude/DeepSeek AI Assistant for Muhammad Irfan Fahmi - Computer Engineering Graduate, Cisco CCNA & Festo Industrial AI Specialist.">
+    <meta name="description" content="Official Engineering Portfolio & Interactive Free Live AI Assistant for Muhammad Irfan Fahmi - Computer Engineering Graduate, Cisco CCNA & Festo Industrial AI Specialist.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -832,13 +832,13 @@
         </div>
     </section>
 
-    <!-- GENERATIVE AI ASSISTANT CHATBOT (Multi-Platform API Connectors: ChatGPT, DeepSeek, Kimi, Built-in) -->
+    <!-- GENERATIVE AI ASSISTANT CHATBOT (Built-in Free Live AI + Multi-Platform Connectors) -->
     <section class="chat-section" id="ai-assistant">
         <div class="container">
             <div style="text-align: center; margin-bottom: 2rem;">
                 <h2 style="font-size: 2.2rem; font-weight: 800;">ChatGPT, DeepSeek & Kimi Live AI Assistant</h2>
                 <p style="color: var(--text-sub); margin-top: 0.4rem;">
-                    Spontaneous AI powered by Built-in Career Agent or Live API Connectors (OpenAI / DeepSeek / Kimi / OpenRouter).
+                    Powered by ⚡ <strong>Free Built-in Live AI Engine</strong> (Pollinations / GPT-4 Class) + Optional Custom API Connectors.
                 </p>
             </div>
 
@@ -848,27 +848,27 @@
                         <div class="chat-bot-avatar">AI</div>
                         <div>
                             <div style="font-weight: 700; font-size: 0.95rem;">Candidate Intelligence AI Assistant</div>
-                            <div style="font-size: 0.75rem; color: var(--emerald);" id="ai-status-label">● Active • Built-in Engine Grounded in agent/</div>
+                            <div style="font-size: 0.75rem; color: var(--emerald);" id="ai-status-label">● Active • Free Live GPT Engine Grounded in agent/</div>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 0.5rem; align-items: center;">
                         <select class="chat-provider-select" id="provider-selector" onchange="handleProviderChange()">
-                            <option value="builtin">⚡ Built-in Agent Engine (Free)</option>
+                            <option value="builtin">⚡ Free Live AI (Default No Key Required)</option>
                             <option value="openai">🤖 OpenAI (ChatGPT API)</option>
                             <option value="deepseek">🐳 DeepSeek AI API</option>
                             <option value="kimi">🌙 Kimi (Moonshot AI API)</option>
                             <option value="openrouter">🌐 OpenRouter / Custom API</option>
                         </select>
-                        <button class="prompt-chip" onclick="toggleApiDrawer()">⚙️ API Key</button>
+                        <button class="prompt-chip" onclick="toggleApiDrawer()">⚙️ Custom Key</button>
                         <button class="prompt-chip" onclick="clearChat()">Clear</button>
                     </div>
                 </div>
 
                 <!-- API Key Configuration Drawer -->
                 <div class="api-key-drawer" id="api-key-drawer">
-                    <span style="font-size: 0.8rem; color: var(--primary); font-family: var(--font-mono); font-weight: 600;">API KEY:</span>
-                    <input type="password" id="user-api-key-input" class="chat-input" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" placeholder="Enter OpenAI, DeepSeek, or Kimi API key..." onchange="saveApiKeyLocally()">
+                    <span style="font-size: 0.8rem; color: var(--primary); font-family: var(--font-mono); font-weight: 600;">CUSTOM KEY:</span>
+                    <input type="password" id="user-api-key-input" class="chat-input" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" placeholder="Enter optional OpenAI, DeepSeek, or Kimi API key..." onchange="saveApiKeyLocally()">
                     <button class="btn btn-emerald" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" onclick="saveApiKeyLocally()">Save Key</button>
                 </div>
 
@@ -876,7 +876,7 @@
                     <div class="chat-message bot-msg">
                         <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                         <div class="chat-bubble">
-                            Hey there! 👋 I'm Irfan's Conversational AI Assistant. You can chat with me naturally just like ChatGPT, Claude, DeepSeek, or Kimi! Ask me about Irfan's Cisco CCNA background, how quickly he adapts to new tech environments, or his Autonomous Career Agent system (`agent/brief.md`).
+                            Hey there! 👋 I'm Irfan's Conversational AI Assistant. I am connected to a <strong>Free Live AI Engine</strong> (like ChatGPT & DeepSeek)! Ask me anything about Irfan's Cisco CCNA credentials, how fast he learns new environments, or his Autonomous Career Agent (`agent/brief.md`).
                         </div>
                     </div>
                 </div>
@@ -929,12 +929,12 @@
                 Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
-                © 2026 Official Engineering Portfolio & Multi-Platform AI Connector (ChatGPT, DeepSeek, Kimi).
+                © 2026 Official Engineering Portfolio & Free Live Multi-Platform AI Engine.
             </p>
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & MULTI-CONNECTOR LIVE AI ENGINE -->
+    <!-- INTERACTIVE JAVASCRIPT & FREE LIVE AI CONNECTOR ENGINE -->
     <script>
         /* -------------------------------------------------------------
            1. 4-Language Adaptability & Personal Growth Summaries
@@ -999,7 +999,7 @@
         }
 
         /* -------------------------------------------------------------
-           3. Multi-Provider Connector (ChatGPT, DeepSeek, Kimi, Built-in)
+           3. Free Live AI Engine + Custom Provider Connectors
         ------------------------------------------------------------- */
         const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant.
 Candidate Profile:
@@ -1007,11 +1007,11 @@ Candidate Profile:
 - Degree: Bachelor of Computer Engineering with Honours (UTeM, expected Nov 2026)
 - Certifications: Cisco CCNA Enterprise, CCNA Switching & Routing, Festo Industrial Automation with AI, Endpoint Security, Cyber Threat Management.
 - Key Project: Hybrid Self-Checkout System (YOLOv8 PyTorch + Barcode Scanner, 77.4% precision, 72.0% recall at 50 epochs, <150ms inference latency).
-- Key Soft Skill / Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
+- Key Mindset / Personal Summary: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
 - Contact: Phone +60 16-243 2023, Email fahmilatif87@gmail.com (protected by human CAPTCHA on portfolio).
 
 Instruction:
-Respond warmly, conversationally, spontaneously, and intelligently like ChatGPT/Claude/DeepSeek. Answer employer questions, evaluate technical fit, and chat naturally about networking, AI, software engineering, and Irfan's career agent (` + "`agent/brief.md`" + `).`;
+Be warm, conversational, spontaneous, and intelligent like ChatGPT/Claude/DeepSeek. Answer employer questions, evaluate technical fit, and chat naturally about networking, AI, software engineering, and Irfan's career agent (agent/brief.md).`;
 
         function toggleApiDrawer() {
             const drawer = document.getElementById('api-key-drawer');
@@ -1024,19 +1024,14 @@ Respond warmly, conversationally, spontaneously, and intelligently like ChatGPT/
             const drawer = document.getElementById('api-key-drawer');
 
             if (provider === 'builtin') {
-                statusLabel.innerHTML = '● Active • Built-in Engine Grounded in agent/';
+                statusLabel.innerHTML = '● Active • Free Live GPT Engine Grounded in agent/';
                 drawer.classList.remove('active');
             } else {
                 statusLabel.innerHTML = `● Active • Live ${provider.toUpperCase()} API Connector`;
                 drawer.classList.add('active');
                 
-                // Load existing key from localStorage
                 const savedKey = localStorage.getItem(`apikey_${provider}`);
-                if (savedKey) {
-                    document.getElementById('user-api-key-input').value = savedKey;
-                } else {
-                    document.getElementById('user-api-key-input').value = '';
-                }
+                document.getElementById('user-api-key-input').value = savedKey || '';
             }
         }
 
@@ -1092,27 +1087,33 @@ Respond warmly, conversationally, spontaneously, and intelligently like ChatGPT/
             thinkingDiv.innerHTML = `
                 <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                 <div class="chat-bubble" style="color: var(--text-muted); font-style: italic;">
-                    AI Assistant is thinking...
+                    Free Live AI Engine is thinking...
                 </div>
             `;
             chatBody.appendChild(thinkingDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
 
-            // Process Response via Provider or Built-in Fallback
             const provider = document.getElementById('provider-selector').value;
             const apiKey = localStorage.getItem(`apikey_${provider}`);
 
             let botAnswer = "";
 
-            if (provider !== 'builtin' && apiKey) {
+            if (provider === 'builtin') {
+                // TRY FREE LIVE AI ENDPOINT (Pollinations AI) -> FALLBACK TO INTERNAL SPONTANEOUS ENGINE
+                try {
+                    botAnswer = await fetchFreePollinationsAi(query);
+                } catch (err) {
+                    console.warn("Free Live AI endpoint offline, fallback to internal engine:", err);
+                    botAnswer = generateSpontaneousAiAnswer(query);
+                }
+            } else if (apiKey) {
                 try {
                     botAnswer = await fetchLiveApiAnswer(provider, apiKey, query);
                 } catch (err) {
-                    console.warn("Live API Connector error, falling back to built-in engine:", err);
+                    console.warn("Live API Connector error, falling back to free engine:", err);
                     botAnswer = `<em>[Connected via ${provider.toUpperCase()} API]</em><br>` + generateSpontaneousAiAnswer(query);
                 }
             } else {
-                // Built-in Spontaneous Conversational Engine
                 botAnswer = generateSpontaneousAiAnswer(query);
             }
 
@@ -1127,6 +1128,34 @@ Respond warmly, conversationally, spontaneously, and intelligently like ChatGPT/
             `;
             chatBody.appendChild(botMsgDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // 100% Free Live LLM Endpoint (Pollinations AI - No API Key Needed)
+        async function fetchFreePollinationsAi(userQuery) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000); // 6s timeout
+
+            const response = await fetch('https://text.pollinations.ai/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                signal: controller.signal,
+                body: JSON.stringify({
+                    messages: [
+                        { role: 'system', content: SYSTEM_PROMPT },
+                        { role: 'user', content: userQuery }
+                    ],
+                    model: 'openai',
+                    seed: Math.floor(Math.random() * 1000)
+                })
+            });
+
+            clearTimeout(timeoutId);
+            if (!response.ok) throw new Error("Pollinations API failed");
+
+            const text = await response.text();
+            if (!text || text.trim().length === 0) throw new Error("Empty response");
+
+            return text.replace(/\n/g, "<br>");
         }
 
         async function fetchLiveApiAnswer(provider, apiKey, userMessage) {
@@ -1178,7 +1207,7 @@ Respond warmly, conversationally, spontaneously, and intelligently like ChatGPT/
             const greetings = ['hi', 'hello', 'hey', 'hey there', 'hi there', 'good morning', 'good afternoon', 'good evening', 'yo', 'whats up', 'howdy', 'greetings'];
             if (greetings.includes(q) || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('hey ')) {
                 const spontaneousReplies = [
-                    `Hello! 👋 Great to meet you! How's your day going? I'm Irfan's AI Assistant (supporting ChatGPT, DeepSeek, & Kimi connectors). I'm here to chat about his engineering background, evaluate his technical fit, or answer any questions you have. What can I do for you today?`,
+                    `Hello! 👋 Great to meet you! How's your day going? I'm Irfan's AI Assistant (powered by a Free Live AI Engine). I'm here to chat about his engineering background, evaluate his technical fit, or answer any questions you have. What can I do for you today?`,
                     `Hey there! Thanks for dropping by! I'm ready to help you explore Irfan's qualifications—from his Cisco CCNA certification and Festo AI skills to how quickly he learns new environments. What would you like to know?`,
                     `Hi! I'm doing great, thank you! I'm Irfan's conversational AI assistant. Whether you want to discuss network engineering, his computer vision projects, or ask about his adaptability, I'm all ears. What's on your mind?`
                 ];
@@ -1187,7 +1216,7 @@ Respond warmly, conversationally, spontaneously, and intelligently like ChatGPT/
 
             // CASUAL STATUS & IDENTITY INQUIRIES
             if (q.includes('who are you') || q.includes('what are you') || q.includes('your name') || q.includes('what can you do')) {
-                return `I am candidate Muhammad Irfan Fahmi's <strong>Autonomous Career Intelligence AI Assistant</strong>, grounded in his local agent configuration (` + "`agent/brief.md`" + `) and compatible with OpenAI, DeepSeek, and Kimi APIs! I can help recruiters evaluate his Cisco CCNA skills, Festo Industrial AI background, YOLOv8 computer vision project, or explain how fast he adapts to new engineering environments!`;
+                return `I am candidate Muhammad Irfan Fahmi's <strong>Autonomous Career Intelligence AI Assistant</strong>, grounded in his local agent configuration (` + "`agent/brief.md`" + `) and connected to a free live GPT engine! I can help recruiters evaluate his Cisco CCNA skills, Festo Industrial AI background, YOLOv8 computer vision project, or explain how fast he adapts to new engineering environments!`;
             }
 
             if (q.includes('how are you') || q.includes('how do you do')) {
