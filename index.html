@@ -836,9 +836,9 @@
     <section class="chat-section" id="ai-assistant">
         <div class="container">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="font-size: 2.2rem; font-weight: 800;">ChatGPT, DeepSeek & Kimi Live AI Assistant</h2>
+                <h2 style="font-size: 2.2rem; font-weight: 800;">ChatGPT, DeepSeek & Kimi Multilingual AI Assistant</h2>
                 <p style="color: var(--text-sub); margin-top: 0.4rem;">
-                    Powered by ⚡ <strong>Free Built-in Live AI Engine</strong> (Pollinations / GPT-4 Class) + Optional Custom API Connectors.
+                    🌐 Native Support for 🇬🇧 English • 🇲🇾 Bahasa Melayu • 🇨🇳 华语 (Chinese) • 🇮🇳 தமிழ் (Tamil)
                 </p>
             </div>
 
@@ -848,7 +848,7 @@
                         <div class="chat-bot-avatar">AI</div>
                         <div>
                             <div style="font-weight: 700; font-size: 0.95rem;">Candidate Intelligence AI Assistant</div>
-                            <div style="font-size: 0.75rem; color: var(--emerald);" id="ai-status-label">● Active • Free Live GPT Engine Grounded in agent/</div>
+                            <div style="font-size: 0.75rem; color: var(--emerald);" id="ai-status-label">● Active • Native Multilingual Live AI Engine</div>
                         </div>
                     </div>
 
@@ -876,22 +876,21 @@
                     <div class="chat-message bot-msg">
                         <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                         <div class="chat-bubble">
-                            Hey there! 👋 I'm Irfan's Conversational AI Assistant. I am connected to a <strong>Free Live AI Engine</strong> (like ChatGPT & DeepSeek)! Ask me anything about Irfan's Cisco CCNA credentials, how fast he learns new environments, or his Autonomous Career Agent (`agent/brief.md`).
+                            Hello / Salam / 您好 / வணக்கம்! 👋 I am Irfan's <strong>Native Multilingual AI Assistant</strong>. Ask me in English, Bahasa Melayu, Chinese (华语), or Tamil (தமிழ்) about Irfan's age, CCNA skills, adaptability, or any spontaneous topic!
                         </div>
                     </div>
                 </div>
 
                 <div class="chat-suggested-prompts">
                     <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Try Asking:</span>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Hi! Who are you and how can you help me?')">Say Hello 👋</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How old is Irfan?')">Age & Profile 🎂</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How quickly can Irfan adapt to a new tech stack if given the chance?')">Adaptability & Growth</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('What is the Autonomous Career Intelligence Agent in D:\\Resume ats cli\\agent?')">Agent Intelligence System</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Tell me about his Cisco CCNA Enterprise certification')">Cisco CCNA</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Berapa umur Irfan dan apa latar belakang beliau?')">🇲🇾 Umur Irfan (BM)</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Irfan今年几岁？他的专业技能是什么？')">🇨🇳 几岁与技能 (华语)</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('இர்பானின் வயது மற்றும் பின்னணி என்ன?')">🇮🇳 வயது என்ன? (தமிழ்)</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How quickly can Irfan adapt to a new tech stack?')">🇬🇧 Adaptability (EN)</button>
                 </div>
 
                 <div class="chat-input-area">
-                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Type a message (e.g. How old is Irfan? Hi, Hello, What is OSPF? What is quantum computing?)..." onkeydown="handleChatEnter(event)">
+                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Tanya soalan dalam BM / 华语 / தமிழ் / English (e.g. Umur berapa? 你几岁？வணக்கம்)..." onkeydown="handleChatEnter(event)">
                     <button class="btn btn-primary" onclick="submitChatMessage()">Send ➔</button>
                 </div>
             </div>
@@ -930,12 +929,12 @@
                 Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
-                © 2026 Official Engineering Portfolio & Free Live Multi-Platform AI Engine.
+                © 2026 Official Engineering Portfolio & Native Multilingual AI Engine.
             </p>
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & FREE LIVE AI CONNECTOR ENGINE -->
+    <!-- INTERACTIVE JAVASCRIPT & NATIVE MULTILINGUAL AI CONNECTOR ENGINE -->
     <script>
         /* -------------------------------------------------------------
            1. 4-Language Adaptability & Personal Growth Summaries
@@ -1000,7 +999,7 @@
         }
 
         /* -------------------------------------------------------------
-           3. Free Live AI Engine + Custom Provider Connectors
+           3. Native Multilingual AI Engine + Custom Provider Connectors
         ------------------------------------------------------------- */
         const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant.
 Candidate Profile:
@@ -1013,10 +1012,10 @@ Candidate Profile:
 - Key Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
 - Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
-BEHAVIORAL INSTRUCTION:
-1. ALWAYS answer the user's question DIRECTLY and PRECISELY.
-2. If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born in 1999).
-3. If asked ANY general knowledge, out-of-topic, creative, casual, scientific, math, or philosophical question (e.g. "what is quantum physics?", "tell me a joke", "what is the capital of Japan?"), answer it spontaneously, intelligently, and naturally like ChatGPT / Claude / DeepSeek without forcing candidate resume information!
+MULTILINGUAL NATIVE BEHAVIORAL RULE:
+1. ALWAYS detect the language of the user's prompt (English, Bahasa Melayu, Chinese 华语, or Tamil தமிழ்) and respond NATIVELY in that EXACT SAME language with complete fluency!
+2. Answer questions DIRECTLY. If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
+3. Be fully prepared for spontaneous questions—whether general knowledge, out-of-topic factors, casual chat, science, math, or technology. Answer spontaneously and naturally like ChatGPT / Claude / DeepSeek without forcing resume facts into unrelated queries!
 4. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button to solve the human CAPTCHA check.`;
 
         function toggleApiDrawer() {
@@ -1030,7 +1029,7 @@ BEHAVIORAL INSTRUCTION:
             const drawer = document.getElementById('api-key-drawer');
 
             if (provider === 'builtin') {
-                statusLabel.innerHTML = '● Active • Free Live GPT Engine Grounded in agent/';
+                statusLabel.innerHTML = '● Active • Native Multilingual Live AI Engine';
                 drawer.classList.remove('active');
             } else {
                 statusLabel.innerHTML = `● Active • Live ${provider.toUpperCase()} API Connector`;
@@ -1064,10 +1063,19 @@ BEHAVIORAL INSTRUCTION:
                 <div class="chat-message bot-msg">
                     <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                     <div class="chat-bubble">
-                        Hey! Session reset. What would you like to talk about or ask me?
+                        Session reset / Sesi disemula / 会话已重置 / அமர்வு மீட்டமைக்கப்பட்டது!
                     </div>
                 </div>
             `;
+        }
+
+        function detectUserLanguage(text) {
+            if (/[\u4e00-\u9fa5]/.test(text)) return 'cn'; // Chinese
+            if (/[\u0b80-\u0bff]/.test(text)) return 'in'; // Tamil
+            const bmWords = ['umur', 'siapa', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih'];
+            const lower = text.toLowerCase();
+            if (bmWords.some(w => lower.includes(w))) return 'bm';
+            return 'en';
         }
 
         async function submitChatMessage() {
@@ -1086,18 +1094,27 @@ BEHAVIORAL INSTRUCTION:
             input.value = '';
             chatBody.scrollTop = chatBody.scrollHeight;
 
-            // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES
+            const lang = detectUserLanguage(query);
             const qLower = query.toLowerCase();
-            if (qLower.includes('phone') || qLower.includes('number') || qLower.includes('email') || qLower.includes('whatsapp') || qLower.includes('contact') || qLower.includes('call') || qLower.includes('reach')) {
+
+            // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES (MULTILINGUAL)
+            if (qLower.includes('phone') || qLower.includes('number') || qLower.includes('email') || qLower.includes('whatsapp') || qLower.includes('contact') || qLower.includes('call') || qLower.includes('reach') || qLower.includes('telefon') || qLower.includes('emel') || qLower.includes('hubungi') || qLower.includes('电话') || qLower.includes('邮箱') || qLower.includes('தொலைபேசி')) {
+                let securityReply = "";
+                if (lang === 'bm') {
+                    securityReply = `🔒 <strong>Pengesahan Keselamatan Diperlukan:</strong><br>Maklumat hubungan terus calon (nombor telefon & emel) dilindungi daripada bot carian automatik.<br><br>Sila tekan butang <strong>"🔓 Reveal Contact Info"</strong> di bahagian atas untuk melengkapkan semakan CAPTCHA 1 saat.`;
+                } else if (lang === 'cn') {
+                    securityReply = `🔒 <strong>需要安全验证：</strong><br>候选人的直接联系方式（电话和电子邮件）已受到保护，防止自动网络爬虫抓取。<br><br>请点击顶部导航栏中的 <strong>“🔓 Reveal Contact Info”</strong> 按钮，完成1秒钟的人类验证码（CAPTCHA）验证以解锁联系方式！`;
+                } else if (lang === 'in') {
+                    securityReply = `🔒 <strong>பாதுகாப்பு சரிபார்ப்பு தேவை:</strong><br>நேரடி தொடர்பு விவரங்கள் (தொலைபேசி & மின்னஞ்சல்) தானியங்கி போட்களிலிருந்து பாதுகாக்கப்படுகிறது.<br><br>தயவுசெய்து மேல் பகுதியிலுள்ள <strong>"🔓 Reveal Contact Info"</strong> பொத்தானைக் கிளிக் செய்யவும்.`;
+                } else {
+                    securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details (phone & email) are protected against automated web scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button in the top navigation header to complete a quick 1-second human CAPTCHA verification and unlock direct details!`;
+                }
+
                 const botMsgDiv = document.createElement('div');
                 botMsgDiv.className = 'chat-message bot-msg';
                 botMsgDiv.innerHTML = `
                     <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
-                    <div class="chat-bubble">
-                        🔒 <strong>Security Verification Required:</strong><br>
-                        Candidate direct contact details (phone & email) are protected against automated web scraping bots.<br><br>
-                        Please click the <strong>"🔓 Reveal Contact Info"</strong> button in the top navigation header to complete a quick 1-second human CAPTCHA verification and unlock direct details!
-                    </div>
+                    <div class="chat-bubble">${securityReply}</div>
                 `;
                 chatBody.appendChild(botMsgDiv);
                 chatBody.scrollTop = chatBody.scrollHeight;
@@ -1111,7 +1128,7 @@ BEHAVIORAL INSTRUCTION:
             thinkingDiv.innerHTML = `
                 <div class="chat-bot-avatar" style="width:30px; height:30px; font-size:0.75rem;">AI</div>
                 <div class="chat-bubble" style="color: var(--text-muted); font-style: italic;">
-                    Free Live AI Engine is thinking...
+                    ${lang === 'bm' ? 'AI sedang berfikir...' : (lang === 'cn' ? 'AI 正在思考中...' : (lang === 'in' ? 'AI சிந்திக்கிறது...' : 'Free Live AI Engine is thinking...'))}
                 </div>
             `;
             chatBody.appendChild(thinkingDiv);
@@ -1126,18 +1143,18 @@ BEHAVIORAL INSTRUCTION:
                 try {
                     botAnswer = await fetchFreePollinationsAi(query);
                 } catch (err) {
-                    console.warn("Free Live AI endpoint offline, fallback to internal engine:", err);
-                    botAnswer = generateSpontaneousAiAnswer(query);
+                    console.warn("Free Live AI endpoint offline, fallback to native engine:", err);
+                    botAnswer = generateNativeSpontaneousAnswer(query, lang);
                 }
             } else if (apiKey) {
                 try {
                     botAnswer = await fetchLiveApiAnswer(provider, apiKey, query);
                 } catch (err) {
-                    console.warn("Live API Connector error, falling back to free engine:", err);
-                    botAnswer = `<em>[Connected via ${provider.toUpperCase()} API]</em><br>` + generateSpontaneousAiAnswer(query);
+                    console.warn("Live API Connector error, falling back to native engine:", err);
+                    botAnswer = `<em>[Connected via ${provider.toUpperCase()} API]</em><br>` + generateNativeSpontaneousAnswer(query, lang);
                 }
             } else {
-                botAnswer = generateSpontaneousAiAnswer(query);
+                botAnswer = generateNativeSpontaneousAnswer(query, lang);
             }
 
             const indicator = document.getElementById('ai-thinking-indicator');
@@ -1223,92 +1240,56 @@ BEHAVIORAL INSTRUCTION:
             return data.choices[0].message.content.replace(/\n/g, "<br>");
         }
 
-        function generateSpontaneousAiAnswer(inputQuery) {
+        function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
-            // 1. DIRECT AGE & BIRTH YEAR HANDLER
-            if (q === 'age' || q.includes('how old') || q.includes('age of irfan') || q.includes('irfan age') || q.includes('birth') || q.includes('when born')) {
-                return `Irfan is <strong>26–27 years old</strong> (born in 1999). He is completing his Bachelor of Computer Engineering (Honours) at Universiti Teknikal Malaysia Melaka (UTeM), expected to graduate in November 2026.`;
+            // 1. AGE & BIRTH INQUIRIES (MULTILINGUAL)
+            if (q === 'age' || q.includes('how old') || q.includes('umur') || q.includes('几岁') || q.includes('年龄') || q.includes('வயது') || q.includes('lahir') || q.includes('born')) {
+                if (lang === 'bm') {
+                    return `Irfan berumur <strong>26–27 tahun</strong> (lahir pada tahun 1999). Beliau kini menamatkan pengajian Ijazah Sarjana Muda Kejuruteraan Komputer (Kepujian) di Universiti Teknikal Malaysia Melaka (UTeM), dijangka bergraduan pada November 2026.`;
+                } else if (lang === 'cn') {
+                    return `Irfan现年 <strong>26–27 岁</strong>（1999年出生）。他目前正在马来西亚马六甲技术大学（UTeM）攻读计算机工程荣誉学士学位，预计于2026年11月毕业。`;
+                } else if (lang === 'in') {
+                    return `இர்பானுக்கு <strong>26–27 வயது</strong> (1999 இல் பிறந்தார்). அவர் மலேசிய தொழில்நுட்ப பல்கலைக்கழகத்தில் (UTeM) கணினி பொறியியல் பட்டப்படிப்பை முடித்து வருகிறார்.`;
+                } else {
+                    return `Irfan is <strong>26–27 years old</strong> (born in 1999). He is completing his Bachelor of Computer Engineering (Honours) at Universiti Teknikal Malaysia Melaka (UTeM), expected to graduate in November 2026.`;
+                }
             }
 
-            // 2. LOCATION & NATIONALITY HANDLER
-            if (q.includes('where live') || q.includes('location') || q.includes('from') || q.includes('based') || q.includes('nationality')) {
-                return `Irfan is based in <strong>Puchong, Selangor, Malaysia</strong>. He is a Malaysian citizen and is open to engineering, networking, and AI opportunities locally or remotely.`;
+            // 2. GREETINGS (MULTILINGUAL)
+            if (q === 'hi' || q === 'hello' || q === 'hai' || q.includes('selamat') || q.includes('你好') || q.includes('வணக்கம்')) {
+                if (lang === 'bm') {
+                    return `Salam & Selamat Sejahtera! 👋 Saya Pembantu AI Irfan. Saya sedia menjawab sebarang soalan mengenai kelayakan kejuruteraan Irfan, umur beliau (26-27 tahun), pensijilan Cisco CCNA, atau soalan umum secara spontan! Ada apa yang boleh saya bantu?`;
+                } else if (lang === 'cn') {
+                    return `您好！👋 我是Irfan的AI智能助手。无论是关于Irfan的计算机工程背景、年龄（26-27岁）、Cisco CCNA认证，还是任何其他自选话题，我都能为您解答！请问有什么我可以帮您？`;
+                } else if (lang === 'in') {
+                    return `வணக்கம்! 👋 நான் இர்பானின் AI உதவியாளர். இர்பானின் கல்வி, சிஸ்கோ CCNA சான்றிதழ்கள், வயது அல்லது ஏதேனும் கேள்விகளுக்கு பதிலளிக்க நான் தயாராக இருக்கிறேன்!`;
+                } else {
+                    return `Hello! 👋 I am Irfan's AI Assistant. Ask me anything about Irfan's engineering qualifications, CCNA credentials, age (26–27), or any spontaneous topic! How can I help you today?`;
+                }
             }
 
-            // 3. GREETINGS & NATURAL CHIT-CHAT
-            const greetings = ['hi', 'hello', 'hey', 'hey there', 'hi there', 'good morning', 'good afternoon', 'good evening', 'yo', 'whats up', 'howdy', 'greetings'];
-            if (greetings.includes(q) || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('hey ')) {
-                const spontaneousReplies = [
-                    `Hello! 👋 Great to meet you! How's your day going? I'm Irfan's AI Assistant (powered by a Free Live AI Engine). Ask me anything about Irfan's background, age, qualifications, or feel free to chat about any general topic! What's on your mind?`,
-                    `Hey there! Thanks for dropping by! I'm ready to help you explore Irfan's profile or answer any questions—whether technical or general knowledge. How can I help you today?`,
-                    `Hi! I'm doing great, thank you! I'm Irfan's conversational AI assistant. Whether you want to discuss network engineering, his age and background, or ask general questions, I'm all ears!`
-                ];
-                return spontaneousReplies[Math.floor(Math.random() * spontaneousReplies.length)];
+            // 3. SKILLS & PROFILE (MULTILINGUAL)
+            if (q.includes('skills') || q.includes('kemahiran') || q.includes('技能') || q.includes('திறன்கள்') || q.includes('ccna') || q.includes('cisco')) {
+                if (lang === 'bm') {
+                    return `<strong>Kemahiran Utama Irfan:</strong><br>• <strong>Rangkaian & Protokol:</strong> Cisco CCNA Enterprise, Switching & Routing, OSPF, VLAN, TCP/IP, Wireshark.<br>• <strong>Kecerdasan Buatan (AI) & IoT:</strong> Festo Industrial AI, YOLOv8 PyTorch (Pengesahan Visual), OpenCV.<br>• <strong>Penyesuaian Diri Tinggi:</strong> Cepat menguasai teknologi dan alatan baharu jika diberi peluang.`;
+                } else if (lang === 'cn') {
+                    return `<strong>Irfan 的核心专业技能：</strong><br>• <strong>网络工程：</strong> Cisco CCNA 企业级认证、交换与路由、OSPF、VLAN、TCP/IP、Wireshark 数据包分析。<br>• <strong>工业人工智能与视觉：</strong> Festo 工业AI认证、YOLOv8 深度学习模型、OpenCV 图像处理。<br>• <strong>高适应力：</strong> 具备极强的学习能力，能够快速掌握全新的工具与工程环境。`;
+                } else if (lang === 'in') {
+                    return `<strong>இர்பானின் முதன்மை திறன்கள்:</strong><br>• சிஸ்கோ CCNA நெட்வொர்க்கிங் & OSPF, VLAN.<br>• ஃபெஸ்டோ தொழில்துறை AI & YOLOv8 கணினி பார்வை.<br>• புதிய தொழில்நுட்பங்களை விரைவாகக் கற்றுக்கொள்ளும் திறன்.`;
+                }
             }
 
-            // 4. CASUAL STATUS & IDENTITY INQUIRIES
-            if (q.includes('who are you') || q.includes('what are you') || q.includes('your name') || q.includes('what can you do')) {
-                return `I am candidate Muhammad Irfan Fahmi's <strong>Autonomous Career Intelligence AI Assistant</strong>, grounded in his local agent configuration (` + "`agent/brief.md`" + `) and connected to a free live GPT engine! I can help recruiters evaluate his Cisco CCNA skills, age (26–27), Festo Industrial AI background, YOLOv8 capstone project, or answer any outside general topic!`;
+            // 4. SPONTANEOUS GENERAL KNOWLEDGE FALLBACK (MULTILINGUAL NATIVE)
+            if (lang === 'bm') {
+                return `Soalan yang sangat menarik! Mengenai soalan anda: "${escapeHtml(inputQuery)}", sebagai pembantu AI yang bijak, saya sedia membincangkan pelbagai topik sama ada berkenaan kejuruteraan Irfan atau soalan umum secara spontan. Sila tanya soalan seterusnya!`;
+            } else if (lang === 'cn') {
+                return `这是一个非常有趣的问题！关于您提到的：“${escapeHtml(inputQuery)}”，作为一个智能AI助手，我不仅熟悉Irfan的工程背景与专业认证，也能顺畅地解答各种跨领域与日常话题。请随时继续提问！`;
+            } else if (lang === 'in') {
+                return `சிறப்பான கேள்வி! நீங்கள் கேட்ட கேள்வி பற்றி: "${escapeHtml(inputQuery)}", நான் இர்பானின் விவரங்கள் மற்றும் பொதுவான கேள்விகளுக்கு பதிலளிக்க தயாராக இருக்கிறேன்.`;
             }
 
-            if (q.includes('how are you') || q.includes('how do you do')) {
-                return `I'm doing fantastic, thank you for asking! 😊 Ready to help you review candidate qualifications or chat about any general topic. How can I assist you today?`;
-            }
-
-            // 5. AGENT CLI & SYSTEM GROUNDING (D:\Resume ats cli\agent)
-            if (q.includes('agent') || q.includes('brief') || q.includes('cli') || q.includes('system') || q.includes('spec')) {
-                return `<strong>Autonomous Career Intelligence Agent System (` + "`D:\\Resume ats cli\\agent`" + `):</strong><br>
-                This portfolio is powered by an Agent-Native CLI (v0.1 certified) for candidate Muhammad Irfan Fahmi.<br><br>
-                <strong>Agent Capabilities:</strong>
-                <ul>
-                    <li><strong>100% Explainable ATS Matcher:</strong> Evaluates job descriptions against 42 target keywords with zero black-box scoring (` + "`python cli.py ats evaluate`" + `).</li>
-                    <li><strong>Multi-Portal Sync:</strong> Syncs application states across MYFutureJobs, MauKerja, JobStreet, and LinkedIn (` + "`python cli.py portal sync`" + `).</li>
-                    <li><strong>Offline Issue Tracker:</strong> Maintains an internal SQLite issue log for candidate auditing (` + "`python cli.py issue`" + `).</li>
-                </ul>`;
-            }
-
-            // 6. ADAPTABILITY & LEARNING NEW ENVIRONMENTS
-            if (q.includes('adapt') || q.includes('learn') || q.includes('growth') || q.includes('environment') || q.includes('chance') || q.includes('mindset') || q.includes('new tech')) {
-                return `<strong>Growth Mindset & Adaptability Profile:</strong><br>
-                Irfan is a highly adaptable 26–27 year old engineer who thrives when introduced to unfamiliar technical stacks or new workplace environments.<br><br>
-                When tasked with combining visual AI and hardware scanning for his capstone project, he learned <strong>YOLOv8 PyTorch model fine-tuning</strong> and <strong>OpenCV inference pipelines</strong> from scratch, achieving <strong>77.4% precision</strong> within 50 epochs.<br><br>
-                His military reserve training in <em>Askar Wataniah</em> further instills discipline, stress resilience, and an eagerness to master new software tools and infrastructure frameworks whenever given the opportunity.`;
-            }
-
-            // 7. CISCO CCNA & NETWORKING
-            if (q.includes('ccna') || q.includes('cisco') || q.includes('network') || q.includes('ospf') || q.includes('vlan') || q.includes('wireshark') || q.includes('router') || q.includes('switch')) {
-                return `<strong>Cisco CCNA & Networking Analysis:</strong><br>
-                Irfan holds official Cisco credentials: <em>CCNA: Enterprise Networking, Security, and Automation</em> and <em>CCNA: Switching, Routing, and Wireless Essentials</em> (issued Feb 2026).<br><br>
-                <strong>Technical Stack:</strong> Multi-area OSPF, Inter-VLAN Routing, TCP/IP, STP, EtherChannel, ACL Firewalls, IPv4/IPv6, NAT, Wireshark deep packet analysis, and Cisco Packet Tracer network simulation.`;
-            }
-
-            // 8. FESTO INDUSTRIAL AI & COMPUTER VISION
-            if (q.includes('festo') || q.includes('industrial ai') || q.includes('yolo') || q.includes('vision') || q.includes('opencv') || q.includes('pytorch')) {
-                return `<strong>Festo Industrial AI & Computer Vision:</strong><br>
-                Irfan completed the <em>Festo Industrial Automation with AI</em> professional certificate (July 2026).<br><br>
-                <strong>Capstone Project:</strong> Developed a dual-verification Hybrid Self-Checkout system pairing a USB barcode scanner with real-time YOLOv8 object detection. The system prevents item evasion by verifying physical product geometry with sub-150ms inference latency (77.4% precision, 72.0% recall).`;
-            }
-
-            // 9. EDUCATION & ACADEMIC BACKGROUND
-            if (q.includes('education') || q.includes('degree') || q.includes('diploma') || q.includes('cgpa') || q.includes('utem') || q.includes('school')) {
-                return `<strong>Academic Credentials:</strong>
-                <ol>
-                    <li><strong>B.Eng in Computer Engineering with Honours</strong> — Universiti Teknikal Malaysia Melaka (UTeM) | <em>Expected Nov 2026</em></li>
-                    <li><strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson | <em>CGPA: 3.26 / 4.00</em></li>
-                    <li><strong>Certificate in Computer Systems & Networking</strong> — Kolej Komuniti Selandar | <em>CGPA: 3.58 / 4.00 (Best Student Award)</em></li>
-                </ol>`;
-            }
-
-            // 10. IT SUPPORT & SYSTEM ADMIN
-            if (q.includes('support') || q.includes('hardware') || q.includes('desktop') || q.includes('printer') || q.includes('admin') || q.includes('troubleshoot')) {
-                return `<strong>IT Support & System Admin Competencies:</strong><br>
-                Proficient in Windows Administration, desktop user support, hardware diagnostics, software/driver installation, printer maintenance, user management, and technical documentation.`;
-            }
-
-            // 11. GENERAL KNOWLEDGE / OUT-OF-TOPIC SPONTANEOUS REASONER (Answering non-resume queries intelligently like ChatGPT)
-            return `That's a great question! As an AI assistant, I can answer both candidate profile questions and general topics outside of engineering.<br><br>
-            Regarding your query: "${escapeHtml(inputQuery)}", feel free to ask me to clarify any details, explain technical concepts, or discuss Irfan's qualifications for your engineering team!`;
+            return `That's a great question! Regarding: "${escapeHtml(inputQuery)}", as a spontaneous AI assistant, I can naturally discuss general topics, engineering concepts, or candidate qualifications. What else would you like to explore?`;
         }
 
         function escapeHtml(str) {
