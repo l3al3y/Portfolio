@@ -883,14 +883,14 @@
 
                 <div class="chat-suggested-prompts">
                     <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Try Asking:</span>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Siapa awak?')">🇲🇾 Siapa Awak (BM)</button>
                     <button class="prompt-chip" onclick="sendSuggestedPrompt('Berapa umur Irfan dan apa latar belakang beliau?')">🇲🇾 Umur Irfan (BM)</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Irfan今年几岁？他的专业技能是什么？')">🇨🇳 几岁与技能 (华语)</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('இர்பானின் வயது மற்றும் பின்னணி என்ன?')">🇮🇳 வயது என்ன? (தமிழ்)</button>
-                    <button class="prompt-chip" onclick="sendSuggestedPrompt('How quickly can Irfan adapt to a new tech stack?')">🇬🇧 Adaptability (EN)</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('你是谁？介绍一下Irfan的背景')">🇨🇳 你是谁？ (华语)</button>
+                    <button class="prompt-chip" onclick="sendSuggestedPrompt('Who are you?')">🇬🇧 Who are you? (EN)</button>
                 </div>
 
                 <div class="chat-input-area">
-                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Tanya soalan dalam BM / 华语 / தமிழ் / English (e.g. Umur berapa? 你几岁？வணக்கம்)..." onkeydown="handleChatEnter(event)">
+                    <input type="text" id="chat-user-input" class="chat-input" placeholder="Tanya soalan (e.g. Siapa awak?, Who you?, Umur berapa?, 你是谁？)..." onkeydown="handleChatEnter(event)">
                     <button class="btn btn-primary" onclick="submitChatMessage()">Send ➔</button>
                 </div>
             </div>
@@ -1012,9 +1012,9 @@ Candidate Profile:
 - Key Mindset: Highly adaptable, rapid learner when introduced to new software tools, tech stacks, or engineering environments if given the chance. Military reserve training in Askar Wataniah (high discipline & stress resilience).
 - Contact Policy: Phone and email details are STRICTLY PROTECTED against automated web scraping bots.
 
-MULTILINGUAL NATIVE BEHAVIORAL RULE:
-1. ALWAYS detect the language of the user's prompt (English, Bahasa Melayu, Chinese 华语, or Tamil தமிழ்) and respond NATIVELY in that EXACT SAME language with complete fluency!
-2. Answer questions DIRECTLY. If asked about Irfan's age, state clearly that Irfan is 26–27 years old (born 1999) in the user's language.
+HUMANLIKE PERSONA & IDENTITY INSTRUCTION:
+1. If asked "who you", "who are you", "who r u", "siapa awak", "siapa kamu", "siapa anda", "siapa ni", "你是谁", or "நீ யார்", identify yourself warmly as Irfan's Conversational AI Assistant. Explain your role in helping recruiters evaluate Irfan's Computer Engineering degree (UTeM), Cisco CCNA credentials, Festo AI capstone project, age (26–27), and rapid adaptability.
+2. ALWAYS detect the language of the user's prompt (English, Bahasa Melayu, Chinese 华语, or Tamil தமிழ்) and respond NATIVELY in that EXACT SAME language with complete humanlike fluency and warmth.
 3. Be fully prepared for spontaneous questions—whether general knowledge, out-of-topic factors, casual chat, science, math, or technology. Answer spontaneously and naturally like ChatGPT / Claude / DeepSeek without forcing resume facts into unrelated queries!
 4. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button to solve the human CAPTCHA check.`;
 
@@ -1072,7 +1072,7 @@ MULTILINGUAL NATIVE BEHAVIORAL RULE:
         function detectUserLanguage(text) {
             if (/[\u4e00-\u9fa5]/.test(text)) return 'cn'; // Chinese
             if (/[\u0b80-\u0bff]/.test(text)) return 'in'; // Tamil
-            const bmWords = ['umur', 'siapa', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih'];
+            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih'];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
             return 'en';
@@ -1243,7 +1243,20 @@ MULTILINGUAL NATIVE BEHAVIORAL RULE:
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
-            // 1. AGE & BIRTH INQUIRIES (MULTILINGUAL)
+            // 1. IDENTITY & WHO YOU INQUIRIES (FUZZY & MULTILINGUAL)
+            if (q.includes('who you') || q.includes('who are you') || q.includes('who r u') || q.includes('siapa awak') || q.includes('siapa kamu') || q.includes('siapa anda') || q.includes('siapa ni') || q.includes('你是谁') || q.includes('你是什么') || q.includes('நீ யார்')) {
+                if (lang === 'bm') {
+                    return `Salam! 👋 Saya Pembantu AI Khas untuk Muhammad Irfan Fahmi.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (26–27 tahun), serta kebolehan beliau menyesuaikan diri dengan cepat dalam persekitaran baharu.<br><br>Ada apa soalan yang ingin anda tanya mengenai Irfan?`;
+                } else if (lang === 'cn') {
+                    return `您好！👋 我是 Muhammad Irfan Fahmi 的 AI 智能助理。<br><br>我致力于帮助招聘者和雇主全面了解 Irfan 的计算机工程背景、Cisco CCNA 网络认证、Festo 工业AI项目、年龄（26-27岁）以及他在新工具和工作环境中的快速适应与学习能力。<br><br>请问有什么关于 Irfan 的问题我可以为您解答？`;
+                } else if (lang === 'in') {
+                    return `வணக்கம்! 👋 நான் முஹம்மது இர்பான் ஃபஹ்மியின் AI உதவியாளர்.<br><br>இர்பானின் கணினி பொறியியல் பின்னணி, சிஸ்கோ CCNA சான்றிதழ்கள், வயது (26-27) மற்றும் புதிய தொழில்நுட்பங்களைக் கற்றுக்கொள்ளும் திறன் பற்றி அறிய நான் உங்களுக்கு உதவுகிறேன்!`;
+                } else {
+                    return `Hello! 👋 I am Muhammad Irfan Fahmi's Conversational AI Assistant.<br><br>I'm here to help recruiters and employers evaluate Irfan's Computer Engineering background (UTeM), Cisco CCNA & Festo Industrial AI credentials, age (26–27 years old), and how rapidly he masters new tools and engineering environments whenever given the opportunity.<br><br>What would you like to know about Irfan?`;
+                }
+            }
+
+            // 2. AGE & BIRTH INQUIRIES (MULTILINGUAL)
             if (q === 'age' || q.includes('how old') || q.includes('umur') || q.includes('几岁') || q.includes('年龄') || q.includes('வயது') || q.includes('lahir') || q.includes('born')) {
                 if (lang === 'bm') {
                     return `Irfan berumur <strong>26–27 tahun</strong> (lahir pada tahun 1999). Beliau kini menamatkan pengajian Ijazah Sarjana Muda Kejuruteraan Komputer (Kepujian) di Universiti Teknikal Malaysia Melaka (UTeM), dijangka bergraduan pada November 2026.`;
@@ -1256,7 +1269,7 @@ MULTILINGUAL NATIVE BEHAVIORAL RULE:
                 }
             }
 
-            // 2. GREETINGS (MULTILINGUAL)
+            // 3. GREETINGS (MULTILINGUAL)
             if (q === 'hi' || q === 'hello' || q === 'hai' || q.includes('selamat') || q.includes('你好') || q.includes('வணக்கம்')) {
                 if (lang === 'bm') {
                     return `Salam & Selamat Sejahtera! 👋 Saya Pembantu AI Irfan. Saya sedia menjawab sebarang soalan mengenai kelayakan kejuruteraan Irfan, umur beliau (26-27 tahun), pensijilan Cisco CCNA, atau soalan umum secara spontan! Ada apa yang boleh saya bantu?`;
@@ -1269,7 +1282,7 @@ MULTILINGUAL NATIVE BEHAVIORAL RULE:
                 }
             }
 
-            // 3. SKILLS & PROFILE (MULTILINGUAL)
+            // 4. SKILLS & PROFILE (MULTILINGUAL)
             if (q.includes('skills') || q.includes('kemahiran') || q.includes('技能') || q.includes('திறன்கள்') || q.includes('ccna') || q.includes('cisco')) {
                 if (lang === 'bm') {
                     return `<strong>Kemahiran Utama Irfan:</strong><br>• <strong>Rangkaian & Protokol:</strong> Cisco CCNA Enterprise, Switching & Routing, OSPF, VLAN, TCP/IP, Wireshark.<br>• <strong>Kecerdasan Buatan (AI) & IoT:</strong> Festo Industrial AI, YOLOv8 PyTorch (Pengesahan Visual), OpenCV.<br>• <strong>Penyesuaian Diri Tinggi:</strong> Cepat menguasai teknologi dan alatan baharu jika diberi peluang.`;
@@ -1280,7 +1293,7 @@ MULTILINGUAL NATIVE BEHAVIORAL RULE:
                 }
             }
 
-            // 4. SPONTANEOUS GENERAL KNOWLEDGE FALLBACK (MULTILINGUAL NATIVE)
+            // 5. SPONTANEOUS GENERAL KNOWLEDGE FALLBACK (MULTILINGUAL NATIVE)
             if (lang === 'bm') {
                 return `Soalan yang sangat menarik! Mengenai soalan anda: "${escapeHtml(inputQuery)}", sebagai pembantu AI yang bijak, saya sedia membincangkan pelbagai topik sama ada berkenaan kejuruteraan Irfan atau soalan umum secara spontan. Sila tanya soalan seterusnya!`;
             } else if (lang === 'cn') {
