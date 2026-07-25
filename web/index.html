@@ -1275,10 +1275,11 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
 
 CONVERSATIONAL LEAP & MULTILINGUAL RULES:
 1. DYNAMIC USER LANGUAGE MATCHING: Detect the exact language used in the user's input prompt (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், etc.) and respond STRICTLY in that EXACT SAME language with deep humanlike fluency and warmth.
-2. TRUTHFUL GROUNDING: Answer ANY question about Irfan's resume accurately based on RESUME_DATA above (e.g. Diploma CGPA 3.26 at Politeknik Port Dickson, Certificate CGPA 3.58 at Kolej Komuniti Selandar with Best Student Award, Capstone YOLOv8 77.4% precision / 72.0% recall at 50 epochs with <150ms latency, CCNA dates 23 Feb 2026, Festo 16 July 2026, all skills like OSPF, VLAN, Python, C++, etc.).
-3. IDENTITY & AGE: Irfan is 26–27 years old (born 1999). Identify yourself as Irfan's AI Assistant.
-4. HUGE LEAP IN CONVERSATION: Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
-5. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the Turnstile CAPTCHA check.`;
+2. TRUTHFUL GROUNDING: Answer ANY question about Irfan's resume accurately based on RESUME_DATA above.
+3. CONCISE & SCOPED SUB-QUESTION ANSWERING: When the user asks a narrow or specific sub-question (e.g. 'diploma CGPA', 'precision of capstone project', 'CCNA certification date', 'programming languages'), answer that SPECIFIC fact directly and concisely FIRST (1–2 sentences max). Do NOT dump full resume sections or unrequested entries unless the user explicitly asks a broad question (e.g. 'tell me about your education' or 'list all certifications').
+4. IDENTITY & AGE: Irfan is 26–27 years old (born 1999). Identify yourself as Irfan's AI Assistant.
+5. HUGE LEAP IN CONVERSATION: Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
+6. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the Turnstile CAPTCHA check.`;
 
         // Initialize API Key Input on page load
         window.addEventListener('DOMContentLoaded', () => {
@@ -1508,10 +1509,23 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 age: 0
             };
 
+            // Narrow sub-question flags
+            const isDiplomaSpecific = (q.includes('diploma') || q.includes('port dickson')) && !q.includes('sijil') && !q.includes('degree');
+            const isCertificateSpecific = (q.includes('sijil') || q.includes('komuniti') || q.includes('selandar')) && !q.includes('diploma') && !q.includes('degree');
+            const isDegreeSpecific = (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor')) && !q.includes('diploma');
+            
+            const isPrecisionSpecific = q.includes('precision') && !q.includes('recall') && !q.includes('all');
+            const isRecallSpecific = q.includes('recall') && !q.includes('precision') && !q.includes('all');
+            
+            const isCcnaSpecific = (q.includes('ccna') || q.includes('cisco')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila') || q.includes('dapat'));
+            const isFestoSpecific = (q.includes('festo')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila'));
+
+            // Scoring matches
             if (q.includes('diploma') || q.includes('port dickson') || q.includes('3.26')) scores.diploma_cgpa += 5;
+            if (q.includes('education') || q.includes('pendidikan') || q.includes('academic') || q.includes('akademik') || q.includes('school') || q.includes('belajar') || q.includes('study')) scores.diploma_cgpa += 4;
             if (q.includes('cgpa') || q.includes('gred') || q.includes('grade') || q.includes('pointer')) {
-                scores.diploma_cgpa += 3;
-                scores.cert_sijil_cgpa += 3;
+                scores.diploma_cgpa += 4;
+                scores.cert_sijil_cgpa += 4;
             }
 
             if (q.includes('sijil') || q.includes('certificate') || q.includes('komuniti') || q.includes('selandar') || q.includes('3.58') || q.includes('best student') || q.includes('terbaik')) scores.cert_sijil_cgpa += 5;
@@ -1553,57 +1567,132 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             if (maxScore >= 3) {
+                const dip = RESUME_DATA.education[1];
+                const cert = RESUME_DATA.education[2];
+                const deg = RESUME_DATA.education[0];
+                const proj = RESUME_DATA.projects[0];
+
                 switch (maxCategory) {
-                    case 'diploma_cgpa':
-                    case 'cert_sijil_cgpa':
-                    case 'degree_utem': {
-                        const dip = RESUME_DATA.education[1];
-                        const cert = RESUME_DATA.education[2];
-                        const deg = RESUME_DATA.education[0];
-                        if (lang === 'bm') {
-                            return `<strong>Maklumat Pendidikan & CGPA Irfan:</strong><br>• <strong>${deg.degree}</strong> di ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> di ${dip.institution} (${dip.dates}) — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> di ${cert.institution} (${cert.dates}) — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
-                        } else {
-                            return `<strong>Irfan's Academic Education & CGPA:</strong><br>• <strong>${deg.degree}</strong> at ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> at ${dip.institution} (${dip.dates}) — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> at ${cert.institution} (${cert.dates}) — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                    case 'diploma_cgpa': {
+                        if (isDiplomaSpecific) {
+                            if (lang === 'bm') {
+                                return `CGPA Irfan bagi <strong>Diploma Kejuruteraan Elektronik (Komputer)</strong> di ${dip.institution} ialah <strong>${dip.cgpa}</strong> (${dip.dates}).`;
+                            } else {
+                                return `Irfan achieved a **CGPA of ${dip.cgpa}** for his ${dip.degree} at ${dip.institution} (${dip.dates}).`;
+                            }
                         }
+                        if (lang === 'bm') {
+                            return `<strong>Maklumat Pendidikan & CGPA Irfan:</strong><br>• <strong>${deg.degree}</strong> di ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> di ${dip.institution} — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> di ${cert.institution} — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                        }
+                        return `<strong>Irfan's Academic Education & CGPA:</strong><br>• <strong>${deg.degree}</strong> at ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> at ${dip.institution} — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> at ${cert.institution} — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                    }
+                    case 'cert_sijil_cgpa': {
+                        if (isCertificateSpecific) {
+                            if (lang === 'bm') {
+                                return `CGPA Irfan bagi <strong>${cert.degree}</strong> di ${cert.institution} ialah <strong>${cert.cgpa}</strong> (${cert.awards}, ${cert.dates}).`;
+                            } else {
+                                return `Irfan achieved a **CGPA of ${cert.cgpa}** (${cert.awards}) for his ${cert.degree} at ${cert.institution} (${cert.dates}).`;
+                            }
+                        }
+                        if (lang === 'bm') {
+                            return `<strong>Maklumat Pendidikan & CGPA Irfan:</strong><br>• <strong>${deg.degree}</strong> di ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> di ${dip.institution} — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> di ${cert.institution} — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                        }
+                        return `<strong>Irfan's Academic Education & CGPA:</strong><br>• <strong>${deg.degree}</strong> at ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> at ${dip.institution} — <strong>CGPA: ${dip.cgpa}</strong>.<br>• <strong>${cert.degree}</strong> at ${cert.institution} — <strong>CGPA: ${cert.cgpa}</strong> (${cert.awards}).`;
+                    }
+                    case 'degree_utem': {
+                        if (isDegreeSpecific) {
+                            if (lang === 'bm') {
+                                return `Irfan kini menamatkan pengajian <strong>${deg.degree}</strong> di ${deg.institution} (${deg.dates}).`;
+                            } else {
+                                return `Irfan is completing his **${deg.degree}** at ${deg.institution} (${deg.dates}).`;
+                            }
+                        }
+                        if (lang === 'bm') {
+                            return `<strong>Maklumat Pendidikan Irfan:</strong><br>• <strong>${deg.degree}</strong> di ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> di ${dip.institution} — CGPA ${dip.cgpa}.`;
+                        }
+                        return `<strong>Irfan's Academic Education:</strong><br>• <strong>${deg.degree}</strong> at ${deg.institution} (${deg.dates}).<br>• <strong>${dip.degree}</strong> at ${dip.institution} — CGPA ${dip.cgpa}.`;
                     }
                     case 'capstone_metrics': {
-                        const proj = RESUME_DATA.projects[0];
-                        if (lang === 'bm') {
-                            return `<strong>Projek Capstone (Hybrid Self-Checkout System):</strong><br>• Irfan membangunkan sistem dwi-pengesahan menggunakan OpenCV, YOLOv8 PyTorch, pengimbas kod bar USB, dan integrasi pangkalan data MySQL.<br>• Keputusan Model (50 epochs): <strong>${proj.metrics}</strong>.`;
-                        } else {
-                            return `<strong>Capstone Project (${proj.title}):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>${proj.metrics}</strong>.`;
+                        if (isPrecisionSpecific) {
+                            if (lang === 'bm') {
+                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System mencapai ketepatan <strong>77.4% precision</strong> (bersama 72.0% recall pada 50 epochs dengan masa latensi inferens bawah 150ms).`;
+                            } else {
+                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>77.4% precision</strong> (along with 72.0% recall at 50 epochs with under 150ms inference latency).`;
+                            }
                         }
+                        if (isRecallSpecific) {
+                            if (lang === 'bm') {
+                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System mencapai <strong>72.0% recall</strong> (bersama 77.4% precision pada 50 epochs dengan masa latensi inferens bawah 150ms).`;
+                            } else {
+                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>72.0% recall</strong> (along with 77.4% precision at 50 epochs with under 150ms inference latency).`;
+                            }
+                        }
+                        if (lang === 'bm') {
+                            return `<strong>Projek Capstone (${proj.title}):</strong><br>• Irfan membangunkan sistem dwi-pengesahan menggunakan OpenCV, YOLOv8 PyTorch, pengimbas kod bar USB, dan pangkalan data MySQL.<br>• Prestasi Model: <strong>${proj.metrics}</strong>.`;
+                        }
+                        return `<strong>Capstone Project (${proj.title}):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>${proj.metrics}</strong>.`;
                     }
                     case 'ccna_dates':
                     case 'festo_cert': {
+                        if (isCcnaSpecific) {
+                            const ccna1 = RESUME_DATA.certifications[1];
+                            const ccna2 = RESUME_DATA.certifications[2];
+                            if (lang === 'bm') {
+                                return `Pensijilan Cisco CCNA Irfan (${ccna1.title} & ${ccna2.title}) telah dianugerahkan oleh ${ccna1.issuer} pada <strong>${ccna1.date}</strong>.`;
+                            } else {
+                                return `Irfan's Cisco CCNA certifications (${ccna1.title} & ${ccna2.title}) were awarded by ${ccna1.issuer} on **${ccna1.date}**.`;
+                            }
+                        }
+                        if (isFestoSpecific) {
+                            const festo = RESUME_DATA.certifications[0];
+                            if (lang === 'bm') {
+                                return `Pensijilan ${festo.title} Irfan telah dianugerahkan oleh ${festo.issuer} pada <strong>${festo.date}</strong>.`;
+                            } else {
+                                return `Irfan's ${festo.title} certification was awarded by ${festo.issuer} on **${festo.date}**.`;
+                            }
+                        }
                         const certList = RESUME_DATA.certifications.map(c => `• <strong>${c.title}</strong> — ${c.issuer} (${c.date})`).join('<br>');
                         if (lang === 'bm') {
                             return `<strong>Tarikh Pensijilan Profesional Irfan:</strong><br>${certList}`;
-                        } else {
-                            return `<strong>Irfan's Professional Certification Dates:</strong><br>${certList}`;
                         }
+                        return `<strong>Irfan's Professional Certification Dates:</strong><br>${certList}`;
                     }
                     case 'skills_programming': {
                         const progs = RESUME_DATA.skills.programming.join(', ');
                         if (lang === 'bm') {
                             return `<strong>Senarai Bahasa Pengaturcaraan & Alatan Irfan:</strong><br>• Bahasa & Pangkalan Data: ${progs}`;
-                        } else {
-                            return `<strong>Irfan's Full Programming Languages & Tools:</strong><br>• Languages & Databases: ${progs}`;
                         }
+                        return `<strong>Irfan's Full Programming Languages & Tools:</strong><br>• Languages & Databases: ${progs}`;
                     }
                     case 'skills_networking': {
                         const nets = RESUME_DATA.skills.networking.join(', ');
                         if (lang === 'bm') {
                             return `<strong>Kemahiran Rangkaian & Protokol Irfan (termasuk OSPF & VLAN):</strong><br>• Irfan menguasai protokol dan alatan berikut: ${nets}. Beliau memegang pensijilan Cisco CCNA Enterprise.`;
-                        } else {
-                            return `<strong>Irfan's Networking Protocols & Skills (including OSPF & VLAN):</strong><br>• Irfan is proficient in: ${nets}. He holds official Cisco CCNA Enterprise certifications.`;
                         }
+                        return `<strong>Irfan's Networking Protocols & Skills (including OSPF & VLAN):</strong><br>• Irfan is proficient in: ${nets}. He holds official Cisco CCNA Enterprise certifications.`;
                     }
                     case 'skills_cybersecurity':
                     case 'skills_it_support':
                     case 'skills_industrial_ai': {
                         if (lang === 'bm') {
                             return `<strong>Ringkasan Kepakaran Teknikal Irfan:</strong><br>• <strong>Rangkaian:</strong> ${RESUME_DATA.skills.networking.slice(0, 8).join(', ')}<br>• <strong>Pengaturcaraan:</strong> ${RESUME_DATA.skills.programming.join(', ')}<br>• <strong>Cybersecurity:</strong> ${RESUME_DATA.skills.cybersecurity.join(', ')}<br>• <strong>Industrial AI & IoT:</strong> ${RESUME_DATA.skills.industrialAI.join(', ')}`;
+                        }
+                        return `<strong>Irfan's Technical Expertise Overview:</strong><br>• <strong>Networking:</strong> ${RESUME_DATA.skills.networking.slice(0, 8).join(', ')}<br>• <strong>Programming:</strong> ${RESUME_DATA.skills.programming.join(', ')}<br>• <strong>Cybersecurity:</strong> ${RESUME_DATA.skills.cybersecurity.join(', ')}<br>• <strong>Industrial AI & IoT:</strong> ${RESUME_DATA.skills.industrialAI.join(', ')}`;
+                    }
+                    case 'identity': {
+                        if (lang === 'bm') {
+                            return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan beliau menyesuaikan diri dengan cepat.`;
+                        }
+                        return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
+                    }
+                    case 'age': {
+                        if (lang === 'bm') {
+                            return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
+                        }
+                        return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
+                    }
+                }
+            }     return `<strong>Ringkasan Kepakaran Teknikal Irfan:</strong><br>• <strong>Rangkaian:</strong> ${RESUME_DATA.skills.networking.slice(0, 8).join(', ')}<br>• <strong>Pengaturcaraan:</strong> ${RESUME_DATA.skills.programming.join(', ')}<br>• <strong>Cybersecurity:</strong> ${RESUME_DATA.skills.cybersecurity.join(', ')}<br>• <strong>Industrial AI & IoT:</strong> ${RESUME_DATA.skills.industrialAI.join(', ')}`;
                         } else {
                             return `<strong>Irfan's Technical Expertise Overview:</strong><br>• <strong>Networking:</strong> ${RESUME_DATA.skills.networking.slice(0, 8).join(', ')}<br>• <strong>Programming:</strong> ${RESUME_DATA.skills.programming.join(', ')}<br>• <strong>Cybersecurity:</strong> ${RESUME_DATA.skills.cybersecurity.join(', ')}<br>• <strong>Industrial AI & IoT:</strong> ${RESUME_DATA.skills.industrialAI.join(', ')}`;
                         }
