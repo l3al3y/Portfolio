@@ -13,7 +13,7 @@
 
 ## 🌐 Live Portfolio & Interactive App
 - 🔗 **Live Web Application:** [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)
-- 📱 **Mobile-First Responsive Architecture:** Features 3D WebGL Constellation (Three.js), Floating Circle FAB Multilingual AI Assistant Widget, Cloudflare Turnstile CAPTCHA Contact Protection, and 4-Language Adaptability Switcher (EN, BM, CN, IN).
+- 📱 **Mobile-First Responsive Architecture:** Features 3D WebGL Constellation (Three.js), Floating Circle FAB Multilingual AI Assistant Widget, Cloudflare Turnstile CAPTCHA Contact Protection, Adaptive High-Contrast Light (`☀️`) & Dark (`🌙`) Theme Engine, and 4-Language Adaptability Switcher (EN, BM, CN, IN).
 
 ---
 
@@ -48,11 +48,14 @@ Military:    Askar Wataniah Reserve (Malaysian Army - High Discipline & Stress R
 - **1.2K Synthetic High-Throughput Stress Suite (`scripts/generate_and_evaluate_1k.py`):** Generates and evaluates 1,200 multi-lingual, code-switched, typo-ridden synthetic queries achieving **100.0% Pass Accuracy (1200/1200 passed)**.
 - **Manual Benchmark Suite (`scripts/evaluate_chatbot.py`):** 149-query challenge test suite achieving **100.0% Pass Accuracy (149/149 passed)**.
 
-### 3. 🔒 Cloudflare Turnstile CAPTCHA Contact Protection
+### 3. 🎨 Adaptive High-Contrast Light & Dark Theme System
+- **Comprehensive Contrast Engine:** Full CSS custom token overrides ensuring 100% crisp legibility across headers, navigation drawers, language switcher tabs, certification cards, chatbot modals, suggestion chips, and security contact verification modals in both Light (`☀️`) and Dark (`🌙`) modes.
+
+### 4. 🔒 Cloudflare Turnstile CAPTCHA Contact Protection
 - Deployed Cloudflare Worker `contact-gate-worker` (`0x4AAAAAAD9nlicfqO7QQsBk` sitekey) to perform server-side siteverify before revealing candidate Email & Phone.
 - **Zero Plaintext Leakage:** No plaintext or base64 contact strings exist in client-side HTML source files.
 
-### 4. 📄 100.0% Verified ATS Resume Suite (`verify_ats.py`)
+### 5. 📄 100.0% Verified ATS Resume Suite (`verify_ats.py`)
 - Standardized 1-Page A4 printable HTML resume (`resume/resume.html`), Markdown (`resume/resume.md`), and Plain Text (`resume/resume.txt`).
 - **Empirically Verified Score:** `100.0% Keyword Match` (42/42 target network, AI, and IT support keywords).
 
@@ -70,8 +73,9 @@ python cli.py ats evaluate --title "Network Engineer" --desc "Cisco CCNA OSPF VL
 # 3. Verify ATS Resume Keyword Match Score (100% Target)
 python cli.py ats verify
 
-# 4. Run Automated Chatbot Intelligence Benchmark (100% Target)
-python scripts/evaluate_chatbot.py
+# 4. Run Automated Chatbot Intelligence Benchmarks (100% Target)
+python scripts/generate_and_evaluate_1k.py  # 1.2K Synthetic High-Throughput Benchmark (100% Pass)
+python scripts/evaluate_chatbot.py          # 149-Query Challenge Benchmark (100% Pass)
 
 # 5. Generate Standard ATS Resume Formats (HTML / MD / TXT)
 python cli.py resume generate --format md --out resume/resume.md
@@ -117,7 +121,8 @@ ResumeAgent/
 │   ├── issue.py                      # Offline Feedback Issue System
 │   └── job_agent.db                  # SQLite Database
 ├── scripts/                          # Evaluation & Benchmark Harnesses
-│   └── evaluate_chatbot.py           # 117-Query Chatbot Intelligence Evaluator (100.0% Benchmark)
+│   ├── evaluate_chatbot.py           # 149-Query Manual Benchmark Evaluator (100.0% Pass)
+│   └── generate_and_evaluate_1k.py   # 1.2K Synthetic High-Throughput Benchmark (100.0% Pass)
 ├── web/                              # Web Application Mirrors
 │   ├── index.html                    # Synced Entrypoint
 │   └── portfolio.html                # Synced Entrypoint
