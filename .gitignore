@@ -27,6 +27,11 @@ Thumbs.db
 # Local SQLite databases (Keep schema, ignore transient DB binaries if needed)
 *.sqlite3
 
+# Credentials & Environment Variables
+.env
+.env.*
+!.env.example
+
 # Agent & Workspace Cache
 .gemini/
 scratch/
