@@ -45,15 +45,183 @@
         }
 
         body.light-theme {
-            --bg-base: #f8fafc;
-            --bg-surface: rgba(255, 255, 255, 0.92);
-            --bg-surface-hover: rgba(241, 245, 249, 0.98);
-            --border-card: rgba(226, 232, 240, 0.9);
+            --bg-base: #f1f5f9;
+            --bg-surface: #ffffff;
+            --bg-surface-hover: #f8fafc;
+            --border-card: #cbd5e1;
             --primary: #0284c7;
             --primary-hover: #0369a1;
+            --primary-glow: rgba(2, 132, 199, 0.2);
             --text-main: #0f172a;
-            --text-sub: #475569;
+            --text-sub: #334155;
             --text-muted: #64748b;
+        }
+
+        /* LIGHT THEME COMPREHENSIVE CONTRAST & LEGIBILITY OVERRIDES */
+        body.light-theme header {
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom-color: var(--border-card);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .nav-links a {
+            color: #334155;
+        }
+
+        body.light-theme .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        body.light-theme .mobile-nav-drawer {
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom-color: var(--border-card);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-theme .mobile-nav-drawer a {
+            color: #0f172a;
+        }
+
+        body.light-theme .lang-switch-box {
+            background: #ffffff;
+            border-color: var(--border-card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-theme .lang-btn {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+            color: #334155;
+        }
+
+        body.light-theme .lang-btn.active,
+        body.light-theme .lang-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        body.light-theme .cert-card-box {
+            background: #ffffff;
+            border-color: var(--border-card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-theme .chat-floating-window {
+            background: #ffffff;
+            border-color: var(--border-card);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-theme .chat-header {
+            background: #f8fafc;
+            border-bottom-color: var(--border-card);
+        }
+
+        body.light-theme .chat-header h4 {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .chat-header span {
+            color: #475569 !important;
+        }
+
+        body.light-theme .chat-provider-select {
+            background: #ffffff;
+            color: #0284c7;
+            border-color: var(--border-card);
+        }
+
+        body.light-theme .chat-body {
+            background: #f1f5f9;
+        }
+
+        body.light-theme .bot-msg .chat-bubble {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: var(--border-card);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-theme .user-msg .chat-bubble {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #ffffff;
+        }
+
+        body.light-theme .chat-suggested-prompts {
+            background: #f8fafc;
+            border-top-color: var(--border-card);
+        }
+
+        body.light-theme .prompt-chip {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            color: #334155;
+        }
+
+        body.light-theme .prompt-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #f0f9ff;
+        }
+
+        body.light-theme .chat-input-area {
+            background: #f8fafc;
+            border-top-color: var(--border-card);
+        }
+
+        body.light-theme .chat-input {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: var(--border-card);
+        }
+
+        body.light-theme .chat-input::placeholder {
+            color: #94a3b8;
+        }
+
+        body.light-theme .api-key-drawer {
+            background: #f8fafc;
+            border-bottom-color: var(--border-card);
+            color: #334155;
+        }
+
+        body.light-theme .modal-overlay {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        body.light-theme .modal-card {
+            background: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-theme .modal-card h3 {
+            color: var(--primary);
+        }
+
+        body.light-theme .modal-card p {
+            color: #475569;
+        }
+
+        body.light-theme .revealed-info-box {
+            background: #f8fafc !important;
+            border-color: var(--border-card) !important;
+        }
+
+        body.light-theme .revealed-info-box span {
+            color: #475569 !important;
+        }
+
+        body.light-theme .revealed-info-box strong,
+        body.light-theme #revealed-email {
+            color: #0f172a !important;
+        }
+
+        body.light-theme footer {
+            background: #ffffff;
+            border-top-color: var(--border-card);
+            color: #475569;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -767,7 +935,7 @@
     <!-- Navigation Header (Mobile-First Clean Header: Logo, Dark Mode, Hamburger Menu Only) -->
     <header>
         <div class="container nav-inner">
-            <a href="../index.html" class="logo-badge">
+            <a href="#" class="logo-badge">
                 <div class="logo-icon">MI</div>
                 <span class="logo-name-text">Muhammad Irfan Fahmi</span>
             </a>
@@ -825,7 +993,7 @@
                     ✓ VERIFIED RECRUITER — CANDIDATE DIRECT CONTACT:
                 </div>
                 
-                <div style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--border-card);">
+                <div class="revealed-info-box" style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--border-card);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
                         <div>
                             <span style="color: var(--text-muted); font-size: 0.75rem;">EMAIL:</span><br>
@@ -878,7 +1046,7 @@
                 <!-- Action Buttons Below Personal Summary -->
                 <div class="hero-cta">
                     <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
-                    <a href="../resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
+                    <a href="resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
                     <button class="btn btn-secondary" onclick="toggleFloatingChat()">💬 Ask AI Assistant</button>
                 </div>
             </div>
@@ -1043,7 +1211,6 @@
             <input type="password" id="kimi-api-key-input" class="chat-input" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" placeholder="Enter API key (sk-...)" onchange="saveKimiKeyLocally()">
             <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.78rem; background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff;" onclick="saveKimiKeyLocally()">Save</button>
         </div>
-
         <div class="chat-body" id="chat-body">
             <div class="chat-message bot-msg">
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
@@ -1548,7 +1715,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             const q = inputQuery.toLowerCase().trim();
 
             // 1. GREETINGS & CASUAL CHAT
-            const isGreeting = /(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum)/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
+            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
             if (isGreeting && q.length <= 40) {
                 if (lang === 'bm') {
                     return `Salam / Hai! 👋 Senang dapat berhubung dengan anda. Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
@@ -1570,7 +1737,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 3. IDENTITY
-            if (/(who|siapa|identity)/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background') || q.includes('ceritakan') || q.includes('latar belakang') || q.includes('summary') || q.includes('profile') || q.includes('关于') || q.includes('介绍') || q.includes('சொல்லுங்கள்') || q.includes('网站') || q.includes('biodata') || q.includes('背景')) {
+            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background') || q.includes('ceritakan') || q.includes('latar belakang') || q.includes('summary') || q.includes('profile') || q.includes('关于') || q.includes('介绍') || q.includes('சொல்லுங்கள்') || q.includes('网站') || q.includes('biodata') || q.includes('背景')) {
                 if (lang === 'bm') {
                     return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan teknikal beliau.`;
                 }
@@ -1578,7 +1745,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 4. AGE
-            if (/(age|umur|tahun|lahir|born|old)/i.test(q) || q.includes('几岁') || q.includes('bape umur') || q.includes('出生') || q.includes('多大') || q.includes('年份') || q.includes('வயது') || q.includes('birth')) {
+            if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁') || q.includes('bape umur') || q.includes('出生') || q.includes('多大') || q.includes('年份') || q.includes('வயது') || q.includes('birth')) {
                 if (lang === 'bm') {
                     return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
                 }
