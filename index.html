@@ -271,15 +271,22 @@
             box-shadow: 0 15px 35px var(--primary-glow);
         }
 
-        /* HEADER & NAV - MOBILE FIRST CLEAN DESIGN */
+        /* HEADER & NAV - COMPONENT GALLERY FLOATING GLASS PILL DESIGN */
         header {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 0.75rem; left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2rem);
+            max-width: 1200px;
             z-index: 1000;
-            padding: 0.75rem 0;
-            background: rgba(11, 15, 25, 0.92);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-card);
+            padding: 0.6rem 1.25rem;
+            background: rgba(11, 15, 25, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-card);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s ease;
         }
 
         .nav-inner {
@@ -295,39 +302,52 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .logo-icon {
             width: 36px; height: 36px;
             background: linear-gradient(135deg, var(--primary), #0284c7);
-            border-radius: 9px;
+            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-family: var(--font-mono); font-weight: 800;
             flex-shrink: 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            box-shadow: 0 0 12px var(--primary-glow);
         }
 
-        .logo-name-text {
+        .logo-status-tag {
+            font-size: 0.7rem;
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--emerald);
+            padding: 0.2rem 0.55rem;
+            border-radius: 20px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            font-weight: 600;
             white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1.75rem;
+            gap: 1.25rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-sub);
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            transition: all 0.2s ease;
         }
 
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.12);
+        }
 
         .header-actions {
             display: flex;
@@ -935,31 +955,34 @@
     <!-- 3D Constellation WebGL Background -->
     <canvas id="webgl-canvas"></canvas>
 
-    <!-- Navigation Header (Mobile-First Clean Header: Logo, Dark Mode, Hamburger Menu Only) -->
-    <header>
-        <div class="container nav-inner">
-            <a href="#" class="logo-badge">
+    <!-- Navigation Header (Component Gallery Floating Glass Pill Pattern) -->
+    <header role="banner">
+        <div class="nav-inner">
+            <a href="#hero" class="logo-badge" aria-label="Muhammad Irfan Fahmi - Home">
                 <div class="logo-icon">MI</div>
-                <span class="logo-name-text">Muhammad Irfan Fahmi</span>
+                <span class="logo-name-text">Irfan Fahmi</span>
+                <span class="logo-status-tag">🟢 Open to Roles</span>
             </a>
 
-            <!-- Desktop Links -->
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#what-i-can-do">What I Can Do</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#seeking">Target Roles</a></li>
-                <li><a href="javascript:void(0)" onclick="openPrintableResumeModal()" style="color: var(--emerald); font-weight:700;">📄 1-Page Resume</a></li>
-            </ul>
+            <!-- Desktop Navigation Links -->
+            <nav role="navigation" aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#what-i-can-do">Services</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certs</a></li>
+                    <li><a href="#seeking">Roles</a></li>
+                    <li><a href="javascript:void(0)" onclick="openPrintableResumeModal()" style="color: var(--emerald); font-weight:700;">📄 Resume</a></li>
+                </ul>
+            </nav>
 
-            <!-- Clean Top Actions: Light/Dark Mode + Hamburger Menu Only -->
+            <!-- Action Controls: Light/Dark Toggle + Mobile Menu -->
             <div class="header-actions">
                 <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Light and Dark Mode">🌙</button>
-                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">☰</button>
             </div>
         </div>
 
