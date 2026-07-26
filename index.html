@@ -1873,14 +1873,14 @@ HUMANLIKE CONVERSATIONAL PERSONA & RESPONSE GUIDELINES:
                     securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button below the personal summary.`;
                 }
 
-                const botMsgDiv = document.createElement('div');
-                botMsgDiv.className = 'chat-message bot-msg';
-                botMsgDiv.innerHTML = `
-                    <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
-                    <div class="chat-bubble">${securityReply}</div>
-                `;
-                chatBody.appendChild(botMsgDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
+                appendBotMessage(securityReply);
+                return;
+            }
+
+            // INSTANT LOCAL STRUCTURED RETRIEVAL (<5ms check for common candidate queries)
+            const instantAnswer = generateNativeSpontaneousAnswer(query, lang);
+            if (instantAnswer && !instantAnswer.includes("I don't have that exact detail") && !instantAnswer.includes("Saya tidak mempunyai maklumat khusus")) {
+                appendBotMessage(instantAnswer);
                 return;
             }
 
@@ -1902,33 +1902,34 @@ HUMANLIKE CONVERSATIONAL PERSONA & RESPONSE GUIDELINES:
 
             let botAnswer = "";
 
-            if (provider === 'kimi' && kimiKey) {
-                try {
+            try {
+                if (provider === 'kimi' && kimiKey) {
                     botAnswer = await fetchKimiK25Ai(kimiKey, query);
-                } catch (err) {
-                    console.warn("API call failed, fallback to live engine:", err);
-                    try {
-                        botAnswer = await fetchFreePollinationsAi(query);
-                    } catch (e) {
-                        botAnswer = generateNativeSpontaneousAnswer(query, lang);
-                    }
+                } else {
+                    botAnswer = await fetchFreePollinationsAi(query);
                 }
-            } else {
+            } catch (err) {
+                console.warn("API completion timeout or connection failure, using instant structured engine:", err);
                 try {
                     botAnswer = await fetchFreePollinationsAi(query);
-                } catch (err) {
-                    botAnswer = generateNativeSpontaneousAnswer(query, lang);
+                } catch (e) {
+                    botAnswer = instantAnswer || generateNativeSpontaneousAnswer(query, lang);
                 }
+            } finally {
+                const indicator = document.getElementById('ai-thinking-indicator');
+                if (indicator) indicator.remove();
             }
 
-            const indicator = document.getElementById('ai-thinking-indicator');
-            if (indicator) indicator.remove();
+            appendBotMessage(botAnswer);
+        }
 
+        function appendBotMessage(htmlContent) {
+            const chatBody = document.getElementById('chat-body');
             const botMsgDiv = document.createElement('div');
             botMsgDiv.className = 'chat-message bot-msg';
             botMsgDiv.innerHTML = `
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
-                <div class="chat-bubble">${botAnswer}</div>
+                <div class="chat-bubble">${htmlContent}</div>
             `;
             chatBody.appendChild(botMsgDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
@@ -1951,31 +1952,41 @@ HUMANLIKE CONVERSATIONAL PERSONA & RESPONSE GUIDELINES:
             return "fiq/kimi-k3";
         }
 
-        // RootSys Cloud AI Endpoint with Expertise-Based Multi-Model Routing
+        // RootSys Cloud AI Endpoint with 4.5s AbortController Timeout
         async function fetchKimiK25Ai(apiKey, userQuery) {
             const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
             const selectedModel = selectModelByQuery(userQuery);
             console.log(`[Multi-Model Router] Dispatching to '${selectedModel}' based on domain expertise.`);
 
-            const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${activeKey}`
-                },
-                body: JSON.stringify({
-                    model: selectedModel,
-                    messages: [
-                        { role: "system", content: SYSTEM_PROMPT },
-                        { role: "user", content: userQuery }
-                    ],
-                    temperature: 0.6
-                })
-            });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4500);
 
-            if (!response.ok) throw new Error(`API status ${response.status}`);
-            const data = await response.json();
-            return data.choices[0].message.content.replace(/\n/g, "<br>");
+            try {
+                const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${activeKey}`
+                    },
+                    signal: controller.signal,
+                    body: JSON.stringify({
+                        model: selectedModel,
+                        messages: [
+                            { role: "system", content: SYSTEM_PROMPT },
+                            { role: "user", content: userQuery }
+                        ],
+                        temperature: 0.6
+                    })
+                });
+
+                clearTimeout(timeoutId);
+                if (!response.ok) throw new Error(`API status ${response.status}`);
+                const data = await response.json();
+                return data.choices[0].message.content.replace(/\n/g, "<br>");
+            } catch (err) {
+                clearTimeout(timeoutId);
+                throw err;
+            }
         }
 
         // 100% Free Live LLM Endpoint (Pollinations AI - Fallback Engine)
