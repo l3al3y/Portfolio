@@ -1548,8 +1548,8 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             const q = inputQuery.toLowerCase().trim();
 
             // 1. GREETINGS & CASUAL CHAT
-            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss)\b/i.test(q) || q.includes('你好') || q.includes('வணக்கம்');
-            if (isGreeting && q.length <= 35) {
+            const isGreeting = /(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum)/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
+            if (isGreeting && q.length <= 40) {
                 if (lang === 'bm') {
                     return `Salam / Hai! 👋 Senang dapat berhubung dengan anda. Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
                 } else if (lang === 'cn') {
@@ -1562,7 +1562,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 2. GRATITUDE & POLITE SIGN-OFFS
-            if (q.includes('thank') || q.includes('thanks') || q.includes('terima kasih') || q.includes('kasih') || q.includes('goodbye') || q.includes('bye') || q.includes('jumpa') || q.includes('lagi')) {
+            if (q.includes('thank') || q.includes('thanks') || q.includes('terima kasih') || q.includes('kasih') || q.includes('goodbye') || q.includes('bye') || q.includes('jumpa') || q.includes('lagi') || q.includes('谢谢') || q.includes('感谢') || q.includes('再见') || q.includes('நன்றி') || q.includes('சந்திப்போம்') || q.includes('sama sama') || q.includes('sama-sama') || q.includes('see you') || q.includes('later')) {
                 if (lang === 'bm') {
                     return `Sama-sama! 😊 Terima kasih kerana melawat portfolio Irfan. Sila gunakan borang hubungan di atas jika anda ingin menjadualkan temuduga atau perbincangan lanjut!`;
                 }
@@ -1570,7 +1570,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 3. IDENTITY
-            if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background') || q.includes('ceritakan') || q.includes('latar belakang') || q.includes('summary')) {
+            if (/(who|siapa|identity)/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background') || q.includes('ceritakan') || q.includes('latar belakang') || q.includes('summary') || q.includes('profile') || q.includes('关于') || q.includes('介绍') || q.includes('சொல்லுங்கள்') || q.includes('网站') || q.includes('biodata') || q.includes('背景')) {
                 if (lang === 'bm') {
                     return `Salam! 👋 Saya Pembantu AI Khas untuk ${RESUME_DATA.profile.name}.<br><br>Saya direka untuk membantu anda mengenali latar belakang kejuruteraan Irfan, pensijilan Cisco CCNA & Festo Industrial AI beliau, umur beliau (${RESUME_DATA.profile.age}), serta kebolehan teknikal beliau.`;
                 }
@@ -1578,7 +1578,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 4. AGE
-            if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁') || q.includes('bape umur')) {
+            if (/(age|umur|tahun|lahir|born|old)/i.test(q) || q.includes('几岁') || q.includes('bape umur') || q.includes('出生') || q.includes('多大') || q.includes('年份') || q.includes('வயது') || q.includes('birth')) {
                 if (lang === 'bm') {
                     return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
                 }
@@ -1586,7 +1586,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 5. MILITARY RESERVE & STRESS RESILIENCE
-            if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience') || q.includes('stress') || q.includes('pressure') || q.includes('tekanan')) {
+            if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience') || q.includes('stress') || q.includes('pressure') || q.includes('tekanan') || q.includes('高压') || q.includes('应对') || q.includes('மன') || q.includes('அழுத்தம்') || q.includes('军队') || q.includes('经历') || q.includes('இராணுவ') || q.includes('后备军')) {
                 if (lang === 'bm') {
                     return `Irfan berkhidmat sebagai anggota simpanan <strong>Askar Wataniah (Tentera Darat Malaysia)</strong>. Latihan ketenteraan ini mengukuhkan disiplin diri yang tinggi, ketahanan mental di bawah tekanan, kerja berpasukan, dan kepimpinan teknikal.`;
                 }
@@ -1594,7 +1594,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 6. CAREER GOALS & FUTURE VISION
-            if (q.includes('goal') || q.includes('goals') || q.includes('future') || q.includes('matlamat') || q.includes('cita') || q.includes('cita-cita') || q.includes('5 years') || q.includes('aspire') || q.includes('vision') || q.includes('wawasan') || q.includes('kerjaya')) {
+            if (q.includes('goal') || q.includes('goals') || q.includes('future') || q.includes('matlamat') || q.includes('cita') || q.includes('cita-cita') || q.includes('5 years') || q.includes('aspire') || q.includes('aspiration') || q.includes('aspirations') || q.includes('vision') || q.includes('wawasan') || q.includes('kerjaya') || q.includes('愿景') || q.includes('规划') || q.includes('5年') || q.includes('இலக்குகள்') || q.includes('目标')) {
                 if (lang === 'bm') {
                     return `<strong>Matlamat Kerjaya Irfan:</strong><br>Irfan berhasrat untuk berkembang sebagai Jurutera Sistem Terbenam & Rangkaian terkemuka, mengintegrasikan AI Industri dan automasi Pintar untuk menyelesaikan cabaran industri sebenar.`;
                 }
@@ -1602,7 +1602,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 7. PROBLEM-SOLVING METHODOLOGY & TROUBLESHOOTING
-            if (q.includes('troubleshoot') || q.includes('troubleshooting') || q.includes('bug') || q.includes('bugs') || q.includes('selesaikan masalah') || q.includes('problem solving') || q.includes('methodology') || q.includes('debug')) {
+            if (q.includes('troubleshoot') || q.includes('troubleshooting') || q.includes('bug') || q.includes('bugs') || q.includes('selesaikan masalah') || q.includes('problem solving') || q.includes('methodology') || q.includes('debug') || q.includes('故障') || q.includes('排查') || q.includes('思路') || q.includes('தீர்க்கும்') || q.includes('முறை') || q.includes('pendekatan')) {
                 if (lang === 'bm') {
                     return `<strong>Pendekatan Penyelesaian Masalah Irfan:</strong><br>1. <strong>Pengasingan Ralat:</strong> Menggunakan analisis log & Wireshark/Console traceback.<br>2. <strong>Ujian Terkawal:</strong> Membina persekitaran ujian terasing (Packet Tracer / Sandbox).<br>3. <strong>Penyelesaian Kekal:</strong> Menulis kod modular dan membuat pengesahan berulang.`;
                 }
@@ -1610,7 +1610,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 8. TEAMWORK & LEADERSHIP STYLE
-            if (q.includes('team') || q.includes('teamwork') || q.includes('leadership') || q.includes('leader') || q.includes('pasukan') || q.includes('berpasukan')) {
+            if (q.includes('team') || q.includes('teamwork') || q.includes('leadership') || q.includes('leader') || q.includes('pasukan') || q.includes('berpasukan') || q.includes('团队') || q.includes('合作') || q.includes('领导') || q.includes('குழுப்பணி') || q.includes('collaboration') || q.includes('kepimpinan')) {
                 if (lang === 'bm') {
                     return `Irfan seorang <strong>pemain berpasukan yang hebat dan berdisiplin tinggi</strong>. Pengalaman kepimpinan tentera simpanan Askar Wataniah melatih beliau mengutamakan komunikasi berkesan, tanggungjawab bersama, dan menyokong rakan sepasukan.`;
                 }
@@ -1618,7 +1618,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 9. FAST LEARNING & ADAPTABILITY
-            if (q.includes('fast learner') || q.includes('learn') || q.includes('belajar cepat') || q.includes('cepat') || q.includes('adapt')) {
+            if (q.includes('fast learner') || q.includes('learn') || q.includes('belajar cepat') || q.includes('cepat') || q.includes('adapt') || q.includes('自学') || q.includes('适应') || q.includes('கற்றுக்கொள்ளும்') || q.includes('学习能力')) {
                 if (lang === 'bm') {
                     return `Irfan seorang <strong>pembelajar yang sangat cepat</strong>. Beliau menguasai YOLOv8 PyTorch, Cloudflare Workers, dan Festo Industrial AI secara berdikari dalam masa singkat untuk menyempurnakan projek beliau.`;
                 }
@@ -1678,7 +1678,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 10. LOCATION & RELOCATION
-            if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah') || q.includes('where') || q.includes('located') || q.includes('mana') || q.includes('duduk')) {
+            if (q.includes('location') || q.includes('puchong') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah') || q.includes('where') || q.includes('located') || q.includes('mana') || q.includes('duduk') || q.includes('住哪里') || q.includes('இருக்கிறீர்கள்') || q.includes('outstation') || q.includes('出差') || q.includes('புச்சோங்')) {
                 if (lang === 'bm') {
                     return `Irfan menetap di <strong>Puchong, Selangor, Malaysia</strong>. Beliau bersikap terbuka untuk lokasi kerja On-site, Hybrid, atau Remote, serta bersedia untuk tugasan luar kawasan (travel/outstation) dan penempatan semula jika diperlukan.`;
                 }
@@ -1686,7 +1686,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
 
             // 11. WHY HIRE IRFAN / STRENGTHS
-            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil') || q.includes('pilih') || q.includes('patut') || q.includes('kenapa') || q.includes('亮点') || q.includes('சிறப்பு') || q.includes('அம்சம்')) {
+            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil') || q.includes('pilih') || q.includes('patut') || q.includes('kenapa') || q.includes('亮点') || q.includes('சிறப்பு') || q.includes('அம்சம்') || q.includes('highlights') || q.includes('雇用') || q.includes('ஏன்') || q.includes('选择')) {
                 if (lang === 'bm') {
                     return `<strong>Kelebihan Utama Irfan:</strong><br>1. <strong>Penguasaan Dwi-Bidang:</strong> Merapatkan jurang Perkakasan (IoT/Embedded), Rangkaian (Cisco CCNA), & Perisian/AI (YOLOv8 PyTorch).<br>2. <strong>Pencapaian Terbukti:</strong> Anugerah Pelajar Terbaik Kolej Komuniti (CGPA 3.58) & Projek Capstone AI (77.4% precision).<br>3. <strong>Disiplin Askar Wataniah:</strong> Berdaya tahan tinggi di bawah tekanan dan mempunyai etika kerja cemerlang.`;
                 } else if (lang === 'cn') {
@@ -1698,40 +1698,32 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            // 11. WEB DEV & FULLSTACK
-            if (q.includes('web') || q.includes('fullstack') || q.includes('full stack') || q.includes('frontend') || q.includes('backend') || q.includes('html') || q.includes('css') || q.includes('javascript') || q.includes('react') || q.includes('node') || q.includes('api') || q.includes('restful')) {
+            // 12. WEB DEV & FULLSTACK
+            if (q.includes('web') || q.includes('fullstack') || q.includes('full stack') || q.includes('frontend') || q.includes('backend') || q.includes('html') || q.includes('css') || q.includes('javascript') || q.includes('react') || q.includes('node') || q.includes('api') || q.includes('restful') || q.includes('இணையதள') || q.includes('உருவாக்கம்')) {
                 if (lang === 'bm') {
                     return `Irfan membina aplikasi web modern menggunakan <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Design), JavaScript (ES6+), Node.js, dan Integrasi RESTful API</strong>.`;
                 }
                 return `Irfan builds modern web applications utilizing <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Layouts), JavaScript (ES6+), Node.js, and RESTful API Integration</strong>.`;
             }
 
-            // 12. LANGUAGES SPOKEN
-            if (q.includes('languages spoken') || q.includes('cakap bahasa') || q.includes('bisa bahasa') || q.includes('mandarin') || q.includes('fluency') || q.includes('bahasa') || q.includes('kuasai')) {
+            // 13. LANGUAGES SPOKEN
+            if (q.includes('languages spoken') || q.includes('cakap bahasa') || q.includes('bisa bahasa') || q.includes('mandarin') || q.includes('fluency') || q.includes('bahasa') || q.includes('kuasai') || q.includes('语言') || q.includes('说哪些') || q.includes('மொழிகள்') || q.includes('பேசுவீர்கள்') || q.includes('fluent') || q.includes('fasih') || q.includes('精通')) {
                 if (lang === 'bm') {
                     return `Irfan fasih dalam <strong>Bahasa Melayu & English</strong>, serta mempunyai pemahaman asas bahasa ketiga.`;
                 }
                 return `Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with foundational understanding of regional languages.`;
             }
 
-            // 6. AVAILABILITY & GRADUATION
-            if (q.includes('available') || q.includes('start') || q.includes('bila boleh') || q.includes('notice') || q.includes('graduation') || q.includes('graduat') || q.includes('bila habis') || q.includes('expected')) {
+            // 14. AVAILABILITY & GRADUATION
+            if (q.includes('available') || q.includes('availability') || q.includes('start') || q.includes('bila boleh') || q.includes('notice') || q.includes('graduation') || q.includes('graduat') || q.includes('bila habis') || q.includes('expected') || q.includes('毕业') || q.includes('到岗') || q.includes('பட்டமளிப்பு') || q.includes('எப்போது') || q.includes('segera')) {
                 if (lang === 'bm') {
                     return `Irfan dijangka bergraduan pada <strong>November 2026</strong> dari UTeM. Beliau sedia membincangkan tarikh mula kerja dan penyertaan latihan industri/sepenuh masa mengikut jadual universiti dan keperluan majikan.`;
                 }
                 return `Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.`;
             }
 
-            // 7. WHY HIRE IRFAN / STRENGTHS
-            if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil')) {
-                if (lang === 'bm') {
-                    return `<strong>Kelebihan Utama Irfan:</strong><br>1. <strong>Penguasaan Dwi-Bidang:</strong> Merapatkan jurang Perkakasan (IoT/Embedded), Rangkaian (Cisco CCNA), & Perisian/AI (YOLOv8 PyTorch).<br>2. <strong>Pencapaian Terbukti:</strong> Anugerah Pelajar Terbaik Kolej Komuniti (CGPA 3.58) & Projek Capstone AI (77.4% precision).<br>3. <strong>Disiplin Askar Wataniah:</strong> Berdaya tahan tinggi di bawah tekanan dan mempunyai etika kerja cemerlang.`;
-                }
-                return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.`;
-            }
-
-            // 8. SALARY & REMUNERATION
-            if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout')) {
+            // 15. SALARY & REMUNERATION
+            if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout') || q.includes('薪水') || q.includes('薪资') || q.includes('சம்பளம்')) {
                 if (lang === 'bm') {
                     return `Mengenai julat gaji dan pakej imbuhan, Irfan bersikap sangat terbuka untuk berbincang secara terus semasa sesi temuduga atau melalui borang hubungan rasmi.`;
                 } else if (lang === 'cn') {
@@ -1743,8 +1735,8 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            // 9. SHIFT & FLEXIBILITY
-            if (q.includes('shift') || q.includes('syif') || q.includes('overtime') || q.includes('waktu kerja') || q.includes('working hours') || q.includes('relocate') || q.includes('outstation')) {
+            // 16. SHIFT & FLEXIBILITY
+            if (q.includes('shift') || q.includes('syif') || q.includes('overtime') || q.includes('waktu kerja') || q.includes('working hours') || q.includes('夜班') || q.includes('轮班') || q.includes('加班') || q.includes('ஷிப்ட்') || q.includes('hujung minggu') || q.includes('远程')) {
                 if (lang === 'bm') {
                     return `Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.`;
                 } else if (lang === 'cn') {
@@ -1756,28 +1748,20 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 }
             }
 
-            // 10. HARDWARE & IOT & EMBEDDED
-            if (q.includes('iot') || q.includes('arduino') || q.includes('embedded') || q.includes('sensor') || q.includes('sensors') || q.includes('hardware') || q.includes('electronic') || q.includes('electronics') || q.includes('easyeda') || q.includes('pcb')) {
+            // 17. HARDWARE & IOT & EMBEDDED
+            if (q.includes('iot') || q.includes('arduino') || q.includes('embedded') || q.includes('sensor') || q.includes('sensors') || q.includes('hardware') || q.includes('electronic') || q.includes('electronics') || q.includes('easyeda') || q.includes('pcb') || q.includes('传感器') || q.includes('集成') || q.includes('terbenam')) {
                 if (lang === 'bm') {
                     return `Irfan mempunyai kemahiran kukuh dalam <strong>Sistem Terbenam (Embedded Systems), IoT, Arduino, Integrasi Sensor, dan Reka Bentuk Litar EasyEDA</strong> berasaskan pengajian Diploma Kejuruteraan Elektronik (Komputer) di Politeknik Port Dickson.`;
                 }
                 return `Irfan possesses solid hands-on experience in <strong>Embedded Systems, IoT, Arduino, Sensor Integration, and EasyEDA Circuit Design</strong> gained during his Electronic Engineering (Computer) Diploma at Politeknik Port Dickson.`;
             }
 
-            // 11. WEB DEV & FULLSTACK
-            if (q.includes('web') || q.includes('fullstack') || q.includes('full stack') || q.includes('frontend') || q.includes('backend') || q.includes('html') || q.includes('css') || q.includes('javascript') || q.includes('react') || q.includes('node')) {
+            // 18. CONTACT DETAILS
+            if (q.includes('contact') || q.includes('telefon') || q.includes('nombor') || q.includes('phone') || q.includes('email') || q.includes('emel') || q.includes('hubungi') || q.includes('reach') || q.includes('call') || q.includes('whatsapp') || q.includes('联系') || q.includes('电话') || q.includes('邮箱') || q.includes('தொடர்பு') || q.includes('turnstile') || q.includes('modal')) {
                 if (lang === 'bm') {
-                    return `Irfan membina aplikasi web modern menggunakan <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Design), JavaScript (ES6+), Node.js, dan Integrasi RESTful API</strong>.`;
+                    return `Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!`;
                 }
-                return `Irfan builds modern web applications utilizing <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Layouts), JavaScript (ES6+), Node.js, and RESTful API Integration</strong>.`;
-            }
-
-            // 12. LANGUAGES SPOKEN
-            if (q.includes('languages spoken') || q.includes('cakap bahasa') || q.includes('bisa bahasa') || q.includes('mandarin') || q.includes('fluency') || q.includes('bahasa apa')) {
-                if (lang === 'bm') {
-                    return `Irfan fasih dalam <strong>Bahasa Melayu & English</strong>, serta mempunyai pemahaman asas bahasa ketiga.`;
-                }
-                return `Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with foundational understanding of regional languages.`;
+                return `You can complete the Cloudflare Turnstile verification in the Contact modal to reveal Irfan's official Email & Phone number directly!`;
             }
 
             // 13. CONTACT DETAILS
@@ -1803,6 +1787,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 skills_industrial_ai: 0
             };
 
+            // Narrow sub-question flags
             const isDiplomaSpecific = (q.includes('diploma') || q.includes('port dickson')) && !q.includes('sijil') && !q.includes('degree');
             const isCertificateSpecific = (q.includes('sijil') || q.includes('komuniti') || q.includes('selandar')) && !q.includes('diploma') && !q.includes('degree');
             const isDegreeSpecific = (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor')) && !q.includes('diploma');
@@ -1814,7 +1799,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             const isFestoSpecific = (q.includes('festo')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila'));
 
             // General keyword overlap scoring against RESUME_DATA
-            if (q.includes('diploma') || q.includes('port dickson') || q.includes('3.26')) scores.diploma_cgpa += 5;
+            if (q.includes('diploma') || q.includes('port dickson') || q.includes('3.26') || q.includes('文凭') || q.includes('学历')) scores.diploma_cgpa += 5;
             if (q.includes('education') || q.includes('pendidikan') || q.includes('academic') || q.includes('akademik') || q.includes('school') || q.includes('belajar') || q.includes('study')) scores.diploma_cgpa += 4;
             if (q.includes('cgpa') || q.includes('gred') || q.includes('grade') || q.includes('pointer')) {
                 scores.diploma_cgpa += 4;
@@ -1827,9 +1812,9 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             }
             if (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor') || q.includes(' honours') || q.includes('sarjana muda')) scores.degree_utem += 5;
 
-            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing') || q.includes('split') || q.includes('camera') || q.includes('experiment')) scores.capstone_metrics += 5;
+            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing') || q.includes('split') || q.includes('camera') || q.includes('experiment') || q.includes('毕业') || q.includes('效果') || q.includes('திட்டம்') || q.includes('வெற்றி') || q.includes('结账') || q.includes('条形码') || q.includes('双重')) scores.capstone_metrics += 5;
 
-            if (q.includes('ccna') || q.includes('cisco')) {
+            if (q.includes('ccna') || q.includes('cisco') || q.includes('சிஸ்கோ') || q.includes('考考')) {
                 scores.ccna_dates += 4;
                 scores.skills_networking += 3;
             }
@@ -1838,11 +1823,11 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
                 scores.festo_cert += 2;
             }
 
-            if (q.includes('festo') || q.includes('didactic') || q.includes('predictive') || q.includes('maintenance')) scores.festo_cert += 5;
+            if (q.includes('festo') || q.includes('didactic') || q.includes('predictive') || q.includes('maintenance') || q.includes('预测') || q.includes('维护') || q.includes('automasi') || q.includes('penyelenggaraan') || q.includes('ramalan') || q.includes('工业') || q.includes('自动化')) scores.festo_cert += 5;
 
             if (q.includes('programming') || q.includes('python') || q.includes('c++') || q.includes('coding') || q.includes('language') || q.includes('languages') || q.includes('bahasa pengaturcaraan') || q.includes('kod') || q.includes('sql') || q.includes('mysql') || q.includes('git') || q.includes('pandai') || q.includes('coder') || q.includes('code')) scores.skills_programming += 5;
 
-            if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching') || q.includes('networking') || q.includes('network')) scores.skills_networking += 5;
+            if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching') || q.includes('networking') || q.includes('network') || q.includes('நெட்வொர்க்கிங்')) scores.skills_networking += 5;
 
             if (q.includes('cybersecurity') || q.includes('keselamatan') || q.includes('firewall') || q.includes('threat') || q.includes('endpoint')) scores.skills_cybersecurity += 5;
 

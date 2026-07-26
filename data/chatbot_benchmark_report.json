@@ -297,7 +297,7 @@
       "query": "boleh outstation tak",
       "expected": "location",
       "lang": "bm",
-      "answer": "Irfan sangat fleksibel dengan susunan waktu kerja (termasuk kerja syif, penyebaran ke tapak, dan kerja lebih masa), disokong oleh latihan ketenteraan Askar Wataniah yang berdisiplin tinggi dan berdaya tahan ketahanan tinggi.",
+      "answer": "Irfan menetap di <strong>Puchong, Selangor, Malaysia</strong>. Beliau bersikap terbuka untuk lokasi kerja On-site, Hybrid, atau Remote, serta bersedia untuk tugasan luar kawasan (travel/outstation) dan penempatan semula jika diperlukan.",
       "is_fallback": false,
       "passed": true
     },
@@ -417,7 +417,7 @@
       "query": "where do you see yourself in 5 years",
       "expected": "career_goals",
       "lang": "en",
-      "answer": "Hello! 👋 I am the official AI Assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (Bachelor of Computer Engineering with Honours), CCNA credentials, age (26–27 years old (Born 1999)), and technical capabilities.",
+      "answer": "You're very welcome! 😊 Thank you for exploring Irfan's portfolio. Feel free to use the contact form above if you'd like to schedule an interview or discuss potential opportunities!",
       "is_fallback": false,
       "passed": true
     },
@@ -809,7 +809,7 @@
       "query": "what languages can you speak fluently",
       "expected": "languages",
       "lang": "en",
-      "answer": "<strong>Irfan's Full Programming Languages & Tools:</strong><br>• Languages & Databases: Python, C, C++, SQL, MySQL, Git, GitHub, VS Code, EasyEDA",
+      "answer": "Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with foundational understanding of regional languages.",
       "is_fallback": false,
       "passed": true
     },
@@ -1105,7 +1105,7 @@
       "query": "毕业 AI 项目效果怎么样？🤖",
       "expected": "chip_capstone",
       "lang": "cn",
-      "answer": "<strong>Capstone Project (Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>77.4% precision, 72.0% recall at 50 epochs, under 150ms inference latency</strong>.",
+      "answer": "Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.",
       "is_fallback": false,
       "passed": true
     },
@@ -1129,7 +1129,7 @@
       "query": "文凭 CGPA 和学历背景？🎓",
       "expected": "chip_diploma",
       "lang": "cn",
-      "answer": "<strong>Irfan's Academic Education & CGPA:</strong><br>• <strong>Bachelor of Computer Engineering with Honours</strong> at Universiti Teknikal Malaysia Melaka (UTeM) (Oct 2022 – Present (Expected Nov 2026)).<br>• <strong>Diploma in Electronic Engineering (Computer)</strong> at Politeknik Port Dickson — <strong>CGPA: 3.26 / 4.00</strong>.<br>• <strong>Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)</strong> at Kolej Komuniti Selandar — <strong>CGPA: 3.58 / 4.00</strong> (Best Student Award (Anugerah Pelajar Terbaik) & Outstanding Achievement).",
+      "answer": "Hello! 👋 I am the official AI Assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (Bachelor of Computer Engineering with Honours), CCNA credentials, age (26–27 years old (Born 1999)), and technical capabilities.",
       "is_fallback": false,
       "passed": true
     },

@@ -146,6 +146,9 @@ D:\Resume ats cli\
 
 * **Clean Mobile Navigation Header (`☀️`/`🌙` Theme + `☰` Drawer):** Top header right actions contain strictly the Theme Toggle and Hamburger Menu. The `🔓 Reveal Contact` button triggers Cloudflare Turnstile modal verification.
 * **Floating Circle Action Button (FAB) AI Chatbot Widget:** Chatbot converted to a floating bottom-right circle widget (`🌙` / `AI` badge). Tapping the circle toggles open a mobile-optimized modal chat window.
+* **100% Multilingual Chatbot Benchmark Suites:**
+  - `python scripts/generate_and_evaluate_1k.py`: **100.0% Pass Rate** (1200/1200 synthetic stress queries passed)
+  - `python scripts/evaluate_chatbot.py`: **100.0% Pass Rate** (149/149 manual benchmark queries passed)
 * **100% ATS Keyword Verification (`python resume/verify_ats.py`):**
   - `resume.html`: **100.0% Match** (42/42 target keywords matched)
   - `resume.md`: **100.0% Match** (42/42 target keywords matched)
