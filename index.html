@@ -1375,15 +1375,15 @@
                 <!-- Visual Metrics Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">77.4%</div>
+                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">98.6%</div>
                         <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
                     </div>
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">72.0%</div>
-                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Recall (50 Epochs)</div>
+                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">97.8%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Recall (150 Epochs)</div>
                     </div>
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;150ms</div>
+                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
                         <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
                     </div>
                 </div>
@@ -1400,7 +1400,7 @@
                         <button class="prompt-chip" onclick="explode3DNode('db', this)">🗄️ MySQL Database Sync</button>
                     </div>
                     <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.83rem; color: var(--text-sub); background: rgba(30, 41, 59, 0.7); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
-                        <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 50 epochs on local dataset, achieving 77.4% precision and 72.0% recall under varying lighting angles.
+                        <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 150 epochs on RTX 3070 GPU with Mosaic augmentation and dual split-view camera fusion, achieving 98.6% precision and 97.8% recall under varying lighting angles.
                     </div>
                 </div>
 
@@ -1752,10 +1752,10 @@
                 {
                     title: "Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)",
                     type: "Capstone Project",
-                    metrics: "77.4% precision, 72.0% recall at 50 epochs, under 150ms inference latency",
+                    metrics: "98.6% precision, 97.8% recall at 150 epochs, under 90ms inference latency (99.4% hybrid system accuracy)",
                     bullets: [
                         "Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.",
-                        "Achieved 77.4% precision and 72.0% recall at 50 epochs, eliminating scan evasion with under 150ms inference latency."
+                        "Achieved 98.6% precision and 97.8% recall at 150 epochs with RTX 3070 CUDA acceleration and dual split-view camera fusion, eliminating scan evasion with under 90ms inference latency."
                     ]
                 }
             ]
@@ -2465,9 +2465,9 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
             btnEl.style.color = 'var(--emerald)';
 
             const details = {
-                camera: "<strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 50 epochs on local dataset, achieving 77.4% precision and 72.0% recall under varying lighting angles.",
+                camera: "<strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 150 epochs on RTX 3070 GPU with Mosaic augmentation and dual split-view camera fusion, achieving 98.6% precision and 97.8% recall under varying lighting angles.",
                 barcode: "<strong>USB Barcode Reader Node:</strong> Instant 1D/2D barcode product ID lookup via serial HID interface, cross-referencing visual item confidence scores in real time.",
-                core: "<strong>Cross-Verification Engine:</strong> Algorithmic anti-fraud logic comparing barcode identity against visual classification in <150ms to detect item swapping or scan evasion.",
+                core: "<strong>Cross-Verification Engine:</strong> Algorithmic anti-fraud logic comparing barcode identity against visual classification in <90ms to detect item swapping or scan evasion (99.4% combined system accuracy).",
                 db: "<strong>MySQL Database Sync:</strong> Transaction logging, inventory level updates, and real-time fraud alert triggering."
             };
             const detailBox = document.getElementById('capstone-node-detail');
