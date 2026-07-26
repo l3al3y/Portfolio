@@ -943,10 +943,12 @@
             <!-- Desktop Links -->
             <ul class="nav-links">
                 <li><a href="#hero">Overview</a></li>
+                <li><a href="#experience">Work Experience</a></li>
                 <li><a href="#skills">Technical Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="javascript:void(0)" onclick="openPrintableResumeModal()" style="color: var(--emerald); font-weight:700;">📄 1-Page Resume</a></li>
             </ul>
 
             <!-- Clean Top Actions: Light/Dark Mode + Hamburger Menu Only -->
@@ -960,10 +962,12 @@
         <div class="mobile-nav-drawer" id="mobile-nav-drawer">
             <ul>
                 <li><a href="#hero" onclick="closeMobileMenu()">Overview</a></li>
+                <li><a href="#experience" onclick="closeMobileMenu()">Work Experience</a></li>
                 <li><a href="#skills" onclick="closeMobileMenu()">Technical Skills</a></li>
                 <li><a href="#education" onclick="closeMobileMenu()">Education</a></li>
                 <li><a href="#certifications" onclick="closeMobileMenu()">Certifications</a></li>
                 <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openPrintableResumeModal();" style="color: var(--emerald); font-weight:700;">📄 Printable 1-Page Resume</a></li>
                 <li><a href="javascript:void(0)" onclick="closeMobileMenu(); toggleFloatingChat();" style="color: var(--purple); font-weight:700;">💬 Open AI Assistant</a></li>
                 <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openSecurityModal();" style="color: var(--emerald); font-weight: 700;">🔓 Reveal Contact Info</a></li>
             </ul>
@@ -1019,6 +1023,73 @@
         </div>
     </div>
 
+    <!-- Printable 1-Page Resume Modal / Sub-Page -->
+    <div class="modal-overlay" id="printable-resume-modal">
+        <div class="modal-card" style="max-width: 850px; width: 95%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin: 0;">📄 Printable 1-Page Resume</h3>
+                <button class="prompt-chip" onclick="closePrintableResumeModal()">✕ Close</button>
+            </div>
+            
+            <div style="background: rgba(15, 23, 42, 0.95); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-card); max-height: 70vh; overflow-y: auto;">
+                <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 1rem;">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--emerald)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: #fff; flex-shrink: 0;">
+                        IF
+                    </div>
+                    <div>
+                        <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.25rem 0;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h2>
+                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 600;">Computer Engineering Graduate • Cisco CCNA & Cybersecurity • Festo Industrial AI</div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Puchong, Selangor, Malaysia</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">💼 WORK EXPERIENCE</h4>
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
+                            <span>Technical Staff — Global Elite Ventures Sdn. Bhd</span>
+                            <span style="color: var(--text-sub); font-size: 0.75rem;">27 Sept 2021 – 31 July 2022</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Implementation & optimization of technical solutions, technical troubleshooting, hardware/software deployment.</div>
+                    </div>
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
+                            <span>Contract Assistant Engineer — ARNN Technologies & Karar Solution</span>
+                            <span style="color: var(--text-sub); font-size: 0.75rem;">1 June 2020 – 30 July 2020</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Assisted in engineering projects execution, technical troubleshooting, and project objective management.</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
+                            <span>Technician — OKCS Seri Kembangan</span>
+                            <span style="color: var(--text-sub); font-size: 0.75rem;">1 June 2018 – 1 Nov 2018</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration.</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">🎓 EDUCATION</h4>
+                    <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>B.Eng Computer Engineering (Hons)</strong> — Universiti Teknikal Malaysia Melaka (Expected Nov 2026)</div>
+                    <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson (CGPA 3.26)</div>
+                    <div style="font-size: 0.85rem;">• <strong>Certificate in Computer Systems & Networking</strong> — Kolej Komuniti Selandar (CGPA 3.58 - Best Student Award)</div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">🔬 KEY CAPSTONE PROJECT</h4>
+                    <div style="font-size: 0.85rem; line-height: 1.5;">
+                        <strong>Hybrid Self-Checkout System (YOLOv8 + USB Barcode Scanner):</strong> Anti-fraud dual verification system. <strong>77.4% Precision</strong>, <strong>72.0% Recall</strong> (50 epochs), under 150ms inference latency.
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem;">
+                <a href="resume/resume.pdf" target="_blank" download class="btn btn-emerald" style="flex: 1; justify-content: center; font-size: 0.85rem;">⬇️ Download PDF Resume</a>
+                <a href="resume/resume.html" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.85rem;">🖨️ Open Printable A4 Page</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="container hero-grid">
@@ -1052,17 +1123,61 @@
             </div>
 
             <!-- Resume Quick Snapshot Card -->
-            <div class="glass-card">
-                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary);">
-                    Candidate Snapshot
+            <div class="glass-card" style="text-align: center;">
+                <div style="width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 1rem auto; background: linear-gradient(135deg, var(--primary), var(--emerald)); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; color: #ffffff; border: 3px solid var(--border-card); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+                    IF
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary);">
+                    MUHAMMAD IRFAN FAHMI
                 </h3>
-                <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem;">
+                <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.85rem; text-align: left;">
                     <div><strong>Education:</strong> B.Eng Computer Engineering (UTeM)</div>
                     <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI</div>
-                    <div><strong>Core Expertise:</strong> OSPF, VLAN, Computer Vision (YOLOv8), IT Support, Embedded IoT</div>
-                    <div><strong>Military Reserve:</strong> Askar Wataniah (High Discipline & Pressure Resilience)</div>
-                    <div><strong>Location:</strong> Puchong, Malaysia</div>
+                    <div><strong>Work Experience:</strong> Global Elite Ventures • ARNN Tech • OKCS</div>
+                    <div><strong>Core Expertise:</strong> OSPF, VLAN, Computer Vision (YOLOv8), IT Support, IoT</div>
+                    <div><strong>Military Reserve:</strong> Askar Wataniah (High Discipline)</div>
+                    <div><strong>Location:</strong> Puchong, Selangor, Malaysia</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK EXPERIENCE (Mirroring resume.html & MauKerja) -->
+    <section class="resume-mirror-section" id="experience">
+        <div class="container glass-card">
+            <h2 class="section-title-main">Work Experience</h2>
+
+            <div class="resume-entry-card">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Technical Staff</div>
+                    <div class="entry-dates">27 Sept 2021 – 31 July 2022</div>
+                </div>
+                <div class="entry-institution">Global Elite Ventures Sdn. Bhd</div>
+                <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+                    Contributed to the implementation and optimization of advanced technical solutions, technical troubleshooting, hardware/software deployment, ensuring seamless operations and enhancing overall efficiency within the organization.
+                </p>
+            </div>
+
+            <div class="resume-entry-card">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Contract Assistant Engineer</div>
+                    <div class="entry-dates">1 June 2020 – 30 July 2020</div>
+                </div>
+                <div class="entry-institution">ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd</div>
+                <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+                    Assisted in the development and execution of engineering projects, applying expertise in technical troubleshooting and problem-solving to achieve project objectives within specified timelines.
+                </p>
+            </div>
+
+            <div class="resume-entry-card" style="border:none; padding-bottom:0;">
+                <div class="entry-top-row">
+                    <div class="entry-role-title">Technician</div>
+                    <div class="entry-dates">1 June 2018 – 1 Nov 2018</div>
+                </div>
+                <div class="entry-institution">OKCS Seri Kembangan</div>
+                <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+                    Performed meticulous diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration, ensuring optimal functionality and reliability of equipment.
+                </p>
             </div>
         </div>
     </section>
@@ -1277,6 +1392,16 @@
                     renderRandomChips();
                 }
             }
+        }
+
+        function openPrintableResumeModal() {
+            const modal = document.getElementById('printable-resume-modal');
+            if (modal) modal.classList.add('active');
+        }
+
+        function closePrintableResumeModal() {
+            const modal = document.getElementById('printable-resume-modal');
+            if (modal) modal.classList.remove('active');
         }
 
         /* -------------------------------------------------------------
