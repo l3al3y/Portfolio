@@ -118,7 +118,8 @@ D:\Resume ats cli\
 │   ├── sync_all_portals.py           # Multi-Portal Sync Engine Launcher
 │   └── job_agent.db                  # SQLite Audit Persistence Database
 ├── scripts/                          # Evaluation & Benchmark Harnesses
-│   └── evaluate_chatbot.py           # 117-Query Chatbot Intelligence Evaluator (100.0% Benchmark)
+│   ├── evaluate_chatbot.py           # 149-Query Challenge Benchmark Evaluator (100.0% Pass)
+│   └── generate_and_evaluate_1k.py   # 1.2K Synthetic High-Throughput Stress Benchmark (100.0% Pass)
 ├── web/                              # Synced Web Application Entry Points
 │   ├── index.html                    # Synced Web Entry Point
 │   └── portfolio.html                # Synced Web Entry Point
