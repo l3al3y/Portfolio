@@ -35,6 +35,16 @@ except ImportError:
 
 logger = logging.getLogger("job_agent.core")
 
+try:
+    from .llm_client import ModelExpertise, execute_parallel_model_tasks
+except ImportError:
+    try:
+        from llm_client import ModelExpertise, execute_parallel_model_tasks
+    except ImportError:
+        ModelExpertise = None
+        execute_parallel_model_tasks = None
+
+
 StateHandler = Callable[[], Awaitable[AgentState]]
 
 
@@ -242,10 +252,39 @@ class JobApplicationAgent:
         logger.info("[THINK_LLM] Pilar Utama: %s | Skor ATS: %.1f%% | Kata Kunci Padan: %s",
                     dominant_pillar, match_score, matched_kws[:6])
 
-        # Jana Cover Letter khusus
-        cover_letter = self.candidate.generate_tailored_cover_letter(
-            self.current_job.title, self.current_job.company, self.current_job.description
-        )
+        # Multi-Model Parallel LLM Task Execution based on Domain Expertise
+        cover_letter = None
+        if execute_parallel_model_tasks and ModelExpertise:
+            try:
+                logger.info("[THINK_LLM] Executing multi-model parallel tasks across Grok 4.5 & DeepSeek V4 Pro...")
+                task_specs = {
+                    "cover_letter": {
+                        "model": ModelExpertise.CREATIVE_WRITING,  # fiq/grok-4.5 for persuasive writing
+                        "messages": [
+                            {"role": "system", "content": "You are a professional career agent writing an impactful cover letter for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR."},
+                            {"role": "user", "content": f"Write a tailored cover letter for position '{self.current_job.title}' at '{self.current_job.company}'. Description:\n{self.current_job.description}"}
+                        ],
+                        "temperature": 0.5
+                    },
+                    "deep_analysis": {
+                        "model": ModelExpertise.DEEP_REASONING,  # fiq/deepseek-v4-pro for deep evaluation
+                        "messages": [
+                            {"role": "system", "content": "You are a senior ATS auditor evaluating candidate alignment."},
+                            {"role": "user", "content": f"Evaluate alignment for '{self.current_job.title}'. Dominant pillar: {dominant_pillar}."}
+                        ],
+                        "temperature": 0.3
+                    }
+                }
+                parallel_out = await execute_parallel_model_tasks(task_specs)
+                if parallel_out.get("cover_letter"):
+                    cover_letter = parallel_out["cover_letter"]
+            except Exception as exc:
+                logger.warning("[THINK_LLM] Parallel LLM execution notice: %s. Using default generator.", exc)
+
+        if not cover_letter:
+            cover_letter = self.candidate.generate_tailored_cover_letter(
+                self.current_job.title, self.current_job.company, self.current_job.description
+            )
 
         self.current_job.match_score = match_score
         self.current_job.dominant_pillar = dominant_pillar
@@ -286,11 +325,35 @@ class JobApplicationAgent:
 
         if not self.is_simulated_browser and self.page:
             try:
+                logger.info("[HUMAN_ACT] Navigasi Playwright ke %s...", self.current_job.url)
+                await self.page.goto(self.current_job.url, timeout=15_000, wait_until="domcontentloaded")
+                await asyncio.sleep(1.0)
+
+                # Semak borang log masuk jika dialihkan ke login page
+                if "login" in self.page.url.lower():
+                    logger.info("[HUMAN_ACT] Portal menghendaki log masuk. Mengisi kredensial...")
+                    email_field = self.page.locator("input[type='email'], input[name='username'], input[name='email']")
+                    pass_field = self.page.locator("input[type='password']")
+                    if await email_field.count() > 0 and await pass_field.count() > 0:
+                        await email_field.first.fill(form_data["email"])
+                        await pass_field.first.fill("AutomatedPassword2026!")
+                        submit_btn = self.page.locator("button[type='submit'], .btn-login, input[type='submit']")
+                        if await submit_btn.count() > 0:
+                            await submit_btn.first.click()
+                            await asyncio.sleep(2.0)
+
+                # Isi borang permohonan kerja
                 for selector, value in [
                     ("input[name='full_name']", form_data["full_name"]),
+                    ("input[name='applicant_full_name']", form_data["full_name"]),
+                    ("#applicant_name", form_data["full_name"]),
                     ("input[name='name']", form_data["full_name"]),
                     ("input[name='email']", form_data["email"]),
+                    ("input[name='applicant_email']", form_data["email"]),
+                    ("#applicant_email", form_data["email"]),
                     ("input[name='phone']", form_data["phone"]),
+                    ("input[name='applicant_phone']", form_data["phone"]),
+                    ("#applicant_phone", form_data["phone"]),
                     ("input[name='linkedin']", form_data["linkedin"]),
                 ]:
                     try:
@@ -303,8 +366,20 @@ class JobApplicationAgent:
                 for selector in ["textarea[name='cover_letter']", "textarea[name='coverLetter']", "textarea"]:
                     try:
                         if await self.page.locator(selector).count() > 0:
-                            await self.page.fill(selector, cover_letter[:500])
+                            await self.page.fill(selector, cover_letter[:1000])
                             await asyncio.sleep(0.4)
+                            break
+                    except Exception:
+                        pass
+
+                # Klik butang submit jika ada
+                for submit_selector in ["button[type='submit']", ".btn-apply-maukerja", "[data-automation='apply-now-button']"]:
+                    try:
+                        btn = self.page.locator(submit_selector)
+                        if await btn.count() > 0:
+                            logger.info("[HUMAN_ACT] Menekan butang penyerahan borang: %s", submit_selector)
+                            await btn.first.click()
+                            await asyncio.sleep(1.0)
                             break
                     except Exception:
                         pass

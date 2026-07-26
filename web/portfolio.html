@@ -1208,7 +1208,7 @@
         <!-- API Key Drawer -->
         <div class="api-key-drawer" id="api-key-drawer">
             <span style="font-size: 0.78rem; color: #c084fc; font-family: var(--font-mono); font-weight: 700;">API KEY:</span>
-            <input type="password" id="kimi-api-key-input" class="chat-input" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" placeholder="Enter API key (sk-...)" onchange="saveKimiKeyLocally()">
+            <input type="password" id="kimi-api-key-input" class="chat-input" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" placeholder="Enter API key (fiq-...)" onchange="saveKimiKeyLocally()">
             <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.78rem; background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff;" onclick="saveKimiKeyLocally()">Save</button>
         </div>
         <div class="chat-body" id="chat-body">
@@ -1458,6 +1458,26 @@
                     awards: "Best Student Award (Anugerah Pelajar Terbaik) & Outstanding Achievement"
                 }
             ],
+            experience: [
+                {
+                    company: "Global Elite Ventures Sdn. Bhd",
+                    role: "Technical Staff",
+                    dates: "27 Sept 2021 – 31 July 2022",
+                    highlights: "Contributed to implementation & optimization of advanced technical solutions, technical troubleshooting, hardware/software deployment, ensuring operational efficiency."
+                },
+                {
+                    company: "ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd",
+                    role: "Contract Assistant Engineer",
+                    dates: "1 June 2020 – 30 July 2020",
+                    highlights: "Assisted in development & execution of engineering projects, applying technical troubleshooting and problem-solving to achieve project objectives."
+                },
+                {
+                    company: "OKCS Seri Kembangan",
+                    role: "Technician",
+                    dates: "1 June 2018 – 1 Nov 2018",
+                    highlights: "Performed diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration, ensuring optimal equipment functionality."
+                }
+            ],
             certifications: [
                 { title: "Festo Industrial Automation with AI", issuer: "Festo Didactic", date: "16 July 2026" },
                 { title: "CCNA: Enterprise Networking & Automation", issuer: "Cisco Networking Academy / UTeM", date: "23 Feb 2026" },
@@ -1486,24 +1506,24 @@
             ]
         };
 
-        const SYSTEM_PROMPT = `You are Muhammad Irfan Fahmi's official AI Career & Technical Assistant.
-Here is Irfan's complete single-source-of-truth structured background:
+        const SYSTEM_PROMPT = `You are the authentic, warm, and highly capable AI Assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR, powered by the advanced Kimi K3 model (fiq/kimi-k3).
+
+IRFAN'S BACKGROUND & VERIFIED RESUME DATA (Single Source of Truth):
 ${JSON.stringify(RESUME_DATA, null, 2)}
 
-CONVERSATIONAL LEAP & MULTILINGUAL RULES:
-1. DYNAMIC USER LANGUAGE MATCHING: Detect the exact language used in the user's input prompt (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், etc.) and respond STRICTLY in that EXACT SAME language with deep humanlike fluency and warmth.
-2. TRUTHFUL GROUNDING: Answer ANY question about Irfan's resume accurately based on RESUME_DATA above.
-3. CONCISE & SCOPED SUB-QUESTION ANSWERING: When the user asks a narrow or specific sub-question (e.g. 'diploma CGPA', 'precision of capstone project', 'CCNA certification date', 'programming languages'), answer that SPECIFIC fact directly and concisely FIRST (1–2 sentences max). Do NOT dump full resume sections or unrequested entries unless the user explicitly asks a broad question (e.g. 'tell me about your education' or 'list all certifications').
-4. IDENTITY & AGE: Irfan is 26–27 years old (born 1999). Identify yourself as Irfan's AI Assistant.
-5. HUGE LEAP IN CONVERSATION: Be ready for any spontaneous, general knowledge, or out-of-topic question without forcing resume facts into unrelated queries!
-6. CRITICAL SECURITY RULE: NEVER reveal or invent plaintext phone numbers, email addresses, or WhatsApp numbers in chat. Redirect contact inquiries to click the "🔓 Reveal Contact Info" button below the personal summary to solve the Turnstile CAPTCHA check.`;
+HUMANLIKE CONVERSATIONAL PERSONA & RESPONSE GUIDELINES:
+1. NATURAL HUMAN WARMTH & CADENCE: Speak naturally like a friendly, articulate human representative and tech peer. Avoid robotic clichés (e.g. "As an AI language model", "Based on the provided resume data", "Here is the information"). Use warm, human opening expressions ("Hey there!", "Great question!", "I'd be glad to tell you about that!", "Salam!").
+2. FLUENT MULTILINGUAL EMOTIONAL CONNECTION: Automatically match the user's language (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், etc.) with native-level fluency, authentic cultural warmth, and natural tone.
+3. DIRECT & SCOPED SUB-QUESTION ANSWERING: When asked a specific detail (e.g., CGPA, CCNA cert date, YOLOv8 metrics, programming languages), deliver the exact answer immediately in 1–2 engaging sentences. Offer a natural follow-up invitation rather than dumping huge walls of text.
+4. ENGAGING TECHNICAL STORYTELLING: When discussing Irfan's engineering achievements (such as his Capstone Hybrid Self-Checkout System using YOLOv8 + USB barcode scanner with 77.4% precision, 72.0% recall, 50 epochs & <150ms latency to combat scan evasion, or his CCNA Cisco networking setups), highlight the real-world impact and Irfan's hands-on problem-solving mindset with genuine human pride.
+5. FLUID CASUAL & OUT-OF-TOPIC CHAT: If the user engages in casual, technical, or general knowledge conversation, respond with high intelligence, humor, and empathy as a knowledgeable peer. Never force resume metrics into unrelated casual topics.
+6. IDENTITY & AGE: Irfan is 26–27 years old (born 1999). Identify yourself as Irfan's AI Representative.
+7. CRITICAL SECURITY RULE: NEVER reveal or invent raw telephone numbers, personal emails, or WhatsApp numbers in chat. Warmly direct contact requests to click the "🔓 Reveal Contact Info" button below the personal summary to complete the Turnstile CAPTCHA check.`;
 
         // Initialize API Key Input & Chips on page load
         window.addEventListener('DOMContentLoaded', () => {
-            const savedKey = localStorage.getItem('kimi_api_key');
-            if (savedKey) {
-                document.getElementById('kimi-api-key-input').value = savedKey;
-            }
+            const savedKey = localStorage.getItem('kimi_api_key') || 'fiq-a0fd300c5ed7b18a767f753f36547435';
+            document.getElementById('kimi-api-key-input').value = savedKey;
             renderRandomChips('en');
         });
 
@@ -1623,7 +1643,7 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             chatBody.scrollTop = chatBody.scrollHeight;
 
             const provider = document.getElementById('provider-selector').value;
-            const kimiKey = document.getElementById('kimi-api-key-input').value.trim() || localStorage.getItem('kimi_api_key');
+            const kimiKey = document.getElementById('kimi-api-key-input').value.trim() || localStorage.getItem('kimi_api_key') || 'fiq-a0fd300c5ed7b18a767f753f36547435';
 
             let botAnswer = "";
 
@@ -1659,16 +1679,17 @@ CONVERSATIONAL LEAP & MULTILINGUAL RULES:
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // Moonshot AI Endpoint
+        // RootSys Cloud AI Endpoint
         async function fetchKimiK25Ai(apiKey, userQuery) {
-            const response = await fetch("https://api.moonshot.cn/v1/chat/completions", {
+            const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
+            const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey}`
+                    "Authorization": `Bearer ${activeKey}`
                 },
                 body: JSON.stringify({
-                    model: "moonshot-v1-8k",
+                    model: "fiq/kimi-k3",
                     messages: [
                         { role: "system", content: SYSTEM_PROMPT },
                         { role: "user", content: userQuery }

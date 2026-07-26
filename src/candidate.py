@@ -19,6 +19,15 @@ from typing import Dict, List, Optional, Set
 
 logger = logging.getLogger("job_agent.candidate")
 
+try:
+    from .llm_client import query_kimi3
+except ImportError:
+    try:
+        from llm_client import query_kimi3
+    except ImportError:
+        query_kimi3 = None
+
+
 
 @dataclass
 class EducationItem:
@@ -45,6 +54,15 @@ class ProjectItem:
 
 
 @dataclass
+class WorkExperienceItem:
+    company: str
+    role: str
+    period: str
+    details: str
+
+
+
+@dataclass
 class CandidateProfile:
     name: str = "MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR"
     email: str = "f********7@gmail.com [PROTECTED]"
@@ -57,6 +75,7 @@ class CandidateProfile:
     education: List[EducationItem] = field(default_factory=list)
     certifications: List[CertificationItem] = field(default_factory=list)
     projects: List[ProjectItem] = field(default_factory=list)
+    work_experience: List[WorkExperienceItem] = field(default_factory=list)
     awards: List[str] = field(default_factory=list)
     keywords_by_pillar: Dict[str, List[str]] = field(default_factory=dict)
     all_keywords: List[str] = field(default_factory=list)
@@ -172,6 +191,27 @@ class CandidateProfile:
                 tagline="INOTEK 2025 3rd Place Award Winner",
                 tech_stack=["Arduino", "Load cell strain gauges", "HX711 ICs", "C/C++", "Wireless telemetry"],
                 metrics="98%+ measurement precision, real-time data logging dashboard."
+            )
+        ]
+
+        profile.work_experience = [
+            WorkExperienceItem(
+                company="Global Elite Ventures Sdn. Bhd",
+                role="Technical Staff",
+                period="27 Sept 2021 – 31 July 2022",
+                details="Contributed to implementation & optimization of advanced technical solutions, technical troubleshooting, hardware/software deployment, ensuring operational efficiency."
+            ),
+            WorkExperienceItem(
+                company="ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd",
+                role="Contract Assistant Engineer",
+                period="1 June 2020 – 30 July 2020",
+                details="Assisted in development and execution of engineering projects, applying expertise in troubleshooting and problem-solving to achieve project objectives."
+            ),
+            WorkExperienceItem(
+                company="OKCS Seri Kembangan",
+                role="Technician",
+                period="1 June 2018 – 1 Nov 2018",
+                details="Performed diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration, ensuring optimal equipment functionality."
             )
         ]
 
@@ -371,13 +411,34 @@ class CandidateProfile:
             "dual_confidence": dual_confidence,
         }
 
-    def generate_tailored_cover_letter(self, job_title: str, company: str, job_description: str) -> str:
+    def generate_tailored_cover_letter(self, job_title: str, company: str, job_description: str, use_llm: bool = True) -> str:
         """
         Menjana surat iringan khusus (tailored cover letter) berasaskan
         pilar kepakaran calon dan keperluan jawatan.
         """
         analysis = self.analyze_job_match(job_title, job_description)
         dominant_pillar = analysis["dominant_pillar"]
+
+        if use_llm and query_kimi3:
+            messages = [
+                {
+                    "role": "system",
+                    "content": (
+                        "You are an expert career agent writing a professional, highly-tailored cover letter "
+                        "for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR (Bachelor of Computer Engineering Hons, UTeM).\n"
+                        f"Candidate Profile & Pillar: {dominant_pillar}\n"
+                        f"Matched Keywords: {', '.join(analysis['matched_keywords'][:10])}\n"
+                        "Rules: Keep it professional, impactful, concise (3-4 paragraphs max). Do not invent false credentials."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": f"Write a tailored cover letter for the position '{job_title}' at '{company}'. Job Description:\n{job_description}"
+                }
+            ]
+            llm_letter = query_kimi3(messages=messages, temperature=0.5)
+            if llm_letter:
+                return llm_letter
 
         if dominant_pillar == "Networking":
             focus_intro = "dengan latar belakang kukuh dalam Kejuruteraan Rangkaian & Infrastruktur Komputer (pemegang CCNA Enterprise & Wireless)."

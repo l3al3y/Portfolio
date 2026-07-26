@@ -360,6 +360,22 @@ def handle_portal_sync(args: argparse.Namespace, is_human: bool) -> None:
         emit_json({"portal": portal, "results": results}, fields=args.fields)
 
 
+def handle_portal_update_profile(args: argparse.Namespace, is_human: bool) -> None:
+    try:
+        from maukerja_profile_updater import update_maukerja_candidate_profile
+    except ImportError:
+        from src.maukerja_profile_updater import update_maukerja_candidate_profile
+
+    res = asyncio.run(update_maukerja_candidate_profile(headless=not is_human))
+    if is_human and RICH_AVAILABLE:
+        console.print(f"[bold green]MauKerja Profile Sync Complete![/bold green]")
+        console.print(f"Candidate: [cyan]{res['candidate']}[/cyan]")
+        console.print(f"Fields Updated: [yellow]{', '.join(res.get('fields_updated', []))}[/yellow]")
+        sys.exit(0)
+    else:
+        emit_json(res, fields=args.fields)
+
+
 def handle_tracker_export(args: argparse.Namespace, is_human: bool) -> None:
     db_path, default_excel_path, _ = get_data_paths()
     out_file = args.out or str(default_excel_path)
@@ -557,6 +573,8 @@ def build_parser() -> argparse.ArgumentParser:
     portal_sub = portal_parser.add_subparsers(dest="action")
     portal_sync = portal_sub.add_parser("sync")
     portal_sync.add_argument("--portal", type=str, default="all", help="myfuturejobs, maukerja, jobstreet, linkedin, all")
+    portal_up = portal_sub.add_parser("update-profile")
+    portal_up.add_argument("--portal", type=str, default="maukerja", help="maukerja, myfuturejobs, jobstreet")
     portal_sub.add_parser("list")
 
     # Tracker export
@@ -635,6 +653,7 @@ def main() -> None:
                 {"name": "job list", "description": "List applied jobs from SQLite audit database"},
                 {"name": "job add", "description": "Add job posting record"},
                 {"name": "portal sync", "description": "Sync MYFutureJobs, MauKerja, JobStreet, LinkedIn"},
+                {"name": "portal update-profile", "description": "Update candidate profile & upload PDF resume on portal (e.g. MauKerja)"},
                 {"name": "tracker export", "description": "Export master Excel tracker (JobTracker.xlsx)"},
                 {"name": "issue create", "description": "Create offline feedback issue"},
                 {"name": "issue list", "description": "List offline issues"},
@@ -673,8 +692,8 @@ def main() -> None:
             emit_error("INVALID_ACTION", "Action required for 'job'.", "Use 'job list' or 'job add'", 2)
 
     elif cmd == "portal":
-        if act == "sync":
-            handle_portal_sync(args, is_human)
+        if act == "update-profile":
+            handle_portal_update_profile(args, is_human)
         else:
             handle_portal_sync(args, is_human)
 

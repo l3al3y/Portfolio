@@ -65,6 +65,23 @@
 
 ---
 
+## 💼 WORK EXPERIENCE
+
+1. **Global Elite Ventures Sdn. Bhd**  
+   *Technical Staff* | 27 September 2021 – 31 July 2022  
+   * Contributed to the implementation and optimization of advanced technical solutions, ensuring seamless operations, technical troubleshooting, hardware/software deployment, and enhancing overall efficiency within the organization.
+
+2. **ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd**  
+   *Contract Assistant Engineer* | 1 June 2020 – 30 July 2020  
+   * Assisted in the development and execution of engineering projects, applying expertise in technical troubleshooting and problem-solving to achieve project objectives within specified timelines.
+
+3. **OKCS Seri Kembangan**  
+   *Technician* | 1 June 2018 – 1 November 2018  
+   * Performed meticulous diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration, ensuring optimal functionality and reliability of equipment.
+
+---
+
+
 ## 🔬 KEY ENGINEERING PROJECTS
 
 1. **Hybrid Self-Checkout System using Barcode Scanner & Camera (Computer Vision)**  
@@ -88,14 +105,20 @@
 
 ---
 
-## 🤖 MULTILINGUAL AI CHATBOT ENGINE & 100% BENCHMARK SUITE
+## ⚡ MULTI-MODEL PARALLEL ROUTING ARCHITECTURE (ROOTSYS CLOUD)
 
-* **Structured Retrieval Engine:** Native spontaneous intent engine over `RESUME_DATA` covering 20+ intent categories across 4 languages (English, Bahasa Melayu 🇲🇾, Chinese 华语 🇨🇳, Tamil தமிழ் 🇮🇳).
-* **Cloudflare Turnstile Contact Protection:** Deployed `contact-gate-worker` (`0x4AAAAAAD9nlicfqO7QQsBk` sitekey) to verify human visitors before returning Irfan's contact details. Zero plaintext contact info stored in client-side source code.
-* **Autonomous Benchmark Evaluation Harness (`scripts/evaluate_chatbot.py`):**
-  - **117 Stress-Test Queries:** Tests Manglish, typos, behavioral questions, technical deep-dives, and casual small talk.
-  - **Benchmark Score:** **100.0% Accuracy (117/117 Passed)**. Full report logged in `data/chatbot_benchmark_report.json`.
-* **Automated Unit Testing (`tests/test_chatbot_engine.py`):** 11/11 tests passing (`python -m unittest discover -s tests`).
+* **Domain Expertise Routing (`src/llm_client.py`):**
+  - **`fiq/kimi-k2.7-code`** (*CODE_DEV*): Code generation, Playwright DOM parsing, scripting.
+  - **`fiq/deepseek-v4-pro`** (*DEEP_REASONING*): Deep ATS match evaluation, skills gap analysis.
+  - **`fiq/deepseek-v4-flash`** (*FAST_FILTER*): Rapid job filtering & fast classification.
+  - **`fiq/grok-4.5`** (*CREATIVE_WRITING*): Tailored cover letter & persuasive outreach.
+  - **`fiq/kimi-k3`** (*CONVERSATIONAL*): Multilingual chat & candidate persona representation.
+* **Concurrent Parallel Execution (`execute_parallel_model_tasks`):** Dispatches specialized tasks simultaneously via `asyncio.gather`, maximizing speed and domain expertise quality.
+* **MauKerja Profile Auto-Updater (`src/maukerja_profile_updater.py`):** Playwright automated profile sync, details update, and PDF resume upload (`python cli.py portal update-profile --portal maukerja`).
+* **PDF Resume Generator (`scripts/generate_pdf.py`):** Playwright-powered single-page PDF resume renderer (`resume/resume.pdf`).
+* **Cloudflare Turnstile Contact Protection:** Deployed `contact-gate-worker` (`0x4AAAAAAD9nlicfqO7QQsBk` sitekey) to verify human visitors before returning Irfan's contact details.
+* **Autonomous Benchmark Harnesses:** `scripts/generate_and_evaluate_1k.py` (1,200 queries, 100.0% Pass) & `scripts/evaluate_chatbot.py` (149 queries, 100.0% Pass).
+* **Automated Unit Testing (`tests/test_chatbot_engine.py` & `tests/test_llm_client.py`):** **14/14 tests passing** (`python -m unittest discover -s tests`).
 
 ---
 
@@ -113,27 +136,38 @@ D:\Resume ats cli\
 │   ├── models.py                     # Dataclasses & Enterprise DTOs
 │   ├── database.py                   # SQLite Persistence Layer (WAL Mode)
 │   ├── candidate.py                  # Candidate Profile Loader & ATS Match Engine
+│   ├── llm_client.py                 # RootSys Kimi 3 (fiq/kimi-k3) API Client Module
+│   ├── maukerja_profile_updater.py   # MauKerja Profile Sync & PDF Resume Upload Engine
 │   ├── excel_tracker.py              # Multi-Sheet Excel Tracker Exporter
 │   ├── portals.py                    # Multi-Portal Connectors (MYFutureJobs, MauKerja, JobStreet, LinkedIn)
 │   ├── sync_all_portals.py           # Multi-Portal Sync Engine Launcher
 │   └── job_agent.db                  # SQLite Audit Persistence Database
-├── scripts/                          # Evaluation & Benchmark Harnesses
+├── scripts/                          # Evaluation, PDF Generation & Benchmark Harnesses
+│   ├── generate_pdf.py               # Playwright PDF Resume Renderer (resume/resume.pdf)
+│   ├── automate_edge_maukerja.py     # Microsoft Edge Live MauKerja Profile Automator
 │   ├── evaluate_chatbot.py           # 149-Query Challenge Benchmark Evaluator (100.0% Pass)
 │   └── generate_and_evaluate_1k.py   # 1.2K Synthetic High-Throughput Stress Benchmark (100.0% Pass)
+├── config/                           # Environment & Settings Configuration (settings.py)
+├── docs/                             # Architecture Documentation & System Guides
+├── certificates/                     # Festo AI & Cisco CCNA Professional Certificates
+├── contact-gate-worker/              # Cloudflare Worker for Turnstile CAPTCHA Contact Protection
+├── Dockerfile & docker-compose.yml   # Containerized Deployment Manifests
 ├── web/                              # Synced Web Application Entry Points
 │   ├── index.html                    # Synced Web Entry Point
 │   └── portfolio.html                # Synced Web Entry Point
 ├── resume/                           # 100% ATS Verified Resume Documents
-│   ├── resume.html                   # Printable 1-Page A4 ATS Resume
+│   ├── resume.pdf                    # Printable 1-Page A4 PDF ATS Resume
+│   ├── resume.html                   # Printable 1-Page A4 HTML ATS Resume
 │   ├── resume.md                     # Markdown ATS Resume
 │   ├── resume.txt                    # Plain Text ATS Resume
 │   └── verify_ats.py                 # Keyword verification script (100% match)
-├── tests/                            # Automated Unit Test Suite (11/11 Passed)
+├── tests/                            # Automated Unit Test Suite (14/14 Passed)
 │   ├── test_candidate.py
 │   ├── test_chatbot_engine.py        # Automated Chatbot Intent Benchmark Test
 │   ├── test_cli.py
 │   ├── test_database.py
 │   ├── test_issue.py
+│   ├── test_llm_client.py            # Multi-Model Parallel Routing Unit Test
 │   └── test_portals.py
 └── data/                             # Local Persistence
     ├── chatbot_benchmark_report.json # Benchmark Execution Log (100.0% Pass Report)

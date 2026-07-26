@@ -11,6 +11,10 @@ from pathlib import Path
 # Base Directory Resolution
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# AI & LLM Service Configuration
+API_BASE_URL = os.getenv("API_BASE_URL", "https://rootsys.cloud/v1")
+API_KEY = os.getenv("API_KEY", "fiq-a0fd300c5ed7b18a767f753f36547435")
+
 # Data & Persistence Paths
 DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)

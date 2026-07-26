@@ -44,10 +44,17 @@ class PortalJobQuery:
     fresh_grad: bool = True
 
 
+class AuthType:
+    DIRECT_PASSWORD = "direct_password"  # MauKerja: Direct email & password from .env
+    EMAIL_VERIFICATION = "email_verification"  # JobStreet: Email OTP verification code
+    BIOMETRIC_MYDIGITALID = "biometric_mydigitalid"  # MYFutureJobs: MyDigitalID / PERKESO Biometric app
+
+
 class BasePortalConnector:
     """Kelas asas bagi semua portal connector."""
     portal_name: str = "GenericPortal"
     base_url: str = ""
+    auth_type: str = AuthType.DIRECT_PASSWORD
 
     def fetch_job_postings(self, query: PortalJobQuery) -> List[JobPosting]:
         raise NotImplementedError
@@ -60,6 +67,7 @@ class MyFutureJobsConnector(BasePortalConnector):
     """Penyambung portal MYFutureJobs (myfuturejobs.gov.my)."""
     portal_name = PortalType.MYFUTUREJOBS
     base_url = "https://myfuturejobs.gov.my"
+    auth_type = AuthType.BIOMETRIC_MYDIGITALID
 
     def fetch_job_postings(self, query: PortalJobQuery) -> List[JobPosting]:
         logger.info("[%s] Memeriksa iklan jawatan kosong terbaharu...", self.portal_name)
@@ -106,6 +114,8 @@ class MauKerjaConnector(BasePortalConnector):
     """Penyambung portal MauKerja (maukerja.my)."""
     portal_name = PortalType.MAUKERJA
     base_url = "https://maukerja.my"
+    auth_type = AuthType.DIRECT_PASSWORD
+
 
     def fetch_job_postings(self, query: PortalJobQuery) -> List[JobPosting]:
         logger.info("[%s] Memeriksa jawatan kosong di MauKerja Malaysia...", self.portal_name)
@@ -149,6 +159,7 @@ class JobStreetConnector(BasePortalConnector):
     """Penyambung portal JobStreet Malaysia (jobstreet.com.my)."""
     portal_name = PortalType.JOBSTREET
     base_url = "https://www.jobstreet.com.my"
+    auth_type = AuthType.EMAIL_VERIFICATION
 
     def fetch_job_postings(self, query: PortalJobQuery) -> List[JobPosting]:
         logger.info("[%s] Memeriksa jawatan kosong di JobStreet Malaysia...", self.portal_name)

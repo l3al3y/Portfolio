@@ -20,6 +20,7 @@ This CLI complies with **Agent-Native Level Certification (Agent CLI Spec v0.1)*
    }
    ```
 5. **No Interactive Prompts on Error:** Never prompt interactively during command failures.
+6. **Memory & Project Tree Reference:** At the start of any new conversation or session, the agent MUST inspect `PROJECT_MEMORY.md` and verify the repository project structure tree.
 
 ### Exit Codes
 - `0`: Success
