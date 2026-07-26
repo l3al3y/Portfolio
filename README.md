@@ -2,7 +2,7 @@
 
 [![Agent-Native Spec](https://img.shields.io/badge/Agent--Native-Spec_v0.1_Certified-0284c7.svg?style=for-the-badge&logo=openai)](AGENTS.md)
 [![ATS Score](https://img.shields.io/badge/ATS_Keyword_Match-100.0%25-34d399.svg?style=for-the-badge&logo=checkmarx)](resume/verify_ats.py)
-[![Chatbot Accuracy](https://img.shields.io/badge/Chatbot_Benchmark-100.0%25_Pass-8b5cf6.svg?style=for-the-badge&logo=probot)](scripts/evaluate_chatbot.py)
+[![Chatbot Accuracy](https://img.shields.io/badge/Chatbot_1.2K_Benchmark-100.0%25_Pass-8b5cf6.svg?style=for-the-badge&logo=probot)](scripts/generate_and_evaluate_1k.py)
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-fbbf24.svg?style=for-the-badge&logo=python)](cli.py)
 [![License](https://img.shields.io/badge/License-MIT-a855f7.svg?style=for-the-badge)](LICENSE)
 [![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-38bdf8.svg?style=for-the-badge&logo=github)](https://l3al3y.github.io/ResumeAgent/)
@@ -42,9 +42,11 @@ Military:    Askar Wataniah Reserve (Malaysian Army - High Discipline & Stress R
 - **Human Mode (`--human`):** Rich terminal UI with colored gauges, tables, and panels powered by `rich`.
 - **Fail-Fast Standard & Standard Exit Codes:** Structured JSON error payloads to `stderr` with strict exit codes (`0`: Success, `2`: Missing Param, `20`: Not Found).
 
-### 2. 🧠 100.0% Verified Multilingual AI Chatbot & Benchmark Harness
-- **Structured Retrieval Engine over `RESUME_DATA`:** 20+ spontaneous intent categories spanning English, Bahasa Melayu (🇲🇾), Chinese 华语 (🇨🇳), and Tamil தமிழ் (🇮🇳).
-- **Automated Benchmark Suite (`scripts/evaluate_chatbot.py`):** Tests 117 challenge stress-test queries (slang, Manglish, behavioral interview questions, technical deep-dives) achieving **100.0% Pass Accuracy (117/117 passed)**.
+### 2. 🧠 100.0% Verified Multilingual AI Chatbot & Large-Scale Benchmark Engine
+- **Structured Retrieval Engine over `RESUME_DATA`:** 28+ spontaneous intent categories spanning English, Bahasa Melayu (🇲🇾), Chinese 华语 (🇨🇳), and Tamil தமிழ் (🇮🇳).
+- **Interactive Suggestion Prompt Chips:** 32 suggestion prompt chips across 4 languages backed by dedicated proficient response branches.
+- **1.2K Synthetic High-Throughput Stress Suite (`scripts/generate_and_evaluate_1k.py`):** Generates and evaluates 1,200 multi-lingual, code-switched, typo-ridden synthetic queries achieving **100.0% Pass Accuracy (1200/1200 passed)**.
+- **Manual Benchmark Suite (`scripts/evaluate_chatbot.py`):** 149-query challenge test suite achieving **100.0% Pass Accuracy (149/149 passed)**.
 
 ### 3. 🔒 Cloudflare Turnstile CAPTCHA Contact Protection
 - Deployed Cloudflare Worker `contact-gate-worker` (`0x4AAAAAAD9nlicfqO7QQsBk` sitekey) to perform server-side siteverify before revealing candidate Email & Phone.
