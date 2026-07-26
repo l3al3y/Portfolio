@@ -942,12 +942,14 @@
 
             <!-- Desktop Links -->
             <ul class="nav-links">
-                <li><a href="#hero">Overview</a></li>
-                <li><a href="#experience">Work Experience</a></li>
-                <li><a href="#skills">Technical Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#what-i-can-do">What I Can Do</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#seeking">Target Roles</a></li>
                 <li><a href="javascript:void(0)" onclick="openPrintableResumeModal()" style="color: var(--emerald); font-weight:700;">📄 1-Page Resume</a></li>
             </ul>
 
@@ -961,15 +963,17 @@
         <!-- Mobile Navigation Drawer Dropdown -->
         <div class="mobile-nav-drawer" id="mobile-nav-drawer">
             <ul>
-                <li><a href="#hero" onclick="closeMobileMenu()">Overview</a></li>
-                <li><a href="#experience" onclick="closeMobileMenu()">Work Experience</a></li>
-                <li><a href="#skills" onclick="closeMobileMenu()">Technical Skills</a></li>
-                <li><a href="#education" onclick="closeMobileMenu()">Education</a></li>
-                <li><a href="#certifications" onclick="closeMobileMenu()">Certifications</a></li>
+                <li><a href="#hero" onclick="closeMobileMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="#what-i-can-do" onclick="closeMobileMenu()">What I Can Do</a></li>
+                <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
+                <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
                 <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="#certifications" onclick="closeMobileMenu()">Certifications</a></li>
+                <li><a href="#seeking" onclick="closeMobileMenu()">Target Roles</a></li>
                 <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openPrintableResumeModal();" style="color: var(--emerald); font-weight:700;">📄 Printable 1-Page Resume</a></li>
-                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); toggleFloatingChat();" style="color: var(--purple); font-weight:700;">💬 Open AI Assistant</a></li>
-                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openSecurityModal();" style="color: var(--emerald); font-weight: 700;">🔓 Reveal Contact Info</a></li>
+                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); toggleFloatingChat();" style="color: var(--purple); font-weight:700;">💬 Ask About My Experience</a></li>
+                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openSecurityModal();" style="color: var(--emerald); font-weight: 700;">✉️ Contact Me</a></li>
             </ul>
         </div>
     </header>
@@ -979,10 +983,10 @@
         <div class="modal-card">
             <button class="modal-close" onclick="closeSecurityModal()">&times;</button>
             <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
-                🛡️ Employer Security Verification
+                ✉️ Contact Muhammad Irfan Fahmi
             </h3>
             <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1.25rem;">
-                Complete the Cloudflare Turnstile verification below to reveal candidate direct phone & email details. Plaintext contact info is protected against web scrapers.
+                Direct contact details are protected to reduce automated web scraping. Verified employers can complete Turnstile below to reveal phone & email instantly.
             </p>
 
             <!-- Cloudflare Turnstile Widget -->
@@ -994,7 +998,7 @@
             <!-- Revealed Box -->
             <div id="revealed-contact-box" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-card);">
                 <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 1rem;">
-                    ✓ VERIFIED RECRUITER — CANDIDATE DIRECT CONTACT:
+                    ✓ VERIFIED RECRUITER — DIRECT CONTACT DETAILS:
                 </div>
                 
                 <div class="revealed-info-box" style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--border-card);">
@@ -1033,13 +1037,10 @@
             
             <div style="background: rgba(15, 23, 42, 0.95); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-card); max-height: 70vh; overflow-y: auto;">
                 <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 1rem;">
-                    <div style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--emerald)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: #fff; flex-shrink: 0;">
-                        IF
-                    </div>
                     <div>
                         <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.25rem 0;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h2>
-                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 600;">Computer Engineering Graduate • Cisco CCNA & Cybersecurity • Festo Industrial AI</div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Puchong, Selangor, Malaysia</div>
+                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 600;">Computer Engineer | IT Infrastructure • Networking • AI Automation</div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Final-Year Computer Engineering Student (UTeM) • Puchong, Selangor, Malaysia</div>
                     </div>
                 </div>
 
@@ -1050,27 +1051,27 @@
                             <span>Technical Staff — Global Elite Ventures Sdn. Bhd</span>
                             <span style="color: var(--text-sub); font-size: 0.75rem;">27 Sept 2021 – 31 July 2022</span>
                         </div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Implementation & optimization of technical solutions, technical troubleshooting, hardware/software deployment.</div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Hardware deployment, workstation assembly, Windows software setup, and technical issue resolution.</div>
                     </div>
                     <div style="margin-bottom: 0.75rem;">
                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
                             <span>Contract Assistant Engineer — ARNN Technologies & Karar Solution</span>
                             <span style="color: var(--text-sub); font-size: 0.75rem;">1 June 2020 – 30 July 2020</span>
                         </div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Assisted in engineering projects execution, technical troubleshooting, and project objective management.</div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Engineering project component testing, deployment, and structured technical troubleshooting.</div>
                     </div>
                     <div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
                             <span>Technician — OKCS Seri Kembangan</span>
                             <span style="color: var(--text-sub); font-size: 0.75rem;">1 June 2018 – 1 Nov 2018</span>
                         </div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration.</div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Hardware diagnostics, repair, component replacement, and operating system configuration.</div>
                     </div>
                 </div>
 
                 <div style="margin-bottom: 1.25rem;">
                     <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">🎓 EDUCATION</h4>
-                    <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>B.Eng Computer Engineering (Hons)</strong> — Universiti Teknikal Malaysia Melaka (Expected Nov 2026)</div>
+                    <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>B.Eng Computer Engineering (Hons)</strong> — Universiti Teknikal Malaysia Melaka (Final-Year Student • Expected Nov 2026)</div>
                     <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson (CGPA 3.26)</div>
                     <div style="font-size: 0.85rem;">• <strong>Certificate in Computer Systems & Networking</strong> — Kolej Komuniti Selandar (CGPA 3.58 - Best Student Award)</div>
                 </div>
@@ -1094,55 +1095,106 @@
     <section class="hero" id="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1 class="hero-title">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h1>
-                <div class="hero-subtitle">Computer Engineering Graduate • Cisco CCNA & Cybersecurity • Festo Industrial AI</div>
-
-                <!-- 4-Language Adaptability & Growth Executive Summary -->
-                <div class="lang-switch-box glass-card">
-                    <div style="font-size: 0.8rem; color: var(--primary); font-weight: 700; font-family: var(--font-mono); margin-bottom: 0.75rem;">
-                        🌐 PERSONAL SUMMARY & ADAPTABILITY STATEMENT (SELECT LANGUAGE):
-                    </div>
-                    <div class="lang-tabs">
-                        <button class="lang-btn active" onclick="switchSummaryLang('en', this)">🇬🇧 English</button>
-                        <button class="lang-btn" onclick="switchSummaryLang('bm', this)">🇲🇾 Bahasa Melayu</button>
-                        <button class="lang-btn" onclick="switchSummaryLang('cn', this)">🇨🇳 华语 (Chinese)</button>
-                        <button class="lang-btn" onclick="switchSummaryLang('in', this)">🇮🇳 தமிழ் (Tamil)</button>
-                    </div>
-
-                    <div class="lang-content-pane" id="executive-summary-text">
-                        "I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology."
-                    </div>
+                <h1 class="hero-title" style="margin-bottom: 0.5rem;">MUHAMMAD IRFAN FAHMI</h1>
+                <div class="hero-subtitle" style="font-size: 1.15rem; color: var(--emerald); font-weight: 700; margin-bottom: 0.5rem;">
+                    Computer Engineer | IT Infrastructure • Networking • AI Automation
+                </div>
+                <div style="font-size: 0.95rem; color: var(--text-sub); font-style: italic; margin-bottom: 1.25rem;">
+                    "I bridge hardware, networking and AI to build practical technical solutions."
                 </div>
 
-                <!-- Action Buttons Below Personal Summary -->
+                <!-- Credential Badges -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                    <span class="prompt-chip" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: var(--primary);">CCNA Certified</span>
+                    <span class="prompt-chip" style="background: rgba(52, 211, 153, 0.15); border-color: rgba(52, 211, 153, 0.4); color: var(--emerald);">Industrial AI</span>
+                    <span class="prompt-chip">IT Support</span>
+                    <span class="prompt-chip">Networking</span>
+                    <span class="prompt-chip">Computer Vision</span>
+                    <span class="prompt-chip">Automation</span>
+                </div>
+
+                <!-- Strategic Action CTAs -->
                 <div class="hero-cta">
-                    <button class="btn btn-emerald" onclick="openSecurityModal()">🔓 Reveal Contact Info</button>
-                    <a href="resume/resume.html" target="_blank" class="btn btn-primary">📄 View ATS Resume (1-Page)</a>
-                    <button class="btn btn-secondary" onclick="toggleFloatingChat()">💬 Ask AI Assistant</button>
+                    <a href="resume/resume.pdf" target="_blank" download class="btn btn-primary">View My Resume →</a>
+                    <button class="btn btn-emerald" onclick="openSecurityModal()">Contact Me →</button>
+                    <a href="#projects" class="btn btn-secondary">View Projects ↓</a>
+                    <button class="btn btn-purple" onclick="toggleFloatingChat()">Ask About My Experience 💬</button>
                 </div>
             </div>
 
-            <!-- Resume Quick Snapshot Card -->
-            <div class="glass-card" style="text-align: center;">
-                <div style="width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 1rem auto; background: linear-gradient(135deg, var(--primary), var(--emerald)); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; color: #ffffff; border: 3px solid var(--border-card); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
-                    IF
-                </div>
-                <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary);">
-                    MUHAMMAD IRFAN FAHMI
+            <!-- Candidate Quick Overview Card -->
+            <div class="glass-card" id="about">
+                <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--primary);">
+                    Personal Profile & Focus
                 </h3>
-                <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.85rem; text-align: left;">
-                    <div><strong>Education:</strong> B.Eng Computer Engineering (UTeM)</div>
+                <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1rem;">
+                    I enjoy working where hardware, networking and software meet. My background spans IT support, Cisco networking, cybersecurity, embedded systems, IoT, computer vision and industrial AI. I focus on practical troubleshooting, system integration and automation that can improve how people and businesses work.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                    <div><strong>Education Status:</strong> Final-Year Computer Engineering Student (UTeM • Expected Nov 2026)</div>
                     <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI</div>
-                    <div><strong>Work Experience:</strong> Global Elite Ventures • ARNN Tech • OKCS</div>
-                    <div><strong>Core Expertise:</strong> OSPF, VLAN, Computer Vision (YOLOv8), IT Support, IoT</div>
-                    <div><strong>Military Reserve:</strong> Askar Wataniah (High Discipline)</div>
-                    <div><strong>Location:</strong> Puchong, Selangor, Malaysia</div>
+                    <div><strong>Experience Roles:</strong> Technical Staff (Global Elite Ventures) • Assistant Engineer (ARNN Tech) • Technician (OKCS)</div>
+                    <div><strong>Military Reserve:</strong> Askar Wataniah Reserve (High Discipline & Resilience)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WORK EXPERIENCE (Mirroring resume.html & MauKerja) -->
+    <!-- WHAT I CAN DO SECTION -->
+    <section class="resume-mirror-section" id="what-i-can-do">
+        <div class="container glass-card">
+            <h2 class="section-title-main">What I Can Do</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+                
+                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+                        1. IT Support & Operations
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
+                        Hardware troubleshooting, Windows workstation configuration, user technical support, software/driver deployment, and operational issue diagnosis.
+                    </p>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--emerald); margin-bottom: 0.5rem;">
+                        2. Network & Infrastructure
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
+                        Cisco networking, VLAN configuration, Inter-VLAN routing, OSPF, TCP/IP, LAN/WAN setup, Wireshark packet analysis, and network troubleshooting.
+                    </p>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--purple); margin-bottom: 0.5rem;">
+                        3. AI & Computer Vision
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
+                        Python programming, OpenCV visual processing, YOLOv8 object detection, model fine-tuning, and practical AI application integration.
+                    </p>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;">
+                        4. Automation & IoT
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
+                        Industrial AI concepts, Festo automation systems, sensor integration, Arduino prototyping, IoT devices, and hardware/software communication.
+                    </p>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: #ec4899; margin-bottom: 0.5rem;">
+                        5. Hardware & Embedded Systems
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
+                        Hands-on electronic hardware assembly, component diagnostics, microcontrollers, PC maintenance, and technical prototyping.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
     <section class="resume-mirror-section" id="experience">
         <div class="container glass-card">
             <h2 class="section-title-main">Work Experience</h2>
@@ -1153,9 +1205,11 @@
                     <div class="entry-dates">27 Sept 2021 – 31 July 2022</div>
                 </div>
                 <div class="entry-institution">Global Elite Ventures Sdn. Bhd</div>
-                <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
-                    Contributed to the implementation and optimization of advanced technical solutions, technical troubleshooting, hardware/software deployment, ensuring seamless operations and enhancing overall efficiency within the organization.
-                </p>
+                <ul class="entry-bullets" style="margin-top: 0.5rem;">
+                    <li>Executed technical hardware deployment, workstation assembly, and Windows software configuration for enterprise operations.</li>
+                    <li>Diagnosed and resolved daily technical support issues, minimizing operational downtime for team members.</li>
+                    <li>Managed system maintenance and technical documentation to streamline organizational workflows.</li>
+                </ul>
             </div>
 
             <div class="resume-entry-card">
@@ -1164,9 +1218,10 @@
                     <div class="entry-dates">1 June 2020 – 30 July 2020</div>
                 </div>
                 <div class="entry-institution">ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd</div>
-                <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
-                    Assisted in the development and execution of engineering projects, applying expertise in technical troubleshooting and problem-solving to achieve project objectives within specified timelines.
-                </p>
+                <ul class="entry-bullets" style="margin-top: 0.5rem;">
+                    <li>Assisted in the development, testing, and execution of engineering project components within strict project deadlines.</li>
+                    <li>Applied structured technical troubleshooting to resolve equipment and integration challenges.</li>
+                </ul>
             </div>
 
             <div class="resume-entry-card" style="border:none; padding-bottom:0;">
@@ -1175,38 +1230,39 @@
                     <div class="entry-dates">1 June 2018 – 1 Nov 2018</div>
                 </div>
                 <div class="entry-institution">OKCS Seri Kembangan</div>
-                <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
-                    Performed meticulous diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration, ensuring optimal functionality and reliability of equipment.
-                </p>
+                <ul class="entry-bullets" style="margin-top: 0.5rem;">
+                    <li>Performed hardware diagnostics, repair, and component replacement on complex computing equipment.</li>
+                    <li>Configured operating systems, software drivers, and user application tools to ensure optimal system functionality.</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- TECHNICAL SKILLS (Mirroring resume.html) -->
+    <!-- TECHNICAL SKILLS GROUPED CATEGORIES -->
     <section class="resume-mirror-section" id="skills">
         <div class="container glass-card">
             <h2 class="section-title-main">Technical Skills</h2>
             
             <div class="skills-grid-table">
-                <div class="skills-cat-title">Networking & Protocols:</div>
-                <div class="skills-cat-items">CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN, WAN, STP, EtherChannel, DHCP, DNS, NAT, ACL, WLAN, Wireshark, Cisco Packet Tracer, Network Troubleshooting</div>
+                <div class="skills-cat-title">NETWORKING:</div>
+                <div class="skills-cat-items">CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN/WAN, Cisco Router/Switch, Wireshark</div>
 
-                <div class="skills-cat-title">Cybersecurity:</div>
-                <div class="skills-cat-items">Cybersecurity, Endpoint Security, Cyber Threat Management, Host Hardening, Firewall, Incident Response, Security Monitoring, Threat Mitigation</div>
+                <div class="skills-cat-title">IT SUPPORT:</div>
+                <div class="skills-cat-items">Hardware Troubleshooting, Windows Administration, Desktop Support, Software Configuration, Technical Documentation, User Support</div>
 
-                <div class="skills-cat-title">IT Support & Admin:</div>
-                <div class="skills-cat-items">Windows Administration, Desktop Support, Technical Support, Hardware Troubleshooting, User Support, Customer Support, Software & Driver Installation, Printer Support, Microsoft Office, Technical Documentation</div>
+                <div class="skills-cat-title">AI & VISION:</div>
+                <div class="skills-cat-items">Python, YOLOv8, OpenCV, Computer Vision, Object Detection, AI-assisted Development</div>
 
-                <div class="skills-cat-title">Industrial AI & IoT:</div>
-                <div class="skills-cat-items">Industrial Automation, Artificial Intelligence (AI), Predictive Maintenance, Manufacturing Data Analytics, OpenCV, YOLOv8, Computer Vision, Arduino, Sensor Integration, IoT, Embedded Systems</div>
+                <div class="skills-cat-title">AUTOMATION & IOT:</div>
+                <div class="skills-cat-items">Industrial AI, Festo Automation, Arduino, Sensors, Embedded Systems, IoT Integration</div>
 
-                <div class="skills-cat-title">Programming & Tools:</div>
-                <div class="skills-cat-items">Python, C, C++, SQL, MySQL, Git, GitHub, VS Code, EasyEDA</div>
+                <div class="skills-cat-title">DEVELOPMENT:</div>
+                <div class="skills-cat-items">Python, C, C++, SQL, MySQL, Git, GitHub, VS Code</div>
             </div>
         </div>
     </section>
 
-    <!-- EDUCATION (Mirroring resume.html) -->
+    <!-- EDUCATION -->
     <section class="resume-mirror-section" id="education">
         <div class="container glass-card">
             <h2 class="section-title-main">Education</h2>
@@ -1214,7 +1270,7 @@
             <div class="resume-entry-card">
                 <div class="entry-top-row">
                     <div class="entry-role-title">Bachelor of Computer Engineering with Honours</div>
-                    <div class="entry-dates">Oct 2022 – Present (Expected Nov 2026)</div>
+                    <div class="entry-dates">Oct 2022 – Present (Final-Year Student • Expected Nov 2026)</div>
                 </div>
                 <div class="entry-institution">Universiti Teknikal Malaysia Melaka (UTeM)</div>
             </div>
@@ -1237,59 +1293,96 @@
         </div>
     </section>
 
-    <!-- CERTIFICATIONS (Mirroring resume.html) -->
+    <!-- CERTIFICATIONS -->
     <section class="resume-mirror-section" id="certifications">
         <div class="container glass-card">
-            <h2 class="section-title-main">Certifications & Professional Training</h2>
+            <h2 class="section-title-main">Certifications & Credentials</h2>
 
             <div class="certs-grid">
-                <div class="cert-card-box">
-                    <div class="cert-title-text">Festo Industrial Automation with AI</div>
-                    <div class="cert-issuer-text">Festo Didactic • 16 July 2026</div>
-                </div>
+                <a href="certificates/CCNA_Enterprise_Networking_Security_Automation.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
+                    <div class="cert-title-text" style="color: var(--primary);">CCNA: Enterprise Networking & Automation</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy • Feb 2026</div>
+                </a>
+
+                <a href="certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
+                    <div class="cert-title-text" style="color: var(--primary);">CCNA: Switching, Routing & Wireless</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy • Feb 2026</div>
+                </a>
 
                 <div class="cert-card-box">
-                    <div class="cert-title-text">CCNA: Enterprise Networking & Automation</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy / UTeM • 23 Feb 2026</div>
+                    <div class="cert-title-text" style="color: var(--emerald);">Festo Industrial Automation with AI</div>
+                    <div class="cert-issuer-text">Festo Didactic • July 2026</div>
                 </div>
 
-                <div class="cert-card-box">
-                    <div class="cert-title-text">CCNA: Switching, Routing & Wireless</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy / UTeM • 23 Feb 2026</div>
-                </div>
+                <a href="certificates/Endpoint_Security.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
+                    <div class="cert-title-text" style="color: var(--text-main);">Endpoint Security Certification</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy • Dec 2024</div>
+                </a>
+
+                <a href="certificates/Cyber_Threat_Management.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
+                    <div class="cert-title-text" style="color: var(--text-main);">Cyber Threat Management</div>
+                    <div class="cert-issuer-text">Cisco Networking Academy • Nov 2024</div>
+                </a>
 
                 <div class="cert-card-box">
-                    <div class="cert-title-text">Endpoint Security Certification</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy • 12 Dec 2024</div>
-                </div>
-
-                <div class="cert-card-box">
-                    <div class="cert-title-text">Cyber Threat Management</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy • 17 Nov 2024</div>
-                </div>
-
-                <div class="cert-card-box">
-                    <div class="cert-title-text">Fiber Optic Splicing & Polishing</div>
-                    <div class="cert-issuer-text">Technical Workshop • 3 Feb 2018</div>
+                    <div class="cert-title-text" style="color: var(--text-muted);">Fiber Optic Splicing & Polishing</div>
+                    <div class="cert-issuer-text">Technical Workshop • Feb 2018</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ENGINEERING PROJECTS (Mirroring resume.html) -->
+    <!-- FEATURED ENGINEERING PROJECT -->
     <section class="resume-mirror-section" id="projects">
         <div class="container glass-card">
-            <h2 class="section-title-main">Engineering Projects</h2>
+            <h2 class="section-title-main">Featured Project</h2>
 
             <div class="resume-entry-card" style="border:none; padding-bottom:0;">
                 <div class="entry-top-row">
-                    <div class="entry-role-title">Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)</div>
-                    <div class="entry-dates">Capstone Project</div>
+                    <div class="entry-role-title">Hybrid Self-Checkout System (Computer Vision + Barcode Integration)</div>
+                    <div class="entry-dates">Final Year Capstone Project</div>
                 </div>
-                <ul class="entry-bullets">
-                    <li>Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.</li>
-                    <li>Achieved <strong>77.4% precision</strong> and <strong>72.0% recall</strong> at 50 epochs, eliminating scan evasion with &lt;150ms inference latency.</li>
-                </ul>
+                <p style="font-size: 0.9rem; color: var(--text-sub); margin: 0.5rem 0 1rem 0; line-height: 1.6;">
+                    A dual-verification self-checkout system combining barcode identification with computer vision (YOLOv8 + OpenCV + MySQL) to improve checkout reliability and reduce scan evasion issues in retail environments.
+                </p>
+
+                <!-- Visual Metrics Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                    <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
+                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">77.4%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
+                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">72.0%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Recall (50 Epochs)</div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
+                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;150ms</div>
+                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem;">
+                    <a href="resume/resume.html" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">View Technical Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT I'M LOOKING FOR (TARGET ROLES) -->
+    <section class="resume-mirror-section" id="seeking">
+        <div class="container glass-card">
+            <h2 class="section-title-main">What I'm Looking For</h2>
+            <p style="font-size: 0.92rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1.25rem;">
+                I'm currently seeking opportunities where I can combine hands-on engineering, IT infrastructure, networking and AI automation to solve practical technical problems.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; border-color: var(--primary); color: var(--primary);">IT Support Engineer</span>
+                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; border-color: var(--emerald); color: var(--emerald);">Network Engineer</span>
+                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">Technical Support Engineer</span>
+                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">Infrastructure Engineer</span>
+                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">Automation Engineer</span>
+                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">AI / Computer Vision Engineer</span>
             </div>
         </div>
     </section>
@@ -1300,13 +1393,13 @@
         <span class="fab-badge">AI</span>
     </button>
 
-    <!-- FLOATING CHAT WINDOW POPUP -->
+    <!-- FLOATING CHAT WINDOW POPUP (Repositioned as Ask About My Experience) -->
     <div class="chat-floating-window" id="chat-floating-window">
         <div class="chat-header">
             <div class="chat-bot-info">
                 <div class="chat-bot-avatar">🌙</div>
                 <div>
-                    <div style="font-weight: 700; font-size: 0.9rem;">AI Career Assistant</div>
+                    <div style="font-weight: 700; font-size: 0.88rem;">Ask About My Experience</div>
                     <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Multilingual</div>
                 </div>
             </div>
@@ -1320,17 +1413,11 @@
             </div>
         </div>
 
-        <!-- API Key Drawer -->
-        <div class="api-key-drawer" id="api-key-drawer">
-            <span style="font-size: 0.78rem; color: #c084fc; font-family: var(--font-mono); font-weight: 700;">API KEY:</span>
-            <input type="password" id="kimi-api-key-input" class="chat-input" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" placeholder="Enter API key (fiq-...)" onchange="saveKimiKeyLocally()">
-            <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.78rem; background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff;" onclick="saveKimiKeyLocally()">Save</button>
-        </div>
         <div class="chat-body" id="chat-body">
             <div class="chat-message bot-msg">
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble">
-                    Hello / Salam / 您好 / வணக்கம்! 👋 Ask me anything in English, Bahasa Melayu, Chinese (华语), or Tamil (தமிழ்) about Irfan's skills, age, credentials, or any topic!
+                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant.
                 </div>
             </div>
         </div>
@@ -1340,7 +1427,7 @@
         </div>
 
         <div class="chat-input-area">
-            <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask AI Assistant..." onkeydown="handleChatEnter(event)">
+            <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask about Irfan's experience..." onkeydown="handleChatEnter(event)">
             <button class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff; padding: 0.5rem 0.85rem;" onclick="submitChatMessage()">Send ➔</button>
         </div>
     </div>
@@ -1348,15 +1435,16 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem;">
-                MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
+            <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.4rem;">
+                MUHAMMAD IRFAN FAHMI
             </div>
-            <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 1rem;">
-                🔒 Public Contact Protection Active: Plaintext phone & email masked against web scrapers.<br>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 0.75rem;">
+                🔒 Public Contact Protection Active: Direct contact details protected against automated web scraping.<br>
                 Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
             <p style="color: var(--text-muted); font-size: 0.8rem;">
-                © 2026 Official Engineering Portfolio & AI Engine.
+                © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
+                <span style="font-size: 0.75rem; color: var(--text-sub);">Built with HTML, JavaScript & AI-assisted development.</span>
             </p>
         </div>
     </footer>
