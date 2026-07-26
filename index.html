@@ -2219,7 +2219,7 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                 }
             }
 
-            // 17. HARDWARE & IOT & EMBEDDED
+            // 18. HARDWARE & IOT & EMBEDDED
             if (q.includes('iot') || q.includes('arduino') || q.includes('embedded') || q.includes('sensor') || q.includes('sensors') || q.includes('hardware') || q.includes('electronic') || q.includes('electronics') || q.includes('easyeda') || q.includes('pcb') || q.includes('传感器') || q.includes('集成') || q.includes('terbenam')) {
                 if (lang === 'bm') {
                     return `Irfan mempunyai kemahiran kukuh dalam <strong>Sistem Terbenam (Embedded Systems), IoT, Arduino, Integrasi Sensor, dan Reka Bentuk Litar EasyEDA</strong> berasaskan pengajian Diploma Kejuruteraan Elektronik (Komputer) di Politeknik Port Dickson.`;
@@ -2227,7 +2227,67 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                 return `Irfan possesses solid hands-on experience in <strong>Embedded Systems, IoT, Arduino, Sensor Integration, and EasyEDA Circuit Design</strong> gained during his Electronic Engineering (Computer) Diploma at Politeknik Port Dickson.`;
             }
 
-            // 18. CONTACT DETAILS
+            // 19. NETWORKING PROTOCOLS (STP / RSTP / FIBER OPTIC)
+            if (q.includes('stp') || q.includes('rstp') || q.includes('spanning tree') || q.includes('fiber') || q.includes('optic') || q.includes('splicing') || q.includes('attenuation')) {
+                if (lang === 'bm') {
+                    return `<strong>Protokol & Pensijilan Rangkaian Irfan:</strong><br>• Irfan mahir dalam STP/RSTP (Spanning Tree Protocol) untuk pencegahan gelung rangkaian (loop prevention).<br>• Irfan juga memegang pensijilan latihan <strong>Fiber Optic Splicing & Polishing</strong> (Feb 2018).`;
+                }
+                return `<strong>Networking Protocols & Fiber Optics:</strong><br>• Irfan is proficient in STP/RSTP (Spanning Tree Protocol) for loop-free Ethernet network topologies.<br>• Irfan holds an official certification in <strong>Fiber Optic Splicing & Polishing</strong> (Technical Workshop, Feb 2018).`;
+            }
+
+            // 20. DRIVER'S LICENSE & TRANSPORTATION
+            if (q.includes('driver') || q.includes('license') || q.includes('transport') || q.includes('car') || q.includes('lesen') || q.includes('kenderaan') || q.includes('kereta') || q.includes('motor') || q.includes('驾照') || q.includes('车辆')) {
+                if (lang === 'bm') {
+                    return `Irfan mempunyai <strong>lesen memandu sah dan pengangkutan sendiri</strong>, memudahkan pergerakan untuk tugas luar kawasan (outstation/onsite support) dan penempatan kerja di Selangor/KL, Penang, atau Johor.`;
+                }
+                return `Irfan possesses a <strong>valid driver's license and own transport</strong>, enabling convenient mobility for on-site support, client visits, or deployment across Selangor/KL, Penang, Johor, or outstation locations.`;
+            }
+
+            // 21. SOFT SKILLS & NON-TECHNICAL STAKEHOLDER COMMUNICATION
+            if (q.includes('soft skill') || q.includes('soft-skill') || q.includes('soft skills') || q.includes('stakeholder') || q.includes('non-technical') || q.includes('communicate') || q.includes('communication') || q.includes('komunikasi') || q.includes('interpersonal')) {
+                if (lang === 'bm') {
+                    return `<strong>Kemahiran Lembut (Soft Skills) Irfan:</strong><br>• <strong>Komunikasi Jelas:</strong> Mampu menerangkan konsep teknikal kompleks (CCNA/AI) kepada pihak pengurusan secara mudah.<br>• <strong>Disiplin & Ketahanan Stress:</strong> Diterap melalui latihan Askar Wataniah.<br>• <strong>Kerja Berpasukan & Empati.</strong>`;
+                }
+                return `<strong>Irfan's Core Soft Skills:</strong><br>• <strong>Clear Technical Communication:</strong> Translates complex technical architectures (Cisco CCNA, YOLOv8 AI) into business terms for non-technical stakeholders.<br>• <strong>Stress Resilience & Discipline:</strong> Forged in Askar Wataniah military reserve training.<br>• <strong>Cross-Functional Collaboration & Adaptability.</strong>`;
+            }
+
+            // 22. PREFERRED IDE & DEVELOPMENT WORKFLOW
+            if (q.includes('ide') || q.includes('workflow') || q.includes('editor') || q.includes('vs code') || q.includes('git') || q.includes('github') || q.includes('development environment')) {
+                if (lang === 'bm') {
+                    return `<strong>Alatan & Workflow Pembangunan Irfan:</strong><br>• <strong>IDE:</strong> VS Code & PyCharm.<br>• <strong>Kawalan Versi:</strong> Git & GitHub (Multi-model parallel routing & CI/CD pipeline).<br>• <strong>Perkakasan & Simulasi:</strong> Cisco Packet Tracer, EasyEDA, & OpenCV/YOLOv8 PyTorch.`;
+                }
+                return `<strong>Irfan's Development Workflow & Tooling:</strong><br>• <strong>IDE:</strong> VS Code & PyCharm.<br>• <strong>Version Control & CI/CD:</strong> Git & GitHub automation pipelines.<br>• <strong>Hardware & Simulation:</strong> Cisco Packet Tracer, EasyEDA, and OpenCV/YOLOv8 PyTorch.`;
+            }
+
+            // 23. OPINION ON AI REPLACING ENGINEERS
+            if (q.includes('replace') || q.includes('replacing') || q.includes('ai replace') || q.includes('menggantikan') || q.includes('ganti') || q.includes('替代')) {
+                if (lang === 'bm') {
+                    return `<strong>Pandangan Irfan Mengenai AI:</strong><br>AI tidak menggantikan jurutera; jurutera yang memanfaatkan AI dan automasi (seperti YOLOv8 & LLM integration) yang akan menggantikan mereka yang tidak bertindak. Irfan sentiasa menggabungkan automasi AI dengan kepakaran perkakasan/rangkaian fizikal.`;
+                }
+                return `<strong>Irfan's Perspective on AI:</strong><br>AI doesn't replace engineers — engineers leveraging AI and automation (like YOLOv8, LLMs, and Industrial AI) replace those who don't. Irfan actively combines AI automation with hands-on networking and hardware engineering.`;
+            }
+
+            // 24. PENANG / JOHOR / RELOCATION (MULTILINGUAL LOCATION ENHANCEMENT)
+            if (q.includes('penang') || q.includes('johor') || q.includes('kl') || q.includes('selangor') || q.includes('pulau pinang') || q.includes('kedah') || q.includes('perak') || q.includes('outstation')) {
+                if (lang === 'bm') {
+                    return `Ya, Irfan menetap di Puchong tetapi <strong>sangat terbuka untuk tugasan atau penempatan di Pulau Pinang, Johor, KL, atau mana-mana lokasi outstation</strong>! Beliau mempunyai kenderaan sendiri dan fleksibel untuk penempatan kerja.`;
+                } else if (lang === 'cn') {
+                    return `是的！Irfan 目前住在 Selangor 的 Puchong，但他对前往 <strong>槟城 (Penang)、柔佛 (Johor)、吉隆坡 (KL) 或出差派驻完全持开放态度</strong>！他拥有驾照及自备车辆，随时可以灵活调动。`;
+                }
+                return `Yes! Irfan is based in Puchong, Selangor, but is <strong>fully open to working or relocating to Penang, Johor, KL, or outstation assignments</strong>. He possesses a valid driver's license and own transport.`;
+            }
+
+            // 25. AWS / CLOUD CERTIFICATION ENHANCEMENT (MULTILINGUAL)
+            if (q.includes('aws') || q.includes('azure') || q.includes('cloud') || q.includes('云端') || q.includes('认证')) {
+                if (lang === 'bm') {
+                    return `Irfan memegang pensijilan <strong>Cisco CCNA Enterprise, Endpoint Security, Cyber Threat Management, dan Festo Industrial AI</strong>. Walaupun belum mengambil sijil AWS formal, beliau mempunyai pengalaman hands-on mengendalikan Cloudflare Workers, REST API, dan CI/CD deployment pipelines.`;
+                } else if (lang === 'cn') {
+                    return `Irfan 拥有 <strong>Cisco CCNA 企业网络认证、终端安全认证、网络威胁管理认证以及 Festo 工业 AI 认证</strong>。虽然目前未持有 AWS/Azure 正式证书，但他具备云端部署（Cloudflare Workers, REST API & GitHub Actions CI/CD）的实际项目经验。`;
+                }
+                return `Irfan holds official <strong>Cisco CCNA Enterprise, Endpoint Security, Cyber Threat Management, and Festo Industrial AI certifications</strong>. While not holding AWS/Azure certificates yet, he has solid hands-on cloud experience with Cloudflare Workers, REST APIs, and CI/CD pipelines.`;
+            }
+
+            // 26. CONTACT DETAILS
             if (q.includes('contact') || q.includes('telefon') || q.includes('nombor') || q.includes('phone') || q.includes('email') || q.includes('emel') || q.includes('hubungi') || q.includes('reach') || q.includes('call') || q.includes('whatsapp') || q.includes('联系') || q.includes('电话') || q.includes('邮箱') || q.includes('தொடர்பு') || q.includes('turnstile') || q.includes('modal')) {
                 if (lang === 'bm') {
                     return `Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!`;
