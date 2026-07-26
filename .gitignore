@@ -32,6 +32,12 @@ Thumbs.db
 .env.*
 !.env.example
 
+# Confidential Database & Local Spreadsheets
+data/*.db
+data/*.xlsx
+*.db
+*.xlsx
+
 # Agent & Workspace Cache
 .gemini/
 scratch/

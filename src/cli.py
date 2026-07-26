@@ -343,19 +343,32 @@ def handle_job_add(args: argparse.Namespace, is_human: bool) -> None:
 
 def handle_portal_sync(args: argparse.Namespace, is_human: bool) -> None:
     portal = (args.portal or "all").lower()
+    
+    if portal == "motion":
+        try:
+            from motion_connector import MotionConnector
+        except ImportError:
+            from src.motion_connector import MotionConnector
+        motion = MotionConnector()
+        res = motion.sync_application_deadline("Computer Engineer / IT Support", "Target Enterprise", deadline_days=3)
+        results = {"portal": "Motion (UseMotion.com)", "status": "SYNCED", "data": res}
+        if is_human:
+            from rich.panel import Panel
+            console.print(Panel(f"[bold green]Motion Task Synced![/bold green]\n\nTask Result: {res}", title="UseMotion.com Connector"))
+            return
+        emit_json(results, fields=args.fields)
+        return
+
     connector = MultiPortalConnector()
     results = connector.sync_all_portals(target_portal=portal)
-
-    if is_human and RICH_AVAILABLE:
+    if is_human:
+        from rich.table import Table
         table = Table(title="Multi-Portal Sync Results")
         table.add_column("Portal", style="cyan")
-        table.add_column("Status", style="bold green")
-        table.add_column("Jobs Found", style="yellow")
-
-        for p, d in results.items():
-            table.add_row(p, d.get("status", "OK"), str(d.get("jobs_found", 0)))
+        table.add_column("Postings Found", style="magenta")
+        for p, items in results.items():
+            table.add_row(p, str(len(items)))
         console.print(table)
-        sys.exit(0)
     else:
         emit_json({"portal": portal, "results": results}, fields=args.fields)
 
