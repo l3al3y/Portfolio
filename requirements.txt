@@ -1,6 +1,0 @@
-# Autonomous Career Intelligence Agent Dependencies
-openpyxl>=3.1.5
-rich>=13.0.0
-pytest>=8.0.0
-playwright>=1.40.0
-
