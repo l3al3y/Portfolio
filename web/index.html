@@ -1892,9 +1892,29 @@ HUMANLIKE CONVERSATIONAL PERSONA & RESPONSE GUIDELINES:
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // RootSys Cloud AI Endpoint
+        function selectModelByQuery(query) {
+            const q = query.toLowerCase();
+            if (q.includes("code") || q.includes("script") || q.includes("python") || q.includes("html") || q.includes("c++") || q.includes("sql") || q.includes("troubleshoot")) {
+                return "fiq/kimi-k2.7-code";
+            }
+            if (q.includes("evaluate") || q.includes("network") || q.includes("ccna") || q.includes("vlan") || q.includes("ospf") || q.includes("security") || q.includes("ats")) {
+                return "fiq/deepseek-v4-pro";
+            }
+            if (q.includes("pitch") || q.includes("recommend") || q.includes("why hire") || q.includes("cover letter") || q.includes("advantage")) {
+                return "fiq/grok-4.5";
+            }
+            if (q.includes("quick") || q.includes("list") || q.includes("summary") || q.includes("fast")) {
+                return "fiq/deepseek-v4-flash";
+            }
+            return "fiq/kimi-k3";
+        }
+
+        // RootSys Cloud AI Endpoint with Expertise-Based Multi-Model Routing
         async function fetchKimiK25Ai(apiKey, userQuery) {
             const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
+            const selectedModel = selectModelByQuery(userQuery);
+            console.log(`[Multi-Model Router] Dispatching to '${selectedModel}' based on domain expertise.`);
+
             const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
                 method: "POST",
                 headers: {
@@ -1902,7 +1922,7 @@ HUMANLIKE CONVERSATIONAL PERSONA & RESPONSE GUIDELINES:
                     "Authorization": `Bearer ${activeKey}`
                 },
                 body: JSON.stringify({
-                    model: "fiq/kimi-k3",
+                    model: selectedModel,
                     messages: [
                         { role: "system", content: SYSTEM_PROMPT },
                         { role: "user", content: userQuery }

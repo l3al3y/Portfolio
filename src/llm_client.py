@@ -35,17 +35,34 @@ class ModelExpertise:
     CONVERSATIONAL = "fiq/kimi-k3"          # Multilingual chat & candidate persona
 
 
+def select_model_by_prompt(messages: List[Dict[str, str]]) -> str:
+    """Infer the specialized LLM model based on prompt content and task domain."""
+    text = " ".join([m.get("content", "") for m in messages]).lower()
+    if any(k in text for k in ["code", "script", "python", "html", "c++", "sql", "troubleshoot", "playwright"]):
+        return ModelExpertise.CODE_DEV
+    if any(k in text for k in ["evaluate", "network", "ccna", "vlan", "ospf", "security", "ats", "audit"]):
+        return ModelExpertise.DEEP_REASONING
+    if any(k in text for k in ["cover letter", "pitch", "persuasive", "recommend", "writing"]):
+        return ModelExpertise.CREATIVE_WRITING
+    if any(k in text for k in ["quick", "filter", "classify", "fast"]):
+        return ModelExpertise.FAST_FILTER
+    return ModelExpertise.CONVERSATIONAL
+
+
 def query_llm_model(
     messages: List[Dict[str, str]],
-    model: str = ModelExpertise.CONVERSATIONAL,
+    model: Optional[str] = None,
     temperature: float = 0.6,
     base_url: Optional[str] = None,
     api_key: Optional[str] = None,
     timeout: int = 15,
 ) -> Optional[str]:
     """
-    Synchronous completion request to a specific model.
+    Synchronous completion request to a specialized model based on domain expertise.
     """
+    if not model or model == "AUTO":
+        model = select_model_by_prompt(messages)
+
     url = f"{(base_url or API_BASE_URL).rstrip('/')}/chat/completions"
     key = api_key or API_KEY
 
