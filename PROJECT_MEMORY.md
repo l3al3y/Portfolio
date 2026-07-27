@@ -110,6 +110,12 @@
    - **Python Unittests (`python -m unittest discover tests`):** **17 / 17 Passed (100.0% - OK)**.
    - **Chatbot Brute-Force Benchmark Suite (`scratch/brute_force_bot_test.js`):** **70 / 70 Queries Passed (100.0%)** with zero fallback errors.
 
+4. **Desktop Hover Horizontal Nav & Motion UX Pass:**
+   - **Desktop Horizontal Nav (`#desktop-horizontal-nav`):** Unfolds horizontally from the left side of the header on mouse hover with a 300ms grace period on `mouseleave` to prevent flicker.
+   - **Touch Fallback:** Touch devices retain the tap-to-toggle menu drawer.
+   - **Motion Animations:** `IntersectionObserver` scroll reveals (`.scroll-reveal`), staggered skill pill entrances, card hover lifts, animated count-up for Capstone metrics (98.6% Precision, 97.8% Recall, <90ms Latency), scrollspy active link highlighting, and floating Back-to-Top button. Supports `prefers-reduced-motion`.
+   - **CTA & Repository Link Refinement:** Single primary CTA (`View Projects ↓`), secondary button hierarchy, and specific project GitHub link (`https://github.com/l3al3y/ResumeAgent`).
+
 ---
 
 ## ⚡ ENTERPRISE CAREER DASHBOARD
