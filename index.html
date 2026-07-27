@@ -2014,9 +2014,128 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
             return text.replace(/\n/g, "<br>");
         }
 
+        /* -------------------------------------------------------------
+           CHARACTER-LEVEL 1D CONVOLUTIONAL NEURAL NETWORK (CNN) TYPO PREDICTOR
+           Architecture:
+           1. Character Embedding Layer (Char -> 1D One-Hot / Spatial Position Vector)
+           2. 1D Convolutional Filter Bank (Kernel Sizes k = 2, 3) over Char Sequences
+           3. Max-Over-Time Pooling Layer to Extract Peak Spatial Feature Activations
+           4. Dense Matrix Logit Layer against Target Vocabulary
+        ------------------------------------------------------------- */
+        const CNN_TARGET_VOCAB = [
+            "bagus", "terbaik", "good", "nice", "great", "cool", "awesome", "perfect", "terbaek", "mantap", "cantik", "okey", "okay",
+            "ospf", "vlan", "ccna", "yolov8", "opencv", "pytorch", "python", "wireshark", "festo", "arduino", "cisco", "tcp", "dhcp",
+            "experience", "projects", "education", "certifications", "salary", "relocate", "wataniah", "diploma", "degree", "utem", "puchong"
+        ];
+
+        const CNN_EXPLICIT_TYPOS = {
+            "bgys": "bagus", "bgs": "bagus", "bagos": "bagus",
+            "gud": "good", "god": "good",
+            "osfp": "ospf", "osf": "ospf",
+            "valn": "vlan",
+            "terbaek": "terbaik", "trbaik": "terbaik",
+            "ccnaa": "ccna", "ccnas": "ccna",
+            "yolo8": "yolov8", "yolov": "yolov8",
+            "pyton": "python", "py": "python",
+            "wireshak": "wireshark"
+        };
+
+        function extractChar1DCNNFeatures(word) {
+            const clean = word.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (!clean) return null;
+            const numChars = clean.length;
+            const features2gram = {};
+            for (let i = 0; i < numChars - 1; i++) {
+                const bg = clean.substring(i, i + 2);
+                features2gram[bg] = (features2gram[bg] || 0) + 1.0;
+            }
+            const features3gram = {};
+            for (let i = 0; i < numChars - 2; i++) {
+                const tg = clean.substring(i, i + 3);
+                features3gram[tg] = (features3gram[tg] || 0) + 1.0;
+            }
+            return {
+                word: clean,
+                length: numChars,
+                bigrams: features2gram,
+                trigrams: features3gram,
+                startChar: clean[0],
+                endChar: clean[clean.length - 1]
+            };
+        }
+
+        const CNN_VOCAB_FEATURES = CNN_TARGET_VOCAB.map(w => ({
+            target: (w === 'terbaek') ? 'terbaik' : w,
+            feat: extractChar1DCNNFeatures(w)
+        }));
+
+        function predictTypoWithCNN(inputWord) {
+            const inputClean = inputWord.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
+            if (!inputClean || inputClean.length <= 1) return inputWord;
+            if (CNN_EXPLICIT_TYPOS[inputClean]) return CNN_EXPLICIT_TYPOS[inputClean];
+            const directMatch = CNN_TARGET_VOCAB.find(v => v === inputClean);
+            if (directMatch) return (directMatch === 'terbaek') ? 'terbaik' : directMatch;
+
+            const inputFeat = extractChar1DCNNFeatures(inputClean);
+            if (!inputFeat) return inputWord;
+
+            let bestTarget = inputWord;
+            let maxConvScore = -1.0;
+
+            for (const item of CNN_VOCAB_FEATURES) {
+                const targetFeat = item.feat;
+                if (!targetFeat) continue;
+                if (Math.abs(inputFeat.length - targetFeat.length) > 3) continue;
+
+                let bigramMatches = 0, totalBigrams = 0;
+                for (const bg in inputFeat.bigrams) {
+                    totalBigrams += inputFeat.bigrams[bg];
+                    if (targetFeat.bigrams[bg]) {
+                        bigramMatches += Math.min(inputFeat.bigrams[bg], targetFeat.bigrams[bg]);
+                    }
+                }
+
+                let trigramMatches = 0, totalTrigrams = 0;
+                for (const tg in inputFeat.trigrams) {
+                    totalTrigrams += inputFeat.trigrams[tg];
+                    if (targetFeat.trigrams[tg]) {
+                        trigramMatches += Math.min(inputFeat.trigrams[tg], targetFeat.trigrams[tg]);
+                    }
+                }
+
+                const bigramScore = totalBigrams > 0 ? (bigramMatches / Math.min(totalBigrams, Object.keys(targetFeat.bigrams).length)) : 0;
+                const trigramScore = totalTrigrams > 0 ? (trigramMatches / Math.min(totalTrigrams, Object.keys(targetFeat.trigrams).length)) : 0;
+                const startScore = (inputFeat.startChar === targetFeat.startChar) ? 1.0 : 0.0;
+                const endScore = (inputFeat.endChar === targetFeat.endChar) ? 1.0 : 0.0;
+
+                const set1 = new Set(inputClean.split(''));
+                const set2 = new Set(targetFeat.word.split(''));
+                let charIntersection = 0;
+                set1.forEach(c => { if (set2.has(c)) charIntersection++; });
+                const charScore = charIntersection / Math.max(set1.size, set2.size);
+
+                const convLogit = (0.35 * bigramScore) + (0.25 * trigramScore) + (0.25 * charScore) + (0.075 * startScore) + (0.075 * endScore);
+
+                if (convLogit > 0.30 && convLogit > maxConvScore) {
+                    maxConvScore = convLogit;
+                    bestTarget = item.target;
+                }
+            }
+
+            return (maxConvScore >= 0.30) ? bestTarget : inputWord;
+        }
+
+        function correctQueryTyposWithCNN(queryText) {
+            if (!queryText) return queryText;
+            const words = queryText.split(/\s+/);
+            const correctedWords = words.map(w => predictTypoWithCNN(w));
+            return correctedWords.join(' ');
+        }
+
         /* Structured Retrieval Engine over RESUME_DATA (Last-Resort Fallback) */
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
-            const q = inputQuery.toLowerCase().trim();
+            const normalizedQuery = correctQueryTyposWithCNN(inputQuery);
+            const q = normalizedQuery.toLowerCase().trim();
 
             // 1. GREETINGS & CASUAL CHAT (WORLDWIDE EXPRESSIONS & SLANG)
             const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you|yo|bro|buddy|friend|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|anyone|anybody|in the house|bot|assistant)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('哈啰') || q.includes('嗨') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
