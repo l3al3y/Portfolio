@@ -2078,7 +2078,9 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                 "hello", "greetings", "selamat", "salam", "khabar", "terima", "kasih", "thanks", "thank", "help", "please",
                 "interview", "resume", "contact", "email", "phone", "location", "salary", "experience", "projects", "education",
                 "ospf", "vlan", "ccna", "yolov8", "opencv", "pytorch", "python", "wireshark", "festo", "arduino", "cisco", "tcp", "dhcp",
-                "hola", "bonjour", "konnichiwa", "ciao", "namaste", "salut", "hallo", "amazing", "brilliant", "gempak", "padu"
+                "hola", "bonjour", "konnichiwa", "ciao", "namaste", "salut", "hallo", "amazing", "brilliant", "gempak", "padu",
+                "web", "stack", "dev", "code", "app", "tech", "fullstack", "frontend", "backend", "site", "data", "user", "net",
+                "start", "monday", "work", "job", "what", "can", "you", "do"
             ];
             baseConversationalWords.forEach(w => UNIVERSAL_WORD_SET.add(w));
 
@@ -2095,9 +2097,9 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
         function predictTypoWithCNN(inputWord) {
             initUniversalCNNEngine();
             const inputClean = inputWord.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
-            if (!inputClean || inputClean.length <= 1) return inputWord;
+            if (!inputClean || inputClean.length <= 2) return inputWord;
 
-            if (UNIVERSAL_WORD_SET && UNIVERSAL_WORD_SET.has(inputClean)) return inputClean;
+            if (UNIVERSAL_WORD_SET && UNIVERSAL_WORD_SET.has(inputClean)) return inputWord;
 
             const PHONETIC_MAP = {
                 "bgys": "bagus", "bgs": "bagus", "bagos": "bagus",
@@ -2117,7 +2119,7 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
             for (const item of UNIVERSAL_CNN_VOCAB_FEATURES) {
                 const targetFeat = item.feat;
                 if (!targetFeat) continue;
-                if (Math.abs(inputFeat.length - targetFeat.length) > 3) continue;
+                if (Math.abs(inputFeat.length - targetFeat.length) > 2) continue;
 
                 let bigramMatches = 0, totalBigrams = 0;
                 for (const bg in inputFeat.bigrams) {
@@ -2135,8 +2137,8 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                     }
                 }
 
-                const bigramScore = totalBigrams > 0 ? (bigramMatches / Math.min(totalBigrams, Object.keys(targetFeat.bigrams).length)) : 0;
-                const trigramScore = totalTrigrams > 0 ? (trigramMatches / Math.min(totalTrigrams, Object.keys(targetFeat.trigrams).length)) : 0;
+                const bigramScore = totalBigrams > 0 ? (bigramMatches / Math.max(totalBigrams, Object.keys(targetFeat.bigrams).length)) : 0;
+                const trigramScore = totalTrigrams > 0 ? (trigramMatches / Math.max(totalTrigrams, Object.keys(targetFeat.trigrams).length)) : 0;
                 const startScore = (inputFeat.startChar === targetFeat.startChar) ? 1.0 : 0.0;
                 const endScore = (inputFeat.endChar === targetFeat.endChar) ? 1.0 : 0.0;
 
@@ -2148,13 +2150,13 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
 
                 const convLogit = (0.35 * bigramScore) + (0.25 * trigramScore) + (0.25 * charScore) + (0.075 * startScore) + (0.075 * endScore);
 
-                if (convLogit > 0.30 && convLogit > maxConvScore) {
+                if (convLogit > 0.50 && convLogit > maxConvScore) {
                     maxConvScore = convLogit;
                     bestTarget = item.target;
                 }
             }
 
-            return (maxConvScore >= 0.30) ? bestTarget : inputWord;
+            return (maxConvScore >= 0.50) ? bestTarget : inputWord;
         }
 
         function correctQueryTyposWithCNN(queryText) {
@@ -2166,8 +2168,8 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
 
         /* Structured Retrieval Engine over RESUME_DATA (Last-Resort Fallback) */
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
-            const normalizedQuery = correctQueryTyposWithCNN(inputQuery);
-            const q = normalizedQuery.toLowerCase().trim();
+            const normalizedQuery = (typeof correctQueryTyposWithCNN === 'function') ? correctQueryTyposWithCNN(inputQuery) : inputQuery;
+            const q = (normalizedQuery || inputQuery).toLowerCase().trim();
 
             // 1. GREETINGS & CASUAL CHAT (WORLDWIDE EXPRESSIONS & SLANG)
             const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you|yo|bro|buddy|friend|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|anyone|anybody|in the house|bot|assistant)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('哈啰') || q.includes('嗨') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
