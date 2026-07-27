@@ -2218,9 +2218,9 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 return;
             }
 
-            // INSTANT LOCAL STRUCTURED RETRIEVAL (<5ms check for common candidate queries)
+            // INSTANT LOCAL RETRIEVAL & UNRECOGNIZED SCOPE REFUSAL (<5ms)
             const instantAnswer = generateNativeSpontaneousAnswer(query, lang);
-            if (instantAnswer && !instantAnswer.includes("programmed to answer questions about Irfan") && !instantAnswer.includes("diprogramkan untuk menjawab soalan mengenai Irfan") && !instantAnswer.includes("只被设定用来回答关于 Irfan") && !instantAnswer.includes("இர்பானைப் பற்றிய கேள்விகளுக்கு மட்டுமே")) {
+            if (instantAnswer) {
                 appendBotMessage(instantAnswer);
                 return;
             }
