@@ -2015,34 +2015,20 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
         }
 
         /* -------------------------------------------------------------
-           CHARACTER-LEVEL 1D CONVOLUTIONAL NEURAL NETWORK (CNN) TYPO PREDICTOR
+           UNIVERSAL DYNAMIC 1D CNN TYPO PREDICTOR & WORD CORRECTOR
            Architecture:
-           1. Character Embedding Layer (Char -> 1D One-Hot / Spatial Position Vector)
-           2. 1D Convolutional Filter Bank (Kernel Sizes k = 2, 3) over Char Sequences
-           3. Max-Over-Time Pooling Layer to Extract Peak Spatial Feature Activations
-           4. Dense Matrix Logit Layer against Target Vocabulary
+           1. Dynamic Corpus Ingestion: Automatically parses all text in RESUME_DATA & UI tokens
+           2. Character Embedding Layer (Char -> 1D One-Hot / Spatial Position Vector)
+           3. 1D Convolutional Filter Bank (Kernel Sizes k = 2, 3) over Char Sequences
+           4. Max-Over-Time Pooling Layer to Extract Peak Spatial Feature Activations
+           5. Universal Logit Score Layer against Dynamic Corpus Vocabulary Matrix
         ------------------------------------------------------------- */
-        const CNN_TARGET_VOCAB = [
-            "bagus", "terbaik", "good", "nice", "great", "cool", "awesome", "perfect", "terbaek", "mantap", "cantik", "okey", "okay",
-            "ospf", "vlan", "ccna", "yolov8", "opencv", "pytorch", "python", "wireshark", "festo", "arduino", "cisco", "tcp", "dhcp",
-            "experience", "projects", "education", "certifications", "salary", "relocate", "wataniah", "diploma", "degree", "utem", "puchong"
-        ];
-
-        const CNN_EXPLICIT_TYPOS = {
-            "bgys": "bagus", "bgs": "bagus", "bagos": "bagus",
-            "gud": "good", "god": "good",
-            "osfp": "ospf", "osf": "ospf",
-            "valn": "vlan",
-            "terbaek": "terbaik", "trbaik": "terbaik",
-            "ccnaa": "ccna", "ccnas": "ccna",
-            "yolo8": "yolov8", "yolov": "yolov8",
-            "pyton": "python", "py": "python",
-            "wireshak": "wireshark"
-        };
+        let UNIVERSAL_CNN_VOCAB_FEATURES = null;
+        let UNIVERSAL_WORD_SET = null;
 
         function extractChar1DCNNFeatures(word) {
             const clean = word.toLowerCase().replace(/[^a-z0-9]/g, '');
-            if (!clean) return null;
+            if (!clean || clean.length < 2) return null;
             const numChars = clean.length;
             const features2gram = {};
             for (let i = 0; i < numChars - 1; i++) {
@@ -2064,17 +2050,63 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
             };
         }
 
-        const CNN_VOCAB_FEATURES = CNN_TARGET_VOCAB.map(w => ({
-            target: (w === 'terbaek') ? 'terbaik' : w,
-            feat: extractChar1DCNNFeatures(w)
-        }));
+        function initUniversalCNNEngine() {
+            if (UNIVERSAL_CNN_VOCAB_FEATURES) return;
+            UNIVERSAL_WORD_SET = new Set();
+
+            function collectWords(obj) {
+                if (!obj) return;
+                if (typeof obj === 'string') {
+                    const cleanText = obj.replace(/<[^>]*>/g, ' ').replace(/[^a-zA-Z0-9\s]/g, ' ');
+                    cleanText.split(/\s+/).forEach(w => {
+                        const word = w.toLowerCase().trim();
+                        if (word.length >= 3 && !/^\d+$/.test(word)) {
+                            UNIVERSAL_WORD_SET.add(word);
+                        }
+                    });
+                } else if (Array.isArray(obj)) {
+                    obj.forEach(item => collectWords(item));
+                } else if (typeof obj === 'object') {
+                    for (const key in obj) {
+                        collectWords(obj[key]);
+                    }
+                }
+            }
+
+            const baseConversationalWords = [
+                "bagus", "terbaik", "good", "nice", "great", "cool", "awesome", "perfect", "mantap", "cantik", "okey", "okay",
+                "hello", "greetings", "selamat", "salam", "khabar", "terima", "kasih", "thanks", "thank", "help", "please",
+                "interview", "resume", "contact", "email", "phone", "location", "salary", "experience", "projects", "education",
+                "ospf", "vlan", "ccna", "yolov8", "opencv", "pytorch", "python", "wireshark", "festo", "arduino", "cisco", "tcp", "dhcp",
+                "hola", "bonjour", "konnichiwa", "ciao", "namaste", "salut", "hallo", "amazing", "brilliant", "gempak", "padu"
+            ];
+            baseConversationalWords.forEach(w => UNIVERSAL_WORD_SET.add(w));
+
+            if (typeof RESUME_DATA !== 'undefined') {
+                collectWords(RESUME_DATA);
+            }
+
+            UNIVERSAL_CNN_VOCAB_FEATURES = Array.from(UNIVERSAL_WORD_SET).map(word => ({
+                target: word,
+                feat: extractChar1DCNNFeatures(word)
+            })).filter(item => item.feat !== null);
+        }
 
         function predictTypoWithCNN(inputWord) {
+            initUniversalCNNEngine();
             const inputClean = inputWord.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
             if (!inputClean || inputClean.length <= 1) return inputWord;
-            if (CNN_EXPLICIT_TYPOS[inputClean]) return CNN_EXPLICIT_TYPOS[inputClean];
-            const directMatch = CNN_TARGET_VOCAB.find(v => v === inputClean);
-            if (directMatch) return (directMatch === 'terbaek') ? 'terbaik' : directMatch;
+
+            if (UNIVERSAL_WORD_SET && UNIVERSAL_WORD_SET.has(inputClean)) return inputClean;
+
+            const PHONETIC_MAP = {
+                "bgys": "bagus", "bgs": "bagus", "bagos": "bagus",
+                "gud": "good", "god": "good",
+                "osfp": "ospf", "valn": "vlan",
+                "terbaek": "terbaik", "trbaik": "terbaik",
+                "ccnaa": "ccna", "yolo8": "yolov8", "pyton": "python", "wireshak": "wireshark"
+            };
+            if (PHONETIC_MAP[inputClean]) return PHONETIC_MAP[inputClean];
 
             const inputFeat = extractChar1DCNNFeatures(inputClean);
             if (!inputFeat) return inputWord;
@@ -2082,7 +2114,7 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
             let bestTarget = inputWord;
             let maxConvScore = -1.0;
 
-            for (const item of CNN_VOCAB_FEATURES) {
+            for (const item of UNIVERSAL_CNN_VOCAB_FEATURES) {
                 const targetFeat = item.feat;
                 if (!targetFeat) continue;
                 if (Math.abs(inputFeat.length - targetFeat.length) > 3) continue;
