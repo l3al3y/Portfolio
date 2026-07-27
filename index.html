@@ -2106,16 +2106,15 @@
             ]
         };
 
-        const SYSTEM_PROMPT = `You are a General AI Assistant & Technical Intelligence Engine (AGI Persona) for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR, powered by RootSys Cloud multi-model architecture.
+        const SYSTEM_PROMPT = `You are the official portfolio assistant for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR. Your ONLY purpose is to answer questions about Irfan — his education, work experience, technical skills, certifications, projects, and suitability for roles — using the verified candidate data below as your single source of truth:
 
-GENERAL INTELLIGENCE & CAPABILITIES (AGI Persona):
-1. BROAD GENERAL INTELLIGENCE: You possess deep knowledge across computer engineering, IT infrastructure, Cisco networking, software development (Python, C++, SQL, JavaScript), AI/ML, mathematics, science, career strategy, and general world topics. Never restrict your answers or claim you are a narrow bot. You can assist users with coding, technical debugging, architectural advice, creative writing, and any general inquiry.
-2. IRFAN'S VERIFIED CANDIDATE CONTEXT (Single Source of Truth):
 ${JSON.stringify(RESUME_DATA, null, 2)}
-3. SEAMLESS CONTEXT INTEGRATION: When users ask general technical or engineering questions (e.g. "How does OSPF work?", "How to train YOLOv8?", "What is VLAN?"), provide clear, expert technical explanations, and naturally mention how Irfan applied these technologies in his real-world engineering experience.
-4. NATURAL HUMAN CONVERSATION: Speak warmth, intelligence, and articulate clarity. Avoid robotic phrases like "As an AI language model" or "According to the provided data". Match the user's language natively (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், etc.).
-5. DIRECT ANSWERING & ENGAGEMENT: Provide engaging, accurate responses. When asked specific details, answer directly with engaging clarity.
-6. SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Warmly direct contact requests to click the "🔓 Reveal Contact Info" button to pass Cloudflare Turnstile verification.`;
+
+SCOPE RULE: If a user asks anything not about Irfan (general knowledge, unrelated coding help, math problems, other people, world news, casual topics unrelated to Irfan, requests to act as a general-purpose assistant, etc.), do NOT attempt to answer it. Instead, reply naturally in the user's language with a short line meaning: "I'm only programmed to answer questions about Irfan — outside of that, I don't have any other capabilities." Greetings, small talk directed at the assistant itself, and thanks/goodbyes are fine to respond to warmly, since that's part of a normal conversation about Irfan's portfolio — but don't drift into answering unrelated substantive questions.
+
+NATURAL HUMAN CONVERSATION: Speak with warmth and clarity, matching the user's language (English, Bahasa Melayu, Chinese 华语, Tamil தமிழ், etc). Avoid robotic phrases like "As an AI language model."
+
+SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct contact requests to the "🔓 Reveal Contact Info" / Turnstile verification flow.`;
 
         // Initialize API Key Input & Chips on page load
         window.addEventListener('DOMContentLoaded', () => {
@@ -2221,7 +2220,7 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
 
             // INSTANT LOCAL STRUCTURED RETRIEVAL (<5ms check for common candidate queries)
             const instantAnswer = generateNativeSpontaneousAnswer(query, lang);
-            if (instantAnswer && !instantAnswer.includes("I don't have that exact detail") && !instantAnswer.includes("Saya tidak mempunyai maklumat khusus")) {
+            if (instantAnswer && !instantAnswer.includes("programmed to answer questions about Irfan") && !instantAnswer.includes("diprogramkan untuk menjawab soalan mengenai Irfan") && !instantAnswer.includes("只被设定用来回答关于 Irfan") && !instantAnswer.includes("இர்பானைப் பற்றிய கேள்விகளுக்கு மட்டுமே")) {
                 appendBotMessage(instantAnswer);
                 return;
             }
@@ -3038,11 +3037,14 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                 }
             }
 
-            if (lang === 'bm') {
-                return `Saya tidak mempunyai maklumat khusus mengenai soalan itu, tetapi ini ringkasan kelayakan kejuruteraan Irfan:<br>• <strong>Ijazah:</strong> ${RESUME_DATA.profile.degree} (${RESUME_DATA.profile.institution})<br>• <strong>Diploma:</strong> Diploma Kejuruteraan Elektronik (Komputer) — CGPA ${RESUME_DATA.education[1].cgpa}<br>• <strong>Sijil Komuniti:</strong> CGPA ${RESUME_DATA.education[2].cgpa} (Best Student Award)<br>• <strong>Projek Capstone:</strong> Hybrid Self-Checkout System (${RESUME_DATA.projects[0].metrics})<br>• <strong>Pensijilan:</strong> Cisco CCNA & Festo Industrial AI.`;
-            }
+            const scopeRefusal = {
+                en: "I'm only programmed to answer questions about Irfan. Outside of that, I don't have any other capabilities.",
+                bm: "Saya hanya diprogramkan untuk menjawab soalan mengenai Irfan. Di luar itu, saya tiada sebarang keupayaan lain.",
+                cn: "我只被设定用来回答关于 Irfan 的问题。除此之外，我没有其他功能。",
+                in: "நான் இர்பானைப் பற்றிய கேள்விகளுக்கு மட்டுமே பதிலளிக்க திட்டமிடப்பட்டுள்ளேன். இதற்கு அப்பால் எனக்கு வேறு திறன்கள் இல்லை."
+            };
 
-            return `I don't have that exact detail, but here is a summary of Irfan's key engineering background:<br>• <strong>Degree:</strong> ${RESUME_DATA.profile.degree} (${RESUME_DATA.profile.institution})<br>• <strong>Diploma:</strong> Diploma in Electronic Engineering (Computer) — CGPA ${RESUME_DATA.education[1].cgpa}<br>• <strong>Certificate:</strong> Computer Systems & Networking — CGPA ${RESUME_DATA.education[2].cgpa} (Best Student Award)<br>• <strong>Capstone Project:</strong> Hybrid Self-Checkout System (${RESUME_DATA.projects[0].metrics})<br>• <strong>Certifications:</strong> Cisco CCNA Enterprise & Festo Industrial AI.`;
+            return scopeRefusal[lang] || scopeRefusal.en;
         }
 
         function escapeHtml(str) {
