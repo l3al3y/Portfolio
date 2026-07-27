@@ -116,6 +116,11 @@
    - **Motion Animations:** `IntersectionObserver` scroll reveals (`.scroll-reveal`), staggered skill pill entrances, card hover lifts, animated count-up for Capstone metrics (98.6% Precision, 97.8% Recall, <90ms Latency), scrollspy active link highlighting, and floating Back-to-Top button. Supports `prefers-reduced-motion`.
    - **CTA & Repository Link Refinement:** Single primary CTA (`View Projects ↓`), secondary button hierarchy, and specific project GitHub link (`https://github.com/l3al3y/ResumeAgent`).
 
+5. **Mobile Navigation Overlay Bugfix (`.mobile-nav-drawer`):**
+   - Added base CSS rules (`display: none; position: absolute; top: calc(100% + 0.5rem); left: 0; right: 0; background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(20px); z-index: 1002`) and `.mobile-nav-drawer.active { display: block; }`.
+   - Fixed issue where `#mobile-nav-drawer` rendered as an unstyled static block pushing down the header and overlapping the hero section.
+   - Cleaned up obsolete `.nav-links` dead CSS rules.
+
 ---
 
 ## ⚡ ENTERPRISE CAREER DASHBOARD
