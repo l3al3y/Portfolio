@@ -401,81 +401,173 @@
             border-color: var(--primary);
         }
 
-        .mobile-nav-drawer {
-            position: absolute;
-            top: calc(100% + 0.5rem);
-            right: 1.5rem;
-            width: 250px;
-            max-width: 90vw;
-            background: rgba(15, 23, 42, 0.96);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            padding: 0.75rem 0.85rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            opacity: 0;
-            transform: translateY(-8px);
-            pointer-events: none;
-            visibility: hidden;
-            transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1), transform 250ms cubic-bezier(0.16, 1, 0.3, 1), visibility 250ms;
-            z-index: 1000;
+        /* DESKTOP HOVER-TRIGGERED HORIZONTAL NAV MENU */
+        .desktop-horizontal-nav {
+            display: none;
         }
 
-        .mobile-nav-drawer.active {
+        @media (hover: hover) and (pointer: fine) {
+            .desktop-horizontal-nav {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                left: 235px;
+                top: 50%;
+                transform: translateY(-50%) translateX(-12px);
+                background: rgba(15, 23, 42, 0.94);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid var(--border-card);
+                border-radius: 40px;
+                padding: 0.3rem 0.6rem;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                transition: opacity 220ms ease-out, transform 220ms ease-out, visibility 220ms;
+                z-index: 1001;
+            }
+
+            .desktop-horizontal-nav.active,
+            .desktop-horizontal-nav:hover,
+            .desktop-horizontal-nav:focus-within {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+                pointer-events: auto;
+                visibility: visible;
+            }
+
+            body.light-theme .desktop-horizontal-nav {
+                background: rgba(255, 255, 255, 0.98);
+                border-color: rgba(203, 213, 225, 0.8);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            }
+
+            .desktop-horizontal-nav ul {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                list-style: none;
+            }
+
+            .desktop-horizontal-nav a {
+                color: var(--text-sub);
+                text-decoration: none;
+                font-size: 0.85rem;
+                font-weight: 600;
+                padding: 0.35rem 0.75rem;
+                border-radius: 20px;
+                white-space: nowrap;
+                transition: all 0.2s ease;
+            }
+
+            .desktop-horizontal-nav a:hover,
+            .desktop-horizontal-nav a:focus,
+            .desktop-horizontal-nav a.active {
+                color: var(--primary);
+                background: rgba(56, 189, 248, 0.14);
+                outline: none;
+            }
+
+            .nav-resume-pill {
+                color: var(--emerald) !important;
+                font-weight: 700 !important;
+                background: rgba(52, 211, 153, 0.12) !important;
+                border: 1px solid rgba(52, 211, 153, 0.3);
+            }
+
+            .nav-resume-pill:hover {
+                background: rgba(52, 211, 153, 0.22) !important;
+            }
+        }
+
+        /* SCROLL-REVEAL & MOTION ANIMATIONS */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal.revealed .prompt-chip {
+            animation: pillStaggerIn 0.45s ease-out forwards;
+        }
+
+        @keyframes pillStaggerIn {
+            from { opacity: 0; transform: translateY(6px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* CARD HOVER-LIFT TRANSITIONS */
+        .glass-card, .cert-card-box, .resume-entry-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .glass-card:hover, .cert-card-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+
+        /* FLOATING BACK TO TOP BUTTON */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-card);
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top-btn.visible {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
-            visibility: visible;
         }
 
-        body.light-theme .mobile-nav-drawer {
-            background: rgba(255, 255, 255, 0.98);
+        .back-to-top-btn:hover {
+            background: var(--primary);
+            color: #0f172a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px var(--primary-glow);
+        }
+
+        body.light-theme .back-to-top-btn {
+            background: rgba(255, 255, 255, 0.95);
             border-color: rgba(203, 213, 225, 0.8);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            color: var(--primary-hover);
         }
 
-        .mobile-nav-drawer ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .mobile-nav-drawer a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.92rem;
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            border-bottom: none;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .mobile-nav-drawer a:hover, .mobile-nav-drawer a:focus {
-            background: rgba(56, 189, 248, 0.12);
-            color: var(--primary);
-            outline: none;
-        }
-
-        .nav-resume-item {
-            margin-top: 0.35rem;
-            padding-top: 0.45rem;
-            border-top: 1px solid var(--border-card);
-        }
-
-        .resume-nav-btn {
-            color: var(--emerald) !important;
-            font-weight: 700 !important;
-            background: rgba(52, 211, 153, 0.1) !important;
-            border: 1px solid rgba(52, 211, 153, 0.3) !important;
-        }
-
-        .resume-nav-btn:hover {
-            background: rgba(52, 211, 153, 0.2) !important;
+        /* PREFERS REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal, .mobile-nav-drawer, .desktop-horizontal-nav, .glass-card, .cert-card-box, .btn, .back-to-top-btn {
+                transition: none !important;
+                animation: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
         }
 
         .btn {
@@ -1020,13 +1112,26 @@
     <!-- Navigation Header -->
     <header role="banner">
         <div class="nav-inner">
-            <a href="#hero" class="logo-badge" aria-label="Irfan Fahmi - Home">
+            <a href="#hero" class="logo-badge" id="header-logo-trigger" aria-label="Irfan Fahmi - Home">
                 <div class="logo-icon">MI</div>
                 <div class="logo-text-group">
                     <span class="logo-name-text">Irfan Fahmi</span>
                     <span class="logo-subtitle-text">Computer Engineering Graduate</span>
                 </div>
             </a>
+
+            <!-- Desktop Hover-Triggered Horizontal Nav Menu (Unfolds from Left) -->
+            <nav id="desktop-horizontal-nav" class="desktop-horizontal-nav" aria-label="Horizontal Main Navigation">
+                <ul role="menubar">
+                    <li role="none"><a href="#hero" role="menuitem" class="nav-link-item active">Home</a></li>
+                    <li role="none"><a href="#about" role="menuitem" class="nav-link-item">About</a></li>
+                    <li role="none"><a href="#experience" role="menuitem" class="nav-link-item">Experience</a></li>
+                    <li role="none"><a href="#skills" role="menuitem" class="nav-link-item">Skills</a></li>
+                    <li role="none"><a href="#projects" role="menuitem" class="nav-link-item">Projects</a></li>
+                    <li role="none"><a href="#certifications" role="menuitem" class="nav-link-item">Certifications</a></li>
+                    <li role="none"><a href="javascript:void(0)" role="menuitem" onclick="openPrintableResumeModal()" class="nav-link-item nav-resume-pill">📄 Resume</a></li>
+                </ul>
+            </nav>
 
             <!-- Action Controls: Menu Toggle + Theme Toggle -->
             <div class="header-actions">
@@ -1204,25 +1309,25 @@
             </div>
 
             <!-- Candidate Quick Overview Card -->
-            <div class="glass-card" id="about">
+            <div class="glass-card scroll-reveal" id="about">
                 <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--primary);">
                     Personal Profile & Focus
                 </h3>
                 <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1rem;">
-                    I enjoy working where hardware, networking and software meet. My background spans IT support, Cisco networking, cybersecurity, embedded systems, IoT, computer vision and industrial AI. I focus on practical troubleshooting, system integration and automation that can improve how people and businesses work.
+                    I enjoy working where hardware, networking, and software intersect. My background spans IT support operations, Cisco enterprise networking, cybersecurity, embedded systems, microcontrollers, computer vision, and industrial AI. I emphasize structured technical troubleshooting, system maintenance, and automation that deliver real-world reliability.
                 </p>
                 <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
-                    <div><strong>Education Status:</strong> Final-Year Computer Engineering Student (UTeM • Expected Nov 2026)</div>
-                    <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI</div>
+                    <div><strong>Education Status:</strong> B.Eng Computer Engineering (Hons) — UTeM (Expected Nov 2026)</div>
+                    <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI Automation</div>
                     <div><strong>Experience Roles:</strong> Technical Staff (Global Elite Ventures) • Assistant Engineer (ARNN Tech) • Technician (OKCS)</div>
-                    <div><strong>Military Reserve:</strong> Askar Wataniah Reserve (High Discipline & Resilience)</div>
+                    <div><strong>Military Reserve:</strong> Askar Wataniah Reserve (High Discipline & Team Resilience)</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- WHAT I CAN DO SECTION -->
-    <section class="resume-mirror-section" id="what-i-can-do">
+    <section class="resume-mirror-section scroll-reveal" id="what-i-can-do">
         <div class="container glass-card">
             <h2 class="section-title-main">What I Can Do</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
@@ -1276,7 +1381,7 @@
     </section>
 
     <!-- WORK EXPERIENCE -->
-    <section class="resume-mirror-section" id="experience">
+    <section class="resume-mirror-section scroll-reveal" id="experience">
         <div class="container glass-card">
             <h2 class="section-title-main">Work Experience</h2>
 
@@ -1320,7 +1425,7 @@
     </section>
 
     <!-- TECHNICAL SKILLS GROUPED CATEGORIES -->
-    <section class="resume-mirror-section" id="skills">
+    <section class="resume-mirror-section scroll-reveal" id="skills">
         <div class="container glass-card">
             <h2 class="section-title-main">Technical Skills</h2>
             
@@ -1344,7 +1449,7 @@
     </section>
 
     <!-- EDUCATION -->
-    <section class="resume-mirror-section" id="education">
+    <section class="resume-mirror-section scroll-reveal" id="education">
         <div class="container glass-card">
             <h2 class="section-title-main">Education</h2>
 
@@ -1375,7 +1480,7 @@
     </section>
 
     <!-- CERTIFICATIONS -->
-    <section class="resume-mirror-section" id="certifications">
+    <section class="resume-mirror-section scroll-reveal" id="certifications">
         <div class="container glass-card">
             <h2 class="section-title-main">Certifications & Credentials</h2>
 
@@ -1414,7 +1519,7 @@
     </section>
 
     <!-- FEATURED ENGINEERING PROJECT -->
-    <section class="resume-mirror-section" id="projects">
+    <section class="resume-mirror-section scroll-reveal" id="projects">
         <div class="container glass-card">
             <h2 class="section-title-main">Featured Project</h2>
 
@@ -1430,15 +1535,15 @@
                 <!-- Visual Metrics Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">98.6%</div>
+                        <div class="stat-count-num" id="stat-precision" data-target="98.6" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">98.6%</div>
                         <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
                     </div>
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">97.8%</div>
+                        <div class="stat-count-num" id="stat-recall" data-target="97.8" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">97.8%</div>
                         <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Recall (150 Epochs)</div>
                     </div>
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
+                        <div class="stat-count-num" id="stat-latency" data-target="90" data-prefix="<" data-suffix="ms" style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
                         <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
                     </div>
                 </div>
@@ -1460,14 +1565,14 @@
                 </div>
 
                 <div style="display: flex; gap: 0.75rem;">
-                    <a href="https://github.com/l3al3y" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.85rem;">View Project on GitHub ➔</a>
+                    <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.85rem;">View Project on GitHub ➔</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- WHAT I'M LOOKING FOR (TARGET ROLES) -->
-    <section class="resume-mirror-section" id="seeking">
+    <section class="resume-mirror-section scroll-reveal" id="seeking">
         <div class="container glass-card">
             <h2 class="section-title-main">What I'm Looking For</h2>
             <p style="font-size: 0.92rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -1529,6 +1634,11 @@
         </div>
     </div>
 
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -1589,10 +1699,133 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeMobileMenu();
+                if (desktopNav) desktopNav.classList.remove('active');
                 closeSecurityModal();
                 closePrintableResumeModal();
             }
         });
+
+        /* -------------------------------------------------------------
+           Desktop Hover Nav Grace Period (300ms)
+        ------------------------------------------------------------- */
+        const desktopNav = document.getElementById('desktop-horizontal-nav');
+        const logoTrigger = document.getElementById('header-logo-trigger');
+        let hoverTimeout = null;
+
+        function showDesktopNav() {
+            if (!desktopNav) return;
+            clearTimeout(hoverTimeout);
+            desktopNav.classList.add('active');
+        }
+
+        function hideDesktopNavWithDelay() {
+            if (!desktopNav) return;
+            clearTimeout(hoverTimeout);
+            hoverTimeout = setTimeout(() => {
+                desktopNav.classList.remove('active');
+            }, 300);
+        }
+
+        if (logoTrigger && desktopNav) {
+            logoTrigger.addEventListener('mouseenter', showDesktopNav);
+            logoTrigger.addEventListener('mouseleave', hideDesktopNavWithDelay);
+
+            desktopNav.addEventListener('mouseenter', showDesktopNav);
+            desktopNav.addEventListener('mouseleave', hideDesktopNavWithDelay);
+        }
+
+        /* -------------------------------------------------------------
+           Scroll-Reveal, Scrollspy & Capstone Stat Count-up Observers
+        ------------------------------------------------------------- */
+        const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Scroll-Reveal Observer for Sections
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    if (entry.target.id === 'projects') {
+                        animateCapstoneStats();
+                    }
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+        // Stat Count-Up Function
+        let animatedStats = false;
+        function animateCapstoneStats() {
+            if (animatedStats || isReducedMotion) return;
+            animatedStats = true;
+
+            const statElements = document.querySelectorAll('.stat-count-num');
+            statElements.forEach(el => {
+                const target = parseFloat(el.getAttribute('data-target'));
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
+                const isDecimal = target % 1 !== 0;
+                
+                let start = 0;
+                const duration = 1200;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = progress * (2 - progress); // Ease-out quad
+                    const currentVal = start + (target - start) * easeProgress;
+
+                    el.innerText = prefix + (isDecimal ? currentVal.toFixed(1) : Math.round(currentVal)) + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        el.innerText = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+                    }
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        // Scrollspy Observer for Active Section Highlighting
+        const spySections = document.querySelectorAll('section[id], div[id="about"]');
+        const spyNavLinks = document.querySelectorAll('.desktop-horizontal-nav a, .mobile-nav-drawer a');
+
+        const spyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    spyNavLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        } else if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        spySections.forEach(sec => spyObserver.observe(sec));
+
+        // Back to Top Floating Button Scroll Handler
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+        window.addEventListener('scroll', () => {
+            if (backToTopBtn) {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+        });
+
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
         function toggleFloatingChat() {
             const chatWin = document.getElementById('chat-floating-window');
