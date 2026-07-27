@@ -316,37 +316,42 @@
             box-shadow: 0 0 12px var(--primary-glow);
         }
 
+                .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .logo-name-text {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            letter-spacing: -0.2px;
+        }
+
+        .logo-subtitle-text {
+            font-size: 0.72rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-family: var(--font-sans);
+        }
+
         .logo-status-tag {
-            font-size: 0.7rem;
-            background: rgba(52, 211, 153, 0.15);
+            font-size: 0.78rem;
+            background: rgba(52, 211, 153, 0.12);
             color: var(--emerald);
-            padding: 0.2rem 0.55rem;
+            padding: 0.25rem 0.65rem;
             border-radius: 20px;
             border: 1px solid rgba(52, 211, 153, 0.3);
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
         }
 
         .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-sub);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 600;
-            padding: 0.35rem 0.75rem;
-            border-radius: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
-            background: rgba(56, 189, 248, 0.12);
+            display: none !important;
         }
 
         .header-actions {
@@ -373,47 +378,104 @@
         }
 
         .mobile-menu-btn {
-            display: none;
-            width: 38px; height: 38px;
-            align-items: center; justify-content: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            min-height: 38px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border-card);
             color: var(--text-main);
-            font-size: 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 700;
             border-radius: var(--radius-sm);
             cursor: pointer;
             line-height: 1;
-            transition: 0.2s;
+            transition: all 0.2s ease;
+            font-family: var(--font-sans);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
         }
 
         .mobile-nav-drawer {
-            display: none;
-            background: rgba(15, 23, 42, 0.98);
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 1.5rem;
+            width: 250px;
+            max-width: 90vw;
+            background: rgba(15, 23, 42, 0.96);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-card);
-            padding: 1rem 1.5rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 0.75rem 0.85rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(-8px);
+            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1), transform 250ms cubic-bezier(0.16, 1, 0.3, 1), visibility 250ms;
+            z-index: 1000;
         }
 
         .mobile-nav-drawer.active {
-            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        body.light-theme .mobile-nav-drawer {
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(203, 213, 225, 0.8);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
 
         .mobile-nav-drawer ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.3rem;
         }
 
         .mobile-nav-drawer a {
             color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            display: block;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            border-bottom: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .mobile-nav-drawer a:hover, .mobile-nav-drawer a:focus {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--primary);
+            outline: none;
+        }
+
+        .nav-resume-item {
+            margin-top: 0.35rem;
+            padding-top: 0.45rem;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .resume-nav-btn {
+            color: var(--emerald) !important;
+            font-weight: 700 !important;
+            background: rgba(52, 211, 153, 0.1) !important;
+            border: 1px solid rgba(52, 211, 153, 0.3) !important;
+        }
+
+        .resume-nav-btn:hover {
+            background: rgba(52, 211, 153, 0.2) !important;
         }
 
         .btn {
@@ -955,51 +1017,40 @@
     <!-- 3D Constellation WebGL Background -->
     <canvas id="webgl-canvas"></canvas>
 
-    <!-- Navigation Header (Component Gallery Floating Glass Pill Pattern) -->
+    <!-- Navigation Header -->
     <header role="banner">
         <div class="nav-inner">
-            <a href="#hero" class="logo-badge" aria-label="Muhammad Irfan Fahmi - Home">
+            <a href="#hero" class="logo-badge" aria-label="Irfan Fahmi - Home">
                 <div class="logo-icon">MI</div>
-                <span class="logo-name-text">Irfan Fahmi</span>
-                <span class="logo-status-tag">🟢 Open to Roles</span>
+                <div class="logo-text-group">
+                    <span class="logo-name-text">Irfan Fahmi</span>
+                    <span class="logo-subtitle-text">Computer Engineering Graduate</span>
+                </div>
             </a>
 
-            <!-- Desktop Navigation Links -->
-            <nav role="navigation" aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#what-i-can-do">Services</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certifications">Certs</a></li>
-                    <li><a href="#seeking">Roles</a></li>
-                    <li><a href="javascript:void(0)" onclick="openPrintableResumeModal()" style="color: var(--emerald); font-weight:700;">📄 Resume</a></li>
-                </ul>
-            </nav>
-
-            <!-- Action Controls: Light/Dark Toggle + Mobile Menu -->
+            <!-- Action Controls: Menu Toggle + Theme Toggle -->
             <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span id="menu-btn-icon">☰</span> <span id="menu-btn-text">Menu</span>
+                </button>
                 <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Light and Dark Mode">🌙</button>
-                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">☰</button>
             </div>
         </div>
 
-        <!-- Mobile Navigation Drawer Dropdown -->
-        <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-            <ul>
-                <li><a href="#hero" onclick="closeMobileMenu()">Home</a></li>
-                <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
-                <li><a href="#what-i-can-do" onclick="closeMobileMenu()">What I Can Do</a></li>
-                <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
-                <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
-                <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
-                <li><a href="#certifications" onclick="closeMobileMenu()">Certifications</a></li>
-                <li><a href="#seeking" onclick="closeMobileMenu()">Target Roles</a></li>
-                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openPrintableResumeModal();" style="color: var(--emerald); font-weight:700;">📄 Printable 1-Page Resume</a></li>
-                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); toggleFloatingChat();" style="color: var(--purple); font-weight:700;">💬 Ask About My Experience</a></li>
-                <li><a href="javascript:void(0)" onclick="closeMobileMenu(); openSecurityModal();" style="color: var(--emerald); font-weight: 700;">✉️ Contact Me</a></li>
+        <!-- Navigation Drawer Dropdown Panel -->
+        <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Main Navigation">
+            <ul role="menu">
+                <li role="none"><a href="#hero" role="menuitem" onclick="closeMobileMenu()">Home</a></li>
+                <li role="none"><a href="#about" role="menuitem" onclick="closeMobileMenu()">About</a></li>
+                <li role="none"><a href="#experience" role="menuitem" onclick="closeMobileMenu()">Experience</a></li>
+                <li role="none"><a href="#skills" role="menuitem" onclick="closeMobileMenu()">Skills</a></li>
+                <li role="none"><a href="#projects" role="menuitem" onclick="closeMobileMenu()">Projects</a></li>
+                <li role="none"><a href="#certifications" role="menuitem" onclick="closeMobileMenu()">Certifications</a></li>
+                <li role="none" class="nav-resume-item">
+                    <a href="javascript:void(0)" role="menuitem" onclick="closeMobileMenu(); openPrintableResumeModal();" class="resume-nav-btn">
+                        📄 View Resume
+                    </a>
+                </li>
             </ul>
         </div>
     </header>
@@ -1065,7 +1116,7 @@
                 <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 1rem;">
                     <div>
                         <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.25rem 0;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h2>
-                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 600;">Computer Engineer | IT Infrastructure • Networking • AI Automation</div>
+                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 600;">Computer Engineering Graduate | IT Support • Networking • AI Automation • Hardware Troubleshooting</div>
                         <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Final-Year Computer Engineering Student (UTeM) • Puchong, Selangor, Malaysia</div>
                     </div>
                 </div>
@@ -1098,21 +1149,12 @@
                 <div style="margin-bottom: 1.25rem;">
                     <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">🎓 EDUCATION</h4>
                     <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>B.Eng Computer Engineering (Hons)</strong> — Universiti Teknikal Malaysia Melaka (Final-Year Student • Expected Nov 2026)</div>
-                    <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>Diploma in Electronic Engineering (Computer)</strong> — Politeknik Port Dickson (CGPA 3.26)</div>
-                    <div style="font-size: 0.85rem;">• <strong>Certificate in Computer Systems & Networking</strong> — Kolej Komuniti Selandar (CGPA 3.58 - Best Student Award)</div>
-                </div>
-
-                <div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">🔬 KEY CAPSTONE PROJECT</h4>
-                    <div style="font-size: 0.85rem; line-height: 1.5;">
-                        <strong>Hybrid Self-Checkout System (YOLOv8 + USB Barcode Scanner):</strong> Anti-fraud dual verification system. <strong>77.4% Precision</strong>, <strong>72.0% Recall</strong> (50 epochs), under 150ms inference latency.
-                    </div>
                 </div>
             </div>
-
-            <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem;">
-                <a href="resume/resume.pdf" target="_blank" download class="btn btn-emerald" style="flex: 1; justify-content: center; font-size: 0.85rem;">⬇️ Download PDF Resume</a>
-                <a href="resume/resume.html" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.85rem;">🖨️ Open Printable A4 Page</a>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+                <a href="resume/resume.pdf" target="_blank" download class="btn btn-primary" style="font-size: 0.85rem;">Download PDF Resume 📄</a>
+                <button class="btn btn-secondary" onclick="closePrintableResumeModal()" style="font-size: 0.85rem;">Close</button>
             </div>
         </div>
     </div>
@@ -1121,29 +1163,42 @@
     <section class="hero" id="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1 class="hero-title" style="margin-bottom: 0.5rem;">MUHAMMAD IRFAN FAHMI</h1>
-                <div class="hero-subtitle" style="font-size: 1.15rem; color: var(--emerald); font-weight: 700; margin-bottom: 0.5rem;">
-                    Computer Engineer | IT Infrastructure • Networking • AI Automation
+                <!-- Primary Identity Badge & Open to Work Status -->
+                <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 0.85rem;">
+                    <span class="prompt-chip" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: var(--primary); font-weight: 700; font-size: 0.85rem;">
+                        🎓 Computer Engineering Graduate
+                    </span>
+                    <span class="logo-status-tag" style="font-size: 0.85rem; padding: 0.28rem 0.75rem;">
+                        🟢 Open to Work
+                    </span>
                 </div>
-                <div style="font-size: 0.95rem; color: var(--text-sub); font-style: italic; margin-bottom: 1.25rem;">
-                    "I bridge hardware, networking and AI to build practical technical solutions."
+
+                <h1 class="hero-title" style="margin-bottom: 0.35rem; font-size: clamp(2.1rem, 5.2vw, 3.3rem);">IRFAN FAHMI</h1>
+
+                <!-- Primary Positioning Subheading -->
+                <div class="hero-subtitle" style="font-size: clamp(1rem, 2.4vw, 1.2rem); color: var(--emerald); font-weight: 700; margin-bottom: 0.85rem; font-family: var(--font-sans); line-height: 1.4;">
+                    IT Support • Networking • AI Automation • Hardware & Technical Troubleshooting
                 </div>
+
+                <p style="font-size: 0.95rem; color: var(--text-sub); line-height: 1.65; margin-bottom: 1.25rem; max-width: 620px;">
+                    Computer Engineering graduate (UTeM) with strong practical hands-on experience in IT support operations, Cisco enterprise networking, hardware diagnostics, and AI automation engineering. Focused on building reliable physical and digital system integration solutions.
+                </p>
 
                 <!-- Credential Badges -->
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
                     <span class="prompt-chip" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: var(--primary);">CCNA Certified</span>
                     <span class="prompt-chip" style="background: rgba(52, 211, 153, 0.15); border-color: rgba(52, 211, 153, 0.4); color: var(--emerald);">Industrial AI</span>
-                    <span class="prompt-chip">IT Support</span>
-                    <span class="prompt-chip">Networking</span>
-                    <span class="prompt-chip">Computer Vision</span>
-                    <span class="prompt-chip">Automation</span>
+                    <span class="prompt-chip">IT Support & Maintenance</span>
+                    <span class="prompt-chip">Cisco Networking</span>
+                    <span class="prompt-chip">Hardware Diagnostics</span>
+                    <span class="prompt-chip">AI Automation</span>
                 </div>
 
-                <!-- Strategic Action CTAs -->
+                <!-- Strategic Primary CTAs -->
                 <div class="hero-cta">
-                    <a href="resume/resume.pdf" target="_blank" download class="btn btn-primary">View My Resume →</a>
-                    <button class="btn btn-emerald" onclick="openSecurityModal()">Contact Me →</button>
-                    <a href="#projects" class="btn btn-secondary">View Projects ↓</a>
+                    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+                    <a href="javascript:void(0)" onclick="openPrintableResumeModal()" class="btn btn-emerald">View Resume 📄</a>
+                    <button class="btn btn-secondary" onclick="openSecurityModal()">Contact Me ✉️</button>
                     <button class="btn btn-purple" onclick="toggleFloatingChat()">Ask About My Experience 💬</button>
                 </div>
             </div>
@@ -1405,7 +1460,7 @@
                 </div>
 
                 <div style="display: flex; gap: 0.75rem;">
-                    <a href="resume/resume.html" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">View Technical Details →</a>
+                    <a href="https://github.com/l3al3y" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.85rem;">View Project on GitHub ➔</a>
                 </div>
             </div>
         </div>
@@ -1494,24 +1549,50 @@
     <!-- INTERACTIVE JAVASCRIPT & AI CONNECTOR ENGINE -->
     <script>
         /* -------------------------------------------------------------
-           1. Mobile Menu Drawer Toggle & Floating Chat Toggle
+           1. Menu Panel Drawer Toggle, Keyboard Esc & Click Outside Handler
         ------------------------------------------------------------- */
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
 
+        function updateMenuToggleState(isOpen) {
+            if (!mobileMenuToggle) return;
+            mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            const iconSpan = document.getElementById('menu-btn-icon');
+            const textSpan = document.getElementById('menu-btn-text');
+            if (iconSpan) iconSpan.innerText = isOpen ? '✕' : '☰';
+            if (textSpan) textSpan.innerText = isOpen ? 'Close' : 'Menu';
+        }
+
         if (mobileMenuToggle && mobileNavDrawer) {
-            mobileMenuToggle.addEventListener('click', () => {
-                mobileNavDrawer.classList.toggle('active');
-                mobileMenuToggle.innerText = mobileNavDrawer.classList.contains('active') ? '✕' : '☰';
+            mobileMenuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = mobileNavDrawer.classList.toggle('active');
+                updateMenuToggleState(isOpen);
             });
         }
 
         function closeMobileMenu() {
-            if (mobileNavDrawer) {
+            if (mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
                 mobileNavDrawer.classList.remove('active');
-                if (mobileMenuToggle) mobileMenuToggle.innerText = '☰';
+                updateMenuToggleState(false);
             }
         }
+
+        document.addEventListener('click', (e) => {
+            if (mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
+                if (!mobileNavDrawer.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+                closeSecurityModal();
+                closePrintableResumeModal();
+            }
+        });
 
         function toggleFloatingChat() {
             const chatWin = document.getElementById('chat-floating-window');
