@@ -2019,8 +2019,17 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
             const q = inputQuery.toLowerCase().trim();
 
             // 1. GREETINGS & CASUAL CHAT
-            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
+            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
             if (isGreeting && q.length <= 40) {
+                if (q.includes('how are you') || q.includes('apa khabar') || q.includes('how is it going') || q.includes('what\'s up') || q.includes('sup') || q.includes('wbu')) {
+                    if (lang === 'bm') {
+                        return `Saya sihat dan bersemangat! 😊 Terima kasih kerana bertanya. Saya bersedia membantu anda mengenali profil kejuruteraan Irfan, pensijilan Cisco CCNA, atau projek capstone YOLOv8 beliau. Apa khabar anda hari ini?`;
+                    } else if (lang === 'cn') {
+                        return `我非常好，谢谢关心！😊 随时准备为您解答关于 Irfan 的计算机工程背景、CCNA 认证或 AI 项目的问题。您今天过得怎么样？`;
+                    } else {
+                        return `I'm doing fantastic, thanks for asking! 😊 Ready to help you discover Irfan's Computer Engineering background, Cisco CCNA credentials, or YOLOv8 capstone project. How's your day going?`;
+                    }
+                }
                 if (lang === 'bm') {
                     return `Salam / Hai! 👋 Senang dapat berhubung dengan anda. Apa yang boleh saya bantu anda hari ini? Sila tanya apa-apa soalan mengenai latar belakang kejuruteraan Irfan, pensijilan CCNA, atau projek capstone beliau!`;
                 } else if (lang === 'cn') {
@@ -2029,6 +2038,21 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                     return `வணக்கம்! 👋 நான் உங்களுக்கு எவ்வாறு உதவ முடியும்? இர்பானின் கல்வி மற்றும் சான்றிதழ்கள் பற்றி எது வேண்டுமானாலும் கேட்கலாம்!`;
                 } else {
                     return `Hello there! 👋 Great to connect with you. How can I assist you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!`;
+                }
+            }
+
+            // 1.1 POSITIVE AFFIRMATIONS & FRIENDLY ACKNOWLEDGMENTS ("good", "nice", "cool", "great", "ok", etc.)
+            const isAffirmation = /^(good|nice|cool|great|awesome|sweet|perfect|excellent|wonderful|amazing|sounds good|good job|very good|so good|alright|all right|ok|okay|sure|got it|understood|fair enough|fine|terbaik|bagus|cantik|mantap|baik|okey|boleh|setuju|faham|很好|不错|棒|好的|行|赞|太好了|可以|明白|நல்லது|சரி|சூப்பர்|அற்புதம்)[!.?]*$/i.test(q)
+                || q === 'good' || q === 'nice' || q === 'cool' || q === 'great' || q === 'awesome' || q === 'ok' || q === 'okay' || q === 'sure' || q === 'got it' || q === 'terbaik' || q === 'bagus' || q === 'cantik' || q === 'mantap' || q === '很好' || q === '不错' || q === '好的';
+            if (isAffirmation) {
+                if (lang === 'bm') {
+                    return `Terbaik! 😊 Gembira dapat membantu. Ada apa-apa lagi yang anda ingin terokai mengenai pengalaman kejuruteraan Irfan, pensijilan Cisco CCNA, atau projek capstone YOLOv8 beliau?`;
+                } else if (lang === 'cn') {
+                    return `太棒了！😊 很高兴为您解答。请问您还想了解 Irfan 的什么内容？随时可以问我关于他的网络认证、AI 项目或工作经验！`;
+                } else if (lang === 'in') {
+                    return `மகிழ்ச்சி! 😊 இர்பானின் கல்வி, சான்றிதழ்கள் அல்லது திட்டங்கள் பற்றி மேலும் ஏதேனும் அறிய விரும்புகிறீர்களா?`;
+                } else {
+                    return `Glad to hear that! 😊 Is there anything specific you'd like to explore next about Irfan's Computer Engineering background, Cisco CCNA certifications, or YOLOv8 capstone project?`;
                 }
             }
 
