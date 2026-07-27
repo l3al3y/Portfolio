@@ -124,6 +124,7 @@
 6. **Strict Irfan-Only Chatbot Scope Enforcement:**
    - **`SYSTEM_PROMPT` Scope Rule:** Rewrote system prompt to restrict AI capabilities strictly to answering questions about Irfan (education, experience, skills, certifications, projects, role suitability). Unrelated questions (math, general coding, world topics, general AGI requests) trigger a concise, natural refusal in the user's language.
    - **Localized Offline Fallback (`scopeRefusal`):** Updated `generateNativeSpontaneousAnswer` to return a localized refusal line (`en`, `bm`, `cn`, `in`) instead of a full resume dump for unmatched off-topic queries.
+   - **Instant Client-Side Refusal Execution:** Updated `submitChatMessage` to output `scopeRefusal` immediately (<5ms) for any unrecognized off-topic text without making the user wait for external LLM API calls or thinking spinners.
    - **Greeting & Affirmation Exemption:** Warm greetings, small talk directed at the assistant, and polite thanks/goodbyes continue to respond naturally.
 
 ---
