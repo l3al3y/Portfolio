@@ -2018,10 +2018,10 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const q = inputQuery.toLowerCase().trim();
 
-            // 1. GREETINGS & CASUAL CHAT
-            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
-            if (isGreeting && q.length <= 40) {
-                if (q.includes('how are you') || q.includes('apa khabar') || q.includes('how is it going') || q.includes('what\'s up') || q.includes('sup') || q.includes('wbu')) {
+            // 1. GREETINGS & CASUAL CHAT (WORLDWIDE EXPRESSIONS & SLANG)
+            const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you|yo|bro|buddy|friend|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|anyone|anybody|in the house|bot|assistant)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('哈啰') || q.includes('嗨') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
+            if (isGreeting && q.length <= 50) {
+                if (q.includes('how are you') || q.includes('apa khabar') || q.includes('how is it going') || q.includes('what\'s up') || q.includes('sup') || q.includes('wbu') || q.includes('how do you do')) {
                     if (lang === 'bm') {
                         return `Saya sihat dan bersemangat! 😊 Terima kasih kerana bertanya. Saya bersedia membantu anda mengenali profil kejuruteraan Irfan, pensijilan Cisco CCNA, atau projek capstone YOLOv8 beliau. Apa khabar anda hari ini?`;
                     } else if (lang === 'cn') {
@@ -2041,8 +2041,8 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                 }
             }
 
-            // 1.1 POSITIVE AFFIRMATIONS & FRIENDLY ACKNOWLEDGMENTS ("good", "nice", "cool", "great", "ok", etc.)
-            const isAffirmation = /^(good|nice|cool|great|awesome|sweet|perfect|excellent|wonderful|amazing|sounds good|good job|very good|so good|alright|all right|ok|okay|sure|got it|understood|fair enough|fine|terbaik|bagus|cantik|mantap|baik|okey|boleh|setuju|faham|很好|不错|棒|好的|行|赞|太好了|可以|明白|நல்லது|சரி|சூப்பர்|அற்புதம்)[!.?]*$/i.test(q)
+            // 1.1 POSITIVE AFFIRMATIONS & FRIENDLY ACKNOWLEDGMENTS ("good", "nice", "cool", "great", "ok", "sweet", "awesome", etc.)
+            const isAffirmation = /^(good|nice|cool|great|awesome|sweet|perfect|excellent|wonderful|amazing|brilliant|fantastic|super|love it|impressive|sounds good|good job|very good|so good|alright|all right|ok|okay|sure|got it|understood|fair enough|fine|yep|yeah|yes|true|right|exactly|i see|terbaik|bagus|cantik|mantap|gempak|padu|baik|okey|boleh|setuju|faham|很好|不错|棒|好的|行|赞|太好了|可以|明白|懂了|是的|நல்லது|சரி|சூப்பர்|அற்புதம்)[!.?]*$/i.test(q)
                 || q === 'good' || q === 'nice' || q === 'cool' || q === 'great' || q === 'awesome' || q === 'ok' || q === 'okay' || q === 'sure' || q === 'got it' || q === 'terbaik' || q === 'bagus' || q === 'cantik' || q === 'mantap' || q === '很好' || q === '不错' || q === '好的';
             if (isAffirmation) {
                 if (lang === 'bm') {
@@ -2053,6 +2053,17 @@ ${JSON.stringify(RESUME_DATA, null, 2)}
                     return `மகிழ்ச்சி! 😊 இர்பானின் கல்வி, சான்றிதழ்கள் அல்லது திட்டங்கள் பற்றி மேலும் ஏதேனும் அறிய விரும்புகிறீர்களா?`;
                 } else {
                     return `Glad to hear that! 😊 Is there anything specific you'd like to explore next about Irfan's Computer Engineering background, Cisco CCNA certifications, or YOLOv8 capstone project?`;
+                }
+            }
+
+            // 1.2 HELP & CAPABILITIES ("what can you do", "help", "who made you", "capabilities")
+            if (q.includes('what can you do') || q.includes('help me') || q.includes('capabilities') || q.includes('what do you do') || q.includes('who made you') || q.includes('who built you') || q.includes('bantu') || q.includes('apa boleh buat') || q.includes('能做什么') || q.includes('帮助')) {
+                if (lang === 'bm') {
+                    return `Saya Pembantu AI Rasmi Irfan! 🤖 Saya boleh membantu anda menerokai pensijilan Cisco CCNA beliau, projek capstone YOLOv8, gred CGPA, pengalaman kerja, atau membantu anda menjadualkan temuduga!`;
+                } else if (lang === 'cn') {
+                    return `我是 Irfan 的官方 AI 助手！🤖 我可以回答关于他的 Cisco CCNA 网络认证、YOLOv8 毕业项目、成绩 CGPA、工作经验的问题，或者协助您安排与他的面试！`;
+                } else {
+                    return `I'm Irfan's official AI assistant! 🤖 I can help you evaluate his Cisco CCNA credentials, YOLOv8 computer vision capstone project, academic CGPA, work experience, or assist you in scheduling an interview!`;
                 }
             }
 
