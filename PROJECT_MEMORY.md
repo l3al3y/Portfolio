@@ -1,7 +1,7 @@
 # 🧠 PROJECT MEMORY & CANDIDATE PROFILE
 
 **Candidate Name:** MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR  
-**Age:** 26–27 years old (Born 1999)  
+**Date of Birth:** 8 March 1999 (27 years old)  
 **Personal Summary:** I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology.  
 **Email:** Protected via Cloudflare Turnstile Verification Gate (No client-side plaintext/encoded exposure)  
 **Phone:** Protected via Cloudflare Turnstile Verification Gate (+60 16-243 2023)  
