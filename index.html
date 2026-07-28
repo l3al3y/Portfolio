@@ -403,47 +403,143 @@
             border-color: var(--primary);
         }
 
-        .mobile-nav-drawer {
-            display: none;
+        /* UNIFIED NAVIGATION DROPDOWN PANEL */
+        .nav-dropdown-panel {
             position: absolute;
-            top: calc(100% + 0.5rem);
+            top: calc(100% + 0.6rem);
             left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.96);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            width: 250px;
+            background: var(--bg-surface);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-md);
-            padding: 0.5rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            padding: 0.85rem;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), visibility 220ms;
             z-index: 1002;
         }
 
-        .mobile-nav-drawer.active {
-            display: block;
+        /* Hover Bridge between MI badge and Dropdown Panel */
+        .nav-dropdown-panel::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 0;
+            width: 100%;
+            height: 16px;
         }
 
-        .mobile-nav-drawer ul {
+        .nav-dropdown-panel.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-header-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .nav-dropdown-panel ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.15rem;
+            gap: 0.2rem;
+            margin: 0;
+            padding: 0;
         }
 
-        .mobile-nav-drawer a {
-            display: block;
-            padding: 0.65rem 1rem;
-            color: var(--text-main);
+        .nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.55rem 0.75rem;
+            color: var(--text-sub);
             text-decoration: none;
-            font-weight: 600;
             font-size: 0.9rem;
-            border-radius: 10px;
-            transition: 0.2s;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
         }
 
-        .mobile-nav-drawer a:hover {
-            background: rgba(255, 255, 255, 0.08);
+        .nav-dropdown-item:hover,
+        .nav-dropdown-item:focus {
             color: var(--primary);
+            background: rgba(56, 189, 248, 0.12);
+            outline: none;
+        }
+
+        body.light-theme .nav-dropdown-item:hover,
+        body.light-theme .nav-dropdown-item:focus {
+            color: var(--primary);
+            background: rgba(2, 132, 199, 0.1);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: var(--border-card);
+            margin: 0.6rem 0;
+        }
+
+        .resume-dropdown-btn {
+            color: var(--emerald) !important;
+            font-weight: 700 !important;
+            background: rgba(52, 211, 153, 0.1) !important;
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+
+        .resume-dropdown-btn:hover,
+        .resume-dropdown-btn:focus {
+            background: rgba(52, 211, 153, 0.2) !important;
+            border-color: var(--emerald) !important;
+        }
+
+        body.light-theme .resume-dropdown-btn {
+            color: var(--emerald) !important;
+            background: rgba(4, 120, 87, 0.08) !important;
+            border-color: rgba(4, 120, 87, 0.25);
+        }
+
+        /* RESPONSIVE NAVIGATION UX RULES */
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+
+            .logo-text-group {
+                display: none !important;
+            }
+
+            .logo-badge:hover .logo-icon,
+            .logo-badge.active .logo-icon {
+                border-color: var(--primary);
+                box-shadow: 0 0 16px var(--primary-glow);
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-dropdown-panel {
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: calc(100% + 0.5rem);
+            }
+
+            .mobile-menu-btn {
+                display: inline-flex;
+            }
+
+            .logo-text-group {
+                display: flex;
+            }
         }
 
         /* SCROLL-REVEAL & MOTION ANIMATIONS */
@@ -1094,21 +1190,23 @@
             </div>
         </div>
 
-        <!-- Navigation Drawer Dropdown Panel -->
-        <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Main Navigation">
+        <!-- Unified Navigation Dropdown Panel (Desktop Hover & Mobile Tap) -->
+        <div class="nav-dropdown-panel" id="nav-dropdown-panel" aria-label="Main Navigation">
+            <div class="dropdown-header-label">NAVIGATION</div>
             <ul role="menu">
-                <li role="none"><a href="#hero" role="menuitem" onclick="closeMobileMenu()">Home</a></li>
-                <li role="none"><a href="#about" role="menuitem" onclick="closeMobileMenu()">About</a></li>
-                <li role="none"><a href="#experience" role="menuitem" onclick="closeMobileMenu()">Experience</a></li>
-                <li role="none"><a href="#skills" role="menuitem" onclick="closeMobileMenu()">Skills</a></li>
-                <li role="none"><a href="#projects" role="menuitem" onclick="closeMobileMenu()">Projects</a></li>
-                <li role="none"><a href="#certifications" role="menuitem" onclick="closeMobileMenu()">Certifications</a></li>
-                <li role="none" class="nav-resume-item">
-                    <a href="javascript:void(0)" role="menuitem" onclick="closeMobileMenu(); openPrintableResumeModal();" class="resume-nav-btn">
-                        📄 View Resume
-                    </a>
-                </li>
+                <li role="none"><a href="#about" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#about')">Overview</a></li>
+                <li role="none"><a href="#experience" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#experience')">Work Experience</a></li>
+                <li role="none"><a href="#skills" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#skills')">Technical Skills</a></li>
+                <li role="none"><a href="#education" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#education')">Education</a></li>
+                <li role="none"><a href="#certifications" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#certifications')">Certifications</a></li>
+                <li role="none"><a href="#projects" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#projects')">Projects</a></li>
             </ul>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-resume-wrapper">
+                <a href="javascript:void(0)" role="menuitem" onclick="handleNavClick(event, 'resume')" class="nav-dropdown-item resume-dropdown-btn">
+                    📄 1-Page Resume
+                </a>
+            </div>
         </div>
     </header>
 
@@ -1616,46 +1714,145 @@
         }, { passive: true });
 
         /* -------------------------------------------------------------
-           1. Menu Panel Drawer Toggle, Keyboard Esc & Click Outside Handler
+           1. Unified Navigation UX: Desktop Hover & Mobile Tap Engine
         ------------------------------------------------------------- */
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+        const headerLogoTrigger = document.getElementById('header-logo-trigger');
+        const navDropdownPanel = document.getElementById('nav-dropdown-panel');
+        let navHoverTimeout = null;
 
-        function updateMenuToggleState(isOpen) {
-            if (!mobileMenuToggle) return;
-            mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            const iconSpan = document.getElementById('menu-btn-icon');
-            const textSpan = document.getElementById('menu-btn-text');
-            if (iconSpan) iconSpan.innerText = isOpen ? '✕' : '☰';
-            if (textSpan) textSpan.innerText = isOpen ? 'Close' : 'Menu';
-        }
-
-        if (mobileMenuToggle && mobileNavDrawer) {
-            mobileMenuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = mobileNavDrawer.classList.toggle('active');
-                updateMenuToggleState(isOpen);
-            });
-        }
-
-        function closeMobileMenu() {
-            if (mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
-                mobileNavDrawer.classList.remove('active');
-                updateMenuToggleState(false);
+        function openNavDropdown() {
+            if (!navDropdownPanel) return;
+            clearTimeout(navHoverTimeout);
+            navDropdownPanel.classList.add('active');
+            if (headerLogoTrigger) {
+                headerLogoTrigger.classList.add('active');
+                headerLogoTrigger.setAttribute('aria-expanded', 'true');
+            }
+            if (mobileMenuToggle) {
+                mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                const iconSpan = document.getElementById('menu-btn-icon');
+                const textSpan = document.getElementById('menu-btn-text');
+                if (iconSpan) iconSpan.innerText = '✕';
+                if (textSpan) textSpan.innerText = 'Close';
             }
         }
 
+        function closeNavDropdown() {
+            if (!navDropdownPanel) return;
+            clearTimeout(navHoverTimeout);
+            navDropdownPanel.classList.remove('active');
+            if (headerLogoTrigger) {
+                headerLogoTrigger.classList.remove('active');
+                headerLogoTrigger.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileMenuToggle) {
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                const iconSpan = document.getElementById('menu-btn-icon');
+                const textSpan = document.getElementById('menu-btn-text');
+                if (iconSpan) iconSpan.innerText = '☰';
+                if (textSpan) textSpan.innerText = 'Menu';
+            }
+        }
+
+        function closeNavDropdownWithDelay() {
+            clearTimeout(navHoverTimeout);
+            navHoverTimeout = setTimeout(() => {
+                closeNavDropdown();
+            }, 200); // 200ms grace delay to prevent accidental closing
+        }
+
+        // Desktop Mouse Hover Listeners (Disabled on Touch Devices)
+        if (headerLogoTrigger && navDropdownPanel) {
+            headerLogoTrigger.addEventListener('pointerenter', (e) => {
+                if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
+                    openNavDropdown();
+                }
+            });
+
+            headerLogoTrigger.addEventListener('pointerleave', (e) => {
+                if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
+                    closeNavDropdownWithDelay();
+                }
+            });
+
+            navDropdownPanel.addEventListener('pointerenter', (e) => {
+                if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
+                    clearTimeout(navHoverTimeout);
+                    openNavDropdown();
+                }
+            });
+
+            navDropdownPanel.addEventListener('pointerleave', (e) => {
+                if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
+                    closeNavDropdownWithDelay();
+                }
+            });
+
+            // Keyboard Focus Accessibility Fallback for Desktop
+            headerLogoTrigger.addEventListener('focus', () => {
+                if (window.innerWidth >= 769) openNavDropdown();
+            });
+
+            navDropdownPanel.addEventListener('focusin', () => {
+                if (window.innerWidth >= 769) openNavDropdown();
+            });
+
+            navDropdownPanel.addEventListener('focusout', (e) => {
+                if (window.innerWidth >= 769) {
+                    if (!navDropdownPanel.contains(e.relatedTarget) && e.relatedTarget !== headerLogoTrigger) {
+                        closeNavDropdownWithDelay();
+                    }
+                }
+            });
+        }
+
+        // Mobile Tap Menu Toggle
+        if (mobileMenuToggle && navDropdownPanel) {
+            mobileMenuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = navDropdownPanel.classList.contains('active');
+                if (isOpen) {
+                    closeNavDropdown();
+                } else {
+                    openNavDropdown();
+                }
+            });
+        }
+
+        // Navigation Link Click Handler
+        function handleNavClick(event, target) {
+            if (event) event.preventDefault();
+            closeNavDropdown();
+
+            if (target === 'resume') {
+                openPrintableResumeModal();
+                return;
+            }
+
+            const el = document.querySelector(target);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Click Outside Handler
         document.addEventListener('click', (e) => {
-            if (mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
-                if (!mobileNavDrawer.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                    closeMobileMenu();
+            if (navDropdownPanel && navDropdownPanel.classList.contains('active')) {
+                const isInsideTrigger = headerLogoTrigger && headerLogoTrigger.contains(e.target);
+                const isInsideToggle = mobileMenuToggle && mobileMenuToggle.contains(e.target);
+                const isInsidePanel = navDropdownPanel.contains(e.target);
+
+                if (!isInsideTrigger && !isInsideToggle && !isInsidePanel) {
+                    closeNavDropdown();
                 }
             }
         });
 
+        // Escape Key Listener
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeMobileMenu();
+                closeNavDropdown();
                 closeSecurityModal();
                 closePrintableResumeModal();
             }
