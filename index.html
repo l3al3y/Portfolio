@@ -2321,7 +2321,7 @@ You have FULL AI REASONING FREEDOM, DEEP TECHNICAL KNOWLEDGE, AND MULTI-LINGUAL 
             if (/[\u0e00-\u0e7f]/.test(text)) return 'th'; // Thai
             if (/[\u0600-\u06ff]/.test(text)) return 'ar'; // Arabic
             
-            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit'];
+            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit', 'beri', 'bagi', 'versi', 'terangkan', 'jelaskan', 'apakah', 'mana', 'nak', 'saya', 'tak', 'ada', 'kat', 'tolong'];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
             
@@ -2778,6 +2778,14 @@ You have FULL AI REASONING FREEDOM, DEEP TECHNICAL KNOWLEDGE, AND MULTI-LINGUAL 
             }
 
             // 0.3 TECHNICAL CONCEPT & DEFINITION HANDLERS (YOLOv8, OpenCV, OSPF, VLAN, CCNA, MySQL)
+            const isYoloVersionQuery = (q.includes('version') || q.includes('versi') || q.includes('sejarah') || q.includes('history') || q.includes('list')) && (q.includes('yolo') || q.includes('model'));
+            if (isYoloVersionQuery) {
+                if (lang === 'bm') {
+                    return `<strong>Evolusi Versi Model YOLO (You Only Look Once):</strong><br>• <strong>YOLOv1 – YOLOv3 (2015–2018):** Dicipta oleh Joseph Redmon (Darknet framework).<br>• <strong>YOLOv4 & YOLOv5 (2020):** YOLOv5 oleh Ultralytics beralih ke struktur PyTorch.<br>• <strong>YOLOv6, YOLOv7 & YOLOv8 (2022–2023):** YOLOv8 (Ultralytics) menyokong pengesanan objek, segmentasi, dan klasifikasi.<br>• <strong>YOLOv9, YOLOv10 & YOLOv11 (2024):** YOLOv10 (inferens NMS-free) dan YOLOv11 (versi Ultralytics terbaru).<br><br>🤖 <strong>Versi Digunakan Oleh Irfan:</strong><br>Irfan mengaplikasikan <strong>YOLOv8 PyTorch</strong> dalam Projek Capstone beliau (<strong>Hybrid Self-Checkout System</strong>), dilatih selama <strong>50 epochs</strong> (77.4% Precision, 72.0% Recall, &lt;90ms latensi).`;
+                }
+                return `<strong>Evolution of YOLO Model Versions (You Only Look Once):</strong><br>• <strong>YOLOv1 – YOLOv3 (2015–2018):** Created by Joseph Redmon on Darknet.<br>• <strong>YOLOv4 & YOLOv5 (2020):** YOLOv5 by Ultralytics migrated the framework to PyTorch.<br>• <strong>YOLOv6, YOLOv7 & YOLOv8 (2022–2023):** YOLOv8 introduced unified detection, segmentation, and pose estimation.<br>• <strong>YOLOv9, YOLOv10 & YOLOv11 (2024):** YOLOv10 features NMS-free inference, and YOLOv11 is the latest release.<br><br>🤖 <strong>Version Used by Irfan:</strong><br>Irfan deployed **YOLOv8 PyTorch** in his Capstone Project (<strong>Hybrid Self-Checkout System</strong>), trained for <strong>50 epochs</strong> (77.4% Precision, 72.0% Recall, &lt;90ms latency).`;
+            }
+
             const isYoloConceptQuery = q.includes('yolo') || q.includes('yolov8');
             if (isYoloConceptQuery) {
                 if (lang === 'bm') {
