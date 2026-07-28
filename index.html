@@ -2273,29 +2273,37 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
 <candidate_knowledge_base>
 <candidate_profile>
 - Full Name: Muhammad Irfan Fahmi Bin Samsul Kamar
-- Age: 24 years old (Born: 2002)
+- Birth Year & Age: Born 1999 (26–27 years old)
 - Location: Puchong, Selangor, Malaysia (Willing to relocate/travel to Penang, Johor, KL, or outstation)
 - Education:
-  * Bachelor of Computer Engineering with Honours (UTeM) - Expected Nov 2026 (Year 4 Student).
-  * Diploma in Electronic Engineering (Computer), Politeknik Port Dickson (3.26 CGPA).
-  * Certificate in Industrial Automation, Kolej Komuniti Selandar (3.58 CGPA, Best Student Award).
+  * Bachelor of Computer Engineering with Honours, Universiti Teknikal Malaysia Melaka (UTeM) — Oct 2022 – Present (Expected Graduation: Nov 2026, Year 4 Student).
+  * Diploma in Electronic Engineering (Computer), Politeknik Port Dickson — Dec 2018 – May 2022 (3.26 CGPA).
+  * Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian), Kolej Komuniti Selandar — Jul 2017 – Feb 2019 (3.58 CGPA, Best Student Award).
+- Work Experience:
+  1. Technical Staff — Global Elite Ventures Sdn. Bhd (27 Sept 2021 – 31 July 2022)
+  2. Contract Assistant Engineer — ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd (1 June 2020 – 30 July 2020)
+  3. Technician — OKCS Seri Kembangan (1 June 2018 – 1 Nov 2018)
+- Military Reserve: Askar Wataniah (Territorial Army Reserve Basic Training 2019 - High discipline & tactical communication)
+- Key Awards & Innovations:
+  * 3rd Place Winner — INOTEK 2025 (IoT Livestock Weight Tracking System, 15 Jan 2025)
+  * Silver Medal — Student Innovation 2018 (Smart Lecturer Tracking System, Oct 2018)
+  * Best Student Award — Semester 2018 (Kolej Komuniti Selandar)
 - Official Certifications:
-  1. Festo Industrial Automation with AI (16 July 2026)
-  2. Cisco CCNA: Enterprise Networking & Automation (23 Feb 2026)
-  3. Cisco CCNA: Switching, Routing & Wireless (23 Feb 2026)
-  4. Cisco Endpoint Security Certification (12 Dec 2024)
-  5. Cisco Cyber Threat Management (17 Nov 2024)
-  6. Fiber Optic Splicing & Polishing (3 Feb 2018)
-- Featured Capstone Project: Hybrid Self-Checkout System (Computer Vision + Barcode Integration)
-  * Verified Metrics: 77.4% Precision, 72.0% Recall, 50 Epochs training, <90ms camera inference latency.
-  * Tech Stack: Python, OpenCV, YOLOv8 PyTorch, USB Barcode Scanner (serial HID), MySQL database.
-  * Contributions: Custom YOLOv8 training, barcode cross-verification algorithm, hardware-software fusion.
+  1. Festo Industrial Automation with AI — Festo Didactic (16 July 2026)
+  2. Cisco CCNA: Enterprise Networking & Automation — Cisco / UTeM (23 Feb 2026)
+  3. Cisco CCNA: Switching, Routing & Wireless — Cisco / UTeM (23 Feb 2026)
+  4. Endpoint Security Certification — Cisco Networking Academy (12 Dec 2024)
+  5. Cyber Threat Management — Cisco Networking Academy (17 Nov 2024)
+  6. Fiber Optic Splicing & Polishing — Technical Workshop (3 Feb 2018)
+- Featured Engineering Projects:
+  1. Hybrid Self-Checkout System (Capstone Project): OpenCV, YOLOv8 PyTorch, USB Barcode Scanner (serial HID), MySQL database. Verified metrics: 77.4% Precision, 72.0% Recall at 50 epochs, camera inference latency <90ms.
+  2. IoT Livestock Weight Tracking System (INOTEK 2025 3rd Place): Arduino microcontrollers, HX711 load cell amplifiers, C/C++ firmware, 98%+ precision.
 </candidate_profile>
 </candidate_knowledge_base>
 
 <conversation_flow_directives>
 1. Concise Greetings: When the user says simple greetings (e.g. "hi", "hello", "hai", "apa khabar", "yo"), reply with a brief, warm, 1-to-2 sentence greeting in their language. NEVER dump long resume summaries or bulleted lists for simple greetings!
-2. Direct & Concise Answers: Answer specific questions (e.g. "irfan umur berapa") directly with exact facts (e.g., Irfan is 24 years old, born in 2002) without adding unnecessary multi-step history unless requested.
+2. Direct & Precise Answers: Answer specific questions (e.g. "irfan umur berapa") directly with exact facts (e.g., Irfan was born in 1999 and is 26–27 years old) concisely without adding unnecessary multi-step history unless requested.
 </conversation_flow_directives>
 
 <reasoning_guidelines>
@@ -3379,9 +3387,9 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
                     }
                     case 'age': {
                         if (lang === 'bm') {
-                            return `Irfan berumur <strong>24 tahun</strong> (lahir pada tahun 2002). Beliau kini merupakan pelajar tahun akhir Sarjana Muda Kejuruteraan Komputer di UTeM (dijangka bergraduan pada November 2026).`;
+                            return `Irfan dilahirkan pada tahun 1999 (berumur <strong>26–27 tahun</strong>). Beliau kini merupakan pelajar tahun akhir Sarjana Muda Kejuruteraan Komputer dengan Kepujian di UTeM (dijangka bergraduan pada November 2026).`;
                         }
-                        return `Irfan is <strong>24 years old</strong> (born in 2002). He is currently a final-year Bachelor of Computer Engineering student at UTeM (expected graduation November 2026).`;
+                        return `Irfan was born in 1999 (<strong>26–27 years old</strong>). He is currently a final-year Bachelor of Computer Engineering student at UTeM (expected graduation November 2026).`;
                     }
                 }
             }
