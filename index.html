@@ -2802,6 +2802,13 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
                 }
                 return `<strong>YOLOv8 (You Only Look Once v8)</strong> is a state-of-the-art computer vision model developed by Ultralytics for real-time object detection, image classification, and instance segmentation. Unlike traditional multi-stage detectors, YOLOv8 processes full image frames in a single forward pass, predicting bounding boxes and class probabilities with high speed and precision.<br><br>🤖 <strong>Irfan's Practical Implementation:</strong><br>Irfan deployed custom-trained YOLOv8 (PyTorch) in his Capstone Project (<strong>Hybrid Self-Checkout System</strong>). He trained the model for <strong>50 epochs</strong> on a local Malaysian product dataset, achieving verified benchmarks of <strong>77.4% Precision</strong>, <strong>72.0% Recall</strong>, and <strong>under 90ms real-time camera inference latency</strong>.`;
             }
+            const isCcnaConceptQuery = (q.includes('what is ccna') || q.includes('apa itu ccna') || q.includes('explain ccna') || q.includes('terangkan ccna') || q.includes('maksud ccna') || q.includes('definisikan ccna') || q === 'ccna' || q === 'cisco ccna' || q === 'what is cisco');
+            if (isCcnaConceptQuery) {
+                if (lang === 'bm') {
+                    return `<strong>Penerangan Konseptual Cisco CCNA (Cisco Certified Network Associate):</strong><br><strong>CCNA</strong> ialah pensijilan rangkaian gred industri terkemuka daripada Cisco Systems. Ia membuktikan kecekapan mendalam dalam asas rangkaian enterprise, termasuk:<br>• <strong>Routing & Switching:</strong> Protokol OSPF, Spanning Tree (STP), VLAN, Inter-VLAN Routing, dan subnetting IPv4/IPv6.<br>• <strong>Keselamatan & Automasi:</strong> Kawalan capaian (ACL), Keselamatan Endpoint, dan Automasi Rangkaian (Python/REST APIs).<br><br>📜 <strong>Pensijilan Rasmi Irfan:</strong><br>Irfan memegang <strong>dua pensijilan rasmi Cisco CCNA</strong> (Enterprise Networking & Automation dan Switching, Routing & Wireless Essentials) daripada Cisco Networking Academy (23 Februari 2026).`;
+                }
+                return `<strong>Conceptual Explanation of Cisco CCNA (Cisco Certified Network Associate):</strong><br><strong>CCNA</strong> is an industry-standard networking certification program developed by Cisco Systems. It validates comprehensive expertise in enterprise networking fundamentals, including:<br>• <strong>Routing & Switching:</strong> OSPF, Spanning Tree (STP), VLANs, Inter-VLAN Routing, and IPv4/IPv6 Subnetting.<br>• <strong>Security & Automation:</strong> Access Control Lists (ACLs), Endpoint Security, and Network Automation (Python & REST APIs).<br><br>📜 <strong>Irfan's Official Credentials:</strong><br>Irfan holds <strong>two official Cisco CCNA Certifications</strong> (Enterprise Networking & Automation and Switching, Routing & Wireless Essentials) awarded by Cisco Networking Academy (23 February 2026).`;
+            }
 
             const isDbQuery = q.includes('database') || q.includes('mysql');
             const isLangQuery = (q.includes('programming language') || q.includes('language did you use') || q.includes('bahasa pengaturcaraan')) && !q.includes('speak');
@@ -3194,8 +3201,7 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('epoch') || q.includes('latency') || q.includes('accuracy') || q.includes('performance') || q.includes('results') || q.includes('prestasi') || q.includes('keputusan') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing') || q.includes('split') || q.includes('camera') || q.includes('experiment') || q.includes('毕业') || q.includes('效果') || q.includes('திட்டம்') || q.includes('வெற்றி') || q.includes('结账') || q.includes('条形码') || q.includes('双重')) scores.capstone_metrics += 5;
 
             if (q.includes('ccna') || q.includes('cisco') || q.includes('சிஸ்கோ') || q.includes('考考')) {
-                scores.ccna_dates += 4;
-                scores.skills_networking += 3;
+                scores.skills_networking += 5;
             }
             if (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila') || q.includes('dapat')) {
                 scores.ccna_dates += 2;
