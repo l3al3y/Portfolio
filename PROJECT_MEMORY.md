@@ -125,10 +125,10 @@
    - **`SYSTEM_PROMPT` Scope Rule:** Rewrote system prompt to restrict AI capabilities strictly to answering questions about Irfan (education, experience, skills, certifications, projects, role suitability). Unrelated questions (math, general coding, world topics, general AGI requests) trigger a concise, natural refusal in the user's language.
    - **Localized Offline Fallback (`scopeRefusal`):** Updated `generateNativeSpontaneousAnswer` to return a localized refusal line (`en`, `bm`, `cn`, `in`) instead of a full resume dump for unmatched off-topic queries.
    - **Instant Client-Side Refusal Execution:** Updated `submitChatMessage` to output `scopeRefusal` immediately (<5ms) for any unrecognized off-topic text without making the user wait for external LLM API calls or thinking spinners.
-9. **Color Palette Refinement (Theory & WCAG AA) & Popup Nav Removal:**
-   - **Dark Mode Palette Refinement (`:root`):** Deepened `--bg-base` to `#090d16` (deep midnight navy) and `--bg-surface` to `rgba(15, 23, 42, 0.85)` for low-eye-strain engineering aesthetics.
-   - **Light Mode Palette Refinement (`body.light-theme`):** Rebuilt light theme around cool gray (`--bg-base: #f4f6f9`), deep forest green (`--emerald: #047857`, 5.2:1 contrast), and warm brown accent (`--amber: #92400e`, `--accent-warm: #78350f`). Meets WCAG AA contrast (≥4.5:1 for body, ≥3.0:1 for large text).
-   - **Complete Popup Nav Removal:** Completely deleted duplicate hover-triggered capsule navigation bar (`#desktop-horizontal-nav`) from HTML, CSS, and JS. Header navigation is exclusively served by the clean `"☰ Menu"` drawer button.
+10. **Desktop Hover & Mobile Tap Navigation UX Specification (`ResumeAgent_Navigation_UX_Spec.md`):**
+    - **Desktop (`min-width: 769px`):** Header displays strictly `[ MI ]` badge on left and `[ 🌙 ]` on right. Mouse hover over `[ MI ]` badge or `#nav-dropdown-panel` opens/maintains a floating panel with 200ms grace period. Tabbing into `[ MI ]` opens dropdown via keyboard focus fallback.
+    - **Mobile (`max-width: 768px`):** Header displays `[ MI ] Irfan Fahmi` on left and `[ ☰ Menu ] [ 🌙 ]` on right. Mobile uses tap interaction on `#mobile-menu-toggle`, updating text to `✕ Close` & `aria-expanded="true"`.
+    - **Unified Dropdown (`#nav-dropdown-panel`):** Includes Overview, Work Experience, Technical Skills, Education, Certifications, Projects, and 📄 1-Page Resume (`openPrintableResumeModal()`). Smoothly animates `opacity: 0 -> 1` and `transform: translateY(-6px) -> translateY(0)` in 220ms.
 
 ---
 
