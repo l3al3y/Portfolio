@@ -58,6 +58,9 @@
             --text-main: #0f172a;
             --text-sub: #334155;
             --text-muted: #64748b;
+            --emerald: #059669;
+            --amber: #b45309;
+            --purple: #7e22ce;
         }
 
         /* LIGHT THEME COMPREHENSIVE CONTRAST & LEGIBILITY OVERRIDES */
@@ -329,7 +332,7 @@
         }
 
         .logo-status-tag {
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             background: rgba(52, 211, 153, 0.12);
             color: var(--emerald);
             padding: 0.25rem 0.65rem;
@@ -340,6 +343,39 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+        }
+
+        .logo-identity-tooltip {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 0.65rem 1rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            transform: translateY(-6px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 1003;
+            white-space: nowrap;
+        }
+        .logo-identity-tooltip span {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+        .logo-identity-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        body.light-theme .logo-identity-tooltip {
+            background: #ffffff;
+            border-color: var(--border-card);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         }
 
         .header-actions {
@@ -784,7 +820,7 @@
         }
 
         .entry-dates {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary);
             font-family: var(--font-mono);
@@ -800,7 +836,7 @@
         .entry-bullets {
             padding-left: 1.25rem;
             color: var(--text-sub);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .entry-bullets li {
@@ -829,7 +865,7 @@
         }
 
         .cert-issuer-text {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
@@ -1002,9 +1038,9 @@
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--border-card);
             color: var(--text-sub);
-            padding: 0.35rem 0.75rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 50px;
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             white-space: nowrap;
             cursor: pointer;
             transition: 0.2s;
@@ -1316,7 +1352,7 @@
                     IT Support • Networking • AI Automation • Hardware & Technical Troubleshooting
                 </div>
 
-                <p style="font-size: 0.95rem; color: var(--text-sub); line-height: 1.65; margin-bottom: 1.25rem; max-width: 620px;">
+                <p style="font-size: 1rem; color: var(--text-sub); line-height: 1.65; margin-bottom: 1.25rem; max-width: 620px;">
                     Computer Engineering graduate (UTeM) with strong practical hands-on experience in IT support operations, Cisco enterprise networking, hardware diagnostics, and AI automation engineering. Focused on building reliable physical and digital system integration solutions.
                 </p>
 
@@ -1344,10 +1380,10 @@
                 <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--primary);">
                     Personal Profile & Focus
                 </h3>
-                <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1rem;">
+                <p style="font-size: 1rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1rem;">
                     I enjoy working where hardware, networking, and software intersect. My background spans IT support operations, Cisco enterprise networking, cybersecurity, embedded systems, microcontrollers, computer vision, and industrial AI. I emphasize structured technical troubleshooting, system maintenance, and automation that deliver real-world reliability.
                 </p>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
                     <div><strong>Education Status:</strong> B.Eng Computer Engineering (Hons) — UTeM (Expected Nov 2026)</div>
                     <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI Automation</div>
                     <div><strong>Experience Roles:</strong> Technical Staff (Global Elite Ventures) • Assistant Engineer (ARNN Tech) • Technician (OKCS)</div>
@@ -1559,7 +1595,7 @@
                     <div class="entry-role-title">Hybrid Self-Checkout System (Computer Vision + Barcode Integration)</div>
                     <div class="entry-dates">Final Year Capstone Project</div>
                 </div>
-                <p style="font-size: 0.9rem; color: var(--text-sub); margin: 0.5rem 0 1rem 0; line-height: 1.6;">
+                <p style="font-size: 1rem; color: var(--text-sub); margin: 0.5rem 0 1rem 0; line-height: 1.6;">
                     A dual-verification self-checkout system combining barcode identification with computer vision (YOLOv8 + OpenCV + MySQL) to improve checkout reliability and reduce scan evasion issues in retail environments.
                 </p>
 
@@ -1567,21 +1603,21 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-precision" data-target="98.6" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">98.6%</div>
-                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
+                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
                     </div>
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-recall" data-target="97.8" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">97.8%</div>
-                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Recall (150 Epochs)</div>
+                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Recall (150 Epochs)</div>
                     </div>
                     <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-latency" data-target="90" data-prefix="<" data-suffix="ms" style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
-                        <div style="font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
+                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
                     </div>
                 </div>
 
                 <!-- Interactive 3D Exploded System Architecture Components -->
                 <div style="margin-bottom: 1.25rem; background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
-                    <div style="font-size: 0.8rem; color: var(--emerald); font-weight: 700; margin-bottom: 0.75rem;">
+                    <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 0.75rem;">
                         🔮 INTERACTIVE 3D SYSTEM ARCHITECTURE COMPONENTS (CLICK NODE TO EXPLODE):
                     </div>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="capstone-3d-nodes">
@@ -1590,13 +1626,13 @@
                         <button class="prompt-chip" onclick="explode3DNode('core', this)">⚡ Cross-Verification Engine</button>
                         <button class="prompt-chip" onclick="explode3DNode('db', this)">🗄️ MySQL Database Sync</button>
                     </div>
-                    <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.83rem; color: var(--text-sub); background: rgba(30, 41, 59, 0.7); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
+                    <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-sub); background: rgba(30, 41, 59, 0.7); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
                         <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 150 epochs on RTX 3070 GPU with Mosaic augmentation and dual split-view camera fusion, achieving 98.6% precision and 97.8% recall under varying lighting angles.
                     </div>
                 </div>
 
                 <div style="display: flex; gap: 0.75rem;">
-                    <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.85rem;">View Project on GitHub ➔</a>
+                    <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.9rem;">View Project on GitHub ➔</a>
                 </div>
             </div>
         </div>
@@ -1676,13 +1712,13 @@
             <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.4rem;">
                 MUHAMMAD IRFAN FAHMI
             </div>
-            <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 0.75rem;">
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 0.75rem;">
                 🔒 Public Contact Protection Active: Direct contact details protected against automated web scraping.<br>
                 Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a>
             </p>
-            <p style="color: var(--text-muted); font-size: 0.8rem;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
-                <span style="font-size: 0.75rem; color: var(--text-sub);">Built with HTML, JavaScript & AI-assisted development.</span>
+                <span style="font-size: 0.85rem; color: var(--text-sub);">Built with HTML, JavaScript & AI-assisted development.</span>
             </p>
         </div>
     </footer>
@@ -1737,7 +1773,7 @@
         });
 
         /* -------------------------------------------------------------
-           Desktop Hover Nav Grace Period (300ms)
+           Desktop Hover Nav Grace Period (300ms) & Touch Logo Tooltip
         ------------------------------------------------------------- */
         const desktopNav = document.getElementById('desktop-horizontal-nav');
         const logoTrigger = document.getElementById('header-logo-trigger');
@@ -1757,13 +1793,48 @@
             }, 300);
         }
 
-        if (logoTrigger && desktopNav) {
+        const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+        if (!isTouchDevice && logoTrigger && desktopNav) {
             logoTrigger.addEventListener('mouseenter', showDesktopNav);
             logoTrigger.addEventListener('mouseleave', hideDesktopNavWithDelay);
 
             desktopNav.addEventListener('mouseenter', showDesktopNav);
             desktopNav.addEventListener('mouseleave', hideDesktopNavWithDelay);
         }
+
+        if (isTouchDevice && logoTrigger) {
+            logoTrigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                showLogoIdentityTooltip();
+            });
+        }
+
+        function showLogoIdentityTooltip() {
+            let tooltip = document.getElementById('logo-identity-tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.id = 'logo-identity-tooltip';
+                tooltip.className = 'logo-identity-tooltip';
+                tooltip.innerHTML = `<strong>Muhammad Irfan Fahmi</strong><br><span>Computer Engineering Graduate</span>`;
+                if (logoTrigger.parentElement) {
+                    logoTrigger.parentElement.style.position = 'relative';
+                    logoTrigger.parentElement.appendChild(tooltip);
+                }
+            }
+            tooltip.classList.add('visible');
+            clearTimeout(window._logoTooltipTimeout);
+            window._logoTooltipTimeout = setTimeout(() => {
+                tooltip.classList.remove('visible');
+            }, 2500);
+        }
+
+        document.addEventListener('click', function (e) {
+            const tooltip = document.getElementById('logo-identity-tooltip');
+            if (tooltip && logoTrigger && !logoTrigger.contains(e.target) && !tooltip.contains(e.target)) {
+                tooltip.classList.remove('visible');
+            }
+        });
 
         /* -------------------------------------------------------------
            Scroll-Reveal, Scrollspy & Capstone Stat Count-up Observers
