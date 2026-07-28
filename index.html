@@ -507,6 +507,25 @@
             border-color: rgba(4, 120, 87, 0.25);
         }
 
+        body.light-theme header {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(203, 213, 225, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-theme .theme-toggle,
+        body.light-theme .mobile-menu-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: var(--border-card);
+            color: var(--text-main);
+        }
+
+        body.light-theme .theme-toggle:hover,
+        body.light-theme .mobile-menu-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
         /* RESPONSIVE NAVIGATION UX RULES */
         @media (min-width: 769px) {
             .mobile-menu-btn {
