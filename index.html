@@ -1370,8 +1370,8 @@
 
                 <!-- Strategic Primary CTAs -->
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
                     <a href="javascript:void(0)" onclick="openPrintableResumeModal()" class="btn btn-emerald">View Resume 📄</a>
+                    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
                     <button class="btn btn-secondary" onclick="openSecurityModal()">Contact Me ✉️</button>
                     <button class="btn btn-purple" onclick="toggleFloatingChat()">Ask About My Experience 💬</button>
                 </div>
@@ -1597,23 +1597,51 @@
                     <div class="entry-role-title">Hybrid Self-Checkout System (Computer Vision + Barcode Integration)</div>
                     <div class="entry-dates">Final Year Capstone Project</div>
                 </div>
-                <p style="font-size: 1rem; color: var(--text-sub); margin: 0.5rem 0 1rem 0; line-height: 1.6;">
-                    A dual-verification self-checkout system combining barcode identification with computer vision (YOLOv8 + OpenCV + MySQL) to improve checkout reliability and reduce scan evasion issues in retail environments.
+                
+                <p style="font-size: 1rem; color: var(--emerald); font-weight: 700; margin: 0.35rem 0 1rem 0; line-height: 1.5;">
+                    A computer-vision and barcode-based self-checkout system designed to improve checkout automation and item verification.
                 </p>
 
-                <!-- Visual Metrics Grid -->
+                <!-- Recruiter-Friendly Problem / Solution / Contribution Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                    <div style="background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
+                        <div style="font-size: 0.85rem; color: var(--primary); font-weight: 800; text-transform: uppercase; margin-bottom: 0.35rem;">PROBLEM</div>
+                        <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.5; margin: 0;">
+                            Retail self-checkout stations suffer from scan evasion and item misidentification when relying solely on physical barcode scanners.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
+                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 800; text-transform: uppercase; margin-bottom: 0.35rem;">SOLUTION</div>
+                        <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.5; margin: 0;">
+                            Designed a dual-verification system cross-referencing USB barcode scans against real-time YOLOv8 object detection camera inference.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); margin-bottom: 1.25rem;">
+                    <div style="font-size: 0.85rem; color: var(--purple); font-weight: 800; text-transform: uppercase; margin-bottom: 0.4rem;">MY CONTRIBUTION</div>
+                    <ul style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.55; margin: 0; padding-left: 1.2rem;">
+                        <li>Trained custom YOLOv8 object detection model for 50 epochs on local Malaysian retail product dataset.</li>
+                        <li>Developed real-time cross-verification logic comparing barcode product IDs against camera vision model detections.</li>
+                        <li>Integrated USB barcode scanner hardware with OpenCV live camera feed and MySQL database synchronization.</li>
+                        <li>Conducted dual split-view camera experiments to resolve product occlusion and false negative detection issues.</li>
+                    </ul>
+                </div>
+
+                <!-- Verified Technical Metrics Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
                     <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div class="stat-count-num" id="stat-precision" data-target="98.6" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">98.6%</div>
-                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
+                        <div class="stat-count-num" id="stat-precision" data-target="77.4" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">77.4%</div>
+                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Precision (Verified)</div>
                     </div>
                     <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div class="stat-count-num" id="stat-recall" data-target="97.8" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">97.8%</div>
-                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Recall (150 Epochs)</div>
+                        <div class="stat-count-num" id="stat-recall" data-target="72.0" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">72.0%</div>
+                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Recall (50 Epochs)</div>
                     </div>
                     <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-latency" data-target="90" data-prefix="<" data-suffix="ms" style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
-                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
+                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Real-Time Inference</div>
                     </div>
                 </div>
 
@@ -1629,8 +1657,19 @@
                         <button class="prompt-chip" onclick="explode3DNode('db', this)">🗄️ MySQL Database Sync</button>
                     </div>
                     <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-sub); background: var(--inset-surface-soft); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
-                        <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 150 epochs on RTX 3070 GPU with Mosaic augmentation and dual split-view camera fusion, achieving 98.6% precision and 97.8% recall under varying lighting angles.
+                        <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 50 epochs on local Malaysian product dataset with Mosaic augmentation and dual split-view camera fusion, achieving 77.4% precision and 72.0% recall under varying lighting angles.
                     </div>
+                </div>
+
+                <!-- Technology Stack Badges & Clear Project CTA -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
+                    <span class="prompt-chip" style="font-size: 0.82rem;">YOLOv8</span>
+                    <span class="prompt-chip" style="font-size: 0.82rem;">OpenCV</span>
+                    <span class="prompt-chip" style="font-size: 0.82rem;">Barcode Scanner</span>
+                    <span class="prompt-chip" style="font-size: 0.82rem;">MySQL</span>
+                    <span class="prompt-chip" style="font-size: 0.82rem;">Python</span>
+                    <span class="prompt-chip" style="font-size: 0.82rem;">PyTorch</span>
+                    <span class="prompt-chip" style="font-size: 0.82rem;">Hardware Integration</span>
                 </div>
 
                 <div style="display: flex; gap: 0.75rem;">
@@ -3173,9 +3212,9 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             btnEl.style.color = 'var(--emerald)';
 
             const details = {
-                camera: "<strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 150 epochs on RTX 3070 GPU with Mosaic augmentation and dual split-view camera fusion, achieving 98.6% precision and 97.8% recall under varying lighting angles.",
+                camera: "<strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 50 epochs on local Malaysian product dataset with Mosaic augmentation and dual split-view camera fusion, achieving 77.4% precision and 72.0% recall under varying lighting angles.",
                 barcode: "<strong>USB Barcode Reader Node:</strong> Instant 1D/2D barcode product ID lookup via serial HID interface, cross-referencing visual item confidence scores in real time.",
-                core: "<strong>Cross-Verification Engine:</strong> Algorithmic anti-fraud logic comparing barcode identity against visual classification in <90ms to detect item swapping or scan evasion (99.4% combined system accuracy).",
+                core: "<strong>Cross-Verification Engine:</strong> Algorithmic anti-fraud logic comparing barcode identity against visual classification in <90ms to detect item swapping or scan evasion.",
                 db: "<strong>MySQL Database Sync:</strong> Transaction logging, inventory level updates, and real-time fraud alert triggering."
             };
             const detailBox = document.getElementById('capstone-node-detail');
