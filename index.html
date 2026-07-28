@@ -2421,7 +2421,7 @@ AI REASONING DIRECTIVES:
             thinkingDiv.innerHTML = `
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble" style="color: var(--text-muted); font-style: italic;">
-                    ${lang === 'bm' ? 'Sedang berfikir (Claude Opus 4.7 1M)...' : (lang === 'cn' ? '正在思考中 (Claude Opus 4.7 1M)...' : (lang === 'in' ? 'சிந்திக்கிறது...' : 'Thinking (Claude Opus 4.7 1M)...'))}
+                    ${lang === 'bm' ? 'Sedang berfikir...' : (lang === 'cn' ? '正在思考中...' : (lang === 'in' ? 'சிந்திக்கிறது...' : 'Thinking...'))}
                 </div>
             `;
             chatBody.appendChild(thinkingDiv);
@@ -2492,41 +2492,26 @@ AI REASONING DIRECTIVES:
             if (q.includes("code") || q.includes("script") || q.includes("python") || q.includes("html") || q.includes("c++") || q.includes("sql") || q.includes("troubleshoot") || q.includes("codex")) {
                 return "gpt-5.3-codex";
             }
-            if (q.includes("evaluate") || q.includes("network") || q.includes("ccna") || q.includes("vlan") || q.includes("ospf") || q.includes("security") || q.includes("ats") || q.includes("audit") || q.includes("opus")) {
-                return "claude-opus-4.7-1m";
-            }
-            if (q.includes("pitch") || q.includes("recommend") || q.includes("why hire") || q.includes("cover letter") || q.includes("advantage") || q.includes("sonnet")) {
+            if (q.includes("deep") || q.includes("evaluate") || q.includes("audit") || q.includes("complex") || q.includes("architecture") || q.includes("security")) {
                 return "claude-sonnet-4.6";
             }
-            if (q.includes("vision") || q.includes("yolov8") || q.includes("camera") || q.includes("image") || q.includes("glm")) {
+            if (q.includes("vision") || q.includes("yolov8") || q.includes("camera") || q.includes("image")) {
                 return "glm-5.2";
             }
-            if (q.includes("cloud") || q.includes("aws") || q.includes("azure") || q.includes("terra")) {
+            if (q.includes("cloud") || q.includes("aws") || q.includes("azure")) {
                 return "gpt-5.6-terra";
-            }
-            if (q.includes("sol") || q.includes("solar")) {
-                return "gpt-5.6-sol";
-            }
-            if (q.includes("luna") || q.includes("night")) {
-                return "gpt-5.6-luna";
             }
             if (q.includes("pro") || q.includes("pro-level")) {
                 return "gemini-3.1-pro";
             }
-            if (q.includes("minimax") || q.includes("m3")) {
-                return "minimax-m3";
-            }
-            if (q.includes("tencent") || q.includes("hy3")) {
-                return "hy3-tencent";
-            }
-            return "claude-opus-4.7-1m";
+            return "gemini-3.5-flash";
         }
 
-        // RootSys Cloud AI Endpoint with 1M Token Context Persistence & Live API Key Execution
+        // RootSys Cloud AI Endpoint with 1M Token Context Persistence & High-Speed Execution
         async function fetchKimiK25Ai(apiKey, userQuery) {
             const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
             const selectedModel = selectModelByQuery(userQuery);
-            console.log(`[Multi-Model Router 1M Context] Dispatching to '${selectedModel}' with live API token.`);
+            console.log(`[Ultra-Fast AI Router] Dispatching to '${selectedModel}' with live API token.`);
 
             CHAT_CONVERSATION_HISTORY.push({ role: "user", content: userQuery });
             if (CHAT_CONVERSATION_HISTORY.length > 40) {
@@ -2534,7 +2519,7 @@ AI REASONING DIRECTIVES:
             }
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
 
             const payload = {
                 model: selectedModel,
@@ -2543,7 +2528,7 @@ AI REASONING DIRECTIVES:
                     ...CHAT_CONVERSATION_HISTORY
                 ],
                 temperature: 0.7,
-                max_tokens: 4096
+                max_tokens: 1024
             };
 
             const endpoints = [
@@ -2578,7 +2563,7 @@ AI REASONING DIRECTIVES:
             }
 
             clearTimeout(timeoutId);
-            throw lastErr || new Error("All AI endpoints failed");
+            throw lastErr || new Error("All AI endpoints timed out");
         }
 
         // 100% Free Live LLM Endpoint (Pollinations AI - Fallback Engine)
