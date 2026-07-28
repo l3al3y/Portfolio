@@ -2301,9 +2301,15 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
 </candidate_profile>
 </candidate_knowledge_base>
 
+<quality_control_and_precision_mandate>
+1. STRICT PRE-RESPONSE QUESTION QC: Carefully read and analyze the exact user prompt before responding. Perform internal Quality Control (QC) to verify the exact scope, intent, and target language.
+2. ANSWER ONLY WHAT IS ASKED: Respond ONLY to the specific question requested. NEVER dump unasked background history, unrequested education timeline steps, or extra unasked bullet points.
+3. NO EXTRANEOUS FLUFF OR RESUME DUMPS: If asked for age, state ONLY the age. If asked for location, state ONLY the location. If asked for a definition, state ONLY the definition. Keep responses laser-focused, concise, and 100% accurate.
+</quality_control_and_precision_mandate>
+
 <conversation_flow_directives>
 1. Concise Greetings: When the user says simple greetings (e.g. "hi", "hello", "hai", "apa khabar", "yo"), reply with a brief, warm, 1-to-2 sentence greeting in their language. NEVER dump long resume summaries or bulleted lists for simple greetings!
-2. Direct & Precise Answers: Answer specific questions (e.g. "irfan umur berapa") directly with exact facts (e.g., Irfan was born in 1999 and is 26–27 years old) concisely without adding unnecessary multi-step history unless requested.
+2. Direct & Precise Answers: Answer specific questions directly with exact facts without adding unnecessary multi-step history unless explicitly requested.
 </conversation_flow_directives>
 
 <reasoning_guidelines>
@@ -3387,9 +3393,9 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
                     }
                     case 'age': {
                         if (lang === 'bm') {
-                            return `Irfan dilahirkan pada tahun 1999 (berumur <strong>26–27 tahun</strong>). Beliau kini merupakan pelajar tahun akhir Sarjana Muda Kejuruteraan Komputer dengan Kepujian di UTeM (dijangka bergraduan pada November 2026).`;
+                            return `Irfan dilahirkan pada tahun 1999 (berumur <strong>26–27 tahun</strong>).`;
                         }
-                        return `Irfan was born in 1999 (<strong>26–27 years old</strong>). He is currently a final-year Bachelor of Computer Engineering student at UTeM (expected graduation November 2026).`;
+                        return `Irfan was born in 1999 (<strong>26–27 years old</strong>).`;
                     }
                 }
             }
