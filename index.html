@@ -2439,18 +2439,14 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                     botAnswer = await fetchFreePollinationsAi(query);
                 }
             } catch (err) {
-                console.warn("API completion timeout or connection failure, using instant structured engine:", err);
-                try {
-                    botAnswer = await fetchFreePollinationsAi(query);
-                } catch (e) {
-                    botAnswer = generateNativeSpontaneousAnswer(query, lang);
-                }
+                console.warn("External API call failed, generating instant candidate response:", err);
+                botAnswer = generateNativeSpontaneousAnswer(query, lang);
             } finally {
                 const indicator = document.getElementById('ai-thinking-indicator');
                 if (indicator) indicator.remove();
             }
 
-            if (!botAnswer || botAnswer.trim().length === 0) {
+            if (!botAnswer || typeof botAnswer !== 'string' || botAnswer.trim().length === 0) {
                 botAnswer = generateNativeSpontaneousAnswer(query, lang);
             }
 
