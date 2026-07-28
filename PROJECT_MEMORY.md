@@ -125,10 +125,8 @@
    - **`SYSTEM_PROMPT` Scope Rule:** Rewrote system prompt to restrict AI capabilities strictly to answering questions about Irfan (education, experience, skills, certifications, projects, role suitability). Unrelated questions (math, general coding, world topics, general AGI requests) trigger a concise, natural refusal in the user's language.
    - **Localized Offline Fallback (`scopeRefusal`):** Updated `generateNativeSpontaneousAnswer` to return a localized refusal line (`en`, `bm`, `cn`, `in`) instead of a full resume dump for unmatched off-topic queries.
    - **Instant Client-Side Refusal Execution:** Updated `submitChatMessage` to output `scopeRefusal` immediately (<5ms) for any unrecognized off-topic text without making the user wait for external LLM API calls or thinking spinners.
-10. **Desktop Hover & Mobile Tap Navigation UX Specification (`ResumeAgent_Navigation_UX_Spec.md`):**
-    - **Desktop (`min-width: 769px`):** Header displays strictly `[ MI ]` badge on left and `[ 🌙 ]` on right. Mouse hover over `[ MI ]` badge opens floating panel. Panel pointerenter checks `if (navDropdownPanel.classList.contains('active'))` so the dropdown never opens independently when closed. 200ms grace period handles smooth transition. Tabbing into `[ MI ]` opens dropdown via keyboard focus fallback.
-    - **Mobile (`max-width: 768px`):** Header displays `[ MI ] Irfan Fahmi` on left and `[ ☰ Menu ] [ 🌙 ]` on right. Mobile uses tap interaction on `#mobile-menu-toggle`, updating text to `✕ Close` & `aria-expanded="true"`.
-    - **Unified Dropdown (`#nav-dropdown-panel`):** Includes Overview, Work Experience, Technical Skills, Education, Certifications, Projects, and 📄 1-Page Resume (`openPrintableResumeModal()`). Smoothly animates `opacity: 0 -> 1` and `transform: translateY(-6px) -> translateY(0)` in 220ms.
+11. **Visual UX Audit & Light Theme Header Adaptation:**
+    - **Light Mode Header Adaptability:** Added `body.light-theme header` (`background: rgba(255, 255, 255, 0.92)`, `border-color: rgba(203, 213, 225, 0.8)`), `.theme-toggle` & `.mobile-menu-btn` rules for light theme, ensuring 100% visual consistency between dark and light modes across all viewports.
 
 ---
 
