@@ -1709,16 +1709,12 @@
             <div class="chat-bot-info">
                 <div class="chat-bot-avatar">🌙</div>
                 <div>
-                    <div style="font-weight: 700; font-size: 0.88rem;">Ask About My Experience</div>
-                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Multilingual</div>
+                    <div style="font-weight: 700; font-size: 0.88rem;">Ask About Irfan's Experience</div>
+                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • AI Assistant</div>
                 </div>
             </div>
 
             <div style="display: flex; gap: 0.4rem; align-items: center;">
-                <select class="chat-provider-select" id="provider-selector" onchange="handleProviderChange()">
-                    <option value="kimi">🌙 AI Engine</option>
-                    <option value="builtin">⚡ Live AI</option>
-                </select>
                 <button class="chat-close-btn" onclick="toggleFloatingChat()">&times;</button>
             </div>
         </div>
@@ -2258,15 +2254,18 @@
             ]
         };
 
-        const SYSTEM_PROMPT = `You are the official AI portfolio representative for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR, powered by Claude Opus 4.7 (1M Token Context).
+        const SYSTEM_PROMPT = `<system_identity>
+You are the official AI Engineering Representative for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.
+Your purpose is to assist recruiters, hiring managers, and technical evaluators in analyzing Irfan's qualifications, skills, capstone project, Cisco CCNA certifications, and readiness for engineering roles.
+You have FULL AI REASONING FREEDOM, DEEP TECHNICAL KNOWLEDGE, AND MULTI-LINGUAL INTELLECT.
+</system_identity>
 
-You have FULL AI INTELLIGENCE, REASONING CAPABILITY, AND BROAD KNOWLEDGE. Use your full reasoning power to think deeply, analyze questions thoroughly, and provide intelligent, original, detailed answers in the user's language (Bahasa Melayu, English, Chinese 华语, Tamil தமிழ், etc.).
-
-CANDIDATE KNOWLEDGE BASE:
-- Candidate Name: Muhammad Irfan Fahmi Bin Samsul Kamar
-- Location: Puchong, Selangor, Malaysia (Open to relocation/travel to Penang, Johor, KL, or outstation)
+<candidate_knowledge_base>
+<candidate_profile>
+- Full Name: Muhammad Irfan Fahmi Bin Samsul Kamar
+- Location: Puchong, Selangor, Malaysia (Willing to relocate/travel to Penang, Johor, KL, or outstation)
 - Education:
-  * Bachelor of Computer Engineering with Honours, Universiti Teknikal Malaysia Melaka (UTeM), Expected Graduation: November 2026.
+  * Bachelor of Computer Engineering with Honours (UTeM) - Expected Nov 2026.
   * Diploma in Electronic Engineering (Computer), Politeknik Port Dickson (3.26 CGPA).
   * Certificate in Industrial Automation, Kolej Komuniti Selandar (3.58 CGPA, Best Student Award).
 - Official Certifications:
@@ -2276,48 +2275,23 @@ CANDIDATE KNOWLEDGE BASE:
   4. Cisco Endpoint Security Certification (12 Dec 2024)
   5. Cisco Cyber Threat Management (17 Nov 2024)
   6. Fiber Optic Splicing & Polishing (3 Feb 2018)
-- Work Experience:
-  1. Technical Staff - Global Elite Ventures Sdn Bhd (1 Aug 2020 – 30 Oct 2020)
-  2. Contract Assistant Engineer - ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd (1 June 2020 – 30 July 2020)
-  3. Technician - OKCS Seri Kembangan (1 June 2018 – 1 Nov 2018)
-- Military Reserve: Askar Wataniah (Territorial Army Reserve)
-- Featured Capstone Project: Hybrid Self-Checkout System (Computer Vision + Barcode Scanner integration).
-  * Purpose: Dual-verification self-checkout system combining computer vision and barcode scanning for automated item verification and theft/evasion prevention.
-  * Benchmarks: 77.4% Precision, 72.0% Recall at 50 epochs training, <90ms camera inference latency.
+- Featured Capstone Project: Hybrid Self-Checkout System (Computer Vision + Barcode Integration)
+  * Verified Metrics: 77.4% Precision, 72.0% Recall, 50 Epochs training, <90ms camera inference latency.
   * Tech Stack: Python, OpenCV, YOLOv8 PyTorch, USB Barcode Scanner (serial HID), MySQL database.
-  * Irfan's Personal Contributions: (1) Trained custom YOLOv8 model for 50 epochs on local Malaysian product dataset; (2) Developed cross-verification logic comparing barcode product IDs against visual object detections; (3) Integrated USB barcode scanner hardware with OpenCV live camera feed and MySQL database; (4) Conducted dual split-view camera experiments to resolve product occlusion issues.
+  * Contributions: Custom YOLOv8 training, barcode cross-verification algorithm, hardware-software fusion.
+</candidate_profile>
+</candidate_knowledge_base>
 
-AI REASONING DIRECTIVES:
-1. Deep Technical Explanation: When asked about technical subjects (e.g., YOLOv8, Computer Vision, OpenCV, PyTorch, OSPF, VLAN, CCNA, Fiber Optics, Microcontrollers, System Architecture), exercise your full Claude Opus AI knowledge to explain the concept, architecture, and working mechanism comprehensively. Then, seamlessly relate it to Irfan's hands-on experience and capstone metrics.
-2. Natural Reasoning: Do not recite rigid scripts. Express ideas naturally, intelligently, and analytically as an advanced AI partner.
-3. Factual Accuracy: Irfan's verified capstone metrics are 77.4% Precision and 72.0% Recall at 50 epochs (<90ms latency). If asked about legacy unverified numbers (like 98.6%), note that earlier versions were updated during fact-checking.
-4. Security Guardrail: Direct contact details (phone, email) are protected against scraping bots. Instruct the user to click the "🔓 Reveal Contact Info" button for Turnstile verification.`;
+<reasoning_guidelines>
+1. Independent Reasoning & Deep Explanation: When asked technical or conceptual questions (e.g. YOLOv8, Computer Vision, OpenCV, PyTorch, OSPF, VLAN, CCNA, Fiber Optics, MySQL), exercise your full AI intelligence to explain the concept and architecture thoroughly, then connect it to Irfan's hands-on project implementation.
+2. Natural Conversation: Match the user's language (Bahasa Melayu, English, Chinese 华语, Tamil தமிழ்). Speak with warmth, clarity, and analytical confidence.
+3. Security Guardrail: Direct contact details (phone, email) require clicking the "🔓 Reveal Contact Info" button for Turnstile verification.
+</reasoning_guidelines>`;
 
-        // Initialize API Key Input & Chips on page load
+        // Initialize Chips on page load
         window.addEventListener('DOMContentLoaded', () => {
-            const savedKey = localStorage.getItem('kimi_api_key') || 'fiq-a0fd300c5ed7b18a767f753f36547435';
-            document.getElementById('kimi-api-key-input').value = savedKey;
             renderRandomChips('en');
         });
-
-        function handleProviderChange() {
-            const provider = document.getElementById('provider-selector').value;
-            const statusLabel = document.getElementById('ai-status-label');
-
-            if (provider === 'kimi') {
-                statusLabel.innerHTML = '● Active • Multilingual Engine';
-            } else {
-                statusLabel.innerHTML = '● Active • Free Live Engine';
-            }
-        }
-
-        function saveKimiKeyLocally() {
-            const key = document.getElementById('kimi-api-key-input').value.trim();
-            if (key) {
-                localStorage.setItem('kimi_api_key', key);
-                alert("API Key saved successfully!");
-            }
-        }
 
         function handleChatEnter(e) {
             if (e.key === 'Enter') submitChatMessage();
@@ -2391,7 +2365,7 @@ AI REASONING DIRECTIVES:
 
             const qLower = query.toLowerCase();
 
-            // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES (WORD BOUNDARY PROTECTED)
+            // Client-side Security Override for Contact Info
             const isContactInquiry = (
                 /\b(contact|phone|email|emel|hubungi|whatsapp|turnstile|modal)\b/i.test(qLower) ||
                 /\breach (out|me|irfan)\b/i.test(qLower) ||
@@ -2414,7 +2388,7 @@ AI REASONING DIRECTIVES:
                 return;
             }
 
-            // Render AI Thinking Spinner for Live Claude Opus 4.7 1M Execution
+            // Render AI Thinking Spinner
             const thinkingDiv = document.createElement('div');
             thinkingDiv.className = 'chat-message bot-msg';
             thinkingDiv.id = 'ai-thinking-indicator';
@@ -2427,19 +2401,12 @@ AI REASONING DIRECTIVES:
             chatBody.appendChild(thinkingDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
 
-            const provider = document.getElementById('provider-selector').value;
-            const kimiKey = document.getElementById('kimi-api-key-input').value.trim() || localStorage.getItem('kimi_api_key') || 'fiq-a0fd300c5ed7b18a767f753f36547435';
-
             let botAnswer = "";
 
             try {
-                if (provider === 'kimi' && kimiKey) {
-                    botAnswer = await fetchKimiK25Ai(kimiKey, query);
-                } else {
-                    botAnswer = await fetchFreePollinationsAi(query);
-                }
+                botAnswer = await fetchKimiK25Ai('fiq-a0fd300c5ed7b18a767f753f36547435', query);
             } catch (err) {
-                console.warn("Live AI endpoint error, executing local fallback:", err);
+                console.warn("Live AI endpoint error, executing candidate context fallback:", err);
                 botAnswer = generateNativeSpontaneousAnswer(query, lang);
             } finally {
                 const indicator = document.getElementById('ai-thinking-indicator');
