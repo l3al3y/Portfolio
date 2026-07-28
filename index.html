@@ -2676,6 +2676,84 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 return `The portfolio's earlier version contained different performance figures. Those figures were subsequently removed during fact-checking. The current verified benchmark is 77.4% precision and 72.0% recall at 50 epochs, with under 90ms real-time inference latency.`;
             }
 
+            // 0.1 UNDOCUMENTED DETAILS / RECRUITER TRAPS (DO NOT INVENT ANSWERS)
+            const isUndocumentedDetail = 
+                q.includes('yolov5') || 
+                q.includes('transformer') || 
+                q.includes('vision transformer') || 
+                q.includes('vit') ||
+                q.includes('how many images') || 
+                q.includes('dataset size') || 
+                q.includes('train val test') || 
+                q.includes('train/val/test') || 
+                q.includes('split ratio') ||
+                q.includes('how did you calculate precision') || 
+                q.includes('how did you calculate recall') ||
+                q.includes('active directory') || 
+                q.includes('ad domain') ||
+                (q.includes('azure') && (q.includes('infra') || q.includes('deployment') || q.includes('manage'))) ||
+                (q.includes('how') && q.includes('measure') && q.includes('latency')) ||
+                q.includes('model latency or complete system');
+
+            if (isUndocumentedDetail) {
+                if (lang === 'bm') {
+                    return `Butiran khusus tersebut tidak didokumentasikan dalam maklumat portfolio sedia ada saya.`;
+                } else if (lang === 'cn') {
+                    return `该具体细节未记录在我目前的作品集信息中。`;
+                }
+                return `That specific detail isn't documented in my current portfolio information.`;
+            }
+
+            // 0.2 COMMERCIAL DEPLOYMENT / SENIOR EXPERIENCE HONESTY GUARD
+            if (q.includes('commercially deployed') || q.includes('paying customers') || q.includes('lotus or jaya grocer') || q.includes('company buy') || q.includes('buy your checkout') || q.includes('commercial retail company')) {
+                if (lang === 'bm') {
+                    return `Sistem self-checkout Irfan adalah prototaip projek capstone ijazah tahun akhir. Ia belum dipasarkan secara komersial di pasar raya, tetapi berfungsi sepenuhnya sebagai bukti konsep (proof-of-concept) pengesahan dwi visual dan kod bar.`;
+                }
+                return `Irfan's self-checkout system is an academic final-year degree capstone prototype. It has not been commercially deployed in retail stores, but serves as a fully functional proof-of-concept demonstrating visual and barcode dual verification.`;
+            }
+
+            if ((q.includes('ospf') || q.includes('vlan')) && (q.includes('production') || q.includes('live enterprise') || q.includes('commercial enterprise'))) {
+                if (lang === 'bm') {
+                    return `Irfan mempunyai pengalaman rangkaian Cisco CCNA berasaskan akademik dan makmal (termasuk OSPF, VLAN, STP, dan simulasi Cisco Packet Tracer), tetapi bukan penyebaran pengeluaran komersial enterprise.`;
+                }
+                return `Irfan has academic and lab-based Cisco CCNA enterprise networking experience (including OSPF, VLANs, STP, and Packet Tracer topology simulation), but not commercial enterprise production deployment.`;
+            }
+
+            if ((q.includes('cybersecurity engineer') || q.includes('soc analyst') || q.includes('penetration tester')) && (q.includes('professional') || q.includes('work as') || q.includes('worked as'))) {
+                if (lang === 'bm') {
+                    return `Irfan memegang pensijilan rasmi Cisco Endpoint Security dan Cyber Threat Management, tetapi latar belakang utamanya ialah Kejuruteraan Komputer dan Sokongan IT. Beliau bersedia untuk peranan peringkat permulaan (entry-level).`;
+                }
+                return `Irfan holds official Cisco Endpoint Security and Cyber Threat Management certifications, but his primary background is Computer Engineering and IT Support. He is qualified for entry-level security and infrastructure roles.`;
+            }
+
+            // 0.3 PROJECT TECHNOLOGY INTENT SPECIFIC HANDLERS
+            const isDbQuery = q.includes('database') || q.includes('mysql');
+            const isLangQuery = (q.includes('programming language') || q.includes('language did you use') || q.includes('bahasa pengaturcaraan')) && !q.includes('speak');
+            const isModelQuery = (q.includes('model did you use') || q.includes('computer vision model') || q.includes('detection model')) && !q.includes('why');
+            const isScannerQuery = q.includes('scanner') || q.includes('barcode reader') || q.includes('hid');
+            const isVisionLibQuery = q.includes('opencv') || q.includes('vision library') || q.includes('image processing library');
+
+            if (isDbQuery && (q.includes('project') || q.includes('checkout') || q.includes('system') || q.includes('capstone') || q.includes('what') || q.includes('use'))) {
+                return `MySQL was used for product catalog and inventory database synchronization in the capstone project.`;
+            }
+            if (isLangQuery) {
+                return `Python was the primary programming language used for YOLOv8 model training, OpenCV camera stream processing, and cross-verification logic.`;
+            }
+            if (isModelQuery) {
+                return `YOLOv8 (You Only Look Once v8) PyTorch model was used for real-time visual product detection.`;
+            }
+            if (isScannerQuery && (q.includes('what') || q.includes('use') || q.includes('type') || q.includes('hardware'))) {
+                return `A USB Barcode Scanner connected via serial HID interface was integrated for physical 1D/2D product barcode identification.`;
+            }
+            if (isVisionLibQuery && (q.includes('what') || q.includes('use') || q.includes('library'))) {
+                return `OpenCV was used for live video camera feed capture and image frame preprocessing.`;
+            }
+
+            // 0.4 PROJECT CONTRIBUTION INTENT SPECIFIC HANDLER
+            if ((q.includes('personally') || q.includes('contribution') || q.includes('his role') || q.includes('his contribution') || q.includes('what did irfan do') || q.includes('what did he implement') || q.includes('what did he design')) && (q.includes('project') || q.includes('capstone') || q.includes('checkout') || q.includes('system') || q.includes('built'))) {
+                return `Irfan's documented personal contributions to the project include: (1) Trained custom YOLOv8 object detection model for 50 epochs on local product dataset; (2) Developed cross-verification logic comparing barcode product IDs against camera vision detections; (3) Integrated USB barcode scanner hardware with OpenCV live camera feed and MySQL database; (4) Conducted dual split-view camera experiments to resolve product occlusion issues.`;
+            }
+
             // 1. GREETINGS & CASUAL CHAT (WORLDWIDE EXPRESSIONS & SLANG)
             const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you|yo|bro|buddy|friend|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|anyone|anybody|in the house|bot|assistant)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('哈啰') || q.includes('嗨') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
             if (isGreeting && q.length <= 50) {
@@ -2980,8 +3058,14 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 return `Irfan holds official <strong>Cisco CCNA Enterprise, Endpoint Security, Cyber Threat Management, and Festo Industrial AI certifications</strong>. While not holding AWS/Azure certificates yet, he has solid hands-on cloud experience with Cloudflare Workers, REST APIs, and CI/CD pipelines.`;
             }
 
-            // 26. CONTACT DETAILS (WORD BOUNDARY PROTECTED)
-            if (/\b(contact|phone|email|emel|hubungi|reach|call|whatsapp|turnstile|modal)\b/i.test(q) || q.includes('telefon') || q.includes('nombor') || q.includes('联系') || q.includes('电话') || q.includes('邮箱') || q.includes('தொடர்பு')) {
+            // 26. CONTACT DETAILS (WORD BOUNDARY & COLLISION PROTECTED)
+            const isContactQuery = (
+                /\b(contact|phone|email|emel|hubungi|whatsapp|turnstile|modal)\b/i.test(q) ||
+                /\breach (out|me|irfan)\b/i.test(q) ||
+                /\bcall (me|irfan|him)\b/i.test(q) ||
+                q.includes('telefon') || q.includes('nombor') || q.includes('联系') || q.includes('电话') || q.includes('邮箱') || q.includes('தொடர்பு')
+            );
+            if (isContactQuery && !q.includes('recall')) {
                 if (lang === 'bm') {
                     return `Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!`;
                 }
