@@ -1778,8 +1778,9 @@
 
             navDropdownPanel.addEventListener('pointerenter', (e) => {
                 if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
-                    clearTimeout(navHoverTimeout);
-                    openNavDropdown();
+                    if (navDropdownPanel.classList.contains('active')) {
+                        clearTimeout(navHoverTimeout);
+                    }
                 }
             });
 
