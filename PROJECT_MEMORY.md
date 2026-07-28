@@ -129,6 +129,15 @@
     - **Single Source of Truth:** Updated `RESUME_DATA`, `SYSTEM_PROMPT`, and `generateNativeSpontaneousAnswer` to return ONLY verified project metrics (**77.4% Precision**, **72.0% Recall (50 Epochs)**, **<90ms Real-Time Inference**).
     - **Outdated Query Intercept Rule:** Added detection for queries referencing legacy/unverified metrics (`98.6%`, `97.8%`, `150 epochs`, `99.4% accuracy`) to explicitly inform users that earlier portfolio versions contained different figures which were removed during fact-checking in favor of current verified benchmarks.
 
+14. **Unlimited Token & Live 1M Context API Execution Directive:**
+    - **User Token Quota:** UNLIMITED token usage.
+    - **Execution Policy:**
+      1. Chatbot queries execute 100% live through RootSys Cloud API (`https://rootsys.cloud/v1/chat/completions`) using API Key `fiq-a0fd300c5ed7b18a767f753f36547435`.
+      2. Completion token output is UNCAPPED (`max_tokens: 4096`).
+      3. API timeouts are set to `30s` (frontend) / `45s` (backend agent) for deep unthrottled reasoning.
+      4. Multi-turn conversation context history (`CHAT_CONVERSATION_HISTORY`) is persisted up to full 1M-token context limits (`claude-opus-4.7-1m` default).
+      5. Client-side local engines (`generateNativeSpontaneousAnswer`) serve strictly as offline fallbacks when network connection is unavailable.
+
 ---
 
 ## ⚡ ENTERPRISE CAREER DASHBOARD
