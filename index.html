@@ -2357,6 +2357,19 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             return 'en';
         }
 
+        function formatBotMarkdown(text) {
+            if (!text) return "";
+            let html = text;
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            html = html.replace(/^\s*[\-\*]\s+(.*?)$/gm, '• $1');
+            html = html.replace(/### (.*?)$/gm, '<h4 style="margin:6px 0 2px 0;">$1</h4>');
+            html = html.replace(/## (.*?)$/gm, '<h3 style="margin:8px 0 4px 0;">$1</h3>');
+            html = html.replace(/# (.*?)$/gm, '<h2 style="margin:10px 0 6px 0;">$1</h2>');
+            html = html.replace(/\n/g, '<br>');
+            return html;
+        }
+
         async function submitChatMessage() {
             const input = document.getElementById('chat-user-input');
             const query = input.value.trim();
@@ -2435,6 +2448,10 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             } finally {
                 const indicator = document.getElementById('ai-thinking-indicator');
                 if (indicator) indicator.remove();
+            }
+
+            if (!botAnswer || botAnswer.trim().length === 0) {
+                botAnswer = generateNativeSpontaneousAnswer(query, lang);
             }
 
             appendBotMessage(botAnswer);
@@ -2524,7 +2541,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             }
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 35000);
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
 
             try {
                 const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
@@ -2551,7 +2568,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 const data = await response.json();
                 const replyText = data.choices[0].message.content;
                 CHAT_CONVERSATION_HISTORY.push({ role: "assistant", content: replyText });
-                return replyText.replace(/\n/g, "<br>");
+                return formatBotMarkdown(replyText);
             } catch (err) {
                 clearTimeout(timeoutId);
                 throw err;
@@ -2561,7 +2578,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
         // 100% Free Live LLM Endpoint (Pollinations AI - Fallback Engine)
         async function fetchFreePollinationsAi(userQuery) {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 6000);
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
 
             const response = await fetch('https://text.pollinations.ai/', {
                 method: 'POST',
@@ -2583,7 +2600,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             const text = await response.text();
             if (!text || text.trim().length === 0) throw new Error("Empty response");
 
-            return text.replace(/\n/g, "<br>");
+            return formatBotMarkdown(text);
         }
 
         /* -------------------------------------------------------------
