@@ -2273,9 +2273,10 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
 <candidate_knowledge_base>
 <candidate_profile>
 - Full Name: Muhammad Irfan Fahmi Bin Samsul Kamar
+- Age: 24 years old (Born: 2002)
 - Location: Puchong, Selangor, Malaysia (Willing to relocate/travel to Penang, Johor, KL, or outstation)
 - Education:
-  * Bachelor of Computer Engineering with Honours (UTeM) - Expected Nov 2026.
+  * Bachelor of Computer Engineering with Honours (UTeM) - Expected Nov 2026 (Year 4 Student).
   * Diploma in Electronic Engineering (Computer), Politeknik Port Dickson (3.26 CGPA).
   * Certificate in Industrial Automation, Kolej Komuniti Selandar (3.58 CGPA, Best Student Award).
 - Official Certifications:
@@ -2291,6 +2292,11 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
   * Contributions: Custom YOLOv8 training, barcode cross-verification algorithm, hardware-software fusion.
 </candidate_profile>
 </candidate_knowledge_base>
+
+<conversation_flow_directives>
+1. Concise Greetings: When the user says simple greetings (e.g. "hi", "hello", "hai", "apa khabar", "yo"), reply with a brief, warm, 1-to-2 sentence greeting in their language. NEVER dump long resume summaries or bulleted lists for simple greetings!
+2. Direct & Concise Answers: Answer specific questions (e.g. "irfan umur berapa") directly with exact facts (e.g., Irfan is 24 years old, born in 2002) without adding unnecessary multi-step history unless requested.
+</conversation_flow_directives>
 
 <reasoning_guidelines>
 1. Independent Reasoning & Real-Time Synthesis: Answer every prompt naturally using full AI intellect. Never use rigid scripts.
@@ -3373,9 +3379,9 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
                     }
                     case 'age': {
                         if (lang === 'bm') {
-                            return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
+                            return `Irfan berumur <strong>24 tahun</strong> (lahir pada tahun 2002). Beliau kini merupakan pelajar tahun akhir Sarjana Muda Kejuruteraan Komputer di UTeM (dijangka bergraduan pada November 2026).`;
                         }
-                        return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
+                        return `Irfan is <strong>24 years old</strong> (born in 2002). He is currently a final-year Bachelor of Computer Engineering student at UTeM (expected graduation November 2026).`;
                     }
                 }
             }
