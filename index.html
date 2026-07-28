@@ -2353,8 +2353,14 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
 
             const qLower = query.toLowerCase();
 
-            // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES (MULTILINGUAL)
-            if (qLower.includes('phone') || qLower.includes('number') || qLower.includes('email') || qLower.includes('whatsapp') || qLower.includes('contact') || qLower.includes('call') || qLower.includes('reach') || qLower.includes('telefon') || qLower.includes('emel') || qLower.includes('hubungi') || qLower.includes('电话') || qLower.includes('邮箱') || qLower.includes('தொலைபேசி')) {
+            // CLIENT-SIDE HARD SECURITY OVERRIDE FOR CONTACT INQUIRIES (WORD BOUNDARY PROTECTED)
+            const isContactInquiry = (
+                /\b(contact|phone|email|emel|hubungi|whatsapp|turnstile|modal)\b/i.test(qLower) ||
+                /\breach (out|me|irfan)\b/i.test(qLower) ||
+                /\bcall (me|irfan|him)\b/i.test(qLower) ||
+                qLower.includes('telefon') || qLower.includes('nombor') || qLower.includes('联系') || qLower.includes('电话') || qLower.includes('邮箱') || qLower.includes('தொலைபேசி')
+            );
+            if (isContactInquiry && !qLower.includes('recall')) {
                 let securityReply = "";
                 if (lang === 'bm') {
                     securityReply = `🔒 <strong>Pengesahan Keselamatan Diperlukan:</strong><br>Maklumat hubungan terus calon dilindungi daripada bot.<br><br>Sila tekan butang <strong>"🔓 Reveal Contact Info"</strong> di bawah ringkasan peribadi.`;
@@ -2367,13 +2373,6 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 }
 
                 appendBotMessage(securityReply);
-                return;
-            }
-
-            // INSTANT LOCAL RETRIEVAL & UNRECOGNIZED SCOPE REFUSAL (<5ms)
-            const instantAnswer = generateNativeSpontaneousAnswer(query, lang);
-            if (instantAnswer) {
-                appendBotMessage(instantAnswer);
                 return;
             }
 
@@ -2406,7 +2405,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 try {
                     botAnswer = await fetchFreePollinationsAi(query);
                 } catch (e) {
-                    botAnswer = instantAnswer || generateNativeSpontaneousAnswer(query, lang);
+                    botAnswer = generateNativeSpontaneousAnswer(query, lang);
                 }
             } finally {
                 const indicator = document.getElementById('ai-thinking-indicator');
@@ -2448,6 +2447,8 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             "hy3-tencent"
         ];
 
+        let CHAT_CONVERSATION_HISTORY = [];
+
         function selectModelByQuery(query) {
             const q = query.toLowerCase();
             if (q.includes("code") || q.includes("script") || q.includes("python") || q.includes("html") || q.includes("c++") || q.includes("sql") || q.includes("troubleshoot") || q.includes("codex")) {
@@ -2486,14 +2487,19 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             return "claude-opus-4.7-1m";
         }
 
-        // RootSys Cloud AI Endpoint with Uncapped Performance & 30s Timeout
+        // RootSys Cloud AI Endpoint with 1M Token Context Persistence & Live API Key Execution
         async function fetchKimiK25Ai(apiKey, userQuery) {
             const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
             const selectedModel = selectModelByQuery(userQuery);
-            console.log(`[Multi-Model Router] Dispatching to '${selectedModel}' with uncapped performance.`);
+            console.log(`[Multi-Model Router 1M Context] Dispatching to '${selectedModel}' with live API token.`);
+
+            CHAT_CONVERSATION_HISTORY.push({ role: "user", content: userQuery });
+            if (CHAT_CONVERSATION_HISTORY.length > 40) {
+                CHAT_CONVERSATION_HISTORY = CHAT_CONVERSATION_HISTORY.slice(-30);
+            }
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 30000);
+            const timeoutId = setTimeout(() => controller.abort(), 35000);
 
             try {
                 const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
@@ -2508,7 +2514,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                         model: selectedModel,
                         messages: [
                             { role: "system", content: SYSTEM_PROMPT },
-                            { role: "user", content: userQuery }
+                            ...CHAT_CONVERSATION_HISTORY
                         ],
                         temperature: 0.7,
                         max_tokens: 4096
@@ -2518,7 +2524,9 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 clearTimeout(timeoutId);
                 if (!response.ok) throw new Error(`API status ${response.status}`);
                 const data = await response.json();
-                return data.choices[0].message.content.replace(/\n/g, "<br>");
+                const replyText = data.choices[0].message.content;
+                CHAT_CONVERSATION_HISTORY.push({ role: "assistant", content: replyText });
+                return replyText.replace(/\n/g, "<br>");
             } catch (err) {
                 clearTimeout(timeoutId);
                 throw err;
