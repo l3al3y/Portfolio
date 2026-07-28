@@ -2414,6 +2414,13 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 return;
             }
 
+            // INSTANT LOCAL RETRIEVAL (<5ms) FOR FASTEST BROWSER EXPERIENCE
+            const instantAnswer = generateNativeSpontaneousAnswer(query, lang);
+            if (instantAnswer) {
+                appendBotMessage(instantAnswer);
+                return;
+            }
+
             // Render AI Thinking Spinner
             const thinkingDiv = document.createElement('div');
             thinkingDiv.className = 'chat-message bot-msg';
@@ -2440,14 +2447,14 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 }
             } catch (err) {
                 console.warn("External API call failed, generating instant candidate response:", err);
-                botAnswer = generateNativeSpontaneousAnswer(query, lang);
+                botAnswer = instantAnswer || generateNativeSpontaneousAnswer(query, lang);
             } finally {
                 const indicator = document.getElementById('ai-thinking-indicator');
                 if (indicator) indicator.remove();
             }
 
             if (!botAnswer || typeof botAnswer !== 'string' || botAnswer.trim().length === 0) {
-                botAnswer = generateNativeSpontaneousAnswer(query, lang);
+                botAnswer = instantAnswer || generateNativeSpontaneousAnswer(query, lang);
             }
 
             appendBotMessage(botAnswer);
