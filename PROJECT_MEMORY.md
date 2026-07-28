@@ -125,10 +125,9 @@
    - **`SYSTEM_PROMPT` Scope Rule:** Rewrote system prompt to restrict AI capabilities strictly to answering questions about Irfan (education, experience, skills, certifications, projects, role suitability). Unrelated questions (math, general coding, world topics, general AGI requests) trigger a concise, natural refusal in the user's language.
    - **Localized Offline Fallback (`scopeRefusal`):** Updated `generateNativeSpontaneousAnswer` to return a localized refusal line (`en`, `bm`, `cn`, `in`) instead of a full resume dump for unmatched off-topic queries.
    - **Instant Client-Side Refusal Execution:** Updated `submitChatMessage` to output `scopeRefusal` immediately (<5ms) for any unrecognized off-topic text without making the user wait for external LLM API calls or thinking spinners.
-12. **Recruiter Conversion Polish & Verified Capstone Metrics:**
-    - **Hero CTA Hierarchy:** Re-ordered Hero CTAs to prioritize `View Resume 📄` (Primary Emerald) and `View Projects ↓` (Secondary Primary Blue), followed by `Contact Me ✉️` and `Ask About My Experience 💬`.
-    - **Verified Capstone Metrics:** Updated Capstone metrics to match actual verified training data: **77.4% Precision**, **72.0% Recall (50 Epochs)**, and **<90ms Real-Time Inference**.
-    - **Recruiter-Friendly Presentation:** Structured project details into explicit Problem, Solution, My Contribution (4 key bullet points), Technology Stack badges, and single direct `View Project on GitHub ➔` CTA.
+13. **Chatbot Factual Consistency Alignment:**
+    - **Single Source of Truth:** Updated `RESUME_DATA`, `SYSTEM_PROMPT`, and `generateNativeSpontaneousAnswer` to return ONLY verified project metrics (**77.4% Precision**, **72.0% Recall (50 Epochs)**, **<90ms Real-Time Inference**).
+    - **Outdated Query Intercept Rule:** Added detection for queries referencing legacy/unverified metrics (`98.6%`, `97.8%`, `150 epochs`, `99.4% accuracy`) to explicitly inform users that earlier portfolio versions contained different figures which were removed during fact-checking in favor of current verified benchmarks.
 
 ---
 

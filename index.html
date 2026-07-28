@@ -2249,10 +2249,10 @@
                 {
                     title: "Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)",
                     type: "Capstone Project",
-                    metrics: "98.6% precision, 97.8% recall at 150 epochs, under 90ms inference latency (99.4% hybrid system accuracy)",
+                    metrics: "77.4% precision, 72.0% recall at 50 epochs, under 90ms real-time inference latency",
                     bullets: [
                         "Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.",
-                        "Achieved 98.6% precision and 97.8% recall at 150 epochs with RTX 3070 CUDA acceleration and dual split-view camera fusion, eliminating scan evasion with under 90ms inference latency."
+                        "Achieved 77.4% precision and 72.0% recall at 50 epochs on local product dataset with split-view camera fusion and under 90ms real-time inference latency."
                     ]
                 }
             ]
@@ -2667,6 +2667,15 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             const normalizedQuery = (typeof correctQueryTyposWithCNN === 'function') ? correctQueryTyposWithCNN(inputQuery) : inputQuery;
             const q = (normalizedQuery || inputQuery).toLowerCase().trim();
 
+            // 0. OUTDATED METRICS INTERCEPT RULE
+            const isOutdatedMetricQuery = q.includes('98.6') || q.includes('97.8') || (q.includes('150') && (q.includes('epoch') || q.includes('epochs'))) || q.includes('99.4');
+            if (isOutdatedMetricQuery) {
+                if (lang === 'bm') {
+                    return `Versi terdahulu portfolio mengandungi angka prestasi yang berbeza. Angka-angka tersebut telah dikeluarkan semasa semakan fakta. Penanda aras sah semasa ialah 77.4% precision dan 72.0% recall pada 50 epochs, dengan masa latensi inferens bawah 90ms.`;
+                }
+                return `The portfolio's earlier version contained different performance figures. Those figures were subsequently removed during fact-checking. The current verified benchmark is 77.4% precision and 72.0% recall at 50 epochs, with under 90ms real-time inference latency.`;
+            }
+
             // 1. GREETINGS & CASUAL CHAT (WORLDWIDE EXPRESSIONS & SLANG)
             const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you|yo|bro|buddy|friend|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|anyone|anybody|in the house|bot|assistant)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('哈啰') || q.includes('嗨') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
             if (isGreeting && q.length <= 50) {
@@ -2849,7 +2858,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 } else if (lang === 'in') {
                     return `<strong>இர்பானின் முதன்மை சிறப்பம்சங்கள்:</strong><br>1. <strong>வன்பொருள், நெட்வொர்க்கிங் & AI இணைப்பு:</strong> Cisco CCNA Enterprise, IoT/Embedded அமைப்புகள் மற்றும் YOLOv8 PyTorch கணினி பார்வையில் திறமையானவர்.<br>2. <strong>சிறந்த கல்வி சாதனை:</strong> சிறந்த மாணவர் விருது (CGPA 3.58) & உயர் துல்லியமான Capstone திட்டம் (77.4% துல்லியம்).<br>3. <strong>இராணுவ ஒழுக்கம்:</strong> Askar Wataniah இருப்புப்படை பயிற்சி மூலம் உயர் அழுத்தத்தை தாங்கும் திறன்.`;
                 } else {
-                    return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <150ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.`;
+                    return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <90ms latency).<br>3. <strong>Military Discipline:</strong> Askar Wataniah reserve background delivering high stress resilience and strong operational focus.`;
                 }
             }
 
@@ -2971,16 +2980,8 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                 return `Irfan holds official <strong>Cisco CCNA Enterprise, Endpoint Security, Cyber Threat Management, and Festo Industrial AI certifications</strong>. While not holding AWS/Azure certificates yet, he has solid hands-on cloud experience with Cloudflare Workers, REST APIs, and CI/CD pipelines.`;
             }
 
-            // 26. CONTACT DETAILS
-            if (q.includes('contact') || q.includes('telefon') || q.includes('nombor') || q.includes('phone') || q.includes('email') || q.includes('emel') || q.includes('hubungi') || q.includes('reach') || q.includes('call') || q.includes('whatsapp') || q.includes('联系') || q.includes('电话') || q.includes('邮箱') || q.includes('தொடர்பு') || q.includes('turnstile') || q.includes('modal')) {
-                if (lang === 'bm') {
-                    return `Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!`;
-                }
-                return `You can complete the Cloudflare Turnstile verification in the Contact modal to reveal Irfan's official Email & Phone number directly!`;
-            }
-
-            // 13. CONTACT DETAILS
-            if (q.includes('contact') || q.includes('telefon') || q.includes('nombor') || q.includes('phone') || q.includes('email') || q.includes('emel') || q.includes('hubungi') || q.includes('reach') || q.includes('call') || q.includes('whatsapp')) {
+            // 26. CONTACT DETAILS (WORD BOUNDARY PROTECTED)
+            if (/\b(contact|phone|email|emel|hubungi|reach|call|whatsapp|turnstile|modal)\b/i.test(q) || q.includes('telefon') || q.includes('nombor') || q.includes('联系') || q.includes('电话') || q.includes('邮箱') || q.includes('தொடர்பு')) {
                 if (lang === 'bm') {
                     return `Anda boleh melepaskan kunci borang hubungan di atas untuk melihat Emel & Nombor Telefon rasmi Irfan secara terus, atau hantar mesej direct di laman web ini!`;
                 }
@@ -3007,11 +3008,14 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             const isCertificateSpecific = (q.includes('sijil') || q.includes('komuniti') || q.includes('selandar')) && !q.includes('diploma') && !q.includes('degree');
             const isDegreeSpecific = (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor')) && !q.includes('diploma');
             
-            const isPrecisionSpecific = q.includes('precision') && !q.includes('recall') && !q.includes('all');
-            const isRecallSpecific = q.includes('recall') && !q.includes('precision') && !q.includes('all');
-            
             const isCcnaSpecific = (q.includes('ccna') || q.includes('cisco')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila') || q.includes('dapat'));
             const isFestoSpecific = (q.includes('festo')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila'));
+
+            const isPrecisionSpecific = q.includes('precision') && !q.includes('recall');
+            const isRecallSpecific = q.includes('recall') && !q.includes('precision');
+            const isEpochSpecific = (q.includes('epoch') || q.includes('epochs') || q.includes('pusingan')) && !q.includes('precision') && !q.includes('recall');
+            const isLatencySpecific = (q.includes('latency') || q.includes('latensi') || q.includes('speed') || q.includes('masa')) && (q.includes('inference') || q.includes('inferens') || q.includes('camera') || q.includes('kamera'));
+            const isAccuracySpecific = q.includes('accuracy') || q.includes('ketepatan') || q.includes('accurate');
 
             // General keyword overlap scoring against RESUME_DATA
             if (q.includes('diploma') || q.includes('port dickson') || q.includes('3.26') || q.includes('文凭') || q.includes('学历')) scores.diploma_cgpa += 5;
@@ -3027,7 +3031,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             }
             if (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor') || q.includes(' honours') || q.includes('sarjana muda')) scores.degree_utem += 5;
 
-            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('latency') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing') || q.includes('split') || q.includes('camera') || q.includes('experiment') || q.includes('毕业') || q.includes('效果') || q.includes('திட்டம்') || q.includes('வெற்றி') || q.includes('结账') || q.includes('条形码') || q.includes('双重')) scores.capstone_metrics += 5;
+            if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('epoch') || q.includes('latency') || q.includes('accuracy') || q.includes('performance') || q.includes('results') || q.includes('prestasi') || q.includes('keputusan') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing') || q.includes('split') || q.includes('camera') || q.includes('experiment') || q.includes('毕业') || q.includes('效果') || q.includes('திட்டம்') || q.includes('வெற்றி') || q.includes('结账') || q.includes('条形码') || q.includes('双重')) scores.capstone_metrics += 5;
 
             if (q.includes('ccna') || q.includes('cisco') || q.includes('சிஸ்கோ') || q.includes('考考')) {
                 scores.ccna_dates += 4;
@@ -3111,22 +3115,43 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                     case 'capstone_metrics': {
                         if (isPrecisionSpecific) {
                             if (lang === 'bm') {
-                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System mencapai ketepatan <strong>77.4% precision</strong> (bersama 72.0% recall pada 50 epochs dengan masa latensi inferens bawah 150ms).`;
+                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System mencapai ketepatan <strong>77.4% precision</strong> (bersama 72.0% recall pada 50 epochs dengan masa latensi inferens bawah 90ms).`;
                             } else {
-                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>77.4% precision</strong> (along with 72.0% recall at 50 epochs with under 150ms inference latency).`;
+                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>77.4% precision</strong> (along with 72.0% recall at 50 epochs with under 90ms real-time inference latency).`;
                             }
                         }
                         if (isRecallSpecific) {
                             if (lang === 'bm') {
-                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System mencapai <strong>72.0% recall</strong> (bersama 77.4% precision pada 50 epochs dengan masa latensi inferens bawah 150ms).`;
+                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System mencapai <strong>72.0% recall</strong> (bersama 77.4% precision pada 50 epochs dengan masa latensi inferens bawah 90ms).`;
                             } else {
-                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>72.0% recall</strong> (along with 77.4% precision at 50 epochs with under 150ms inference latency).`;
+                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project achieved <strong>72.0% recall</strong> (along with 77.4% precision at 50 epochs with under 90ms real-time inference latency).`;
+                            }
+                        }
+                        if (isEpochSpecific) {
+                            if (lang === 'bm') {
+                                return `Model YOLOv8 bagi projek capstone Hybrid Self-Checkout System dilatih selama <strong>50 epochs</strong> pada set data produk tempatan (mencapai 77.4% precision dan 72.0% recall dengan masa latensi inferens bawah 90ms).`;
+                            } else {
+                                return `The YOLOv8 model for the Hybrid Self-Checkout capstone project was trained for <strong>50 epochs</strong> on a custom local product dataset (achieving 77.4% precision and 72.0% recall with under 90ms real-time inference latency).`;
+                            }
+                        }
+                        if (isLatencySpecific) {
+                            if (lang === 'bm') {
+                                return `Masa latensi inferens kamera masa nyata bagi model projek capstone Hybrid Self-Checkout System diukur <strong>bawah 90ms</strong>.`;
+                            } else {
+                                return `The real-time camera inference latency for the Hybrid Self-Checkout capstone project model was measured at <strong>under 90ms</strong>.`;
+                            }
+                        }
+                        if (isAccuracySpecific) {
+                            if (lang === 'bm') {
+                                return `Berdasarkan penanda aras latihan YOLOv8 yang didokumenkan, model capstone mencapai <strong>77.4% precision</strong> dan <strong>72.0% recall</strong> pada 50 epochs. Latensi inferens kamera masa nyata diukur bawah 90ms.`;
+                            } else {
+                                return `On the documented YOLOv8 training benchmark, the model achieved <strong>77.4% precision</strong> and <strong>72.0% recall</strong> at 50 epochs. Real-time camera inference was measured at under 90ms.`;
                             }
                         }
                         if (lang === 'bm') {
-                            return `<strong>Projek Capstone (${proj.title}):</strong><br>• Irfan membangunkan sistem dwi-pengesahan menggunakan OpenCV, YOLOv8 PyTorch, pengimbas kod bar USB, dan pangkalan data MySQL.<br>• Prestasi Model: <strong>${proj.metrics}</strong>.`;
+                            return `Projek capstone Irfan ialah <strong>Hybrid Self-Checkout System</strong> yang menggabungkan pengimbasan kod bar dengan penglihatan komputer untuk pengesahan produk.<br><br>Sistem ini mengintegrasikan YOLOv8/PyTorch dan OpenCV dengan pengimbas kod bar USB dan pangkalan data MySQL. Penanda aras latihan YOLOv8 yang didokumenkan mencapai <strong>77.4% precision</strong> dan <strong>72.0% recall</strong> pada 50 epochs, dengan masa latensi inferens kamera diukur bawah 90ms.`;
                         }
-                        return `<strong>Capstone Project (${proj.title}):</strong><br>• Irfan engineered a dual-verification checkout system using OpenCV, YOLOv8 PyTorch, USB barcode scanner, and MySQL database integration.<br>• Performance Results: <strong>${proj.metrics}</strong>.`;
+                        return `Irfan's capstone project is a <strong>Hybrid Self-Checkout System</strong> that combines barcode scanning with computer vision for product verification.<br><br>The system integrates YOLOv8/PyTorch and OpenCV with a USB barcode scanner and MySQL database. The goal is to cross-check product identification and improve checkout automation.<br><br>The documented YOLOv8 benchmark achieved <strong>77.4% precision</strong> and <strong>72.0% recall</strong> at 50 epochs, with real-time camera inference measured at under 90ms.`;
                     }
                     case 'ccna_dates':
                     case 'festo_cert': {
