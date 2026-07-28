@@ -2502,9 +2502,6 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             if (q.includes("pitch") || q.includes("recommend") || q.includes("why hire") || q.includes("cover letter") || q.includes("advantage") || q.includes("sonnet")) {
                 return "claude-sonnet-4.6";
             }
-            if (q.includes("quick") || q.includes("list") || q.includes("summary") || q.includes("fast") || q.includes("flash")) {
-                return "gemini-3.5-flash";
-            }
             if (q.includes("vision") || q.includes("yolov8") || q.includes("camera") || q.includes("image") || q.includes("glm")) {
                 return "glm-5.2";
             }
@@ -2526,7 +2523,7 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             if (q.includes("tencent") || q.includes("hy3")) {
                 return "hy3-tencent";
             }
-            return "claude-opus-4.7-1m";
+            return "gemini-3.5-flash";
         }
 
         // RootSys Cloud AI Endpoint with 1M Token Context Persistence & Live API Key Execution
