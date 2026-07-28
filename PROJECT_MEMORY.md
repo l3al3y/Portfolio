@@ -125,7 +125,10 @@
    - **`SYSTEM_PROMPT` Scope Rule:** Rewrote system prompt to restrict AI capabilities strictly to answering questions about Irfan (education, experience, skills, certifications, projects, role suitability). Unrelated questions (math, general coding, world topics, general AGI requests) trigger a concise, natural refusal in the user's language.
    - **Localized Offline Fallback (`scopeRefusal`):** Updated `generateNativeSpontaneousAnswer` to return a localized refusal line (`en`, `bm`, `cn`, `in`) instead of a full resume dump for unmatched off-topic queries.
    - **Instant Client-Side Refusal Execution:** Updated `submitChatMessage` to output `scopeRefusal` immediately (<5ms) for any unrecognized off-topic text without making the user wait for external LLM API calls or thinking spinners.
-   - **Greeting & Affirmation Exemption:** Warm greetings, small talk directed at the assistant, and polite thanks/goodbyes continue to respond naturally.
+7. **Touch Logo Behavior, Light Mode Contrast & Font Size Bumps:**
+   - **Touch Logo Behavior (`#header-logo-trigger`):** Detected touch capability (`'ontouchstart' in window || navigator.maxTouchPoints > 0`). Restricted `mouseenter`/`mouseleave` capsule hover triggers to desktop mice only. On touch devices, tapping the logo displays a smooth floating identity tooltip (`Muhammad Irfan Fahmi • Computer Engineering Graduate`) for 2.5 seconds instead of popping open the nav drawer.
+   - **Light Theme Contrast Overrides:** Added light mode overrides for CSS variables (`--emerald: #059669;`, `--amber: #b45309;`, `--purple: #7e22ce;`) inside `body.light-theme` to ensure high contrast legibility against light backgrounds.
+   - **Readability & Font Sizing Bumps:** Raised text size floors across key elements: `.entry-dates` (0.9rem), `.cert-issuer-text` (0.9rem), `.entry-bullets` (1rem), `.logo-status-tag` (0.85rem), hero bio (1rem), profile overview (1rem), capstone description (1rem), stat labels (0.85rem), `.prompt-chip` (0.85rem with `0.45rem 0.85rem` padding), and footer text (0.85–0.9rem).
 
 ---
 
