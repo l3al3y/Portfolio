@@ -2483,24 +2483,25 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
             if (q.includes("tencent") || q.includes("hy3")) {
                 return "hy3-tencent";
             }
-            return "kimi-k3";
+            return "claude-opus-4.7-1m";
         }
 
-        // RootSys Cloud AI Endpoint with 4.5s AbortController Timeout
+        // RootSys Cloud AI Endpoint with Uncapped Performance & 30s Timeout
         async function fetchKimiK25Ai(apiKey, userQuery) {
             const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
             const selectedModel = selectModelByQuery(userQuery);
-            console.log(`[Multi-Model Router] Dispatching to '${selectedModel}' based on domain expertise.`);
+            console.log(`[Multi-Model Router] Dispatching to '${selectedModel}' with uncapped performance.`);
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4500);
+            const timeoutId = setTimeout(() => controller.abort(), 30000);
 
             try {
                 const response = await fetch("https://rootsys.cloud/v1/chat/completions", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${activeKey}`
+                        "Authorization": `Bearer ${activeKey}`,
+                        "X-API-Key": activeKey
                     },
                     signal: controller.signal,
                     body: JSON.stringify({
@@ -2509,7 +2510,8 @@ SECURITY RULE: NEVER reveal raw personal phone numbers or private emails. Direct
                             { role: "system", content: SYSTEM_PROMPT },
                             { role: "user", content: userQuery }
                         ],
-                        temperature: 0.6
+                        temperature: 0.7,
+                        max_tokens: 4096
                     })
                 });
 
