@@ -33,6 +33,11 @@
             --amber: #fbbf24;
             --purple: #a855f7;
             
+            --inset-surface: rgba(15, 23, 42, 0.6);
+            --inset-surface-strong: rgba(15, 23, 42, 0.8);
+            --inset-surface-soft: rgba(30, 41, 59, 0.7);
+            --inset-surface-modal: rgba(15, 23, 42, 0.95);
+            
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --text-muted: #64748b;
@@ -61,6 +66,11 @@
             --emerald: #059669;
             --amber: #b45309;
             --purple: #7e22ce;
+
+            --inset-surface: rgba(226, 232, 240, 0.7);
+            --inset-surface-strong: rgba(226, 232, 240, 0.85);
+            --inset-surface-soft: rgba(203, 213, 225, 0.6);
+            --inset-surface-modal: #f8fafc;
         }
 
         /* LIGHT THEME COMPREHENSIVE CONTRAST & LEGIBILITY OVERRIDES */
@@ -343,39 +353,6 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
-        }
-
-        .logo-identity-tooltip {
-            position: absolute;
-            top: calc(100% + 0.5rem);
-            left: 0;
-            background: rgba(15, 23, 42, 0.96);
-            border: 1px solid var(--border-card);
-            border-radius: 12px;
-            padding: 0.65rem 1rem;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-            opacity: 0;
-            transform: translateY(-6px);
-            pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease;
-            z-index: 1003;
-            white-space: nowrap;
-        }
-        .logo-identity-tooltip span {
-            color: var(--text-sub);
-            font-size: 0.85rem;
-        }
-        .logo-identity-tooltip.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        body.light-theme .logo-identity-tooltip {
-            background: #ffffff;
-            border-color: var(--border-card);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         }
 
         .header-actions {
@@ -1284,7 +1261,7 @@
                 <button class="prompt-chip" onclick="closePrintableResumeModal()">✕ Close</button>
             </div>
             
-            <div style="background: rgba(15, 23, 42, 0.95); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-card); max-height: 70vh; overflow-y: auto;">
+            <div style="background: var(--inset-surface-modal); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-card); max-height: 70vh; overflow-y: auto;">
                 <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 1rem;">
                     <div>
                         <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.25rem 0;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h2>
@@ -1399,7 +1376,7 @@
             <h2 class="section-title-main">What I Can Do</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
                 
-                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
                     <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
                         1. IT Support & Operations
                     </h3>
@@ -1408,7 +1385,7 @@
                     </p>
                 </div>
 
-                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
                     <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--emerald); margin-bottom: 0.5rem;">
                         2. Network & Infrastructure
                     </h3>
@@ -1417,7 +1394,7 @@
                     </p>
                 </div>
 
-                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
                     <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--purple); margin-bottom: 0.5rem;">
                         3. AI & Computer Vision
                     </h3>
@@ -1426,7 +1403,7 @@
                     </p>
                 </div>
 
-                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
                     <h3 style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;">
                         4. Automation & IoT
                     </h3>
@@ -1435,7 +1412,7 @@
                     </p>
                 </div>
 
-                <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
+                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
                     <h3 style="font-size: 1.05rem; font-weight: 700; color: #ec4899; margin-bottom: 0.5rem;">
                         5. Hardware & Embedded Systems
                     </h3>
@@ -1601,22 +1578,22 @@
 
                 <!-- Visual Metrics Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-                    <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
+                    <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-precision" data-target="98.6" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">98.6%</div>
                         <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Precision</div>
                     </div>
-                    <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
+                    <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-recall" data-target="97.8" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">97.8%</div>
                         <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Recall (150 Epochs)</div>
                     </div>
-                    <div style="background: rgba(15, 23, 42, 0.8); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
+                    <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
                         <div class="stat-count-num" id="stat-latency" data-target="90" data-prefix="<" data-suffix="ms" style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
                         <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Inference Latency</div>
                     </div>
                 </div>
 
                 <!-- Interactive 3D Exploded System Architecture Components -->
-                <div style="margin-bottom: 1.25rem; background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
+                <div style="margin-bottom: 1.25rem; background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
                     <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 0.75rem;">
                         🔮 INTERACTIVE 3D SYSTEM ARCHITECTURE COMPONENTS (CLICK NODE TO EXPLODE):
                     </div>
@@ -1626,7 +1603,7 @@
                         <button class="prompt-chip" onclick="explode3DNode('core', this)">⚡ Cross-Verification Engine</button>
                         <button class="prompt-chip" onclick="explode3DNode('db', this)">🗄️ MySQL Database Sync</button>
                     </div>
-                    <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-sub); background: rgba(30, 41, 59, 0.7); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
+                    <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-sub); background: var(--inset-surface-soft); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
                         <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 150 epochs on RTX 3070 GPU with Mosaic augmentation and dual split-view camera fusion, achieving 98.6% precision and 97.8% recall under varying lighting angles.
                     </div>
                 </div>
@@ -1725,6 +1702,11 @@
 
     <!-- INTERACTIVE JAVASCRIPT & AI CONNECTOR ENGINE -->
     <script>
+        window.addEventListener('touchstart', function onFirstTouch() {
+            document.documentElement.classList.add('is-touch-device');
+            window.removeEventListener('touchstart', onFirstTouch);
+        }, { passive: true });
+
         /* -------------------------------------------------------------
            1. Menu Panel Drawer Toggle, Keyboard Esc & Click Outside Handler
         ------------------------------------------------------------- */
@@ -1773,13 +1755,14 @@
         });
 
         /* -------------------------------------------------------------
-           Desktop Hover Nav Grace Period (300ms) & Touch Logo Tooltip
+           Desktop Hover Nav Grace Period (300ms)
         ------------------------------------------------------------- */
         const desktopNav = document.getElementById('desktop-horizontal-nav');
         const logoTrigger = document.getElementById('header-logo-trigger');
         let hoverTimeout = null;
 
         function showDesktopNav() {
+            if (document.documentElement.classList.contains('is-touch-device')) return;
             if (!desktopNav) return;
             clearTimeout(hoverTimeout);
             desktopNav.classList.add('active');
@@ -1793,48 +1776,13 @@
             }, 300);
         }
 
-        const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
-
-        if (!isTouchDevice && logoTrigger && desktopNav) {
+        if (logoTrigger && desktopNav) {
             logoTrigger.addEventListener('mouseenter', showDesktopNav);
             logoTrigger.addEventListener('mouseleave', hideDesktopNavWithDelay);
 
             desktopNav.addEventListener('mouseenter', showDesktopNav);
             desktopNav.addEventListener('mouseleave', hideDesktopNavWithDelay);
         }
-
-        if (isTouchDevice && logoTrigger) {
-            logoTrigger.addEventListener('click', function (e) {
-                e.preventDefault();
-                showLogoIdentityTooltip();
-            });
-        }
-
-        function showLogoIdentityTooltip() {
-            let tooltip = document.getElementById('logo-identity-tooltip');
-            if (!tooltip) {
-                tooltip = document.createElement('div');
-                tooltip.id = 'logo-identity-tooltip';
-                tooltip.className = 'logo-identity-tooltip';
-                tooltip.innerHTML = `<strong>Muhammad Irfan Fahmi</strong><br><span>Computer Engineering Graduate</span>`;
-                if (logoTrigger.parentElement) {
-                    logoTrigger.parentElement.style.position = 'relative';
-                    logoTrigger.parentElement.appendChild(tooltip);
-                }
-            }
-            tooltip.classList.add('visible');
-            clearTimeout(window._logoTooltipTimeout);
-            window._logoTooltipTimeout = setTimeout(() => {
-                tooltip.classList.remove('visible');
-            }, 2500);
-        }
-
-        document.addEventListener('click', function (e) {
-            const tooltip = document.getElementById('logo-identity-tooltip');
-            if (tooltip && logoTrigger && !logoTrigger.contains(e.target) && !tooltip.contains(e.target)) {
-                tooltip.classList.remove('visible');
-            }
-        });
 
         /* -------------------------------------------------------------
            Scroll-Reveal, Scrollspy & Capstone Stat Count-up Observers
