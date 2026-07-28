@@ -2486,7 +2486,7 @@ You have FULL AI REASONING FREEDOM, DEEP TECHNICAL KNOWLEDGE, AND MULTI-LINGUAL 
             }
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const timeoutId = setTimeout(() => controller.abort(), 12000);
 
             const payload = {
                 model: selectedModel,
@@ -2778,7 +2778,7 @@ You have FULL AI REASONING FREEDOM, DEEP TECHNICAL KNOWLEDGE, AND MULTI-LINGUAL 
             }
 
             // 0.3 TECHNICAL CONCEPT & DEFINITION HANDLERS (YOLOv8, OpenCV, OSPF, VLAN, CCNA, MySQL)
-            const isYoloConceptQuery = (q.includes('what is yolo') || q.includes('apa itu yolo') || q.includes('terangkan yolo') || q.includes('explain yolo') || q.includes('how yolo works') || q.includes('bagaimana yolo')) || q === 'yolov8' || q === 'yolo';
+            const isYoloConceptQuery = q.includes('yolo') || q.includes('yolov8');
             if (isYoloConceptQuery) {
                 if (lang === 'bm') {
                     return `<strong>YOLOv8 (You Only Look Once v8)</strong> ialah model penglihatan komputer (computer vision) termaju yang dibangunkan oleh Ultralytics untuk pengesan objek dan pemotongan imej (image segmentation) secara masa nyata (real-time). Berbeza dengan pengesan tradisional berbilang peringkat, YOLOv8 memproses keseluruhan bingkai imej dalam satu laluan (single forward pass) untuk meramal kotak sempadan (bounding box) dan kebarangkalian kelas dengan kelajuan serta ketepatan yang sangat tinggi.<br><br>🤖 <strong>Pelaksanaan oleh Irfan:</strong><br>Irfan mengaplikasikan model YOLOv8 (PyTorch) tersuai dalam Projek Capstone beliau (<strong>Hybrid Self-Checkout System</strong>). Beliau melatih model selama <strong>50 epochs</strong> menggunakan set data produk tempatan Malaysia, mencapai penanda aras sah <strong>77.4% Precision</strong>, <strong>72.0% Recall</strong>, dan latensi inferens kamera diukur bawah <strong>90ms</strong>.`;
