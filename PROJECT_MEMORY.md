@@ -125,9 +125,10 @@
    - **`SYSTEM_PROMPT` Scope Rule:** Rewrote system prompt to restrict AI capabilities strictly to answering questions about Irfan (education, experience, skills, certifications, projects, role suitability). Unrelated questions (math, general coding, world topics, general AGI requests) trigger a concise, natural refusal in the user's language.
    - **Localized Offline Fallback (`scopeRefusal`):** Updated `generateNativeSpontaneousAnswer` to return a localized refusal line (`en`, `bm`, `cn`, `in`) instead of a full resume dump for unmatched off-topic queries.
    - **Instant Client-Side Refusal Execution:** Updated `submitChatMessage` to output `scopeRefusal` immediately (<5ms) for any unrecognized off-topic text without making the user wait for external LLM API calls or thinking spinners.
-8. **Permanent Touch Logo Nav Block & Dynamic Inset Surface Variables for Light Theme:**
-   - **First-Touch Event Listener Guard:** Added `window.addEventListener('touchstart', ...)` to attach `is-touch-device` to `<html>` on the first touch event. Guarded `showDesktopNav()` to return immediately if `is-touch-device` is present, permanently disabling logo hover-nav activation on mobile browsers without adding tooltips or synthetic click handlers.
-   - **Dynamic Inset Surface Variables (`--inset-surface-*`):** Added CSS variables for `:root` and `body.light-theme` (`--inset-surface`, `--inset-surface-strong`, `--inset-surface-soft`, `--inset-surface-modal`). Replaced hardcoded `rgba(15, 23, 42, ...)` inline backgrounds on "What I Can Do" cards, Capstone stat boxes, 3D architecture wrapper, `#capstone-node-detail`, and Printable Resume modal content container.
+9. **Color Palette Refinement (Theory & WCAG AA) & Popup Nav Removal:**
+   - **Dark Mode Palette Refinement (`:root`):** Deepened `--bg-base` to `#090d16` (deep midnight navy) and `--bg-surface` to `rgba(15, 23, 42, 0.85)` for low-eye-strain engineering aesthetics.
+   - **Light Mode Palette Refinement (`body.light-theme`):** Rebuilt light theme around cool gray (`--bg-base: #f4f6f9`), deep forest green (`--emerald: #047857`, 5.2:1 contrast), and warm brown accent (`--amber: #92400e`, `--accent-warm: #78350f`). Meets WCAG AA contrast (≥4.5:1 for body, ≥3.0:1 for large text).
+   - **Complete Popup Nav Removal:** Completely deleted duplicate hover-triggered capsule navigation bar (`#desktop-horizontal-nav`) from HTML, CSS, and JS. Header navigation is exclusively served by the clean `"☰ Menu"` drawer button.
 
 ---
 
