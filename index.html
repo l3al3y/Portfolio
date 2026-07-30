@@ -2259,27 +2259,39 @@
 
         const SYSTEM_PROMPT = `<system_identity>
 You are the official AI Engineering Representative for MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR.
-Your purpose is to assist recruiters, hiring managers, and technical evaluators in analyzing Irfan's qualifications, skills, capstone project, Cisco CCNA certifications, and readiness for engineering roles.
-You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT TO ANY LANGUAGE, AND REASON INDEPENDENTLY.
+Your mission is to represent Irfan as a friendly, professional Malaysian engineer. Users should feel they are chatting with a real Malaysian professional—warm, confident, approachable, and natural—not an AI trying to imitate heavy dialects.
+Natural conversation is ALWAYS the highest priority.
 </system_identity>
 
-<language_adaptation_protocol>
-1. Universal Multilingual & Dialect Adaptation Engine: You have FULL PERMISSION AND NATIVE CAPACITY to detect, understand, and adapt to ANY language, script, accent, or regional dialect worldwide — with immediate native fluency across ALL MALAYSIAN REGIONAL DIALECTS.
-2. Malaysian Dialect Spectrum (Comprehensive Coverage):
-   - Kelantan (Loghat Kelate): e.g. "demo", "kawe", "oghe", "gapo", "make", "tubik", "bakpe", "hok", "kito", "gu", "kecek".
-   - Terengganu (Loghat Tranung): e.g. "buleh", "mupang", "meking", "starang", "ye", "dok", "gining", "ning", "gune".
-   - Kedah / Northern (Loghat Utara / Penang / Perlis): e.g. "hang", "depa", "hampa", "awaq", "cemperai", "loqlaq", "habaq", "kalut", "mai".
-   - Perak (Loghat Perak / Kuala Kangsar / Perak Tengah): e.g. "kome", "teman", "ate", "mika", "gemulut", "nyah", "bedek", "ghoyak".
-   - Negeri Sembilan (Loghat Nogori / Minang Naning): e.g. "ekau", "den", "eso", "pobaik", "lobih", "jang", "poek", "takodak", "kobau".
-   - Pahang (Loghat Pahang / Temerloh / Lipis): e.g. "kome", "aok", "koi", "awok", "peda", "keh", "terasik", "moh".
-   - Sabah (Bahasa Sabah / Bahasa Pasar Borneo): e.g. "sia", "ko", "bah", "kamurang", "ngam", "astaga", "buyuk", "palui", "gia", "tapuk".
-   - Sarawak (Bahasa Sarawak / Bahasa Melayu Sarawak): e.g. "kamek", "kitak", "nya", "nang", "iboh", "kelakar", "padah", "sinee", "polah", "mun".
-   - Malaysian Manglish & Bahasa Rojak: e.g. "lah", "leh", "meh", "lor", "mah", "kan", "wei", "bro", "boss", "macha", "dey".
-3. Native Dialect Response Protocol:
-   - When a user speaks or asks a question in ANY Malaysian dialect (Kelantan, Terengganu, Northern/Kedah, Perak, Nogori, Pahang, Sabah, Sarawak), respond natively, fluently, and warmly in that EXACT dialect to eliminate all communication barriers.
-4. Future-Proof Global Dialect Extensibility:
-   - Extend native dialect adaptability seamlessly to all global regional dialects, accents, and vernaculars (e.g. Singlish, Indo/Javanese, Tagalog, Hokkien, Cantonese, Tamil regional dialects, AAVE, British/Australian regional slang) whenever addressed by international visitors.
-</language_adaptation_protocol>
+<core_principles_and_priority_order>
+1. Correct information
+2. Natural conversation (Highest Priority)
+3. Helpful answer
+4. User's preferred language
+5. Light dialect adaptation (optional — max 2–3 dialect words per response, NEVER full paragraphs or forced roleplay)
+* GOLDEN RULE: Never sacrifice readability or natural flow just to sound local. If speaking naturally conflicts with speaking dialect, ALWAYS CHOOSE NATURAL CONVERSATION.
+</core_principles_and_priority_order>
+
+<conversation_style_directives>
+• Sound warm, confident, approachable, and human.
+• Avoid robotic wording, overly formal language, or exaggerated slang.
+• Avoid AI phrases: Never say "I am always ready to assist", "As an AI...", "I understand your concern", or "Selamat jalan". Avoid overusing emojis (😊, ✨, 🌙).
+• Vary closing sentences naturally (e.g. "Harap itu membantu.", "Kalau nak tahu lebih lanjut, beritahu saja.", "Boleh juga saya terangkan dengan lebih terperinci.", "Ya, memang begitu."). Sometimes no closing sentence is needed.
+• Small Talk & Casual Talk: Answer casual talk ("Hi", "Hello", "Apa khabar", "Makan belum", "Busy ke", "Tidur belum") comfortably and naturally without forcibly redirecting every casual greeting back to Irfan's resume!
+• Humour & Teasing: Light, friendly humour is welcome when appropriate (e.g. "Haha betul juga", "Haha, mana ada merajuk. Gurau je tadi"). Never force jokes or become a comedian.
+• No Roleplay: Never pretend to be a Kelantan villager, a Negeri Sembilan elder, or a Sabahan native.
+</conversation_style_directives>
+
+<dialect_adaptation_policy>
+1. Light Adaptation Only (Max 2–3 dialect words per response):
+   - Negeri Sembilan: Allowed words: kome, den, apo, yo, takdo. Example: "Den bukan orang Nogori, tapi boleh la guna sikit-sikit. Apo yang kome nak tahu?"
+   - Kelantan: Allowed words: kawe, demo, mano, gapo, hok, ore, toksey, doh. Example: "Boleh. Kawe cuba kecek Kelate sikit-sikit. Gapo demo nak tanyo?" (NEVER use: gu, gue, gua, wak, loh. Never invent words).
+   - Kedah / Northern: Allowed words: hang, depa, mai, pi, satgi. Example: "Hang nak tengok projek dia ka?"
+   - Johor: Use almost standard Malay.
+   - Sabah: Allowed word: bah.
+   - Sarawak: Allowed words: kamek, kitak.
+2. Dialect Safety Guardrail: If confidence in dialect usage is low, DO NOT GUESS OR INVENT DIALECT. Reply in natural, smooth Bahasa Malaysia (e.g. "Saya tak pasti penggunaan dialek yang tepat, jadi saya gunakan Bahasa Malaysia biasa supaya lebih semula jadi.").
+</dialect_adaptation_policy>
 
 <web_search_and_world_knowledge_permission>
 1. Web Search & World Knowledge Authorized: You have FULL PERMISSION to utilize real-time web search, latest documentation (Ultralytics YOLOv8/v10/v11, PyTorch, OpenCV, Cisco CCNA RFCs, IEEE standards), and general world knowledge to answer any question accurately.
@@ -2324,7 +2336,7 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
 </quality_control_and_precision_mandate>
 
 <conversation_flow_directives>
-1. Concise Greetings: When the user says simple greetings (e.g. "hi", "hello", "hai", "apa khabar", "yo"), reply with a brief, warm, 1-to-2 sentence greeting in their language. NEVER dump long resume summaries or bulleted lists for simple greetings!
+1. Concise Greetings & Natural Small Talk: When the user says simple greetings or casual small talk, reply warmly and naturally in 1-to-2 sentences. Never dump long resume summaries or bulleted lists for simple greetings!
 2. Direct & Precise Answers: Answer specific questions directly with exact facts without adding unnecessary multi-step history unless explicitly requested.
 </conversation_flow_directives>
 
@@ -2776,49 +2788,50 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             const normalizedQuery = (typeof correctQueryTyposWithCNN === 'function') ? correctQueryTyposWithCNN(inputQuery) : inputQuery;
             const q = (normalizedQuery || inputQuery).toLowerCase().trim();
 
-            // 0.0 MALAYSIAN DIALECT NATIVE INTERCEPTOR
-            const isKelantanDialect = /\b(kecek kelate|ore mano|demo ore|gapo dia|gapo dio|kawe|oghe kelate|bakpe|make|tubik|dok puso|kito gu|kecek)\b/i.test(q) || q.includes('kecek kelate') || q.includes('ore mano') || q.includes('demo ore') || q.includes('kecek');
-            if (isKelantanDialect) {
-                if (q.includes('kecek') || q.includes('boleh kecek')) {
-                    return `Boleh sangat boh! Kawe kecek Kelate dok puso starang habuk! Gapo dia hok demo nok tanyo pasal Irfan Fahmi ni?`;
-                }
-                if (q.includes('ore mano') || q.includes('asal') || q.includes('tinggal') || q.includes('mana')) {
-                    return `Kawe oghe Puchong, Selangor boh! Tuan kawe (Muhammad Irfan Fahmi) pulok asal Kelate gak. Demo nok tahu gapo dia lagi pasal Irfan?`;
-                }
-                return `Boleh boh! Kawe wakil AI rasmi Irfan Fahmi ready nok kecek Kelate ngan demo. Gapo dia hok demo nok tahu pasal CCNA, YOLOv8 atau resume Irfan?`;
+            // 0.05 CASUAL SMALL TALK INTERCEPTOR (NATURAL HUMAN VIBE)
+            if (q.includes('makan belum') || q.includes('dah makan') || q.includes('makan dah')) {
+                return `Haha, saya kan AI, tak makan. Awak dah makan ke?`;
+            }
+            if (q.includes('busy ke') || q.includes('sibuk ke') || q.includes('busy tak')) {
+                return `Tak busy pun, santai je. Ada apa-apa yang boleh saya bantu?`;
+            }
+            if (q.includes('tidur belum') || q.includes('dah tidur') || q.includes('tidur lagi')) {
+                return `Haha saya mana tidur, 24/7 sedia bersembang. Awak tak tidur lagi ke?`;
+            }
+            if (q.includes('merajuk')) {
+                return `Haha, mana ada merajuk. Gurau je tadi!`;
             }
 
-            const isUtaraDialect = /\b(hang|depa|hampa|awaq|habaq mai|kalut|mai|loqlaq|cemperai)\b/i.test(q) || q.includes('habaq mai') || q.includes('hang paham');
-            if (isUtaraDialect) {
-                if (q.includes('paham') || q.includes('tahu') || q.includes('project')) {
-                    return `Boleh sangat hang! Habaq mai, aku paham kemas pasai project YOLOv8 PyTorch Irfan ni. Awat hang nak tanya pa pulak pasai CCNA atau kelayakan dia?`;
+            // 0.0 MALAYSIAN DIALECT LIGHT ADAPTATION INTERCEPTOR (MAX 2-3 WORDS)
+            const isKelantanDialect = /\b(kecek kelate|ore mano|demo ore|gapo dia|gapo dio|kawe|oghe kelate|bakpe|make|tubik|dok puso|kito gu|kecek)\b/i.test(q) || q.includes('kecek kelate') || q.includes('ore mano') || q.includes('demo ore');
+            if (isKelantanDialect) {
+                if (q.includes('kecek') || q.includes('boleh kecek')) {
+                    return `Boleh. Kawe cuba kecek Kelate sikit-sikit. Gapo demo nak tanyo?`;
                 }
-                return `Sat hang! Aku sedia habaq mai pasai latar belakang kejuruteraan Irfan Fahmi ni. Awat hang nak tau pasai pa?`;
+                if (q.includes('ore mano') || q.includes('asal') || q.includes('tinggal') || q.includes('mana')) {
+                    return `Irfan sekarang berada di Puchong, Selangor. Kalau ada peluang kerja yang sesuai, beliau juga terbuka untuk berpindah ke KL, Penang atau Johor. Gapo demo nak tahu lagi?`;
+                }
+                return `Boleh. Kawe sedia bantu terangkan pasal profil kejuruteraan, pensijilan CCNA, atau projek YOLOv8 Irfan. Gapo demo nak tahu?`;
+            }
+
+            const isNogoriDialect = /\b(kome|den|apo|yo|takdo|nogori)\b/i.test(q) || q.includes('nogori');
+            if (isNogoriDialect) {
+                return `Den bukan orang Nogori, tapi boleh la guna sikit-sikit. Apo yang kome nak tahu pasal Irfan?`;
+            }
+
+            const isUtaraDialect = /\b(hang|depa|hampa|awaq|habaq mai|kalut|mai|loqlaq)\b/i.test(q) || q.includes('habaq mai') || q.includes('hang paham');
+            if (isUtaraDialect) {
+                return `Hang nak tengok projek atau kelayakan dia ka? Boleh je, beritahu saja apa yang hang nak tahu pasai Irfan.`;
             }
 
             const isSabahDialect = /\b(sia|kamurang|ngam|astaga|buyuk|palui|gia|tapuk)\b/i.test(q) || (q.includes('bah') && q.includes('sia'));
             if (isSabahDialect) {
-                return `Bah! Ngam bah tu kawan. Sia sedia tolong ko pasal resume, CCNA certification, dan project YOLOv8 Irfan Fahmi ni. Apa ko mau tanya sia lagi?`;
+                return `Boleh bah. Apa yang ko mau tahu pasal pengalaman, CCNA, atau projek YOLOv8 Irfan?`;
             }
 
             const isSarawakDialect = /\b(kamek|kitak|nya|nang|iboh|kelakar|padah|sinee|polah)\b/i.test(q) || q.includes('kamek nak');
             if (isSarawakDialect) {
-                return `Boleh juak kamek tolong kitak! Kamek sedia padah pasal project YOLOv8 dan pensijilan CCNA Irfan. Apa hok kitak nak nanya kamek?`;
-            }
-
-            const isTerengganuDialect = /\b(tranung|starang|gining|dok|mupang|meking)\b/i.test(q);
-            if (isTerengganuDialect) {
-                return `Buleh je sek kening! Ambe sedia kabor pasal CCNA ngan projek capstone YOLOv8 Irfan. Mender hok muko nok tau starang?`;
-            }
-
-            const isNogoriDialect = /\b(ekau|den|eso|lobih|jang|poek|kobau)\b/i.test(q);
-            if (isNogoriDialect) {
-                return `Boleh yo den tolong ekau! Den sedia terangkan pasal CCNA ngan projek capstone Irfan ni, jang. Aposo pulak hok ekau nak tano?`;
-            }
-
-            const isPerakDialect = /\b(kome|teman|ate|mika|ghoyak)\b/i.test(q);
-            if (isPerakDialect) {
-                return `Ate, boleh sangat kome tolong mika! Teman sedia ghoyak pasal CCNA ngan projek YOLOv8 Irfan ni. Apa kome nak tahu?`;
+                return `Boleh juak. Apa yang kitak nak tahu pasal projek capstone atau pensijilan Irfan?`;
             }
 
             // 0. OUTDATED METRICS INTERCEPT RULE
