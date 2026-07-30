@@ -6,7 +6,7 @@
 [![Recruiter Safety Audit](https://img.shields.io/badge/Recruiter_QA_Audit-370%2F370_Pass_(100%25)-059669.svg?style=for-the-badge)](scripts/)
 [![1M Context AI Router](https://img.shields.io/badge/AI_Router-1M_Context_17_Models-7c3aed.svg?style=for-the-badge)](AGENTS.md)
 [![ATS Resume Score](https://img.shields.io/badge/ATS_Keyword_Match-100.0%25-047857.svg?style=for-the-badge)](resume/resume.pdf)
-[![Backend Engine Sync](https://img.shields.io/badge/Backend_Engine-Commit_bb260f4_(v1.14.0)-6366f1.svg?style=for-the-badge&logo=fastapi)](https://github.com/l3al3y/ResumeAgent-Backend/commit/bb260f40661c4a819ad7f33c6a5e6258eb606471)
+[![Backend Engine Sync](https://img.shields.io/badge/Backend_Engine-Commit_90e30db_(v1.14.0)-6366f1.svg?style=for-the-badge&logo=fastapi)](https://github.com/l3al3y/ResumeAgent-Backend/commit/90e30dbcb92a3838f1e25e50b04169ecf5425796)
 
 > **Official Personal Engineering Portfolio & Agent-Native Application** for **MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR**, a Computer Engineering graduate specializing in Network Engineering, IT Infrastructure, Cyber Security, Computer Vision, and Industrial AI Automation.
 
@@ -17,7 +17,7 @@
 - 🔗 **Live Web Application**: [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)
 - 📄 **Printable 1-Page A4 PDF Resume**: [resume/resume.pdf](resume/resume.pdf)
 - 📜 **Official Certifications**: [certificates/](certificates/)
-- ⚙️ **Backend Engine Sync (Milestones 1–14)**: [https://github.com/l3al3y/ResumeAgent-Backend](https://github.com/l3al3y/ResumeAgent-Backend) `(Synced at Commit: bb260f4)`
+- ⚙️ **Backend Engine Sync (Milestones 1–14)**: [https://github.com/l3al3y/ResumeAgent-Backend](https://github.com/l3al3y/ResumeAgent-Backend) `(Synced at Commit: 90e30db)`
 
 ---
 
