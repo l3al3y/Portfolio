@@ -2465,45 +2465,45 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
         }
 
         const SUPPORTED_AI_MODELS = [
-            "claude-sonnet-4.6",
-            "claude-opus-4.7-1m",
-            "claude-opus-4.6",
-            "claude-haiku-4.5",
-            "gpt-5.6-sol",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-5.5",
-            "gpt-5.4",
-            "gpt-5.3-codex",
-            "gemini-3.1-pro",
-            "gemini-3.0-flash",
-            "gemini-3.5-flash",
+            "glm-5.1",
             "glm-5.2",
             "minimax-m3",
             "kimi-k3",
-            "hy3-tencent"
+            "kimi-k2.7",
+            "hy3-tencent",
+            "deepseek-v4-pro",
+            "deepseek-v4-flash",
+            "claude-opus-4.7-1m",
+            "claude-sonnet-4.6",
+            "gpt-5.6-sol",
+            "gemini-3.1-pro"
+        ];
+
+        const PRIMARY_MODEL_CASCADE = [
+            "glm-5.1",
+            "glm-5.2",
+            "minimax-m3",
+            "kimi-k3",
+            "kimi-k2.7",
+            "hy3-tencent",
+            "deepseek-v4-pro",
+            "deepseek-v4-flash"
         ];
 
         let CHAT_CONVERSATION_HISTORY = [];
 
         function selectModelByQuery(query) {
             const q = query.toLowerCase();
-            if (q.includes("code") || q.includes("script") || q.includes("python") || q.includes("html") || q.includes("c++") || q.includes("sql") || q.includes("troubleshoot") || q.includes("codex")) {
-                return "gpt-5.3-codex";
-            }
-            if (q.includes("deep") || q.includes("evaluate") || q.includes("audit") || q.includes("complex") || q.includes("architecture") || q.includes("security")) {
-                return "claude-sonnet-4.6";
-            }
             if (q.includes("vision") || q.includes("yolov8") || q.includes("camera") || q.includes("image")) {
                 return "glm-5.2";
             }
-            if (q.includes("cloud") || q.includes("aws") || q.includes("azure")) {
-                return "gpt-5.6-terra";
+            if (q.includes("code") || q.includes("script") || q.includes("python") || q.includes("c++") || q.includes("sql") || q.includes("deepseek")) {
+                return "deepseek-v4-pro";
             }
-            if (q.includes("pro") || q.includes("pro-level")) {
-                return "gemini-3.1-pro";
+            if (q.includes("speed") || q.includes("fast")) {
+                return "deepseek-v4-flash";
             }
-            return "gemini-3.5-flash";
+            return "glm-5.1";
         }
 
         // RootSys Cloud AI Endpoint with 1M Token Context Persistence & High-Speed Execution
