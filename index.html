@@ -1710,7 +1710,7 @@
                 <div class="chat-bot-avatar">🌙</div>
                 <div>
                     <div style="font-weight: 700; font-size: 0.88rem;">Ask About Irfan's Experience</div>
-                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Sync e360622</div>
+                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Sync ef93d48</div>
                 </div>
             </div>
 
@@ -1723,7 +1723,7 @@
             <div class="chat-message bot-msg">
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble">
-                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant. (Backend Engine: <code>e360622</code>)
+                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant. (Backend Engine: <code>ef93d48</code>)
                 </div>
             </div>
         </div>
@@ -1756,7 +1756,7 @@
             <p style="color: var(--text-muted); font-size: 0.9rem;">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
                 <span style="font-size: 0.85rem; color: var(--text-sub);">
-                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit e360622 (v1.14.0)
+                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit ef93d48 (v1.14.0)
                 </span>
             </p>
         </div>
@@ -2329,6 +2329,12 @@ Natural conversation is ALWAYS the highest priority.
 </candidate_profile>
 </candidate_knowledge_base>
 
+<knowledge_protection_and_candidate_veracity>
+1. VERIFIED CANDIDATE PROFILE IS SUPREME: Always prioritize stored candidate profile facts. Never contradict verified credentials.
+2. VERIFIED FACT — CCNA CERTIFICATION = YES: Irfan holds official Cisco CCNA credentials (Cisco CCNA: Enterprise Networking & Automation & Cisco CCNA: Switching, Routing & Wireless via Cisco Networking Academy / UTeM). When asked "Does Irfan have CCNA certification?" or "Is Irfan CCNA certified?", ALWAYS answer YES with absolute confidence!
+3. NEVER HALLUCINATE OR DENY VERIFIED CREDENTIALS: Never deny or say "no" to Irfan's verified CCNA certifications, degree program, awards, or capstone project metrics.
+</knowledge_protection_and_candidate_veracity>
+
 <quality_control_and_precision_mandate>
 1. STRICT PRE-RESPONSE QUESTION QC: Carefully read and analyze the exact user prompt before responding. Perform internal Quality Control (QC) to verify the exact scope, intent, and target language.
 2. ANSWER ONLY WHAT IS ASKED: Respond ONLY to the specific question requested. NEVER dump unasked background history, unrequested education timeline steps, or extra unasked bullet points.
@@ -2471,7 +2477,7 @@ Natural conversation is ALWAYS the highest priority.
             let botAnswer = "";
 
             try {
-                botAnswer = await fetchKimiK25Ai('fiq-a0fd300c5ed7b18a767f753f36547435', query);
+                botAnswer = await fetchKimiK25Ai(query);
             } catch (err) {
                 console.warn("Live AI endpoint error, executing candidate context fallback:", err);
                 botAnswer = generateNativeSpontaneousAnswer(query, lang);
@@ -2542,10 +2548,9 @@ Natural conversation is ALWAYS the highest priority.
         }
 
         // RootSys Cloud AI Endpoint with 1M Token Context Persistence & High-Speed Execution
-        async function fetchKimiK25Ai(apiKey, userQuery) {
-            const activeKey = apiKey || 'fiq-a0fd300c5ed7b18a767f753f36547435';
+        async function fetchKimiK25Ai(userQuery) {
             const selectedModel = selectModelByQuery(userQuery);
-            console.log(`[Ultra-Fast AI Router] Dispatching to '${selectedModel}' with live API token.`);
+            console.log(`[Ultra-Fast AI Router] Dispatching to '${selectedModel}' via Cloudflare Secure Proxy.`);
 
             CHAT_CONVERSATION_HISTORY.push({ role: "user", content: userQuery });
             if (CHAT_CONVERSATION_HISTORY.length > 40) {
@@ -2569,8 +2574,7 @@ Natural conversation is ALWAYS the highest priority.
             }
 
             const endpoints = [
-                "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions",
-                "https://rootsys.cloud/v1/chat/completions"
+                "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions"
             ];
 
             let lastErr = null;
@@ -2579,9 +2583,7 @@ Natural conversation is ALWAYS the highest priority.
                     const response = await fetch(ep, {
                         method: "POST",
                         headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${activeKey}`,
-                            "X-API-Key": activeKey
+                            "Content-Type": "application/json"
                         },
                         signal: controller.signal,
                         body: JSON.stringify(payload)
