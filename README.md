@@ -65,24 +65,29 @@ graph TD
 
 ---
 
-## ⚡ 17-Model AI Career Assistant Architecture
+## ⚡ Primary RootSys Cloud AI Career Assistant Architecture
 
-The portfolio features a live, interactive **AI Career Assistant** powered by a multi-model router on RootSys Cloud API with **100% Live API Token Execution** and **1M-Token Context Persistence**:
+The portfolio features a live, interactive **AI Career Assistant** powered directly by **RootSys Cloud API** (`https://rootsys.cloud/v1`) via Cloudflare Worker Proxy with **100% Live Execution**, **High Availability Provider Policy**, and **1M-Token Context Persistence**:
 
 ```mermaid
 graph LR
-    UserQuery[Recruiter / Visitor Inquiry] --> Router[Dynamic Domain Router]
-    Router -->|Deep Network & Candidate Evaluation| Opus[claude-opus-4.7-1m]
-    Router -->|Code, Scripts & DOM Debugging| Codex[gpt-5.3-codex]
-    Router -->|Computer Vision & Hardware Inspection| GLM[glm-5.2]
-    Router -->|Cover Letters & Pitching| Sonnet[claude-sonnet-4.6]
-    Router -->|Infrastructure & Cloud Security| Terra[gpt-5.6-terra]
-    Router -->|Fast Job Screening & Summaries| Flash[gemini-3.5-flash]
+    UserQuery[Recruiter / Visitor Inquiry] --> Router[RootSys Cloud Primary Gateway]
+    Router -->|Primary General & Career Representative| GLM51[glm-5.1]
+    Router -->|Computer Vision, YOLOv8 & Camera Inspection| GLM52[glm-5.2]
+    Router -->|Code, Scripts, Python, C++ & SQL| DS4Pro[deepseek-v4-pro]
+    Router -->|High-Speed Summaries & Fast Execution| DS4Flash[deepseek-v4-flash]
+    Router -->|High-Context Reasoning & Deep Profile Evaluation| MiniMax[minimax-m3]
+    Router -->|Long-Form Technical & Architecture Synthesis| KimiK3[kimi-k3]
+    Router -->|Multilingual Dialect & Natural Communication| KimiK27[kimi-k2.7]
+    Router -->|Network Protocol & Automation Analysis| HY3[hy3-tencent]
 ```
 
-### **Recruiter QA Safety & Intent Verification:**
-- **370 / 370 Passed (100.0%):** Verified across 17 intent categories (Profile, Education, Networking, Hardware, Capstone, Traps, False Premises).
-- **Zero Hallucinations:** Honest boundaries distinguishing academic lab experience from commercial deployment.
+### **RootSys Production High Availability & Security Standards:**
+- **RootSys First Policy:** 100% of normal traffic is served directly by RootSys Cloud (`https://rootsys.cloud/v1`). Zero load balancing, zero cost routing, zero latency degradation.
+- **Emergency Fallback Protection:** Emergency backup (OpenRouter free models) is triggered **ONLY** during verified infrastructure outages (HTTP 500/502/503/504, 429, timeouts).
+- **Forbidden Fallback Guardrail:** Switching providers is strictly **FORBIDDEN** for configuration or authorization errors (HTTP 401/403/404). Real status codes are returned directly without hiding issues.
+- **Zero Secrets in Frontend:** API keys are bound exclusively in Cloudflare Worker edge environment (`env.ROOTSYS_API_KEY`).
+- **370 / 370 Recruiter QA Pass (100.0%):** Verified across 17 intent categories with strict candidate profile veracity (CCNA Certification = YES).
 
 ---
 
