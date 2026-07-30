@@ -2541,7 +2541,7 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             }
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 25000);
+            const timeoutId = setTimeout(() => controller.abort(), 45000);
 
             const isPrimary8Model = PRIMARY_MODEL_CASCADE.includes(selectedModel);
             const payload = {
@@ -2557,9 +2557,8 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             }
 
             const endpoints = [
-                "https://rootsys.cloud/v1/chat/completions",
                 "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions",
-                "http://127.0.0.1:20128/v1/chat/completions"
+                "https://rootsys.cloud/v1/chat/completions"
             ];
 
             let lastErr = null;
