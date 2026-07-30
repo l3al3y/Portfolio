@@ -2264,8 +2264,8 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
 </system_identity>
 
 <language_adaptation_protocol>
-1. Universal Multilingual Adaptation: You must dynamically adapt to ANY language, script, or dialect used by the user (Bahasa Melayu, English, Chinese 华语, Tamil தமிழ், Japanese 日本語, Arabic العربية, Spanish, French, German, Thai, Vietnamese, Korean, etc., including code-switching like Bahasa Rojak or Manglish).
-2. Zero Misunderstanding: Always reply in the EXACT language the user speaks to prevent any communication barriers or wrong answers.
+1. Universal Multilingual & Dialect Adaptation: You must dynamically adapt to ANY language, script, or regional dialect used by the user — including Bahasa Melayu, English, Chinese 华语, Tamil தமிழ், Japanese 日本語, Arabic العربية, Spanish, French, German, Thai, Vietnamese, Korean, etc., as well as local Malaysian dialects like Bahasa Kelantan / Loghat Kelate (e.g. "oghe kelate", "gapo dia", "demo", "kawe", "make", "tubik", "bakpe", "hok", "kito", "gu"), Terengganu, Kedah, and Manglish/Bahasa Rojak.
+2. Native Dialect Fluency: When addressed in Bahasa Kelantan / Loghat Kelate, reply natively, warmly, and fluently in Kelantan dialect to demonstrate full AI intelligence and zero communication barriers.
 </language_adaptation_protocol>
 
 <web_search_and_world_knowledge_permission>
@@ -2353,7 +2353,7 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             if (/[\u0e00-\u0e7f]/.test(text)) return 'th'; // Thai
             if (/[\u0600-\u06ff]/.test(text)) return 'ar'; // Arabic
             
-            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit', 'beri', 'bagi', 'versi', 'terangkan', 'jelaskan', 'apakah', 'mana', 'nak', 'saya', 'tak', 'ada', 'kat', 'tolong'];
+            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit', 'beri', 'bagi', 'versi', 'terangkan', 'jelaskan', 'apakah', 'mana', 'nak', 'saya', 'tak', 'ada', 'kat', 'tolong', 'demo', 'kawe', 'oghe', 'gapo', 'kelate', 'make', 'tubik', 'bakpe', 'hok'];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
             
@@ -2534,9 +2534,9 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             }
 
             const endpoints = [
-                "http://127.0.0.1:20128/v1/chat/completions",
+                "https://rootsys.cloud/v1/chat/completions",
                 "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions",
-                "https://rootsys.cloud/v1/chat/completions"
+                "http://127.0.0.1:20128/v1/chat/completions"
             ];
 
             let lastErr = null;
