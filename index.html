@@ -1756,10 +1756,7 @@
             <p style="color: var(--text-muted); font-size: 0.9rem;">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
                 <span style="font-size: 0.85rem; color: var(--text-sub);">
-                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • 
-                    <a href="https://github.com/l3al3y/ResumeAgent-Backend/commit/bb260f40661c4a819ad7f33c6a5e6258eb606471" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: none;">
-                        ⚙️ Backend Engine Sync: commit bb260f4 (v1.14.0)
-                    </a>
+                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit bb260f4 (v1.14.0)
                 </span>
             </p>
         </div>
@@ -2410,13 +2407,13 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             if (isContactInquiry && !qLower.includes('recall')) {
                 let securityReply = "";
                 if (lang === 'bm') {
-                    securityReply = `🔒 <strong>Pengesahan Keselamatan Diperlukan:</strong><br>Maklumat hubungan terus calon dilindungi daripada bot.<br><br>Sila tekan butang <strong>"🔓 Reveal Contact Info"</strong> di bawah ringkasan peribadi.`;
+                    securityReply = `🔒 <strong>Pengesahan Keselamatan Diperlukan:</strong><br>Maklumat hubungan terus calon dilindungi daripada bot pengikis.<br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 Sahkan & Paparkan Maklumat Hubungan</button>`;
                 } else if (lang === 'cn') {
-                    securityReply = `🔒 <strong>需要安全验证：</strong><br>候选人的直接联系方式已受到保护。<br><br>请点击个人总结下方的 <strong>“🔓 Reveal Contact Info”</strong> 按钮。`;
+                    securityReply = `🔒 <strong>需要安全验证：</strong><br>候选人的直接联系方式已受保护以防止网络爬虫。<br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 验证并显示联系方式</button>`;
                 } else if (lang === 'in') {
-                    securityReply = `🔒 <strong>பாதுகாப்பு சரிபார்ப்பு தேவை:</strong><br>தயவுசெய்து <strong>"🔓 Reveal Contact Info"</strong> பொத்தானைக் கிளிக் செய்யவும்.`;
+                    securityReply = `🔒 <strong>பாதுகாப்பு சரிபார்ப்பு தேவை:</strong><br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 தொடர்புகளைக் காட்டு</button>`;
                 } else {
-                    securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against scraping bots.<br><br>Please click the <strong>"🔓 Reveal Contact Info"</strong> button below the personal summary.`;
+                    securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against automated web scraping.<br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 Verify & Reveal Contact Details</button>`;
                 }
 
                 appendBotMessage(securityReply);
