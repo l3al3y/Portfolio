@@ -2777,6 +2777,51 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             const normalizedQuery = (typeof correctQueryTyposWithCNN === 'function') ? correctQueryTyposWithCNN(inputQuery) : inputQuery;
             const q = (normalizedQuery || inputQuery).toLowerCase().trim();
 
+            // 0.0 MALAYSIAN DIALECT NATIVE INTERCEPTOR
+            const isKelantanDialect = /\b(kecek kelate|ore mano|demo ore|gapo dia|gapo dio|kawe|oghe kelate|bakpe|make|tubik|dok puso|kito gu|kecek)\b/i.test(q) || q.includes('kecek kelate') || q.includes('ore mano') || q.includes('demo ore') || q.includes('kecek');
+            if (isKelantanDialect) {
+                if (q.includes('kecek') || q.includes('boleh kecek')) {
+                    return `Boleh sangat boh! Kawe kecek Kelate dok puso starang habuk! Gapo dia hok demo nok tanyo pasal Irfan Fahmi ni?`;
+                }
+                if (q.includes('ore mano') || q.includes('asal') || q.includes('tinggal') || q.includes('mana')) {
+                    return `Kawe oghe Puchong, Selangor boh! Tuan kawe (Muhammad Irfan Fahmi) pulok asal Kelate gak. Demo nok tahu gapo dia lagi pasal Irfan?`;
+                }
+                return `Boleh boh! Kawe wakil AI rasmi Irfan Fahmi ready nok kecek Kelate ngan demo. Gapo dia hok demo nok tahu pasal CCNA, YOLOv8 atau resume Irfan?`;
+            }
+
+            const isUtaraDialect = /\b(hang|depa|hampa|awaq|habaq mai|kalut|mai|loqlaq|cemperai)\b/i.test(q) || q.includes('habaq mai') || q.includes('hang paham');
+            if (isUtaraDialect) {
+                if (q.includes('paham') || q.includes('tahu') || q.includes('project')) {
+                    return `Boleh sangat hang! Habaq mai, aku paham kemas pasai project YOLOv8 PyTorch Irfan ni. Awat hang nak tanya pa pulak pasai CCNA atau kelayakan dia?`;
+                }
+                return `Sat hang! Aku sedia habaq mai pasai latar belakang kejuruteraan Irfan Fahmi ni. Awat hang nak tau pasai pa?`;
+            }
+
+            const isSabahDialect = /\b(sia|kamurang|ngam|astaga|buyuk|palui|gia|tapuk)\b/i.test(q) || (q.includes('bah') && q.includes('sia'));
+            if (isSabahDialect) {
+                return `Bah! Ngam bah tu kawan. Sia sedia tolong ko pasal resume, CCNA certification, dan project YOLOv8 Irfan Fahmi ni. Apa ko mau tanya sia lagi?`;
+            }
+
+            const isSarawakDialect = /\b(kamek|kitak|nya|nang|iboh|kelakar|padah|sinee|polah)\b/i.test(q) || q.includes('kamek nak');
+            if (isSarawakDialect) {
+                return `Boleh juak kamek tolong kitak! Kamek sedia padah pasal project YOLOv8 dan pensijilan CCNA Irfan. Apa hok kitak nak nanya kamek?`;
+            }
+
+            const isTerengganuDialect = /\b(tranung|starang|gining|dok|mupang|meking)\b/i.test(q);
+            if (isTerengganuDialect) {
+                return `Buleh je sek kening! Ambe sedia kabor pasal CCNA ngan projek capstone YOLOv8 Irfan. Mender hok muko nok tau starang?`;
+            }
+
+            const isNogoriDialect = /\b(ekau|den|eso|lobih|jang|poek|kobau)\b/i.test(q);
+            if (isNogoriDialect) {
+                return `Boleh yo den tolong ekau! Den sedia terangkan pasal CCNA ngan projek capstone Irfan ni, jang. Aposo pulak hok ekau nak tano?`;
+            }
+
+            const isPerakDialect = /\b(kome|teman|ate|mika|ghoyak)\b/i.test(q);
+            if (isPerakDialect) {
+                return `Ate, boleh sangat kome tolong mika! Teman sedia ghoyak pasal CCNA ngan projek YOLOv8 Irfan ni. Apa kome nak tahu?`;
+            }
+
             // 0. OUTDATED METRICS INTERCEPT RULE
             const isOutdatedMetricQuery = q.includes('98.6') || q.includes('97.8') || (q.includes('150') && (q.includes('epoch') || q.includes('epochs'))) || q.includes('99.4');
             if (isOutdatedMetricQuery) {
