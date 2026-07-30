@@ -1710,7 +1710,7 @@
                 <div class="chat-bot-avatar">🌙</div>
                 <div>
                     <div style="font-weight: 700; font-size: 0.88rem;">Ask About Irfan's Experience</div>
-                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Sync bb260f4</div>
+                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Sync 90e30db</div>
                 </div>
             </div>
 
@@ -1723,7 +1723,7 @@
             <div class="chat-message bot-msg">
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble">
-                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant. (Backend Engine: <code>bb260f4</code>)
+                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant. (Backend Engine: <code>90e30db</code>)
                 </div>
             </div>
         </div>
@@ -1756,7 +1756,7 @@
             <p style="color: var(--text-muted); font-size: 0.9rem;">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
                 <span style="font-size: 0.85rem; color: var(--text-sub);">
-                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit bb260f4 (v1.14.0)
+                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit 90e30db (v1.14.0)
                 </span>
             </p>
         </div>
@@ -2264,8 +2264,21 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
 </system_identity>
 
 <language_adaptation_protocol>
-1. Universal Multilingual & Dialect Adaptation: You must dynamically adapt to ANY language, script, or regional dialect used by the user — including Bahasa Melayu, English, Chinese 华语, Tamil தமிழ், Japanese 日本語, Arabic العربية, Spanish, French, German, Thai, Vietnamese, Korean, etc., as well as local Malaysian dialects like Bahasa Kelantan / Loghat Kelate (e.g. "oghe kelate", "gapo dia", "demo", "kawe", "make", "tubik", "bakpe", "hok", "kito", "gu"), Terengganu, Kedah, and Manglish/Bahasa Rojak.
-2. Native Dialect Fluency: When addressed in Bahasa Kelantan / Loghat Kelate, reply natively, warmly, and fluently in Kelantan dialect to demonstrate full AI intelligence and zero communication barriers.
+1. Universal Multilingual & Dialect Adaptation Engine: You have FULL PERMISSION AND NATIVE CAPACITY to detect, understand, and adapt to ANY language, script, accent, or regional dialect worldwide — with immediate native fluency across ALL MALAYSIAN REGIONAL DIALECTS.
+2. Malaysian Dialect Spectrum (Comprehensive Coverage):
+   - Kelantan (Loghat Kelate): e.g. "demo", "kawe", "oghe", "gapo", "make", "tubik", "bakpe", "hok", "kito", "gu", "kecek".
+   - Terengganu (Loghat Tranung): e.g. "buleh", "mupang", "meking", "starang", "ye", "dok", "gining", "ning", "gune".
+   - Kedah / Northern (Loghat Utara / Penang / Perlis): e.g. "hang", "depa", "hampa", "awaq", "cemperai", "loqlaq", "habaq", "kalut", "mai".
+   - Perak (Loghat Perak / Kuala Kangsar / Perak Tengah): e.g. "kome", "teman", "ate", "mika", "gemulut", "nyah", "bedek", "ghoyak".
+   - Negeri Sembilan (Loghat Nogori / Minang Naning): e.g. "ekau", "den", "eso", "pobaik", "lobih", "jang", "poek", "takodak", "kobau".
+   - Pahang (Loghat Pahang / Temerloh / Lipis): e.g. "kome", "aok", "koi", "awok", "peda", "keh", "terasik", "moh".
+   - Sabah (Bahasa Sabah / Bahasa Pasar Borneo): e.g. "sia", "ko", "bah", "kamurang", "ngam", "astaga", "buyuk", "palui", "gia", "tapuk".
+   - Sarawak (Bahasa Sarawak / Bahasa Melayu Sarawak): e.g. "kamek", "kitak", "nya", "nang", "iboh", "kelakar", "padah", "sinee", "polah", "mun".
+   - Malaysian Manglish & Bahasa Rojak: e.g. "lah", "leh", "meh", "lor", "mah", "kan", "wei", "bro", "boss", "macha", "dey".
+3. Native Dialect Response Protocol:
+   - When a user speaks or asks a question in ANY Malaysian dialect (Kelantan, Terengganu, Northern/Kedah, Perak, Nogori, Pahang, Sabah, Sarawak), respond natively, fluently, and warmly in that EXACT dialect to eliminate all communication barriers.
+4. Future-Proof Global Dialect Extensibility:
+   - Extend native dialect adaptability seamlessly to all global regional dialects, accents, and vernaculars (e.g. Singlish, Indo/Javanese, Tagalog, Hokkien, Cantonese, Tamil regional dialects, AAVE, British/Australian regional slang) whenever addressed by international visitors.
 </language_adaptation_protocol>
 
 <web_search_and_world_knowledge_permission>
@@ -2353,7 +2366,17 @@ You have UNLIMITED PERMISSION TO SEARCH THE WEB, ACCESS WORLD KNOWLEDGE, ADAPT T
             if (/[\u0e00-\u0e7f]/.test(text)) return 'th'; // Thai
             if (/[\u0600-\u06ff]/.test(text)) return 'ar'; // Arabic
             
-            const bmWords = ['siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit', 'beri', 'bagi', 'versi', 'terangkan', 'jelaskan', 'apakah', 'mana', 'nak', 'saya', 'tak', 'ada', 'kat', 'tolong', 'demo', 'kawe', 'oghe', 'gapo', 'kelate', 'make', 'tubik', 'bakpe', 'hok'];
+            const bmWords = [
+                'siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit', 'beri', 'bagi', 'versi', 'terangkan', 'jelaskan', 'apakah', 'mana', 'nak', 'saya', 'tak', 'ada', 'kat', 'tolong',
+                'demo', 'kawe', 'oghe', 'gapo', 'kelate', 'make', 'tubik', 'bakpe', 'hok',
+                'tranung', 'starang', 'gining', 'dok',
+                'hang', 'depa', 'hampa', 'awaq', 'habaq', 'kalut', 'mai', 'loqlaq',
+                'kome', 'teman', 'ate', 'mika', 'ghoyak',
+                'ekau', 'den', 'eso', 'lobih', 'jang',
+                'aok', 'koi', 'awok',
+                'sia', 'bah', 'kamurang', 'ngam', 'palui',
+                'kamek', 'kitak', 'nang', 'iboh', 'kelakar', 'padah', 'polah'
+            ];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
             
