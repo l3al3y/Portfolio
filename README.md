@@ -4,7 +4,7 @@
 [![Cisco CCNA Certified](https://img.shields.io/badge/Cisco-CCNA_Enterprise-1ba0d7.svg?style=for-the-badge&logo=cisco)](certificates/)
 [![Festo Industrial AI](https://img.shields.io/badge/Festo-Industrial_AI-005293.svg?style=for-the-badge)](certificates/)
 [![Recruiter Safety Audit](https://img.shields.io/badge/Recruiter_QA_Audit-370%2F370_Pass_(100%25)-059669.svg?style=for-the-badge)](scripts/)
-[![1M Context AI Router](https://img.shields.io/badge/AI_Router-1M_Context_17_Models-7c3aed.svg?style=for-the-badge)](AGENTS.md)
+[![Adaptive Model Selection Engine](https://img.shields.io/badge/AI_Engine-Model_Registry_%26_Intent_Classifier-8b5cf6.svg?style=for-the-badge)](AGENTS.md)
 [![ATS Resume Score](https://img.shields.io/badge/ATS_Keyword_Match-100.0%25-047857.svg?style=for-the-badge)](resume/resume.pdf)
 [![Backend Engine Sync](https://img.shields.io/badge/Backend_Engine-Commit_c726369_(v1.14.0)-6366f1.svg?style=for-the-badge&logo=fastapi)](https://github.com/l3al3y/ResumeAgent-Backend/commit/c726369)
 
@@ -29,7 +29,7 @@ Target Roles:   Network Engineer | IT Infrastructure | IT Support | Network Secu
 Education:      B.Eng Computer Engineering (Hons) — UTeM (Expected Nov 2026)
                 Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson (3.26 CGPA)
                 Certificate in System & Networking — Kolej Komuniti Selandar (3.58 CGPA, Best Student Award)
-Certifications: Cisco CCNA (Enterprise Networking, Switching & Routing)
+Certifications: Cisco CCNA (Enterprise Networking & Automation; Switching, Routing & Wireless)
                 Festo Industrial Automation with AI
                 Cisco Endpoint Security & Cyber Threat Management
                 Fiber Optic Splicing & Polishing
@@ -65,29 +65,43 @@ graph TD
 
 ---
 
-## ⚡ Primary AI Career Assistant Architecture
+## 🧠 Adaptive Model Selection Engine & Intent Classifier (v2.0)
 
-The portfolio features a live, interactive **AI Career Assistant** powered via Cloudflare Worker Secure Proxy with **100% Live Execution**, **High Availability Provider Policy**, and **1M-Token Context Persistence**:
+The portfolio features an upgraded **Adaptive Model Selection Engine** that intelligently routes incoming recruiter queries to specialized AI models based on intent classification and capability scoring:
 
 ```mermaid
 graph LR
-    UserQuery[Recruiter / Visitor Inquiry] --> Router[Primary AI Gateway Proxy]
-    Router -->|Primary General & Career Representative| GLM51[glm-5.1]
-    Router -->|Computer Vision, YOLOv8 & Camera Inspection| GLM52[glm-5.2]
-    Router -->|Code, Scripts, Python, C++ & SQL| DS4Pro[deepseek-v4-pro]
-    Router -->|High-Speed Summaries & Fast Execution| DS4Flash[deepseek-v4-flash]
-    Router -->|High-Context Reasoning & Deep Profile Evaluation| MiniMax[minimax-m3]
-    Router -->|Long-Form Technical & Architecture Synthesis| KimiK3[kimi-k3]
-    Router -->|Multilingual Dialect & Natural Communication| KimiK27[kimi-k2.7]
-    Router -->|Network Protocol & Automation Analysis| HY3[hy3-tencent]
+    UserQuery[Recruiter / Visitor Inquiry] --> Classifier[Intent Classifier Layer]
+    Classifier -->|Intent & Domain Classification| Scorer[Dynamic Scoring Engine]
+    Scorer -->|Evaluate Capability Scores| Registry[(Model Registry)]
+    
+    Registry -->|Primary Representative| GLM51[glm-5.1]
+    Registry -->|Computer Vision & YOLOv8| GLM52[glm-5.2]
+    Registry -->|Code, Scripts & SQL| DS4Pro[deepseek-v4-pro]
+    Registry -->|Rapid Summaries| DS4Flash[deepseek-v4-flash]
+    Registry -->|Profile Evaluation| MiniMax[minimax-m3]
+    Registry -->|Technical Architecture| KimiK3[kimi-k3]
+    Registry -->|Multilingual & Dialects| KimiK27[kimi-k2.7]
+    Registry -->|Networking & Cisco CCNA| HY3[hy3-tencent]
 ```
 
-### **Production High Availability & Security Standards:**
+### **Engine Features & Architectural Improvements:**
+1. **Lightweight Intent Classifier:** Analyzes query structure to determine primary intent (`PROGRAMMING`, `NETWORKING`, `COMPUTER_VISION`, `PROFILE_EVALUATION`, `ARCHITECTURE`, `RAPID_SUMMARY`, `MULTILINGUAL`), technical domain, and confidence score.
+2. **Dynamic Model Registry:** Configurable matrix of model capability profiles mapping specialties, reasoning depth (1-100), and language capabilities.
+3. **Transparent Scoring Engine:** Evaluates numerical score $S(m) = \text{SpecialtyMatch} (+45) + \text{DomainAlignment} (+35) + \text{BaselineBonus} (+35) + \text{ReasoningWeight} (+15)$.
+4. **Phase 2 Shadow Mode Guardrail:** `SHADOW_MODE_ACTIVE = true` guarantees **100% zero production risk**. Production traffic continues using `glm-5.1` while background telemetry logs predictions for audit.
+5. **Shared Memory & Single Persona:** Shared conversation history, candidate profile (`RESUME_DATA`), and `SYSTEM_PROMPT` are preserved across all model evaluations.
+
+---
+
+## 🛡️ Production High Availability, Security & Knowledge Protection
+
 - **Primary AI Provider Policy:** 100% of normal traffic is served directly by the Primary Production AI Gateway via Cloudflare Edge Worker Proxy. Zero load balancing, zero cost routing, zero latency degradation.
 - **Emergency Fallback Protection:** Emergency backup (OpenRouter free models) is triggered **ONLY** during verified infrastructure outages (HTTP 500/502/503/504, 429, timeouts).
 - **Forbidden Fallback Guardrail:** Switching providers is strictly **FORBIDDEN** for configuration or authorization errors (HTTP 401/403/404). Real status codes are returned directly without hiding issues.
-- **Zero Secrets in Frontend:** API keys are bound exclusively in Cloudflare Worker edge environment.
-- **370 / 370 Recruiter QA Pass (100.0%):** Verified across 17 intent categories with strict candidate profile veracity (CCNA Certification = YES).
+- **Zero Secrets in Frontend:** API keys are bound exclusively in Cloudflare Worker edge environment (`env.ROOTSYS_API_KEY`).
+- **Knowledge Protection & Veracity:** Stored candidate profile is the supreme source of truth. Verified credentials (**Cisco CCNA Certification = YES**) are guaranteed with 0% AI hallucination.
+- **Natural Malaysian Persona:** Responds in a warm, confident, approachable Malaysian professional tone. Supports light Malaysian dialect adaptations (Kelantan, Northern, Nogori) without sacrificing clarity.
 
 ---
 
