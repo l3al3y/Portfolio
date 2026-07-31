@@ -65,13 +65,13 @@ graph TD
 
 ---
 
-## ⚡ Primary RootSys Cloud AI Career Assistant Architecture
+## ⚡ Primary AI Career Assistant Architecture
 
-The portfolio features a live, interactive **AI Career Assistant** powered directly by **RootSys Cloud API** (`https://rootsys.cloud/v1`) via Cloudflare Worker Proxy with **100% Live Execution**, **High Availability Provider Policy**, and **1M-Token Context Persistence**:
+The portfolio features a live, interactive **AI Career Assistant** powered via Cloudflare Worker Secure Proxy with **100% Live Execution**, **High Availability Provider Policy**, and **1M-Token Context Persistence**:
 
 ```mermaid
 graph LR
-    UserQuery[Recruiter / Visitor Inquiry] --> Router[RootSys Cloud Primary Gateway]
+    UserQuery[Recruiter / Visitor Inquiry] --> Router[Primary AI Gateway Proxy]
     Router -->|Primary General & Career Representative| GLM51[glm-5.1]
     Router -->|Computer Vision, YOLOv8 & Camera Inspection| GLM52[glm-5.2]
     Router -->|Code, Scripts, Python, C++ & SQL| DS4Pro[deepseek-v4-pro]
@@ -82,11 +82,11 @@ graph LR
     Router -->|Network Protocol & Automation Analysis| HY3[hy3-tencent]
 ```
 
-### **RootSys Production High Availability & Security Standards:**
-- **RootSys First Policy:** 100% of normal traffic is served directly by RootSys Cloud (`https://rootsys.cloud/v1`). Zero load balancing, zero cost routing, zero latency degradation.
+### **Production High Availability & Security Standards:**
+- **Primary AI Provider Policy:** 100% of normal traffic is served directly by the Primary Production AI Gateway via Cloudflare Edge Worker Proxy. Zero load balancing, zero cost routing, zero latency degradation.
 - **Emergency Fallback Protection:** Emergency backup (OpenRouter free models) is triggered **ONLY** during verified infrastructure outages (HTTP 500/502/503/504, 429, timeouts).
 - **Forbidden Fallback Guardrail:** Switching providers is strictly **FORBIDDEN** for configuration or authorization errors (HTTP 401/403/404). Real status codes are returned directly without hiding issues.
-- **Zero Secrets in Frontend:** API keys are bound exclusively in Cloudflare Worker edge environment (`env.ROOTSYS_API_KEY`).
+- **Zero Secrets in Frontend:** API keys are bound exclusively in Cloudflare Worker edge environment.
 - **370 / 370 Recruiter QA Pass (100.0%):** Verified across 17 intent categories with strict candidate profile veracity (CCNA Certification = YES).
 
 ---
