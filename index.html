@@ -2533,18 +2533,77 @@ Natural conversation is ALWAYS the highest priority.
 
         let CHAT_CONVERSATION_HISTORY = [];
 
+        /* ─────────────────────────────────────────────────────────────
+           ResumeAgent Intelligent Model Selection Engine (v2.0)
+           Phase 2: SHADOW MODE (Zero Production Risk)
+        ───────────────────────────────────────────────────────────── */
+        const SHADOW_MODE_ACTIVE = true;
+
+        const RESUME_AGENT_MODEL_REGISTRY = [
+            { id: "glm-5.1", name: "GLM 5.1 Representative", specialties: ["GENERAL_CONVERSATION", "RECRUITER_GREETING", "PROFILE_OVERVIEW"], reasoningCapability: 85 },
+            { id: "glm-5.2", name: "GLM 5.2 Vision Specialist", specialties: ["COMPUTER_VISION", "YOLOV8", "OPENCV", "HARDWARE_INSPECTION"], reasoningCapability: 90 },
+            { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro Engineering", specialties: ["PROGRAMMING", "CODE_DEBUGGING", "PYTHON", "CPP", "SQL", "ALGORITHMS"], reasoningCapability: 98 },
+            { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash Summarizer", specialties: ["RAPID_SUMMARY", "QUICK_STATUS", "FAST_SCREENING"], reasoningCapability: 80 },
+            { id: "minimax-m3", name: "MiniMax M3 Profile Evaluator", specialties: ["PROFILE_EVALUATION", "CANDIDATE_ASSESSMENT", "RESUME_MAPPING"], reasoningCapability: 92 },
+            { id: "kimi-k3", name: "Kimi K3 Technical Architect", specialties: ["ARCHITECTURE", "LONG_DOCS", "SYSTEM_DESIGN", "DETAILED_METHODOLOGY"], reasoningCapability: 95 },
+            { id: "kimi-k2.7", name: "Kimi K2.7 Multilingual & Dialect", specialties: ["MULTILINGUAL", "DIALECT_KELANTAN", "DIALECT_NORTHERN", "DIALECT_NOGORI"], reasoningCapability: 88 },
+            { id: "hy3-tencent", name: "HY3 Tencent Networking Specialist", specialties: ["NETWORKING", "CISCO_CCNA", "OSPF", "VLAN", "SECURITY_ACL", "TROUBLESHOOTING"], reasoningCapability: 94 }
+        ];
+
+        function classifyUserIntent(userQuery) {
+            const q = userQuery.toLowerCase();
+            const isNetworking = /\b(network|networking|ccna|cisco|ospf|vlan|routing|switch|ip|tcp|udp|wireshark|packet|subnet|dns|dhcp|firewall|acl)\b/i.test(q);
+            const isCode = /\b(code|script|python|c\+\+|c|sql|debug|algorithm|syntax|error|bug|fix|function|loop|compiler|variable|class)\b/i.test(q);
+            const isVision = /\b(vision|yolo|yolov8|yolov10|camera|image|frame|occlusion|detection|opencv|bounding box)\b/i.test(q);
+            const isEval = /\b(evaluate|review|suitability|assess|fit|recruiter|qualifications|experience|hire|skills)\b/i.test(q);
+            const isArch = /\b(architecture|breakdown|documentation|deep dive|explain in detail|how it works|system design|methodology)\b/i.test(q);
+            const isSummary = /\b(summary|summarise|summarize|quick|fast|short|bullet|overview|brief)\b/i.test(q);
+            const isDialect = /\b(kelate|kecek|dialek|loghat|nogori|den|hang|habaq|bah|kamek|kitak|kome|gapo|kawe|demo)\b/i.test(q);
+
+            let primaryIntent = "GENERAL_CONVERSATION";
+            let domain = "general";
+            let confidence = 0.88;
+
+            if (isNetworking) { primaryIntent = "NETWORKING"; domain = "cisco_ccna"; confidence = 0.96; }
+            else if (isCode) { primaryIntent = "PROGRAMMING"; domain = "software_engineering"; confidence = 0.95; }
+            else if (isVision) { primaryIntent = "COMPUTER_VISION"; domain = "yolov8_opencv"; confidence = 0.95; }
+            else if (isEval) { primaryIntent = "PROFILE_EVALUATION"; domain = "candidate_assessment"; confidence = 0.92; }
+            else if (isArch) { primaryIntent = "ARCHITECTURE"; domain = "system_design"; confidence = 0.93; }
+            else if (isSummary) { primaryIntent = "RAPID_SUMMARY"; domain = "quick_screening"; confidence = 0.94; }
+            else if (isDialect) { primaryIntent = "MULTILINGUAL"; domain = "malaysian_dialect"; confidence = 0.94; }
+
+            return { primaryIntent, domain, confidence };
+        }
+
+        function scoreModelsForIntent(classification) {
+            const scores = RESUME_AGENT_MODEL_REGISTRY.map(model => {
+                let score = 0;
+                if (model.specialties.includes(classification.primaryIntent)) score += 45;
+                if (classification.domain === "cisco_ccna" && model.id === "hy3-tencent") score += 35;
+                if (classification.domain === "software_engineering" && model.id === "deepseek-v4-pro") score += 35;
+                if (classification.domain === "yolov8_opencv" && model.id === "glm-5.2") score += 35;
+                if (classification.domain === "candidate_assessment" && model.id === "minimax-m3") score += 35;
+                if (classification.domain === "system_design" && model.id === "kimi-k3") score += 35;
+                if (classification.domain === "quick_screening" && model.id === "deepseek-v4-flash") score += 35;
+                if (classification.domain === "malaysian_dialect" && model.id === "kimi-k2.7") score += 35;
+                if (model.id === "glm-5.1") score += 35;
+                score += Math.round(model.reasoningCapability * 0.15);
+                return { modelId: model.id, name: model.name, score };
+            });
+            scores.sort((a, b) => b.score - a.score);
+            return scores[0];
+        }
+
         function selectModelByQuery(query) {
-            const q = query.toLowerCase();
-            if (q.includes("vision") || q.includes("yolov8") || q.includes("camera") || q.includes("image")) {
-                return "glm-5.2";
+            const classification = classifyUserIntent(query);
+            const bestMatch = scoreModelsForIntent(classification);
+            
+            console.log(`[Shadow Mode Engine] Production: glm-5.1 | Predicted: ${bestMatch.modelId} | Intent: ${classification.primaryIntent} | Score: ${bestMatch.score} | Conf: ${Math.round(classification.confidence * 100)}%`);
+
+            if (SHADOW_MODE_ACTIVE) {
+                return "glm-5.1"; // 100% Zero Production Risk during Shadow Mode
             }
-            if (q.includes("code") || q.includes("script") || q.includes("python") || q.includes("c++") || q.includes("sql") || q.includes("deepseek")) {
-                return "deepseek-v4-pro";
-            }
-            if (q.includes("speed") || q.includes("fast")) {
-                return "deepseek-v4-flash";
-            }
-            return "glm-5.1";
+            return bestMatch.modelId;
         }
 
         // RootSys Cloud AI Endpoint with 1M Token Context Persistence & High-Speed Execution
