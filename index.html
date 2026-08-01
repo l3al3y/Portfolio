@@ -1275,11 +1275,12 @@
     
         
         
+        
         /* ==========================================================================
-           🚀 RESUMEAGENT ADAPTIVE HERO DESIGN SYSTEM v5.0 (DESKTOP, TABLET, MOBILE)
+           🚀 RESUMEAGENT DEVICE-SPECIFIC RESPONSIVE SYSTEM v5.0 (PHASE 2-4)
            ========================================================================== */
 
-        /* Universal Keyframe Marquee Definition */
+        /* Keyframe Marquee Scroll Animation */
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -1311,7 +1312,7 @@
             -webkit-animation-play-state: paused !important;
         }
 
-        /* 1. DESKTOP DESIGN (> 1200px) */
+        /* 1. DESKTOP EXPERIENCE (>= 1200px) — "Personal Brand Landing Page" */
         @media (min-width: 1200px) {
             .container {
                 max-width: 1200px;
@@ -1342,7 +1343,7 @@
                 font-size: 0.75rem;
             }
             .hero-title {
-                font-size: 3.25rem;
+                font-size: clamp(3rem, 5vw, 5rem) !important;
                 line-height: 1.15;
                 margin-bottom: 1.25rem;
             }
@@ -1362,11 +1363,25 @@
                 -webkit-animation: marquee-scroll 14s linear infinite !important;
             }
             .ticker-content {
-                gap: 1.25rem;
-                padding-right: 1.25rem;
+                display: flex !important;
+                align-items: center !important;
+                gap: 1.25rem !important;
+                padding-right: 1.25rem !important;
+                flex-shrink: 0 !important;
             }
             .ticker-item {
-                font-size: 0.88rem;
+                font-size: 0.88rem !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.4rem !important;
+                flex-shrink: 0 !important;
+            }
+            .ticker-separator {
+                margin: 0 0.5rem !important;
+                color: var(--border-highlight) !important;
+                flex-shrink: 0 !important;
             }
             .hero-cta-group {
                 display: flex;
@@ -1381,8 +1396,8 @@
             }
         }
 
-        /* 2. TABLET DESIGN (768px - 1199px) */
-        @media (min-width: 768px) and (max-width: 1199px) {
+        /* 2. TABLET EXPERIENCE (769px - 1199px) — "Balanced Professional View" */
+        @media (min-width: 769px) and (max-width: 1199px) {
             .container {
                 padding: 0 1.5rem;
             }
@@ -1403,7 +1418,7 @@
                 margin-bottom: 0.75rem;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
                 line-height: 1.2;
                 margin-bottom: 1rem;
             }
@@ -1427,11 +1442,25 @@
                 -webkit-animation: marquee-scroll 18s linear infinite !important;
             }
             .ticker-content {
-                gap: 1rem;
-                padding-right: 1rem;
+                display: flex !important;
+                align-items: center !important;
+                gap: 1rem !important;
+                padding-right: 1rem !important;
+                flex-shrink: 0 !important;
             }
             .ticker-item {
-                font-size: 0.82rem;
+                font-size: 0.82rem !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.4rem !important;
+                flex-shrink: 0 !important;
+            }
+            .ticker-separator {
+                margin: 0 0.4rem !important;
+                color: var(--border-highlight) !important;
+                flex-shrink: 0 !important;
             }
             .hero-cta-group {
                 display: flex;
@@ -1455,8 +1484,8 @@
             }
         }
 
-        /* 3. MOBILE DESIGN (< 768px - iPhone / Galaxy S26 Ultra QHD+) */
-        @media (max-width: 767px) {
+        /* 3. MOBILE EXPERIENCE (<= 768px) — "Recruiter Quick Scan" */
+        @media (max-width: 768px) {
             body {
                 overflow-x: hidden !important;
                 touch-action: manipulation;
@@ -1495,7 +1524,7 @@
                 white-space: normal !important;
             }
             .hero-title {
-                font-size: clamp(1.6rem, 5.5vw, 2.1rem) !important;
+                font-size: clamp(2rem, 8vw, 2.8rem) !important;
                 line-height: 1.2 !important;
                 margin-bottom: 0.75rem !important;
                 word-break: break-word !important;
@@ -1533,15 +1562,25 @@
                 -webkit-animation: marquee-scroll 20s linear infinite !important;
             }
             .ticker-content {
+                display: flex !important;
+                align-items: center !important;
                 gap: 0.85rem !important;
                 padding-right: 0.85rem !important;
+                flex-shrink: 0 !important;
             }
             .ticker-item {
                 font-size: 0.78rem !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.35rem !important;
+                flex-shrink: 0 !important;
             }
             .ticker-separator {
                 margin: 0 0.35rem !important;
                 opacity: 0.6 !important;
+                flex-shrink: 0 !important;
             }
             .hero-cta-group {
                 display: flex !important;
@@ -1621,27 +1660,32 @@
     <section class="hero-section">
         <div class="container hero-grid">
             <div>
+                <!-- Candidate Identity Eyebrow Badge -->
+                <div class="hero-eyebrow-badge">
+                    <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
+                    <span class="eyebrow-desc">COMPUTER ENGINEERING GRADUATE • AI AUTOMATION | NETWORKING | CYBERSECURITY</span>
+                </div>
+
+                <!-- Animated Availability Queue Indicator (Hospital / Clinic LED Queue Board) -->
                 <div class="career-status-board">
                     <div class="career-status-header">
                         <div class="career-status-badge">
                             <div class="led-dot"></div>
-                            OPEN FOR OPPORTUNITIES
+                            ● OPEN FOR OPPORTUNITIES
                         </div>
-                        <div class="career-status-sub">Available for Full-Time Graduate Roles</div>
+                        <div class="career-status-sub">Currently Seeking: AI Automation Engineer • Network Engineer • Cybersecurity Role</div>
                     </div>
                     
                     <div class="ticker-wrap">
                         <div class="ticker-track">
                             <div class="ticker-content">
-                                <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                                <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Graduate</span></span>
                                 <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                                <span class="ticker-item">🌐 <span class="highlight">Network Engineer (CCNA)</span></span>
                                 <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity & Cloud</span></span>
                                 <span class="ticker-separator">•</span>
-                                <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                                <span class="ticker-item">👁️ <span class="highlight">AI Automation Specialist</span></span>
                                 <span class="ticker-separator">•</span>
                                 <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
                                 <span class="ticker-separator">•</span>
@@ -1649,23 +1693,19 @@
                             <div class="ticker-content" aria-hidden="true">
                                 <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
                                 <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                                <span class="ticker-item">🌐 <span class="highlight">Network Engineer (CCNA)</span></span>
                                 <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity & Cloud</span></span>
                                 <span class="ticker-separator">•</span>
-                                <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                                <span class="ticker-item">👁️ <span class="highlight">AI Automation Specialist</span></span>
                                 <span class="ticker-separator">•</span>
                                 <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
                                 <span class="ticker-separator">•</span>
                             </div>
                         </div>
                     </div>
-                                <div class="hero-eyebrow-badge">
-                    <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
-                    <span class="eyebrow-desc">COMPUTER ENGINEERING (HONS) • AI AUTOMATION • NETWORKING • CYBERSECURITY</span>
                 </div>
+
                 <h1 class="hero-title">
                     Building <span>Intelligent Systems</span> at the Intersection of AI, Networking & Hardware.
                 </h1>
@@ -1676,7 +1716,6 @@
                 <div class="hero-cta-group">
                     <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Explore Projects ➔</a>
                     <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Download Resume (PDF) 📄</a>
-                    
                 </div>
 
                 <div class="stats-grid">
