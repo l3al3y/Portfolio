@@ -1,6 +1,6 @@
 # 🚀 MUHAMMAD IRFAN FAHMI — Computer Engineering Portfolio & AI Career Agent
 
-[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-38bdf8.svg?style=for-the-badge&logo=github)](https://l3al3y.github.io/ResumeAgent/)
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-38bdf8.svg?style=for-the-badge&logo=github)](https://l3al3y.github.io/Portfolio/)
 [![Cisco CCNA Certified](https://img.shields.io/badge/Cisco-CCNA_Enterprise-1ba0d7.svg?style=for-the-badge&logo=cisco)](certificates/)
 [![Festo Industrial AI](https://img.shields.io/badge/Festo-Industrial_AI-005293.svg?style=for-the-badge)](certificates/)
 [![Recruiter Safety Audit](https://img.shields.io/badge/Recruiter_QA_Audit-370%2F370_Pass_(100%25)-059669.svg?style=for-the-badge)](scripts/)
@@ -14,7 +14,7 @@
 
 ## 🌐 Quick Links & Live Application
 
-- 🔗 **Live Web Application**: [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)
+- 🔗 **Live Web Application**: [https://l3al3y.github.io/Portfolio/](https://l3al3y.github.io/Portfolio/)
 - 📄 **Printable 1-Page A4 PDF Resume**: [resume/resume.pdf](resume/resume.pdf)
 - 📜 **Official Certifications**: [certificates/](certificates/)
 - ⚙️ **Backend Engine Sync**: Production backend architecture maintained in private repository (Milestone v2.0)
