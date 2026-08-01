@@ -268,7 +268,7 @@
         }
 
         .hero-title {
-            font-size: 3.25rem;
+            font-size: clamp(2.1rem, 4.2vw, 3.25rem);
             font-weight: 800;
             line-height: 1.15;
             letter-spacing: -0.03em;
@@ -1251,6 +1251,37 @@
             margin: 0 0.25rem;
         }
 
+    
+        /* Candidate Identity Eyebrow Badge */
+        .hero-eyebrow-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.85rem;
+        }
+
+        .eyebrow-tag {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+
+        .eyebrow-desc {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
     </style>
 </head>
 <body>
@@ -1324,6 +1355,10 @@
                             <span class="ticker-separator">•</span>
                         </div>
                     </div>
+                </div>
+                                <div class="hero-eyebrow-badge">
+                    <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
+                    <span class="eyebrow-desc">COMPUTER ENGINEERING (HONS) • AI AUTOMATION • NETWORKING • CYBERSECURITY</span>
                 </div>
                 <h1 class="hero-title">
                     Building <span>Intelligent Systems</span> at the Intersection of AI, Networking & Hardware.
