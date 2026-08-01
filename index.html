@@ -1269,7 +1269,7 @@
             letter-spacing: 0.06em;
             color: var(--primary);
             background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            border: 1px solid #334155;
             padding: 0.25rem 0.65rem;
             border-radius: var(--radius-sm);
             text-transform: uppercase;
@@ -2318,7 +2318,7 @@
             --bg-surface-hover: #1e293b;
             --bg-card: rgba(15, 23, 42, 0.75);
             --bg-card-header: rgba(15, 23, 42, 0.9);
-            --border-card: rgba(56, 189, 248, 0.2);
+            --border-card: #334155;
             --border-highlight: #0284c7;
             --text-main: #f8fafc;
             --text-sub: #cbd5e1;
@@ -2699,6 +2699,78 @@
         body[data-theme="light"] .metric-item {
             background: #ffffff !important;
             border: 1px solid #cbd5e1 !important;
+        }
+
+    
+        /* ==========================================================================
+           🎯 MASTER MOBILE HERO TEXT RESIZING & SOLID DARK MODE BORDER ENGINE
+           ========================================================================== */
+
+        /* 1. Solid Dark Mode Borders (Zero Transparency) */
+        :root {
+            --border-card: #334155 !important;
+            --border-highlight: #0284c7 !important;
+        }
+
+        .hero-profile-card,
+        .stat-card,
+        .about-pillar-card,
+        .project-card,
+        .skill-category-card,
+        .cert-card,
+        .timeline-card,
+        .modal-card,
+        .career-status-board,
+        .chat-floating-window,
+        .eyebrow-tag,
+        .tech-tag {
+            border-color: #334155 !important;
+        }
+
+        /* 2. Hero Title & Subtitle Mobile Text Resizing & Word Wrapping */
+        .hero-title {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            hyphens: auto !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 4.5rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .hero-title {
+                font-size: 1.55rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 0.85rem !important;
+                word-break: break-word !important;
+            }
+
+            .hero-subtitle {
+                font-size: 0.92rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.25rem !important;
+                word-break: break-word !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.35rem !important;
+                line-height: 1.28 !important;
+                letter-spacing: -0.01em !important;
+            }
+
+            .hero-subtitle {
+                font-size: 0.86rem !important;
+                line-height: 1.48 !important;
+            }
+
+            .hero-cta-group .btn {
+                font-size: 0.82rem !important;
+                padding: 0.65rem 0.85rem !important;
+            }
         }
 
     </style>
