@@ -1284,23 +1284,24 @@
 
     
         
+        
         /* ==========================================================================
-           👁️ MEDIUM-LARGE ACCESSIBLE TYPOGRAPHY & LIGHT-MODE SHADOW-FREE CONTRAST ENGINE
+           ☀️ UNIVERSAL HIGH-CONTRAST LIGHT MODE & EYESIGHT ACCESSIBILITY ENGINE
            ========================================================================== */
 
-        /* 1. Medium-Large Text Sizing across Dark & Light Modes */
+        /* 1. Dark Mode Typography & Accessibility Defaults */
         .project-banner-title {
             font-size: 1.6rem !important;
             font-weight: 800 !important;
             line-height: 1.3 !important;
-            color: #ffffff !important;
+            color: #ffffff;
             letter-spacing: -0.01em;
         }
 
         .project-desc {
             font-size: 1.15rem !important;
             line-height: 1.7 !important;
-            color: #f1f5f9 !important;
+            color: #f1f5f9;
             font-weight: 500 !important;
             margin-bottom: 1.35rem !important;
         }
@@ -1308,19 +1309,19 @@
         .pillar-desc, .timeline-desc {
             font-size: 1.08rem !important;
             line-height: 1.68 !important;
-            color: #e2e8f0 !important;
+            color: #e2e8f0;
             font-weight: 500 !important;
         }
 
         .metric-val {
             font-size: 1.25rem !important;
             font-weight: 800 !important;
-            color: var(--emerald) !important;
+            color: var(--emerald);
         }
 
         .metric-lbl {
             font-size: 0.88rem !important;
-            color: #cbd5e1 !important;
+            color: #cbd5e1;
             font-weight: 600 !important;
         }
 
@@ -1328,38 +1329,59 @@
             font-size: 0.88rem !important;
             font-weight: 600 !important;
             padding: 0.35rem 0.8rem !important;
-            color: #f8fafc !important;
-            background: rgba(255, 255, 255, 0.08) !important;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
         }
 
-        /* 2. Light Mode Shadow-Free Crystal Clear Contrast Overrides */
+        /* 2. Light Mode Complete Text Contrast Engine */
         @media (prefers-color-scheme: light) {
+            :root {
+                --bg-base: #f8fafc;
+                --bg-surface: #ffffff;
+                --bg-surface-hover: #f1f5f9;
+                --bg-card: #ffffff;
+                --border-card: #e2e8f0;
+                --border-highlight: rgba(2, 132, 199, 0.4);
+                --text-main: #0f172a;
+                --text-sub: #334155;
+                --text-muted: #475569;
+                --primary: #0284c7;
+                --primary-hover: #0369a1;
+                --emerald: #047857;
+            }
+
             body {
                 background-color: #f8fafc !important;
                 color: #0f172a !important;
             }
 
-            .project-card, .pillar-card, .timeline-card, .skill-category-card, .hero-profile-card, .stat-card {
+            /* All Headings & Main Titles */
+            h1, h2, h3, h4, h5, h6,
+            .hero-title, .section-title, .profile-name, .pillar-title, 
+            .category-title, .cert-title, .timeline-role, .ai-banner-title,
+            .project-banner-title, .modal-header h3 {
+                color: #0f172a !important;
+                background: none !important;
+                -webkit-text-fill-color: initial !important;
+            }
+
+            /* Subtitles, Descriptions, & Paragraphs */
+            p, .hero-subtitle, .project-desc, .pillar-desc, .timeline-desc, 
+            .profile-role, .eyebrow-desc, .ai-banner-desc, .career-status-sub {
+                color: #334155 !important;
+                font-weight: 500 !important;
+            }
+
+            /* Card Containers & Glass Panels */
+            .project-card, .pillar-card, .timeline-card, .skill-category-card, 
+            .hero-profile-card, .stat-card, .cert-card, .modal-card, 
+            .career-status-board, .career-status-pill, .chat-floating-window {
                 background: #ffffff !important;
-                border: 1px solid #e2e8f0 !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+                border-color: #cbd5e1 !important;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
             }
 
             .project-banner {
                 background: #f1f5f9 !important;
-                border-bottom: 1px solid #e2e8f0 !important;
-                box-shadow: none !important;
-            }
-
-            .project-banner-title {
-                color: #0f172a !important;
-                text-shadow: none !important;
-            }
-
-            .project-desc {
-                color: #1e293b !important;
-                font-weight: 600 !important;
+                border-bottom: 1px solid #cbd5e1 !important;
             }
 
             .project-metrics-box {
@@ -1367,29 +1389,57 @@
                 border: 1px solid #cbd5e1 !important;
             }
 
+            /* Labels, Items, & Metas */
+            .stat-num {
+                color: #0284c7 !important;
+            }
+
+            .stat-label, .metric-lbl, .timeline-date, .cert-issuer, .bio-label {
+                color: #475569 !important;
+                font-weight: 600 !important;
+            }
+
             .metric-val {
                 color: #047857 !important;
             }
 
-            .metric-lbl {
-                color: #475569 !important;
-                font-weight: 700 !important;
-            }
-
-            .tech-tag {
+            .tech-tag, .cert-category-tag, .eyebrow-tag {
                 background: #e2e8f0 !important;
                 color: #0f172a !important;
                 border-color: #cbd5e1 !important;
                 font-weight: 700 !important;
             }
 
-            .section-title, .section-tag, .hero-title, .profile-name, .pillar-title, .category-title {
+            /* Navigation & Header Links */
+            .nav-link, .nav-logo {
                 color: #0f172a !important;
             }
 
-            .hero-subtitle, .pillar-desc, .timeline-desc, .profile-role {
-                color: #334155 !important;
-                font-weight: 600 !important;
+            .navbar {
+                background: rgba(248, 250, 252, 0.9) !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+            }
+
+            /* Ticker & Marquee Items */
+            .ticker-item {
+                color: #0f172a !important;
+            }
+
+            .ticker-item span.highlight {
+                color: #0284c7 !important;
+            }
+
+            .ticker-separator {
+                color: #94a3b8 !important;
+            }
+
+            /* Footer Text */
+            footer, .footer-content, .footer-verification {
+                color: #475569 !important;
+            }
+
+            footer a {
+                color: #0284c7 !important;
             }
         }
 
