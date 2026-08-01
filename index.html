@@ -3578,7 +3578,13 @@ Natural conversation is ALWAYS the highest priority.
             document.body.classList.toggle('light-theme');
         }
 
-        function openPdfModal(pdfPath, title) {
+        
+      function openPdfModalById(certId) {
+        const cert = CERT_REGISTRY.find(c => c.id === certId);
+        if (!cert) return;
+        openPdfModal('certificates/' + cert.filename, cert.title);
+      }
+      function openPdfModal(pdfPath, title) {
             const titleElem = document.getElementById('pdf-modal-title');
             const iframeElem = document.getElementById('pdf-modal-iframe');
             const overlayElem = document.getElementById('pdf-modal-overlay');
