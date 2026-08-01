@@ -1274,272 +1274,12 @@
 
     
         
-        /* ==========================================================================
-           📱 DEVICE RESPONSIBILITY SPLIT (PC, TABLET, MOBILE PHONES)
-           ========================================================================== */
-
-        /* 1. PC / DESKTOP (Width > 1024px) */
-        @media (min-width: 1025px) {
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 1.5rem;
-            }
-            .hero-grid {
-                grid-template-columns: 1.15fr 0.85fr;
-                gap: 3.5rem;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-            }
-            .about-pillars-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-            }
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            .skills-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-            }
-            .certs-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-        }
-
-        /* 2. TABLET (769px <= Width <= 1024px) */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-            }
-            .about-pillars-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-            .certs-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* 3. MOBILE PHONES (Width <= 768px - iPhone 17 Pro Max, Galaxy S26 Ultra, etc.) */
-        @media (max-width: 768px) {
-            body {
-                overflow-x: hidden;
-                touch-action: manipulation;
-            }
-            .container {
-                padding: 0 1.25rem;
-                width: 100%;
-            }
-            .hero-section {
-                padding: 5.5rem 0 2.5rem;
-                min-height: auto;
-            }
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .hero-title {
-                font-size: clamp(1.75rem, 6.5vw, 2.25rem);
-                line-height: 1.25;
-            }
-            .hero-subtitle {
-                font-size: 0.95rem;
-                line-height: 1.5;
-                margin-bottom: 1.5rem;
-            }
-            .hero-eyebrow-badge {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.35rem;
-            }
-            .eyebrow-tag {
-                font-size: 0.72rem;
-                padding: 0.2rem 0.5rem;
-            }
-            .eyebrow-desc {
-                font-size: 0.7rem;
-                line-height: 1.4;
-            }
-            .career-status-board {
-                max-width: 100%;
-                padding: 0.6rem 0.75rem;
-                margin-bottom: 1.25rem;
-            }
-            .career-status-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.25rem;
-            }
-            .hero-cta-group {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.75rem;
-            }
-            .hero-cta-group .btn {
-                width: 100%;
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0.85rem 1rem;
-                font-size: 0.95rem;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
-            .stat-card {
-                padding: 0.75rem;
-            }
-            .stat-num {
-                font-size: 1.2rem;
-            }
-            .stat-label {
-                font-size: 0.72rem;
-            }
-            .about-pillars-grid, .skills-grid, .certs-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-            .cert-filters {
-                gap: 0.35rem;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 0.5rem;
-                -webkit-overflow-scrolling: touch;
-            }
-            .filter-chip {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.75rem;
-                white-space: nowrap;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-actions .btn {
-                padding: 0.4rem 0.65rem;
-                font-size: 0.78rem;
-            }
-            .chat-floating-window {
-                width: calc(100vw - 1.5rem);
-                right: 0.75rem;
-                left: 0.75rem;
-                bottom: 4.5rem;
-                height: 70vh;
-                z-index: 99999;
-            }
-            .footer-verification {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            }
-        }
-
-    
-        /* 🎯 TRUE MOBILE DISPLAY OVERFLOW PROTECTION (320px - 440px Handphones) */
-        html {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Prevent long text strings from forcing horizontal scroll on mobile */
-        h1, h2, h3, p, span, a, div {
-            max-width: 100%;
-            word-wrap: break-word;
-        }
-
-        /* Mobile specific header & component rules */
-        @media (max-width: 768px) {
-            header .container {
-                padding: 0 0.85rem !important;
-            }
-
-            .brand-logo {
-                font-size: 1.15rem !important;
-            }
-
-            .nav-actions {
-                gap: 0.35rem !important;
-            }
-
-            .nav-actions .btn {
-                padding: 0.35rem 0.55rem !important;
-                font-size: 0.72rem !important;
-            }
-
-            .eyebrow-desc {
-                white-space: normal !important;
-                word-break: break-word !important;
-                font-size: 0.68rem !important;
-                line-height: 1.35 !important;
-            }
-
-            .career-status-board {
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
-                box-sizing: border-box !important;
-            }
-
-            .ticker-wrap {
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
-            }
-
-            .hero-cta-group {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-
-            .hero-cta-group .btn {
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                white-space: normal !important;
-                word-break: break-word !important;
-            }
-        }
-
-    
-        
         
         /* ==========================================================================
-           ⚡ DEDICATED PC & MOBILE MARQUEE SPACING ENGINE
+           🚀 RESUMEAGENT ADAPTIVE HERO DESIGN SYSTEM v5.0 (DESKTOP, TABLET, MOBILE)
            ========================================================================== */
+
+        /* Universal Keyframe Marquee Definition */
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -1571,95 +1311,279 @@
             -webkit-animation-play-state: paused !important;
         }
 
-        /* 1. PC / DESKTOP (Width > 1024px) */
-        @media (min-width: 1025px) {
+        /* 1. DESKTOP DESIGN (> 1200px) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .hero-section {
+                padding: 9rem 0 5rem;
+                min-height: 85vh;
+            }
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1.15fr 0.85fr;
+                gap: 3.5rem;
+                align-items: center;
+            }
+            .hero-eyebrow-badge {
+                display: flex;
+                align-items: center;
+                gap: 0.65rem;
+                margin-bottom: 0.85rem;
+            }
+            .eyebrow-tag {
+                font-size: 0.78rem;
+                padding: 0.25rem 0.65rem;
+            }
+            .eyebrow-desc {
+                font-size: 0.75rem;
+            }
+            .hero-title {
+                font-size: 3.25rem;
+                line-height: 1.15;
+                margin-bottom: 1.25rem;
+            }
+            .hero-subtitle {
+                font-size: 1.12rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                max-width: 620px;
+            }
+            .career-status-board {
+                max-width: 620px;
+                padding: 0.85rem 1.25rem;
+                margin-bottom: 1.75rem;
+            }
             .ticker-track {
-                animation: marquee-scroll 16s linear infinite !important;
-                -webkit-animation: marquee-scroll 16s linear infinite !important;
+                animation: marquee-scroll 14s linear infinite !important;
+                -webkit-animation: marquee-scroll 14s linear infinite !important;
             }
-
             .ticker-content {
-                display: flex !important;
-                align-items: center !important;
-                gap: 1.25rem !important;
-                padding-right: 1.25rem !important;
-                flex-shrink: 0 !important;
+                gap: 1.25rem;
+                padding-right: 1.25rem;
             }
-
             .ticker-item {
-                font-size: 0.88rem !important;
-                font-weight: 700 !important;
-                color: #ffffff !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.4rem !important;
-                flex-shrink: 0 !important;
+                font-size: 0.88rem;
             }
-
-            .ticker-separator {
-                margin: 0 0.5rem !important;
-                color: var(--border-highlight) !important;
-                flex-shrink: 0 !important;
+            .hero-cta-group {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                margin-bottom: 2.5rem;
+            }
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
             }
         }
 
-        /* 2. MOBILE PHONES (Width <= 768px - QHD+ 3120x1440 & Mobile Devices) */
-        @media (max-width: 768px) {
-            .ticker-track {
-                animation: marquee-scroll 20s linear infinite !important;
-                -webkit-animation: marquee-scroll 20s linear infinite !important;
+        /* 2. TABLET DESIGN (768px - 1199px) */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .container {
+                padding: 0 1.5rem;
             }
-
-            .ticker-content {
-                display: flex !important;
-                align-items: center !important;
-                gap: 0.85rem !important;
-                padding-right: 0.85rem !important;
-                flex-shrink: 0 !important;
+            .hero-section {
+                padding: 7rem 0 4rem;
+                min-height: auto;
             }
-
-            .ticker-item {
-                font-size: 0.78rem !important;
-                font-weight: 700 !important;
-                color: #ffffff !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.35rem !important;
-                flex-shrink: 0 !important;
-            }
-
-            .ticker-separator {
-                margin: 0 0.35rem !important;
-                color: var(--border-highlight) !important;
-                opacity: 0.6 !important;
-                flex-shrink: 0 !important;
-            }
-
             .hero-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                gap: 1.5rem !important;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
             }
-
+            .hero-eyebrow-badge {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            .hero-subtitle {
+                font-size: 1.05rem;
+                line-height: 1.55;
+                margin: 0 auto 1.75rem;
+                max-width: 680px;
+            }
+            .career-status-board {
+                max-width: 680px;
+                margin: 0 auto 1.5rem;
+                padding: 0.75rem 1rem;
+            }
+            .career-status-header {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .ticker-track {
+                animation: marquee-scroll 18s linear infinite !important;
+                -webkit-animation: marquee-scroll 18s linear infinite !important;
+            }
+            .ticker-content {
+                gap: 1rem;
+                padding-right: 1rem;
+            }
+            .ticker-item {
+                font-size: 0.82rem;
+            }
+            .hero-cta-group {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.85rem;
+                max-width: 750px;
+                margin: 0 auto;
+            }
             .hero-profile-card {
+                max-width: 680px;
+                margin: 0 auto;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* 3. MOBILE DESIGN (< 768px - iPhone / Galaxy S26 Ultra QHD+) */
+        @media (max-width: 767px) {
+            body {
+                overflow-x: hidden !important;
+                touch-action: manipulation;
+            }
+            .container {
+                padding: 0 1rem !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 box-sizing: border-box !important;
             }
-
+            .hero-section {
+                padding: 5.5rem 0 2rem !important;
+                min-height: auto !important;
+            }
+            .hero-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 1.25rem !important;
+                width: 100% !important;
+            }
             .hero-eyebrow-badge {
+                display: flex !important;
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 0.25rem !important;
+                margin-bottom: 0.5rem !important;
             }
-
+            .eyebrow-tag {
+                font-size: 0.7rem !important;
+                padding: 0.2rem 0.5rem !important;
+            }
             .eyebrow-desc {
-                white-space: normal !important;
-                word-break: break-word !important;
                 font-size: 0.68rem !important;
                 line-height: 1.35 !important;
+                word-break: break-word !important;
+                white-space: normal !important;
+            }
+            .hero-title {
+                font-size: clamp(1.6rem, 5.5vw, 2.1rem) !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.75rem !important;
+                word-break: break-word !important;
+            }
+            .hero-subtitle {
+                font-size: 0.88rem !important;
+                line-height: 1.45 !important;
+                margin-bottom: 1.25rem !important;
+                width: 100% !important;
+            }
+            .career-status-board {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 0.6rem 0.75rem !important;
+                margin-bottom: 1.25rem !important;
+            }
+            .career-status-header {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                margin-bottom: 0.4rem !important;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.12) !important;
+                padding-bottom: 0.35rem !important;
+            }
+            .career-status-badge {
+                font-size: 0.7rem !important;
+            }
+            .career-status-sub {
+                font-size: 0.65rem !important;
+            }
+            .ticker-track {
+                animation: marquee-scroll 20s linear infinite !important;
+                -webkit-animation: marquee-scroll 20s linear infinite !important;
+            }
+            .ticker-content {
+                gap: 0.85rem !important;
+                padding-right: 0.85rem !important;
+            }
+            .ticker-item {
+                font-size: 0.78rem !important;
+            }
+            .ticker-separator {
+                margin: 0 0.35rem !important;
+                opacity: 0.6 !important;
+            }
+            .hero-cta-group {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 0.75rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .hero-cta-group .btn {
+                width: 100% !important;
+                text-align: center !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0.85rem 1rem !important;
+                font-size: 0.95rem !important;
+                box-sizing: border-box !important;
+            }
+            .stats-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.65rem !important;
+                width: 100% !important;
+            }
+            .stat-card {
+                padding: 0.75rem !important;
+            }
+            .stat-num {
+                font-size: 1.15rem !important;
+            }
+            .stat-label {
+                font-size: 0.7rem !important;
+            }
+            .hero-profile-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 1.15rem !important;
+                margin-top: 1.25rem !important;
+            }
+            .nav-links {
+                display: none;
             }
         }
 
