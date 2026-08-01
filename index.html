@@ -1286,8 +1286,9 @@
         
         
         
+        
         /* ==========================================================================
-           ☀️ MASTER HIGH-CONTRAST LIGHT THEME ENGINE (FORCE FULL SITE READABILITY)
+           ☀️ MASTER HIGH-CONTRAST LIGHT THEME ENGINE (FIXED HEADER & AI BANNER)
            ========================================================================== */
 
         /* 1. Dark Mode Accessible Defaults */
@@ -1351,6 +1352,31 @@
             --emerald: #047857 !important;
             background-color: #f8fafc !important;
             color: #0f172a !important;
+        }
+
+        body.light-theme header,
+        body[data-theme="light"] header {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        body.light-theme .brand-logo, body.light-theme .brand-logo span,
+        body[data-theme="light"] .brand-logo, body[data-theme="light"] .brand-logo span {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .nav-link,
+        body[data-theme="light"] .nav-link {
+            color: #334155 !important;
+            font-weight: 600 !important;
+        }
+
+        body.light-theme .ai-banner-box,
+        body[data-theme="light"] .ai-banner-box {
+            background: #ffffff !important;
+            border: 2px solid #0284c7 !important;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
         }
 
         body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
@@ -1417,15 +1443,6 @@
             font-weight: 700 !important;
         }
 
-        body.light-theme .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border-bottom: 1px solid #cbd5e1 !important;
-        }
-
-        body.light-theme .nav-link, body.light-theme .nav-logo {
-            color: #0f172a !important;
-        }
-
         body.light-theme footer, body.light-theme .footer-content, body.light-theme .footer-verification {
             color: #475569 !important;
         }
@@ -1462,6 +1479,27 @@
                 --emerald: #047857 !important;
                 background-color: #f8fafc !important;
                 color: #0f172a !important;
+            }
+
+            header {
+                background: rgba(255, 255, 255, 0.95) !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+            }
+
+            .brand-logo, .brand-logo span {
+                color: #0f172a !important;
+            }
+
+            .nav-link {
+                color: #334155 !important;
+                font-weight: 600 !important;
+            }
+
+            .ai-banner-box {
+                background: #ffffff !important;
+                border: 2px solid #0284c7 !important;
+                box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
             }
 
             h1, h2, h3, h4, h5, h6,
@@ -1524,15 +1562,6 @@
                 font-weight: 700 !important;
             }
 
-            .navbar {
-                background: rgba(255, 255, 255, 0.95) !important;
-                border-bottom: 1px solid #cbd5e1 !important;
-            }
-
-            .nav-link, .nav-logo {
-                color: #0f172a !important;
-            }
-
             footer, .footer-content, .footer-verification {
                 color: #475569 !important;
             }
@@ -1548,170 +1577,6 @@
 
             .ticker-item span.highlight {
                 color: #0284c7 !important;
-            }
-        }
-
-    
-        /* Personal Biodata Card Styling Engine */
-        .hero-profile-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 16px;
-            padding: 1.5rem;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            max-width: 480px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .biodata-header {
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 1.15rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .profile-avatar-wrap {
-            width: 72px;
-            height: 72px;
-            font-size: 2.2rem;
-            margin: 0 auto 0.75rem;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%);
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-        }
-
-        .biodata-badge-tag {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--primary);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 800;
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-name {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin: 0 0 0.35rem 0;
-        }
-
-        .profile-role {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            font-weight: 500;
-        }
-
-        .profile-info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .profile-info-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
-        }
-
-        .profile-info-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .bio-label {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: var(--text-sub);
-            font-weight: 500;
-        }
-
-        .bio-value {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .bio-value.highlight-text {
-            color: var(--primary);
-        }
-
-        .bio-status-badge {
-            font-size: 0.82rem;
-            font-weight: 800;
-            color: var(--emerald);
-            background: rgba(16, 185, 129, 0.1);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        /* LIGHT MODE BIODATA HIGH CONTRAST OVERRIDES */
-        body.light-theme .hero-profile-card,
-        body[data-theme="light"] .hero-profile-card,
-        @media (prefers-color-scheme: light) {
-            .hero-profile-card {
-                background: #ffffff !important;
-                border: 1px solid #cbd5e1 !important;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
-            }
-
-            .biodata-header {
-                border-bottom: 1px solid #e2e8f0 !important;
-            }
-
-            .profile-avatar-wrap {
-                background: #f1f5f9 !important;
-                border-color: #0284c7 !important;
-                box-shadow: none !important;
-            }
-
-            .biodata-badge-tag {
-                color: #0284c7 !important;
-            }
-
-            .profile-name {
-                color: #0f172a !important;
-            }
-
-            .profile-role {
-                color: #475569 !important;
-            }
-
-            .profile-info-item {
-                border-bottom-color: #e2e8f0 !important;
-            }
-
-            .bio-label {
-                color: #475569 !important;
-                font-weight: 600 !important;
-            }
-
-            .bio-value {
-                color: #0f172a !important;
-                font-weight: 700 !important;
-            }
-
-            .bio-value.highlight-text {
-                color: #0284c7 !important;
-            }
-
-            .bio-status-badge {
-                color: #047857 !important;
-                background: #ecfdf5 !important;
-                border-color: #a7f3d0 !important;
             }
         }
 
