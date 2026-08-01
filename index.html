@@ -1502,7 +1502,7 @@
         </div>
     </section>
 
-    <!-- Certifications Gallery Section -->
+        <!-- Certifications Gallery Section -->
     <section id="certificates" class="section-padding" style="background: rgba(15, 23, 42, 0.3);">
         <div class="container">
             <div class="section-header">
@@ -1511,7 +1511,7 @@
             </div>
 
             <!-- Filter Chips -->
-            <div class="cert-filters">
+            <div class="cert-filters" id="cert-filter-chips">
                 <button class="filter-chip active" onclick="filterCerts('all')">All (18)</button>
                 <button class="filter-chip" onclick="filterCerts('cisco')">Cisco & Cybersecurity (4)</button>
                 <button class="filter-chip" onclick="filterCerts('industrial')">Industrial Automation & Technical Training (4)</button>
@@ -1521,221 +1521,7 @@
             </div>
 
             <div class="certs-grid" id="certs-grid-container">
-                <!-- Cert 1: Cisco CCNA ENSA -->
-                <div class="cert-card" data-cat="cisco">
-                    <div class="cert-category-tag">CISCO & CYBERSECURITY</div>
-                    <div class="cert-title">Cisco Networking Academy — Enterprise Networking, Security, and Automation</div>
-                    <div class="cert-issuer">Cisco Networking Academy</div>
-                    <div class="cert-desc">OSPF routing, LAN/WAN architecture, Network Security, ACLs, and Network Automation.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/CCNA_Enterprise_Networking_Security_Automation.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/CCNA_Enterprise_Networking_Security_Automation.pdf', 'Cisco Networking Academy — Enterprise Networking, Security, and Automation')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 2: Cisco CCNA SRWE -->
-                <div class="cert-card" data-cat="cisco">
-                    <div class="cert-category-tag">CISCO & CYBERSECURITY</div>
-                    <div class="cert-title">Cisco Networking Academy — Switching, Routing, and Wireless Essentials</div>
-                    <div class="cert-issuer">Cisco Networking Academy</div>
-                    <div class="cert-desc">VLANs, STP, EtherChannel, WLANs, and IPv4/IPv6 routing fundamentals.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf', 'Cisco Networking Academy — Switching, Routing, and Wireless Essentials')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 3: Cisco Endpoint Security -->
-                <div class="cert-card" data-cat="cisco">
-                    <div class="cert-category-tag">CISCO & CYBERSECURITY</div>
-                    <div class="cert-title">Cisco Networking Academy — Endpoint Security</div>
-                    <div class="cert-issuer">Cisco Networking Academy</div>
-                    <div class="cert-desc">Securing endpoints, operating system security, antimalware defense, and threat analysis.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Endpoint_Security.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Endpoint_Security.pdf', 'Cisco Networking Academy — Endpoint Security')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 4: Cisco Cyber Threat Management -->
-                <div class="cert-card" data-cat="cisco">
-                    <div class="cert-category-tag">CISCO & CYBERSECURITY</div>
-                    <div class="cert-title">Cisco Networking Academy — Cyber Threat Management</div>
-                    <div class="cert-issuer">Cisco Networking Academy</div>
-                    <div class="cert-desc">Threat monitoring, incident response strategies, vulnerability analysis, and SOC operations.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Cyber_Threat_Management.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Cyber_Threat_Management.pdf', 'Cisco Networking Academy — Cyber Threat Management')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 5: Festo Professional Certificate -->
-                <div class="cert-card" data-cat="industrial">
-                    <div class="cert-category-tag">INDUSTRIAL AUTOMATION & TRAINING</div>
-                    <div class="cert-title">Festo Professional Certificate — Industrial Automation with AI in Manufacturing</div>
-                    <div class="cert-issuer">Festo Didactic & STDC</div>
-                    <div class="cert-desc">Industrial pneumatic systems, PLC signal flow, AI model training, predictive maintenance, and energy optimization.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Festo_Industrial_AI_Automation.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Festo_Industrial_AI_Automation.pdf', 'Festo Professional Certificate — Industrial Automation with AI in Manufacturing')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 6: Kursus Arduino -->
-                <div class="cert-card" data-cat="industrial">
-                    <div class="cert-category-tag">INDUSTRIAL AUTOMATION & TRAINING</div>
-                    <div class="cert-title">Kursus Arduino — Kolej Komuniti Selandar</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Practical hands-on training in microcontroller programming, sensor interfacing, and hardware prototyping.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Computer_Hardware_Cert.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Computer_Hardware_Cert.pdf', 'Kursus Arduino — Kolej Komuniti Selandar')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 7: Kursus Basic IoT (Restored #7) -->
-                <div class="cert-card" data-cat="industrial">
-                    <div class="cert-category-tag">INDUSTRIAL AUTOMATION & TRAINING</div>
-                    <div class="cert-title">Sijil Penyertaan — Kursus Basic IoT</div>
-                    <div class="cert-issuer">Kolej Komuniti Bukit Beruang</div>
-                    <div class="cert-desc">Fundamentals of Internet of Things, cloud connectivity, sensor integration, and smart device communication.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_IT_Support_Cert.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_IT_Support_Cert.pdf', 'Sijil Penyertaan — Kursus Basic IoT')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 8: Kursus Fiber Optik (Restored #8) -->
-                <div class="cert-card" data-cat="industrial">
-                    <div class="cert-category-tag">INDUSTRIAL AUTOMATION & TRAINING</div>
-                    <div class="cert-title">Sijil Penyertaan — Kursus Fiber Optik "Splicing & Polishing"</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Hands-on optical fiber fusion splicing, connector polishing, OTDR testing, and fiber link maintenance.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Technical_Workshop_Cert.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Technical_Workshop_Cert.pdf', 'Sijil Penyertaan — Kursus Fiber Optik "Splicing & Polishing"')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 9: Politeknik Diploma -->
-                <div class="cert-card" data-cat="academic">
-                    <div class="cert-category-tag">ACADEMIC QUALIFICATION</div>
-                    <div class="cert-title">Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson</div>
-                    <div class="cert-issuer">Politeknik Port Dickson</div>
-                    <div class="cert-desc">Graduated with 3.26 CGPA. Specialized in embedded systems, digital circuits, and computer hardware.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Politeknik_Diploma_Electronic_Computer.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Politeknik_Diploma_Electronic_Computer.pdf', 'Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 10: Kolej Komuniti Sijil -->
-                <div class="cert-card" data-cat="academic">
-                    <div class="cert-category-tag">ACADEMIC QUALIFICATION</div>
-                    <div class="cert-title">Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Graduated with 3.58 CGPA. Practical computer networking, server administration, and PC maintenance.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Sistem_Rangkaian.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Sistem_Rangkaian.pdf', 'Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 11: SPM 2016 -->
-                <div class="cert-card" data-cat="academic">
-                    <div class="cert-category-tag">ACADEMIC QUALIFICATION</div>
-                    <div class="cert-title">Sijil Pelajaran Malaysia (SPM 2016) — Lembaga Peperiksaan Malaysia</div>
-                    <div class="cert-issuer">Lembaga Peperiksaan Malaysia</div>
-                    <div class="cert-desc">National secondary education graduation certificate with strong credits in Mathematics, Science, and Technical subjects.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/SPM_Certificate.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/SPM_Certificate.pdf', 'Sijil Pelajaran Malaysia (SPM 2016) — Lembaga Peperiksaan Malaysia')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 12: INOTEK 2025 Third Place -->
-                <div class="cert-card" data-cat="awards">
-                    <div class="cert-category-tag">AWARDS & ACHIEVEMENTS</div>
-                    <div class="cert-title">INOTEK 2025 Innovation & Technology Competition (Third Place — IoT Weight Tracking System)</div>
-                    <div class="cert-issuer">UTeM Faculty of Electronics and Computer Technology</div>
-                    <div class="cert-desc">Awarded Third Place for the invention of Development of Livestock Weight Tracking System Based on IoT.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/UTeM_Degree_Computer_Engineering.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/UTeM_Degree_Computer_Engineering.pdf', 'INOTEK 2025 Innovation & Technology Competition (Third Place — IoT Weight Tracking System)')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 13: Anugerah Pelajar Terbaik Sesi Mac 2018 -->
-                <div class="cert-card" data-cat="awards">
-                    <div class="cert-category-tag">AWARDS & ACHIEVEMENTS</div>
-                    <div class="cert-title">Anugerah Pelajar Terbaik Semester (Sijil Sistem Komputer dan Rangkaian) Sesi Mac 2018</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Awarded Best Student Award for achieving highest academic and practical performance in cohort.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Best_Student_Award.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Best_Student_Award.pdf', 'Anugerah Pelajar Terbaik Semester (Sijil Sistem Komputer dan Rangkaian) Sesi Mac 2018')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 14: Anugerah Pengarah Sesi Nov 2017 -->
-                <div class="cert-card" data-cat="awards">
-                    <div class="cert-category-tag">AWARDS & ACHIEVEMENTS</div>
-                    <div class="cert-title">Anugerah Pengarah (Director's List Award) — Semester 2 Sesi November 2017</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Director's List Honor Certificate awarded for outstanding academic performance across semesters.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Director_List_Award.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Director_List_Award.pdf', 'Anugerah Pengarah (Director\'s List Award) — Semester 2 Sesi November 2017')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 15: Pelajar Cemerlang Matapelajaran (Restored #15) -->
-                <div class="cert-card" data-cat="awards">
-                    <div class="cert-category-tag">AWARDS & ACHIEVEMENTS</div>
-                    <div class="cert-title">Sijil Cemerlang — Pelajar Cemerlang Matapelajaran (Asas Komunikasi dan Rangkaian)</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Excellence award presented for achieving top grade in Basic Communication and Networking subject.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Network_Admin_Cert.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Network_Admin_Cert.pdf', 'Sijil Cemerlang — Pelajar Cemerlang Matapelajaran (Asas Komunikasi dan Rangkaian)')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 16: WiMyL Gold Award (Restored #16) -->
-                <div class="cert-card" data-cat="awards">
-                    <div class="cert-category-tag">AWARDS & ACHIEVEMENTS</div>
-                    <div class="cert-title">Sijil Penghargaan — WiMyL (Where Is My Lecturer) Gold Award</div>
-                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
-                    <div class="cert-desc">Gold Award winner for WiMyL (Where Is My Lecturer) project innovation showcase at Kolej Komuniti Selandar.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Kolej_Komuniti_Network_Maintenance_Cert.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Network_Maintenance_Cert.pdf', 'Sijil Penghargaan — WiMyL (Where Is My Lecturer) Gold Award')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 17: Askar Wataniah -->
-                <div class="cert-card" data-cat="experience">
-                    <div class="cert-category-tag">SERVICE & PROFESSIONAL EXPERIENCE</div>
-                    <div class="cert-title">Sijil Kursus Asas Perajurit Muda Sukarela (Siri 2/2019) — Rejimen 508 Askar Wataniah</div>
-                    <div class="cert-issuer">Rejimen 508 Askar Wataniah</div>
-                    <div class="cert-desc">Official army reserve service certificate demonstrating tactical training, high discipline, and stress resilience.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/Askar_Wataniah_Reserve_Service.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Askar_Wataniah_Reserve_Service.pdf', 'Sijil Kursus Asas Perajurit Muda Sukarela (Siri 2/2019) — Rejimen 508 Askar Wataniah')">View PDF 👁️</button>
-                    </div>
-                </div>
-
-                <!-- Cert 18: 7-Eleven -->
-                <div class="cert-card" data-cat="experience">
-                    <div class="cert-category-tag">SERVICE & PROFESSIONAL EXPERIENCE</div>
-                    <div class="cert-title">7-Eleven Malaysia Sdn Bhd (New Employee Training Program)</div>
-                    <div class="cert-issuer">7-Eleven Malaysia Sdn Bhd</div>
-                    <div class="cert-desc">Official completion certificate for retail operations, POS systems, customer service, and inventory procedures.</div>
-                    <div class="cert-actions">
-                        <a href="certificates/7Eleven_Work_Experience.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
-                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/7Eleven_Work_Experience.pdf', '7-Eleven Malaysia Sdn Bhd (New Employee Training Program)')">View PDF 👁️</button>
-                    </div>
-                </div>
+                <!-- Dynamically rendered from certificates/registry.json -->
             </div>
         </div>
     </section>
@@ -3957,6 +3743,76 @@ Natural conversation is ALWAYS the highest priority.
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
         })();
+    </script>
+
+    <!-- Canonical Certificate Registry Data Store & Dynamic Renderer -->
+    <script>
+      let CERT_REGISTRY = [];
+
+      async function loadCertRegistry() {
+        try {
+          const res = await fetch('certificates/registry.json');
+          if (res.ok) {
+            CERT_REGISTRY = await res.json();
+            renderCertGrid(CERT_REGISTRY);
+            updateFilterCounts(CERT_REGISTRY);
+          } else {
+            console.error('Failed to load certificates/registry.json');
+          }
+        } catch (e) {
+          console.error('Error fetching cert registry:', e);
+        }
+      }
+
+      function renderCertGrid(items) {
+        const container = document.getElementById('certs-grid-container');
+        if (!container) return;
+        container.innerHTML = items.map(c => `
+          <div class="cert-card" data-cat="${c.category}">
+              <div class="cert-category-tag">${c.category_label}</div>
+              <div class="cert-title">${c.title}</div>
+              <div class="cert-issuer">${c.issuer} • ${c.date}</div>
+              <div class="cert-actions" style="margin-top:auto; padding-top:1rem;">
+                  <a href="certificates/${c.filename}" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                  <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/${c.filename}', '${c.title.replace(/'/g, "\'")}')">View PDF 👁️</button>
+              </div>
+          </div>
+        `).join('');
+      }
+
+      function updateFilterCounts(items) {
+        const counts = {
+          all: items.length,
+          cisco: items.filter(c => c.category === 'cisco').length,
+          industrial: items.filter(c => c.category === 'industrial').length,
+          academic: items.filter(c => c.category === 'academic').length,
+          awards: items.filter(c => c.category === 'awards').length,
+          experience: items.filter(c => c.category === 'experience').length
+        };
+        const chipContainer = document.getElementById('cert-filter-chips');
+        if (!chipContainer) return;
+        chipContainer.innerHTML = `
+          <button class="filter-chip active" onclick="filterCerts('all')">All (${counts.all})</button>
+          <button class="filter-chip" onclick="filterCerts('cisco')">Cisco & Cybersecurity (${counts.cisco})</button>
+          <button class="filter-chip" onclick="filterCerts('industrial')">Industrial Automation & Technical Training (${counts.industrial})</button>
+          <button class="filter-chip" onclick="filterCerts('academic')">Academic Qualifications (${counts.academic})</button>
+          <button class="filter-chip" onclick="filterCerts('awards')">Awards & Achievements (${counts.awards})</button>
+          <button class="filter-chip" onclick="filterCerts('experience')">Service & Professional Experience (${counts.experience})</button>
+        `;
+      }
+
+      function filterCerts(cat) {
+        document.querySelectorAll('.filter-chip').forEach(b => {
+          b.classList.toggle('active', b.getAttribute('onclick').includes("('" + cat + "')"));
+        });
+        if (cat === 'all') {
+          renderCertGrid(CERT_REGISTRY);
+        } else {
+          renderCertGrid(CERT_REGISTRY.filter(c => c.category === cat));
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadCertRegistry);
     </script>
 </body>
 </html>
