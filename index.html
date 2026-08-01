@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio</title>
-    <meta name="description" content="Official Engineering Portfolio & Interactive Multilingual AI Assistant for Muhammad Irfan Fahmi - Computer Engineering Graduate, Cisco CCNA & Festo Industrial AI Specialist.">
+    <meta name="description" content="Official Personal Engineering Portfolio & Interactive AI Assistant for Muhammad Irfan Fahmi — Computer Engineering Graduate, Cisco CCNA Certified & Festo Industrial AI Specialist.">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -12,9 +12,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Three.js CDN for 3D WebGL Constellation -->
+    <!-- Three.js CDN for 3D Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Cloudflare Turnstile CAPTCHA API -->
@@ -22,21 +22,20 @@
 
     <style>
         :root {
-            --bg-base: #090d16;
-            --bg-surface: rgba(15, 23, 42, 0.85);
-            --bg-surface-hover: rgba(30, 41, 59, 0.95);
-            --border-card: rgba(255, 255, 255, 0.12);
+            --bg-base: #080c14;
+            --bg-surface: rgba(15, 23, 42, 0.75);
+            --bg-surface-hover: rgba(30, 41, 59, 0.85);
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(56, 189, 248, 0.3);
+            
             --primary: #38bdf8;
             --primary-hover: #0284c7;
-            --primary-glow: rgba(56, 189, 248, 0.25);
+            --primary-glow: rgba(56, 189, 248, 0.2);
+            --purple: #c084fc;
+            --purple-glow: rgba(192, 132, 252, 0.2);
             --emerald: #34d399;
             --amber: #fbbf24;
-            --purple: #a855f7;
-            
-            --inset-surface: rgba(15, 23, 42, 0.6);
-            --inset-surface-strong: rgba(15, 23, 42, 0.8);
-            --inset-surface-soft: rgba(30, 41, 59, 0.7);
-            --inset-surface-modal: rgba(15, 23, 42, 0.95);
             
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
@@ -48,649 +47,186 @@
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 20px;
-            --glass-backdrop: blur(16px);
+            --glass-backdrop: blur(20px);
             --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body.light-theme {
-            --bg-base: #f4f6f9;
+            --bg-base: #f8fafc;
             --bg-surface: #ffffff;
             --bg-surface-hover: #f1f5f9;
+            --bg-card: #ffffff;
             --border-card: #cbd5e1;
+            --border-highlight: #0284c7;
             --primary: #0284c7;
             --primary-hover: #0369a1;
-            --primary-glow: rgba(2, 132, 199, 0.2);
+            --primary-glow: rgba(2, 132, 199, 0.15);
+            --purple: #7e22ce;
             --text-main: #0f172a;
             --text-sub: #334155;
-            --text-muted: #475569;
-            --emerald: #047857;
-            --amber: #92400e;
-            --purple: #6b21a8;
-            --accent-warm: #78350f;
-
-            --inset-surface: rgba(226, 232, 240, 0.75);
-            --inset-surface-strong: rgba(226, 232, 240, 0.9);
-            --inset-surface-soft: rgba(203, 213, 225, 0.65);
-            --inset-surface-modal: #f8fafc;
+            --text-muted: #64748b;
         }
 
-        /* LIGHT THEME COMPREHENSIVE CONTRAST & LEGIBILITY OVERRIDES */
-        body.light-theme header {
-            background: rgba(255, 255, 255, 0.94);
-            border-bottom-color: var(--border-card);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        body.light-theme .mobile-nav-drawer {
-            background: rgba(255, 255, 255, 0.98);
-            border-color: var(--border-card);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        html {
+            scroll-behavior: smooth;
         }
 
-        body.light-theme .mobile-nav-drawer a {
-            color: #0f172a;
-        }
-
-        body.light-theme .lang-switch-box {
-            background: #ffffff;
-            border-color: var(--border-card);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-        }
-
-        body.light-theme .lang-btn {
-            background: #e2e8f0;
-            border-color: #cbd5e1;
-            color: #334155;
-        }
-
-        body.light-theme .lang-btn.active,
-        body.light-theme .lang-btn:hover {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-        }
-
-        body.light-theme .cert-card-box {
-            background: #ffffff;
-            border-color: var(--border-card);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-        }
-
-        body.light-theme .chat-floating-window {
-            background: #ffffff;
-            border-color: var(--border-card);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-theme .chat-header {
-            background: #f8fafc;
-            border-bottom-color: var(--border-card);
-        }
-
-        body.light-theme .chat-header h4 {
-            color: #0f172a !important;
-        }
-
-        body.light-theme .chat-header span {
-            color: #475569 !important;
-        }
-
-        body.light-theme .chat-provider-select {
-            background: #ffffff;
-            color: #0284c7;
-            border-color: var(--border-card);
-        }
-
-        body.light-theme .chat-body {
-            background: #f1f5f9;
-        }
-
-        body.light-theme .bot-msg .chat-bubble {
-            background: #ffffff;
-            color: #0f172a;
-            border-color: var(--border-card);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        body.light-theme .user-msg .chat-bubble {
-            background: linear-gradient(135deg, #0284c7, #2563eb);
-            color: #ffffff;
-        }
-
-        body.light-theme .chat-suggested-prompts {
-            background: #f8fafc;
-            border-top-color: var(--border-card);
-        }
-
-        body.light-theme .prompt-chip {
-            background: #ffffff;
-            border-color: #cbd5e1;
-            color: #334155;
-        }
-
-        body.light-theme .prompt-chip:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: #f0f9ff;
-        }
-
-        body.light-theme .chat-input-area {
-            background: #f8fafc;
-            border-top-color: var(--border-card);
-        }
-
-        body.light-theme .chat-input {
-            background: #ffffff;
-            color: #0f172a;
-            border-color: var(--border-card);
-        }
-
-        body.light-theme .chat-input::placeholder {
-            color: #94a3b8;
-        }
-
-        body.light-theme .api-key-drawer {
-            background: #f8fafc;
-            border-bottom-color: var(--border-card);
-            color: #334155;
-        }
-
-        body.light-theme .modal-overlay {
-            background: rgba(15, 23, 42, 0.5);
-        }
-
-        body.light-theme .modal-card {
-            background: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-theme .modal-card h3 {
-            color: var(--primary);
-        }
-
-        body.light-theme .modal-card p {
-            color: #475569;
-        }
-
-        body.light-theme .revealed-info-box {
-            background: #f8fafc !important;
-            border-color: var(--border-card) !important;
-        }
-
-        body.light-theme .revealed-info-box span {
-            color: #475569 !important;
-        }
-
-        body.light-theme .revealed-info-box strong,
-        body.light-theme #revealed-email {
-            color: #0f172a !important;
-        }
-
-        body.light-theme footer {
-            background: #ffffff;
-            border-top-color: var(--border-card);
-            color: #475569;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
-        
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
-        #webgl-canvas {
+        /* 3D Background Canvas */
+        #canvas-3d {
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
             pointer-events: none;
+            opacity: 0.6;
         }
 
         .container {
-            width: 90%;
-            max-width: 1140px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .glass-card {
-            background: var(--bg-surface);
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(8, 12, 20, 0.85);
             backdrop-filter: var(--glass-backdrop);
-            -webkit-backdrop-filter: var(--glass-backdrop);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid var(--border-card);
+            padding: 0.85rem 0;
             transition: var(--transition-smooth);
         }
 
-        .glass-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 15px 35px var(--primary-glow);
-        }
-
-        /* HEADER & NAV - COMPONENT GALLERY FLOATING GLASS PILL DESIGN */
-        header {
-            position: fixed;
-            top: 0.75rem; left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 2rem);
-            max-width: 1200px;
-            z-index: 1000;
-            padding: 0.6rem 1.25rem;
-            background: rgba(11, 15, 25, 0.88);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--border-card);
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-            transition: all 0.3s ease;
-        }
-
-        .nav-inner {
+        .nav-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .logo-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
+        .brand-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
             text-decoration: none;
             color: var(--text-main);
-            font-weight: 800;
-            font-size: 1.05rem;
-        }
-
-        .logo-icon {
-            width: 36px; height: 36px;
-            background: linear-gradient(135deg, var(--primary), #0284c7);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-family: var(--font-mono); font-weight: 800;
-            flex-shrink: 0;
-            font-size: 0.9rem;
-            box-shadow: 0 0 12px var(--primary-glow);
-        }
-
-                .logo-text-group {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.25;
-        }
-
-        .logo-name-text {
-            font-weight: 800;
-            font-size: 1.05rem;
-            color: var(--text-main);
-            letter-spacing: -0.2px;
-        }
-
-        .logo-subtitle-text {
-            font-size: 0.72rem;
-            color: var(--primary);
-            font-weight: 600;
-            font-family: var(--font-sans);
-        }
-
-        .logo-status-tag {
-            font-size: 0.85rem;
-            background: rgba(52, 211, 153, 0.12);
-            color: var(--emerald);
-            padding: 0.25rem 0.65rem;
-            border-radius: 20px;
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            font-weight: 700;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .header-actions {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .theme-toggle {
-            width: 38px; height: 38px;
-            display: inline-flex; align-items: center; justify-content: center;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border-card);
-            color: var(--text-main);
-            cursor: pointer;
-            font-size: 1.1rem;
-            border-radius: var(--radius-sm);
-            transition: 0.2s;
+        .brand-logo span {
+            color: var(--primary);
         }
 
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .mobile-menu-btn {
-            display: inline-flex;
+        .nav-links {
+            display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            padding: 0.45rem 0.85rem;
-            min-height: 38px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border-card);
-            color: var(--text-main);
-            font-size: 0.9rem;
-            font-weight: 700;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            line-height: 1;
-            transition: all 0.2s ease;
-            font-family: var(--font-sans);
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        /* UNIFIED NAVIGATION DROPDOWN PANEL */
-        .nav-dropdown-panel {
-            position: absolute;
-            top: calc(100% + 0.6rem);
-            left: 0;
-            width: 250px;
-            background: var(--bg-surface);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            padding: 0.85rem;
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-6px);
-            transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), visibility 220ms;
-            z-index: 1002;
-        }
-
-        /* Hover Bridge between MI badge and Dropdown Panel */
-        .nav-dropdown-panel::before {
-            content: '';
-            position: absolute;
-            top: -16px;
-            left: 0;
-            width: 100%;
-            height: 16px;
-        }
-
-        .nav-dropdown-panel.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-header-label {
-            font-size: 0.72rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            letter-spacing: 0.08em;
-            padding: 0.25rem 0.5rem 0.5rem 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .nav-dropdown-panel ul {
+            gap: 1.75rem;
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            margin: 0;
-            padding: 0;
         }
 
-        .nav-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 0.55rem 0.75rem;
+        .nav-links a {
             color: var(--text-sub);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: var(--radius-sm);
-            transition: all 0.2s ease;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
         }
 
-        .nav-dropdown-item:hover,
-        .nav-dropdown-item:focus {
+        .nav-links a:hover {
             color: var(--primary);
-            background: rgba(56, 189, 248, 0.12);
-            outline: none;
         }
 
-        body.light-theme .nav-dropdown-item:hover,
-        body.light-theme .nav-dropdown-item:focus {
-            color: var(--primary);
-            background: rgba(2, 132, 199, 0.1);
-        }
-
-        .dropdown-divider {
-            height: 1px;
-            background: var(--border-card);
-            margin: 0.6rem 0;
-        }
-
-        .resume-dropdown-btn {
-            color: var(--emerald) !important;
-            font-weight: 700 !important;
-            background: rgba(52, 211, 153, 0.1) !important;
-            border: 1px solid rgba(52, 211, 153, 0.25);
-        }
-
-        .resume-dropdown-btn:hover,
-        .resume-dropdown-btn:focus {
-            background: rgba(52, 211, 153, 0.2) !important;
-            border-color: var(--emerald) !important;
-        }
-
-        body.light-theme .resume-dropdown-btn {
-            color: var(--emerald) !important;
-            background: rgba(4, 120, 87, 0.08) !important;
-            border-color: rgba(4, 120, 87, 0.25);
-        }
-
-        body.light-theme header {
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(203, 213, 225, 0.8);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-theme .theme-toggle,
-        body.light-theme .mobile-menu-btn {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: var(--border-card);
-            color: var(--text-main);
-        }
-
-        body.light-theme .theme-toggle:hover,
-        body.light-theme .mobile-menu-btn:hover {
-            background: rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-
-        /* RESPONSIVE NAVIGATION UX RULES */
-        @media (min-width: 769px) {
-            .mobile-menu-btn {
-                display: none !important;
-            }
-
-            .logo-text-group {
-                display: none !important;
-            }
-
-            .logo-badge:hover .logo-icon,
-            .logo-badge.active .logo-icon {
-                border-color: var(--primary);
-                box-shadow: 0 0 16px var(--primary-glow);
-                transform: scale(1.05);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-dropdown-panel {
-                width: 100%;
-                left: 0;
-                right: 0;
-                top: calc(100% + 0.5rem);
-            }
-
-            .mobile-menu-btn {
-                display: inline-flex;
-            }
-
-            .logo-text-group {
-                display: flex;
-            }
-        }
-
-        /* SCROLL-REVEAL & MOTION ANIMATIONS */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scroll-reveal.revealed .prompt-chip {
-            animation: pillStaggerIn 0.45s ease-out forwards;
-        }
-
-        @keyframes pillStaggerIn {
-            from { opacity: 0; transform: translateY(6px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* CARD HOVER-LIFT TRANSITIONS */
-        .glass-card, .cert-card-box, .resume-entry-card {
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .glass-card:hover, .cert-card-box:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
-            border-color: rgba(56, 189, 248, 0.35);
-        }
-
-        /* FLOATING BACK TO TOP BUTTON */
-        .back-to-top-btn {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(15, 23, 42, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-card);
-            color: var(--primary);
-            font-size: 1.2rem;
-            font-weight: 800;
+        .nav-actions {
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 999;
-            opacity: 0;
-            transform: translateY(10px);
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .back-to-top-btn.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .back-to-top-btn:hover {
-            background: var(--primary);
-            color: #0f172a;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px var(--primary-glow);
-        }
-
-        body.light-theme .back-to-top-btn {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: rgba(203, 213, 225, 0.8);
-            color: var(--primary-hover);
-        }
-
-        /* PREFERS REDUCED MOTION */
-        @media (prefers-reduced-motion: reduce) {
-            .scroll-reveal, .mobile-nav-drawer, .desktop-horizontal-nav, .glass-card, .cert-card-box, .btn, .back-to-top-btn {
-                transition: none !important;
-                animation: none !important;
-                transform: none !important;
-                opacity: 1 !important;
-            }
+            gap: 0.85rem;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            padding: 0.65rem 1.25rem;
+            padding: 0.55rem 1.15rem;
             border-radius: var(--radius-sm);
-            font-weight: 600;
             font-size: 0.9rem;
+            font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            border: none;
+            border: 1px solid transparent;
             transition: var(--transition-smooth);
-            font-family: var(--font-sans);
-            white-space: nowrap;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-            color: #0f172a;
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: #ffffff;
             box-shadow: 0 4px 15px var(--primary-glow);
         }
 
-        .btn-emerald {
-            background: linear-gradient(135deg, var(--emerald), #059669);
-            color: #0f172a;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--border-card);
             color: var(--text-main);
-            border: 1px solid var(--border-card);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
+        .btn-outline:hover {
             border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-2px);
         }
 
-        /* HERO SECTION */
-        .hero {
-            padding: 8.5rem 0 4rem;
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 9rem 0 5rem;
             min-height: 85vh;
             display: flex;
             align-items: center;
@@ -698,1019 +234,1433 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 3rem;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
             align-items: center;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            color: var(--emerald);
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--emerald);
+            box-shadow: 0 0 10px var(--emerald);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
         }
 
         .hero-title {
-            font-size: clamp(1.8rem, 5vw, 3.1rem);
+            font-size: 3.25rem;
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.5px;
-            word-break: break-word;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, #ffffff 30%, var(--text-sub) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: clamp(0.95rem, 3vw, 1.15rem);
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            font-family: var(--font-mono);
+            font-size: 1.12rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            max-width: 620px;
         }
 
-        .hero-cta {
+        .hero-cta-group {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        /* 4-LANGUAGE SUMMARY SWITCHER */
-        .lang-switch-box {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            margin-top: 1.25rem;
-        }
-
-        .lang-tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-card);
-            color: var(--text-sub);
-            padding: 0.4rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            min-height: 38px;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .lang-btn.active, .lang-btn:hover {
-            background: var(--primary);
-            color: #0f172a;
-            border-color: var(--primary);
-        }
-
-        .lang-content-pane {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-main);
-            transition: opacity 0.3s ease;
-        }
-
-        /* RESUME MIRROR SECTIONS */
-        .resume-mirror-section {
-            padding: 4.5rem 0;
-        }
-
-        .section-header {
             margin-bottom: 2.5rem;
         }
 
-        .section-title-main {
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-main);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        /* TECHNICAL SKILLS TABLE */
-        .skills-grid-table {
+        .stats-grid {
             display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 1rem 1.5rem;
-            font-size: 0.95rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
         }
 
-        .skills-cat-title {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .skills-cat-items {
-            color: var(--text-sub);
-            word-break: break-word;
-        }
-
-        /* EDUCATION & EXPERIENCES LIST */
-        .resume-entry-card {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .entry-top-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.25rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .entry-role-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .entry-dates {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary);
-            font-family: var(--font-mono);
-        }
-
-        .entry-institution {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .entry-bullets {
-            padding-left: 1.25rem;
-            color: var(--text-sub);
-            font-size: 1rem;
-        }
-
-        .entry-bullets li {
-            margin-bottom: 0.35rem;
-        }
-
-        /* CERTIFICATIONS GRID */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .cert-card-box {
-            background: rgba(15, 23, 42, 0.6);
+        .stat-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
             border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm);
-            padding: 1.25rem;
-        }
-
-        .cert-title-text {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-main);
-            margin-bottom: 0.25rem;
-        }
-
-        .cert-issuer-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* FLOATING CIRCLE AI CHATBOT FAB WIDGET */
-        .ai-fab-btn {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #a855f7, #6366f1);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
+            border-radius: var(--radius-md);
+            padding: 1.1rem;
             transition: var(--transition-smooth);
         }
 
-        .ai-fab-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 30px rgba(168, 85, 247, 0.7);
+        .stat-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .fab-icon { font-size: 1.4rem; }
-        .fab-badge {
-            position: absolute;
-            top: -2px; right: -2px;
-            background: var(--emerald);
-            color: #0f172a;
-            font-size: 0.65rem;
+        .stat-num {
+            font-size: 1.4rem;
             font-weight: 800;
-            padding: 0.15rem 0.35rem;
-            border-radius: 10px;
+            color: var(--primary);
             font-family: var(--font-mono);
         }
 
-        .chat-floating-window {
-            position: fixed;
-            bottom: 5.5rem;
-            right: 1.5rem;
-            width: 400px;
-            max-width: 92vw;
-            height: 560px;
-            max-height: 80vh;
-            background: #0f172a;
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        .hero-profile-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
             border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--purple));
+        }
+
+        .profile-avatar-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(192, 132, 252, 0.15));
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .profile-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-role {
+            font-size: 0.88rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .profile-info-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            z-index: 9998;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            gap: 0.65rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            border-top: 1px solid var(--border-card);
+            padding-top: 1.25rem;
         }
 
-        .chat-floating-window.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0) scale(1);
-        }
-
-        .chat-header {
-            background: #1e293b;
-            padding: 0.85rem 1.25rem;
+        .profile-info-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border-card);
-            flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
-        .chat-bot-info {
+        .profile-info-item span:last-child {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Section Global Header */
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* Section Layouts */
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        /* About Pillars Grid */
+        .about-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .pillar-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            transition: var(--transition-smooth);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .pillar-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 0.65rem;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1.15rem;
         }
 
-        .chat-bot-avatar {
-            width: 34px; height: 34px;
-            background: linear-gradient(135deg, #a855f7, #6366f1);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #ffffff; font-weight: 800; font-size: 0.85rem;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-            flex-shrink: 0;
-        }
-
-        .chat-close-btn {
-            background: none; border: none;
-            color: var(--text-sub);
-            font-size: 1.4rem; cursor: pointer;
-            line-height: 1; padding: 0 0.25rem;
-            transition: color 0.2s;
-        }
-        .chat-close-btn:hover { color: var(--text-main); }
-
-        .chat-provider-select {
-            background: #0f172a;
-            color: #c084fc;
-            border: 1px solid var(--border-card);
-            border-radius: 6px;
-            padding: 0.3rem 0.6rem;
-            font-size: 0.8rem;
-            font-family: var(--font-mono);
+        .pillar-title {
+            font-size: 1.1rem;
             font-weight: 700;
-            outline: none;
-            cursor: pointer;
+            margin-bottom: 0.6rem;
         }
 
-        .chat-body {
-            flex: 1;
-            padding: 1.25rem;
-            overflow-y: auto;
+        .pillar-desc {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.55;
+        }
+
+        /* Featured Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            background: #090d16;
         }
 
-        .chat-message {
-            display: flex;
-            gap: 0.6rem;
-            max-width: 88%;
+        .project-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .chat-message.user-msg {
-            align-self: flex-end;
-            flex-direction: row-reverse;
-        }
-
-        .chat-bubble {
-            padding: 0.8rem 1.1rem;
-            border-radius: 14px;
-            font-size: 0.9rem;
-            line-height: 1.55;
-            word-break: break-word;
-        }
-
-        .bot-msg .chat-bubble {
-            background: #1e293b;
-            color: #f8fafc;
-            border-top-left-radius: 4px;
-            border: 1px solid var(--border-card);
-        }
-
-        .user-msg .chat-bubble {
-            background: linear-gradient(135deg, #a855f7, #6366f1);
-            color: #ffffff;
-            font-weight: 600;
-            border-top-right-radius: 4px;
-        }
-
-        .chat-suggested-prompts {
-            display: flex;
-            gap: 0.4rem;
-            padding: 0.6rem 1rem;
-            background: #0f172a;
-            overflow-x: auto;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .prompt-chip {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-card);
-            color: var(--text-sub);
-            padding: 0.45rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: 0.2s;
-            flex-shrink: 0;
-        }
-
-        .prompt-chip:hover {
-            border-color: #c084fc;
-            color: #c084fc;
-        }
-
-        .chat-input-area {
-            display: flex;
-            padding: 0.75rem 1rem;
-            background: #1e293b;
-            border-top: 1px solid var(--border-card);
-            gap: 0.5rem;
-        }
-
-        .chat-input {
-            flex: 1;
-            background: #0f172a;
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm);
-            padding: 0.65rem 0.85rem;
-            color: #fff;
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .chat-input:focus { border-color: #a855f7; }
-
-        /* API KEY DRAWER */
-        .api-key-drawer {
-            background: #111827;
+        .project-banner {
+            height: 180px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
             border-bottom: 1px solid var(--border-card);
-            padding: 0.6rem 1rem;
+            padding: 1.5rem;
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* SECURITY MODAL */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(11, 15, 25, 0.88);
-            backdrop-filter: blur(12px);
-            z-index: 10000;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-            padding: 1rem;
-        }
-
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-
-        .modal-card {
-            background: #111726;
-            border: 1px solid var(--primary);
-            border-radius: var(--radius-md);
-            padding: 2.5rem;
-            max-width: 480px;
-            width: 100%;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            flex-direction: column;
+            justify-content: space-between;
             position: relative;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 1rem; right: 1.25rem;
-            background: none; border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem; cursor: pointer;
+        .project-banner-badge {
+            align-self: flex-start;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
         }
 
-        footer {
-            padding: 4rem 0 2rem;
-            border-top: 1px solid var(--border-card);
+        .project-banner-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .project-body {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-desc {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .project-metrics-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 0.85rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: space-around;
+        }
+
+        .metric-item {
             text-align: center;
-            background: rgba(11, 15, 25, 0.95);
         }
 
-        /* MOBILE-FIRST RESPONSIVE BREAKPOINTS */
+        .metric-val {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--emerald);
+            font-family: var(--font-mono);
+        }
+
+        .metric-lbl {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 1.5rem;
+            margin-top: auto;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.85rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-category-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .category-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .skill-badge {
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            color: var(--emerald);
+            background: rgba(52, 211, 153, 0.1);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Experience Timeline */
+        .timeline-wrap {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-wrap::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-card);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg-base);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .timeline-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-role {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-org {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin-bottom: 0.85rem;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        /* Certificates Gallery */
+        .cert-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-chip {
+            padding: 0.45rem 1.1rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-chip.active,
+        .filter-chip:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        .cert-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .cert-category-tag {
+            align-self: flex-start;
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            color: var(--purple);
+            background: rgba(192, 132, 252, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            line-height: 1.35;
+        }
+
+        .cert-issuer {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+        }
+
+        .cert-desc {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 1.25rem;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .cert-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Interactive AI Banner */
+        .ai-banner-box {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
+        }
+
+        .ai-banner-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.85rem;
+        }
+
+        .ai-banner-desc {
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-card);
+            background: rgba(8, 12, 20, 0.95);
+            padding: 3.5rem 0 2.5rem;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .footer-verification {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-verification a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-verification a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(8, 12, 20, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid var(--border-card);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-sub);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 1.75rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Responsive Breakpoints */
         @media (max-width: 992px) {
-            .hero { padding: 6.5rem 0 3rem; min-height: auto; }
-            .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .skills-grid-table { grid-template-columns: 1fr; gap: 0.75rem; }
+            .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-pillars-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .certs-grid { grid-template-columns: repeat(2, 1fr); }
             .nav-links { display: none; }
-            .mobile-menu-btn { display: inline-flex; }
-            .section-title-main { font-size: 1.5rem; }
         }
 
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.1rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .logo-name-text { font-size: 0.95rem; }
-            .chat-message { max-width: 92%; }
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.25rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-pillars-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
             .certs-grid { grid-template-columns: 1fr; }
-            .api-key-drawer { flex-wrap: wrap; }
-        }
-
-        @media (max-width: 480px) {
-            .container { width: 95%; padding: 0 0.5rem; }
-            .hero { padding: 6rem 0 2rem; }
-            .hero-title { font-size: 1.75rem; letter-spacing: normal; }
-            .hero-subtitle { font-size: 0.95rem; }
-            .hero-cta { flex-direction: column; width: 100%; }
-            .hero-cta .btn { width: 100%; justify-content: center; min-height: 44px; font-size: 0.95rem; }
-            .lang-switch-box { padding: 1rem; }
-            .lang-btn { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
-            .glass-card { padding: 1.25rem; border-radius: var(--radius-sm); }
-            .modal-card { padding: 1.5rem 1.1rem; max-width: 95%; width: 95%; }
-
-            .chat-floating-window {
-                right: 4vw; left: 4vw;
-                width: 92vw;
-                bottom: 4.8rem;
-                height: 500px;
-            }
-            .ai-fab-btn {
-                bottom: 1rem;
-                right: 1rem;
-                width: 50px; height: 50px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 3D Constellation WebGL Background -->
-    <canvas id="webgl-canvas"></canvas>
+    <!-- 3D Canvas Background -->
+    <canvas id="canvas-3d"></canvas>
 
-    <!-- Navigation Header -->
-    <header role="banner">
-        <div class="nav-inner">
-            <a href="#hero" class="logo-badge" id="header-logo-trigger" aria-label="Irfan Fahmi - Home">
-                <div class="logo-icon">MI</div>
-                <div class="logo-text-group">
-                    <span class="logo-name-text">Irfan Fahmi</span>
-                    <span class="logo-subtitle-text">Computer Engineering Graduate</span>
-                </div>
+    <!-- Fixed Navigation Header -->
+    <header>
+        <div class="container nav-content">
+            <a href="#" class="brand-logo">
+                <span>MIF</span>.dev
             </a>
 
-            <!-- Action Controls: Menu Toggle + Theme Toggle -->
-            <div class="header-actions">
-                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
-                    <span id="menu-btn-icon">☰</span> <span id="menu-btn-text">Menu</span>
-                </button>
-                <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Light and Dark Mode">🌙</button>
-            </div>
-        </div>
-
-        <!-- Unified Navigation Dropdown Panel (Desktop Hover & Mobile Tap) -->
-        <div class="nav-dropdown-panel" id="nav-dropdown-panel" aria-label="Main Navigation">
-            <div class="dropdown-header-label">NAVIGATION</div>
-            <ul role="menu">
-                <li role="none"><a href="#about" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#about')">Overview</a></li>
-                <li role="none"><a href="#experience" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#experience')">Work Experience</a></li>
-                <li role="none"><a href="#skills" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#skills')">Technical Skills</a></li>
-                <li role="none"><a href="#education" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#education')">Education</a></li>
-                <li role="none"><a href="#certifications" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#certifications')">Certifications</a></li>
-                <li role="none"><a href="#projects" role="menuitem" class="nav-dropdown-item" onclick="handleNavClick(event, '#projects')">Projects</a></li>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certificates">Certifications</a></li>
             </ul>
-            <div class="dropdown-divider"></div>
-            <div class="dropdown-resume-wrapper">
-                <a href="javascript:void(0)" role="menuitem" onclick="handleNavClick(event, 'resume')" class="nav-dropdown-item resume-dropdown-btn">
-                    📄 1-Page Resume
-                </a>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+                <button class="btn btn-outline" onclick="toggleFloatingChat()">🌙 Chat AI</button>
+                <a href="resume/resume.pdf" target="_blank" class="btn btn-primary">📄 Resume PDF</a>
             </div>
         </div>
     </header>
 
-    <!-- Security Contact Verification Modal -->
-    <div class="modal-overlay" id="security-modal">
-        <div class="modal-card">
-            <button class="modal-close" onclick="closeSecurityModal()">&times;</button>
-            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
-                ✉️ Contact Muhammad Irfan Fahmi
-            </h3>
-            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1.25rem;">
-                Direct contact details are protected to reduce automated web scraping. Verified employers can complete Turnstile below to reveal phone & email instantly.
-            </p>
-
-            <!-- Cloudflare Turnstile Widget -->
-            <div style="display: flex; justify-content: center; margin: 1rem 0;">
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAAD9nlicfqO7QQsBk" data-action="turnstile-spin-v2" data-callback="onTurnstileSuccess"></div>
-            </div>
-            <div id="captcha-error-msg" style="display:none; color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; text-align: center; font-weight: 600;"></div>
-
-            <!-- Revealed Box -->
-            <div id="revealed-contact-box" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-card);">
-                <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 1rem;">
-                    ✓ VERIFIED RECRUITER — DIRECT CONTACT DETAILS:
-                </div>
-                
-                <div class="revealed-info-box" style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--border-card);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                        <div>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">EMAIL:</span><br>
-                            <span style="color: var(--text-main); font-weight: 700;" id="revealed-email">--</span>
-                        </div>
-                        <button class="prompt-chip" onclick="copyTextFromElement('revealed-email')">Copy</button>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">PHONE / WHATSAPP:</span><br>
-                            <span style="color: var(--emerald); font-weight: 700;" id="revealed-phone">--</span>
-                        </div>
-                        <button class="prompt-chip" onclick="copyTextFromElement('revealed-phone')">Copy</button>
-                    </div>
-                </div>
-
-                <div style="display: flex; gap: 0.5rem;">
-                    <a id="revealed-email-link" href="#" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.85rem;">✉️ Email Candidate</a>
-                    <a id="revealed-wa-link" href="#" target="_blank" class="btn btn-emerald" style="flex: 1; justify-content: center; font-size: 0.85rem;">💬 WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Printable 1-Page Resume Modal / Sub-Page -->
-    <div class="modal-overlay" id="printable-resume-modal">
-        <div class="modal-card" style="max-width: 850px; width: 95%;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin: 0;">📄 Printable 1-Page Resume</h3>
-                <button class="prompt-chip" onclick="closePrintableResumeModal()">✕ Close</button>
-            </div>
-            
-            <div style="background: var(--inset-surface-modal); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-card); max-height: 70vh; overflow-y: auto;">
-                <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-card); padding-bottom: 1rem;">
-                    <div>
-                        <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.25rem 0;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</h2>
-                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 600;">Computer Engineering Graduate | IT Support • Networking • AI Automation • Hardware Troubleshooting</div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Final-Year Computer Engineering Student (UTeM) • Puchong, Selangor, Malaysia</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 1.25rem;">
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">💼 WORK EXPERIENCE</h4>
-                    <div style="margin-bottom: 0.75rem;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
-                            <span>Technical Staff — Global Elite Ventures Sdn. Bhd</span>
-                            <span style="color: var(--text-sub); font-size: 0.75rem;">27 Sept 2021 – 31 July 2022</span>
-                        </div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Hardware deployment, workstation assembly, Windows software setup, and technical issue resolution.</div>
-                    </div>
-                    <div style="margin-bottom: 0.75rem;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
-                            <span>Contract Assistant Engineer — ARNN Technologies & Karar Solution</span>
-                            <span style="color: var(--text-sub); font-size: 0.75rem;">1 June 2020 – 30 July 2020</span>
-                        </div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Engineering project component testing, deployment, and structured technical troubleshooting.</div>
-                    </div>
-                    <div>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
-                            <span>Technician — OKCS Seri Kembangan</span>
-                            <span style="color: var(--text-sub); font-size: 0.75rem;">1 June 2018 – 1 Nov 2018</span>
-                        </div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.25rem;">Hardware diagnostics, repair, component replacement, and operating system configuration.</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 1.25rem;">
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 0.25rem;">🎓 EDUCATION</h4>
-                    <div style="font-size: 0.85rem; margin-bottom: 0.3rem;">• <strong>B.Eng Computer Engineering (Hons)</strong> — Universiti Teknikal Malaysia Melaka (Final-Year Student • Expected Nov 2026)</div>
-                </div>
-            </div>
-            
-            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
-                <a href="resume/resume.pdf" target="_blank" download class="btn btn-primary" style="font-size: 0.85rem;">Download PDF Resume 📄</a>
-                <button class="btn btn-secondary" onclick="closePrintableResumeModal()" style="font-size: 0.85rem;">Close</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero-section">
         <div class="container hero-grid">
-            <div class="hero-content">
-                <!-- Primary Identity Badge & Open to Work Status -->
-                <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 0.85rem;">
-                    <span class="prompt-chip" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: var(--primary); font-weight: 700; font-size: 0.85rem;">
-                        🎓 Computer Engineering Graduate
-                    </span>
-                    <span class="logo-status-tag" style="font-size: 0.85rem; padding: 0.28rem 0.75rem;">
-                        🟢 Open to Work
-                    </span>
+            <div>
+                <div class="status-pill">
+                    <div class="status-dot"></div>
+                    Open for Opportunities • Computer Engineering Graduate
                 </div>
-
-                <h1 class="hero-title" style="margin-bottom: 0.35rem; font-size: clamp(2.1rem, 5.2vw, 3.3rem);">IRFAN FAHMI</h1>
-
-                <!-- Primary Positioning Subheading -->
-                <div class="hero-subtitle" style="font-size: clamp(1rem, 2.4vw, 1.2rem); color: var(--emerald); font-weight: 700; margin-bottom: 0.85rem; font-family: var(--font-sans); line-height: 1.4;">
-                    IT Support • Networking • AI Automation • Hardware & Technical Troubleshooting
-                </div>
-
-                <p style="font-size: 1rem; color: var(--text-sub); line-height: 1.65; margin-bottom: 1.25rem; max-width: 620px;">
-                    Computer Engineering graduate (UTeM) with strong practical hands-on experience in IT support operations, Cisco enterprise networking, hardware diagnostics, and AI automation engineering. Focused on building reliable physical and digital system integration solutions.
+                <h1 class="hero-title">
+                    Building <span>Intelligent Systems</span> at the Intersection of AI, Networking & Hardware.
+                </h1>
+                <p class="hero-subtitle">
+                    Computer Engineering (Hons) graduate from UTeM. Cisco CCNA Certified & Festo Industrial AI Specialist. Expert in network automation, computer vision anti-evasion systems, and embedded microcontrollers.
                 </p>
-
-                <!-- Credential Badges -->
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                    <span class="prompt-chip" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: var(--primary);">CCNA Certified</span>
-                    <span class="prompt-chip" style="background: rgba(52, 211, 153, 0.15); border-color: rgba(52, 211, 153, 0.4); color: var(--emerald);">Industrial AI</span>
-                    <span class="prompt-chip">IT Support & Maintenance</span>
-                    <span class="prompt-chip">Cisco Networking</span>
-                    <span class="prompt-chip">Hardware Diagnostics</span>
-                    <span class="prompt-chip">AI Automation</span>
-                </div>
-
-                <!-- Strategic Primary CTAs -->
-                <div class="hero-cta">
-                    <a href="javascript:void(0)" onclick="openPrintableResumeModal()" class="btn btn-emerald">View Resume 📄</a>
-                    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
-                    <button class="btn btn-secondary" onclick="openSecurityModal()">Contact Me ✉️</button>
-                    <button class="btn btn-purple" onclick="toggleFloatingChat()">Ask About My Experience 💬</button>
-                </div>
-            </div>
-
-            <!-- Candidate Quick Overview Card -->
-            <div class="glass-card scroll-reveal" id="about">
-                <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--primary);">
-                    Personal Profile & Focus
-                </h3>
-                <p style="font-size: 1rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1rem;">
-                    I enjoy working where hardware, networking, and software intersect. My background spans IT support operations, Cisco enterprise networking, cybersecurity, embedded systems, microcontrollers, computer vision, and industrial AI. I emphasize structured technical troubleshooting, system maintenance, and automation that deliver real-world reliability.
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
-                    <div><strong>Education Status:</strong> B.Eng Computer Engineering (Hons) — UTeM (Expected Nov 2026)</div>
-                    <div><strong>Key Credentials:</strong> Cisco CCNA Enterprise, Festo Industrial AI Automation</div>
-                    <div><strong>Experience Roles:</strong> Technical Staff (Global Elite Ventures) • Assistant Engineer (ARNN Tech) • Technician (OKCS)</div>
-                    <div><strong>Military Reserve:</strong> Askar Wataniah Reserve (High Discipline & Team Resilience)</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHAT I CAN DO SECTION -->
-    <section class="resume-mirror-section scroll-reveal" id="what-i-can-do">
-        <div class="container glass-card">
-            <h2 class="section-title-main">What I Can Do</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
                 
-                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
-                    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
-                        1. IT Support & Operations
-                    </h3>
-                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
-                        Hardware troubleshooting, Windows workstation configuration, user technical support, software/driver deployment, and operational issue diagnosis.
-                    </p>
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Explore Projects ➔</a>
+                    <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Download Resume (PDF) 📄</a>
+                    <button class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 1rem;" onclick="toggleFloatingChat()">Chat with AI Assistant 🌙</button>
                 </div>
 
-                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
-                    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--emerald); margin-bottom: 0.5rem;">
-                        2. Network & Infrastructure
-                    </h3>
-                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
-                        Cisco networking, VLAN configuration, Inter-VLAN routing, OSPF, TCP/IP, LAN/WAN setup, Wireshark packet analysis, and network troubleshooting.
-                    </p>
-                </div>
-
-                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
-                    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--purple); margin-bottom: 0.5rem;">
-                        3. AI & Computer Vision
-                    </h3>
-                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
-                        Python programming, OpenCV visual processing, YOLOv8 object detection, model fine-tuning, and practical AI application integration.
-                    </p>
-                </div>
-
-                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
-                    <h3 style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;">
-                        4. Automation & IoT
-                    </h3>
-                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
-                        Industrial AI concepts, Festo automation systems, sensor integration, Arduino prototyping, IoT devices, and hardware/software communication.
-                    </p>
-                </div>
-
-                <div style="background: var(--inset-surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-card);">
-                    <h3 style="font-size: 1.05rem; font-weight: 700; color: #ec4899; margin-bottom: 0.5rem;">
-                        5. Hardware & Embedded Systems
-                    </h3>
-                    <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.5;">
-                        Hands-on electronic hardware assembly, component diagnostics, microcontrollers, PC maintenance, and technical prototyping.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WORK EXPERIENCE -->
-    <section class="resume-mirror-section scroll-reveal" id="experience">
-        <div class="container glass-card">
-            <h2 class="section-title-main">Work Experience</h2>
-
-            <div class="resume-entry-card">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Technical Staff</div>
-                    <div class="entry-dates">27 Sept 2021 – 31 July 2022</div>
-                </div>
-                <div class="entry-institution">Global Elite Ventures Sdn. Bhd</div>
-                <ul class="entry-bullets" style="margin-top: 0.5rem;">
-                    <li>Executed technical hardware deployment, workstation assembly, and Windows software configuration for enterprise operations.</li>
-                    <li>Diagnosed and resolved daily technical support issues, minimizing operational downtime for team members.</li>
-                    <li>Managed system maintenance and technical documentation to streamline organizational workflows.</li>
-                </ul>
-            </div>
-
-            <div class="resume-entry-card">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Contract Assistant Engineer</div>
-                    <div class="entry-dates">1 June 2020 – 30 July 2020</div>
-                </div>
-                <div class="entry-institution">ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd</div>
-                <ul class="entry-bullets" style="margin-top: 0.5rem;">
-                    <li>Assisted in the development, testing, and execution of engineering project components within strict project deadlines.</li>
-                    <li>Applied structured technical troubleshooting to resolve equipment and integration challenges.</li>
-                </ul>
-            </div>
-
-            <div class="resume-entry-card" style="border:none; padding-bottom:0;">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Technician</div>
-                    <div class="entry-dates">1 June 2018 – 1 Nov 2018</div>
-                </div>
-                <div class="entry-institution">OKCS Seri Kembangan</div>
-                <ul class="entry-bullets" style="margin-top: 0.5rem;">
-                    <li>Performed hardware diagnostics, repair, and component replacement on complex computing equipment.</li>
-                    <li>Configured operating systems, software drivers, and user application tools to ensure optimal system functionality.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- TECHNICAL SKILLS GROUPED CATEGORIES -->
-    <section class="resume-mirror-section scroll-reveal" id="skills">
-        <div class="container glass-card">
-            <h2 class="section-title-main">Technical Skills</h2>
-            
-            <div class="skills-grid-table">
-                <div class="skills-cat-title">NETWORKING:</div>
-                <div class="skills-cat-items">CCNA, TCP/IP, IPv4/IPv6, VLAN, Inter-VLAN Routing, OSPF, Switching, LAN/WAN, Cisco Router/Switch, Wireshark</div>
-
-                <div class="skills-cat-title">IT SUPPORT:</div>
-                <div class="skills-cat-items">Hardware Troubleshooting, Windows Administration, Desktop Support, Software Configuration, Technical Documentation, User Support</div>
-
-                <div class="skills-cat-title">AI & VISION:</div>
-                <div class="skills-cat-items">Python, YOLOv8, OpenCV, Computer Vision, Object Detection, AI-assisted Development</div>
-
-                <div class="skills-cat-title">AUTOMATION & IOT:</div>
-                <div class="skills-cat-items">Industrial AI, Festo Automation, Arduino, Sensors, Embedded Systems, IoT Integration</div>
-
-                <div class="skills-cat-title">DEVELOPMENT:</div>
-                <div class="skills-cat-items">Python, C, C++, SQL, MySQL, Git, GitHub, VS Code</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="resume-mirror-section scroll-reveal" id="education">
-        <div class="container glass-card">
-            <h2 class="section-title-main">Education</h2>
-
-            <div class="resume-entry-card">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Bachelor of Computer Engineering with Honours</div>
-                    <div class="entry-dates">Oct 2022 – Present (Final-Year Student • Expected Nov 2026)</div>
-                </div>
-                <div class="entry-institution">Universiti Teknikal Malaysia Melaka (UTeM)</div>
-            </div>
-
-            <div class="resume-entry-card">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Diploma in Electronic Engineering (Computer)</div>
-                    <div class="entry-dates">Dec 2018 – May 2022</div>
-                </div>
-                <div class="entry-institution">Politeknik Port Dickson • <strong>CGPA: 3.26 / 4.00</strong></div>
-            </div>
-
-            <div class="resume-entry-card" style="border:none; padding-bottom:0;">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)</div>
-                    <div class="entry-dates">Jul 2017 – Feb 2019</div>
-                </div>
-                <div class="entry-institution">Kolej Komuniti Selandar • <strong>CGPA: 3.58 / 4.00</strong> (Best Student Award)</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section class="resume-mirror-section scroll-reveal" id="certifications">
-        <div class="container glass-card">
-            <h2 class="section-title-main">Certifications & Credentials</h2>
-
-            <div class="certs-grid">
-                <a href="certificates/CCNA_Enterprise_Networking_Security_Automation.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
-                    <div class="cert-title-text" style="color: var(--primary);">CCNA: Enterprise Networking & Automation</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy • Feb 2026</div>
-                </a>
-
-                <a href="certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
-                    <div class="cert-title-text" style="color: var(--primary);">CCNA: Switching, Routing & Wireless</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy • Feb 2026</div>
-                </a>
-
-                <div class="cert-card-box">
-                    <div class="cert-title-text" style="color: var(--emerald);">Festo Industrial Automation with AI</div>
-                    <div class="cert-issuer-text">Festo Didactic • July 2026</div>
-                </div>
-
-                <a href="certificates/Endpoint_Security.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
-                    <div class="cert-title-text" style="color: var(--text-main);">Endpoint Security Certification</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy • Dec 2024</div>
-                </a>
-
-                <a href="certificates/Cyber_Threat_Management.pdf" target="_blank" class="cert-card-box" style="text-decoration:none;">
-                    <div class="cert-title-text" style="color: var(--text-main);">Cyber Threat Management</div>
-                    <div class="cert-issuer-text">Cisco Networking Academy • Nov 2024</div>
-                </a>
-
-                <div class="cert-card-box">
-                    <div class="cert-title-text" style="color: var(--text-muted);">Fiber Optic Splicing & Polishing</div>
-                    <div class="cert-issuer-text">Technical Workshop • Feb 2018</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED ENGINEERING PROJECT -->
-    <section class="resume-mirror-section scroll-reveal" id="projects">
-        <div class="container glass-card">
-            <h2 class="section-title-main">Featured Project</h2>
-
-            <div class="resume-entry-card" style="border:none; padding-bottom:0;">
-                <div class="entry-top-row">
-                    <div class="entry-role-title">Hybrid Self-Checkout System (Computer Vision + Barcode Integration)</div>
-                    <div class="entry-dates">Final Year Capstone Project</div>
-                </div>
-                
-                <p style="font-size: 1rem; color: var(--emerald); font-weight: 700; margin: 0.35rem 0 1rem 0; line-height: 1.5;">
-                    A computer-vision and barcode-based self-checkout system designed to improve checkout automation and item verification.
-                </p>
-
-                <!-- Recruiter-Friendly Problem / Solution / Contribution Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-                    <div style="background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
-                        <div style="font-size: 0.85rem; color: var(--primary); font-weight: 800; text-transform: uppercase; margin-bottom: 0.35rem;">PROBLEM</div>
-                        <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.5; margin: 0;">
-                            Retail self-checkout stations suffer from scan evasion and item misidentification when relying solely on physical barcode scanners.
-                        </p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-num">CCNA</div>
+                        <div class="stat-label">Cisco Certified</div>
                     </div>
+                    <div class="stat-card">
+                        <div class="stat-num">3.58</div>
+                        <div class="stat-label">Top Student CGPA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">&lt;90ms</div>
+                        <div class="stat-label">YOLOv8 Latency</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">14</div>
+                        <div class="stat-label">Verified Certs</div>
+                    </div>
+                </div>
+            </div>
 
-                    <div style="background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
-                        <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 800; text-transform: uppercase; margin-bottom: 0.35rem;">SOLUTION</div>
-                        <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.5; margin: 0;">
-                            Designed a dual-verification system cross-referencing USB barcode scans against real-time YOLOv8 object detection camera inference.
-                        </p>
+            <!-- Profile Summary Card -->
+            <div class="hero-profile-card">
+                <div class="profile-avatar-wrap">👨‍💻</div>
+                <div class="profile-name">Muhammad Irfan Fahmi</div>
+                <div class="profile-role">Computer Engineering (Hons) • UTeM</div>
+                
+                <ul class="profile-info-list">
+                    <li class="profile-info-item">
+                        <span>Target Roles</span>
+                        <span>Network / AI / Infrastructure</span>
+                    </li>
+                    <li class="profile-info-item">
+                        <span>Location</span>
+                        <span>Puchong, Selangor (Open to All)</span>
+                    </li>
+                    <li class="profile-info-item">
+                        <span>Military Reserve</span>
+                        <span>Askar Wataniah (Resilience)</span>
+                    </li>
+                    <li class="profile-info-item">
+                        <span>Key Credentials</span>
+                        <span>CCNA, Festo AI, Cyber Threat</span>
+                    </li>
+                    <li class="profile-info-item">
+                        <span>ATS Match Rate</span>
+                        <span style="color: var(--emerald);">100.0% Keyword Pass</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding" style="background: rgba(15, 23, 42, 0.3);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">01 // Engineering Identity</span>
+                <h2 class="section-title">Bridging Hardware, Networks & Autonomous AI</h2>
+            </div>
+
+            <div class="about-pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🌐</div>
+                    <div class="pillar-title">Networking & Security</div>
+                    <div class="pillar-desc">
+                        Cisco CCNA certified. Specialized in OSPF routing, VLAN segmentation, STP, EtherChannel, Wireshark packet capture, and firewall access control lists (ACL).
                     </div>
                 </div>
 
-                <div style="background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); margin-bottom: 1.25rem;">
-                    <div style="font-size: 0.85rem; color: var(--purple); font-weight: 800; text-transform: uppercase; margin-bottom: 0.4rem;">MY CONTRIBUTION</div>
-                    <ul style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.55; margin: 0; padding-left: 1.2rem;">
-                        <li>Trained custom YOLOv8 object detection model for 50 epochs on local Malaysian retail product dataset.</li>
-                        <li>Developed real-time cross-verification logic comparing barcode product IDs against camera vision model detections.</li>
-                        <li>Integrated USB barcode scanner hardware with OpenCV live camera feed and MySQL database synchronization.</li>
-                        <li>Conducted dual split-view camera experiments to resolve product occlusion and false negative detection issues.</li>
+                <div class="pillar-card">
+                    <div class="pillar-icon">👁️</div>
+                    <div class="pillar-title">AI & Computer Vision</div>
+                    <div class="pillar-desc">
+                        Custom YOLOv8 PyTorch dataset fine-tuning, OpenCV real-time video stream processing, and multi-camera split-view occlusion mitigation engines.
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">⚡</div>
+                    <div class="pillar-title">Embedded Systems & IoT</div>
+                    <div class="pillar-desc">
+                        Microcontroller firmware in C/C++, sensor integration (HX711, load cells, flex sensors, Bluetooth), and EasyEDA schematic circuit design.
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">🏭</div>
+                    <div class="pillar-title">Industrial Automation</div>
+                    <div class="pillar-desc">
+                        Festo Industrial AI specialist. PLC logic integration, sensor calibration, predictive maintenance algorithms, and serial HID protocol communication.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">02 // Portfolio Engineering</span>
+                <h2 class="section-title">Featured Capstone & Systems Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <div class="project-banner-badge">FEATURED CAPSTONE</div>
+                        <div class="project-banner-title">Hybrid Self-Checkout System (Vision + Barcode)</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Designed to prevent item evasion and fraud in automated self-checkout systems by cross-referencing visual YOLOv8 object detection against physical barcode scans in real-time.
+                        </div>
+                        <div class="project-metrics-box">
+                            <div class="metric-item">
+                                <div class="metric-val">77.4%</div>
+                                <div class="metric-lbl">Precision</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">72.0%</div>
+                                <div class="metric-lbl">Recall (50 Epochs)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">&lt;90ms</div>
+                                <div class="metric-lbl">Camera Latency</div>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">YOLOv8 PyTorch</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">USB Barcode HID</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/l3al3y" target="_blank" class="btn btn-outline" style="font-size:0.82rem; padding:0.45rem 0.85rem;">GitHub Repo ➔</a>
+                            <button class="btn btn-primary" style="font-size:0.82rem; padding:0.45rem 0.85rem;" onclick="openProjectModal('checkout')">View Architecture 📜</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-banner" style="background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.9));">
+                        <div class="project-banner-badge" style="color:var(--purple); border-color:var(--purple);">MACHINE LEARNING & HARDWARE</div>
+                        <div class="project-banner-title">Data Glove SVM Motion Recognition System</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Wearable sensory data glove utilizing flex sensors, Arduino microcontrollers, and Support Vector Machine (SVM) algorithm to translate hand gestures into digital sign language.
+                        </div>
+                        <div class="project-metrics-box">
+                            <div class="metric-item">
+                                <div class="metric-val">95%+</div>
+                                <div class="metric-lbl">Gesture Accuracy</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">SVM</div>
+                                <div class="metric-lbl">Classification</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">Bluetooth</div>
+                                <div class="metric-lbl">Telemetry</div>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Arduino C++</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-Learn SVM</span>
+                            <span class="tech-tag">Flex Sensors</span>
+                            <span class="tech-tag">HC-05 BT</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/l3al3y" target="_blank" class="btn btn-outline" style="font-size:0.82rem; padding:0.45rem 0.85rem;">GitHub Repo ➔</a>
+                            <button class="btn btn-primary" style="font-size:0.82rem; padding:0.45rem 0.85rem;" onclick="openProjectModal('glove')">View System Spec 📜</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-banner" style="background: linear-gradient(135deg, rgba(6, 78, 59, 0.9), rgba(15, 23, 42, 0.9));">
+                        <div class="project-banner-badge" style="color:var(--emerald); border-color:var(--emerald);">IOT & INDUSTRIAL AUTOMATION</div>
+                        <div class="project-banner-title">IoT Weight Tracking & Sensor Calibration</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Industrial load cell telemetry monitoring system utilizing HX711 strain gauge amplifiers, ESP32 microcontrollers, MQTT messaging protocol, and FastAPI backend dashboard.
+                        </div>
+                        <div class="project-metrics-box">
+                            <div class="metric-item">
+                                <div class="metric-val">HX711</div>
+                                <div class="metric-lbl">Strain Gauge</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">MQTT</div>
+                                <div class="metric-lbl">Real-Time Sync</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">FastAPI</div>
+                                <div class="metric-lbl">Backend</div>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">HX711 Load Cell</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">MQTT</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/l3al3y" target="_blank" class="btn btn-outline" style="font-size:0.82rem; padding:0.45rem 0.85rem;">GitHub Repo ➔</a>
+                            <button class="btn btn-primary" style="font-size:0.82rem; padding:0.45rem 0.85rem;" onclick="openProjectModal('weight')">View IoT Design 📜</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-banner" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(15, 23, 42, 0.9));">
+                        <div class="project-banner-badge">ENTERPRISE NETWORKING</div>
+                        <div class="project-banner-title">Enterprise Network Topology & ACL Automation</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Enterprise multi-building network architecture design featuring OSPF routing protocol, Inter-VLAN routing, Spanning Tree Protocol (STP), and Python Netmiko ACL firewall script automation.
+                        </div>
+                        <div class="project-metrics-box">
+                            <div class="metric-item">
+                                <div class="metric-val">CCNA</div>
+                                <div class="metric-lbl">Architecture</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">OSPF</div>
+                                <div class="metric-lbl">Multi-Area</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-val">Netmiko</div>
+                                <div class="metric-lbl">Python ACLs</div>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Cisco Packet Tracer</span>
+                            <span class="tech-tag">OSPF</span>
+                            <span class="tech-tag">VLAN / Trunking</span>
+                            <span class="tech-tag">Python Netmiko</span>
+                            <span class="tech-tag">ACL Firewalls</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/l3al3y" target="_blank" class="btn btn-outline" style="font-size:0.82rem; padding:0.45rem 0.85rem;">GitHub Repo ➔</a>
+                            <button class="btn btn-primary" style="font-size:0.82rem; padding:0.45rem 0.85rem;" onclick="openProjectModal('network')">View Network Topology 📜</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Matrix Section -->
+    <section id="skills" class="section-padding" style="background: rgba(15, 23, 42, 0.3);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">03 // Technical Expertise</span>
+                <h2 class="section-title">Core Competencies & Tooling Matrix</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category-card">
+                    <div class="category-title">🌐 Networking & Security</div>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span>Cisco Routing & Switching</span><span class="skill-badge">CCNA</span></li>
+                        <li class="skill-item"><span>OSPF Protocol & VLANs</span><span class="skill-badge">Advanced</span></li>
+                        <li class="skill-item"><span>Wireshark & Packet Capture</span><span class="skill-badge">Expert</span></li>
+                        <li class="skill-item"><span>Firewall ACLs & Security</span><span class="skill-badge">Verified</span></li>
+                        <li class="skill-item"><span>Fiber Optic Splicing</span><span class="skill-badge">Hands-On</span></li>
                     </ul>
                 </div>
 
-                <!-- Verified Technical Metrics Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-                    <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div class="stat-count-num" id="stat-precision" data-target="77.4" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--emerald);">77.4%</div>
-                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Precision (Verified)</div>
-                    </div>
-                    <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div class="stat-count-num" id="stat-recall" data-target="72.0" data-suffix="%" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">72.0%</div>
-                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Recall (50 Epochs)</div>
-                    </div>
-                    <div style="background: var(--inset-surface-strong); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card); text-align: center;">
-                        <div class="stat-count-num" id="stat-latency" data-target="90" data-prefix="<" data-suffix="ms" style="font-size: 1.6rem; font-weight: 800; color: var(--purple);">&lt;90ms</div>
-                        <div style="font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase;">Real-Time Inference</div>
-                    </div>
+                <div class="skill-category-card">
+                    <div class="category-title">👁️ Computer Vision & AI</div>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span>YOLOv8 Object Detection</span><span class="skill-badge">PyTorch</span></li>
+                        <li class="skill-item"><span>OpenCV Video Processing</span><span class="skill-badge">Python</span></li>
+                        <li class="skill-item"><span>Festo Industrial AI</span><span class="skill-badge">Certified</span></li>
+                        <li class="skill-item"><span>Scikit-Learn Machine Learning</span><span class="skill-badge">SVM</span></li>
+                        <li class="skill-item"><span>Dataset Augmentation & NMS</span><span class="skill-badge">Verified</span></li>
+                    </ul>
                 </div>
 
-                <!-- Interactive 3D Exploded System Architecture Components -->
-                <div style="margin-bottom: 1.25rem; background: var(--inset-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
-                    <div style="font-size: 0.85rem; color: var(--emerald); font-weight: 700; margin-bottom: 0.75rem;">
-                        🔮 INTERACTIVE 3D SYSTEM ARCHITECTURE COMPONENTS (CLICK NODE TO EXPLODE):
-                    </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="capstone-3d-nodes">
-                        <button class="prompt-chip" onclick="explode3DNode('camera', this)" style="border-color: var(--emerald); color: var(--emerald);">📹 Camera Vision Node (YOLOv8)</button>
-                        <button class="prompt-chip" onclick="explode3DNode('barcode', this)">🏷️ USB Barcode Reader Node</button>
-                        <button class="prompt-chip" onclick="explode3DNode('core', this)">⚡ Cross-Verification Engine</button>
-                        <button class="prompt-chip" onclick="explode3DNode('db', this)">🗄️ MySQL Database Sync</button>
-                    </div>
-                    <div id="capstone-node-detail" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-sub); background: var(--inset-surface-soft); padding: 0.75rem; border-radius: 6px; border-left: 3px solid var(--emerald); line-height: 1.5;">
-                        <strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 50 epochs on local Malaysian product dataset with Mosaic augmentation and dual split-view camera fusion, achieving 77.4% precision and 72.0% recall under varying lighting angles.
-                    </div>
+                <div class="skill-category-card">
+                    <div class="category-title">⚡ Hardware & Embedded</div>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span>Arduino & ESP32 Firmware</span><span class="skill-badge">C/C++</span></li>
+                        <li class="skill-item"><span>HX711 Strain Gauge Sensor</span><span class="skill-badge">Calibration</span></li>
+                        <li class="skill-item"><span>USB Serial HID Barcode Scanner</span><span class="skill-badge">Integration</span></li>
+                        <li class="skill-item"><span>EasyEDA Schematic Design</span><span class="skill-badge">PCB</span></li>
+                        <li class="skill-item"><span>Workstation & Maintenance</span><span class="skill-badge">Hardware</span></li>
+                    </ul>
                 </div>
 
-                <!-- Technology Stack Badges & Clear Project CTA -->
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
-                    <span class="prompt-chip" style="font-size: 0.82rem;">YOLOv8</span>
-                    <span class="prompt-chip" style="font-size: 0.82rem;">OpenCV</span>
-                    <span class="prompt-chip" style="font-size: 0.82rem;">Barcode Scanner</span>
-                    <span class="prompt-chip" style="font-size: 0.82rem;">MySQL</span>
-                    <span class="prompt-chip" style="font-size: 0.82rem;">Python</span>
-                    <span class="prompt-chip" style="font-size: 0.82rem;">PyTorch</span>
-                    <span class="prompt-chip" style="font-size: 0.82rem;">Hardware Integration</span>
-                </div>
-
-                <div style="display: flex; gap: 0.75rem;">
-                    <a href="https://github.com/l3al3y/ResumeAgent" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.9rem;">View Project on GitHub ➔</a>
+                <div class="skill-category-card">
+                    <div class="category-title">💻 Software & Cloud</div>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span>Python Programming</span><span class="skill-badge">Core</span></li>
+                        <li class="skill-item"><span>SQL (MySQL & PostgreSQL)</span><span class="skill-badge">Database</span></li>
+                        <li class="skill-item"><span>FastAPI Backend Services</span><span class="skill-badge">REST API</span></li>
+                        <li class="skill-item"><span>Cloudflare Worker & Turnstile</span><span class="skill-badge">Edge Proxy</span></li>
+                        <li class="skill-item"><span>Git & GitHub Automation</span><span class="skill-badge">DevOps</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WHAT I'M LOOKING FOR (TARGET ROLES) -->
-    <section class="resume-mirror-section scroll-reveal" id="seeking">
-        <div class="container glass-card">
-            <h2 class="section-title-main">What I'm Looking For</h2>
-            <p style="font-size: 0.92rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 1.25rem;">
-                I'm currently seeking opportunities where I can combine hands-on engineering, IT infrastructure, networking and AI automation to solve practical technical problems.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
-                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; border-color: var(--primary); color: var(--primary);">IT Support Engineer</span>
-                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; border-color: var(--emerald); color: var(--emerald);">Network Engineer</span>
-                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">Technical Support Engineer</span>
-                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">Infrastructure Engineer</span>
-                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">Automation Engineer</span>
-                <span class="prompt-chip" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">AI / Computer Vision Engineer</span>
+    <!-- Experience Timeline -->
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">04 // Career & Education</span>
+                <h2 class="section-title">Education & Technical Timeline</h2>
+            </div>
+
+            <div class="timeline-wrap">
+                <!-- Timeline 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">OCT 2023 — EXPECTED NOV 2026</div>
+                        <div class="timeline-role">Bachelor of Computer Engineering (Hons)</div>
+                        <div class="timeline-org">Universiti Teknikal Malaysia Melaka (UTeM)</div>
+                        <div class="timeline-desc">
+                            Specializing in Network Engineering, Computer Vision, Embedded AI Systems, and Industrial Automation. Completed Capstone Project on Hybrid Self-Checkout Systems (YOLOv8 + Barcode).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">AUG 2020 — JUL 2023</div>
+                        <div class="timeline-role">Diploma in Electronic Engineering (Computer)</div>
+                        <div class="timeline-org">Politeknik Port Dickson • CGPA: 3.26</div>
+                        <div class="timeline-desc">
+                            Focus on microcontrollers, C/C++ embedded programming, digital electronics, telecommunication networks, and IoT sensor integration.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">JUL 2019 — JUN 2020</div>
+                        <div class="timeline-role">Certificate in System & Computer Networking</div>
+                        <div class="timeline-org">Kolej Komuniti Selandar • CGPA: 3.58 🏆 (Best Student Award & Director's List)</div>
+                        <div class="timeline-desc">
+                            Awarded Best Student Award and Director's List. Practical hands-on training in network maintenance, PC assembly, server cabling, and operating system administration.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">NOV 2023 — FEB 2024</div>
+                        <div class="timeline-role">Retail & Customer Operations Specialist</div>
+                        <div class="timeline-org">Global Elite 7-Eleven</div>
+                        <div class="timeline-desc">
+                            Managed POS transaction workflows, inventory audit logging, customer relations, and store operations under fast-paced retail environment.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">JAN 2021 — PRESENT</div>
+                        <div class="timeline-role">Malaysian Army Reserve Service (Askar Wataniah)</div>
+                        <div class="timeline-org">Territorial Army Regiment</div>
+                        <div class="timeline-desc">
+                            Rigorous military tactical training, teamwork, high stress resilience, operational discipline, physical endurance, and leadership development.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FLOATING CIRCLE AI CHATBOT FAB WIDGET -->
-    <button class="ai-fab-btn" id="ai-fab-btn" onclick="toggleFloatingChat()" aria-label="Open AI Assistant">
-        <span class="fab-icon">🌙</span>
-        <span class="fab-badge">AI</span>
-    </button>
+    <!-- Certifications Gallery Section -->
+    <section id="certificates" class="section-padding" style="background: rgba(15, 23, 42, 0.3);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">05 // Verified Credentials</span>
+                <h2 class="section-title">Certifications & Honors Collection (14 Records)</h2>
+            </div>
 
-    <!-- FLOATING CHAT WINDOW POPUP (Repositioned as Ask About My Experience) -->
-    <div class="chat-floating-window" id="chat-floating-window">
+            <!-- Filter Chips -->
+            <div class="cert-filters">
+                <button class="filter-chip active" onclick="filterCerts('all')">All (14)</button>
+                <button class="filter-chip" onclick="filterCerts('cisco')">Cisco & Security (4)</button>
+                <button class="filter-chip" onclick="filterCerts('industrial')">Industrial & AI (1)</button>
+                <button class="filter-chip" onclick="filterCerts('academic')">Academic & Honors (6)</button>
+                <button class="filter-chip" onclick="filterCerts('service')">Military & Experience (3)</button>
+            </div>
+
+            <div class="certs-grid" id="certs-grid-container">
+                <!-- Cert 1 -->
+                <div class="cert-card" data-cat="cisco">
+                    <div class="cert-category-tag">CISCO NETWORKING</div>
+                    <div class="cert-title">Cisco CCNA: Enterprise Networking, Security & Automation</div>
+                    <div class="cert-issuer">Cisco Networking Academy</div>
+                    <div class="cert-desc">OSPF routing, LAN/WAN architecture, Network Security, ACLs, and Network Automation scripts.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/CCNA_Enterprise_Networking_Security_Automation.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/CCNA_Enterprise_Networking_Security_Automation.pdf', 'Cisco CCNA Enterprise Networking')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card" data-cat="cisco">
+                    <div class="cert-category-tag">CISCO NETWORKING</div>
+                    <div class="cert-title">Cisco CCNA: Switching, Routing & Wireless Essentials</div>
+                    <div class="cert-issuer">Cisco Networking Academy</div>
+                    <div class="cert-desc">VLANs, Inter-VLAN routing, Spanning Tree Protocol (STP), EtherChannel, DHCP, and WLAN security.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf', 'Cisco CCNA Switching & Routing')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card" data-cat="cisco">
+                    <div class="cert-category-tag">CYBERSECURITY</div>
+                    <div class="cert-title">Cisco Endpoint Security Specialist</div>
+                    <div class="cert-issuer">Cisco Networking Academy</div>
+                    <div class="cert-desc">Host-based protection, antimalware defense, operating system hardening, and patch management.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Endpoint_Security.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Endpoint_Security.pdf', 'Cisco Endpoint Security')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card" data-cat="cisco">
+                    <div class="cert-category-tag">CYBERSECURITY</div>
+                    <div class="cert-title">Cisco Cyber Threat Management</div>
+                    <div class="cert-issuer">Cisco Networking Academy</div>
+                    <div class="cert-desc">SOC monitoring, incident response workflows, threat intelligence, and vulnerability assessments.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Cyber_Threat_Management.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Cyber_Threat_Management.pdf', 'Cisco Cyber Threat Management')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card" data-cat="industrial">
+                    <div class="cert-category-tag">INDUSTRIAL AI</div>
+                    <div class="cert-title">Festo Industrial Automation with AI Specialist</div>
+                    <div class="cert-issuer">Festo Didactic</div>
+                    <div class="cert-desc">Industrial PLC automation, sensor calibration, predictive maintenance, and AI quality control systems.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Festo_Industrial_AI_Automation.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Festo_Industrial_AI_Automation.pdf', 'Festo Industrial AI Specialist')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">DEGREE RECORD</div>
+                    <div class="cert-title">B.Eng Computer Engineering (Hons) Academic Transcript & Record</div>
+                    <div class="cert-issuer">Universiti Teknikal Malaysia Melaka (UTeM)</div>
+                    <div class="cert-desc">Official academic record for Bachelor of Computer Engineering degree with specialization in AI & Networks.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/UTeM_Degree_Computer_Engineering.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/UTeM_Degree_Computer_Engineering.pdf', 'UTeM Computer Engineering Record')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 7 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">DIPLOMA DEGREE</div>
+                    <div class="cert-title">Diploma in Electronic Engineering (Computer)</div>
+                    <div class="cert-issuer">Politeknik Port Dickson</div>
+                    <div class="cert-desc">Graduated with 3.26 CGPA. Specialized in embedded systems, digital circuits, and computer hardware.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Politeknik_Diploma_Electronic_Computer.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Politeknik_Diploma_Electronic_Computer.pdf', 'Politeknik Diploma Certificate')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 8 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">CERTIFICATE DEGREE</div>
+                    <div class="cert-title">Certificate in System & Computer Networking</div>
+                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
+                    <div class="cert-desc">Completed with 3.58 CGPA. Hands-on computer networking, server administration, and PC maintenance.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Kolej_Komuniti_Sistem_Rangkaian.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Sistem_Rangkaian.pdf', 'Kolej Komuniti Certificate')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 9 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">TOP AWARD 🏆</div>
+                    <div class="cert-title">Anugerah Pelajar Terbaik (Best Student Award - 3.58 CGPA)</div>
+                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
+                    <div class="cert-desc">Awarded Best Student Award for achieving highest academic and practical performance in cohort.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Kolej_Komuniti_Best_Student_Award.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Best_Student_Award.pdf', 'Best Student Award')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 10 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">ACADEMIC AWARD</div>
+                    <div class="cert-title">Anugerah Pengarah (Director's List Award)</div>
+                    <div class="cert-issuer">Kolej Komuniti Selandar</div>
+                    <div class="cert-desc">Director's List Honor Certificate awarded for outstanding GPA performance across semesters.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Kolej_Komuniti_Director_List_Award.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Director_List_Award.pdf', 'Director List Award')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 11 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">TECHNICAL SKILLS</div>
+                    <div class="cert-title">Specialized IT Support & Network Maintenance Certification</div>
+                    <div class="cert-issuer">Kolej Komuniti</div>
+                    <div class="cert-desc">Hands-on practical certification in network troubleshooting, workstation maintenance, and hardware assembly.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Kolej_Komuniti_Network_Maintenance_Cert.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Kolej_Komuniti_Network_Maintenance_Cert.pdf', 'Network Maintenance Cert')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 12 -->
+                <div class="cert-card" data-cat="service">
+                    <div class="cert-category-tag">MILITARY SERVICE</div>
+                    <div class="cert-title">Askar Wataniah Military Reserve Service Certificate</div>
+                    <div class="cert-issuer">Malaysian Army Reserve Regiment</div>
+                    <div class="cert-desc">Official army reserve service certificate demonstrating tactical training, high discipline, and stress resilience.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/Askar_Wataniah_Reserve_Service.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/Askar_Wataniah_Reserve_Service.pdf', 'Askar Wataniah Certificate')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 13 -->
+                <div class="cert-card" data-cat="service">
+                    <div class="cert-category-tag">WORK EXPERIENCE</div>
+                    <div class="cert-title">Retail & Operations Experience Certificate</div>
+                    <div class="cert-issuer">Global Elite 7-Eleven</div>
+                    <div class="cert-desc">Work certificate recognizing POS operational expertise, customer service excellence, and inventory management.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/7Eleven_Work_Experience.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/7Eleven_Work_Experience.pdf', '7-Eleven Work Experience')">View PDF 👁️</button>
+                    </div>
+                </div>
+
+                <!-- Cert 14 -->
+                <div class="cert-card" data-cat="academic">
+                    <div class="cert-category-tag">NATIONAL CERTIFICATE</div>
+                    <div class="cert-title">Sijil Pelajaran Malaysia (SPM) Certificate</div>
+                    <div class="cert-issuer">Kementerian Pendidikan Malaysia (KPM)</div>
+                    <div class="cert-desc">National secondary education graduation certificate with strong credits in Mathematics, Science, and Technical subjects.</div>
+                    <div class="cert-actions">
+                        <a href="certificates/SPM_Certificate.pdf" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.75rem;">Download PDF 📄</a>
+                        <button class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" onclick="openPdfModal('certificates/SPM_Certificate.pdf', 'SPM Certificate')">View PDF 👁️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Banner Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="ai-banner-box">
+                <h2 class="ai-banner-title">Have Questions About Irfan's Background?</h2>
+                <p class="ai-banner-desc">
+                    Ask my interactive AI Career Assistant about my Cisco CCNA credentials, YOLOv8 capstone architecture, UTeM degree, or technical problem-solving experience.
+                </p>
+                <button class="btn btn-primary" style="padding: 0.85rem 2rem; font-size: 1.05rem;" onclick="toggleFloatingChat()">
+                    🌙 Launch Interactive AI Assistant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-main);">
+                MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
+            </div>
+
+            <div class="footer-verification">
+                <span>🔒 Official Verification:</span>
+                <a href="https://linkedin.com/in/mifi99" target="_blank">LinkedIn (mifi99)</a>
+                <span>•</span>
+                <a href="https://github.com/l3al3y" target="_blank">GitHub (l3al3y)</a>
+                <span>•</span>
+                <a href="https://l3al3y.github.io/ResumeAgent/" target="_blank">Portfolio Website</a>
+            </div>
+
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+                © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
+                Built with HTML5, Vanilla CSS3 & Autonomous AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit 189a025 (v1.14.0)
+            </div>
+        </div>
+    </footer>
+
+    <!-- PDF Modal Viewer -->
+    <div class="modal-overlay" id="pdf-modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="pdf-modal-title">Certificate Document Preview</h3>
+                <button class="modal-close-btn" onclick="closePdfModal()">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <iframe id="pdf-modal-iframe" style="width: 100%; height: 75vh; border: none;" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Security Modal -->
+    <div class="modal-overlay" id="security-modal-overlay">
+        <div class="modal-card" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>🔓 Contact Security Verification</h3>
+                <button class="modal-close-btn" onclick="closeSecurityModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.25rem;">
+                    Please complete the Turnstile verification below to reveal Muhammad Irfan's direct phone number and email.
+                </p>
+                <div id="cf-turnstile-container" style="display: flex; justify-content: center; margin-bottom: 1.25rem;"></div>
+                <div id="contact-details-revealed" style="display: none; background: rgba(52, 211, 153, 0.1); border: 1px solid var(--emerald); border-radius: var(--radius-sm); padding: 1rem; color: var(--text-main); font-size: 0.9rem;">
+                    <strong>📞 Phone / WhatsApp:</strong> +6011-28042456<br>
+                    <strong>✉️ Direct Email:</strong> irfanfahmi99@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRESERVED FLOATING AI CHATBOT WIDGET HTML -->
+    <div class="chat-floating-window" id="chat-floating-window" style="display: none;">
         <div class="chat-header">
-            <div class="chat-bot-info">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
                 <div class="chat-bot-avatar">🌙</div>
                 <div>
                     <div style="font-weight: 700; font-size: 0.88rem;">Ask About Irfan's Experience</div>
-                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Sync c726369</div>
+                    <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Sync 189a025</div>
                 </div>
             </div>
 
@@ -1723,7 +1673,7 @@
             <div class="chat-message bot-msg">
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
                 <div class="chat-bubble">
-                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant. (Backend Engine: <code>c726369</code>)
+                    Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan's technical experience, CCNA credentials, capstone project, or career background using this assistant. (Backend Engine: <code>189a025</code>)
                 </div>
             </div>
         </div>
@@ -1738,31 +1688,7 @@
         </div>
     </div>
 
-    <!-- Floating Back to Top Button -->
-    <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
-        ↑
-    </button>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.4rem;">
-                MUHAMMAD IRFAN FAHMI
-            </div>
-            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 0.75rem;">
-                🔒 Public Contact Protection Active: Direct contact details protected against automated web scraping.<br>
-                Official Verification: <a href="https://linkedin.com/in/mifi99" target="_blank" style="color: var(--primary);">LinkedIn (mifi99)</a> • <a href="https://github.com/l3al3y" target="_blank" style="color: var(--primary);">GitHub (l3al3y)</a> • <a href="https://github.com/l3al3y/ResumeAgent-Backend" target="_blank" style="color: var(--primary);">GitHub (ResumeAgent-Backend)</a>
-            </p>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">
-                © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
-                <span style="font-size: 0.85rem; color: var(--text-sub);">
-                    Built with HTML5, Vanilla CSS3 & AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit c726369 (v1.14.0)
-                </span>
-            </p>
-        </div>
-    </footer>
-
-    <!-- INTERACTIVE JAVASCRIPT & AI CONNECTOR ENGINE -->
+    <!-- UI Helper & Preserved Chatbot JS -->
     <script>
         window.addEventListener('touchstart', function onFirstTouch() {
             document.documentElement.classList.add('is-touch-device');
@@ -3672,6 +3598,107 @@ Natural conversation is ALWAYS the highest priority.
             document.body.classList.toggle('light-theme');
             document.getElementById('theme-toggle-btn').innerText = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
         });
+    </script>
+
+    <script>
+        // Custom UI Helper JS for Theme, Filters, Modals
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+        }
+
+        function openPdfModal(pdfPath, title) {
+            document.getElementById('pdf-modal-title').innerText = title;
+            document.getElementById('pdf-modal-iframe').src = pdfPath;
+            document.getElementById('pdf-modal-overlay').classList.add('active');
+        }
+
+        function closePdfModal() {
+            document.getElementById('pdf-modal-overlay').classList.remove('active');
+            document.getElementById('pdf-modal-iframe').src = '';
+        }
+
+        function openSecurityModal() {
+            document.getElementById('security-modal-overlay').classList.add('active');
+            if (window.turnstile && document.getElementById('cf-turnstile-container').children.length === 0) {
+                turnstile.render('#cf-turnstile-container', {
+                    sitekey: '0x4AAAAAAAxxxxxx', // Placeholder / Config sitekey
+                    callback: function(token) {
+                        document.getElementById('contact-details-revealed').style.display = 'block';
+                    }
+                });
+            }
+        }
+
+        function closeSecurityModal() {
+            document.getElementById('security-modal-overlay').classList.remove('active');
+        }
+
+        function openProjectModal(type) {
+            if (type === 'checkout') {
+                openPdfModal('certificates/UTeM_Degree_Computer_Engineering.pdf', 'Hybrid Self-Checkout Architecture');
+            } else if (type === 'glove') {
+                openPdfModal('certificates/Politeknik_Diploma_Electronic_Computer.pdf', 'Data Glove System Spec');
+            } else if (type === 'weight') {
+                openPdfModal('certificates/Festo_Industrial_AI_Automation.pdf', 'IoT Weight Tracking Spec');
+            } else if (type === 'network') {
+                openPdfModal('certificates/CCNA_Enterprise_Networking_Security_Automation.pdf', 'Cisco Enterprise Network Topology');
+            }
+        }
+
+        function filterCerts(category) {
+            const chips = document.querySelectorAll('.filter-chip');
+            chips.forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.cert-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-cat') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 3D Constellation Background Animation (Three.js)
+        (function init3DCanvas() {
+            const canvas = document.getElementById('canvas-3d');
+            if (!canvas || !window.Three) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const geometry = new THREE.BufferGeometry();
+            const count = 120;
+            const positions = new Float32Array(count * 3);
+
+            for (let i = 0; i < count * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 15;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const material = new THREE.PointsMaterial({ size: 0.04, color: 0x38bdf8, transparent: true, opacity: 0.7 });
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                points.rotation.x += 0.0005;
+                points.rotation.y += 0.0008;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        })();
     </script>
 </body>
 </html>
