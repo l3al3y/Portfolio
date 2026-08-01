@@ -2555,6 +2555,152 @@
             color: var(--text-muted) !important;
         }
 
+    
+        /* ==========================================================================
+           🚀 TIKTOK-STYLE ULTRA-FLUID UI & SOLID CAPSTONE CARD ENGINE (ZERO BLACK TRANSPARENCY)
+           ========================================================================== */
+
+        /* 1. TikTok Micro-Interactions & Touch Feedback */
+        .btn, .prompt-chip, .tech-tag, .stat-card, .cert-card, .project-card, .theme-toggle-btn {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease !important;
+            will-change: transform;
+        }
+
+        .btn:active, .prompt-chip:active, .tech-tag:active, .theme-toggle-btn:active {
+            transform: scale(0.95) !important;
+        }
+
+        /* 2. Capstone Project Card — Solid High-Contrast Styling (No Black Transparency) */
+        .project-card {
+            background: var(--bg-card) !important;
+            border: 2px solid var(--primary) !important;
+            border-radius: 18px !important;
+            overflow: hidden !important;
+            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.15) !important;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 18px 45px rgba(2, 132, 199, 0.25) !important;
+        }
+
+        /* Banner Container — Solid Dark/Light Surface */
+        .project-banner {
+            background: var(--bg-card-header) !important;
+            border-bottom: 2px solid var(--border-card) !important;
+            padding: 1.5rem !important;
+        }
+
+        .project-banner-badge {
+            background: linear-gradient(135deg, var(--primary), #0369a1) !important;
+            color: #ffffff !important;
+            border: none !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.05em !important;
+            padding: 0.35rem 0.85rem !important;
+            border-radius: 999px !important;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3) !important;
+        }
+
+        .project-banner-title {
+            color: var(--text-main) !important;
+            -webkit-text-fill-color: var(--text-main) !important;
+            font-weight: 800 !important;
+            font-size: 1.5rem !important;
+            margin-top: 0.65rem !important;
+        }
+
+        .project-desc {
+            color: var(--text-sub) !important;
+            font-size: 1.05rem !important;
+            line-height: 1.65 !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* Metrics Box — Solid Surface, High-Visibility Analytics Badges */
+        .project-metrics-box {
+            background: var(--bg-surface-hover) !important;
+            border: 1px solid var(--border-card) !important;
+            border-radius: var(--radius-md) !important;
+            padding: 1rem 0.85rem !important;
+            margin-bottom: 1.5rem !important;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.75rem !important;
+            text-align: center !important;
+        }
+
+        .metric-item {
+            background: var(--bg-card) !important;
+            border: 1px solid var(--border-card) !important;
+            border-radius: var(--radius-sm) !important;
+            padding: 0.65rem 0.4rem !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        .metric-val {
+            color: var(--primary) !important;
+            font-weight: 800 !important;
+            font-size: 1.25rem !important;
+            font-family: var(--font-mono) !important;
+        }
+
+        .metric-lbl {
+            color: var(--text-muted) !important;
+            font-size: 0.76rem !important;
+            font-weight: 600 !important;
+            margin-top: 0.2rem !important;
+        }
+
+        /* Tech Tags Pill Grid */
+        .tech-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 0.5rem !important;
+        }
+
+        .tech-tag {
+            background: var(--bg-surface-hover) !important;
+            border: 1px solid var(--border-card) !important;
+            color: var(--text-main) !important;
+            font-weight: 600 !important;
+            padding: 0.35rem 0.75rem !important;
+            border-radius: 999px !important;
+            font-size: 0.82rem !important;
+        }
+
+        .tech-tag:hover {
+            border-color: var(--primary) !important;
+            color: var(--primary) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* 3. Dark / Light Theme Solid Explicit Overrides */
+        body.light-theme .project-card,
+        body[data-theme="light"] .project-card {
+            background: #ffffff !important;
+            border: 2px solid #0284c7 !important;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
+        }
+
+        body.light-theme .project-banner,
+        body[data-theme="light"] .project-banner {
+            background: #f1f5f9 !important;
+            border-bottom: 2px solid #cbd5e1 !important;
+        }
+
+        body.light-theme .project-metrics-box,
+        body[data-theme="light"] .project-metrics-box {
+            background: #f8fafc !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+
+        body.light-theme .metric-item,
+        body[data-theme="light"] .metric-item {
+            background: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+
     </style>
 </head>
 <body>
