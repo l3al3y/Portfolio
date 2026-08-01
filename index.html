@@ -1576,81 +1576,23 @@
             }
         }
 
-        /* 3. MOBILE PHONE DESIGN (Width <= 768px - iPhone 17 Pro Max, Galaxy S26 Ultra, etc.) */
+        
+        /* ==========================================================================
+           📱 DYNAMIC FLUID MOVING TICKER FOR MOBILE & HIGH-DPR DISPLAYS (QHD+ 3120x1440)
+           ========================================================================== */
         @media (max-width: 768px) {
             .career-status-board {
                 width: 100% !important;
                 max-width: 100% !important;
-                padding: 0.75rem 0.85rem !important;
-                border-radius: var(--radius-md) !important;
-                background: rgba(15, 23, 42, 0.9) !important;
-                border: 1px solid var(--border-highlight) !important;
-            }
-
-            .career-status-header {
-                flex-direction: row !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                margin-bottom: 0.5rem !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-                padding-bottom: 0.4rem !important;
-            }
-
-            .career-status-badge {
-                font-size: 0.72rem !important;
-            }
-
-            .career-status-sub {
-                font-size: 0.68rem !important;
-                color: var(--text-sub) !important;
-            }
-
-            /* Static Mobile Skill Chips Grid - NO MARQUEE ANIMATION ON MOBILE */
-            .ticker-wrap {
-                mask-image: none !important;
-                -webkit-mask-image: none !important;
-                white-space: normal !important;
-                overflow: visible !important;
-            }
-
-            .ticker-move {
-                animation: none !important;
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.4rem !important;
-                transform: none !important;
-                width: 100% !important;
-            }
-
-            .ticker-item {
-                font-size: 0.73rem !important;
-                padding: 0.35rem 0.5rem !important;
-                background: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                border-radius: 6px !important;
-                justify-content: center !important;
-                text-align: center !important;
-                white-space: normal !important;
-            }
-
-            .ticker-separator {
-                display: none !important;
-            }
-        }
-
-    
-        /* 📱 DEDICATED MOBILE HERO CARRIER AVAILABILITY CARD */
-        @media (max-width: 768px) {
-            .career-status-board {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0.85rem 1rem !important;
-                border-radius: var(--radius-md) !important;
-                background: rgba(15, 23, 42, 0.95) !important;
-                backdrop-filter: blur(16px) !important;
-                border: 1px solid var(--border-highlight) !important;
-                box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15) !important;
+                padding: 0.6rem 0.85rem !important;
                 margin-bottom: 1.25rem !important;
+                background: rgba(15, 23, 42, 0.85) !important;
+                backdrop-filter: blur(12px) !important;
+                border: 1px solid var(--border-highlight) !important;
+                border-radius: var(--radius-md) !important;
+                box-shadow: 0 8px 25px rgba(56, 189, 248, 0.12) !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
             }
 
             .career-status-header {
@@ -1658,60 +1600,63 @@
                 flex-direction: row !important;
                 align-items: center !important;
                 justify-content: space-between !important;
-                margin-bottom: 0.65rem !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-                padding-bottom: 0.45rem !important;
+                margin-bottom: 0.45rem !important;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.12) !important;
+                padding-bottom: 0.35rem !important;
             }
 
             .career-status-badge {
-                font-size: 0.74rem !important;
+                font-size: clamp(0.68rem, 2.2vw, 0.74rem) !important;
                 font-weight: 800 !important;
                 color: var(--emerald) !important;
+                letter-spacing: 0.05em !important;
             }
 
             .career-status-sub {
-                font-size: 0.68rem !important;
-                color: var(--text-sub) !important;
-                background: rgba(255, 255, 255, 0.06) !important;
-                padding: 0.15rem 0.45rem !important;
-                border-radius: 4px !important;
+                font-size: clamp(0.64rem, 2vw, 0.7rem) !important;
+                color: var(--text-muted) !important;
+                font-weight: 500 !important;
             }
 
-            /* Mobile Swipeable Skill Chips Carousel */
+            /* Continuous Moving Marquee Animation for Mobile (Fluid & Compact) */
             .ticker-wrap {
-                mask-image: none !important;
-                -webkit-mask-image: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
                 white-space: nowrap !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
-                scrollbar-width: none !important;
+                position: relative !important;
                 display: block !important;
-                padding-bottom: 0.2rem !important;
-            }
-
-            .ticker-wrap::-webkit-scrollbar {
-                display: none !important;
+                mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
+                -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
             }
 
             .ticker-move {
-                animation: none !important;
-                display: inline-flex !important;
-                gap: 0.45rem !important;
-                transform: none !important;
+                display: inline-block !important;
+                white-space: nowrap !important;
+                animation: ticker-anim 16s linear infinite !important;
+                transform: translate3d(0, 0, 0) !important;
+                width: auto !important;
             }
 
             .ticker-item {
-                font-size: 0.75rem !important;
-                padding: 0.35rem 0.65rem !important;
-                background: rgba(56, 189, 248, 0.08) !important;
-                border: 1px solid rgba(56, 189, 248, 0.2) !important;
-                border-radius: 999px !important;
-                white-space: nowrap !important;
-                color: var(--text-main) !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.3rem !important;
+                padding: 0 0.55rem !important;
+                font-size: clamp(0.72rem, 2.3vw, 0.78rem) !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                font-family: var(--font-sans) !important;
+                background: none !important;
+                border: none !important;
             }
 
             .ticker-separator {
-                display: none !important;
+                display: inline-block !important;
+                color: var(--border-highlight) !important;
+                font-weight: 400 !important;
+                margin: 0 0.15rem !important;
+                font-size: 0.7rem !important;
             }
         }
 
