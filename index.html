@@ -1672,6 +1672,12 @@
             }
         }
 
+    
+        body.light-theme #revealed-phone, body.light-theme #revealed-email,
+        body[data-theme="light"] #revealed-phone, body[data-theme="light"] #revealed-email {
+            color: #0f172a !important;
+        }
+
     </style>
 </head>
 <body>
@@ -1697,7 +1703,7 @@
             <div class="nav-actions">
                 <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
                 <button class="btn btn-outline" onclick="toggleFloatingChat()">🌙 Chat AI</button>
-                <a href="resume/resume.pdf" target="_blank" class="btn btn-primary">📄 Resume PDF</a>
+                <button class="btn btn-primary" onclick="openSecurityModal()">📄 Resume PDF</button>
             </div>
         </div>
     </header>
@@ -1755,9 +1761,7 @@
                 </p>
                 
                 <div class="hero-cta-group">
-                    <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Explore Projects ➔</a>
-                    <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Download Resume (PDF) 📄</a>
-                    
+                    <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.75rem; font-size: 1rem;">Explore Projects ➔</a>
                 </div>
 
                 <div class="stats-grid">
@@ -2177,7 +2181,7 @@
 
                 <div id="contact-details-revealed" style="display: none; background: rgba(52, 211, 153, 0.1); border: 1px solid var(--emerald); border-radius: var(--radius-sm); padding: 1.25rem; color: var(--text-main); font-size: 0.9rem;">
                     <div style="font-weight: 700; color: var(--emerald); margin-bottom: 0.75rem; font-size: 0.95rem;">
-                        ✅ Verified Candidate Contact Info
+                        ✅ Verified Candidate Contact Info & Resume
                     </div>
                     <div style="margin-bottom: 0.6rem;">
                         <strong>📞 Phone / WhatsApp:</strong>
@@ -2189,13 +2193,17 @@
                         <span id="revealed-email" style="font-family: var(--font-mono); font-weight: 700; color: #ffffff;">--</span>
                         <button class="prompt-chip" style="margin-left: 0.5rem; padding: 0.15rem 0.5rem; font-size: 0.72rem;" onclick="copyTextFromElement('revealed-email')">Copy</button>
                     </div>
-                    <div style="display: flex; gap: 0.75rem;">
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 0.85rem;">
                         <a id="revealed-email-link" href="#" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 0.82rem; padding: 0.5rem;">✉️ Email Candidate</a>
                         <a id="revealed-wa-link" href="#" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.82rem; padding: 0.5rem; background: linear-gradient(135deg, #059669, #10b981);">💬 WhatsApp</a>
+                    </div>
+                    <div style="padding-top: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.2); text-align: center;">
+                        <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.55rem; font-weight: 700;">📄 Download Official Resume (PDF)</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
         <!-- Fixed Floating Chat Launcher Button -->
