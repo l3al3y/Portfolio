@@ -932,18 +932,7 @@
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .about-pillars-grid { grid-template-columns: repeat(2, 1fr); }
-            .projects-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: repeat(2, 1fr); }
-            .certs-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
-        }
-
-        @media (max-width: 640px) {
-            .hero-title { font-size: 2.25rem; }
+        
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .about-pillars-grid { grid-template-columns: 1fr; }
             .skills-grid { grid-template-columns: 1fr; }
@@ -1283,143 +1272,190 @@
         }
 
     
-        /* 📱 MOBILE HANDPHONE OPTIMIZATION (iPhone 17 Pro Max, Galaxy S26 Ultra, 375px - 440px) */
-        html, body {
-            overflow-x: hidden !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            position: relative;
-            box-sizing: border-box;
-        }
+        
+        /* ==========================================================================
+           📱 DEVICE RESPONSIBILITY SPLIT (PC, TABLET, MOBILE PHONES)
+           ========================================================================== */
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        @media (max-width: 768px) {
+        /* 1. PC / DESKTOP (Width > 1024px) */
+        @media (min-width: 1025px) {
             .container {
-                padding: 0 1rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow-x: hidden;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
             }
-
-            .hero-section {
-                padding: 6.5rem 0 3rem !important;
-                min-height: auto !important;
-            }
-
             .hero-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
+                grid-template-columns: 1.15fr 0.85fr;
+                gap: 3.5rem;
             }
-
-            .hero-title {
-                font-size: clamp(1.75rem, 7vw, 2.3rem) !important;
-                line-height: 1.2 !important;
-            }
-
-            .hero-subtitle {
-                font-size: 0.95rem !important;
-                line-height: 1.5 !important;
-                margin-bottom: 1.5rem !important;
-            }
-
-            .hero-eyebrow-badge {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.35rem !important;
-            }
-
-            .eyebrow-tag {
-                font-size: 0.7rem !important;
-                padding: 0.2rem 0.5rem !important;
-            }
-
-            .eyebrow-desc {
-                font-size: 0.68rem !important;
-                line-height: 1.4 !important;
-            }
-
-            .career-status-board {
-                max-width: 100% !important;
-                padding: 0.6rem 0.75rem !important;
-                margin-bottom: 1.25rem !important;
-            }
-
-            .career-status-header {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.25rem !important;
-            }
-
-            .ticker-item {
-                font-size: 0.78rem !important;
-                padding: 0 0.65rem !important;
-            }
-
-            .hero-cta-group {
-                flex-direction: column !important;
-                width: 100% !important;
-                gap: 0.75rem !important;
-            }
-
-            .hero-cta-group .btn {
-                width: 100% !important;
-                text-align: center !important;
-                justify-content: center !alignment;
-                padding: 0.75rem 1rem !important;
-                font-size: 0.9rem !important;
-            }
-
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.65rem !important;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
             }
+            .about-pillars-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            .certs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
 
+        /* 2. TABLET (769px <= Width <= 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+            .about-pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            .certs-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* 3. MOBILE PHONES (Width <= 768px - iPhone 17 Pro Max, Galaxy S26 Ultra, etc.) */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+                touch-action: manipulation;
+            }
+            .container {
+                padding: 0 1.25rem;
+                width: 100%;
+            }
+            .hero-section {
+                padding: 5.5rem 0 2.5rem;
+                min-height: auto;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-title {
+                font-size: clamp(1.75rem, 6.5vw, 2.25rem);
+                line-height: 1.25;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+            }
+            .hero-eyebrow-badge {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.35rem;
+            }
+            .eyebrow-tag {
+                font-size: 0.72rem;
+                padding: 0.2rem 0.5rem;
+            }
+            .eyebrow-desc {
+                font-size: 0.7rem;
+                line-height: 1.4;
+            }
+            .career-status-board {
+                max-width: 100%;
+                padding: 0.6rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+            .career-status-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.75rem;
+            }
+            .hero-cta-group .btn {
+                width: 100%;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.85rem 1rem;
+                font-size: 0.95rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
             .stat-card {
-                padding: 0.75rem !important;
+                padding: 0.75rem;
             }
-
             .stat-num {
-                font-size: 1.15rem !important;
+                font-size: 1.2rem;
             }
-
             .stat-label {
-                font-size: 0.7rem !important;
+                font-size: 0.72rem;
             }
-
             .about-pillars-grid, .skills-grid, .certs-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1.25rem !important;
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
-
             .cert-filters {
-                gap: 0.35rem !important;
+                gap: 0.35rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
             }
-
             .filter-chip {
-                font-size: 0.72rem !important;
-                padding: 0.35rem 0.65rem !important;
+                font-size: 0.75rem;
+                padding: 0.4rem 0.75rem;
+                white-space: nowrap;
             }
-
+            .nav-links {
+                display: none;
+            }
             .nav-actions .btn {
-                padding: 0.35rem 0.65rem !important;
-                font-size: 0.75rem !important;
+                padding: 0.4rem 0.65rem;
+                font-size: 0.78rem;
             }
-
             .chat-floating-window {
-                width: calc(100vw - 1rem) !important;
-                max-width: 100% !important;
-                right: 0.5rem !important;
-                left: 0.5rem !important;
-                bottom: 4.5rem !important;
-                height: 75vh !important;
+                width: calc(100vw - 1.5rem);
+                right: 0.75rem;
+                left: 0.75rem;
+                bottom: 4.5rem;
+                height: 70vh;
+                z-index: 99999;
             }
-
             .footer-verification {
-                flex-direction: column !important;
-                gap: 0.5rem !important;
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
             }
         }
 
