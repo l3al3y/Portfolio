@@ -3,7 +3,7 @@
 **Release Version:** `v3.0`  
 **Frontend Commit Hash:** `d3cd46c` (`l3al3y/ResumeAgent`)  
 **Backend Commit Hash:** `ce226be` (`l3al3y/ResumeAgent-Backend`)  
-**Live Production URL:** [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)  
+**Live Production URL:** [https://l3al3y.github.io/Portfolio/](https://l3al3y.github.io/Portfolio/)  
 **Release Date:** 2026-08-01  
 **Status:** **`RESUMEAGENT v3.0 RELEASE READY`**
 
