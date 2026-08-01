@@ -2133,6 +2133,180 @@
             }
         }
 
+    
+        /* ==========================================================================
+           ☀️ UNIVERSAL HIGH-CONTRAST LIGHT MODE CARDS & ZERO-OVERFLOW ENGINE
+           ========================================================================== */
+
+        /* 1. Global Light Mode Card & Container Overrides */
+        body.light-theme,
+        body[data-theme="light"],
+        @media (prefers-color-scheme: light) {
+            /* General Surface & Text Variables */
+            body.light-theme,
+            body[data-theme="light"] {
+                --bg-base: #f8fafc !important;
+                --bg-surface: #ffffff !important;
+                --bg-surface-hover: #f1f5f9 !important;
+                --bg-card: #ffffff !important;
+                --border-card: #cbd5e1 !important;
+                --border-highlight: #0284c7 !important;
+                --text-main: #0f172a !important;
+                --text-sub: #334155 !important;
+                --text-muted: #64748b !important;
+            }
+
+            /* All Cards Light Mode Overrides */
+            body.light-theme .hero-profile-card,
+            body[data-theme="light"] .hero-profile-card,
+            body.light-theme .stat-card,
+            body[data-theme="light"] .stat-card,
+            body.light-theme .about-pillar-card,
+            body[data-theme="light"] .about-pillar-card,
+            body.light-theme .project-card,
+            body[data-theme="light"] .project-card,
+            body.light-theme .skill-category-card,
+            body[data-theme="light"] .skill-category-card,
+            body.light-theme .cert-card,
+            body[data-theme="light"] .cert-card,
+            body.light-theme .timeline-card,
+            body[data-theme="light"] .timeline-card,
+            body.light-theme .modal-card,
+            body[data-theme="light"] .modal-card {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+                color: #0f172a !important;
+            }
+
+            /* Project Banner & Inner Metrics Box */
+            body.light-theme .project-banner,
+            body[data-theme="light"] .project-banner {
+                background: linear-gradient(135deg, #f1f5f9, #e2e8f0) !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+            }
+
+            body.light-theme .project-banner-title,
+            body[data-theme="light"] .project-banner-title {
+                color: #0f172a !important;
+            }
+
+            body.light-theme .project-desc,
+            body[data-theme="light"] .project-desc {
+                color: #334155 !important;
+            }
+
+            body.light-theme .project-metrics-box,
+            body[data-theme="light"] .project-metrics-box {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+
+            body.light-theme .metric-val,
+            body[data-theme="light"] .metric-val {
+                color: #0284c7 !important;
+            }
+
+            body.light-theme .metric-lbl,
+            body[data-theme="light"] .metric-lbl {
+                color: #475569 !important;
+            }
+
+            /* Tech Tags & Badges */
+            body.light-theme .tech-tag,
+            body[data-theme="light"] .tech-tag {
+                background: #f1f5f9 !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+                font-weight: 600 !important;
+            }
+
+            /* Timeline Nodes */
+            body.light-theme .timeline-point,
+            body[data-theme="light"] .timeline-point {
+                background: #0284c7 !important;
+                border-color: #ffffff !important;
+                box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
+            }
+
+            body.light-theme .timeline-role,
+            body[data-theme="light"] .timeline-role {
+                color: #0f172a !important;
+            }
+
+            body.light-theme .timeline-company,
+            body[data-theme="light"] .timeline-company {
+                color: #0284c7 !important;
+            }
+
+            /* Chat Prompt Chips in Light Mode */
+            body.light-theme .prompt-chip,
+            body[data-theme="light"] .prompt-chip {
+                background: #f1f5f9 !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+            }
+
+            body.light-theme .chat-suggested-prompts,
+            body[data-theme="light"] .chat-suggested-prompts {
+                background: #ffffff !important;
+                border-top: 1px solid #cbd5e1 !important;
+            }
+
+            body.light-theme .chat-body,
+            body[data-theme="light"] .chat-body {
+                background: #f8fafc !important;
+            }
+
+            body.light-theme .chat-input-area,
+            body[data-theme="light"] .chat-input-area {
+                background: #ffffff !important;
+                border-top: 1px solid #cbd5e1 !important;
+            }
+        }
+
+        /* 2. Absolute Mobile Width Overflow Fixes (< 768px) */
+        @media (max-width: 768px) {
+            html, body {
+                width: 100vw !important;
+                max-width: 100vw !important;
+                overflow-x: hidden !important;
+            }
+
+            .container,
+            .hero-section,
+            .section-padding,
+            header,
+            footer {
+                width: 100% !important;
+                max-width: 100vw !important;
+                box-sizing: border-box !important;
+            }
+
+            .career-status-board {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .hero-subtitle {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .projects-grid,
+            .stats-grid,
+            .about-pillars-grid,
+            .skills-grid,
+            .certs-grid {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+        }
+
     </style>
 </head>
 <body>
