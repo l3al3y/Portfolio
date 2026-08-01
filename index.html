@@ -949,6 +949,176 @@
             .skills-grid { grid-template-columns: 1fr; }
             .certs-grid { grid-template-columns: 1fr; }
         }
+
+        /* Floating AI Chatbot Widget Styles */
+        .chat-floating-window {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 390px;
+            max-width: calc(100vw - 2rem);
+            height: 520px;
+            max-height: calc(100vh - 5rem);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-glow);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .chat-floating-window.active {
+            display: flex !important;
+            animation: slideUpChat 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUpChat {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chat-header {
+            background: rgba(8, 12, 20, 0.9);
+            padding: 0.85rem 1.15rem;
+            border-bottom: 1px solid var(--border-card);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-bot-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .chat-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-sub);
+            font-size: 1.3rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .chat-close-btn:hover {
+            color: #fff;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            background: rgba(8, 12, 20, 0.5);
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 0.65rem;
+            max-width: 88%;
+        }
+
+        .chat-message.bot-msg {
+            align-self: flex-start;
+        }
+
+        .chat-message.user-msg {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .chat-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .bot-msg .chat-bubble {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            border-top-left-radius: 4px;
+        }
+
+        .user-msg .chat-bubble {
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: #ffffff;
+            border-top-right-radius: 4px;
+        }
+
+        .chat-suggested-prompts {
+            padding: 0.65rem 0.85rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid var(--border-card);
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .prompt-chip {
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-sub);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .prompt-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .chat-input-area {
+            padding: 0.75rem 1rem;
+            background: rgba(8, 12, 20, 0.95);
+            border-top: 1px solid var(--border-card);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 0.55rem 0.85rem;
+            color: var(--text-main);
+            font-size: 0.88rem;
+            font-family: var(--font-sans);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
     </style>
 </head>
 <body>
@@ -1625,7 +1795,10 @@
         <div class="modal-card">
             <div class="modal-header">
                 <h3 id="pdf-modal-title">Certificate Document Preview</h3>
-                <button class="modal-close-btn" onclick="closePdfModal()">&times;</button>
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <a id="pdf-modal-open-direct" href="#" target="_blank" class="btn btn-outline" style="font-size:0.75rem; padding:0.3rem 0.65rem;">Open Full PDF ↗</a>
+                    <button class="modal-close-btn" onclick="closePdfModal()">&times;</button>
+                </div>
             </div>
             <div class="modal-body" style="padding: 0;">
                 <iframe id="pdf-modal-iframe" style="width: 100%; height: 75vh; border: none;" src=""></iframe>
@@ -1937,11 +2110,21 @@
         function toggleFloatingChat() {
             const chatWin = document.getElementById('chat-floating-window');
             if (chatWin) {
-                chatWin.classList.toggle('active');
-                if (chatWin.classList.contains('active')) {
-                    document.getElementById('chat-user-input').focus();
-                    renderRandomChips();
+                const isActive = chatWin.classList.contains('active');
+                if (isActive) {
+                    chatWin.classList.remove('active');
+                    chatWin.style.display = 'none';
+                } else {
+                    chatWin.classList.add('active');
+                    chatWin.style.display = 'flex';
+                    const input = document.getElementById('chat-user-input');
+                    if (input) input.focus();
+                    if (typeof renderRandomChips === 'function') {
+                        renderRandomChips();
+                    }
                 }
+            }
+        }
             }
         }
 
@@ -3607,9 +3790,14 @@ Natural conversation is ALWAYS the highest priority.
         }
 
         function openPdfModal(pdfPath, title) {
-            document.getElementById('pdf-modal-title').innerText = title;
-            document.getElementById('pdf-modal-iframe').src = pdfPath;
-            document.getElementById('pdf-modal-overlay').classList.add('active');
+            const titleElem = document.getElementById('pdf-modal-title');
+            const iframeElem = document.getElementById('pdf-modal-iframe');
+            const overlayElem = document.getElementById('pdf-modal-overlay');
+            const directBtn = document.getElementById('pdf-modal-open-direct');
+            if (titleElem) titleElem.innerText = title;
+            if (iframeElem) iframeElem.src = pdfPath;
+            if (directBtn) directBtn.href = pdfPath;
+            if (overlayElem) overlayElem.classList.add('active');
         }
 
         function closePdfModal() {
