@@ -1673,6 +1673,151 @@
             }
         }
 
+    
+        /* ==========================================================================
+           ⚡ DUAL-TRACK CONTINUOUS MARQUEE & MOBILE PIXEL FIT ENGINE
+           ========================================================================== */
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @-webkit-keyframes marquee-scroll {
+            0% { -webkit-transform: translateX(0); }
+            100% { -webkit-transform: translateX(-50%); }
+        }
+
+        .ticker-wrap {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            position: relative !important;
+            mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
+        }
+
+        .ticker-track {
+            display: flex !important;
+            width: max-content !important;
+            animation: marquee-scroll 14s linear infinite !important;
+            -webkit-animation: marquee-scroll 14s linear infinite !important;
+            will-change: transform;
+        }
+
+        .ticker-wrap:hover .ticker-track {
+            animation-play-state: paused !important;
+            -webkit-animation-play-state: paused !important;
+        }
+
+        .ticker-content {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            padding-right: 0.75rem !important;
+            white-space: nowrap !important;
+        }
+
+        .ticker-item {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: var(--font-sans);
+        }
+
+        .ticker-item span.highlight {
+            color: var(--primary);
+        }
+
+        /* Mobile Handphone Fit (iPhone / Galaxy 6.9-inch QHD+ 3120x1440 Displays) */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .container {
+                padding: 0 1rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .hero-section {
+                padding: 5.5rem 0 2rem !important;
+            }
+
+            .hero-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                gap: 1.5rem !important;
+            }
+
+            .hero-profile-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 1.25rem !important;
+            }
+
+            .hero-eyebrow-badge {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.25rem !important;
+                width: 100% !important;
+            }
+
+            .eyebrow-tag {
+                font-size: 0.7rem !important;
+                padding: 0.2rem 0.5rem !important;
+            }
+
+            .eyebrow-desc {
+                white-space: normal !important;
+                word-break: break-word !important;
+                font-size: 0.68rem !important;
+                line-height: 1.35 !important;
+            }
+
+            .hero-title {
+                font-size: clamp(1.6rem, 5.5vw, 2.1rem) !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.85rem !important;
+                word-break: break-word !important;
+            }
+
+            .hero-subtitle {
+                font-size: 0.88rem !important;
+                line-height: 1.45 !important;
+                margin-bottom: 1.25rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .career-status-board {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 0.6rem 0.75rem !important;
+                margin-bottom: 1.25rem !important;
+            }
+
+            .career-status-badge {
+                font-size: 0.7rem !important;
+            }
+
+            .career-status-sub {
+                font-size: 0.65rem !important;
+            }
+
+            .ticker-item {
+                font-size: clamp(0.7rem, 2.2vw, 0.76rem) !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1717,36 +1862,37 @@
                     </div>
                     
                     <div class="ticker-wrap">
-                        <div class="ticker-move">
-                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
-                            <span class="ticker-separator">•</span>
-                            
-                            <!-- Looped duplicate sequence for seamless infinite scroll -->
-                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
-                            <span class="ticker-separator">•</span>
+                        <div class="ticker-track">
+                            <div class="ticker-content">
+                                <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
+                                <span class="ticker-separator">•</span>
+                            </div>
+                            <div class="ticker-content" aria-hidden="true">
+                                <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                                <span class="ticker-separator">•</span>
+                                <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
+                                <span class="ticker-separator">•</span>
+                            </div>
                         </div>
                     </div>
-                </div>
                                 <div class="hero-eyebrow-badge">
                     <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
                     <span class="eyebrow-desc">COMPUTER ENGINEERING (HONS) • AI AUTOMATION • NETWORKING • CYBERSECURITY</span>
