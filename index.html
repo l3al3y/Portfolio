@@ -1147,6 +1147,109 @@
             box-shadow: 0 0 10px var(--primary-glow);
         }
 
+    
+        /* Career Availability Status Component (LED Ticker Board) */
+        .career-status-board {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-md);
+            padding: 0.9rem 1.25rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+            padding-bottom: 0.5rem;
+        }
+
+        .career-status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: var(--emerald);
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+        }
+
+        .career-status-badge .led-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background-color: var(--emerald);
+            box-shadow: 0 0 12px var(--emerald), 0 0 4px var(--emerald);
+            animation: led-pulse 1.8s infinite;
+        }
+
+        @keyframes led-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px var(--emerald); }
+            50% { opacity: 0.45; transform: scale(0.85); box-shadow: 0 0 4px var(--emerald); }
+        }
+
+        .career-status-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Ticker Container & Animation */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+        }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker-anim 25s linear infinite;
+        }
+
+        .ticker-wrap:hover .ticker-move {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker-anim {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0 1rem;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: var(--font-sans);
+        }
+
+        .ticker-item span.highlight {
+            color: var(--primary);
+        }
+
+        .ticker-separator {
+            color: var(--border-highlight);
+            font-weight: 400;
+            margin: 0 0.25rem;
+        }
+
     </style>
 </head>
 <body>
@@ -1181,9 +1284,45 @@
     <section class="hero-section">
         <div class="container hero-grid">
             <div>
-                <div class="status-pill">
-                    <div class="status-dot"></div>
-                    Open for Opportunities • Computer Engineering Graduate
+                <div class="career-status-board">
+                    <div class="career-status-header">
+                        <div class="career-status-badge">
+                            <div class="led-dot"></div>
+                            OPEN FOR OPPORTUNITIES
+                        </div>
+                        <div class="career-status-sub">Available for Full-Time Graduate Roles</div>
+                    </div>
+                    
+                    <div class="ticker-wrap">
+                        <div class="ticker-move">
+                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
+                            <span class="ticker-separator">•</span>
+                            
+                            <!-- Looped duplicate sequence for seamless infinite scroll -->
+                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
+                            <span class="ticker-separator">•</span>
+                        </div>
+                    </div>
                 </div>
                 <h1 class="hero-title">
                     Building <span>Intelligent Systems</span> at the Intersection of AI, Networking & Hardware.
