@@ -1150,14 +1150,15 @@
     
         /* Career Availability Status Component (LED Ticker Board) */
         .career-status-board {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-highlight);
             border-radius: var(--radius-md);
-            padding: 0.9rem 1.25rem;
-            margin-bottom: 1.75rem;
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 0.65rem 1rem;
+            margin-bottom: 1.5rem;
+            max-width: 620px; /* Aligns exactly with hero-subtitle width */
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
         }
