@@ -1845,10 +1845,31 @@
                 <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.25rem;">
                     Please complete the Turnstile verification below to reveal Muhammad Irfan's direct phone number and email.
                 </p>
+
+                <div id="captcha-error-msg" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #fca5a5; padding: 0.65rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem; text-align: center;">
+                    Security verification failed. Please try again.
+                </div>
+
                 <div id="cf-turnstile-container" style="display: flex; justify-content: center; margin-bottom: 1.25rem;"></div>
-                <div id="contact-details-revealed" style="display: none; background: rgba(52, 211, 153, 0.1); border: 1px solid var(--emerald); border-radius: var(--radius-sm); padding: 1rem; color: var(--text-main); font-size: 0.9rem;">
-                    <strong>📞 Phone / WhatsApp:</strong> +6011-28042456<br>
-                    <strong>✉️ Direct Email:</strong> irfanfahmi99@gmail.com
+
+                <div id="contact-details-revealed" style="display: none; background: rgba(52, 211, 153, 0.1); border: 1px solid var(--emerald); border-radius: var(--radius-sm); padding: 1.25rem; color: var(--text-main); font-size: 0.9rem;">
+                    <div style="font-weight: 700; color: var(--emerald); margin-bottom: 0.75rem; font-size: 0.95rem;">
+                        ✅ Verified Candidate Contact Info
+                    </div>
+                    <div style="margin-bottom: 0.6rem;">
+                        <strong>📞 Phone / WhatsApp:</strong>
+                        <span id="revealed-phone" style="font-family: var(--font-mono); font-weight: 700; color: #ffffff;">--</span>
+                        <button class="prompt-chip" style="margin-left: 0.5rem; padding: 0.15rem 0.5rem; font-size: 0.72rem;" onclick="copyTextFromElement('revealed-phone')">Copy</button>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>✉️ Direct Email:</strong>
+                        <span id="revealed-email" style="font-family: var(--font-mono); font-weight: 700; color: #ffffff;">--</span>
+                        <button class="prompt-chip" style="margin-left: 0.5rem; padding: 0.15rem 0.5rem; font-size: 0.72rem;" onclick="copyTextFromElement('revealed-email')">Copy</button>
+                    </div>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <a id="revealed-email-link" href="#" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 0.82rem; padding: 0.5rem;">✉️ Email Candidate</a>
+                        <a id="revealed-wa-link" href="#" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.82rem; padding: 0.5rem; background: linear-gradient(135deg, #059669, #10b981);">💬 WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3827,30 +3848,87 @@ Natural conversation is ALWAYS the highest priority.
             document.getElementById('pdf-modal-iframe').src = '';
         }
 
+        // const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
+
         function openSecurityModal() {
+            const errorMsgEl = document.getElementById('captcha-error-msg');
+            if (errorMsgEl) errorMsgEl.style.display = 'none';
+
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.add('active');
-            
-            const revealedBox = document.getElementById('contact-details-revealed');
-            if (revealedBox) revealedBox.style.display = 'block';
 
             const container = document.getElementById('cf-turnstile-container');
-            if (window.turnstile && container && container.children.length === 0) {
+            if (window.turnstile && container) {
+                container.innerHTML = '';
                 try {
                     turnstile.render('#cf-turnstile-container', {
                         sitekey: '0x4AAAAAAAbX7Q9r02L47L3a',
-                        callback: function(token) {
-                            if (revealedBox) revealedBox.style.display = 'block';
-                        }
+                        callback: onTurnstileSuccess
                     });
                 } catch (err) {
-                    console.log("Turnstile widget note:", err);
+                    console.log("Turnstile render note:", err);
                 }
             }
         }
 
         function closeSecurityModal() {
-            document.getElementById('security-modal-overlay').classList.remove('active');
+            const modal = document.getElementById('security-modal-overlay');
+            if (modal) modal.classList.remove('active');
+        }
+
+        async function onTurnstileSuccess(token) {
+            const errorMsgEl = document.getElementById('captcha-error-msg');
+            if (errorMsgEl) errorMsgEl.style.display = 'none';
+
+            try {
+                const res = await fetch(CLOUDFLARE_WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ turnstileToken: token })
+                });
+
+                if (!res.ok) throw new Error("Verification failed");
+
+                const data = await res.json();
+                if (data.email && data.phone) {
+                    const revealedEmail = document.getElementById('revealed-email');
+                    const revealedPhone = document.getElementById('revealed-phone');
+                    if (revealedEmail) revealedEmail.innerText = data.email;
+                    if (revealedPhone) revealedPhone.innerText = data.phone;
+
+                    const rawPhoneDigits = data.phone.replace(/[^0-9]/g, '');
+                    const emailLink = document.getElementById('revealed-email-link');
+                    const waLink = document.getElementById('revealed-wa-link');
+                    if (emailLink) emailLink.href = `mailto:${data.email}`;
+                    if (waLink) waLink.href = `https://wa.me/${rawPhoneDigits}`;
+
+                    const revealedBox = document.getElementById('contact-details-revealed');
+                    if (revealedBox) revealedBox.style.display = 'block';
+                } else {
+                    throw new Error("Invalid response format");
+                }
+            } catch (err) {
+                console.error("Turnstile verification error:", err);
+                if (errorMsgEl) {
+                    errorMsgEl.innerText = "Security verification failed. Please try again.";
+                    errorMsgEl.style.display = 'block';
+                }
+                if (window.turnstile) {
+                    try { window.turnstile.reset(); } catch (e) {}
+                }
+            }
+        }
+
+        function copyTextFromElement(elementId) {
+            const elem = document.getElementById(elementId);
+            if (elem) {
+                const text = elem.innerText;
+                if (text && text !== '--') {
+                    navigator.clipboard.writeText(text).then(() => {
+                        alert('Copied to clipboard: ' + text);
+                    });
+                }
+            }
         }
 
         function openProjectModal(type) {
