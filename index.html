@@ -1536,146 +1536,9 @@
 
     
         
+        
         /* ==========================================================================
-           ⚡ DYNAMIC FLUID HERO SECTION & UNIVERSAL MOVING MARQUEE ENGINE
-           ========================================================================== */
-
-        /* Universal Moving Marquee Animation Definition */
-        @keyframes ticker-anim {
-            0% { transform: translate3d(0%, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        @-webkit-keyframes ticker-anim {
-            0% { -webkit-transform: translate3d(0%, 0, 0); }
-            100% { -webkit-transform: translate3d(-50%, 0, 0); }
-        }
-
-        .ticker-wrap {
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow: hidden !important;
-            white-space: nowrap !important;
-            position: relative !important;
-            mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
-        }
-
-        .ticker-move {
-            display: inline-flex !important;
-            white-space: nowrap !important;
-            width: max-content !important;
-            animation: ticker-anim 14s linear infinite !important;
-            -webkit-animation: ticker-anim 14s linear infinite !important;
-            will-change: transform;
-        }
-
-        .ticker-wrap:hover .ticker-move {
-            animation-play-state: paused !important;
-            -webkit-animation-play-state: paused !important;
-        }
-
-        /* Fluid Scaling for Hero Above Components */
-        .hero-section {
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .hero-eyebrow-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.85rem;
-            max-width: 100%;
-        }
-
-        .eyebrow-tag {
-            font-family: var(--font-mono);
-            font-size: clamp(0.68rem, 2vw, 0.78rem);
-            font-weight: 800;
-            letter-spacing: 0.06em;
-            color: var(--primary);
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            padding: 0.25rem 0.65rem;
-            border-radius: var(--radius-sm);
-            text-transform: uppercase;
-        }
-
-        .eyebrow-desc {
-            font-family: var(--font-mono);
-            font-size: clamp(0.65rem, 1.8vw, 0.75rem);
-            color: var(--text-sub);
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            word-break: break-word;
-        }
-
-        .hero-title {
-            font-size: clamp(1.85rem, 4.5vw, 3.25rem) !important;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
-            max-width: 100%;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(0.9rem, 2vw, 1.12rem) !important;
-            color: var(--text-sub);
-            margin-bottom: 2rem;
-            max-width: 620px;
-            width: 100%;
-        }
-
-        .career-status-board {
-            width: 100% !important;
-            max-width: 620px !important;
-            box-sizing: border-box !important;
-            overflow: hidden !important;
-        }
-
-        /* Mobile Handphone Fluid Overrides (320px - 768px, QHD+ Displays) */
-        @media (max-width: 768px) {
-            .career-status-board {
-                padding: 0.6rem 0.75rem !important;
-                margin-bottom: 1.25rem !important;
-            }
-
-            .career-status-header {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                margin-bottom: 0.4rem !important;
-                border-bottom: 1px dashed rgba(255, 255, 255, 0.12) !important;
-                padding-bottom: 0.35rem !important;
-            }
-
-            .career-status-badge {
-                font-size: clamp(0.65rem, 2.2vw, 0.72rem) !important;
-            }
-
-            .career-status-sub {
-                font-size: clamp(0.6rem, 2vw, 0.68rem) !important;
-            }
-
-            .ticker-item {
-                font-size: clamp(0.7rem, 2.3vw, 0.76rem) !important;
-                padding: 0 0.45rem !important;
-            }
-
-            .ticker-separator {
-                margin: 0 0.1rem !important;
-                font-size: 0.65rem !important;
-            }
-        }
-
-    
-        /* ==========================================================================
-           ⚡ DUAL-TRACK CONTINUOUS MARQUEE & MOBILE PIXEL FIT ENGINE
+           ⚡ DEDICATED PC & MOBILE MARQUEE SPACING ENGINE
            ========================================================================== */
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
@@ -1700,8 +1563,6 @@
         .ticker-track {
             display: flex !important;
             width: max-content !important;
-            animation: marquee-scroll 14s linear infinite !important;
-            -webkit-animation: marquee-scroll 14s linear infinite !important;
             will-change: transform;
         }
 
@@ -1710,42 +1571,68 @@
             -webkit-animation-play-state: paused !important;
         }
 
-        .ticker-content {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.75rem !important;
-            padding-right: 0.75rem !important;
-            white-space: nowrap !important;
+        /* 1. PC / DESKTOP (Width > 1024px) */
+        @media (min-width: 1025px) {
+            .ticker-track {
+                animation: marquee-scroll 16s linear infinite !important;
+                -webkit-animation: marquee-scroll 16s linear infinite !important;
+            }
+
+            .ticker-content {
+                display: flex !important;
+                align-items: center !important;
+                gap: 1.25rem !important;
+                padding-right: 1.25rem !important;
+                flex-shrink: 0 !important;
+            }
+
+            .ticker-item {
+                font-size: 0.88rem !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.4rem !important;
+                flex-shrink: 0 !important;
+            }
+
+            .ticker-separator {
+                margin: 0 0.5rem !important;
+                color: var(--border-highlight) !important;
+                flex-shrink: 0 !important;
+            }
         }
 
-        .ticker-item {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: #ffffff;
-            font-family: var(--font-sans);
-        }
-
-        .ticker-item span.highlight {
-            color: var(--primary);
-        }
-
-        /* Mobile Handphone Fit (iPhone / Galaxy 6.9-inch QHD+ 3120x1440 Displays) */
+        /* 2. MOBILE PHONES (Width <= 768px - QHD+ 3120x1440 & Mobile Devices) */
         @media (max-width: 768px) {
-            html, body {
-                overflow-x: hidden !important;
-                width: 100% !important;
-                max-width: 100% !important;
+            .ticker-track {
+                animation: marquee-scroll 20s linear infinite !important;
+                -webkit-animation: marquee-scroll 20s linear infinite !important;
             }
 
-            .container {
-                padding: 0 1rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
+            .ticker-content {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.85rem !important;
+                padding-right: 0.85rem !important;
+                flex-shrink: 0 !important;
             }
 
-            .hero-section {
-                padding: 5.5rem 0 2rem !important;
+            .ticker-item {
+                font-size: 0.78rem !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.35rem !important;
+                flex-shrink: 0 !important;
+            }
+
+            .ticker-separator {
+                margin: 0 0.35rem !important;
+                color: var(--border-highlight) !important;
+                opacity: 0.6 !important;
+                flex-shrink: 0 !important;
             }
 
             .hero-grid {
@@ -1760,19 +1647,12 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 box-sizing: border-box !important;
-                padding: 1.25rem !important;
             }
 
             .hero-eyebrow-badge {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 0.25rem !important;
-                width: 100% !important;
-            }
-
-            .eyebrow-tag {
-                font-size: 0.7rem !important;
-                padding: 0.2rem 0.5rem !important;
             }
 
             .eyebrow-desc {
@@ -1780,41 +1660,6 @@
                 word-break: break-word !important;
                 font-size: 0.68rem !important;
                 line-height: 1.35 !important;
-            }
-
-            .hero-title {
-                font-size: clamp(1.6rem, 5.5vw, 2.1rem) !important;
-                line-height: 1.2 !important;
-                margin-bottom: 0.85rem !important;
-                word-break: break-word !important;
-            }
-
-            .hero-subtitle {
-                font-size: 0.88rem !important;
-                line-height: 1.45 !important;
-                margin-bottom: 1.25rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-
-            .career-status-board {
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                padding: 0.6rem 0.75rem !important;
-                margin-bottom: 1.25rem !important;
-            }
-
-            .career-status-badge {
-                font-size: 0.7rem !important;
-            }
-
-            .career-status-sub {
-                font-size: 0.65rem !important;
-            }
-
-            .ticker-item {
-                font-size: clamp(0.7rem, 2.2vw, 0.76rem) !important;
             }
         }
 
