@@ -2974,6 +2974,364 @@
             }
         }
 
+    
+        /* ==========================================================================
+           🎯 DEVICE-TAILORED RESPONSIVE & THEME SYSTEM ENGINE
+           ========================================================================== */
+
+        /* 1. Standardized Theme Variables */
+        :root {
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --card-background: #0f172a;
+            --card-border: #334155;
+            --accent-color: #0284c7;
+            --accent-hover: #0369a1;
+            --bg-base: #090d16;
+            --bg-surface: #0f172a;
+            --bg-surface-hover: #1e293b;
+            --bg-card-header: #1e293b;
+            --emerald-accent: #059669;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-theme,
+        body[data-theme="light"] {
+            --text-primary: #0f172a !important;
+            --text-secondary: #334155 !important;
+            --text-muted: #64748b !important;
+            --card-background: #ffffff !important;
+            --card-border: #cbd5e1 !important;
+            --accent-color: #0284c7 !important;
+            --accent-hover: #0369a1 !important;
+            --bg-base: #f8fafc !important;
+            --bg-surface: #ffffff !important;
+            --bg-surface-hover: #f1f5f9 !important;
+            --bg-card-header: #f1f5f9 !important;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+        }
+
+        /* 2. Global Base Rules */
+        *, *::before, *::after {
+            box-sizing: border-box !important;
+        }
+
+        html, body {
+            width: 100% !important;
+            max-width: 100vw !important;
+            overflow-x: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: var(--bg-base) !important;
+            color: var(--text-primary) !important;
+            font-family: var(--font-sans);
+            scroll-behavior: smooth;
+        }
+
+        /* 3. Universal Card & Container High-Contrast Contrast */
+        .hero-profile-card,
+        .stat-card,
+        .about-pillar-card,
+        .project-card,
+        .skill-category-card,
+        .cert-card,
+        .timeline-card,
+        .modal-card,
+        .career-status-board {
+            background: var(--card-background) !important;
+            border: 2px solid var(--card-border) !important;
+            color: var(--text-primary) !important;
+            box-shadow: var(--shadow-card) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        .hero-title,
+        .section-title,
+        .project-banner-title,
+        .profile-name,
+        .pillar-title,
+        .skill-category-title,
+        .cert-title,
+        .timeline-role {
+            color: var(--text-primary) !important;
+            -webkit-text-fill-color: var(--text-primary) !important;
+        }
+
+        .hero-subtitle,
+        .section-subtitle,
+        .project-desc,
+        .pillar-desc,
+        .timeline-desc,
+        .bio-value {
+            color: var(--text-secondary) !important;
+        }
+
+        .bio-label,
+        .metric-lbl,
+        .stat-label {
+            color: var(--text-muted) !important;
+        }
+
+        /* 4. Chatbot UI Component Precision */
+        .chat-floating-window {
+            background: var(--bg-surface) !important;
+            border: 2px solid var(--accent-color) !important;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .chat-header {
+            background: var(--bg-card-header) !important;
+            border-bottom: 2px solid var(--card-border) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .chat-body {
+            background: var(--bg-base) !important;
+        }
+
+        .chat-message.bot .chat-bubble {
+            background: var(--card-background) !important;
+            border: 1.5px solid var(--card-border) !important;
+            color: var(--text-primary) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .chat-message.user .chat-bubble {
+            background: var(--accent-color) !important;
+            border: 1.5px solid var(--accent-color) !important;
+            color: #ffffff !important;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25) !important;
+        }
+
+        .chat-suggested-prompts {
+            background: var(--bg-surface) !important;
+            border-top: 2px solid var(--card-border) !important;
+        }
+
+        .prompt-chip {
+            background: var(--bg-surface-hover) !important;
+            border: 1px solid var(--card-border) !important;
+            color: var(--text-primary) !important;
+            font-weight: 600 !important;
+        }
+
+        .chat-input-area {
+            background: var(--bg-surface) !important;
+            border-top: 2px solid var(--card-border) !important;
+        }
+
+        .chat-input {
+            background: var(--bg-base) !important;
+            border: 1px solid var(--card-border) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-muted) !important;
+            opacity: 0.8;
+        }
+
+        /* 5. Device Tier #1: Desktop (>= 1200px) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px !important;
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+            }
+
+            .hero-section {
+                padding-top: 8rem !important;
+                padding-bottom: 5rem !important;
+                min-height: 85vh !important;
+            }
+
+            .hero-grid {
+                display: grid !important;
+                grid-template-columns: 1.15fr 0.85fr !important;
+                gap: 3.5rem !important;
+                align-items: center !important;
+            }
+
+            .hero-title {
+                font-size: clamp(2.4rem, 4.5vw, 3.4rem) !important;
+                line-height: 1.16 !important;
+                letter-spacing: -0.03em !important;
+                margin-bottom: 1.25rem !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1.12rem !important;
+                line-height: 1.65 !important;
+                margin-bottom: 2rem !important;
+                max-width: 620px !important;
+            }
+        }
+
+        /* 6. Device Tier #2: Tablet (769px - 1199px) */
+        @media (min-width: 769px) and (max-width: 1199px) {
+            .container {
+                max-width: 100% !important;
+                padding-left: 1.75rem !important;
+                padding-right: 1.75rem !important;
+            }
+
+            .hero-section {
+                padding-top: 6.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+
+            .hero-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2.25rem !important;
+                align-items: center !important;
+            }
+
+            .hero-title {
+                font-size: clamp(1.85rem, 3.8vw, 2.4rem) !important;
+                line-height: 1.22 !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.58 !important;
+            }
+        }
+
+        /* 7. Device Tier #3: Mobile (<= 768px) — Mobile-First Recruiter Experience */
+        @media (max-width: 768px) {
+            .container {
+                width: 100% !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .hero-section {
+                padding-top: 4.5rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .hero-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .hero-title {
+                font-size: clamp(1.4rem, 5.2vw, 1.85rem) !important;
+                line-height: 1.28 !important;
+                margin-bottom: 0.75rem !important;
+                word-break: break-word !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.25rem !important;
+                word-break: break-word !important;
+            }
+
+            .hero-cta-group {
+                width: 100% !important;
+                margin-bottom: 1.25rem !important;
+            }
+
+            .hero-cta-group .btn {
+                width: 100% !important;
+                justify-content: center !important;
+                text-align: center !important;
+                padding: 0.7rem 1rem !important;
+                font-size: 0.85rem !important;
+            }
+
+            .hero-profile-card {
+                padding: 1rem !important;
+                border-radius: 14px !important;
+            }
+
+            .profile-info-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.15rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+
+            .bio-value {
+                word-break: break-word !important;
+            }
+
+            .projects-grid,
+            .stats-grid,
+            .skills-grid,
+            .certs-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .project-metrics-box {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.35rem !important;
+                padding: 0.65rem 0.4rem !important;
+            }
+
+            .metric-val {
+                font-size: 1.05rem !important;
+            }
+
+            .metric-lbl {
+                font-size: 0.72rem !important;
+            }
+
+            .chat-floating-window {
+                position: fixed !important;
+                bottom: 0.75rem !important;
+                right: 0.5rem !important;
+                left: 0.5rem !important;
+                width: calc(100vw - 1rem) !important;
+                max-width: 100% !important;
+                height: calc(100vh - 4.5rem) !important;
+                max-height: 520px !important;
+                border-radius: 14px !important;
+                z-index: 99999 !important;
+            }
+
+            .modal-card {
+                width: calc(100vw - 1rem) !important;
+                max-width: 100% !important;
+                padding: 1.15rem !important;
+                max-height: 86vh !important;
+            }
+        }
+
+        /* 8. Small Mobile (<= 414px: iPhone 12/13/14, Pixel, Galaxy) */
+        @media (max-width: 414px) {
+            .hero-title {
+                font-size: 1.32rem !important;
+                line-height: 1.25 !important;
+                letter-spacing: -0.01em !important;
+            }
+
+            .hero-subtitle {
+                font-size: 0.85rem !important;
+                line-height: 1.45 !important;
+            }
+
+            .project-metrics-box {
+                grid-template-columns: 1fr !important;
+                text-align: center !important;
+            }
+        }
+
     </style>
 </head>
 <body>
