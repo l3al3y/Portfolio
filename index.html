@@ -1535,64 +1535,113 @@
         }
 
     
-        /* ==========================================================================
-           🎨 DEDICATED DESIGNS BY DEVICE (PC, TABLET, MOBILE)
-           ========================================================================== */
-
-        /* 1. PC / DESKTOP (Width > 1024px) */
-        @media (min-width: 1025px) {
-            .ticker-move {
-                animation: ticker-anim 12s linear infinite !important;
-            }
-        }
-
-        /* 2. TABLET DESIGN (769px <= Width <= 1024px) */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .career-status-board {
-                max-width: 100% !important;
-                padding: 0.85rem 1.15rem !important;
-            }
-            .ticker-wrap {
-                mask-image: none !important;
-                -webkit-mask-image: none !important;
-                white-space: normal !important;
-            }
-            .ticker-move {
-                animation: none !important;
-                display: flex !important;
-                flex-wrap: wrap !important;
-                gap: 0.5rem !important;
-                transform: none !important;
-            }
-            .ticker-item {
-                font-size: 0.82rem !important;
-                padding: 0.3rem 0.65rem !important;
-                background: rgba(255, 255, 255, 0.04) !important;
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                border-radius: var(--radius-sm) !important;
-            }
-            .ticker-separator {
-                display: none !important;
-            }
-        }
-
         
         /* ==========================================================================
-           📱 DYNAMIC FLUID MOVING TICKER FOR MOBILE & HIGH-DPR DISPLAYS (QHD+ 3120x1440)
+           ⚡ DYNAMIC FLUID HERO SECTION & UNIVERSAL MOVING MARQUEE ENGINE
            ========================================================================== */
+
+        /* Universal Moving Marquee Animation Definition */
+        @keyframes ticker-anim {
+            0% { transform: translate3d(0%, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        @-webkit-keyframes ticker-anim {
+            0% { -webkit-transform: translate3d(0%, 0, 0); }
+            100% { -webkit-transform: translate3d(-50%, 0, 0); }
+        }
+
+        .ticker-wrap {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            position: relative !important;
+            mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
+        }
+
+        .ticker-move {
+            display: inline-flex !important;
+            white-space: nowrap !important;
+            width: max-content !important;
+            animation: ticker-anim 14s linear infinite !important;
+            -webkit-animation: ticker-anim 14s linear infinite !important;
+            will-change: transform;
+        }
+
+        .ticker-wrap:hover .ticker-move {
+            animation-play-state: paused !important;
+            -webkit-animation-play-state: paused !important;
+        }
+
+        /* Fluid Scaling for Hero Above Components */
+        .hero-section {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-eyebrow-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.85rem;
+            max-width: 100%;
+        }
+
+        .eyebrow-tag {
+            font-family: var(--font-mono);
+            font-size: clamp(0.68rem, 2vw, 0.78rem);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+
+        .eyebrow-desc {
+            font-family: var(--font-mono);
+            font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+            color: var(--text-sub);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            word-break: break-word;
+        }
+
+        .hero-title {
+            font-size: clamp(1.85rem, 4.5vw, 3.25rem) !important;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            max-width: 100%;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.12rem) !important;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            max-width: 620px;
+            width: 100%;
+        }
+
+        .career-status-board {
+            width: 100% !important;
+            max-width: 620px !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
+        }
+
+        /* Mobile Handphone Fluid Overrides (320px - 768px, QHD+ Displays) */
         @media (max-width: 768px) {
             .career-status-board {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0.6rem 0.85rem !important;
+                padding: 0.6rem 0.75rem !important;
                 margin-bottom: 1.25rem !important;
-                background: rgba(15, 23, 42, 0.85) !important;
-                backdrop-filter: blur(12px) !important;
-                border: 1px solid var(--border-highlight) !important;
-                border-radius: var(--radius-md) !important;
-                box-shadow: 0 8px 25px rgba(56, 189, 248, 0.12) !important;
-                overflow: hidden !important;
-                box-sizing: border-box !important;
             }
 
             .career-status-header {
@@ -1600,63 +1649,27 @@
                 flex-direction: row !important;
                 align-items: center !important;
                 justify-content: space-between !important;
-                margin-bottom: 0.45rem !important;
+                margin-bottom: 0.4rem !important;
                 border-bottom: 1px dashed rgba(255, 255, 255, 0.12) !important;
                 padding-bottom: 0.35rem !important;
             }
 
             .career-status-badge {
-                font-size: clamp(0.68rem, 2.2vw, 0.74rem) !important;
-                font-weight: 800 !important;
-                color: var(--emerald) !important;
-                letter-spacing: 0.05em !important;
+                font-size: clamp(0.65rem, 2.2vw, 0.72rem) !important;
             }
 
             .career-status-sub {
-                font-size: clamp(0.64rem, 2vw, 0.7rem) !important;
-                color: var(--text-muted) !important;
-                font-weight: 500 !important;
-            }
-
-            /* Continuous Moving Marquee Animation for Mobile (Fluid & Compact) */
-            .ticker-wrap {
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
-                white-space: nowrap !important;
-                position: relative !important;
-                display: block !important;
-                mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
-                -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
-            }
-
-            .ticker-move {
-                display: inline-block !important;
-                white-space: nowrap !important;
-                animation: ticker-anim 16s linear infinite !important;
-                transform: translate3d(0, 0, 0) !important;
-                width: auto !important;
+                font-size: clamp(0.6rem, 2vw, 0.68rem) !important;
             }
 
             .ticker-item {
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.3rem !important;
-                padding: 0 0.55rem !important;
-                font-size: clamp(0.72rem, 2.3vw, 0.78rem) !important;
-                font-weight: 700 !important;
-                color: #ffffff !important;
-                font-family: var(--font-sans) !important;
-                background: none !important;
-                border: none !important;
+                font-size: clamp(0.7rem, 2.3vw, 0.76rem) !important;
+                padding: 0 0.45rem !important;
             }
 
             .ticker-separator {
-                display: inline-block !important;
-                color: var(--border-highlight) !important;
-                font-weight: 400 !important;
-                margin: 0 0.15rem !important;
-                font-size: 0.7rem !important;
+                margin: 0 0.1rem !important;
+                font-size: 0.65rem !important;
             }
         }
 
