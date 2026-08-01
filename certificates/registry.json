@@ -1,0 +1,182 @@
+[
+  {
+    "id": "cert-1",
+    "title": "Cisco Networking Academy — Enterprise Networking, Security, and Automation",
+    "issuer": "Cisco Networking Academy",
+    "date": "Verified Digital Badge",
+    "category": "cisco",
+    "category_label": "CISCO & CYBERSECURITY",
+    "filename": "CCNA_Enterprise_Networking_Security_Automation.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-2",
+    "title": "Cisco Networking Academy — Switching, Routing, and Wireless Essentials",
+    "issuer": "Cisco Networking Academy",
+    "date": "Verified Digital Badge",
+    "category": "cisco",
+    "category_label": "CISCO & CYBERSECURITY",
+    "filename": "CCNA_Switching_Routing_Wireless_Essentials.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-3",
+    "title": "Cisco Networking Academy — Endpoint Security",
+    "issuer": "Cisco Networking Academy",
+    "date": "Verified Digital Badge",
+    "category": "cisco",
+    "category_label": "CISCO & CYBERSECURITY",
+    "filename": "Endpoint_Security.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-4",
+    "title": "Cisco Networking Academy — Cyber Threat Management",
+    "issuer": "Cisco Networking Academy",
+    "date": "Verified Digital Badge",
+    "category": "cisco",
+    "category_label": "CISCO & CYBERSECURITY",
+    "filename": "Cyber_Threat_Management.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-5",
+    "title": "Festo Professional Certificate — Industrial Automation with AI in Manufacturing",
+    "issuer": "Festo Didactic & STDC",
+    "date": "14–16 July 2026",
+    "category": "industrial",
+    "category_label": "INDUSTRIAL AUTOMATION & TRAINING",
+    "filename": "Festo_Industrial_AI_Automation.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-6",
+    "title": "Kursus Arduino — Kolej Komuniti Selandar",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "9 September 2017",
+    "category": "industrial",
+    "category_label": "INDUSTRIAL AUTOMATION & TRAINING",
+    "filename": "Kursus_Arduino_Kolej_Komuniti_Selandar.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-7",
+    "title": "Sijil Penyertaan — Kursus Basic IoT",
+    "issuer": "Kolej Komuniti Bukit Beruang",
+    "date": "28 Mac 2018",
+    "category": "industrial",
+    "category_label": "INDUSTRIAL AUTOMATION & TRAINING",
+    "filename": "Kursus_Basic_IoT_Kolej_Komuniti_Bukit_Beruang.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-8",
+    "title": "Sijil Penyertaan — Kursus Fiber Optik \"Splicing & Polishing\"",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "3 Februari 2018",
+    "category": "industrial",
+    "category_label": "INDUSTRIAL AUTOMATION & TRAINING",
+    "filename": "Kursus_Fiber_Optik_Splicing_Polishing.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-9",
+    "title": "Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson",
+    "issuer": "Politeknik Port Dickson",
+    "date": "Dec 2018 – May 2022",
+    "category": "academic",
+    "category_label": "ACADEMIC QUALIFICATION",
+    "filename": "Politeknik_Diploma_Electronic_Computer.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-10",
+    "title": "Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "July 2017 – Feb 2019",
+    "category": "academic",
+    "category_label": "ACADEMIC QUALIFICATION",
+    "filename": "Sijil_Sistem_Komputer_dan_Rangkaian.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-11",
+    "title": "Sijil Pelajaran Malaysia (SPM 2016) — Lembaga Peperiksaan Malaysia",
+    "issuer": "Lembaga Peperiksaan Malaysia",
+    "date": "Tahun 2016",
+    "category": "academic",
+    "category_label": "ACADEMIC QUALIFICATION",
+    "filename": "SPM_Certificate.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-12",
+    "title": "INOTEK 2025 Innovation & Technology Competition (Third Place — IoT Weight Tracking System)",
+    "issuer": "UTeM Faculty of Electronics and Computer Technology",
+    "date": "15 January 2025",
+    "category": "awards",
+    "category_label": "AWARDS & ACHIEVEMENTS",
+    "filename": "INOTEK_2025_Third_Place.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-13",
+    "title": "Anugerah Pelajar Terbaik Semester (Sijil Sistem Komputer dan Rangkaian) Sesi Mac 2018",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "Sesi Mac 2018",
+    "category": "awards",
+    "category_label": "AWARDS & ACHIEVEMENTS",
+    "filename": "Anugerah_Pelajar_Terbaik_Sesi_Mac_2018.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-14",
+    "title": "Anugerah Pengarah (Director's List Award) — Semester 2 Sesi November 2017",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "Semester 2 Nov 2017",
+    "category": "awards",
+    "category_label": "AWARDS & ACHIEVEMENTS",
+    "filename": "Anugerah_Pengarah_Semester_2_2017.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-15",
+    "title": "Sijil Cemerlang — Pelajar Cemerlang Matapelajaran (Asas Komunikasi dan Rangkaian)",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "Sesi Nov 2017",
+    "category": "awards",
+    "category_label": "AWARDS & ACHIEVEMENTS",
+    "filename": "Pelajar_Cemerlang_Asas_Komunikasi_Rangkaian.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-16",
+    "title": "Sijil Penghargaan — WiMyL (Where Is My Lecturer) Gold Award",
+    "issuer": "Kolej Komuniti Selandar",
+    "date": "Mei 2018",
+    "category": "awards",
+    "category_label": "AWARDS & ACHIEVEMENTS",
+    "filename": "WiMyL_Gold_Award.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-17",
+    "title": "Sijil Kursus Asas Perajurit Muda Sukarela (Siri 2/2019) — Rejimen 508 Askar Wataniah",
+    "issuer": "Rejimen 508 Askar Wataniah",
+    "date": "1–30 May 2019",
+    "category": "experience",
+    "category_label": "SERVICE & PROFESSIONAL EXPERIENCE",
+    "filename": "Askar_Wataniah_Reserve_Service.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-18",
+    "title": "7-Eleven Malaysia Sdn Bhd (New Employee Training Program)",
+    "issuer": "7-Eleven Malaysia Sdn Bhd",
+    "date": "17 January 2017",
+    "category": "experience",
+    "category_label": "SERVICE & PROFESSIONAL EXPERIENCE",
+    "filename": "7Eleven_Work_Experience.pdf",
+    "thumbnail": ""
+  }
+]
