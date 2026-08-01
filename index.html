@@ -983,7 +983,9 @@
             position: fixed;
             bottom: 5rem;
             right: 1.5rem;
-            width: 390px;
+            width: 440px;
+            max-width: calc(100vw - 2rem);
+            height: 580px;
             max-width: calc(100vw - 2rem);
             height: 520px;
             max-height: calc(100vh - 5rem);
@@ -1287,11 +1289,32 @@
         
         
         
+        
         /* ==========================================================================
-           ☀️ MASTER HIGH-CONTRAST LIGHT THEME ENGINE (FIXED HEADER & AI BANNER)
+           ☀️ MASTER HIGH-CONTRAST LIGHT THEME ENGINE (WITH ENLARGED CHATBOT)
            ========================================================================== */
 
-        /* 1. Dark Mode Accessible Defaults */
+        /* 1. Dark Mode Accessible Defaults & Larger Chatbot Window */
+        .chat-floating-window {
+            position: fixed;
+            bottom: 5rem;
+            right: 1.5rem;
+            width: 440px !important;
+            max-width: calc(100vw - 2rem) !important;
+            height: 580px !important;
+            max-height: calc(100vh - 5.5rem) !important;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-glow);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
         .project-banner-title {
             font-size: 1.6rem !important;
             font-weight: 800 !important;
@@ -1333,7 +1356,7 @@
             padding: 0.35rem 0.8rem !important;
         }
 
-        /* 2. Full Site Light Theme Overrides (Applied to body.light-theme & prefers-color-scheme: light) */
+        /* 2. Full Site Light Theme Overrides */
         body.light-theme,
         body[data-theme="light"] {
             --bg-base: #f8fafc !important;
@@ -1379,6 +1402,86 @@
             box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
         }
 
+        /* LIGHT MODE FLOATING CHATBOT ENGINE */
+        body.light-theme .chat-floating-window,
+        body[data-theme="light"] .chat-floating-window {
+            background: #ffffff !important;
+            border: 2px solid #0284c7 !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.15) !important;
+        }
+
+        body.light-theme .chat-header,
+        body[data-theme="light"] .chat-header {
+            background: #f1f5f9 !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+            color: #0f172a !important;
+        }
+
+        body.light-theme .chat-header div,
+        body[data-theme="light"] .chat-header div {
+            color: #0f172a !important;
+        }
+
+        body.light-theme #ai-status-label,
+        body[data-theme="light"] #ai-status-label {
+            color: #0284c7 !important;
+            font-weight: 700 !important;
+        }
+
+        body.light-theme .chat-body,
+        body[data-theme="light"] .chat-body {
+            background: #f8fafc !important;
+        }
+
+        body.light-theme .chat-message.bot,
+        body[data-theme="light"] .chat-message.bot {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+            font-weight: 500 !important;
+        }
+
+        body.light-theme .chat-message.user,
+        body[data-theme="light"] .chat-message.user {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+        }
+
+        body.light-theme .chat-quick-suggestions,
+        body[data-theme="light"] .chat-quick-suggestions {
+            background: #f1f5f9 !important;
+            border-top: 1px solid #e2e8f0 !important;
+        }
+
+        body.light-theme .chip-btn, body.light-theme .chat-chip,
+        body[data-theme="light"] .chip-btn, body[data-theme="light"] .chat-chip {
+            background: #ffffff !important;
+            color: #0284c7 !important;
+            border: 1px solid #cbd5e1 !important;
+            font-weight: 700 !important;
+        }
+
+        body.light-theme .chat-input-area,
+        body[data-theme="light"] .chat-input-area {
+            background: #ffffff !important;
+            border-top: 1px solid #cbd5e1 !important;
+        }
+
+        body.light-theme .chat-input,
+        body[data-theme="light"] .chat-input {
+            background: #f1f5f9 !important;
+            color: #0f172a !important;
+            border: 1px solid #cbd5e1 !important;
+            font-weight: 500 !important;
+        }
+
+        body.light-theme .chat-input::placeholder,
+        body[data-theme="light"] .chat-input::placeholder {
+            color: #64748b !important;
+        }
+
         body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
         body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .profile-name, 
         body.light-theme .pillar-title, body.light-theme .category-title, body.light-theme .cert-title, 
@@ -1400,8 +1503,7 @@
         body.light-theme .project-card, body.light-theme .pillar-card, body.light-theme .timeline-card, 
         body.light-theme .skill-category-card, body.light-theme .hero-profile-card, body.light-theme .stat-card, 
         body.light-theme .cert-card, body.light-theme .modal-card, body.light-theme .career-status-board, 
-        body.light-theme .career-status-pill, body.light-theme .chat-floating-window,
-        body.light-theme section {
+        body.light-theme .career-status-pill, body.light-theme section {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
@@ -1481,6 +1583,73 @@
                 color: #0f172a !important;
             }
 
+            .chat-floating-window {
+                background: #ffffff !important;
+                border: 2px solid #0284c7 !important;
+                box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.15) !important;
+            }
+
+            .chat-header {
+                background: #f1f5f9 !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+            }
+
+            .chat-header div {
+                color: #0f172a !important;
+            }
+
+            #ai-status-label {
+                color: #0284c7 !important;
+                font-weight: 700 !important;
+            }
+
+            .chat-body {
+                background: #f8fafc !important;
+            }
+
+            .chat-message.bot {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+                font-weight: 500 !important;
+            }
+
+            .chat-message.user {
+                background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+                color: #ffffff !important;
+                font-weight: 600 !important;
+            }
+
+            .chat-quick-suggestions {
+                background: #f1f5f9 !important;
+                border-top: 1px solid #e2e8f0 !important;
+            }
+
+            .chip-btn, .chat-chip {
+                background: #ffffff !important;
+                color: #0284c7 !important;
+                border: 1px solid #cbd5e1 !important;
+                font-weight: 700 !important;
+            }
+
+            .chat-input-area {
+                background: #ffffff !important;
+                border-top: 1px solid #cbd5e1 !important;
+            }
+
+            .chat-input {
+                background: #f1f5f9 !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+                font-weight: 500 !important;
+            }
+
+            .chat-input::placeholder {
+                color: #64748b !important;
+            }
+
             header {
                 background: rgba(255, 255, 255, 0.95) !important;
                 border-bottom: 1px solid #cbd5e1 !important;
@@ -1500,83 +1669,6 @@
                 background: #ffffff !important;
                 border: 2px solid #0284c7 !important;
                 box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
-            }
-
-            h1, h2, h3, h4, h5, h6,
-            .hero-title, .section-title, .profile-name, .pillar-title, 
-            .category-title, .cert-title, .timeline-role, .ai-banner-title,
-            .project-banner-title, .modal-header h3 {
-                color: #0f172a !important;
-                background: none !important;
-                -webkit-text-fill-color: #0f172a !important;
-                text-shadow: none !important;
-            }
-
-            p, .hero-subtitle, .project-desc, .pillar-desc, .timeline-desc, 
-            .profile-role, .eyebrow-desc, .ai-banner-desc, .career-status-sub {
-                color: #334155 !important;
-                font-weight: 600 !important;
-            }
-
-            .project-card, .pillar-card, .timeline-card, .skill-category-card, 
-            .hero-profile-card, .stat-card, .cert-card, .modal-card, 
-            .career-status-board, .career-status-pill, .chat-floating-window,
-            section {
-                background: #ffffff !important;
-                border-color: #cbd5e1 !important;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
-            }
-
-            .project-banner {
-                background: #f1f5f9 !important;
-                border-bottom: 1px solid #cbd5e1 !important;
-            }
-
-            .project-metrics-box {
-                background: #f8fafc !important;
-                border: 1px solid #cbd5e1 !important;
-            }
-
-            .stat-num {
-                color: #0284c7 !important;
-            }
-
-            .stat-label, .metric-lbl, .timeline-date, .cert-issuer, .bio-label {
-                color: #475569 !important;
-                font-weight: 700 !important;
-            }
-
-            .metric-val {
-                color: #047857 !important;
-            }
-
-            .tech-tag, .cert-category-tag, .eyebrow-tag {
-                background: #e2e8f0 !important;
-                color: #0f172a !important;
-                border-color: #cbd5e1 !important;
-                font-weight: 700 !important;
-            }
-
-            .bio-value {
-                color: #0f172a !important;
-                font-weight: 700 !important;
-            }
-
-            footer, .footer-content, .footer-verification {
-                color: #475569 !important;
-            }
-
-            footer a {
-                color: #0284c7 !important;
-                font-weight: 700 !important;
-            }
-
-            .ticker-item {
-                color: #0f172a !important;
-            }
-
-            .ticker-item span.highlight {
-                color: #0284c7 !important;
             }
         }
 
