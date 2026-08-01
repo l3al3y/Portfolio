@@ -1,6 +1,6 @@
 # 🚀 CERTIFICATE COLLECTION v2.3 PRESENTATION & QA AUDIT REPORT
 
-**Target Scope:** `D:\ResumeAgent` (Public Frontend) & `D:\ResumeAgent-Backend` (Private Memory)  
+**Target Scope:** `D:\ResumeAgent` (Public Frontend) & `D:\Portfolio-Backend` (Private Memory)  
 **Audit Type:** Final Presentation, UX & Recruiter Readability Audit  
 **Date:** 2026-08-01  
 **Status:** **`100% READY FOR RELEASE APPROVAL`**

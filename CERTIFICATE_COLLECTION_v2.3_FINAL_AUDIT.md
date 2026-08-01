@@ -1,6 +1,6 @@
 # 📜 CERTIFICATE COLLECTION v2.3 FINAL AUDIT REPORT
 
-**Target Repositories:** `D:\ResumeAgent` (Public Frontend) & `D:\ResumeAgent-Backend` (Private Backend)  
+**Target Repositories:** `D:\ResumeAgent` (Public Frontend) & `D:\Portfolio-Backend` (Private Backend)  
 **Excluded Repository:** `D:\ResumeAgent-Public` (File copy/mirror only)  
 **Total Verified Physical Certificates:** 18 Documents  
 **Date of Audit:** 2026-08-01  

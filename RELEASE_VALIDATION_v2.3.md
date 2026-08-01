@@ -2,7 +2,7 @@
 
 **Release Tag:** `v2.3`  
 **Frontend Commit Hash:** `14727bc` (`l3al3y/ResumeAgent`)  
-**Backend Commit Hash:** `711fc39` (`l3al3y/ResumeAgent-Backend`)  
+**Backend Commit Hash:** `711fc39` (`l3al3y/Portfolio-Backend`)  
 **Live Production URL:** [https://l3al3y.github.io/Portfolio/](https://l3al3y.github.io/Portfolio/)  
 **Release Date:** 2026-08-01  
 **Status:** **`RESUMEAGENT v2.3 RELEASE READY`**
