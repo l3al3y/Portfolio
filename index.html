@@ -1551,6 +1551,170 @@
             }
         }
 
+    
+        /* Personal Biodata Card Styling Engine */
+        .hero-profile-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            max-width: 480px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .biodata-header {
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.15rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .profile-avatar-wrap {
+            width: 72px;
+            height: 72px;
+            font-size: 2.2rem;
+            margin: 0 auto 0.75rem;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .biodata-badge-tag {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--primary);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 0.35rem 0;
+        }
+
+        .profile-role {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .profile-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .profile-info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+
+        .profile-info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .bio-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .bio-value {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .bio-value.highlight-text {
+            color: var(--primary);
+        }
+
+        .bio-status-badge {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--emerald);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* LIGHT MODE BIODATA HIGH CONTRAST OVERRIDES */
+        body.light-theme .hero-profile-card,
+        body[data-theme="light"] .hero-profile-card,
+        @media (prefers-color-scheme: light) {
+            .hero-profile-card {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+            }
+
+            .biodata-header {
+                border-bottom: 1px solid #e2e8f0 !important;
+            }
+
+            .profile-avatar-wrap {
+                background: #f1f5f9 !important;
+                border-color: #0284c7 !important;
+                box-shadow: none !important;
+            }
+
+            .biodata-badge-tag {
+                color: #0284c7 !important;
+            }
+
+            .profile-name {
+                color: #0f172a !important;
+            }
+
+            .profile-role {
+                color: #475569 !important;
+            }
+
+            .profile-info-item {
+                border-bottom-color: #e2e8f0 !important;
+            }
+
+            .bio-label {
+                color: #475569 !important;
+                font-weight: 600 !important;
+            }
+
+            .bio-value {
+                color: #0f172a !important;
+                font-weight: 700 !important;
+            }
+
+            .bio-value.highlight-text {
+                color: #0284c7 !important;
+            }
+
+            .bio-status-badge {
+                color: #047857 !important;
+                background: #ecfdf5 !important;
+                border-color: #a7f3d0 !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1660,46 +1824,46 @@
             </div>
 
             <!-- Authentic Personal Biodata Card -->
-            <div class="hero-profile-card" style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); max-width: 480px; width: 100%; box-sizing: border-box;">
-                <div class="biodata-header" style="text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1.15rem; margin-bottom: 1.25rem;">
-                    <div class="profile-avatar-wrap" style="width: 72px; height: 72px; font-size: 2.2rem; margin: 0 auto 0.75rem; background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%); border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);">👨‍💻</div>
-                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--primary); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; margin-bottom: 0.25rem;">📋 PERSONAL BIODATA</div>
-                    <h3 class="profile-name" style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin: 0 0 0.35rem 0;">Muhammad Irfan Fahmi</h3>
-                    <div class="profile-role" style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500;">Computer Engineering Graduate • UTeM</div>
+            <div class="hero-profile-card">
+                <div class="biodata-header">
+                    <div class="profile-avatar-wrap">👨‍💻</div>
+                    <div class="biodata-badge-tag">📋 PERSONAL BIODATA</div>
+                    <h3 class="profile-name">Muhammad Irfan Fahmi</h3>
+                    <div class="profile-role">Computer Engineering Graduate • UTeM</div>
                 </div>
                 
-                <ul class="profile-info-list" style="display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0; margin: 0;">
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">👤 Full Name</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">Muhammad Irfan Fahmi bin Samsul Kamar</span>
+                <ul class="profile-info-list">
+                    <li class="profile-info-item">
+                        <span class="bio-label">👤 Full Name</span>
+                        <span class="bio-value">Muhammad Irfan Fahmi bin Samsul Kamar</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">🎂 Age</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">27 Years Old (8 March 1999)</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">🎂 Age</span>
+                        <span class="bio-value">27 Years Old (8 March 1999)</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">📍 Base Location</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">Puchong, Selangor (Open to Relocate)</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">📍 Base Location</span>
+                        <span class="bio-value">Puchong, Selangor (Open to Relocate)</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">🎓 Degree & Merit</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">B. Computer Eng. Tech (Hons) • UTeM</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">🎓 Degree & Merit</span>
+                        <span class="bio-value">B. Computer Eng. Tech (Hons) • UTeM</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">🗣️ Languages</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">Malay (Native), English (Fluent)</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">🗣️ Languages</span>
+                        <span class="bio-value">Malay (Native), English (Fluent)</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">🎖️ Military Reserve</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: #ffffff;">Askar Wataniah (Resilience)</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">🎖️ Military Reserve</span>
+                        <span class="bio-value">Askar Wataniah (Resilience)</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">💼 Career Focus</span>
-                        <span style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">Network / AI / Cybersecurity</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">💼 Career Focus</span>
+                        <span class="bio-value highlight-text">Network / AI / Cybersecurity</span>
                     </li>
-                    <li class="profile-info-item" style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub);">🟢 Availability</span>
-                        <span style="font-size: 0.82rem; font-weight: 800; color: var(--emerald); background: rgba(16, 185, 129, 0.1); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.3);">Available Immediately</span>
+                    <li class="profile-info-item">
+                        <span class="bio-label">🟢 Availability</span>
+                        <span class="bio-status-badge">Available Immediately</span>
                     </li>
                 </ul>
             </div>
