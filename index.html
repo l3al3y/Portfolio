@@ -1282,6 +1282,91 @@
             letter-spacing: 0.04em;
         }
 
+    
+        /* ==========================================================================
+           👁️ ACCESSIBILITY & HIGH-CONTRAST TYPOGRAPHY UPGRADE (FOR EYESIGHT READABILITY)
+           ========================================================================== */
+
+        /* Featured Capstone & Systems Projects Text Accessibility */
+        .project-banner-title {
+            font-size: 1.45rem !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            letter-spacing: -0.01em;
+        }
+
+        .project-desc {
+            font-size: 1.05rem !important;
+            line-height: 1.65 !important;
+            color: #e2e8f0 !important;
+            font-weight: 500 !important;
+            margin-bottom: 1.35rem !important;
+        }
+
+        .pillar-desc, .timeline-desc {
+            font-size: 1.02rem !important;
+            line-height: 1.65 !important;
+            color: #cbd5e1 !important;
+            font-weight: 500 !important;
+        }
+
+        .tech-tag {
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            padding: 0.3rem 0.75rem !important;
+            color: #f1f5f9 !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .metric-val {
+            font-size: 1.12rem !important;
+            font-weight: 800 !important;
+        }
+
+        .metric-lbl {
+            font-size: 0.8rem !important;
+            color: #94a3b8 !important;
+            font-weight: 600 !important;
+        }
+
+        /* High Contrast Light Mode Readability Protection */
+        @media (prefers-color-scheme: light) {
+            body {
+                color: #0f172a !important;
+                background-color: #f8fafc !important;
+            }
+
+            .project-card, .pillar-card, .timeline-card, .skill-category-card, .hero-profile-card {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06) !important;
+            }
+
+            .project-banner-title, .section-title, .profile-name, .pillar-title, .category-title {
+                color: #0f172a !important;
+            }
+
+            .project-desc, .pillar-desc, .timeline-desc, .hero-subtitle, .profile-role {
+                color: #334155 !important;
+                font-weight: 500 !important;
+            }
+
+            .bio-label, .profile-info-item span:first-child {
+                color: #475569 !important;
+            }
+
+            .bio-value, .profile-info-item span:last-child {
+                color: #0f172a !important;
+            }
+
+            .tech-tag {
+                color: #1e293b !important;
+                background: #f1f5f9 !important;
+                border-color: #cbd5e1 !important;
+            }
+        }
+
     </style>
 </head>
 <body>
