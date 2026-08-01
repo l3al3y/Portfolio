@@ -1282,6 +1282,231 @@
             letter-spacing: 0.04em;
         }
 
+    
+        /* Candidate Identity Eyebrow Badge & Stationary Status Pill */
+        .hero-eyebrow-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.85rem;
+        }
+
+        .eyebrow-tag {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+
+        .eyebrow-desc {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .career-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .status-indicator-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--emerald);
+            animation: pulse-dot 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .status-pill-text {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: #e2e8f0;
+            line-height: 1.35;
+        }
+
+        .status-pill-text strong {
+            color: var(--emerald);
+            font-weight: 700;
+        }
+
+        .hero-cta-group .btn {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* 📱 DEVICE RESPONSIBILITY SPLIT (PC, TABLET, MOBILE) */
+        @media (min-width: 1025px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1.15fr 0.85fr;
+                gap: 3.5rem;
+            }
+            .hero-title {
+                font-size: clamp(2.2rem, 4.8vw, 3.25rem);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+            .about-pillars-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            .certs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero-title {
+                font-size: clamp(2rem, 4vw, 2.75rem);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+            .about-pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            .certs-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+            .hero-section {
+                padding: 5.5rem 0 3rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-eyebrow-badge {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.35rem;
+            }
+            .eyebrow-desc {
+                font-size: 0.7rem;
+                line-height: 1.35;
+                word-break: break-word;
+            }
+            .career-status-pill {
+                padding: 0.4rem 0.75rem;
+            }
+            .status-pill-text {
+                font-size: 0.7rem;
+            }
+            .hero-title {
+                font-size: clamp(1.75rem, 6vw, 2.35rem);
+                line-height: 1.25;
+            }
+            .hero-subtitle {
+                font-size: 0.92rem;
+                line-height: 1.5;
+            }
+            .hero-cta-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .hero-cta-group .btn {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            .about-pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .certs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1316,50 +1541,18 @@
     <section class="hero-section">
         <div class="container hero-grid">
             <div>
-                <div class="career-status-board">
-                    <div class="career-status-header">
-                        <div class="career-status-badge">
-                            <div class="led-dot"></div>
-                            OPEN FOR OPPORTUNITIES
-                        </div>
-                        <div class="career-status-sub">Available for Full-Time Graduate Roles</div>
-                    </div>
-                    
-                    <div class="ticker-wrap">
-                        <div class="ticker-move">
-                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
-                            <span class="ticker-separator">•</span>
-                            
-                            <!-- Looped duplicate sequence for seamless infinite scroll -->
-                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
-                            <span class="ticker-separator">•</span>
-                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
-                            <span class="ticker-separator">•</span>
-                        </div>
-                    </div>
-                </div>
-                                <div class="hero-eyebrow-badge">
-                    <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
+                <!-- Candidate Identity Eyebrow Badge -->
+                <div class="hero-eyebrow-badge">
+                    <span class="eyebrow-tag">👨‍💻 MUHAMMAD IRFAN FAHMI</span>
                     <span class="eyebrow-desc">COMPUTER ENGINEERING (HONS) • AI AUTOMATION • NETWORKING • CYBERSECURITY</span>
                 </div>
+
+                <!-- Stationary Career Availability Pill -->
+                <div class="career-status-pill">
+                    <span class="status-indicator-dot"></span>
+                    <span class="status-pill-text"><strong>OPEN FOR OPPORTUNITIES</strong> — Target Roles: Network / AI / Infrastructure (Puchong, Selangor & Remote)</span>
+                </div>
+
                 <h1 class="hero-title">
                     Building <span>Intelligent Systems</span> at the Intersection of AI, Networking & Hardware.
                 </h1>
@@ -1368,9 +1561,8 @@
                 </p>
                 
                 <div class="hero-cta-group">
-                    <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Explore Projects ➔</a>
-                    <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Download Resume (PDF) 📄</a>
-                    
+                    <a href="#projects" class="btn btn-primary">Explore Projects ➔</a>
+                    <a href="resume/resume.pdf" target="_blank" class="btn btn-outline">Download Resume (PDF) 📄</a>
                 </div>
 
                 <div class="stats-grid">
