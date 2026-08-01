@@ -8,7 +8,7 @@
 **Location:** Puchong, Selangor, Malaysia  
 **LinkedIn:** https://linkedin.com/in/mifi99  
 **GitHub:** https://github.com/l3al3y  
-**Portfolio:** https://l3al3y.github.io/ResumeAgent/ (Live 3D Web Experience & Multilingual AI Engine)  
+**Portfolio:** https://l3al3y.github.io/Portfolio/ (Live 3D Web Experience & Multilingual AI Engine)  
 
 ---
 
@@ -144,7 +144,7 @@
 
 * **Target Role:** Network Engineer / Cloud Infrastructure / System Integration Specialist / Industrial AI Automation
 * **Resume Version:** v1.0 (HTML/MD/TXT - 100% heuristic keyword match)
-* **Portfolio Status:** Live at [https://l3al3y.github.io/ResumeAgent/](https://l3al3y.github.io/ResumeAgent/)
+* **Portfolio Status:** Live at [https://l3al3y.github.io/Portfolio/](https://l3al3y.github.io/Portfolio/)
 * **Git Repositories:**
   - `ResumeAgent`: [`https://github.com/l3al3y/ResumeAgent.git`](https://github.com/l3al3y/ResumeAgent.git)
   - `ResumeAgent-Backend`: [`https://github.com/l3al3y/ResumeAgent-Backend.git`](https://github.com/l3al3y/ResumeAgent-Backend.git)
