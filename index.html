@@ -2159,8 +2159,6 @@
                 }
             }
         }
-            }
-        }
 
         function openPrintableResumeModal() {
             const modal = document.getElementById('printable-resume-modal');
@@ -2258,16 +2256,6 @@
            4. Cloudflare Turnstile Security Verification Modal
         ------------------------------------------------------------- */
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
-
-        function openSecurityModal() {
-            const errorMsgEl = document.getElementById('captcha-error-msg');
-            if (errorMsgEl) errorMsgEl.style.display = 'none';
-            document.getElementById('security-modal').classList.add('active');
-        }
-
-        function closeSecurityModal() {
-            document.getElementById('security-modal').classList.remove('active');
-        }
 
         async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
@@ -3840,14 +3828,24 @@ Natural conversation is ALWAYS the highest priority.
         }
 
         function openSecurityModal() {
-            document.getElementById('security-modal-overlay').classList.add('active');
-            if (window.turnstile && document.getElementById('cf-turnstile-container').children.length === 0) {
-                turnstile.render('#cf-turnstile-container', {
-                    sitekey: '0x4AAAAAAAxxxxxx', // Placeholder / Config sitekey
-                    callback: function(token) {
-                        document.getElementById('contact-details-revealed').style.display = 'block';
-                    }
-                });
+            const modal = document.getElementById('security-modal-overlay');
+            if (modal) modal.classList.add('active');
+            
+            const revealedBox = document.getElementById('contact-details-revealed');
+            if (revealedBox) revealedBox.style.display = 'block';
+
+            const container = document.getElementById('cf-turnstile-container');
+            if (window.turnstile && container && container.children.length === 0) {
+                try {
+                    turnstile.render('#cf-turnstile-container', {
+                        sitekey: '0x4AAAAAAAbX7Q9r02L47L3a',
+                        callback: function(token) {
+                            if (revealedBox) revealedBox.style.display = 'block';
+                        }
+                    });
+                } catch (err) {
+                    console.log("Turnstile widget note:", err);
+                }
             }
         }
 
