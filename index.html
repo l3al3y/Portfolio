@@ -1850,7 +1850,7 @@
                     Security verification failed. Please try again.
                 </div>
 
-                <div id="cf-turnstile-container" style="display: flex; justify-content: center; margin-bottom: 1.25rem;"></div>
+                <div id="cf-turnstile-container" class="cf-turnstile" data-sitekey="0x4AAAAAAD9nlicfqO7QQsBk" data-callback="onTurnstileSuccess" style="display: flex; justify-content: center; margin-bottom: 1.25rem;"></div>
 
                 <div id="contact-details-revealed" style="display: none; background: rgba(52, 211, 153, 0.1); border: 1px solid var(--emerald); border-radius: var(--radius-sm); padding: 1.25rem; color: var(--text-main); font-size: 0.9rem;">
                     <div style="font-weight: 700; color: var(--emerald); margin-bottom: 0.75rem; font-size: 0.95rem;">
@@ -3862,7 +3862,7 @@ Natural conversation is ALWAYS the highest priority.
                 container.innerHTML = '';
                 try {
                     turnstile.render('#cf-turnstile-container', {
-                        sitekey: '0x4AAAAAAAbX7Q9r02L47L3a',
+                        sitekey: '0x4AAAAAAD9nlicfqO7QQsBk',
                         callback: onTurnstileSuccess
                     });
                 } catch (err) {
