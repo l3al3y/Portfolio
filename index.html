@@ -1285,11 +1285,12 @@
     
         
         
+        
         /* ==========================================================================
-           ☀️ UNIVERSAL HIGH-CONTRAST LIGHT MODE & EYESIGHT ACCESSIBILITY ENGINE
+           ☀️ MASTER HIGH-CONTRAST LIGHT THEME ENGINE (FORCE FULL SITE READABILITY)
            ========================================================================== */
 
-        /* 1. Dark Mode Typography & Accessibility Defaults */
+        /* 1. Dark Mode Accessible Defaults */
         .project-banner-title {
             font-size: 1.6rem !important;
             font-weight: 800 !important;
@@ -1331,52 +1332,161 @@
             padding: 0.35rem 0.8rem !important;
         }
 
-        /* 2. Light Mode Complete Text Contrast Engine */
-        @media (prefers-color-scheme: light) {
-            :root {
-                --bg-base: #f8fafc;
-                --bg-surface: #ffffff;
-                --bg-surface-hover: #f1f5f9;
-                --bg-card: #ffffff;
-                --border-card: #e2e8f0;
-                --border-highlight: rgba(2, 132, 199, 0.4);
-                --text-main: #0f172a;
-                --text-sub: #334155;
-                --text-muted: #475569;
-                --primary: #0284c7;
-                --primary-hover: #0369a1;
-                --emerald: #047857;
-            }
+        /* 2. Full Site Light Theme Overrides (Applied to body.light-theme & prefers-color-scheme: light) */
+        body.light-theme,
+        body[data-theme="light"] {
+            --bg-base: #f8fafc !important;
+            --bg-surface: #ffffff !important;
+            --bg-surface-hover: #f1f5f9 !important;
+            --bg-card: #ffffff !important;
+            --border-card: #cbd5e1 !important;
+            --border-highlight: #0284c7 !important;
+            --primary: #0284c7 !important;
+            --primary-hover: #0369a1 !important;
+            --primary-glow: rgba(2, 132, 199, 0.15) !important;
+            --purple: #7e22ce !important;
+            --text-main: #0f172a !important;
+            --text-sub: #334155 !important;
+            --text-muted: #475569 !important;
+            --emerald: #047857 !important;
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+        }
 
+        body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
+        body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .profile-name, 
+        body.light-theme .pillar-title, body.light-theme .category-title, body.light-theme .cert-title, 
+        body.light-theme .timeline-role, body.light-theme .ai-banner-title, body.light-theme .project-banner-title, 
+        body.light-theme .modal-header h3 {
+            color: #0f172a !important;
+            background: none !important;
+            -webkit-text-fill-color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body.light-theme p, body.light-theme .hero-subtitle, body.light-theme .project-desc, 
+        body.light-theme .pillar-desc, body.light-theme .timeline-desc, body.light-theme .profile-role, 
+        body.light-theme .eyebrow-desc, body.light-theme .ai-banner-desc, body.light-theme .career-status-sub {
+            color: #334155 !important;
+            font-weight: 600 !important;
+        }
+
+        body.light-theme .project-card, body.light-theme .pillar-card, body.light-theme .timeline-card, 
+        body.light-theme .skill-category-card, body.light-theme .hero-profile-card, body.light-theme .stat-card, 
+        body.light-theme .cert-card, body.light-theme .modal-card, body.light-theme .career-status-board, 
+        body.light-theme .career-status-pill, body.light-theme .chat-floating-window,
+        body.light-theme section {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+        }
+
+        body.light-theme .project-banner {
+            background: #f1f5f9 !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+        }
+
+        body.light-theme .project-metrics-box {
+            background: #f8fafc !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+
+        body.light-theme .stat-num {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .stat-label, body.light-theme .metric-lbl, body.light-theme .timeline-date, 
+        body.light-theme .cert-issuer, body.light-theme .bio-label {
+            color: #475569 !important;
+            font-weight: 700 !important;
+        }
+
+        body.light-theme .metric-val {
+            color: #047857 !important;
+        }
+
+        body.light-theme .tech-tag, body.light-theme .cert-category-tag, body.light-theme .eyebrow-tag {
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+            border-color: #cbd5e1 !important;
+            font-weight: 700 !important;
+        }
+
+        body.light-theme .bio-value {
+            color: #0f172a !important;
+            font-weight: 700 !important;
+        }
+
+        body.light-theme .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+        }
+
+        body.light-theme .nav-link, body.light-theme .nav-logo {
+            color: #0f172a !important;
+        }
+
+        body.light-theme footer, body.light-theme .footer-content, body.light-theme .footer-verification {
+            color: #475569 !important;
+        }
+
+        body.light-theme footer a {
+            color: #0284c7 !important;
+            font-weight: 700 !important;
+        }
+
+        body.light-theme .ticker-item {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .ticker-item span.highlight {
+            color: #0284c7 !important;
+        }
+
+        /* 3. Media Query Fallback for System Light Mode */
+        @media (prefers-color-scheme: light) {
             body {
+                --bg-base: #f8fafc !important;
+                --bg-surface: #ffffff !important;
+                --bg-surface-hover: #f1f5f9 !important;
+                --bg-card: #ffffff !important;
+                --border-card: #cbd5e1 !important;
+                --border-highlight: #0284c7 !important;
+                --primary: #0284c7 !important;
+                --primary-hover: #0369a1 !important;
+                --primary-glow: rgba(2, 132, 199, 0.15) !important;
+                --purple: #7e22ce !important;
+                --text-main: #0f172a !important;
+                --text-sub: #334155 !important;
+                --text-muted: #475569 !important;
+                --emerald: #047857 !important;
                 background-color: #f8fafc !important;
                 color: #0f172a !important;
             }
 
-            /* All Headings & Main Titles */
             h1, h2, h3, h4, h5, h6,
             .hero-title, .section-title, .profile-name, .pillar-title, 
             .category-title, .cert-title, .timeline-role, .ai-banner-title,
             .project-banner-title, .modal-header h3 {
                 color: #0f172a !important;
                 background: none !important;
-                -webkit-text-fill-color: initial !important;
+                -webkit-text-fill-color: #0f172a !important;
+                text-shadow: none !important;
             }
 
-            /* Subtitles, Descriptions, & Paragraphs */
             p, .hero-subtitle, .project-desc, .pillar-desc, .timeline-desc, 
             .profile-role, .eyebrow-desc, .ai-banner-desc, .career-status-sub {
                 color: #334155 !important;
-                font-weight: 500 !important;
+                font-weight: 600 !important;
             }
 
-            /* Card Containers & Glass Panels */
             .project-card, .pillar-card, .timeline-card, .skill-category-card, 
             .hero-profile-card, .stat-card, .cert-card, .modal-card, 
-            .career-status-board, .career-status-pill, .chat-floating-window {
+            .career-status-board, .career-status-pill, .chat-floating-window,
+            section {
                 background: #ffffff !important;
                 border-color: #cbd5e1 !important;
-                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
             }
 
             .project-banner {
@@ -1389,14 +1499,13 @@
                 border: 1px solid #cbd5e1 !important;
             }
 
-            /* Labels, Items, & Metas */
             .stat-num {
                 color: #0284c7 !important;
             }
 
             .stat-label, .metric-lbl, .timeline-date, .cert-issuer, .bio-label {
                 color: #475569 !important;
-                font-weight: 600 !important;
+                font-weight: 700 !important;
             }
 
             .metric-val {
@@ -1410,35 +1519,34 @@
                 font-weight: 700 !important;
             }
 
-            /* Navigation & Header Links */
+            .bio-value {
+                color: #0f172a !important;
+                font-weight: 700 !important;
+            }
+
+            .navbar {
+                background: rgba(255, 255, 255, 0.95) !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+            }
+
             .nav-link, .nav-logo {
                 color: #0f172a !important;
             }
 
-            .navbar {
-                background: rgba(248, 250, 252, 0.9) !important;
-                border-bottom: 1px solid #e2e8f0 !important;
-            }
-
-            /* Ticker & Marquee Items */
-            .ticker-item {
-                color: #0f172a !important;
-            }
-
-            .ticker-item span.highlight {
-                color: #0284c7 !important;
-            }
-
-            .ticker-separator {
-                color: #94a3b8 !important;
-            }
-
-            /* Footer Text */
             footer, .footer-content, .footer-verification {
                 color: #475569 !important;
             }
 
             footer a {
+                color: #0284c7 !important;
+                font-weight: 700 !important;
+            }
+
+            .ticker-item {
+                color: #0f172a !important;
+            }
+
+            .ticker-item span.highlight {
                 color: #0284c7 !important;
             }
         }
