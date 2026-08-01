@@ -13,7 +13,8 @@
 
 - 🔗 **Live Web Portfolio**: [https://l3al3y.github.io/Portfolio/](https://l3al3y.github.io/Portfolio/)
 - 📄 **Official PDF Resume**: [resume/resume.pdf](resume/resume.pdf)
-- 📜 **Verified Certifications**: [certificates/](certificates/)
+- 📜 **18 Verified Certifications**: [certificates/](certificates/)
+- 🐙 **GitHub Repository**: [https://github.com/l3al3y/Portfolio](https://github.com/l3al3y/Portfolio)
 
 ---
 
@@ -22,14 +23,29 @@
 ```text
 Name:           MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
 Target Roles:   Network Engineer | IT Infrastructure | IT Support | Cyber Security | AI Automation | Embedded Systems
-Education:      Bachelor of Computer Engineering Technology (Computer Systems) with Honours — UTeM
-                Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson
+Degree:         Bachelor of Computer Engineering Technology (Computer Systems) with Honours — UTeM
+Diploma:        Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson
+Certificate:    Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar (Best Student Award)
 Certifications: Cisco CCNA (Enterprise Networking, Switching, Routing & Wireless)
                 Festo Industrial Automation with AI
                 Cisco Endpoint Security & Cyber Threat Management
+Languages:      Bahasa Melayu (Native), English (Fluent)
+Experience:     Global Elite Ventures (Technical Staff)
+                ARNN Technologies & Karar Solution (Contract Assistant Engineer)
+                OKCS Seri Kembangan (Technician)
 Location:       Puchong, Selangor, Malaysia (Open to On-site, Hybrid, Relocation & Outstation)
 Military:       Askar Wataniah (Territorial Army Reserve — High Discipline & Stress Resilience)
 ```
+
+---
+
+## ✨ Key Portfolio Features & Capabilities
+
+- 🎨 **Universal High-Contrast Theme Engine**: Adaptive Dark (`🌙`) and Light (`☀️`) theme switcher engineered for 100% text readability and accessibility.
+- 💬 **Interactive Multilingual AI Assistant**: Context-aware floating career chatbot supporting 4 languages (English, Malay, Chinese, Tamil) and Malaysian dialects (Kelantan, Northern, Nogori).
+- 🔓 **Turnstile Contact Security Gate**: Candidate email, phone number, and official resume download are protected behind Cloudflare Turnstile human verification against automated scrapers.
+- 📜 **18 Verified Certificates Collection**: Interactive canonical registry (`certificates/registry.json`) with PDF modal preview and category filtering (Cisco, Industrial AI, Academic, Awards, Experience).
+- 🌌 **3D Interactive Background**: Real-time Three.js constellation canvas rendering smooth ambient particle motion.
 
 ---
 
@@ -71,9 +87,9 @@ graph TD
 
 ---
 
-## 🛡️ Privacy & Contact Protection
+## 🛡️ Privacy & Contact Security
 
-Candidate phone and email contact details are protected behind **Cloudflare Turnstile CAPTCHA human verification** and edge proxy infrastructure, preventing automated web scraping while offering direct access to recruiters.
+Candidate phone and email contact details are protected behind **Cloudflare Turnstile CAPTCHA human verification** and edge proxy infrastructure (`https://contact-gate-worker.cabalme4.workers.dev/`), preventing automated web scraping while offering direct access to recruiters.
 
 ---
 
