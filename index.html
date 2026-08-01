@@ -1208,7 +1208,7 @@
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
-            animation: ticker-anim 25s linear infinite;
+            animation: ticker-anim 12s linear infinite;
         }
 
         .ticker-wrap:hover .ticker-move {
@@ -1531,6 +1531,110 @@
                 box-sizing: border-box !important;
                 white-space: normal !important;
                 word-break: break-word !important;
+            }
+        }
+
+    
+        /* ==========================================================================
+           🎨 DEDICATED DESIGNS BY DEVICE (PC, TABLET, MOBILE)
+           ========================================================================== */
+
+        /* 1. PC / DESKTOP (Width > 1024px) */
+        @media (min-width: 1025px) {
+            .ticker-move {
+                animation: ticker-anim 12s linear infinite !important;
+            }
+        }
+
+        /* 2. TABLET DESIGN (769px <= Width <= 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .career-status-board {
+                max-width: 100% !important;
+                padding: 0.85rem 1.15rem !important;
+            }
+            .ticker-wrap {
+                mask-image: none !important;
+                -webkit-mask-image: none !important;
+                white-space: normal !important;
+            }
+            .ticker-move {
+                animation: none !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+                transform: none !important;
+            }
+            .ticker-item {
+                font-size: 0.82rem !important;
+                padding: 0.3rem 0.65rem !important;
+                background: rgba(255, 255, 255, 0.04) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: var(--radius-sm) !important;
+            }
+            .ticker-separator {
+                display: none !important;
+            }
+        }
+
+        /* 3. MOBILE PHONE DESIGN (Width <= 768px - iPhone 17 Pro Max, Galaxy S26 Ultra, etc.) */
+        @media (max-width: 768px) {
+            .career-status-board {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0.75rem 0.85rem !important;
+                border-radius: var(--radius-md) !important;
+                background: rgba(15, 23, 42, 0.9) !important;
+                border: 1px solid var(--border-highlight) !important;
+            }
+
+            .career-status-header {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                margin-bottom: 0.5rem !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                padding-bottom: 0.4rem !important;
+            }
+
+            .career-status-badge {
+                font-size: 0.72rem !important;
+            }
+
+            .career-status-sub {
+                font-size: 0.68rem !important;
+                color: var(--text-sub) !important;
+            }
+
+            /* Static Mobile Skill Chips Grid - NO MARQUEE ANIMATION ON MOBILE */
+            .ticker-wrap {
+                mask-image: none !important;
+                -webkit-mask-image: none !important;
+                white-space: normal !important;
+                overflow: visible !important;
+            }
+
+            .ticker-move {
+                animation: none !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.4rem !important;
+                transform: none !important;
+                width: 100% !important;
+            }
+
+            .ticker-item {
+                font-size: 0.73rem !important;
+                padding: 0.35rem 0.5rem !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: 6px !important;
+                justify-content: center !important;
+                text-align: center !important;
+                white-space: normal !important;
+            }
+
+            .ticker-separator {
+                display: none !important;
             }
         }
 
