@@ -3603,6 +3603,52 @@
             }
         }
 
+    
+        /* ==========================================================================
+           📱 NATIVE MOBILE TOUCH & SCROLLING PHYSICS ENGINE (iOS & ANDROID)
+           ========================================================================== */
+
+        /* 1. Touch Manipulation & Smooth Scroll Base */
+        html, body {
+            -webkit-overflow-scrolling: touch !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+
+        /* 2. Scroll Containment for Floating Panels & Modals */
+        .chat-body,
+        .chat-suggested-prompts,
+        .modal-card {
+            -webkit-overflow-scrolling: touch !important;
+            overscroll-behavior: contain !important;
+        }
+
+        /* 3. Fast Response Touch Targets (Removes 300ms Delay & Tap Box Highlight) */
+        button,
+        a,
+        .btn,
+        .prompt-chip,
+        .tech-tag,
+        .theme-toggle-btn,
+        .profile-info-item,
+        .project-card,
+        .cert-card {
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+            user-select: none !important;
+            -webkit-user-select: none !important;
+        }
+
+        /* 4. Active Touch Press States for Mobile Feeds */
+        button:active,
+        a.btn:active,
+        .prompt-chip:active,
+        .tech-tag:active,
+        .theme-toggle-btn:active {
+            transform: scale(0.96) !important;
+            opacity: 0.9 !important;
+        }
+
     </style>
 </head>
 <body>
