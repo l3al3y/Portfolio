@@ -91,9 +91,8 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: 0;
             pointer-events: none;
             opacity: 0.6;
@@ -933,7 +932,18 @@
         }
 
         /* Responsive Breakpoints */
-        
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-pillars-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .certs-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.25rem; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .about-pillars-grid { grid-template-columns: 1fr; }
             .skills-grid { grid-template-columns: 1fr; }
@@ -1208,7 +1218,7 @@
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
-            animation: ticker-anim 12s linear infinite;
+            animation: ticker-anim 25s linear infinite;
         }
 
         .ticker-wrap:hover .ticker-move {
@@ -1272,360 +1282,6 @@
             letter-spacing: 0.04em;
         }
 
-    
-        
-        
-        
-        /* ==========================================================================
-           🚀 RESUMEAGENT DEVICE-SPECIFIC RESPONSIVE SYSTEM v5.0 (PHASE 2-4)
-           ========================================================================== */
-
-        /* Keyframe Marquee Scroll Animation */
-        @keyframes marquee-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @-webkit-keyframes marquee-scroll {
-            0% { -webkit-transform: translateX(0); }
-            100% { -webkit-transform: translateX(-50%); }
-        }
-
-        .ticker-wrap {
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow: hidden !important;
-            white-space: nowrap !important;
-            position: relative !important;
-            mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent) !important;
-        }
-
-        .ticker-track {
-            display: flex !important;
-            width: max-content !important;
-            will-change: transform;
-        }
-
-        .ticker-wrap:hover .ticker-track {
-            animation-play-state: paused !important;
-            -webkit-animation-play-state: paused !important;
-        }
-
-        /* 1. DESKTOP EXPERIENCE (>= 1200px) — "Personal Brand Landing Page" */
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 1.5rem;
-            }
-            .hero-section {
-                padding: 9rem 0 5rem;
-                min-height: 85vh;
-            }
-            .hero-grid {
-                display: grid;
-                grid-template-columns: 1.15fr 0.85fr;
-                gap: 3.5rem;
-                align-items: center;
-            }
-            .hero-eyebrow-badge {
-                display: flex;
-                align-items: center;
-                gap: 0.65rem;
-                margin-bottom: 0.85rem;
-            }
-            .eyebrow-tag {
-                font-size: 0.78rem;
-                padding: 0.25rem 0.65rem;
-            }
-            .eyebrow-desc {
-                font-size: 0.75rem;
-            }
-            .hero-title {
-                font-size: clamp(3rem, 5vw, 5rem) !important;
-                line-height: 1.15;
-                margin-bottom: 1.25rem;
-            }
-            .hero-subtitle {
-                font-size: 1.12rem;
-                line-height: 1.6;
-                margin-bottom: 2rem;
-                max-width: 620px;
-            }
-            .career-status-board {
-                max-width: 620px;
-                padding: 0.85rem 1.25rem;
-                margin-bottom: 1.75rem;
-            }
-            .ticker-track {
-                animation: marquee-scroll 14s linear infinite !important;
-                -webkit-animation: marquee-scroll 14s linear infinite !important;
-            }
-            .ticker-content {
-                display: flex !important;
-                align-items: center !important;
-                gap: 1.25rem !important;
-                padding-right: 1.25rem !important;
-                flex-shrink: 0 !important;
-            }
-            .ticker-item {
-                font-size: 0.88rem !important;
-                font-weight: 700 !important;
-                color: #ffffff !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.4rem !important;
-                flex-shrink: 0 !important;
-            }
-            .ticker-separator {
-                margin: 0 0.5rem !important;
-                color: var(--border-highlight) !important;
-                flex-shrink: 0 !important;
-            }
-            .hero-cta-group {
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                margin-bottom: 2.5rem;
-            }
-            .stats-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-            }
-        }
-
-        /* 2. TABLET EXPERIENCE (769px - 1199px) — "Balanced Professional View" */
-        @media (min-width: 769px) and (max-width: 1199px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-            .hero-section {
-                padding: 7rem 0 4rem;
-                min-height: auto;
-            }
-            .hero-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                text-align: center;
-            }
-            .hero-eyebrow-badge {
-                display: flex;
-                justify-content: center;
-                gap: 0.5rem;
-                margin-bottom: 0.75rem;
-            }
-            .hero-title {
-                font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
-                line-height: 1.2;
-                margin-bottom: 1rem;
-            }
-            .hero-subtitle {
-                font-size: 1.05rem;
-                line-height: 1.55;
-                margin: 0 auto 1.75rem;
-                max-width: 680px;
-            }
-            .career-status-board {
-                max-width: 680px;
-                margin: 0 auto 1.5rem;
-                padding: 0.75rem 1rem;
-            }
-            .career-status-header {
-                justify-content: center;
-                gap: 1.5rem;
-            }
-            .ticker-track {
-                animation: marquee-scroll 18s linear infinite !important;
-                -webkit-animation: marquee-scroll 18s linear infinite !important;
-            }
-            .ticker-content {
-                display: flex !important;
-                align-items: center !important;
-                gap: 1rem !important;
-                padding-right: 1rem !important;
-                flex-shrink: 0 !important;
-            }
-            .ticker-item {
-                font-size: 0.82rem !important;
-                font-weight: 700 !important;
-                color: #ffffff !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.4rem !important;
-                flex-shrink: 0 !important;
-            }
-            .ticker-separator {
-                margin: 0 0.4rem !important;
-                color: var(--border-highlight) !important;
-                flex-shrink: 0 !important;
-            }
-            .hero-cta-group {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-            .stats-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.85rem;
-                max-width: 750px;
-                margin: 0 auto;
-            }
-            .hero-profile-card {
-                max-width: 680px;
-                margin: 0 auto;
-            }
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* 3. MOBILE EXPERIENCE (<= 768px) — "Recruiter Quick Scan" */
-        @media (max-width: 768px) {
-            body {
-                overflow-x: hidden !important;
-                touch-action: manipulation;
-            }
-            .container {
-                padding: 0 1rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .hero-section {
-                padding: 5.5rem 0 2rem !important;
-                min-height: auto !important;
-            }
-            .hero-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 1.25rem !important;
-                width: 100% !important;
-            }
-            .hero-eyebrow-badge {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.25rem !important;
-                margin-bottom: 0.5rem !important;
-            }
-            .eyebrow-tag {
-                font-size: 0.7rem !important;
-                padding: 0.2rem 0.5rem !important;
-            }
-            .eyebrow-desc {
-                font-size: 0.68rem !important;
-                line-height: 1.35 !important;
-                word-break: break-word !important;
-                white-space: normal !important;
-            }
-            .hero-title {
-                font-size: clamp(2rem, 8vw, 2.8rem) !important;
-                line-height: 1.2 !important;
-                margin-bottom: 0.75rem !important;
-                word-break: break-word !important;
-            }
-            .hero-subtitle {
-                font-size: 0.88rem !important;
-                line-height: 1.45 !important;
-                margin-bottom: 1.25rem !important;
-                width: 100% !important;
-            }
-            .career-status-board {
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                padding: 0.6rem 0.75rem !important;
-                margin-bottom: 1.25rem !important;
-            }
-            .career-status-header {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                margin-bottom: 0.4rem !important;
-                border-bottom: 1px dashed rgba(255, 255, 255, 0.12) !important;
-                padding-bottom: 0.35rem !important;
-            }
-            .career-status-badge {
-                font-size: 0.7rem !important;
-            }
-            .career-status-sub {
-                font-size: 0.65rem !important;
-            }
-            .ticker-track {
-                animation: marquee-scroll 20s linear infinite !important;
-                -webkit-animation: marquee-scroll 20s linear infinite !important;
-            }
-            .ticker-content {
-                display: flex !important;
-                align-items: center !important;
-                gap: 0.85rem !important;
-                padding-right: 0.85rem !important;
-                flex-shrink: 0 !important;
-            }
-            .ticker-item {
-                font-size: 0.78rem !important;
-                font-weight: 700 !important;
-                color: #ffffff !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.35rem !important;
-                flex-shrink: 0 !important;
-            }
-            .ticker-separator {
-                margin: 0 0.35rem !important;
-                opacity: 0.6 !important;
-                flex-shrink: 0 !important;
-            }
-            .hero-cta-group {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100% !important;
-                gap: 0.75rem !important;
-                margin-bottom: 1.5rem !important;
-            }
-            .hero-cta-group .btn {
-                width: 100% !important;
-                text-align: center !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                padding: 0.85rem 1rem !important;
-                font-size: 0.95rem !important;
-                box-sizing: border-box !important;
-            }
-            .stats-grid {
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.65rem !important;
-                width: 100% !important;
-            }
-            .stat-card {
-                padding: 0.75rem !important;
-            }
-            .stat-num {
-                font-size: 1.15rem !important;
-            }
-            .stat-label {
-                font-size: 0.7rem !important;
-            }
-            .hero-profile-card {
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                padding: 1.15rem !important;
-                margin-top: 1.25rem !important;
-            }
-            .nav-links {
-                display: none;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -1660,52 +1316,50 @@
     <section class="hero-section">
         <div class="container hero-grid">
             <div>
-                <!-- Candidate Identity Eyebrow Badge -->
-                <div class="hero-eyebrow-badge">
-                    <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
-                    <span class="eyebrow-desc">COMPUTER ENGINEERING GRADUATE • AI AUTOMATION | NETWORKING | CYBERSECURITY</span>
-                </div>
-
-                <!-- Animated Availability Queue Indicator (Hospital / Clinic LED Queue Board) -->
                 <div class="career-status-board">
                     <div class="career-status-header">
                         <div class="career-status-badge">
                             <div class="led-dot"></div>
-                            ● OPEN FOR OPPORTUNITIES
+                            OPEN FOR OPPORTUNITIES
                         </div>
-                        <div class="career-status-sub">Currently Seeking: AI Automation Engineer • Network Engineer • Cybersecurity Role</div>
+                        <div class="career-status-sub">Available for Full-Time Graduate Roles</div>
                     </div>
                     
                     <div class="ticker-wrap">
-                        <div class="ticker-track">
-                            <div class="ticker-content">
-                                <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Graduate</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🌐 <span class="highlight">Network Engineer (CCNA)</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity & Cloud</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">👁️ <span class="highlight">AI Automation Specialist</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
-                                <span class="ticker-separator">•</span>
-                            </div>
-                            <div class="ticker-content" aria-hidden="true">
-                                <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🌐 <span class="highlight">Network Engineer (CCNA)</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">🔒 <span class="highlight">Cybersecurity & Cloud</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">👁️ <span class="highlight">AI Automation Specialist</span></span>
-                                <span class="ticker-separator">•</span>
-                                <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
-                                <span class="ticker-separator">•</span>
-                            </div>
+                        <div class="ticker-move">
+                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
+                            <span class="ticker-separator">•</span>
+                            
+                            <!-- Looped duplicate sequence for seamless infinite scroll -->
+                            <span class="ticker-item">🎓 <span class="highlight">Computer Engineering Candidate</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🌐 <span class="highlight">Network Engineering</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">🔒 <span class="highlight">Cybersecurity</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">☁️ <span class="highlight">Cloud Infrastructure</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">👁️ <span class="highlight">AI Automation</span></span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-item">⚡ <span class="highlight">Embedded Systems & IoT</span></span>
+                            <span class="ticker-separator">•</span>
                         </div>
                     </div>
                 </div>
-
+                                <div class="hero-eyebrow-badge">
+                    <span class="eyebrow-tag">MUHAMMAD IRFAN FAHMI</span>
+                    <span class="eyebrow-desc">COMPUTER ENGINEERING (HONS) • AI AUTOMATION • NETWORKING • CYBERSECURITY</span>
+                </div>
                 <h1 class="hero-title">
                     Building <span>Intelligent Systems</span> at the Intersection of AI, Networking & Hardware.
                 </h1>
@@ -1716,6 +1370,7 @@
                 <div class="hero-cta-group">
                     <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Explore Projects ➔</a>
                     <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 1rem;">Download Resume (PDF) 📄</a>
+                    
                 </div>
 
                 <div class="stats-grid">
