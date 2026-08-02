@@ -4902,31 +4902,20 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 animate3D();
 
-                window.addEventListener('resize', () => {
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                });
-            } catch (e) {
-                console.warn("3D WebGL background skipped:", e);
-            }
+        /* 3D WebGL Background Initialization */
         })();
-
-        const themeBtn = document.getElementById('theme-toggle-btn');
-        if (themeBtn) {
-            themeBtn.addEventListener('click', () => {
-                toggleTheme();
-            });
-        }
     </script>
 
     <script>
         // Custom UI Helper JS for Theme, Filters, Modals
         function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            document.body.setAttribute('data-theme', isLight ? 'light' : 'dark');
-            const themeBtns = document.querySelectorAll('#theme-toggle-btn, .theme-toggle-btn');
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            body.setAttribute('data-theme', isLight ? 'light' : 'dark');
+            
+            // Sync all theme toggle buttons across desktop & mobile
+            const themeBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle-btn');
             themeBtns.forEach(btn => {
                 if (btn) btn.innerText = isLight ? '☀️' : '🌙';
             });
