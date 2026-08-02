@@ -2015,12 +2015,22 @@
                 line-height: 1.3 !important;
                 word-break: break-word !important;
                 overflow-wrap: anywhere !important;
+                color: #ffffff !important;
+                background: none !important;
+                -webkit-text-fill-color: #ffffff !important;
+            }
+
+            .hero-title span {
+                color: #38bdf8 !important;
+                background: none !important;
+                -webkit-text-fill-color: #38bdf8 !important;
             }
 
             .hero-subtitle {
                 font-size: 0.88rem !important;
                 line-height: 1.55 !important;
                 word-break: break-word !important;
+                color: #cbd5e1 !important;
             }
 
             .hero-cta-group {
@@ -2433,7 +2443,7 @@
             </ul>
 
             <div class="nav-actions">
-                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+                <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
                 <button class="btn btn-outline" onclick="toggleFloatingChat()">🌙 Chat AI</button>
                 <button class="btn btn-primary" onclick="openSecurityModal()">🔒 Contact & Resume</button>
             </div>
@@ -4906,16 +4916,24 @@ Natural conversation is ALWAYS the highest priority.
             }
         })();
 
-        document.getElementById('theme-toggle-btn').addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            document.getElementById('theme-toggle-btn').innerText = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
-        });
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                toggleTheme();
+            });
+        }
     </script>
 
     <script>
         // Custom UI Helper JS for Theme, Filters, Modals
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            document.body.setAttribute('data-theme', isLight ? 'light' : 'dark');
+            const themeBtns = document.querySelectorAll('#theme-toggle-btn, .theme-toggle-btn');
+            themeBtns.forEach(btn => {
+                if (btn) btn.innerText = isLight ? '☀️' : '🌙';
+            });
         }
 
         
