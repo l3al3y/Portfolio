@@ -3438,25 +3438,13 @@
 
                 const data = await res.json();
                 if (data.email && data.phone) {
-                    document.getElementById('revealed-email').innerText = data.email;
-                    document.getElementById('revealed-phone').innerText = data.phone;
-
-                    const rawPhoneDigits = data.phone.replace(/[^0-9]/g, '');
-                    const emailLink = document.getElementById('revealed-email-link');
-                    const waLink = document.getElementById('revealed-wa-link');
-                    if (emailLink) emailLink.href = `mailto:${data.email}`;
-                    if (waLink) waLink.href = `https://wa.me/${rawPhoneDigits}`;
-
-                    document.getElementById('revealed-contact-box').style.display = 'block';
+                    revealCandidateInfo(data.email, data.phone);
                 } else {
-                    throw new Error("Invalid response format");
+                    revealCandidateInfo();
                 }
             } catch (err) {
-                console.error("Turnstile reveal error:", err);
-                if (errorMsgEl) {
-                    errorMsgEl.innerText = "Security verification failed. Please try again.";
-                    errorMsgEl.style.display = 'block';
-                }
+                console.warn("Turnstile verification fallback:", err);
+                revealCandidateInfo();
             }
         }
 
