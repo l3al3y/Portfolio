@@ -1946,60 +1946,39 @@
                 overflow: hidden !important;
             }
 
-            /* Mobile Hero Section Component Alignment (Matches Mobile About Cards .pillar-card) */
             .hero-grid {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                margin: 0 !important;
-            }
-
-            .hero-grid > div {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 1rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                margin: 0 !important;
-            }
-
-            .career-status-board,
-            .hero-title,
-            .hero-subtitle,
-            .hero-cta-group,
-            .stats-grid,
-            .mobile-hero-profile-card {
-                margin: 0 !important;
+                grid-template-columns: 1fr !important;
+                gap: 1.15rem !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 box-sizing: border-box !important;
             }
 
             .career-status-board {
-                padding: 1rem 1.25rem !important;
+                margin-bottom: 0.85rem !important;
+                padding: 0.55rem 0.75rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
                 overflow: hidden !important;
-                border-radius: var(--radius-md) !important;
-                background: var(--bg-surface) !important;
-                border: 1px solid var(--border-card) !important;
+                border-radius: 14px !important;
             }
 
             .career-status-header {
                 flex-wrap: wrap !important;
-                gap: 0.4rem !important;
+                gap: 0.35rem !important;
                 width: 100% !important;
                 min-width: 0 !important;
             }
 
             .career-status-badge {
-                font-size: 0.72rem !important;
-                padding: 0.25rem 0.6rem !important;
+                font-size: 0.68rem !important;
+                padding: 0.2rem 0.5rem !important;
                 white-space: nowrap !important;
             }
 
             .career-status-sub {
-                font-size: 0.75rem !important;
+                font-size: 0.7rem !important;
                 word-break: break-word !important;
             }
 
@@ -2015,69 +1994,72 @@
                 line-height: 1.3 !important;
                 word-break: break-word !important;
                 overflow-wrap: anywhere !important;
-                color: #ffffff !important;
-                background: none !important;
-                -webkit-text-fill-color: #ffffff !important;
-            }
-
-            .hero-title span {
-                color: #38bdf8 !important;
-                background: none !important;
-                -webkit-text-fill-color: #38bdf8 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 0.65rem !important;
             }
 
             .hero-subtitle {
                 font-size: 0.88rem !important;
-                line-height: 1.55 !important;
+                line-height: 1.5 !important;
                 word-break: break-word !important;
-                color: #cbd5e1 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 1.15rem !important;
             }
 
             .hero-cta-group {
-                display: flex !important;
-                gap: 0.75rem !important;
+                margin-bottom: 1.15rem !important;
+                width: 100% !important;
             }
 
             .stats-grid {
                 display: grid !important;
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.75rem !important;
+                gap: 0.5rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                margin-bottom: 0.85rem !important;
             }
 
             .stat-card {
                 min-width: 0 !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
-                padding: 0.85rem 0.5rem !important;
-                margin: 0 !important;
+                padding: 0.65rem 0.4rem !important;
                 text-align: center !important;
                 overflow: hidden !important;
-                border-radius: var(--radius-md) !important;
-                background: var(--bg-surface) !important;
-                border: 1px solid var(--border-card) !important;
+                border-radius: 12px !important;
             }
 
             .stat-num {
-                font-size: 1.1rem !important;
+                font-size: 1.05rem !important;
                 word-break: break-word !important;
                 white-space: nowrap !important;
             }
 
             .stat-label {
-                font-size: 0.7rem !important;
-                line-height: 1.25 !important;
+                font-size: 0.68rem !important;
+                line-height: 1.2 !important;
                 word-break: break-word !important;
-                margin-top: 0.25rem !important;
+                margin-top: 0.2rem !important;
             }
 
-            /* Android Compact Mobile Profile Card (Matches .pillar-card) */
+            /* Android Compact Mobile Profile Card */
             .mobile-hero-profile-card {
-                background: var(--bg-surface) !important;
-                border: 1px solid var(--border-card) !important;
-                border-radius: var(--radius-md) !important;
-                padding: 1.25rem !important;
+                background: var(--bg-surface);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border: 1px solid var(--border-highlight);
+                border-radius: var(--radius-md);
+                padding: 0.85rem !important;
+                margin-top: 0.5rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
                 overflow: hidden !important;
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
             }
 
             .mobile-profile-header {
@@ -2267,10 +2249,6 @@
                 margin-bottom: 1.5rem !important;
             }
 
-            .chat-launcher-btn {
-                display: none !important;
-            }
-
             /* Mobile Floating AI Chatbot Window (Positioned Cleanly Above Bottom Dock) */
             .chat-floating-window {
                 bottom: calc(4.75rem + var(--sab)) !important;
@@ -2292,20 +2270,8 @@
         }
 
         /* LIGHT THEME HIGH CONTRAST ACCESSIBILITY ENGINE */
-        body.light-theme,
-        body[data-theme="light"] {
-            background-color: #f8fafc !important;
-            color: #0f172a !important;
-        }
-
-        body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
-        body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .profile-name, 
-        body.light-theme .pillar-title, body.light-theme .category-title, body.light-theme .cert-title, 
-        body.light-theme .timeline-role, body.light-theme .ai-banner-title, body.light-theme .project-banner-title,
-        body[data-theme="light"] h1, body[data-theme="light"] h2, body[data-theme="light"] h3, body[data-theme="light"] h4, body[data-theme="light"] h5, body[data-theme="light"] h6,
-        body[data-theme="light"] .hero-title, body[data-theme="light"] .section-title, body[data-theme="light"] .profile-name, 
-        body[data-theme="light"] .pillar-title, body[data-theme="light"] .category-title, body[data-theme="light"] .cert-title, 
-        body[data-theme="light"] .timeline-role, body[data-theme="light"] .ai-banner-title, body[data-theme="light"] .project-banner-title {
+        body.light-theme .hero-title,
+        body[data-theme="light"] .hero-title {
             color: #0f172a !important;
             background: none !important;
             -webkit-text-fill-color: #0f172a !important;
@@ -2317,16 +2283,6 @@
             background: linear-gradient(135deg, #0284c7 0%, #7e22ce 100%) !important;
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
-        }
-
-        body.light-theme p, body.light-theme .hero-subtitle, body.light-theme .project-desc, 
-        body.light-theme .pillar-desc, body.light-theme .timeline-desc, body.light-theme .profile-role, 
-        body.light-theme .eyebrow-desc, body.light-theme .ai-banner-desc, body.light-theme .career-status-sub,
-        body[data-theme="light"] p, body[data-theme="light"] .hero-subtitle, body[data-theme="light"] .project-desc, 
-        body[data-theme="light"] .pillar-desc, body[data-theme="light"] .timeline-desc, body[data-theme="light"] .profile-role, 
-        body[data-theme="light"] .eyebrow-desc, body[data-theme="light"] .ai-banner-desc, body[data-theme="light"] .career-status-sub {
-            color: #1e293b !important;
-            font-weight: 600 !important;
         }
 
         body.light-theme .btn-outline,
@@ -2443,7 +2399,7 @@
             </ul>
 
             <div class="nav-actions">
-                <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
                 <button class="btn btn-outline" onclick="toggleFloatingChat()">🌙 Chat AI</button>
                 <button class="btn btn-primary" onclick="openSecurityModal()">🔒 Contact & Resume</button>
             </div>
@@ -2524,27 +2480,6 @@
                         <div class="stat-label">Verified Certs</div>
                     </div>
                 </div>
-
-                <!-- Space-Optimized Android Mobile Profile Bar -->
-                <div class="mobile-only mobile-hero-profile-card">
-                    <div class="mobile-profile-header">
-                        <div class="mobile-avatar">👨‍💻</div>
-                        <div class="mobile-profile-info">
-                            <div class="mobile-profile-name">Muhammad Irfan Fahmi</div>
-                            <div class="mobile-profile-sub">Computer Engineering (Hons) • UTeM</div>
-                        </div>
-                    </div>
-                    <button class="mobile-bio-toggle-btn" onclick="toggleMobileBioDetails(this)">📋 Show Candidate Details ▼</button>
-                    <div class="mobile-bio-details" id="mobile-bio-details">
-                        <div><strong>Full Name:</strong> Muhammad Irfan Fahmi bin Samsul Kamar</div>
-                        <div><strong>Age:</strong> 27 Years Old (8 March 1999)</div>
-                        <div><strong>Location:</strong> Puchong, Selangor (Open to Relocate)</div>
-                        <div><strong>Degree:</strong> B. Computer Eng. Tech (Hons) • UTeM</div>
-                        <div><strong>Languages:</strong> Malay (Native), English (Fluent)</div>
-                        <div><strong>Military Reserve:</strong> Askar Wataniah (Resilience)</div>
-                        <div><strong>Career Focus:</strong> Network / AI / Cybersecurity</div>
-                    </div>
-                </div>
             </div>
 
             <!-- Desktop PC Authentic Personal Biodata Card -->
@@ -2590,6 +2525,27 @@
                         <span class="bio-status-badge">Available Immediately</span>
                     </li>
                 </ul>
+            </div>
+
+            <!-- Space-Optimized Android Mobile Profile Bar -->
+            <div class="mobile-only mobile-hero-profile-card">
+                <div class="mobile-profile-header">
+                    <div class="mobile-avatar">👨‍💻</div>
+                    <div class="mobile-profile-info">
+                        <div class="mobile-profile-name">Muhammad Irfan Fahmi</div>
+                        <div class="mobile-profile-sub">Computer Engineering (Hons) • UTeM</div>
+                    </div>
+                </div>
+                <button class="mobile-bio-toggle-btn" onclick="toggleMobileBioDetails(this)">📋 Show Candidate Details ▼</button>
+                <div class="mobile-bio-details" id="mobile-bio-details">
+                    <div><strong>Full Name:</strong> Muhammad Irfan Fahmi bin Samsul Kamar</div>
+                    <div><strong>Age:</strong> 27 Years Old (8 March 1999)</div>
+                    <div><strong>Location:</strong> Puchong, Selangor (Open to Relocate)</div>
+                    <div><strong>Degree:</strong> B. Computer Eng. Tech (Hons) • UTeM</div>
+                    <div><strong>Languages:</strong> Malay (Native), English (Fluent)</div>
+                    <div><strong>Military Reserve:</strong> Askar Wataniah (Resilience)</div>
+                    <div><strong>Career Focus:</strong> Network / AI / Cybersecurity</div>
+                </div>
             </div>
         </div>
     </section>
@@ -2961,11 +2917,12 @@
                         <a id="revealed-wa-link" href="#" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.82rem; padding: 0.5rem; background: linear-gradient(135deg, #059669, #10b981);">💬 WhatsApp</a>
                     </div>
                     <div style="padding-top: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.2); text-align: center;">
-                        <a id="revealed-resume-pdf" href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.55rem; font-weight: 700;">📄 Download Official Resume (PDF)</a>
+                        <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.55rem; font-weight: 700;">📄 Download Official Resume (PDF)</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
         <!-- Fixed Floating Chat Launcher Button -->
@@ -4916,24 +4873,16 @@ Natural conversation is ALWAYS the highest priority.
             }
         })();
 
-        const themeBtn = document.getElementById('theme-toggle-btn');
-        if (themeBtn) {
-            themeBtn.addEventListener('click', () => {
-                toggleTheme();
-            });
-        }
+        document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            document.getElementById('theme-toggle-btn').innerText = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+        });
     </script>
 
     <script>
         // Custom UI Helper JS for Theme, Filters, Modals
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            document.body.setAttribute('data-theme', isLight ? 'light' : 'dark');
-            const themeBtns = document.querySelectorAll('#theme-toggle-btn, .theme-toggle-btn');
-            themeBtns.forEach(btn => {
-                if (btn) btn.innerText = isLight ? '☀️' : '🌙';
-            });
         }
 
         
@@ -4966,24 +4915,6 @@ Natural conversation is ALWAYS the highest priority.
 
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.add('active');
-
-            // Instantly populate & reveal candidate contact info so button ALWAYS works 100%
-            const revealedEmail = document.getElementById('revealed-email');
-            const revealedPhone = document.getElementById('revealed-phone');
-            const emailLink = document.getElementById('revealed-email-link');
-            const waLink = document.getElementById('revealed-wa-link');
-            const resumePdfLink = document.getElementById('revealed-resume-pdf');
-            const revealedBox = document.getElementById('contact-details-revealed');
-
-            const basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-            const fullResumeUrl = window.location.origin + (basePath.startsWith('/') ? '' : '/') + basePath + 'resume/resume.pdf';
-
-            if (revealedEmail) revealedEmail.innerText = 'irfanfahmi.work@gmail.com';
-            if (revealedPhone) revealedPhone.innerText = '+60 16-243 2023';
-            if (emailLink) emailLink.href = 'mailto:irfanfahmi.work@gmail.com';
-            if (waLink) waLink.href = 'https://wa.me/60162432023';
-            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
-            if (revealedBox) revealedBox.style.display = 'block';
 
             const container = document.getElementById('cf-turnstile-container');
             if (window.turnstile && container) {
