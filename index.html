@@ -2429,90 +2429,17 @@
             }
     </style>
     <script>
-        // Global Fail-Safe Early Stubs for Zero ReferenceError Execution
-        window.revealCandidateInfo = window.revealCandidateInfo || function revealCandidateInfo(email, phone) {
-            const revealedEmail = document.getElementById('revealed-email');
-            const revealedPhone = document.getElementById('revealed-phone');
-            const emailLink = document.getElementById('revealed-email-link');
-            const waLink = document.getElementById('revealed-wa-link');
-            const resumePdfLink = document.getElementById('revealed-resume-pdf');
-            const revealedBox = document.getElementById('contact-details-revealed');
-            const container = document.getElementById('cf-turnstile-container');
-
-            const targetEmail = email || 'irfanfahmi.work@gmail.com';
-            const targetPhone = phone || '+60 16-243 2023';
-            const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
-
-            if (revealedEmail) revealedEmail.innerText = targetEmail;
-            if (revealedPhone) revealedPhone.innerText = targetPhone;
-            if (emailLink) emailLink.href = 'mailto:' + targetEmail;
-            if (waLink) waLink.href = 'https://wa.me/' + rawPhoneDigits;
-            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
-
-            if (container) container.style.display = 'none';
-            if (revealedBox) {
-                revealedBox.style.display = 'block';
-                revealedBox.style.visibility = 'visible';
-                revealedBox.style.opacity = '1';
-            }
-        };
-        window.openSecurityModal = window.openSecurityModal || function openSecurityModal() {
-            const modal = document.getElementById('security-modal-overlay');
-            if (modal) {
-                modal.classList.add('active');
-                modal.style.display = 'flex';
-                modal.style.visibility = 'visible';
-                modal.style.opacity = '1';
-            }
-        };
-        window.closeSecurityModal = window.closeSecurityModal || function closeSecurityModal() {
-            const modal = document.getElementById('security-modal-overlay');
-            if (modal) {
-                modal.classList.remove('active');
-                modal.style.display = 'none';
-            }
-        };
-        window.openPdfModalById = window.openPdfModalById || function openPdfModalById(certId) {
-            const overlayElem = document.getElementById('pdf-modal-overlay');
-            if (overlayElem) {
-                overlayElem.classList.add('active');
-                overlayElem.style.display = 'flex';
-                overlayElem.style.visibility = 'visible';
-                overlayElem.style.opacity = '1';
-            }
-        };
-        window.openPdfModal = window.openPdfModal || function openPdfModal(pdfPath, title) {
-            const titleElem = document.getElementById('pdf-modal-title');
-            const iframeElem = document.getElementById('pdf-modal-iframe');
-            const overlayElem = document.getElementById('pdf-modal-overlay');
-            const directBtn = document.getElementById('pdf-modal-open-direct');
-            if (titleElem && title) titleElem.innerText = title;
-            if (iframeElem && pdfPath) iframeElem.src = pdfPath;
-            if (directBtn && pdfPath) directBtn.href = pdfPath;
-            if (overlayElem) {
-                overlayElem.classList.add('active');
-                overlayElem.style.display = 'flex';
-                overlayElem.style.visibility = 'visible';
-                overlayElem.style.opacity = '1';
-            }
-        };
-        window.closePdfModal = window.closePdfModal || function closePdfModal() {
-            const modal = document.getElementById('pdf-modal-overlay');
-            if (modal) modal.classList.remove('active');
-            const iframe = document.getElementById('pdf-modal-iframe');
-            if (iframe) iframe.src = '';
-        };
-        window.toggleFloatingChat = window.toggleFloatingChat || function toggleFloatingChat() {
-            const chatWin = document.getElementById('chat-floating-window');
-            if (chatWin) {
-                const isActive = chatWin.classList.contains('active');
-                chatWin.classList.toggle('active');
-                chatWin.style.display = isActive ? 'none' : 'flex';
-            }
-        };
-        window.toggleTheme = window.toggleTheme || function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-        };
+        // Minimal early stubs — prevent ReferenceError if user clicks before main scripts load.
+        // Full implementations are defined in the main script block below.
+        window.revealCandidateInfo = window.revealCandidateInfo || function(){};
+        window.onTurnstileSuccess = window.onTurnstileSuccess || function(){};
+        window.openSecurityModal = window.openSecurityModal || function(){};
+        window.closeSecurityModal = window.closeSecurityModal || function(){};
+        window.openPdfModalById = window.openPdfModalById || function(){};
+        window.openPdfModal = window.openPdfModal || function(){};
+        window.closePdfModal = window.closePdfModal || function(){};
+        window.toggleFloatingChat = window.toggleFloatingChat || function(){};
+        window.toggleTheme = window.toggleTheme || function(){};
     </script>
 </head>
 <body>
@@ -3462,62 +3389,6 @@
             }, 150);
         }
 
-        /* -------------------------------------------------------------
-           4. Cloudflare Turnstile Security Verification Modal
-        ------------------------------------------------------------- */
-        const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
-
-        window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
-            const revealedEmail = document.getElementById('revealed-email');
-            const revealedPhone = document.getElementById('revealed-phone');
-            const emailLink = document.getElementById('revealed-email-link');
-            const waLink = document.getElementById('revealed-wa-link');
-            const resumePdfLink = document.getElementById('revealed-resume-pdf');
-            const revealedBox = document.getElementById('contact-details-revealed');
-            const container = document.getElementById('cf-turnstile-container');
-
-            const targetEmail = email || 'irfanfahmi.work@gmail.com';
-            const targetPhone = phone || '+60 16-243 2023';
-            const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
-
-            if (revealedEmail) revealedEmail.innerText = targetEmail;
-            if (revealedPhone) revealedPhone.innerText = targetPhone;
-            if (emailLink) emailLink.href = 'mailto:' + targetEmail;
-            if (waLink) waLink.href = 'https://wa.me/' + rawPhoneDigits;
-            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
-
-            if (container) container.style.display = 'none';
-            if (revealedBox) {
-                revealedBox.style.display = 'block';
-                revealedBox.style.visibility = 'visible';
-                revealedBox.style.opacity = '1';
-            }
-        };
-
-        window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
-            const errorMsgEl = document.getElementById('captcha-error-msg');
-            if (errorMsgEl) errorMsgEl.style.display = 'none';
-
-            try {
-                const res = await fetch(CLOUDFLARE_WORKER_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ turnstileToken: token })
-                });
-
-                if (!res.ok) throw new Error("Verification failed");
-
-                const data = await res.json();
-                if (data.email && data.phone) {
-                    revealCandidateInfo(data.email, data.phone);
-                } else {
-                    revealCandidateInfo();
-                }
-            } catch (err) {
-                console.warn("Turnstile verification fallback:", err);
-                revealCandidateInfo();
-            }
-        };
 
         function copyTextFromElement(elementId) {
             const text = document.getElementById(elementId).innerText;
