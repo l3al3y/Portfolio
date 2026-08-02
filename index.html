@@ -4913,8 +4913,9 @@ Natural conversation is ALWAYS the highest priority.
                     renderer.render(scene, camera);
                 }
                 animate3D();
-
-        /* 3D WebGL Background Initialization */
+            } catch (e) {
+                console.warn("3D WebGL background skipped:", e);
+            }
         })();
     </script>
 
