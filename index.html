@@ -1923,7 +1923,12 @@
             }
 
             .nav-actions .btn-outline {
-                display: none !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                padding: 0.4rem 0.65rem !important;
+                font-size: 0.76rem !important;
+                border-radius: 999px !important;
+                white-space: nowrap !important;
             }
 
             .nav-actions .btn-primary {
@@ -3267,21 +3272,28 @@
         }
 
         function toggleFloatingChat() {
-            const chatWin = document.getElementById('chat-floating-window');
-            if (chatWin) {
-                const isActive = chatWin.classList.contains('active');
-                if (isActive) {
-                    chatWin.classList.remove('active');
-                    chatWin.style.display = 'none';
-                } else {
+            try {
+                const chatWin = document.getElementById('chat-floating-window');
+                if (!chatWin) return;
+
+                const isHidden = getComputedStyle(chatWin).display === 'none' || !chatWin.classList.contains('active');
+                if (isHidden) {
                     chatWin.classList.add('active');
-                    chatWin.style.display = 'flex';
+                    chatWin.style.setProperty('display', 'flex', 'important');
+                    chatWin.style.setProperty('z-index', '999999', 'important');
+                    chatWin.style.setProperty('pointer-events', 'auto', 'important');
+                    
                     const input = document.getElementById('chat-user-input');
-                    if (input) input.focus();
+                    if (input) setTimeout(() => input.focus(), 100);
                     if (typeof renderRandomChips === 'function') {
-                        renderRandomChips();
+                        try { renderRandomChips(); } catch (err) { console.warn(err); }
                     }
+                } else {
+                    chatWin.classList.remove('active');
+                    chatWin.style.setProperty('display', 'none', 'important');
                 }
+            } catch (e) {
+                console.error("Error toggling chat window:", e);
             }
         }
 
