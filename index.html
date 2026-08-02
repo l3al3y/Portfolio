@@ -1923,12 +1923,7 @@
             }
 
             .nav-actions .btn-outline {
-                display: inline-flex !important;
-                align-items: center !important;
-                padding: 0.4rem 0.65rem !important;
-                font-size: 0.76rem !important;
-                border-radius: 999px !important;
-                white-space: nowrap !important;
+                display: none !important;
             }
 
             .nav-actions .btn-primary {
@@ -3272,28 +3267,21 @@
         }
 
         function toggleFloatingChat() {
-            try {
-                const chatWin = document.getElementById('chat-floating-window');
-                if (!chatWin) return;
-
-                const isHidden = getComputedStyle(chatWin).display === 'none' || !chatWin.classList.contains('active');
-                if (isHidden) {
-                    chatWin.classList.add('active');
-                    chatWin.style.setProperty('display', 'flex', 'important');
-                    chatWin.style.setProperty('z-index', '999999', 'important');
-                    chatWin.style.setProperty('pointer-events', 'auto', 'important');
-                    
-                    const input = document.getElementById('chat-user-input');
-                    if (input) setTimeout(() => input.focus(), 100);
-                    if (typeof renderRandomChips === 'function') {
-                        try { renderRandomChips(); } catch (err) { console.warn(err); }
-                    }
-                } else {
+            const chatWin = document.getElementById('chat-floating-window');
+            if (chatWin) {
+                const isActive = chatWin.classList.contains('active');
+                if (isActive) {
                     chatWin.classList.remove('active');
-                    chatWin.style.setProperty('display', 'none', 'important');
+                    chatWin.style.display = 'none';
+                } else {
+                    chatWin.classList.add('active');
+                    chatWin.style.display = 'flex';
+                    const input = document.getElementById('chat-user-input');
+                    if (input) input.focus();
+                    if (typeof renderRandomChips === 'function') {
+                        renderRandomChips();
+                    }
                 }
-            } catch (e) {
-                console.error("Error toggling chat window:", e);
             }
         }
 
