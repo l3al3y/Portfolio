@@ -2430,6 +2430,32 @@
     </style>
     <script>
         // Global Fail-Safe Early Stubs for Zero ReferenceError Execution
+        window.revealCandidateInfo = window.revealCandidateInfo || function revealCandidateInfo(email, phone) {
+            const revealedEmail = document.getElementById('revealed-email');
+            const revealedPhone = document.getElementById('revealed-phone');
+            const emailLink = document.getElementById('revealed-email-link');
+            const waLink = document.getElementById('revealed-wa-link');
+            const resumePdfLink = document.getElementById('revealed-resume-pdf');
+            const revealedBox = document.getElementById('contact-details-revealed');
+            const container = document.getElementById('cf-turnstile-container');
+
+            const targetEmail = email || 'irfanfahmi.work@gmail.com';
+            const targetPhone = phone || '+60 16-243 2023';
+            const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
+
+            if (revealedEmail) revealedEmail.innerText = targetEmail;
+            if (revealedPhone) revealedPhone.innerText = targetPhone;
+            if (emailLink) emailLink.href = 'mailto:' + targetEmail;
+            if (waLink) waLink.href = 'https://wa.me/' + rawPhoneDigits;
+            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
+
+            if (container) container.style.display = 'none';
+            if (revealedBox) {
+                revealedBox.style.display = 'block';
+                revealedBox.style.visibility = 'visible';
+                revealedBox.style.opacity = '1';
+            }
+        };
         window.openSecurityModal = window.openSecurityModal || function openSecurityModal() {
             const modal = document.getElementById('security-modal-overlay');
             if (modal) {
@@ -3441,7 +3467,34 @@
         ------------------------------------------------------------- */
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
-        async function onTurnstileSuccess(token) {
+        window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
+            const revealedEmail = document.getElementById('revealed-email');
+            const revealedPhone = document.getElementById('revealed-phone');
+            const emailLink = document.getElementById('revealed-email-link');
+            const waLink = document.getElementById('revealed-wa-link');
+            const resumePdfLink = document.getElementById('revealed-resume-pdf');
+            const revealedBox = document.getElementById('contact-details-revealed');
+            const container = document.getElementById('cf-turnstile-container');
+
+            const targetEmail = email || 'irfanfahmi.work@gmail.com';
+            const targetPhone = phone || '+60 16-243 2023';
+            const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
+
+            if (revealedEmail) revealedEmail.innerText = targetEmail;
+            if (revealedPhone) revealedPhone.innerText = targetPhone;
+            if (emailLink) emailLink.href = 'mailto:' + targetEmail;
+            if (waLink) waLink.href = 'https://wa.me/' + rawPhoneDigits;
+            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
+
+            if (container) container.style.display = 'none';
+            if (revealedBox) {
+                revealedBox.style.display = 'block';
+                revealedBox.style.visibility = 'visible';
+                revealedBox.style.opacity = '1';
+            }
+        };
+
+        window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
@@ -3464,7 +3517,7 @@
                 console.warn("Turnstile verification fallback:", err);
                 revealCandidateInfo();
             }
-        }
+        };
 
         function copyTextFromElement(elementId) {
             const text = document.getElementById(elementId).innerText;
