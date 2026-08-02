@@ -2943,12 +2943,11 @@
                         <a id="revealed-wa-link" href="#" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.82rem; padding: 0.5rem; background: linear-gradient(135deg, #059669, #10b981);">💬 WhatsApp</a>
                     </div>
                     <div style="padding-top: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.2); text-align: center;">
-                        <a href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.55rem; font-weight: 700;">📄 Download Official Resume (PDF)</a>
+                        <a id="revealed-resume-pdf" href="resume/resume.pdf" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.55rem; font-weight: 700;">📄 Download Official Resume (PDF)</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
         <!-- Fixed Floating Chat Launcher Button -->
@@ -4947,12 +4946,17 @@ Natural conversation is ALWAYS the highest priority.
             const revealedPhone = document.getElementById('revealed-phone');
             const emailLink = document.getElementById('revealed-email-link');
             const waLink = document.getElementById('revealed-wa-link');
+            const resumePdfLink = document.getElementById('revealed-resume-pdf');
             const revealedBox = document.getElementById('contact-details-revealed');
+
+            const basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            const fullResumeUrl = window.location.origin + (basePath.startsWith('/') ? '' : '/') + basePath + 'resume/resume.pdf';
 
             if (revealedEmail) revealedEmail.innerText = 'irfanfahmi.work@gmail.com';
             if (revealedPhone) revealedPhone.innerText = '+60 16-243 2023';
             if (emailLink) emailLink.href = 'mailto:irfanfahmi.work@gmail.com';
             if (waLink) waLink.href = 'https://wa.me/60162432023';
+            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
             if (revealedBox) revealedBox.style.display = 'block';
 
             const container = document.getElementById('cf-turnstile-container');
