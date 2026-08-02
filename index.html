@@ -1874,11 +1874,18 @@
         @media (max-width: 768px) {
             .pc-only,
             .hero-profile-card,
+            div.pc-only,
+            div.hero-profile-card,
+            .hero-profile-card *,
             .biodata-header,
             .biodata-badge-tag,
             .profile-avatar-wrap,
             .profile-info-list {
                 display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             .mobile-only {
                 display: block !important;
