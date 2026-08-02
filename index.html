@@ -2427,29 +2427,8 @@
                 background: Highlight !important;
                 color: HighlightText !important;
             }
+        }
     </style>
-    <script>
-        // Global Fail-Safe Early Stubs for zero ReferenceError execution
-        window.openSecurityModal = window.openSecurityModal || function openSecurityModal() {
-            const modal = document.getElementById('security-modal-overlay');
-            if (modal) modal.classList.add('active');
-        };
-        window.closeSecurityModal = window.closeSecurityModal || function closeSecurityModal() {
-            const modal = document.getElementById('security-modal-overlay');
-            if (modal) modal.classList.remove('active');
-        };
-        window.toggleFloatingChat = window.toggleFloatingChat || function toggleFloatingChat() {
-            const chatWin = document.getElementById('chat-floating-window');
-            if (chatWin) {
-                const isActive = chatWin.classList.contains('active');
-                chatWin.classList.toggle('active');
-                chatWin.style.display = isActive ? 'none' : 'flex';
-            }
-        };
-        window.toggleTheme = window.toggleTheme || function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-        };
-    </script>
 </head>
 <body>
 
@@ -2932,7 +2911,7 @@
 
             <div style="font-size: 0.85rem; color: var(--text-muted);">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
-                Built with HTML5, Vanilla CSS3 & Autonomous AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit 4c2625a (v1.15.0)
+                Built with HTML5, Vanilla CSS3 & Autonomous AI Agent Infrastructure. • ⚙️ Backend Engine Sync: commit b64deda (v1.14.0)
             </div>
         </div>
     </footer>
@@ -3287,7 +3266,7 @@
             });
         }
 
-        window.toggleFloatingChat = function toggleFloatingChat() {
+        function toggleFloatingChat() {
             const chatWin = document.getElementById('chat-floating-window');
             if (chatWin) {
                 const isActive = chatWin.classList.contains('active');
@@ -4979,7 +4958,7 @@ Natural conversation is ALWAYS the highest priority.
 
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
-        window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
+        function revealCandidateInfo(email, phone) {
             const revealedEmail = document.getElementById('revealed-email');
             const revealedPhone = document.getElementById('revealed-phone');
             const emailLink = document.getElementById('revealed-email-link');
@@ -5000,9 +4979,9 @@ Natural conversation is ALWAYS the highest priority.
 
             if (container) container.style.display = 'none';
             if (revealedBox) revealedBox.style.display = 'block';
-        };
+        }
 
-        window.openSecurityModal = function openSecurityModal() {
+        function openSecurityModal() {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
@@ -5037,47 +5016,37 @@ Natural conversation is ALWAYS the highest priority.
                     }
                 }, 2500);
             }
-        };
+        }
 
-        window.closeSecurityModal = function closeSecurityModal() {
+        function closeSecurityModal() {
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.remove('active');
-        };
+        }
 
-        window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
+        async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
-            // Anti-Bot & Anti-Scraper Enforcement: Reject missing or fake bot tokens
-            if (!token || typeof token !== 'string' || token.length < 30) {
-                console.warn("Anti-Bot Defense: Rejected invalid or fake Turnstile token attempt.");
-                if (errorMsgEl) {
-                    errorMsgEl.innerText = "🔒 Security Verification Failed: Automated bot attempt blocked.";
-                    errorMsgEl.style.display = 'block';
-                }
-                return;
-            }
+            try {
+                const res = await fetch(CLOUDFLARE_WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ turnstileToken: token })
+                });
 
-            // Real Human Verified by Cloudflare Turnstile: Release Contact Details & Resume
-            revealCandidateInfo('irfanfahmi.work@gmail.com', '+60 16-243 2023');
+                if (!res.ok) throw new Error("Verification failed");
 
-            // Secure Cloudflare Worker Server-Side Verification Ping
-            if (typeof fetch !== 'undefined') {
-                try {
-                    fetch(CLOUDFLARE_WORKER_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ turnstileToken: token })
-                    }).then(res => res.json()).then(data => {
-                        if (data && data.email && data.phone) {
-                            revealCandidateInfo(data.email, data.phone);
-                        }
-                    }).catch(err => console.log("Worker background verification sync:", err));
-                } catch (e) {
-                    console.log("Worker async note:", e);
+                const data = await res.json();
+                if (data.email && data.phone) {
+                    revealCandidateInfo(data.email, data.phone);
+                } else {
+                    revealCandidateInfo();
                 }
+            } catch (err) {
+                console.warn("Turnstile verification fallback:", err);
+                revealCandidateInfo();
             }
-        };
+        }
 
         function toggleMobileBioDetails(btn) {
             const details = document.getElementById('mobile-bio-details');
