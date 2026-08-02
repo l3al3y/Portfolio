@@ -4935,12 +4935,13 @@ Natural conversation is ALWAYS the highest priority.
         }
 
         
-      function openPdfModalById(certId) {
-        const cert = CERT_REGISTRY.find(c => c.id === certId);
-        if (!cert) return;
-        openPdfModal('certificates/' + cert.filename, cert.title);
-      }
-      function openPdfModal(pdfPath, title) {
+        window.openPdfModalById = function openPdfModalById(certId) {
+            const cert = CERT_REGISTRY.find(c => c.id === certId);
+            if (!cert) return;
+            openPdfModal('certificates/' + cert.filename, cert.title);
+        };
+
+        window.openPdfModal = function openPdfModal(pdfPath, title) {
             const titleElem = document.getElementById('pdf-modal-title');
             const iframeElem = document.getElementById('pdf-modal-iframe');
             const overlayElem = document.getElementById('pdf-modal-overlay');
@@ -4949,16 +4950,16 @@ Natural conversation is ALWAYS the highest priority.
             if (iframeElem) iframeElem.src = pdfPath;
             if (directBtn) directBtn.href = pdfPath;
             if (overlayElem) overlayElem.classList.add('active');
-        }
+        };
 
-        function closePdfModal() {
+        window.closePdfModal = function closePdfModal() {
             document.getElementById('pdf-modal-overlay').classList.remove('active');
             document.getElementById('pdf-modal-iframe').src = '';
-        }
+        };
 
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
-        function revealCandidateInfo(email, phone) {
+        window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
             const revealedEmail = document.getElementById('revealed-email');
             const revealedPhone = document.getElementById('revealed-phone');
             const emailLink = document.getElementById('revealed-email-link');
@@ -4979,9 +4980,9 @@ Natural conversation is ALWAYS the highest priority.
 
             if (container) container.style.display = 'none';
             if (revealedBox) revealedBox.style.display = 'block';
-        }
+        };
 
-        function openSecurityModal() {
+        window.openSecurityModal = function openSecurityModal() {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
@@ -5016,14 +5017,14 @@ Natural conversation is ALWAYS the highest priority.
                     }
                 }, 2500);
             }
-        }
+        };
 
-        function closeSecurityModal() {
+        window.closeSecurityModal = function closeSecurityModal() {
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.remove('active');
-        }
+        };
 
-        async function onTurnstileSuccess(token) {
+        window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
@@ -5046,7 +5047,7 @@ Natural conversation is ALWAYS the highest priority.
                 console.warn("Turnstile verification fallback:", err);
                 revealCandidateInfo();
             }
-        }
+        };
 
         function toggleMobileBioDetails(btn) {
             const details = document.getElementById('mobile-bio-details');
