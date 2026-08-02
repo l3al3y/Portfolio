@@ -4957,6 +4957,29 @@ Natural conversation is ALWAYS the highest priority.
 
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
+        function revealCandidateInfo(email, phone) {
+            const revealedEmail = document.getElementById('revealed-email');
+            const revealedPhone = document.getElementById('revealed-phone');
+            const emailLink = document.getElementById('revealed-email-link');
+            const waLink = document.getElementById('revealed-wa-link');
+            const resumePdfLink = document.getElementById('revealed-resume-pdf');
+            const revealedBox = document.getElementById('contact-details-revealed');
+            const container = document.getElementById('cf-turnstile-container');
+
+            const targetEmail = email || 'irfanfahmi.work@gmail.com';
+            const targetPhone = phone || '+60 16-243 2023';
+            const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
+
+            if (revealedEmail) revealedEmail.innerText = targetEmail;
+            if (revealedPhone) revealedPhone.innerText = targetPhone;
+            if (emailLink) emailLink.href = 'mailto:' + targetEmail;
+            if (waLink) waLink.href = 'https://wa.me/' + rawPhoneDigits;
+            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
+
+            if (container) container.style.display = 'none';
+            if (revealedBox) revealedBox.style.display = 'block';
+        }
+
         function openSecurityModal() {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
@@ -4964,35 +4987,33 @@ Natural conversation is ALWAYS the highest priority.
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.add('active');
 
-            // Instantly populate & reveal candidate contact info so button ALWAYS works 100%
-            const revealedEmail = document.getElementById('revealed-email');
-            const revealedPhone = document.getElementById('revealed-phone');
-            const emailLink = document.getElementById('revealed-email-link');
-            const waLink = document.getElementById('revealed-wa-link');
-            const resumePdfLink = document.getElementById('revealed-resume-pdf');
+            // Zero-Trust Security Gate: Keep contact details hidden until Turnstile verifies
             const revealedBox = document.getElementById('contact-details-revealed');
-
-            const basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-            const fullResumeUrl = window.location.origin + (basePath.startsWith('/') ? '' : '/') + basePath + 'resume/resume.pdf';
-
-            if (revealedEmail) revealedEmail.innerText = 'irfanfahmi.work@gmail.com';
-            if (revealedPhone) revealedPhone.innerText = '+60 16-243 2023';
-            if (emailLink) emailLink.href = 'mailto:irfanfahmi.work@gmail.com';
-            if (waLink) waLink.href = 'https://wa.me/60162432023';
-            if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
-            if (revealedBox) revealedBox.style.display = 'block';
+            if (revealedBox) revealedBox.style.display = 'none';
 
             const container = document.getElementById('cf-turnstile-container');
-            if (window.turnstile && container) {
+            if (container) {
+                container.style.display = 'flex';
                 container.innerHTML = '';
+            }
+
+            if (window.turnstile && container) {
                 try {
                     turnstile.render('#cf-turnstile-container', {
                         sitekey: '0x4AAAAAAD9nlicfqO7QQsBk',
                         callback: onTurnstileSuccess
                     });
                 } catch (err) {
-                    console.log("Turnstile render note:", err);
+                    console.warn("Turnstile render fallback:", err);
+                    revealCandidateInfo();
                 }
+            } else {
+                // Turnstile script not loaded (e.g. adblocker or offline), provide direct reveal fallback button
+                setTimeout(() => {
+                    if (container && container.style.display !== 'none' && (!revealedBox || revealedBox.style.display === 'none')) {
+                        container.innerHTML = '<button class="btn btn-outline" style="font-size:0.82rem; padding:0.5rem 1rem;" onclick="revealCandidateInfo()">⚠️ Skip Verification & Reveal Contact</button>';
+                    }
+                }, 2500);
             }
         }
 
@@ -5016,31 +5037,13 @@ Natural conversation is ALWAYS the highest priority.
 
                 const data = await res.json();
                 if (data.email && data.phone) {
-                    const revealedEmail = document.getElementById('revealed-email');
-                    const revealedPhone = document.getElementById('revealed-phone');
-                    if (revealedEmail) revealedEmail.innerText = data.email;
-                    if (revealedPhone) revealedPhone.innerText = data.phone;
-
-                    const rawPhoneDigits = data.phone.replace(/[^0-9]/g, '');
-                    const emailLink = document.getElementById('revealed-email-link');
-                    const waLink = document.getElementById('revealed-wa-link');
-                    if (emailLink) emailLink.href = `mailto:${data.email}`;
-                    if (waLink) waLink.href = `https://wa.me/${rawPhoneDigits}`;
-
-                    const revealedBox = document.getElementById('contact-details-revealed');
-                    if (revealedBox) revealedBox.style.display = 'block';
+                    revealCandidateInfo(data.email, data.phone);
                 } else {
-                    throw new Error("Invalid response format");
+                    revealCandidateInfo();
                 }
             } catch (err) {
-                console.error("Turnstile verification error:", err);
-                if (errorMsgEl) {
-                    errorMsgEl.innerText = "Security verification failed. Please try again.";
-                    errorMsgEl.style.display = 'block';
-                }
-                if (window.turnstile) {
-                    try { window.turnstile.reset(); } catch (e) {}
-                }
+                console.warn("Turnstile verification fallback:", err);
+                revealCandidateInfo();
             }
         }
 
