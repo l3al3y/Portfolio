@@ -1181,6 +1181,43 @@
             background: rgba(56, 189, 248, 0.1);
         }
 
+        .chat-suggested-prompts {
+            padding: 0.65rem 0.85rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid var(--border-card);
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            position: relative;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .prompt-chip {
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 101;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .prompt-chip:hover,
+        .prompt-chip:active {
+            border-color: var(--primary);
+            color: #ffffff;
+            background: var(--primary);
+        }
+
         .chat-input-area {
             padding: 0.75rem 1rem;
             background: rgba(8, 12, 20, 0.95);
@@ -1188,6 +1225,9 @@
             display: flex;
             gap: 0.5rem;
             align-items: center;
+            position: relative;
+            z-index: 100;
+            pointer-events: auto;
         }
 
         .chat-input {
@@ -1201,11 +1241,28 @@
             font-family: var(--font-sans);
             outline: none;
             transition: var(--transition-smooth);
+            position: relative;
+            z-index: 101;
+            pointer-events: auto;
         }
 
         .chat-input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .btn-send-chat {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 0.55rem 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 101;
+            pointer-events: auto;
         }
 
     
@@ -2279,7 +2336,8 @@
                 max-height: 560px !important;
                 border-radius: 20px !important;
                 box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), 0 0 25px var(--primary-glow) !important;
-                z-index: 99999 !important;
+                z-index: 999999 !important;
+                pointer-events: auto !important;
             }
 
             .mobile-sheet-handle {
@@ -2287,7 +2345,42 @@
             }
         }
 
-        /* LIGHT THEME HIGH CONTRAST ACCESSIBILITY ENGINE */
+        /* HIGH CONTRAST ACCESSIBILITY ENGINE (DARK & LIGHT) */
+        body:not(.light-theme),
+        body[data-theme="dark"] {
+            background-color: #0b0f19 !important;
+            color: #f1f5f9 !important;
+        }
+
+        body:not(.light-theme) h1, body:not(.light-theme) h2, body:not(.light-theme) h3, 
+        body:not(.light-theme) h4, body:not(.light-theme) h5, body:not(.light-theme) h6,
+        body:not(.light-theme) .hero-title, body:not(.light-theme) .section-title, 
+        body:not(.light-theme) .profile-name, body:not(.light-theme) .pillar-title, 
+        body:not(.light-theme) .category-title, body:not(.light-theme) .cert-title, 
+        body:not(.light-theme) .timeline-role, body:not(.light-theme) .mobile-profile-name {
+            color: #ffffff !important;
+            background: none !important;
+            -webkit-text-fill-color: #ffffff !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        body:not(.light-theme) .hero-title span,
+        body:not(.light-theme) .section-title span {
+            color: #38bdf8 !important;
+            background: none !important;
+            -webkit-text-fill-color: #38bdf8 !important;
+        }
+
+        body:not(.light-theme) p, body:not(.light-theme) .hero-subtitle, 
+        body:not(.light-theme) .project-desc, body:not(.light-theme) .pillar-desc, 
+        body:not(.light-theme) .timeline-desc, body:not(.light-theme) .profile-role, 
+        body:not(.light-theme) .eyebrow-desc, body:not(.light-theme) .ai-banner-desc, 
+        body:not(.light-theme) .career-status-sub, body:not(.light-theme) .mobile-bio-details,
+        body:not(.light-theme) .bio-value, body:not(.light-theme) .stat-label {
+            color: #e2e8f0 !important;
+        }
+
+        /* LIGHT THEME HIGH CONTRAST ENGINE */
         body.light-theme,
         body[data-theme="light"] {
             background-color: #f8fafc !important;
@@ -3339,8 +3432,20 @@
 
             container.innerHTML = selected.map(chipText => {
                 const escaped = escapeHtml(chipText);
-                return `<button class="prompt-chip" onclick="sendSuggestedPrompt('${escaped.replace(/'/g, "\\'")}')">${escaped}</button>`;
+                return `<button class="prompt-chip" data-prompt="${escaped.replace(/"/g, '&quot;')}">${escaped}</button>`;
             }).join('');
+
+            // Bind click & touch events to prompt chips cleanly
+            const chips = container.querySelectorAll('.prompt-chip');
+            chips.forEach(chip => {
+                const handlePrompt = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const promptVal = chip.getAttribute('data-prompt');
+                    if (promptVal) sendSuggestedPrompt(promptVal);
+                };
+                chip.onclick = handlePrompt;
+            });
         }
 
         /* -------------------------------------------------------------
