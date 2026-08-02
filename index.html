@@ -1870,10 +1870,9 @@
             display: none;
         }
 
-        /* Mobile Breakpoint Optimizations (< 991px) */
-        @media (max-width: 991px) {
-            .pc-only,
-            .hero-profile-card {
+        /* Mobile Breakpoint Optimizations (< 768px) */
+        @media (max-width: 768px) {
+            .pc-only {
                 display: none !important;
             }
             .mobile-only {
@@ -2527,18 +2526,19 @@
                     <div class="mobile-profile-header">
                         <div class="mobile-avatar">👨‍💻</div>
                         <div class="mobile-profile-info">
-                            <div class="mobile-profile-name">Muhammad Irfan Fahmi bin Samsul Kamar</div>
+                            <div class="mobile-profile-name">Muhammad Irfan Fahmi</div>
                             <div class="mobile-profile-sub">Computer Engineering (Hons) • UTeM</div>
                         </div>
                     </div>
                     <button class="mobile-bio-toggle-btn" onclick="toggleMobileBioDetails(this)">📋 Show Candidate Details ▼</button>
                     <div class="mobile-bio-details" id="mobile-bio-details">
+                        <div><strong>Full Name:</strong> Muhammad Irfan Fahmi bin Samsul Kamar</div>
                         <div><strong>Age:</strong> 27 Years Old (8 March 1999)</div>
                         <div><strong>Location:</strong> Puchong, Selangor (Open to Relocate)</div>
+                        <div><strong>Degree:</strong> B. Computer Eng. Tech (Hons) • UTeM</div>
                         <div><strong>Languages:</strong> Malay (Native), English (Fluent)</div>
                         <div><strong>Military Reserve:</strong> Askar Wataniah (Resilience)</div>
                         <div><strong>Career Focus:</strong> Network / AI / Cybersecurity</div>
-                        <div><strong>Availability:</strong> Available Immediately</div>
                     </div>
                 </div>
             </div>
