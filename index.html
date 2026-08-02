@@ -2268,9 +2268,23 @@
                 display: none !important;
             }
         }
-        }
 
         /* LIGHT THEME HIGH CONTRAST ACCESSIBILITY ENGINE */
+        body.light-theme .hero-title,
+        body[data-theme="light"] .hero-title {
+            color: #0f172a !important;
+            background: none !important;
+            -webkit-text-fill-color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body.light-theme .hero-title span,
+        body[data-theme="light"] .hero-title span {
+            background: linear-gradient(135deg, #0284c7 0%, #7e22ce 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
         body.light-theme .btn-outline,
         body[data-theme="light"] .btn-outline {
             background: #ffffff !important;
@@ -2319,7 +2333,12 @@
         body.light-theme .mobile-bio-details,
         body[data-theme="light"] .mobile-bio-details {
             border-top: 1px solid #cbd5e1 !important;
-            color: #334155 !important;
+            color: #1e293b !important;
+        }
+
+        body.light-theme .mobile-bio-details strong,
+        body[data-theme="light"] .mobile-bio-details strong {
+            color: #0f172a !important;
         }
 
         body.light-theme .status-pill,
@@ -5123,10 +5142,6 @@ Natural conversation is ALWAYS the highest priority.
             <span class="dock-icon">📜</span>
             <span class="dock-label">Certs</span>
         </a>
-        <button class="dock-item dock-ai-btn" onclick="toggleFloatingChat()" title="AI Assistant">
-            <span class="dock-icon">🤖</span>
-            <span class="dock-label">AI Chat</span>
-        </button>
     </nav>
 
     <script>
