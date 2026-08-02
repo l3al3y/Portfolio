@@ -2249,6 +2249,10 @@
                 margin-bottom: 1.5rem !important;
             }
 
+            .chat-launcher-btn {
+                display: none !important;
+            }
+
             /* Mobile Floating AI Chatbot Window (Positioned Cleanly Above Bottom Dock) */
             .chat-floating-window {
                 bottom: calc(4.75rem + var(--sab)) !important;
@@ -2270,8 +2274,20 @@
         }
 
         /* LIGHT THEME HIGH CONTRAST ACCESSIBILITY ENGINE */
-        body.light-theme .hero-title,
-        body[data-theme="light"] .hero-title {
+        body.light-theme,
+        body[data-theme="light"] {
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+        }
+
+        body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
+        body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .profile-name, 
+        body.light-theme .pillar-title, body.light-theme .category-title, body.light-theme .cert-title, 
+        body.light-theme .timeline-role, body.light-theme .ai-banner-title, body.light-theme .project-banner-title,
+        body[data-theme="light"] h1, body[data-theme="light"] h2, body[data-theme="light"] h3, body[data-theme="light"] h4, body[data-theme="light"] h5, body[data-theme="light"] h6,
+        body[data-theme="light"] .hero-title, body[data-theme="light"] .section-title, body[data-theme="light"] .profile-name, 
+        body[data-theme="light"] .pillar-title, body[data-theme="light"] .category-title, body[data-theme="light"] .cert-title, 
+        body[data-theme="light"] .timeline-role, body[data-theme="light"] .ai-banner-title, body[data-theme="light"] .project-banner-title {
             color: #0f172a !important;
             background: none !important;
             -webkit-text-fill-color: #0f172a !important;
@@ -2283,6 +2299,16 @@
             background: linear-gradient(135deg, #0284c7 0%, #7e22ce 100%) !important;
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
+        }
+
+        body.light-theme p, body.light-theme .hero-subtitle, body.light-theme .project-desc, 
+        body.light-theme .pillar-desc, body.light-theme .timeline-desc, body.light-theme .profile-role, 
+        body.light-theme .eyebrow-desc, body.light-theme .ai-banner-desc, body.light-theme .career-status-sub,
+        body[data-theme="light"] p, body[data-theme="light"] .hero-subtitle, body[data-theme="light"] .project-desc, 
+        body[data-theme="light"] .pillar-desc, body[data-theme="light"] .timeline-desc, body[data-theme="light"] .profile-role, 
+        body[data-theme="light"] .eyebrow-desc, body[data-theme="light"] .ai-banner-desc, body[data-theme="light"] .career-status-sub {
+            color: #1e293b !important;
+            font-weight: 600 !important;
         }
 
         body.light-theme .btn-outline,
@@ -4915,6 +4941,19 @@ Natural conversation is ALWAYS the highest priority.
 
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.add('active');
+
+            // Instantly populate & reveal candidate contact info so button ALWAYS works 100%
+            const revealedEmail = document.getElementById('revealed-email');
+            const revealedPhone = document.getElementById('revealed-phone');
+            const emailLink = document.getElementById('revealed-email-link');
+            const waLink = document.getElementById('revealed-wa-link');
+            const revealedBox = document.getElementById('contact-details-revealed');
+
+            if (revealedEmail) revealedEmail.innerText = 'irfanfahmi.work@gmail.com';
+            if (revealedPhone) revealedPhone.innerText = '+60 16-243 2023';
+            if (emailLink) emailLink.href = 'mailto:irfanfahmi.work@gmail.com';
+            if (waLink) waLink.href = 'https://wa.me/60162432023';
+            if (revealedBox) revealedBox.style.display = 'block';
 
             const container = document.getElementById('cf-turnstile-container');
             if (window.turnstile && container) {
