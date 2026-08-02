@@ -16,6 +16,12 @@
     <meta name="theme-color" content="#080c14" id="meta-theme-color">
     <meta name="format-detection" content="telephone=no">
     
+    <!-- Multilingual hreflang -->
+    <link rel="alternate" hreflang="en" href="https://l3al3y.github.io/Portfolio/">
+    <link rel="alternate" hreflang="ms" href="https://l3al3y.github.io/Portfolio/">
+    <link rel="alternate" hreflang="zh" href="https://l3al3y.github.io/Portfolio/">
+    <link rel="alternate" hreflang="x-default" href="https://l3al3y.github.io/Portfolio/">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2443,6 +2449,8 @@
     </script>
 </head>
 <body>
+    <!-- Accessibility: Skip to main content -->
+    <a href="#hero" class="skip-to-content" style="position:absolute;left:-9999px;top:0;z-index:99999;padding:0.75rem 1.5rem;background:var(--accent);color:#fff;font-weight:700;border-radius:0 0 0.5rem 0;font-size:0.9rem;text-decoration:none;transition:left 0.2s;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
 
     <!-- 3D Canvas Background -->
     <canvas id="canvas-3d"></canvas>
@@ -3397,6 +3405,8 @@
             if (text && text !== '--') {
                 navigator.clipboard.writeText(text).then(() => {
                     alert('Copied to clipboard: ' + text);
+                }).catch(() => {
+                    console.warn('Clipboard access denied for:', elementId);
                 });
             }
         }
@@ -4070,7 +4080,44 @@ Natural conversation is ALWAYS the highest priority.
             if (!queryText) return queryText;
             const words = queryText.split(/\s+/);
             const correctedWords = words.map(w => predictTypoWithCNN(w));
-            return correctedWords.join(' ');
+            let result = correctedWords.join(' ');
+
+            // Multi-word compound typo correction (e.g., "ccna entarprise" → "ccna enterprise")
+            if (typeof IRFAN_KNOWLEDGE_BASE !== 'undefined') {
+                const compoundPhrases = [
+                    'enterprise networking', 'self checkout', 'computer engineering',
+                    'cyber threat', 'endpoint security', 'industrial automation',
+                    'packet tracer', 'data glove', 'askar wataniah', 'fiber optic',
+                    'machine learning', 'deep learning', 'artificial intelligence'
+                ];
+                const lowerResult = result.toLowerCase();
+                for (const phrase of compoundPhrases) {
+                    const phraseWords = phrase.split(' ');
+                    const resultWords = lowerResult.split(/\s+/);
+                    for (let i = 0; i < resultWords.length - 1; i++) {
+                        const bigram = resultWords[i] + ' ' + resultWords[i + 1];
+                        if (bigram !== phrase) {
+                            const sim0 = extractChar1DCNNFeatures(resultWords[i]);
+                            const sim1 = extractChar1DCNNFeatures(phraseWords[0]);
+                            const sim2 = extractChar1DCNNFeatures(resultWords[i + 1]);
+                            const sim3 = extractChar1DCNNFeatures(phraseWords[1]);
+                            let dot0 = 0, mag0a = 0, mag0b = 0;
+                            for (let k = 0; k < sim0.length; k++) { dot0 += sim0[k]*sim1[k]; mag0a += sim0[k]*sim0[k]; mag0b += sim1[k]*sim1[k]; }
+                            const cos0 = (mag0a && mag0b) ? dot0 / (Math.sqrt(mag0a) * Math.sqrt(mag0b)) : 0;
+                            let dot1 = 0, mag1a = 0, mag1b = 0;
+                            for (let k = 0; k < sim2.length; k++) { dot1 += sim2[k]*sim3[k]; mag1a += sim2[k]*sim2[k]; mag1b += sim3[k]*sim3[k]; }
+                            const cos1 = (mag1a && mag1b) ? dot1 / (Math.sqrt(mag1a) * Math.sqrt(mag1b)) : 0;
+                            if (cos0 >= 0.65 && cos1 >= 0.65) {
+                                const parts = result.split(/\s+/);
+                                parts[i] = phraseWords[0];
+                                parts[i + 1] = phraseWords[1];
+                                result = parts.join(' ');
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         /* Structured Retrieval Engine over RESUME_DATA (Last-Resort Fallback) */
@@ -4865,8 +4912,9 @@ Natural conversation is ALWAYS the highest priority.
                     mouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
                 });
 
+                let animFrame3D = null;
                 function animate3D() {
-                    requestAnimationFrame(animate3D);
+                    animFrame3D = requestAnimationFrame(animate3D);
                     targetX += (mouseX - targetX) * 0.05;
                     targetY += (mouseY - targetY) * 0.05;
 
@@ -4886,6 +4934,12 @@ Natural conversation is ALWAYS the highest priority.
                     renderer.render(scene, camera);
                 }
                 animate3D();
+
+                // Pause 3D animation when tab is hidden to save battery/CPU
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) { cancelAnimationFrame(animFrame3D); }
+                    else { animate3D(); }
+                });
             } catch (e) {
                 console.warn("3D WebGL background skipped:", e);
             }
@@ -4947,6 +5001,15 @@ Natural conversation is ALWAYS the highest priority.
             if (iframeElem) iframeElem.src = '';
         };
 
+        // Global Escape key handler — close any open modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePdfModal();
+                closeSecurityModal();
+                if (typeof closePrintableResumeModal === 'function') closePrintableResumeModal();
+            }
+        });
+
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
         window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
@@ -4995,7 +5058,7 @@ Natural conversation is ALWAYS the highest priority.
             const container = document.getElementById('cf-turnstile-container');
             if (container) {
                 container.style.display = 'flex';
-                container.innerHTML = '';
+                container.innerHTML = '<div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-secondary);font-size:0.85rem;"><svg width="20" height="20" viewBox="0 0 24 24" style="animation:spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4" stroke-dashoffset="10" stroke-linecap="round"/></svg> Loading verification...</div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
             }
 
             if (window.turnstile && container) {
@@ -5098,13 +5161,20 @@ Natural conversation is ALWAYS the highest priority.
 
             camera.position.z = 5;
 
+            let animFrame2 = null;
             function animate() {
-                requestAnimationFrame(animate);
+                animFrame2 = requestAnimationFrame(animate);
                 points.rotation.x += 0.0005;
                 points.rotation.y += 0.0008;
                 renderer.render(scene, camera);
             }
             animate();
+
+            // Pause secondary 3D canvas when tab hidden
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) { cancelAnimationFrame(animFrame2); }
+                else { animate(); }
+            });
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
