@@ -10,7 +10,7 @@
     <meta http-equiv="Expires" content="0">
     
     <!-- PWA & Mobile Platform Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="MIF Portfolio">
     <meta name="theme-color" content="#080c14" id="meta-theme-color">
@@ -3382,6 +3382,7 @@
             btnEl.classList.add('active');
 
             const textPane = document.getElementById('executive-summary-text');
+            if (!textPane) return;
             textPane.style.opacity = 0;
             setTimeout(() => {
                 textPane.innerText = executiveSummaries[langKey] || executiveSummaries.en;
@@ -3391,7 +3392,8 @@
 
 
         function copyTextFromElement(elementId) {
-            const text = document.getElementById(elementId).innerText;
+            const el = document.getElementById(elementId);
+            const text = el ? el.innerText : null;
             if (text && text !== '--') {
                 navigator.clipboard.writeText(text).then(() => {
                     alert('Copied to clipboard: ' + text);
@@ -4903,6 +4905,10 @@ Natural conversation is ALWAYS the highest priority.
             themeBtns.forEach(btn => {
                 if (btn) btn.innerText = isLight ? '☀️' : '🌙';
             });
+
+            // Sync meta theme-color for browser chrome
+            const themeMeta = document.getElementById('meta-theme-color');
+            if (themeMeta) themeMeta.setAttribute('content', isLight ? '#f8fafc' : '#080c14');
         }
 
         
@@ -5065,20 +5071,7 @@ Natural conversation is ALWAYS the highest priority.
             }
         }
 
-        function filterCerts(category) {
-            const chips = document.querySelectorAll('.filter-chip');
-            chips.forEach(c => c.classList.remove('active'));
-            event.target.classList.add('active');
 
-            const cards = document.querySelectorAll('.cert-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-cat') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
 
         // 3D Constellation Background Animation (Three.js)
         (function init3DCanvas() {
@@ -5211,17 +5204,6 @@ Natural conversation is ALWAYS the highest priority.
         </a>
     </nav>
 
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            const themeMeta = document.getElementById('meta-theme-color');
-            if (themeMeta) {
-                themeMeta.setAttribute('content', isLight ? '#f8fafc' : '#080c14');
-            }
-            const btn = document.getElementById('theme-toggle-btn');
-            if (btn) btn.innerText = isLight ? '☀️' : '🌙';
-        }
-    </script>
+
 </body>
 </html>
