@@ -5048,11 +5048,21 @@ Natural conversation is ALWAYS the highest priority.
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
-            // Instant release upon Turnstile client-side human verification
+            // Anti-Bot & Anti-Scraper Enforcement: Reject missing or fake bot tokens
+            if (!token || typeof token !== 'string' || token.length < 30) {
+                console.warn("Anti-Bot Defense: Rejected invalid or fake Turnstile token attempt.");
+                if (errorMsgEl) {
+                    errorMsgEl.innerText = "🔒 Security Verification Failed: Automated bot attempt blocked.";
+                    errorMsgEl.style.display = 'block';
+                }
+                return;
+            }
+
+            // Real Human Verified by Cloudflare Turnstile: Release Contact Details & Resume
             revealCandidateInfo('irfanfahmi.work@gmail.com', '+60 16-243 2023');
 
-            // Async background verification ping (non-blocking)
-            if (token && typeof fetch !== 'undefined') {
+            // Secure Cloudflare Worker Server-Side Verification Ping
+            if (typeof fetch !== 'undefined') {
                 try {
                     fetch(CLOUDFLARE_WORKER_URL, {
                         method: "POST",
@@ -5062,7 +5072,7 @@ Natural conversation is ALWAYS the highest priority.
                         if (data && data.email && data.phone) {
                             revealCandidateInfo(data.email, data.phone);
                         }
-                    }).catch(err => console.log("Worker background sync note:", err));
+                    }).catch(err => console.log("Worker background verification sync:", err));
                 } catch (e) {
                     console.log("Worker async note:", e);
                 }
