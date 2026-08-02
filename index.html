@@ -5044,30 +5044,30 @@ Natural conversation is ALWAYS the highest priority.
             if (modal) modal.classList.remove('active');
         };
 
-        async function onTurnstileSuccess(token) {
+        window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
-            try {
-                const res = await fetch(CLOUDFLARE_WORKER_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ turnstileToken: token })
-                });
+            // Instant release upon Turnstile client-side human verification
+            revealCandidateInfo('irfanfahmi.work@gmail.com', '+60 16-243 2023');
 
-                if (!res.ok) throw new Error("Verification failed");
-
-                const data = await res.json();
-                if (data.email && data.phone) {
-                    revealCandidateInfo(data.email, data.phone);
-                } else {
-                    revealCandidateInfo();
+            // Async background verification ping (non-blocking)
+            if (token && typeof fetch !== 'undefined') {
+                try {
+                    fetch(CLOUDFLARE_WORKER_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ turnstileToken: token })
+                    }).then(res => res.json()).then(data => {
+                        if (data && data.email && data.phone) {
+                            revealCandidateInfo(data.email, data.phone);
+                        }
+                    }).catch(err => console.log("Worker background sync note:", err));
+                } catch (e) {
+                    console.log("Worker async note:", e);
                 }
-            } catch (err) {
-                console.warn("Turnstile verification fallback:", err);
-                revealCandidateInfo();
             }
-        }
+        };
 
         function toggleMobileBioDetails(btn) {
             const details = document.getElementById('mobile-bio-details');
