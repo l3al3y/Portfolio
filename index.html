@@ -2427,8 +2427,29 @@
                 background: Highlight !important;
                 color: HighlightText !important;
             }
-        }
     </style>
+    <script>
+        // Global Fail-Safe Early Stubs for zero ReferenceError execution
+        window.openSecurityModal = window.openSecurityModal || function openSecurityModal() {
+            const modal = document.getElementById('security-modal-overlay');
+            if (modal) modal.classList.add('active');
+        };
+        window.closeSecurityModal = window.closeSecurityModal || function closeSecurityModal() {
+            const modal = document.getElementById('security-modal-overlay');
+            if (modal) modal.classList.remove('active');
+        };
+        window.toggleFloatingChat = window.toggleFloatingChat || function toggleFloatingChat() {
+            const chatWin = document.getElementById('chat-floating-window');
+            if (chatWin) {
+                const isActive = chatWin.classList.contains('active');
+                chatWin.classList.toggle('active');
+                chatWin.style.display = isActive ? 'none' : 'flex';
+            }
+        };
+        window.toggleTheme = window.toggleTheme || function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+        };
+    </script>
 </head>
 <body>
 
@@ -3266,7 +3287,7 @@
             });
         }
 
-        function toggleFloatingChat() {
+        window.toggleFloatingChat = function toggleFloatingChat() {
             const chatWin = document.getElementById('chat-floating-window');
             if (chatWin) {
                 const isActive = chatWin.classList.contains('active');
@@ -4958,7 +4979,7 @@ Natural conversation is ALWAYS the highest priority.
 
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
 
-        function revealCandidateInfo(email, phone) {
+        window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
             const revealedEmail = document.getElementById('revealed-email');
             const revealedPhone = document.getElementById('revealed-phone');
             const emailLink = document.getElementById('revealed-email-link');
@@ -4979,9 +5000,9 @@ Natural conversation is ALWAYS the highest priority.
 
             if (container) container.style.display = 'none';
             if (revealedBox) revealedBox.style.display = 'block';
-        }
+        };
 
-        function openSecurityModal() {
+        window.openSecurityModal = function openSecurityModal() {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
 
@@ -5016,12 +5037,12 @@ Natural conversation is ALWAYS the highest priority.
                     }
                 }, 2500);
             }
-        }
+        };
 
-        function closeSecurityModal() {
+        window.closeSecurityModal = function closeSecurityModal() {
             const modal = document.getElementById('security-modal-overlay');
             if (modal) modal.classList.remove('active');
-        }
+        };
 
         async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
