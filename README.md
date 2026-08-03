@@ -16,7 +16,6 @@
 | 🔗 **Live Portfolio** | [https://l3al3y.github.io/Portfolio/](https://l3al3y.github.io/Portfolio/) |
 | 📄 **Resume (PDF)** | [resume/resume.pdf](resume/resume.pdf) |
 | 📜 **18 Certificates** | [certificates/](certificates/) |
-| ⚙️ **Backend Repo** | [github.com/l3al3y/Portfolio-Backend](https://github.com/l3al3y/Portfolio-Backend) |
 
 ---
 
