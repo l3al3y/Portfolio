@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio</title>
     <meta name="description" content="Official Personal Engineering Portfolio & Interactive AI Assistant for Muhammad Irfan Fahmi — Computer Engineering Graduate, Cisco CCNA Certified & Festo Industrial AI Specialist.">
+    <link rel="canonical" href="https://l3al3y.github.io/Portfolio/">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio">
+    <meta property="og:description" content="Computer Engineering Graduate — Cisco CCNA Certified, Festo Industrial AI Specialist. Interactive AI-Powered Portfolio with CNN Typo Correction.">
+    <meta property="og:url" content="https://l3al3y.github.io/Portfolio/">
+    <meta property="og:site_name" content="MIF Portfolio">
+    <meta property="og:image" content="https://l3al3y.github.io/Portfolio/assets/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio">
+    <meta name="twitter:description" content="Computer Engineering Graduate — Cisco CCNA Certified, Festo Industrial AI Specialist.">
+    <meta name="twitter:image" content="https://l3al3y.github.io/Portfolio/assets/og-preview.png">
+
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -2450,7 +2468,7 @@
 </head>
 <body>
     <!-- Accessibility: Skip to main content -->
-    <a href="#hero" class="skip-to-content" style="position:absolute;left:-9999px;top:0;z-index:99999;padding:0.75rem 1.5rem;background:var(--accent);color:#fff;font-weight:700;border-radius:0 0 0.5rem 0;font-size:0.9rem;text-decoration:none;transition:left 0.2s;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
+    <a href="#hero" class="skip-to-content" style="position:absolute;left:-9999px;top:0;z-index:99999;padding:0.75rem 1.5rem;background:var(--primary);color:#fff;font-weight:700;border-radius:0 0 0.5rem 0;font-size:0.9rem;text-decoration:none;transition:left 0.2s;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
 
     <!-- 3D Canvas Background -->
     <canvas id="canvas-3d"></canvas>
@@ -3184,14 +3202,7 @@
             }
         });
 
-        // Escape Key Listener
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeNavDropdown();
-                closeSecurityModal();
-                closePrintableResumeModal();
-            }
-        });
+        // Escape Key Listener — consolidated into Script Block 3 (line ~5015)
 
         /* -------------------------------------------------------------
            Scroll-Reveal, Scrollspy & Capstone Stat Count-up Observers
@@ -3218,7 +3229,7 @@
             if (animatedStats || isReducedMotion) return;
             animatedStats = true;
 
-            const statElements = document.querySelectorAll('.stat-count-num');
+            const statElements = document.querySelectorAll('.stat-num[data-target]');
             statElements.forEach(el => {
                 const target = parseFloat(el.getAttribute('data-target'));
                 const prefix = el.getAttribute('data-prefix') || '';
@@ -3249,7 +3260,7 @@
 
         // Scrollspy Observer for Active Section Highlighting
         const spySections = document.querySelectorAll('section[id], div[id="about"]');
-        const spyNavLinks = document.querySelectorAll('.desktop-horizontal-nav a, .mobile-nav-drawer a');
+        const spyNavLinks = document.querySelectorAll('.nav-links a, .mobile-bottom-dock a');
 
         const spyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -3270,13 +3281,20 @@
 
         // Back to Top Floating Button Scroll Handler
         const backToTopBtn = document.getElementById('back-to-top-btn');
+        let scrollTicking = false;
         window.addEventListener('scroll', () => {
-            if (backToTopBtn) {
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
+            if (!scrollTicking) {
+                requestAnimationFrame(() => {
+                    if (backToTopBtn) {
+                        if (window.scrollY > 400) {
+                            backToTopBtn.classList.add('visible');
+                        } else {
+                            backToTopBtn.classList.remove('visible');
+                        }
+                    }
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
             }
         });
 
@@ -3402,13 +3420,26 @@
         function copyTextFromElement(elementId) {
             const el = document.getElementById(elementId);
             const text = el ? el.innerText : null;
-            if (text && text !== '--') {
+            if (!text || text === '--') return;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
                     alert('Copied to clipboard: ' + text);
                 }).catch(() => {
-                    console.warn('Clipboard access denied for:', elementId);
+                    fallbackCopyText(text);
                 });
+            } else {
+                fallbackCopyText(text);
             }
+        }
+        function fallbackCopyText(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); alert('Copied to clipboard: ' + text); }
+            catch(e) { console.warn('Copy failed:', e); }
+            document.body.removeChild(ta);
         }
 
         /* -------------------------------------------------------------
@@ -3744,20 +3775,6 @@ Natural conversation is ALWAYS the highest priority.
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        const SUPPORTED_AI_MODELS = [
-            "glm-5.1",
-            "glm-5.2",
-            "minimax-m3",
-            "kimi-k3",
-            "kimi-k2.7",
-            "hy3-tencent",
-            "deepseek-v4-pro",
-            "deepseek-v4-flash",
-            "claude-opus-4.7-1m",
-            "claude-sonnet-4.6",
-            "gpt-5.6-sol",
-            "gemini-3.1-pro"
-        ];
 
         const PRIMARY_MODEL_CASCADE = [
             "glm-5.1",
@@ -5001,11 +5018,12 @@ Natural conversation is ALWAYS the highest priority.
             if (iframeElem) iframeElem.src = '';
         };
 
-        // Global Escape key handler — close any open modal
+        // Global Escape key handler — close any open modal or dropdown
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closePdfModal();
                 closeSecurityModal();
+                if (typeof closeNavDropdown === 'function') closeNavDropdown();
                 if (typeof closePrintableResumeModal === 'function') closePrintableResumeModal();
             }
         });
