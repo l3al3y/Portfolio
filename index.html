@@ -3034,6 +3034,7 @@
                 </div>
 
                 <div style="display: flex; gap: 0.4rem; align-items: center;">
+                    <button class="chat-close-btn" onclick="clearChat()" title="Clear chat" style="font-size:0.85rem;">🗑️</button>
                     <button class="chat-close-btn" onclick="toggleFloatingChat()">&times;</button>
                 </div>
             </div>
@@ -3179,7 +3180,7 @@
             closeNavDropdown();
 
             if (target === 'resume') {
-                openPrintableResumeModal();
+                openPdfModal('resume/resume.pdf', 'Muhammad Irfan Fahmi — Resume');
                 return;
             }
 
@@ -3214,49 +3215,11 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                    if (entry.target.id === 'projects') {
-                        animateCapstoneStats();
-                    }
                 }
             });
         }, { threshold: 0.12 });
 
         document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
-
-        // Stat Count-Up Function
-        let animatedStats = false;
-        function animateCapstoneStats() {
-            if (animatedStats || isReducedMotion) return;
-            animatedStats = true;
-
-            const statElements = document.querySelectorAll('.stat-num[data-target]');
-            statElements.forEach(el => {
-                const target = parseFloat(el.getAttribute('data-target'));
-                const prefix = el.getAttribute('data-prefix') || '';
-                const suffix = el.getAttribute('data-suffix') || '';
-                const isDecimal = target % 1 !== 0;
-                
-                let start = 0;
-                const duration = 1200;
-                const startTime = performance.now();
-
-                function update(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const easeProgress = progress * (2 - progress); // Ease-out quad
-                    const currentVal = start + (target - start) * easeProgress;
-
-                    el.innerText = prefix + (isDecimal ? currentVal.toFixed(1) : Math.round(currentVal)) + suffix;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        el.innerText = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
-                    }
-                }
-                requestAnimationFrame(update);
-            });
-        }
 
         // Scrollspy Observer for Active Section Highlighting
         const spySections = document.querySelectorAll('section[id], div[id="about"]');
@@ -3323,15 +3286,6 @@
             }
         }
 
-        function openPrintableResumeModal() {
-            const modal = document.getElementById('printable-resume-modal');
-            if (modal) modal.classList.add('active');
-        }
-
-        function closePrintableResumeModal() {
-            const modal = document.getElementById('printable-resume-modal');
-            if (modal) modal.classList.remove('active');
-        }
 
         /* -------------------------------------------------------------
            2. Suggestion Chip Pool & Dynamic Rotation System
@@ -3644,6 +3598,7 @@ Natural conversation is ALWAYS the highest priority.
                     </div>
                 </div>
             `;
+            CHAT_CONVERSATION_HISTORY = [];
             renderRandomChips('en');
         }
 
@@ -3920,33 +3875,6 @@ Natural conversation is ALWAYS the highest priority.
             throw lastErr || new Error("All AI endpoints timed out");
         }
 
-        // 100% Free Live LLM Endpoint (Pollinations AI - Fallback Engine)
-        async function fetchFreePollinationsAi(userQuery) {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
-
-            const response = await fetch('https://text.pollinations.ai/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                signal: controller.signal,
-                body: JSON.stringify({
-                    messages: [
-                        { role: 'system', content: SYSTEM_PROMPT },
-                        { role: 'user', content: userQuery }
-                    ],
-                    model: 'openai',
-                    seed: Math.floor(Math.random() * 1000)
-                })
-            });
-
-            clearTimeout(timeoutId);
-            if (!response.ok) throw new Error("Pollinations API failed");
-
-            const text = await response.text();
-            if (!text || text.trim().length === 0) throw new Error("Empty response");
-
-            return formatBotMarkdown(text);
-        }
 
         /* -------------------------------------------------------------
            UNIVERSAL DYNAMIC 1D CNN TYPO PREDICTOR & WORD CORRECTOR
@@ -5024,7 +4952,7 @@ Natural conversation is ALWAYS the highest priority.
                 closePdfModal();
                 closeSecurityModal();
                 if (typeof closeNavDropdown === 'function') closeNavDropdown();
-                if (typeof closePrintableResumeModal === 'function') closePrintableResumeModal();
+
             }
         });
 
@@ -5157,7 +5085,7 @@ Natural conversation is ALWAYS the highest priority.
         // 3D Constellation Background Animation (Three.js)
         (function init3DCanvas() {
             const canvas = document.getElementById('canvas-3d');
-            if (!canvas || !window.Three) return;
+            if (!canvas || !window.THREE) return;
 
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
