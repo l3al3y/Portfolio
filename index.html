@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://contact-gate-worker.cabalme4.workers.dev https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com; object-src 'none'; base-uri 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio</title>
     <meta name="description" content="Official Personal Engineering Portfolio & Interactive AI Assistant for Muhammad Irfan Fahmi — Computer Engineering Graduate, Cisco CCNA Certified & Festo Industrial AI Specialist.">
     <link rel="canonical" href="https://l3al3y.github.io/Portfolio/">
@@ -75,8 +75,8 @@
             --amber: #fbbf24;
             
             --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --text-muted: #64748b;
+            --text-sub: #cbd5e1;
+            --text-muted: #94a3b8;
             
             --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -2474,7 +2474,7 @@
 </head>
 <body>
     <!-- Accessibility: Skip to main content -->
-    <a href="#hero" class="skip-to-content" style="position:absolute;left:-9999px;top:0;z-index:99999;padding:0.75rem 1.5rem;background:var(--primary);color:#fff;font-weight:700;border-radius:0 0 0.5rem 0;font-size:0.9rem;text-decoration:none;transition:left 0.2s;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
+    <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:0;z-index:99999;padding:0.75rem 1.5rem;background:var(--primary);color:#fff;font-weight:700;border-radius:0 0 0.5rem 0;font-size:0.9rem;text-decoration:none;transition:left 0.2s;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
 
     <!-- 3D Canvas Background -->
     <canvas id="canvas-3d"></canvas>
@@ -2502,6 +2502,7 @@
         </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container hero-grid">
@@ -2604,7 +2605,7 @@
                 <div class="biodata-header">
                     <div class="profile-avatar-wrap">👨‍💻</div>
                     <div class="biodata-badge-tag">📋 PERSONAL BIODATA</div>
-                    <h3 class="profile-name">Muhammad Irfan Fahmi</h3>
+                    <h2 class="profile-name">Muhammad Irfan Fahmi</h2>
                     <div class="profile-role">Computer Engineering Graduate • UTeM</div>
                 </div>
                 
@@ -2936,6 +2937,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
