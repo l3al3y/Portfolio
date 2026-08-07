@@ -1682,119 +1682,7 @@
             color: #0369a1 !important;
         }
 
-        /* 3. Media Query Fallback for System Light Mode */
-        @media (prefers-color-scheme: light) {
-            body {
-                --bg-base: #f8fafc !important;
-                --bg-surface: #ffffff !important;
-                --bg-surface-hover: #f1f5f9 !important;
-                --bg-card: #ffffff !important;
-                --bg-section-alt: rgba(241, 245, 249, 0.8) !important;
-                --border-card: #cbd5e1 !important;
-                --border-highlight: #0369a1 !important;
-                --primary: #0369a1 !important;
-                --primary-hover: #075985 !important;
-                --primary-glow: rgba(2, 132, 199, 0.15) !important;
-                --purple: #7e22ce !important;
-                --text-main: #0f172a !important;
-                --text-sub: #1e293b !important;
-                --text-muted: #334155 !important;
-                --emerald: #065f46 !important;
-                background-color: #f8fafc !important;
-                color: #0f172a !important;
-            }
-
-            .chat-floating-window {
-                background: #ffffff !important;
-                border: 2px solid #0369a1 !important;
-                box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.15) !important;
-            }
-
-            .chat-header {
-                background: #f1f5f9 !important;
-                border-bottom: 1px solid #cbd5e1 !important;
-                color: #0f172a !important;
-            }
-
-            .chat-header div {
-                color: #0f172a !important;
-            }
-
-            #ai-status-label {
-                color: #0369a1 !important;
-                font-weight: 700 !important;
-            }
-
-            .chat-body {
-                background: #f8fafc !important;
-            }
-
-            .chat-message.bot {
-                background: #ffffff !important;
-                color: #0f172a !important;
-                border: 1px solid #cbd5e1 !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
-                font-weight: 500 !important;
-            }
-
-            .chat-message.user {
-                background: linear-gradient(135deg, #0369a1, #0369a1) !important;
-                color: #ffffff !important;
-                font-weight: 600 !important;
-            }
-
-            .chat-quick-suggestions {
-                background: #f1f5f9 !important;
-                border-top: 1px solid #e2e8f0 !important;
-            }
-
-            .chip-btn, .chat-chip {
-                background: #ffffff !important;
-                color: #0369a1 !important;
-                border: 1px solid #cbd5e1 !important;
-                font-weight: 700 !important;
-            }
-
-            .chat-input-area {
-                background: #ffffff !important;
-                border-top: 1px solid #cbd5e1 !important;
-            }
-
-            .chat-input {
-                background: #f1f5f9 !important;
-                color: #0f172a !important;
-                border: 1px solid #cbd5e1 !important;
-                font-weight: 500 !important;
-            }
-
-            .chat-input::placeholder {
-                color: #64748b !important;
-            }
-
-            header {
-                background: rgba(255, 255, 255, 0.95) !important;
-                border-bottom: 1px solid #cbd5e1 !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-            }
-
-            .brand-logo, .brand-logo span {
-                color: #0f172a !important;
-            }
-
-            .nav-link {
-                color: #334155 !important;
-                font-weight: 600 !important;
-            }
-
-            .ai-banner-box {
-                background: #ffffff !important;
-                border: 2px solid #0369a1 !important;
-                box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
-            }
-        }
-
-    
-        body.light-theme #revealed-phone, body.light-theme #revealed-email,
+body.light-theme #revealed-phone, body.light-theme #revealed-email,
         body[data-theme="light"] #revealed-phone, body[data-theme="light"] #revealed-email {
             color: #0f172a !important;
         }
@@ -2473,6 +2361,21 @@
         window.closePdfModal = window.closePdfModal || function(){};
         window.toggleFloatingChat = window.toggleFloatingChat || function(){};
         window.toggleTheme = window.toggleTheme || function(){};
+    </script>
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+                if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+                    document.documentElement.classList.add('light-theme');
+                    document.body.classList.add('light-theme');
+                    document.body.setAttribute('data-theme', 'light');
+                } else {
+                    document.body.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
+        })();
     </script>
 </head>
 <body>
@@ -4910,6 +4813,10 @@ Natural conversation is ALWAYS the highest priority.
             const isLight = body.classList.contains('light-theme');
             body.setAttribute('data-theme', isLight ? 'light' : 'dark');
             
+            try {
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            } catch(e) {}
+            
             // Sync all theme toggle buttons across desktop & mobile
             const themeBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle-btn');
             themeBtns.forEach(btn => {
@@ -5234,3 +5141,5 @@ Natural conversation is ALWAYS the highest priority.
 
 </body>
 </html>
+
+
