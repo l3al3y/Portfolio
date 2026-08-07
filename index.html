@@ -46,10 +46,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Defer and non-blocking CSS -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
     
-    <!-- Three.js CDN for 3D Background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Three.js CDN for 3D Background (Deferred) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 
     <!-- Cloudflare Turnstile CAPTCHA API -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -4810,7 +4813,7 @@ Natural conversation is ALWAYS the highest priority.
         /* -------------------------------------------------------------
            5. Enhanced Three.js 3D Constellation & Orbiting Wireframe Mesh Nodes
         ------------------------------------------------------------- */
-        (function init3DScene() {
+        window.addEventListener('DOMContentLoaded', function init3DScene() {
             try {
                 const canvas = document.getElementById('webgl-canvas');
                 if (!canvas || typeof THREE === 'undefined') return;
@@ -4891,7 +4894,7 @@ Natural conversation is ALWAYS the highest priority.
             } catch (e) {
                 console.warn("3D WebGL background skipped:", e);
             }
-        })();
+        });
     </script>
 
     <script>
@@ -5086,7 +5089,7 @@ Natural conversation is ALWAYS the highest priority.
 
 
         // 3D Constellation Background Animation (Three.js)
-        (function init3DCanvas() {
+        window.addEventListener('DOMContentLoaded', function init3DCanvas() {
             const canvas = document.getElementById('canvas-3d');
             if (!canvas || !window.THREE) return;
 
@@ -5130,7 +5133,7 @@ Natural conversation is ALWAYS the highest priority.
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
-        })();
+        });
     </script>
 
     <!-- Canonical Certificate Registry Data Store & Dynamic Renderer -->
