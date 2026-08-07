@@ -67,7 +67,7 @@
             --border-highlight: rgba(56, 189, 248, 0.3);
             
             --primary: #38bdf8;
-            --primary-hover: #0284c7;
+            --primary-hover: #075985;
             --primary-glow: rgba(56, 189, 248, 0.2);
             --purple: #c084fc;
             --purple-glow: rgba(192, 132, 252, 0.2);
@@ -100,14 +100,14 @@
             --bg-surface-hover: #f1f5f9;
             --bg-card: #ffffff;
             --border-card: #cbd5e1;
-            --border-highlight: #0284c7;
-            --primary: #0284c7;
-            --primary-hover: #0369a1;
+            --border-highlight: #0369a1;
+            --primary: #0369a1;
+            --primary-hover: #075985;
             --primary-glow: rgba(2, 132, 199, 0.15);
             --purple: #7e22ce;
             --text-main: #0f172a;
-            --text-sub: #334155;
-            --text-muted: #64748b;
+            --text-sub: #1e293b;
+            --text-muted: #334155;
         }
 
         * {
@@ -275,7 +275,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #0284c7);
+            background: linear-gradient(135deg, var(--primary), #0369a1);
             color: #ffffff;
             box-shadow: 0 4px 15px var(--primary-glow);
         }
@@ -1178,7 +1178,7 @@
         }
 
         .user-msg .chat-bubble {
-            background: linear-gradient(135deg, var(--primary), #0284c7);
+            background: linear-gradient(135deg, var(--primary), #0369a1);
             color: #ffffff;
             border-top-right-radius: 4px;
         }
@@ -1423,7 +1423,7 @@
         .pillar-desc, .timeline-desc {
             font-size: 1.08rem !important;
             line-height: 1.68 !important;
-            color: #e2e8f0;
+            color: var(--text-sub);
             font-weight: 500 !important;
         }
 
@@ -1435,7 +1435,7 @@
 
         .metric-lbl {
             font-size: 0.88rem !important;
-            color: #cbd5e1;
+            color: var(--text-muted);
             font-weight: 600 !important;
         }
 
@@ -1453,15 +1453,15 @@
             --bg-surface-hover: #f1f5f9 !important;
             --bg-card: #ffffff !important;
             --border-card: #cbd5e1 !important;
-            --border-highlight: #0284c7 !important;
-            --primary: #0284c7 !important;
-            --primary-hover: #0369a1 !important;
+            --border-highlight: #0369a1 !important;
+            --primary: #0369a1 !important;
+            --primary-hover: #075985 !important;
             --primary-glow: rgba(2, 132, 199, 0.15) !important;
             --purple: #7e22ce !important;
             --text-main: #0f172a !important;
-            --text-sub: #334155 !important;
-            --text-muted: #475569 !important;
-            --emerald: #047857 !important;
+            --text-sub: #1e293b !important;
+            --text-muted: #334155 !important;
+            --emerald: #065f46 !important;
             background-color: #f8fafc !important;
             color: #0f172a !important;
         }
@@ -1487,7 +1487,7 @@
         body.light-theme .ai-banner-box,
         body[data-theme="light"] .ai-banner-box {
             background: #ffffff !important;
-            border: 2px solid #0284c7 !important;
+            border: 2px solid #0369a1 !important;
             box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
         }
 
@@ -1495,7 +1495,7 @@
         body.light-theme .chat-floating-window,
         body[data-theme="light"] .chat-floating-window {
             background: #ffffff !important;
-            border: 2px solid #0284c7 !important;
+            border: 2px solid #0369a1 !important;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.15) !important;
         }
 
@@ -1520,7 +1520,7 @@
 
         body.light-theme #ai-status-label,
         body[data-theme="light"] #ai-status-label {
-            color: #0284c7 !important;
+            color: #0369a1 !important;
             font-weight: 700 !important;
         }
 
@@ -1543,14 +1543,14 @@
         body.light-theme .bot-msg code,
         body[data-theme="light"] .bot-msg code {
             background: #e2e8f0 !important;
-            color: #0284c7 !important;
+            color: #0369a1 !important;
         }
 
         body.light-theme .user-msg .chat-bubble,
         body.light-theme .chat-message.user-msg .chat-bubble,
         body[data-theme="light"] .user-msg .chat-bubble,
         body[data-theme="light"] .chat-message.user-msg .chat-bubble {
-            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            background: linear-gradient(135deg, #0369a1, #0369a1) !important;
             color: #ffffff !important;
             font-weight: 600 !important;
         }
@@ -1568,7 +1568,7 @@
         body[data-theme="light"] .chip-btn,
         body[data-theme="light"] .chat-chip {
             background: #ffffff !important;
-            color: #0284c7 !important;
+            color: #0369a1 !important;
             border: 1px solid #cbd5e1 !important;
             font-weight: 700 !important;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04) !important;
@@ -1577,7 +1577,7 @@
         body.light-theme .prompt-chip:hover,
         body[data-theme="light"] .prompt-chip:hover {
             background: #e0f2fe !important;
-            border-color: #0284c7 !important;
+            border-color: #0369a1 !important;
             color: #0369a1 !important;
         }
 
@@ -1638,7 +1638,7 @@
         }
 
         body.light-theme .stat-num {
-            color: #0284c7 !important;
+            color: #0369a1 !important;
         }
 
         body.light-theme .stat-label, body.light-theme .metric-lbl, body.light-theme .timeline-date, 
@@ -1648,7 +1648,7 @@
         }
 
         body.light-theme .metric-val {
-            color: #047857 !important;
+            color: #065f46 !important;
         }
 
         body.light-theme .tech-tag, body.light-theme .cert-category-tag, body.light-theme .eyebrow-tag {
@@ -1668,7 +1668,7 @@
         }
 
         body.light-theme footer a {
-            color: #0284c7 !important;
+            color: #0369a1 !important;
             font-weight: 700 !important;
         }
 
@@ -1677,7 +1677,7 @@
         }
 
         body.light-theme .ticker-item span.highlight {
-            color: #0284c7 !important;
+            color: #0369a1 !important;
         }
 
         /* 3. Media Query Fallback for System Light Mode */
@@ -1688,22 +1688,22 @@
                 --bg-surface-hover: #f1f5f9 !important;
                 --bg-card: #ffffff !important;
                 --border-card: #cbd5e1 !important;
-                --border-highlight: #0284c7 !important;
-                --primary: #0284c7 !important;
-                --primary-hover: #0369a1 !important;
+                --border-highlight: #0369a1 !important;
+                --primary: #0369a1 !important;
+                --primary-hover: #075985 !important;
                 --primary-glow: rgba(2, 132, 199, 0.15) !important;
                 --purple: #7e22ce !important;
                 --text-main: #0f172a !important;
-                --text-sub: #334155 !important;
-                --text-muted: #475569 !important;
-                --emerald: #047857 !important;
+                --text-sub: #1e293b !important;
+                --text-muted: #334155 !important;
+                --emerald: #065f46 !important;
                 background-color: #f8fafc !important;
                 color: #0f172a !important;
             }
 
             .chat-floating-window {
                 background: #ffffff !important;
-                border: 2px solid #0284c7 !important;
+                border: 2px solid #0369a1 !important;
                 box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.15) !important;
             }
 
@@ -1718,7 +1718,7 @@
             }
 
             #ai-status-label {
-                color: #0284c7 !important;
+                color: #0369a1 !important;
                 font-weight: 700 !important;
             }
 
@@ -1735,7 +1735,7 @@
             }
 
             .chat-message.user {
-                background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+                background: linear-gradient(135deg, #0369a1, #0369a1) !important;
                 color: #ffffff !important;
                 font-weight: 600 !important;
             }
@@ -1747,7 +1747,7 @@
 
             .chip-btn, .chat-chip {
                 background: #ffffff !important;
-                color: #0284c7 !important;
+                color: #0369a1 !important;
                 border: 1px solid #cbd5e1 !important;
                 font-weight: 700 !important;
             }
@@ -1785,7 +1785,7 @@
 
             .ai-banner-box {
                 background: #ffffff !important;
-                border: 2px solid #0284c7 !important;
+                border: 2px solid #0369a1 !important;
                 box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
             }
         }
@@ -1823,7 +1823,7 @@
         body.light-theme .mobile-bottom-dock,
         body[data-theme="light"] .mobile-bottom-dock {
             background: rgba(255, 255, 255, 0.94) !important;
-            border-color: #0284c7 !important;
+            border-color: #0369a1 !important;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
         }
 
@@ -1862,7 +1862,7 @@
         }
 
         body.light-theme .dock-item:hover, body.light-theme .dock-item.active {
-            color: #0284c7;
+            color: #0369a1;
         }
 
         .dock-icon {
@@ -1879,8 +1879,8 @@
 
         body.light-theme .dock-ai-btn {
             background: rgba(2, 132, 199, 0.1) !important;
-            border-color: #0284c7 !important;
-            color: #0284c7 !important;
+            border-color: #0369a1 !important;
+            color: #0369a1 !important;
         }
 
         .mobile-sheet-handle {
@@ -2352,9 +2352,9 @@
 
         body.light-theme .hero-title span,
         body[data-theme="light"] .hero-title span {
-            color: #0284c7 !important;
+            color: #0369a1 !important;
             background: none !important;
-            -webkit-text-fill-color: #0284c7 !important;
+            -webkit-text-fill-color: #0369a1 !important;
         }
 
         body.light-theme p, body.light-theme .hero-subtitle, body.light-theme .project-desc, 
@@ -2377,8 +2377,8 @@
         body.light-theme .btn-outline:hover,
         body[data-theme="light"] .btn-outline:hover {
             background: #f0f9ff !important;
-            border-color: #0284c7 !important;
-            color: #0284c7 !important;
+            border-color: #0369a1 !important;
+            color: #0369a1 !important;
         }
 
         body.light-theme .filter-chip,
@@ -2392,9 +2392,9 @@
         body.light-theme .filter-chip:hover,
         body[data-theme="light"] .filter-chip.active,
         body[data-theme="light"] .filter-chip:hover {
-            background: #0284c7 !important;
+            background: #0369a1 !important;
             color: #ffffff !important;
-            border-color: #0284c7 !important;
+            border-color: #0369a1 !important;
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
         }
 
@@ -2408,7 +2408,7 @@
         body.light-theme .mobile-bio-toggle-btn,
         body[data-theme="light"] .mobile-bio-toggle-btn {
             background: #e0f2fe !important;
-            border-color: #0284c7 !important;
+            border-color: #0369a1 !important;
             color: #0369a1 !important;
         }
 
@@ -2427,18 +2427,18 @@
         body[data-theme="light"] .status-pill {
             background: #ecfdf5 !important;
             border-color: #059669 !important;
-            color: #047857 !important;
+            color: #065f46 !important;
         }
 
         body.light-theme .career-status-board,
         body[data-theme="light"] .career-status-board {
             background: #ffffff !important;
-            border-color: #0284c7 !important;
+            border-color: #0369a1 !important;
         }
 
         body.light-theme .career-status-badge,
         body[data-theme="light"] .career-status-badge {
-            color: #047857 !important;
+            color: #065f46 !important;
         }
 
         body.light-theme .modal-card,
