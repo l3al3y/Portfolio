@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live AI Terminal</title>
+    <!-- Include Supabase JS client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #terminal-container {
+            flex: 1;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding-bottom: 20px;
+            /* Scrollbar styling for a retro feel */
+            scrollbar-width: thin;
+            scrollbar-color: #00ff41 #0d1117;
+        }
+
+        #terminal-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #terminal-container::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+
+        #terminal-container::-webkit-scrollbar-thumb {
+            background: #00ff41;
+        }
+
+        .message-row {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .timestamp {
+            color: #55ff55;
+            opacity: 0.7;
+            margin-right: 10px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background-color: #00ff41;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .back-link {
+            color: #00ff41;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 1px solid #00ff41;
+            padding: 5px 10px;
+            background: #0d1117;
+            z-index: 10;
+        }
+
+        .back-link:hover {
+            background: #00ff41;
+            color: #0d1117;
+        }
+        
+        .terminal-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #00ff41;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">Return to Portfolio</a>
+    
+    <div class="terminal-header">
+        <div>CONNECTING TO AI MAINFRAME...</div>
+        <div>ESTABLISHING SECURE CONNECTION...</div>
+        <div id="status">STATUS: INITIALIZING</div>
+    </div>
+
+    <div id="terminal-container">
+        <!-- Messages will be injected here -->
+    </div>
+    
+    <!-- The blinking cursor is kept outside the message flow to stay at the bottom -->
+    <div><span class="cursor"></span></div>
+
+    <script>
+        const SUPABASE_URL = 'https://lhzgpmitfwfwtyqhhcsb.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxoemdwbWl0Zndmd3R5cWhoY3NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxODgyMzQsImV4cCI6MjEwMTc2NDIzNH0.8S-x0dgTeIoG5w9Ib-6LFtdqXE0mWXpns_WeDEb0m8c';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const terminalContainer = document.getElementById('terminal-container');
+        const statusElement = document.getElementById('status');
+
+        function appendMessage(message, timestamp) {
+            const row = document.createElement('div');
+            row.className = 'message-row';
+            
+            const timeSpan = document.createElement('span');
+            timeSpan.className = 'timestamp';
+            const date = new Date(timestamp);
+            // Format as HH:MM:SS
+            timeSpan.textContent = `[${date.toLocaleTimeString([], { hour12: false })}]`;
+            
+            const msgSpan = document.createElement('span');
+            msgSpan.textContent = message;
+            
+            row.appendChild(timeSpan);
+            row.appendChild(msgSpan);
+            
+            terminalContainer.appendChild(row);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            terminalContainer.scrollTop = terminalContainer.scrollHeight;
+        }
+
+        async function initTerminal() {
+            try {
+                // Fetch last 10 messages
+                const { data, error } = await supabase
+                    .from('ai_signals')
+                    .select('message, created_at')
+                    .order('created_at', { ascending: false })
+                    .limit(10);
+
+                if (error) throw error;
+                
+                statusElement.textContent = 'STATUS: CONNECTED';
+
+                if (data) {
+                    // Reverse to show oldest first out of the 10 fetched
+                    const reversedData = data.reverse();
+                    reversedData.forEach(row => {
+                        appendMessage(row.message, row.created_at);
+                    });
+                }
+
+                // Subscribe to real-time inserts
+                supabase
+                    .channel('public:ai_signals')
+                    .on('postgres_changes', { 
+                        event: 'INSERT', 
+                        schema: 'public', 
+                        table: 'ai_signals' 
+                    }, payload => {
+                        const newRow = payload.new;
+                        appendMessage(newRow.message, newRow.created_at);
+                    })
+                    .subscribe((status) => {
+                        if (status === 'SUBSCRIBED') {
+                            console.log('Successfully subscribed to real-time events');
+                        }
+                    });
+
+            } catch (err) {
+                console.error('Error initializing terminal:', err);
+                statusElement.textContent = 'STATUS: ERROR - ' + err.message;
+            }
+        }
+
+        // Run initialization
+        initTerminal();
+    </script>
+</body>
+</html>
