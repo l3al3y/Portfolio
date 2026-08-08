@@ -112,7 +112,7 @@
         const SUPABASE_URL = 'https://lhzgpmitfwfwtyqhhcsb.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxoemdwbWl0Zndmd3R5cWhoY3NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxODgyMzQsImV4cCI6MjEwMTc2NDIzNH0.8S-x0dgTeIoG5w9Ib-6LFtdqXE0mWXpns_WeDEb0m8c';
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const terminalContainer = document.getElementById('terminal-container');
         const statusElement = document.getElementById('status');
 
@@ -143,7 +143,7 @@
         async function initTerminal() {
             try {
                 // Fetch last 10 messages
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('ai_signals')
                     .select('message, created_at')
                     .order('created_at', { ascending: false })
@@ -162,7 +162,7 @@
                 }
 
                 // Subscribe to real-time inserts
-                supabase
+                supabaseClient
                     .channel('public:ai_signals')
                     .on('postgres_changes', { 
                         event: 'INSERT', 
