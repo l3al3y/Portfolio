@@ -9,7 +9,6 @@
     <title>Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio</title>
     <meta name="description" content="Official Personal Engineering Portfolio & Interactive AI Assistant for Muhammad Irfan Fahmi — Computer Engineering Graduate, Cisco CCNA Certified & Festo Industrial AI Specialist.">
     <link rel="canonical" href="https://l3al3y.github.io/Portfolio/">
-
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio">
@@ -19,30 +18,25 @@
     <meta property="og:image" content="https://l3al3y.github.io/Portfolio/assets/og-preview.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Muhammad Irfan Fahmi | Computer Engineering & AI Portfolio">
     <meta name="twitter:description" content="Computer Engineering Graduate — Cisco CCNA Certified, Festo Industrial AI Specialist.">
     <meta name="twitter:image" content="https://l3al3y.github.io/Portfolio/assets/og-preview.png">
-
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    
     <!-- PWA & Mobile Platform Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="MIF Portfolio">
     <meta name="theme-color" content="#080c14" id="meta-theme-color">
     <meta name="format-detection" content="telephone=no">
-    
     <!-- Multilingual hreflang -->
     <link rel="alternate" hreflang="en" href="https://l3al3y.github.io/Portfolio/">
     <link rel="alternate" hreflang="ms" href="https://l3al3y.github.io/Portfolio/">
     <link rel="alternate" hreflang="zh" href="https://l3al3y.github.io/Portfolio/">
     <link rel="alternate" hreflang="x-default" href="https://l3al3y.github.io/Portfolio/">
-    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,13 +44,10 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
-    
     <!-- Three.js CDN for 3D Background (Deferred) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-
     <!-- Cloudflare Turnstile CAPTCHA API -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
     <style>
         :root {
             --bg-base: #080c14;
@@ -66,7 +57,6 @@
             --bg-section-alt: rgba(15, 23, 42, 0.3);
             --border-card: rgba(255, 255, 255, 0.08);
             --border-highlight: rgba(56, 189, 248, 0.3);
-            
             --primary: #38bdf8;
             --primary-hover: #0284c7;
             --primary-glow: rgba(56, 189, 248, 0.2);
@@ -74,27 +64,22 @@
             --purple-glow: rgba(192, 132, 252, 0.2);
             --emerald: #34d399;
             --amber: #fbbf24;
-            
             --text-main: #f8fafc;
             --text-sub: #cbd5e1;
             --text-muted: #94a3b8;
-            
             --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 20px;
             --glass-backdrop: blur(20px);
             --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            
             /* iOS Safe Area Insets & Dynamic Viewport Heights */
             --sat: env(safe-area-inset-top, 0px);
             --sab: env(safe-area-inset-bottom, 0px);
             --sal: env(safe-area-inset-left, 0px);
             --sar: env(safe-area-inset-right, 0px);
         }
-
         body.light-theme {
             --bg-base: #f8fafc;
             --bg-surface: #ffffff;
@@ -111,7 +96,6 @@
             --text-sub: #1e293b;
             --text-muted: #334155;
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -120,7 +104,6 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(56, 189, 248, 0.3) var(--bg-base);
         }
-
         /* Custom Windows Webkit & Firefox Scrollbars */
         ::-webkit-scrollbar {
             width: 8px;
@@ -136,29 +119,24 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
         }
-
         /* Keyboard Accessibility Focus Rings */
         :focus-visible {
             outline: 2px solid var(--primary) !important;
             outline-offset: 3px !important;
         }
-
         /* Touch & Fast Tap Optimizations */
         button, a, input, select, textarea, .card, .chip-btn, .prompt-chip, .filter-chip {
             touch-action: manipulation;
         }
-
         button:active, .btn:active, .card:active {
             transform: scale(0.97);
         }
-
         html {
             scroll-behavior: smooth;
             width: 100%;
             max-width: 100vw;
             overflow-x: hidden;
         }
-
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
@@ -174,11 +152,9 @@
             padding-left: var(--sal);
             padding-right: var(--sar);
         }
-
         img, iframe, canvas, svg, video, pre, code {
             max-width: 100%;
         }
-
         /* 3D Background Canvas */
         #canvas-3d {
             position: fixed;
@@ -191,7 +167,6 @@
             pointer-events: none;
             opacity: 0.6;
         }
-
         .container {
             width: 100%;
             max-width: 1200px;
@@ -200,7 +175,6 @@
             position: relative;
             z-index: 1;
         }
-
         /* Header Navigation */
         header {
             position: fixed;
@@ -214,13 +188,11 @@
             padding: 0.85rem 0;
             transition: var(--transition-smooth);
         }
-
         .nav-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
         .brand-logo {
             font-size: 1.25rem;
             font-weight: 800;
@@ -231,18 +203,15 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .brand-logo span {
             color: var(--primary);
         }
-
         .nav-links {
             display: flex;
             align-items: center;
             gap: 1.75rem;
             list-style: none;
         }
-
         .nav-links a {
             color: var(--text-sub);
             text-decoration: none;
@@ -250,17 +219,14 @@
             font-weight: 500;
             transition: var(--transition-smooth);
         }
-
         .nav-links a:hover {
             color: var(--primary);
         }
-
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 0.85rem;
         }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -275,31 +241,26 @@
             border: 1px solid transparent;
             transition: var(--transition-smooth);
         }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), #0369a1);
             color: #ffffff;
             box-shadow: 0 4px 15px var(--primary-glow);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
         }
-
         .btn-outline {
             background: rgba(255, 255, 255, 0.03);
             border-color: var(--border-card);
             color: var(--text-main);
         }
-
         .btn-outline:hover {
             border-color: var(--primary);
             color: var(--primary);
             background: rgba(56, 189, 248, 0.05);
             transform: translateY(-2px);
         }
-
         .theme-toggle-btn {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-card);
@@ -313,12 +274,10 @@
             cursor: pointer;
             transition: var(--transition-smooth);
         }
-
         .theme-toggle-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
-
         /* Hero Section */
         .hero-section {
             padding: 9rem 0 5rem;
@@ -326,14 +285,12 @@
             display: flex;
             align-items: center;
         }
-
         .hero-grid {
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
             gap: 3.5rem;
             align-items: center;
         }
-
         .status-pill {
             display: inline-flex;
             align-items: center;
@@ -347,7 +304,6 @@
             font-weight: 600;
             margin-bottom: 1.25rem;
         }
-
         .status-dot {
             width: 7px;
             height: 7px;
@@ -356,12 +312,10 @@
             box-shadow: 0 0 10px var(--emerald);
             animation: pulse-dot 2s infinite;
         }
-
         @keyframes pulse-dot {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.4; transform: scale(0.85); }
         }
-
         .hero-title {
             font-size: clamp(2.1rem, 4.2vw, 3.25rem);
             font-weight: 800;
@@ -370,31 +324,26 @@
             margin-bottom: 1.25rem;
             color: #ffffff;
         }
-
         .hero-title span {
             color: #38bdf8;
         }
-
         .hero-subtitle {
             font-size: 1.12rem;
             color: var(--text-sub);
             margin-bottom: 2rem;
             max-width: 620px;
         }
-
         .hero-cta-group {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 2.5rem;
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
         }
-
         .stat-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -403,27 +352,23 @@
             padding: 1.1rem;
             transition: var(--transition-smooth);
         }
-
         .stat-card:hover {
             border-color: var(--border-highlight);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-
         .stat-num {
             font-size: 1.4rem;
             font-weight: 800;
             color: var(--primary);
             font-family: var(--font-mono);
         }
-
         .stat-label {
             font-size: 0.78rem;
             color: var(--text-muted);
             font-weight: 500;
             margin-top: 0.2rem;
         }
-
         .hero-profile-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -434,7 +379,6 @@
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
-
         .hero-profile-card::before {
             content: '';
             position: absolute;
@@ -444,7 +388,6 @@
             height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--purple));
         }
-
         .profile-avatar-wrap {
             width: 80px;
             height: 80px;
@@ -457,20 +400,17 @@
             font-size: 2rem;
             margin-bottom: 1.25rem;
         }
-
         .profile-name {
             font-size: 1.35rem;
             font-weight: 800;
             margin-bottom: 0.25rem;
         }
-
         .profile-role {
             font-size: 0.88rem;
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 1.25rem;
         }
-
         .profile-info-list {
             list-style: none;
             display: flex;
@@ -481,23 +421,19 @@
             border-top: 1px solid var(--border-card);
             padding-top: 1.25rem;
         }
-
         .profile-info-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
         .profile-info-item span:last-child {
             font-weight: 600;
             color: var(--text-main);
         }
-
         /* Section Global Header */
         .section-header {
             margin-bottom: 3.5rem;
         }
-
         .section-tag {
             font-family: var(--font-mono);
             font-size: 0.82rem;
@@ -507,18 +443,15 @@
             margin-bottom: 0.5rem;
             display: block;
         }
-
         .section-title {
             font-size: 2.25rem;
             font-weight: 800;
             letter-spacing: -0.02em;
         }
-
         /* Section Layouts */
         .section-padding {
             padding: 6rem 0;
         }
-
         /* About Pillars Grid */
         .about-pillars-grid {
             display: grid;
@@ -526,7 +459,6 @@
             gap: 1.5rem;
             margin-top: 2.5rem;
         }
-
         .pillar-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -535,13 +467,11 @@
             padding: 1.75rem;
             transition: var(--transition-smooth);
         }
-
         .pillar-card:hover {
             border-color: var(--border-highlight);
             transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
         }
-
         .pillar-icon {
             width: 44px;
             height: 44px;
@@ -554,26 +484,22 @@
             font-size: 1.3rem;
             margin-bottom: 1.15rem;
         }
-
         .pillar-title {
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 0.6rem;
         }
-
         .pillar-desc {
             font-size: 0.88rem;
             color: var(--text-sub);
             line-height: 1.55;
         }
-
         /* Featured Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
-
         .project-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -584,13 +510,11 @@
             display: flex;
             flex-direction: column;
         }
-
         .project-card:hover {
             border-color: var(--border-highlight);
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-
         .project-banner {
             height: 180px;
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
@@ -601,7 +525,6 @@
             justify-content: space-between;
             position: relative;
         }
-
         .project-banner-badge {
             align-self: flex-start;
             padding: 0.3rem 0.75rem;
@@ -613,27 +536,23 @@
             font-weight: 700;
             font-family: var(--font-mono);
         }
-
         .project-banner-title {
             font-size: 1.3rem;
             font-weight: 800;
             color: #ffffff;
         }
-
         .project-body {
             padding: 1.75rem;
             display: flex;
             flex-direction: column;
             flex: 1;
         }
-
         .project-desc {
             font-size: 0.92rem;
             color: var(--text-sub);
             margin-bottom: 1.25rem;
             line-height: 1.6;
         }
-
         .project-metrics-box {
             background: rgba(0, 0, 0, 0.25);
             border-radius: var(--radius-sm);
@@ -643,23 +562,19 @@
             gap: 1rem;
             justify-content: space-around;
         }
-
         .metric-item {
             text-align: center;
         }
-
         .metric-val {
             font-size: 1rem;
             font-weight: 800;
             color: var(--emerald);
             font-family: var(--font-mono);
         }
-
         .metric-lbl {
             font-size: 0.72rem;
             color: var(--text-muted);
         }
-
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -667,7 +582,6 @@
             margin-bottom: 1.5rem;
             margin-top: auto;
         }
-
         .tech-tag {
             padding: 0.25rem 0.65rem;
             border-radius: 6px;
@@ -677,19 +591,16 @@
             font-size: 0.78rem;
             font-family: var(--font-mono);
         }
-
         .project-links {
             display: flex;
             gap: 0.85rem;
         }
-
         /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
-
         .skill-category-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -697,7 +608,6 @@
             border-radius: var(--radius-md);
             padding: 1.5rem;
         }
-
         .category-title {
             font-size: 1.05rem;
             font-weight: 700;
@@ -707,14 +617,12 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .skill-list {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
-
         .skill-item {
             font-size: 0.88rem;
             color: var(--text-sub);
@@ -722,7 +630,6 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .skill-badge {
             font-size: 0.72rem;
             font-family: var(--font-mono);
@@ -731,14 +638,12 @@
             padding: 0.15rem 0.5rem;
             border-radius: 4px;
         }
-
         /* Experience Timeline */
         .timeline-wrap {
             position: relative;
             max-width: 900px;
             margin: 0 auto;
         }
-
         .timeline-wrap::before {
             content: '';
             position: absolute;
@@ -748,17 +653,14 @@
             width: 2px;
             background: var(--border-card);
         }
-
         .timeline-item {
             position: relative;
             padding-left: 60px;
             margin-bottom: 2.5rem;
         }
-
         .timeline-item:last-child {
             margin-bottom: 0;
         }
-
         .timeline-dot {
             position: absolute;
             left: 11px;
@@ -770,7 +672,6 @@
             border: 3px solid var(--primary);
             box-shadow: 0 0 10px var(--primary-glow);
         }
-
         .timeline-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -779,11 +680,9 @@
             padding: 1.5rem;
             transition: var(--transition-smooth);
         }
-
         .timeline-card:hover {
             border-color: var(--border-highlight);
         }
-
         .timeline-date {
             font-family: var(--font-mono);
             font-size: 0.82rem;
@@ -791,26 +690,22 @@
             font-weight: 600;
             margin-bottom: 0.35rem;
         }
-
         .timeline-role {
             font-size: 1.15rem;
             font-weight: 800;
             margin-bottom: 0.2rem;
         }
-
         .timeline-org {
             font-size: 0.92rem;
             color: var(--text-sub);
             margin-bottom: 0.85rem;
             font-weight: 600;
         }
-
         .timeline-desc {
             font-size: 0.88rem;
             color: var(--text-sub);
             line-height: 1.6;
         }
-
         /* Certificates Gallery */
         .cert-filters {
             display: flex;
@@ -819,7 +714,6 @@
             margin-bottom: 2rem;
             justify-content: center;
         }
-
         .filter-chip {
             padding: 0.45rem 1.1rem;
             border-radius: 999px;
@@ -831,21 +725,19 @@
             cursor: pointer;
             transition: var(--transition-smooth);
         }
-
-        .filter-chip.active,
+                .filter-chip.active,
         .filter-chip:hover {
             background: var(--primary);
-            color: #ffffff;
+            color: #0f172a;
+            font-weight: 700;
             border-color: var(--primary);
             box-shadow: 0 4px 15px var(--primary-glow);
         }
-
         .certs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
-
         .cert-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
@@ -856,13 +748,11 @@
             flex-direction: column;
             transition: var(--transition-smooth);
         }
-
         .cert-card:hover {
             border-color: var(--border-highlight);
             transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
         }
-
         .cert-category-tag {
             align-self: flex-start;
             font-size: 0.72rem;
@@ -873,21 +763,18 @@
             border-radius: 4px;
             margin-bottom: 1rem;
         }
-
         .cert-title {
             font-size: 1.05rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
             line-height: 1.35;
         }
-
         .cert-issuer {
             font-size: 0.85rem;
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 0.85rem;
         }
-
         .cert-desc {
             font-size: 0.85rem;
             color: var(--text-sub);
@@ -895,12 +782,10 @@
             flex: 1;
             line-height: 1.5;
         }
-
         .cert-actions {
             display: flex;
             gap: 0.5rem;
         }
-
         /* Interactive AI Banner */
         .ai-banner-box {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
@@ -912,20 +797,17 @@
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
         }
-
         .ai-banner-title {
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 0.85rem;
         }
-
         .ai-banner-desc {
             font-size: 1.05rem;
             color: var(--text-sub);
             max-width: 650px;
             margin: 0 auto 2rem;
         }
-
         /* Footer */
         footer {
             border-top: 1px solid var(--border-card);
@@ -934,7 +816,6 @@
             color: var(--text-sub);
             font-size: 0.9rem;
         }
-
         .footer-content {
             display: flex;
             flex-direction: column;
@@ -942,26 +823,22 @@
             text-align: center;
             gap: 1.5rem;
         }
-
         .footer-verification {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .footer-verification a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition-smooth);
         }
-
         .footer-verification a:hover {
             color: #ffffff;
             text-decoration: underline;
         }
-
         /* Modal Overlay */
         .modal-overlay {
             position: fixed;
@@ -977,11 +854,9 @@
             justify-content: center;
             padding: 2rem;
         }
-
         .modal-overlay.active {
             display: flex;
         }
-
         .modal-card {
             background: var(--bg-surface);
             border: 1px solid var(--border-card);
@@ -994,7 +869,6 @@
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(0,0,0,0.5);
         }
-
         .modal-header {
             padding: 1.25rem 1.75rem;
             border-bottom: 1px solid var(--border-card);
@@ -1002,12 +876,10 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .modal-header h3 {
             font-size: 1.15rem;
             font-weight: 700;
         }
-
         .modal-close-btn {
             background: none;
             border: none;
@@ -1015,13 +887,11 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-
         .modal-body {
             padding: 1.75rem;
             overflow-y: auto;
             flex: 1;
         }
-
         /* Responsive Breakpoints */
         @media (max-width: 992px) {
             .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1032,7 +902,6 @@
             .certs-grid { grid-template-columns: repeat(2, 1fr); }
             .nav-links { display: none; }
         }
-
         @media (max-width: 640px) {
             .hero-title { font-size: 2.25rem; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1040,9 +909,7 @@
             .skills-grid { grid-template-columns: 1fr; }
             .certs-grid { grid-template-columns: 1fr; }
         }
-
         /* Floating AI Chatbot Widget Styles */
-        
         /* Fixed Floating Chat Launcher Button */
         .chat-launcher-btn {
             position: fixed;
@@ -1064,12 +931,10 @@
             gap: 0.5rem;
             transition: var(--transition-smooth);
         }
-
         .chat-launcher-btn:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-glow);
         }
-
         .chat-floating-window {
             position: fixed;
             bottom: 5rem;
@@ -1091,17 +956,14 @@
             overflow: hidden;
             transition: var(--transition-smooth);
         }
-
         .chat-floating-window.active {
             display: flex !important;
             animation: slideUpChat 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         @keyframes slideUpChat {
             from { opacity: 0; transform: translateY(20px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
-
         .chat-header {
             background: rgba(8, 12, 20, 0.9);
             padding: 0.85rem 1.15rem;
@@ -1110,7 +972,6 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .chat-bot-avatar {
             width: 32px;
             height: 32px;
@@ -1123,7 +984,6 @@
             color: #fff;
             flex-shrink: 0;
         }
-
         .chat-close-btn {
             background: none;
             border: none;
@@ -1134,11 +994,9 @@
             padding: 0.2rem;
             transition: var(--transition-smooth);
         }
-
         .chat-close-btn:hover {
             color: #fff;
         }
-
         .chat-body {
             flex: 1;
             padding: 1rem;
@@ -1148,22 +1006,18 @@
             gap: 0.85rem;
             background: rgba(8, 12, 20, 0.5);
         }
-
         .chat-message {
             display: flex;
             gap: 0.65rem;
             max-width: 88%;
         }
-
         .chat-message.bot-msg {
             align-self: flex-start;
         }
-
         .chat-message.user-msg {
             align-self: flex-end;
             flex-direction: row-reverse;
         }
-
         .chat-bubble {
             padding: 0.75rem 1rem;
             border-radius: 14px;
@@ -1171,20 +1025,17 @@
             line-height: 1.5;
             word-break: break-word;
         }
-
         .bot-msg .chat-bubble {
             background: rgba(30, 41, 59, 0.85);
             border: 1px solid var(--border-card);
             color: var(--text-main);
             border-top-left-radius: 4px;
         }
-
         .user-msg .chat-bubble {
             background: linear-gradient(135deg, var(--primary), #0369a1);
             color: #ffffff;
             border-top-right-radius: 4px;
         }
-
         .chat-suggested-prompts {
             padding: 0.65rem 0.85rem;
             background: rgba(15, 23, 42, 0.8);
@@ -1194,7 +1045,6 @@
             overflow-x: auto;
             white-space: nowrap;
         }
-
         .prompt-chip {
             padding: 0.3rem 0.7rem;
             border-radius: 999px;
@@ -1206,13 +1056,11 @@
             transition: var(--transition-smooth);
             flex-shrink: 0;
         }
-
         .prompt-chip:hover {
             border-color: var(--primary);
             color: var(--primary);
             background: rgba(56, 189, 248, 0.1);
         }
-
         .chat-input-area {
             padding: 0.75rem 1rem;
             background: rgba(8, 12, 20, 0.95);
@@ -1221,7 +1069,6 @@
             gap: 0.5rem;
             align-items: center;
         }
-
         .chat-input {
             flex: 1;
             background: rgba(15, 23, 42, 0.8);
@@ -1234,13 +1081,10 @@
             outline: none;
             transition: var(--transition-smooth);
         }
-
         .chat-input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 10px var(--primary-glow);
         }
-
-    
         /* Career Availability Status Component (LED Ticker Board) */
         .career-status-board {
             background: rgba(15, 23, 42, 0.75);
@@ -1255,7 +1099,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .career-status-header {
             display: flex;
             align-items: center;
@@ -1265,7 +1108,6 @@
             border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
             padding-bottom: 0.5rem;
         }
-
         .career-status-badge {
             display: flex;
             align-items: center;
@@ -1277,7 +1119,6 @@
             text-transform: uppercase;
             font-family: var(--font-mono);
         }
-
         .career-status-badge .led-dot {
             width: 9px;
             height: 9px;
@@ -1286,18 +1127,15 @@
             box-shadow: 0 0 12px var(--emerald), 0 0 4px var(--emerald);
             animation: led-pulse 1.8s infinite;
         }
-
         @keyframes led-pulse {
             0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px var(--emerald); }
             50% { opacity: 0.45; transform: scale(0.85); box-shadow: 0 0 4px var(--emerald); }
         }
-
         .career-status-sub {
             font-size: 0.75rem;
             color: var(--text-muted);
             font-weight: 500;
         }
-
         /* Ticker Container & Animation */
         .ticker-wrap {
             width: 100%;
@@ -1307,22 +1145,18 @@
             mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
         }
-
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
             animation: ticker-anim 25s linear infinite;
         }
-
         .ticker-wrap:hover .ticker-move {
             animation-play-state: paused;
         }
-
         @keyframes ticker-anim {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
-
         .ticker-item {
             display: inline-flex;
             align-items: center;
@@ -1333,18 +1167,14 @@
             color: #ffffff;
             font-family: var(--font-sans);
         }
-
         .ticker-item span.highlight {
             color: var(--primary);
         }
-
         .ticker-separator {
             color: var(--border-highlight);
             font-weight: 400;
             margin: 0 0.25rem;
         }
-
-    
         /* Candidate Identity Eyebrow Badge */
         .hero-eyebrow-badge {
             display: flex;
@@ -1353,7 +1183,6 @@
             flex-wrap: wrap;
             margin-bottom: 0.85rem;
         }
-
         .eyebrow-tag {
             font-family: var(--font-mono);
             font-size: 0.76rem;
@@ -1366,7 +1195,6 @@
             border-radius: var(--radius-sm);
             text-transform: uppercase;
         }
-
         .eyebrow-desc {
             font-family: var(--font-mono);
             font-size: 0.74rem;
@@ -1374,17 +1202,9 @@
             font-weight: 500;
             letter-spacing: 0.04em;
         }
-
-    
-        
-        
-        
-        
-        
         /* ==========================================================================
            ☀️ MASTER HIGH-CONTRAST LIGHT THEME ENGINE (WITH ENLARGED CHATBOT)
            ========================================================================== */
-
         /* 1. Dark Mode Accessible Defaults & Larger Chatbot Window */
         .chat-floating-window {
             position: fixed;
@@ -1405,7 +1225,6 @@
             overflow: hidden;
             transition: var(--transition-smooth);
         }
-
         .project-banner-title {
             font-size: 1.6rem !important;
             font-weight: 800 !important;
@@ -1413,7 +1232,6 @@
             color: #ffffff;
             letter-spacing: -0.01em;
         }
-
         .project-desc {
             font-size: 1.15rem !important;
             line-height: 1.7 !important;
@@ -1421,32 +1239,27 @@
             font-weight: 500 !important;
             margin-bottom: 1.35rem !important;
         }
-
         .pillar-desc, .timeline-desc {
             font-size: 1.08rem !important;
             line-height: 1.68 !important;
             color: var(--text-sub);
             font-weight: 500 !important;
         }
-
         .metric-val {
             font-size: 1.25rem !important;
             font-weight: 800 !important;
             color: var(--emerald);
         }
-
         .metric-lbl {
             font-size: 0.88rem !important;
             color: var(--text-muted);
             font-weight: 600 !important;
         }
-
         .tech-tag {
             font-size: 0.88rem !important;
             font-weight: 600 !important;
             padding: 0.35rem 0.8rem !important;
         }
-
         /* 2. Full Site Light Theme Overrides */
         body.light-theme,
         body[data-theme="light"] {
@@ -1467,32 +1280,27 @@
             background-color: #f8fafc !important;
             color: #0f172a !important;
         }
-
         body.light-theme header,
         body[data-theme="light"] header {
             background: rgba(255, 255, 255, 0.95) !important;
             border-bottom: 1px solid #cbd5e1 !important;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
         }
-
         body.light-theme .brand-logo, body.light-theme .brand-logo span,
         body[data-theme="light"] .brand-logo, body[data-theme="light"] .brand-logo span {
             color: #0f172a !important;
         }
-
         body.light-theme .nav-link,
         body[data-theme="light"] .nav-link {
             color: #334155 !important;
             font-weight: 600 !important;
         }
-
         body.light-theme .ai-banner-box,
         body[data-theme="light"] .ai-banner-box {
             background: #ffffff !important;
             border: 2px solid #0369a1 !important;
             box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12) !important;
         }
-
         /* LIGHT MODE FLOATING CHATBOT ENGINE & HIGH CONTRAST FIX */
         body.light-theme .chat-floating-window,
         body[data-theme="light"] .chat-floating-window {
@@ -1500,37 +1308,31 @@
             border: 2px solid #0369a1 !important;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.15) !important;
         }
-
         body.light-theme .chat-header,
         body[data-theme="light"] .chat-header {
             background: #f1f5f9 !important;
             border-bottom: 1px solid #cbd5e1 !important;
             color: #0f172a !important;
         }
-
         body.light-theme .chat-header div,
         body.light-theme .chat-header h3,
         body[data-theme="light"] .chat-header div,
         body[data-theme="light"] .chat-header h3 {
             color: #0f172a !important;
         }
-
         body.light-theme .chat-close-btn,
         body[data-theme="light"] .chat-close-btn {
             color: #475569 !important;
         }
-
         body.light-theme #ai-status-label,
         body[data-theme="light"] #ai-status-label {
             color: #0369a1 !important;
             font-weight: 700 !important;
         }
-
         body.light-theme .chat-body,
         body[data-theme="light"] .chat-body {
             background: #f8fafc !important;
         }
-
         body.light-theme .bot-msg .chat-bubble,
         body.light-theme .chat-message.bot-msg .chat-bubble,
         body[data-theme="light"] .bot-msg .chat-bubble,
@@ -1541,13 +1343,11 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
             font-weight: 500 !important;
         }
-
         body.light-theme .bot-msg code,
         body[data-theme="light"] .bot-msg code {
             background: #e2e8f0 !important;
             color: #0369a1 !important;
         }
-
         body.light-theme .user-msg .chat-bubble,
         body.light-theme .chat-message.user-msg .chat-bubble,
         body[data-theme="light"] .user-msg .chat-bubble,
@@ -1556,13 +1356,11 @@
             color: #ffffff !important;
             font-weight: 600 !important;
         }
-
         body.light-theme .chat-suggested-prompts,
         body[data-theme="light"] .chat-suggested-prompts {
             background: #f1f5f9 !important;
             border-top: 1px solid #cbd5e1 !important;
         }
-
         body.light-theme .prompt-chip,
         body.light-theme .chip-btn,
         body.light-theme .chat-chip,
@@ -1575,20 +1373,17 @@
             font-weight: 700 !important;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04) !important;
         }
-
         body.light-theme .prompt-chip:hover,
         body[data-theme="light"] .prompt-chip:hover {
             background: #e0f2fe !important;
             border-color: #0369a1 !important;
             color: #0369a1 !important;
         }
-
         body.light-theme .chat-input-area,
         body[data-theme="light"] .chat-input-area {
             background: #ffffff !important;
             border-top: 1px solid #cbd5e1 !important;
         }
-
         body.light-theme .chat-input,
         body[data-theme="light"] .chat-input {
             background: #f1f5f9 !important;
@@ -1596,12 +1391,10 @@
             border: 1px solid #cbd5e1 !important;
             font-weight: 500 !important;
         }
-
         body.light-theme .chat-input::placeholder,
         body[data-theme="light"] .chat-input::placeholder {
             color: #64748b !important;
         }
-
         body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
         body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .profile-name, 
         body.light-theme .pillar-title, body.light-theme .category-title, body.light-theme .cert-title, 
@@ -1612,14 +1405,12 @@
             -webkit-text-fill-color: #0f172a !important;
             text-shadow: none !important;
         }
-
         body.light-theme p, body.light-theme .hero-subtitle, body.light-theme .project-desc, 
         body.light-theme .pillar-desc, body.light-theme .timeline-desc, body.light-theme .profile-role, 
         body.light-theme .eyebrow-desc, body.light-theme .ai-banner-desc, body.light-theme .career-status-sub {
             color: #334155 !important;
             font-weight: 600 !important;
         }
-
         body.light-theme .project-card, body.light-theme .pillar-card, body.light-theme .timeline-card, 
         body.light-theme .skill-category-card, body.light-theme .hero-profile-card, body.light-theme .stat-card, 
         body.light-theme .cert-card, body.light-theme .modal-card, body.light-theme .career-status-board, 
@@ -1628,65 +1419,52 @@
             border-color: #cbd5e1 !important;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
         }
-
         body.light-theme .project-banner {
             background: #f1f5f9 !important;
             border-bottom: 1px solid #cbd5e1 !important;
         }
-
         body.light-theme .project-metrics-box {
             background: #f8fafc !important;
             border: 1px solid #cbd5e1 !important;
         }
-
         body.light-theme .stat-num {
             color: #0369a1 !important;
         }
-
         body.light-theme .stat-label, body.light-theme .metric-lbl, body.light-theme .timeline-date, 
         body.light-theme .cert-issuer, body.light-theme .bio-label {
             color: #475569 !important;
             font-weight: 700 !important;
         }
-
         body.light-theme .metric-val {
             color: #065f46 !important;
         }
-
         body.light-theme .tech-tag, body.light-theme .cert-category-tag, body.light-theme .eyebrow-tag {
             background: #e2e8f0 !important;
             color: #0f172a !important;
             border-color: #cbd5e1 !important;
             font-weight: 700 !important;
         }
-
         body.light-theme .bio-value {
             color: #0f172a !important;
             font-weight: 700 !important;
         }
-
         body.light-theme footer, body.light-theme .footer-content, body.light-theme .footer-verification {
             color: #475569 !important;
         }
-
         body.light-theme footer a {
             color: #0369a1 !important;
             font-weight: 700 !important;
         }
-
         body.light-theme .ticker-item {
             color: #0f172a !important;
         }
-
         body.light-theme .ticker-item span.highlight {
             color: #0369a1 !important;
         }
-
 body.light-theme #revealed-phone, body.light-theme #revealed-email,
         body[data-theme="light"] #revealed-phone, body[data-theme="light"] #revealed-email {
             color: #0f172a !important;
         }
-
         /* ==========================================================================
            📱 DRIBBBLE MOBILE FLOATING BOTTOM DOCK & TOUCH ADAPTATION ENGINE
            ========================================================================== */
@@ -1710,14 +1488,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             align-items: center;
             transition: var(--transition-smooth);
         }
-
         body.light-theme .mobile-bottom-dock,
         body[data-theme="light"] .mobile-bottom-dock {
             background: rgba(255, 255, 255, 0.94) !important;
             border-color: #0369a1 !important;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
         }
-
         .dock-item {
             display: flex;
             flex-direction: column;
@@ -1739,41 +1515,33 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
-
         .dock-item:active {
             transform: scale(0.92);
         }
-
         .dock-item:hover, .dock-item.active {
             color: var(--primary);
         }
-
         body.light-theme .dock-item {
             color: #334155;
         }
-
         body.light-theme .dock-item:hover, body.light-theme .dock-item.active {
             color: #0369a1;
         }
-
         .dock-icon {
             font-size: 1.2rem;
             line-height: 1;
         }
-
         .dock-ai-btn {
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(192, 132, 252, 0.2));
             border: 1px solid var(--primary);
             border-radius: 20px;
             color: var(--primary);
         }
-
         body.light-theme .dock-ai-btn {
             background: rgba(2, 132, 199, 0.1) !important;
             border-color: #0369a1 !important;
             color: #0369a1 !important;
         }
-
         .mobile-sheet-handle {
             display: none;
             width: 36px;
@@ -1782,7 +1550,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             background: rgba(255, 255, 255, 0.3);
             margin: 0 auto 0.5rem;
         }
-
         /* PC vs Mobile Display Utility Classes */
         .pc-only {
             display: block;
@@ -1790,7 +1557,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
         .mobile-only {
             display: none;
         }
-
         /* Mobile Breakpoint Optimizations (< 768px) */
         @media (max-width: 768px) {
             .pc-only,
@@ -1811,20 +1577,16 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             .mobile-only {
                 display: block !important;
             }
-
             .mobile-bottom-dock {
                 display: flex !important;
             }
-
             body {
                 padding-bottom: calc(4.75rem + var(--sab)) !important;
             }
-
             /* Mobile Header Even & Clean Layout */
             header {
                 padding: 0.6rem 0 !important;
             }
-
             .nav-content {
                 display: flex !important;
                 align-items: center !important;
@@ -1832,28 +1594,23 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 padding: 0 1rem !important;
                 width: 100% !important;
             }
-
             .brand-logo {
                 font-size: 1.15rem !important;
             }
-
             .nav-actions {
                 display: flex !important;
                 align-items: center !important;
                 gap: 0.45rem !important;
             }
-
             .nav-actions .btn-outline {
                 display: none !important;
             }
-
             .nav-actions .btn-primary {
                 padding: 0.4rem 0.75rem !important;
                 font-size: 0.76rem !important;
                 border-radius: 999px !important;
                 white-space: nowrap !important;
             }
-
             .theme-toggle-btn {
                 width: 34px !important;
                 height: 34px !important;
@@ -1864,7 +1621,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 font-size: 0.9rem !important;
                 border-radius: 50% !important;
             }
-
             /* Android Mobile Space-Optimized Hero Layout */
             .hero-section {
                 padding: 5rem 0 1.75rem !important;
@@ -1874,7 +1630,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 box-sizing: border-box !important;
                 overflow: hidden !important;
             }
-
             /* Mobile Hero Section Component Alignment (Matches Mobile About Cards .pillar-card) */
             .hero-grid {
                 display: block !important;
@@ -1883,7 +1638,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 box-sizing: border-box !important;
                 margin: 0 !important;
             }
-
             .hero-grid > div {
                 display: flex !important;
                 flex-direction: column !important;
@@ -1893,7 +1647,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 box-sizing: border-box !important;
                 margin: 0 !important;
             }
-
             .career-status-board,
             .hero-title,
             .hero-subtitle,
@@ -1905,7 +1658,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 max-width: 100% !important;
                 box-sizing: border-box !important;
             }
-
             .career-status-board {
                 padding: 1rem 1.25rem !important;
                 overflow: hidden !important;
@@ -1913,32 +1665,27 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 background: var(--bg-surface) !important;
                 border: 1px solid var(--border-card) !important;
             }
-
             .career-status-header {
                 flex-wrap: wrap !important;
                 gap: 0.4rem !important;
                 width: 100% !important;
                 min-width: 0 !important;
             }
-
             .career-status-badge {
                 font-size: 0.72rem !important;
                 padding: 0.25rem 0.6rem !important;
                 white-space: nowrap !important;
             }
-
             .career-status-sub {
                 font-size: 0.75rem !important;
                 word-break: break-word !important;
             }
-
             .ticker-wrap {
                 width: 100% !important;
                 max-width: 100% !important;
                 overflow: hidden !important;
                 border-radius: 8px !important;
             }
-
             .hero-title {
                 font-size: 1.45rem !important;
                 line-height: 1.3 !important;
@@ -1948,31 +1695,26 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 background: none !important;
                 -webkit-text-fill-color: #ffffff !important;
             }
-
             .hero-title span {
                 color: #38bdf8 !important;
                 background: none !important;
                 -webkit-text-fill-color: #38bdf8 !important;
             }
-
             .hero-subtitle {
                 font-size: 0.88rem !important;
                 line-height: 1.55 !important;
                 word-break: break-word !important;
                 color: #cbd5e1 !important;
             }
-
             .hero-cta-group {
                 display: flex !important;
                 gap: 0.75rem !important;
             }
-
             .stats-grid {
                 display: grid !important;
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.75rem !important;
             }
-
             .stat-card {
                 min-width: 0 !important;
                 width: 100% !important;
@@ -1985,20 +1727,17 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 background: var(--bg-surface) !important;
                 border: 1px solid var(--border-card) !important;
             }
-
             .stat-num {
                 font-size: 1.1rem !important;
                 word-break: break-word !important;
                 white-space: nowrap !important;
             }
-
             .stat-label {
                 font-size: 0.7rem !important;
                 line-height: 1.25 !important;
                 word-break: break-word !important;
                 margin-top: 0.25rem !important;
             }
-
             /* Android Compact Mobile Profile Card (Matches .pillar-card) */
             .mobile-hero-profile-card {
                 background: var(--bg-surface) !important;
@@ -2008,7 +1747,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 overflow: hidden !important;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
             }
-
             .mobile-profile-header {
                 display: flex !important;
                 align-items: center !important;
@@ -2016,7 +1754,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 width: 100% !important;
                 min-width: 0 !important;
             }
-
             .mobile-avatar {
                 width: 42px !important;
                 height: 42px !important;
@@ -2029,14 +1766,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 font-size: 1.15rem !important;
                 flex-shrink: 0 !important;
             }
-
             .mobile-profile-info {
                 flex: 1 !important;
                 min-width: 0 !important;
                 width: 100% !important;
                 overflow: hidden !important;
             }
-
             .mobile-profile-name {
                 font-size: 0.95rem !important;
                 font-weight: 800 !important;
@@ -2046,7 +1781,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 text-overflow: ellipsis !important;
                 width: 100% !important;
             }
-
             .mobile-profile-sub {
                 font-size: 0.72rem !important;
                 color: var(--primary);
@@ -2056,7 +1790,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 text-overflow: ellipsis !important;
                 width: 100% !important;
             }
-
             .mobile-bio-toggle-btn {
                 background: rgba(56, 189, 248, 0.1);
                 border: 1px solid var(--primary);
@@ -2071,7 +1804,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 text-align: center;
                 transition: var(--transition-smooth);
             }
-
             .mobile-bio-details {
                 display: none;
                 margin-top: 0.75rem !important;
@@ -2085,13 +1817,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 word-break: break-word !important;
                 overflow-wrap: anywhere !important;
             }
-
             .mobile-bio-details.active {
                 display: flex;
                 flex-direction: column;
                 gap: 0.45rem;
             }
-
             .mobile-bio-details > div {
                 width: 100% !important;
                 min-width: 0 !important;
@@ -2099,72 +1829,57 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 overflow-wrap: anywhere !important;
                 line-height: 1.45 !important;
             }
-
             .section-padding {
                 padding: 3rem 0 !important;
             }
-
             .section-header {
                 margin-bottom: 1.75rem !important;
             }
-
             .section-title {
                 font-size: 1.55rem !important;
                 line-height: 1.25 !important;
             }
-
             .about-pillars-grid, .skills-grid, .certs-grid, .projects-grid {
                 grid-template-columns: 1fr !important;
                 gap: 1rem !important;
                 width: 100% !important;
             }
-
             .project-banner {
                 height: 140px !important;
                 padding: 1rem !important;
             }
-
             .project-banner-title {
                 font-size: 1.25rem !important;
             }
-
             .project-body {
                 padding: 1.15rem !important;
             }
-
             .project-metrics-box {
                 padding: 0.65rem 0.4rem !important;
                 gap: 0.35rem !important;
             }
-
             .metric-val {
                 font-size: 0.95rem !important;
             }
-
             .metric-lbl {
                 font-size: 0.7rem !important;
             }
-
             /* Android Experience Timeline Alignment */
             .timeline-wrap::before {
                 left: 10px !important;
             }
-
             .timeline-item {
                 padding-left: 34px !important;
                 margin-bottom: 1.75rem !important;
             }
-
             .timeline-dot {
                 left: 1px !important;
                 width: 18px !important;
                 height: 18px !important;
             }
-
             .timeline-card {
                 padding: 1.15rem !important;
             }
-
             /* Android Certificate Filter Horizontal Swipe Bar */
             .cert-filters {
                 justify-content: flex-start !important;
@@ -2175,31 +1890,25 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 mask-image: linear-gradient(90deg, #000 85%, transparent 100%);
                 -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent 100%);
             }
-
             .filter-chip {
                 flex-shrink: 0 !important;
                 padding: 0.4rem 0.9rem !important;
                 font-size: 0.8rem !important;
             }
-
             /* Android AI Banner Padding */
             .ai-banner-box {
                 padding: 1.75rem 1rem !important;
             }
-
             .ai-banner-title {
                 font-size: 1.5rem !important;
             }
-
             .ai-banner-desc {
                 font-size: 0.92rem !important;
                 margin-bottom: 1.5rem !important;
             }
-
             .chat-launcher-btn {
                 display: none !important;
             }
-
             /* Mobile Floating AI Chatbot Window (Positioned Cleanly Above Bottom Dock) */
             .chat-floating-window {
                 bottom: calc(4.75rem + var(--sab)) !important;
@@ -2214,19 +1923,16 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), 0 0 25px var(--primary-glow) !important;
                 z-index: 99999 !important;
             }
-
             .mobile-sheet-handle {
                 display: none !important;
             }
         }
-
         /* LIGHT THEME HIGH CONTRAST ACCESSIBILITY ENGINE */
         body.light-theme,
         body[data-theme="light"] {
             background-color: #f8fafc !important;
             color: #0f172a !important;
         }
-
         body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
         body.light-theme .hero-title, body.light-theme .section-title, body.light-theme .profile-name, 
         body.light-theme .pillar-title, body.light-theme .category-title, body.light-theme .cert-title, 
@@ -2240,14 +1946,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             -webkit-text-fill-color: #0f172a !important;
             text-shadow: none !important;
         }
-
         body.light-theme .hero-title span,
         body[data-theme="light"] .hero-title span {
             color: #0369a1 !important;
             background: none !important;
             -webkit-text-fill-color: #0369a1 !important;
         }
-
         body.light-theme p, body.light-theme .hero-subtitle, body.light-theme .project-desc, 
         body.light-theme .pillar-desc, body.light-theme .timeline-desc, body.light-theme .profile-role, 
         body.light-theme .eyebrow-desc, body.light-theme .ai-banner-desc, body.light-theme .career-status-sub,
@@ -2257,28 +1961,24 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             color: #1e293b !important;
             font-weight: 600 !important;
         }
-
         body.light-theme .btn-outline,
         body[data-theme="light"] .btn-outline {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
             color: #0f172a !important;
         }
-
         body.light-theme .btn-outline:hover,
         body[data-theme="light"] .btn-outline:hover {
             background: #f0f9ff !important;
             border-color: #0369a1 !important;
             color: #0369a1 !important;
         }
-
         body.light-theme .filter-chip,
         body[data-theme="light"] .filter-chip {
             background: #ffffff !important;
             color: #0f172a !important;
             border-color: #cbd5e1 !important;
         }
-
         body.light-theme .filter-chip.active,
         body.light-theme .filter-chip:hover,
         body[data-theme="light"] .filter-chip.active,
@@ -2288,57 +1988,48 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             border-color: #0369a1 !important;
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
         }
-
         body.light-theme .mobile-hero-profile-card,
         body[data-theme="light"] .mobile-hero-profile-card {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
         }
-
         body.light-theme .mobile-bio-toggle-btn,
         body[data-theme="light"] .mobile-bio-toggle-btn {
             background: #e0f2fe !important;
             border-color: #0369a1 !important;
             color: #0369a1 !important;
         }
-
         body.light-theme .mobile-bio-details,
         body[data-theme="light"] .mobile-bio-details {
             border-top: 1px solid #cbd5e1 !important;
             color: #1e293b !important;
         }
-
         body.light-theme .mobile-bio-details strong,
         body[data-theme="light"] .mobile-bio-details strong {
             color: #0f172a !important;
         }
-
         body.light-theme .status-pill,
         body[data-theme="light"] .status-pill {
             background: #ecfdf5 !important;
             border-color: #059669 !important;
             color: #065f46 !important;
         }
-
         body.light-theme .career-status-board,
         body[data-theme="light"] .career-status-board {
             background: #ffffff !important;
             border-color: #0369a1 !important;
         }
-
         body.light-theme .career-status-badge,
         body[data-theme="light"] .career-status-badge {
             color: #065f46 !important;
         }
-
         body.light-theme .modal-card,
         body[data-theme="light"] .modal-card {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
             color: #0f172a !important;
         }
-
         /* Windows High Contrast Accessibility Support */
         @media (forced-colors: active) {
             .btn, .stat-card, .project-card, .pillar-card, .cert-card, .chat-floating-window, .mobile-bottom-dock {
@@ -2381,17 +2072,14 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
 <body>
     <!-- Accessibility: Skip to main content -->
     <a href="#main-content" class="skip-to-content" style="position:absolute;left:-9999px;top:0;z-index:99999;padding:0.75rem 1.5rem;background:var(--primary);color:#fff;font-weight:700;border-radius:0 0 0.5rem 0;font-size:0.9rem;text-decoration:none;transition:left 0.2s;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
-
     <!-- 3D Canvas Background -->
     <canvas id="canvas-3d"></canvas>
-
     <!-- Fixed Navigation Header -->
     <header>
         <div class="container nav-content">
             <a href="#" class="brand-logo">
                 <span>MIF</span>.dev
             </a>
-
             <ul class="nav-links">
                 <li><a href="terminal.html">🔴 Live AI</a></li>
                 <li><a href="#about">About</a></li>
@@ -2400,7 +2088,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#certificates">Certifications</a></li>
             </ul>
-
             <div class="nav-actions">
                 <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
                 <button class="btn btn-outline" onclick="toggleFloatingChat()">🌙 Chat AI</button>
@@ -2408,7 +2095,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </header>
-
     <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
     <section class="hero-section">
@@ -2422,7 +2108,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                         <div class="career-status-sub">Available for Full-Time Graduate Roles</div>
                     </div>
-                    
                     <div class="ticker-wrap">
                         <div class="ticker-move">
                             <span class="ticker-item">👁️ <span class="highlight">AI & Computer Vision</span></span>
@@ -2431,7 +2116,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                             <span class="ticker-separator">•</span>
                             <span class="ticker-item">⚡ <span class="highlight">Industrial Automation</span></span>
                             <span class="ticker-separator">•</span>
-                            
                             <!-- Looped duplicate sequence for seamless infinite scroll -->
                             <span class="ticker-item">👁️ <span class="highlight">AI & Computer Vision</span></span>
                             <span class="ticker-separator">•</span>
@@ -2442,18 +2126,15 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-                
                 <h1 class="hero-title">
                     Computer Engineer Building <span>Autonomous AI Systems</span> & Industrial Vision Solutions.
                 </h1>
                 <p class="hero-subtitle">
                     Final-year Computer Engineering (Hons) student at UTeM, graduating November 2026. Cisco CCNA Certified & Festo Industrial AI Specialist. Built an autonomous multi-model AI agent from scratch on edge hardware, real-time YOLOv8 anti-evasion vision systems, and network automation solutions.
                 </p>
-                
                 <div class="hero-cta-group">
                     <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.75rem; font-size: 1rem;">Explore Projects ➔</a>
                 </div>
-
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-num">CCNA</div>
@@ -2472,7 +2153,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         <div class="stat-label">Verified Certs</div>
                     </div>
                 </div>
-
                 <!-- Space-Optimized Android Mobile Profile Bar -->
                 <div class="mobile-only mobile-hero-profile-card">
                     <div class="mobile-profile-header">
@@ -2485,7 +2165,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                     <button class="mobile-bio-toggle-btn" onclick="toggleMobileBioDetails(this)">📋 Show Candidate Details ▼</button>
                     <div class="mobile-bio-details" id="mobile-bio-details">
                         <div><strong>Full Name:</strong> Muhammad Irfan Fahmi</div>
- 
                         <div><strong>Location:</strong> Klang Valley, Malaysia (Open to Relocate)</div>
                         <div><strong>Degree:</strong> B. Computer Engineering (Hons) • UTeM</div>
                         <div><strong>Languages:</strong> Malay (Native), English (Fluent)</div>
@@ -2494,7 +2173,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                     </div>
                 </div>
             </div>
-
             <!-- Desktop PC Authentic Personal Biodata Card -->
             <div class="pc-only hero-profile-card">
                 <div class="biodata-header">
@@ -2503,13 +2181,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                     <h2 class="profile-name">Muhammad Irfan Fahmi</h2>
                     <div class="profile-role">Computer Engineering Graduate • UTeM</div>
                 </div>
-                
                 <ul class="profile-info-list">
                     <li class="profile-info-item">
                         <span class="bio-label">👤 Full Name</span>
                         <span class="bio-value">Muhammad Irfan Fahmi</span>
                     </li>
- 
                     <li class="profile-info-item">
                         <span class="bio-label">📍 Base Location</span>
                         <span class="bio-value">Klang Valley, Malaysia (Open to Relocate)</span>
@@ -2538,7 +2214,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about" class="section-padding" style="background: var(--bg-section-alt);">
         <div class="container">
@@ -2546,7 +2221,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <span class="section-tag">01 // Engineering Identity</span>
                 <h2 class="section-title">Bridging Hardware, Networks & Autonomous AI</h2>
             </div>
-
             <div class="about-pillars-grid">
                 <div class="pillar-card">
                     <div class="pillar-icon">🌐</div>
@@ -2555,7 +2229,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         Cisco CCNA certified. Specialized in OSPF routing, VLAN segmentation, STP, EtherChannel, Wireshark packet capture, and firewall access control lists (ACL).
                     </div>
                 </div>
-
                 <div class="pillar-card">
                     <div class="pillar-icon">👁️</div>
                     <div class="pillar-title">AI & Computer Vision</div>
@@ -2563,7 +2236,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         Custom YOLOv8 PyTorch dataset fine-tuning, OpenCV real-time video stream processing, and multi-camera split-view occlusion mitigation engines.
                     </div>
                 </div>
-
                 <div class="pillar-card">
                     <div class="pillar-icon">⚡</div>
                     <div class="pillar-title">Embedded Systems & IoT</div>
@@ -2571,7 +2243,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         Microcontroller firmware in C/C++, sensor integration (HX711, load cells, flex sensors, Bluetooth), and EasyEDA schematic circuit design.
                     </div>
                 </div>
-
                 <div class="pillar-card">
                     <div class="pillar-icon">🏭</div>
                     <div class="pillar-title">Industrial Automation</div>
@@ -2582,7 +2253,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </section>
-
     <!-- Featured Projects Section -->
     <section id="projects" class="section-padding">
         <div class="container">
@@ -2590,7 +2260,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <span class="section-tag">02 // Portfolio Engineering</span>
                 <h2 class="section-title">Featured Projects & Systems</h2>
             </div>
-
                         <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 0 auto;">
                 <!-- Single Verified Capstone Project -->
                 <div class="project-card">
@@ -2676,7 +2345,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </section>
-
     <!-- Skills Matrix Section -->
     <section id="skills" class="section-padding" style="background: var(--bg-section-alt);">
         <div class="container">
@@ -2684,7 +2352,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <span class="section-tag">03 // Technical Expertise</span>
                 <h2 class="section-title">Core Competencies & Tooling Matrix</h2>
             </div>
-
             <div class="skills-grid">
                 <div class="skill-category-card">
                     <div class="category-title">🌐 Networking & Security</div>
@@ -2696,7 +2363,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         <li class="skill-item"><span>Fiber Optic Splicing</span><span class="skill-badge">Hands-On</span></li>
                     </ul>
                 </div>
-
                 <div class="skill-category-card">
                     <div class="category-title">👁️ Computer Vision & AI</div>
                     <ul class="skill-list">
@@ -2707,7 +2373,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         <li class="skill-item"><span>Dataset Augmentation & NMS</span><span class="skill-badge">Verified</span></li>
                     </ul>
                 </div>
-
                 <div class="skill-category-card">
                     <div class="category-title">⚡ Hardware & Embedded</div>
                     <ul class="skill-list">
@@ -2718,7 +2383,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         <li class="skill-item"><span>Workstation & Maintenance</span><span class="skill-badge">Hardware</span></li>
                     </ul>
                 </div>
-
                 <div class="skill-category-card">
                     <div class="category-title">💻 Software & Cloud</div>
                     <ul class="skill-list">
@@ -2732,7 +2396,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </section>
-
     <!-- Experience Timeline -->
     <section id="experience" class="section-padding">
         <div class="container">
@@ -2740,7 +2403,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <span class="section-tag">04 // Career & Education</span>
                 <h2 class="section-title">Education & Technical Timeline</h2>
             </div>
-
                                                 <div class="timeline-wrap">
                 <!-- 1. Universiti Teknikal Malaysia Melaka (UTeM) (OCT 2022 — EXPECTED NOV 2026) -->
                 <div class="timeline-item">
@@ -2754,7 +2416,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-
                 <!-- 2. Global Elite Ventures Sdn. Bhd (27 SEP 2021 — 31 JUL 2022) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2767,7 +2428,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-
                 <!-- 3. Politeknik Port Dickson (DEC 2018 — MAY 2022) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2780,7 +2440,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-
                 <!-- 4. ARNN Technologies & Karar Solution (1 JUN 2020 — 30 JUL 2020) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2793,7 +2452,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-
                 <!-- 5. OKCS Seri Kembangan (1 JUN 2018 — 1 NOV 2018) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2806,7 +2464,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-
                 <!-- 6. Kolej Komuniti Selandar (JUL 2017 — FEB 2019) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2819,7 +2476,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         </div>
                     </div>
                 </div>
-
                 <!-- 7. Military Reserve (Volunteer) (1 MAY 2019 — 30 MAY 2019) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2835,7 +2491,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </section>
-
         <!-- Certifications Gallery Section -->
     <section id="certificates" class="section-padding" style="background: var(--bg-section-alt);">
         <div class="container">
@@ -2843,7 +2498,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <span class="section-tag">05 // Verified Credentials</span>
                 <h2 class="section-title">Certifications & Honors Collection (18 Verified Records)</h2>
             </div>
-
             <!-- Filter Chips -->
             <div class="cert-filters" id="cert-filter-chips">
                 <button class="filter-chip active" onclick="filterCerts('all')">All (18)</button>
@@ -2853,13 +2507,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <button class="filter-chip" onclick="filterCerts('awards')">Awards & Achievements (5)</button>
                 <button class="filter-chip" onclick="filterCerts('experience')">Service & Professional Experience (2)</button>
             </div>
-
             <div class="certs-grid" id="certs-grid-container">
                 <!-- Dynamically rendered from certificates/registry.json -->
             </div>
         </div>
     </section>
-
     <!-- AI Assistant Banner Section -->
     <section class="section-padding">
         <div class="container">
@@ -2875,14 +2527,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
         </div>
     </section>
     </main>
-
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-main);">
                 Muhammad Irfan Fahmi
             </div>
-
             <div class="footer-verification">
                 <span>🔒 Official Verification:</span>
                 <a href="https://linkedin.com/in/mifi99" target="_blank">LinkedIn (mifi99)</a>
@@ -2891,14 +2541,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <span>•</span>
                 <a href="https://github.com/l3al3y/Portfolio" target="_blank">Portfolio Repository</a>
             </div>
-
             <div style="font-size: 0.85rem; color: var(--text-muted);">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Portfolio<br>
                 Built with HTML5, Vanilla CSS3 & Autonomous AI Agent Infrastructure. • ⚙️ Backend Engine Sync: Backend Online
             </div>
         </div>
     </footer>
-
     <!-- PDF Modal Viewer -->
     <div class="modal-overlay" id="pdf-modal-overlay">
         <div class="modal-card">
@@ -2914,7 +2562,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </div>
-
     <!-- Contact Security Modal -->
     <div class="modal-overlay" id="security-modal-overlay">
         <div class="modal-card" style="max-width: 500px;">
@@ -2926,13 +2573,10 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.25rem;">
                     Please complete the Turnstile verification below to reveal Muhammad Irfan's direct phone number and email.
                 </p>
-
                 <div id="captcha-error-msg" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #fca5a5; padding: 0.65rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem; text-align: center;">
                     Security verification failed. Please try again.
                 </div>
-
                 <div id="cf-turnstile-container" class="cf-turnstile" data-sitekey="0x4AAAAAAD9nlicfqO7QQsBk" data-callback="onTurnstileSuccess" style="display: flex; justify-content: center; margin-bottom: 1.25rem;"></div>
-
                 <div id="contact-details-revealed" style="display: none; background: rgba(52, 211, 153, 0.1); border: 1px solid var(--emerald); border-radius: var(--radius-sm); padding: 1.25rem; color: var(--text-main); font-size: 0.9rem;">
                     <div style="font-weight: 700; color: var(--emerald); margin-bottom: 0.75rem; font-size: 0.95rem;">
                         ✅ Verified Candidate Contact Info & Resume
@@ -2958,13 +2602,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             </div>
         </div>
     </div>
-
         <!-- Fixed Floating Chat Launcher Button -->
     <button class="chat-launcher-btn" id="chat-launcher-btn" onclick="toggleFloatingChat()" title="Chat with AI Assistant">
         <span style="font-size: 1.1rem;">🌙</span>
         <span>Chat AI</span>
     </button>
-
     <!-- PRESERVED FLOATING AI CHATBOT WIDGET HTML -->
     <div class="chat-floating-window" id="chat-floating-window" style="display: none;">
         <div class="chat-header" style="flex-direction: column;">
@@ -2977,14 +2619,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                         <div style="font-size: 0.72rem; color: #c084fc;" id="ai-status-label">● Active • Backend Online</div>
                     </div>
                 </div>
-
                 <div style="display: flex; gap: 0.4rem; align-items: center;">
                     <button class="chat-close-btn" onclick="clearChat()" title="Clear chat" style="font-size:0.85rem;">🗑️</button>
                     <button class="chat-close-btn" onclick="toggleFloatingChat()">&times;</button>
                 </div>
             </div>
         </div>
-
         <div class="chat-body" id="chat-body">
             <div class="chat-message bot-msg">
                 <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🌙</div>
@@ -2993,24 +2633,20 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 </div>
             </div>
         </div>
-
         <div class="chat-suggested-prompts" id="chat-suggested-chips">
             <!-- Dynamically populated from SUGGESTION_CHIPS on open/reset -->
         </div>
-
         <div class="chat-input-area">
             <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask about Irfan's experience..." onkeydown="handleChatEnter(event)">
             <button class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff; padding: 0.5rem 0.85rem;" onclick="submitChatMessage()">Send ➔</button>
         </div>
     </div>
-
     <!-- UI Helper & Preserved Chatbot JS -->
     <script>
         window.addEventListener('touchstart', function onFirstTouch() {
             document.documentElement.classList.add('is-touch-device');
             window.removeEventListener('touchstart', onFirstTouch);
         }, { passive: true });
-
         /* -------------------------------------------------------------
            1. Unified Navigation UX: Desktop Hover & Mobile Tap Engine
         ------------------------------------------------------------- */
@@ -3018,7 +2654,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
         const headerLogoTrigger = document.getElementById('header-logo-trigger');
         const navDropdownPanel = document.getElementById('nav-dropdown-panel');
         let navHoverTimeout = null;
-
         function openNavDropdown() {
             if (!navDropdownPanel) return;
             clearTimeout(navHoverTimeout);
@@ -3035,7 +2670,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 if (textSpan) textSpan.innerText = 'Close';
             }
         }
-
         function closeNavDropdown() {
             if (!navDropdownPanel) return;
             clearTimeout(navHoverTimeout);
@@ -3052,14 +2686,12 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 if (textSpan) textSpan.innerText = 'Menu';
             }
         }
-
         function closeNavDropdownWithDelay() {
             clearTimeout(navHoverTimeout);
             navHoverTimeout = setTimeout(() => {
                 closeNavDropdown();
             }, 200); // 200ms grace delay to prevent accidental closing
         }
-
         // Desktop Mouse Hover Listeners (Disabled on Touch Devices)
         if (headerLogoTrigger && navDropdownPanel) {
             headerLogoTrigger.addEventListener('pointerenter', (e) => {
@@ -3067,13 +2699,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                     openNavDropdown();
                 }
             });
-
             headerLogoTrigger.addEventListener('pointerleave', (e) => {
                 if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
                     closeNavDropdownWithDelay();
                 }
             });
-
             navDropdownPanel.addEventListener('pointerenter', (e) => {
                 if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
                     if (navDropdownPanel.classList.contains('active')) {
@@ -3081,22 +2711,18 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                     }
                 }
             });
-
             navDropdownPanel.addEventListener('pointerleave', (e) => {
                 if (window.innerWidth >= 769 && e.pointerType !== 'touch' && !document.documentElement.classList.contains('is-touch-device')) {
                     closeNavDropdownWithDelay();
                 }
             });
-
             // Keyboard Focus Accessibility Fallback for Desktop
             headerLogoTrigger.addEventListener('focus', () => {
                 if (window.innerWidth >= 769) openNavDropdown();
             });
-
             navDropdownPanel.addEventListener('focusin', () => {
                 if (window.innerWidth >= 769) openNavDropdown();
             });
-
             navDropdownPanel.addEventListener('focusout', (e) => {
                 if (window.innerWidth >= 769) {
                     if (!navDropdownPanel.contains(e.relatedTarget) && e.relatedTarget !== headerLogoTrigger) {
@@ -3105,7 +2731,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 }
             });
         }
-
         // Mobile Tap Menu Toggle
         if (mobileMenuToggle && navDropdownPanel) {
             mobileMenuToggle.addEventListener('click', (e) => {
@@ -3118,43 +2743,35 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 }
             });
         }
-
         // Navigation Link Click Handler
         function handleNavClick(event, target) {
             if (event) event.preventDefault();
             closeNavDropdown();
-
             if (target === 'resume') {
                 openPdfModal('resume/resume.pdf', 'Muhammad Irfan Fahmi — Resume');
                 return;
             }
-
             const el = document.querySelector(target);
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
         // Click Outside Handler
         document.addEventListener('click', (e) => {
             if (navDropdownPanel && navDropdownPanel.classList.contains('active')) {
                 const isInsideTrigger = headerLogoTrigger && headerLogoTrigger.contains(e.target);
                 const isInsideToggle = mobileMenuToggle && mobileMenuToggle.contains(e.target);
                 const isInsidePanel = navDropdownPanel.contains(e.target);
-
                 if (!isInsideTrigger && !isInsideToggle && !isInsidePanel) {
                     closeNavDropdown();
                 }
             }
         });
-
         // Escape Key Listener — consolidated into Script Block 3 (line ~5015)
-
         /* -------------------------------------------------------------
            Scroll-Reveal, Scrollspy & Capstone Stat Count-up Observers
         ------------------------------------------------------------- */
         const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
         // Scroll-Reveal Observer for Sections
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -3163,13 +2780,10 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 }
             });
         }, { threshold: 0.12 });
-
         document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
-
         // Scrollspy Observer for Active Section Highlighting
         const spySections = document.querySelectorAll('section[id], div[id="about"]');
         const spyNavLinks = document.querySelectorAll('.nav-links a, .mobile-bottom-dock a');
-
         const spyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -3184,9 +2798,7 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 }
             });
         }, { threshold: 0.3 });
-
         spySections.forEach(sec => spyObserver.observe(sec));
-
         // Back to Top Floating Button Scroll Handler
         const backToTopBtn = document.getElementById('back-to-top-btn');
         let scrollTicking = false;
@@ -3205,13 +2817,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 scrollTicking = true;
             }
         });
-
         if (backToTopBtn) {
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
-
         function toggleFloatingChat() {
             const chatWin = document.getElementById('chat-floating-window');
             if (chatWin) {
@@ -3230,8 +2840,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 }
             }
         }
-
-
         /* -------------------------------------------------------------
            2. Suggestion Chip Pool & Dynamic Rotation System
         ------------------------------------------------------------- */
@@ -3277,21 +2885,17 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 "டிப்ளமோ CGPA மற்றும் கல்வி தகுதி? 🎓"
             ]
         };
-
         function renderRandomChips(lang = 'en') {
             const container = document.getElementById('chat-suggested-chips');
             if (!container) return;
-
             const pool = SUGGESTION_CHIPS[lang] || SUGGESTION_CHIPS.en;
             const shuffled = [...pool].sort(() => 0.5 - Math.random());
             const selected = shuffled.slice(0, 4);
-
             container.innerHTML = selected.map(chipText => {
                 const escaped = escapeHtml(chipText);
                 return `<button class="prompt-chip" onclick="sendSuggestedPrompt('${escaped.replace(/'/g, "\\'")}')">${escaped}</button>`;
             }).join('');
         }
-
         /* -------------------------------------------------------------
            3. 4-Language Adaptability & Personal Growth Summaries
         ------------------------------------------------------------- */
@@ -3301,11 +2905,9 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             cn: `"我是计算机工程系的毕业生，热衷于通过软件、网络和人工智能将创意转化为实用解决方案。我的兴趣涵盖IT支持、全栈Web开发、云技术和自动化，并始终寻找学习和应用新工具的机会。我喜欢开发能够优化工作流程、提升技术能力并解决现实难题的项目。我的目标是成长为一名融汇硬件、软件和人工智能的工程师，创造出可靠且具备深远影响力的技术。"`,
             in: `"நான் மென்பொருள், நெட்வொர்க்கிங் மற்றும் AI மூலம் யோசனைகளை நடைமுறை தீர்வுகளாக மாற்றுவதை விரும்பும் கணினி பொறியியல் பட்டதாரி. எனது ஆர்வங்கள் IT ஆதரவு, முழு-ஸ்டாக் வலை உருவாக்கம், மேகக்கணி தொழில்நுட்பங்கள் மற்றும் தானியங்கி அமைப்புகளை உள்ளடக்கியது. வன்பொருள், மென்பொருள் மற்றும் செயற்கை நுண்ணறிவை இணைத்து நம்பகமான தொழில்நுட்பத்தை உருவாக்குவதே எனது இலக்காகும்."`
         };
-
         function switchSummaryLang(langKey, btnEl) {
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             btnEl.classList.add('active');
-
             const textPane = document.getElementById('executive-summary-text');
             if (!textPane) return;
             textPane.style.opacity = 0;
@@ -3314,8 +2916,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 textPane.style.opacity = 1;
             }, 150);
         }
-
-
         function copyTextFromElement(elementId) {
             const el = document.getElementById(elementId);
             const text = el ? el.innerText : null;
@@ -3340,7 +2940,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             catch(e) { console.warn('Copy failed:', e); }
             document.body.removeChild(ta);
         }
-
         /* -------------------------------------------------------------
            5. AI Engine Single Source of Truth & Knowledge Grounding
         ------------------------------------------------------------- */
@@ -3348,7 +2947,6 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
             profile: {
                 name: "Muhammad Irfan Fahmi",
                 dob: "8 March 1999",
- 
                 location: "Klang Valley, Malaysia",
                 degree: "Bachelor of Computer Engineering with Honours",
                 institution: "Universiti Teknikal Malaysia Melaka (UTeM)",
@@ -3425,13 +3023,11 @@ body.light-theme #revealed-phone, body.light-theme #revealed-email,
                 }
             ]
         };
-
         const SYSTEM_PROMPT = `<system_identity>
 You are the official AI Engineering Representative for Muhammad Irfan Fahmi.
 Your mission is to represent Irfan as a friendly, professional Malaysian engineer. Users should feel they are chatting with a real Malaysian professional—warm, confident, approachable, and natural—not an AI trying to imitate heavy dialects.
 Natural conversation is ALWAYS the highest priority.
 </system_identity>
-
 <core_principles_and_priority_order>
 1. Correct information
 2. Natural conversation (Highest Priority)
@@ -3440,7 +3036,6 @@ Natural conversation is ALWAYS the highest priority.
 5. Light dialect adaptation (optional — max 2–3 dialect words per response, NEVER full paragraphs or forced roleplay)
 * GOLDEN RULE: Never sacrifice readability or natural flow just to sound local. If speaking naturally conflicts with speaking dialect, ALWAYS CHOOSE NATURAL CONVERSATION.
 </core_principles_and_priority_order>
-
 <conversation_style_directives>
 • Sound warm, confident, approachable, and human.
 • Avoid robotic wording, overly formal language, or exaggerated slang.
@@ -3450,7 +3045,6 @@ Natural conversation is ALWAYS the highest priority.
 • Humour & Teasing: Light, friendly humour is welcome when appropriate (e.g. "Haha betul juga", "Haha, mana ada merajuk. Gurau je tadi"). Never force jokes or become a comedian.
 • No Roleplay: Never pretend to be a Kelantan villager, a Negeri Sembilan elder, or a Sabahan native.
 </conversation_style_directives>
-
 <dialect_adaptation_policy>
 1. Light Adaptation Only (Max 2–3 dialect words per response):
    - Negeri Sembilan: Allowed words: kome, den, apo, yo, takdo. Example: "Den bukan orang Nogori, tapi boleh la guna sikit-sikit. Apo yang kome nak tahu?"
@@ -3461,16 +3055,13 @@ Natural conversation is ALWAYS the highest priority.
    - Sarawak: Allowed words: kamek, kitak.
 2. Dialect Safety Guardrail: If confidence in dialect usage is low, DO NOT GUESS OR INVENT DIALECT. Reply in natural, smooth Bahasa Malaysia (e.g. "Saya tak pasti penggunaan dialek yang tepat, jadi saya gunakan Bahasa Malaysia biasa supaya lebih semula jadi.").
 </dialect_adaptation_policy>
-
 <web_search_and_world_knowledge_permission>
 1. Web Search & World Knowledge Authorized: You have FULL PERMISSION to utilize real-time web search, latest documentation (Ultralytics YOLOv8/v10/v11, PyTorch, OpenCV, Cisco CCNA RFCs, IEEE standards), and general world knowledge to answer any question accurately.
 2. Deep Concept Synthesis: When asked technical or general questions (e.g., YOLO versions, computer vision, networking protocols, hardware specifications), explain the concepts with 100% accurate real-world knowledge, then connect the explanation to Irfan's engineering capstone metrics (77.4% Precision, 72.0% Recall, <90ms latency at 50 epochs).
 </web_search_and_world_knowledge_permission>
-
 <candidate_knowledge_base>
 <candidate_profile>
 - Full Name: Muhammad Irfan Fahmi
- 
 - Location: Klang Valley, Malaysia (Willing to relocate/travel to Penang, Johor, KL, or outstation)
 - Education:
   * Bachelor of Computer Engineering with Honours, Universiti Teknikal Malaysia Melaka (UTeM) — Oct 2022 – Present (Expected Graduation: Nov 2026, Year 4 Student).
@@ -3497,43 +3088,35 @@ Natural conversation is ALWAYS the highest priority.
   2. IoT Livestock Weight Tracking System (INOTEK 2025 3rd Place): Arduino microcontrollers, HX711 load cell amplifiers, C/C++ firmware, 98%+ precision.
 </candidate_profile>
 </candidate_knowledge_base>
-
 <knowledge_protection_and_candidate_veracity>
 1. VERIFIED CANDIDATE PROFILE IS SUPREME: Always prioritize stored candidate profile facts. Never contradict verified credentials.
 2. VERIFIED FACT — CCNA CERTIFICATION = YES: Irfan holds official Cisco CCNA credentials (Cisco CCNA: Enterprise Networking & Automation & Cisco CCNA: Switching, Routing & Wireless via Cisco Networking Academy / UTeM). When asked "Does Irfan have CCNA certification?" or "Is Irfan CCNA certified?", ALWAYS answer YES with absolute confidence!
 3. NEVER HALLUCINATE OR DENY VERIFIED CREDENTIALS: Never deny or say "no" to Irfan's verified CCNA certifications, degree program, awards, or capstone project metrics.
 </knowledge_protection_and_candidate_veracity>
-
 <quality_control_and_precision_mandate>
 1. STRICT PRE-RESPONSE QUESTION QC: Carefully read and analyze the exact user prompt before responding. Perform internal Quality Control (QC) to verify the exact scope, intent, and target language.
 2. ANSWER ONLY WHAT IS ASKED: Respond ONLY to the specific question requested. NEVER dump unasked background history, unrequested education timeline steps, or extra unasked bullet points.
 3. NO EXTRANEOUS FLUFF OR RESUME DUMPS: If asked for age, state ONLY the age. If asked for location, state ONLY the location. If asked for a definition, state ONLY the definition. Keep responses laser-focused, concise, and 100% accurate.
 </quality_control_and_precision_mandate>
-
 <conversation_flow_directives>
 1. Concise Greetings & Natural Small Talk: When the user says simple greetings or casual small talk, reply warmly and naturally in 1-to-2 sentences. Never dump long resume summaries or bulleted lists for simple greetings!
 2. Direct & Precise Answers: Answer specific questions directly with exact facts without adding unnecessary multi-step history unless explicitly requested.
 </conversation_flow_directives>
-
 <reasoning_guidelines>
 1. Independent Reasoning & Real-Time Synthesis: Answer every prompt naturally using full AI intellect. Never use rigid scripts.
 2. Security Guardrail: Direct contact details (phone, email) require clicking the "🔓 Reveal Contact Info" button for Turnstile verification.
 </reasoning_guidelines>`;
-
         // Initialize Chips on page load
         window.addEventListener('DOMContentLoaded', () => {
             renderRandomChips('en');
         });
-
         function handleChatEnter(e) {
             if (e.key === 'Enter') submitChatMessage();
         }
-
         function sendSuggestedPrompt(promptText) {
             document.getElementById('chat-user-input').value = promptText;
             submitChatMessage();
         }
-
         function clearChat() {
             document.getElementById('chat-body').innerHTML = `
                 <div class="chat-message bot-msg">
@@ -3546,14 +3129,12 @@ Natural conversation is ALWAYS the highest priority.
             CHAT_CONVERSATION_HISTORY = [];
             renderRandomChips('en');
         }
-
         function detectUserLanguage(text) {
             if (/[\u4e00-\u9fa5]/.test(text)) return 'cn'; // Chinese (Mandarin/华语)
             if (/[\u0b80-\u0bff]/.test(text)) return 'in'; // Tamil (தமிழ்)
             if (/[\u3040-\u30ff\u31f0-\u31ff]/.test(text)) return 'ja'; // Japanese
             if (/[\u0e00-\u0e7f]/.test(text)) return 'th'; // Thai
             if (/[\u0600-\u06ff]/.test(text)) return 'ar'; // Arabic
-            
             const bmWords = [
                 'siapa', 'awak', 'kamu', 'anda', 'umur', 'kemahiran', 'projek', 'hubungi', 'berapa', 'selamat', 'apa', 'boleh', 'bila', 'lahir', 'telefon', 'emel', 'melayu', 'hai', 'terima', 'kasih', 'bagaimana', 'kerja', 'maklumat', 'sijil', 'gred', 'tarikh', 'gaji', 'pandai', 'shift', 'sebab', 'sikit', 'beri', 'bagi', 'versi', 'terangkan', 'jelaskan', 'apakah', 'mana', 'nak', 'saya', 'tak', 'ada', 'kat', 'tolong',
                 'demo', 'kawe', 'oghe', 'gapo', 'kelate', 'make', 'tubik', 'bakpe', 'hok',
@@ -3567,13 +3148,10 @@ Natural conversation is ALWAYS the highest priority.
             ];
             const lower = text.toLowerCase();
             if (bmWords.some(w => lower.includes(w))) return 'bm';
-            
             const esWords = ['quien', 'eres', 'hola', 'edad', 'anos', 'como', 'habilidades', 'proyecto'];
             if (esWords.some(w => lower.includes(w))) return 'es';
-
             return 'en';
         }
-
         function formatBotMarkdown(text) {
             if (!text) return "";
             let html = text;
@@ -3586,28 +3164,21 @@ Natural conversation is ALWAYS the highest priority.
             html = html.replace(/\n/g, '<br>');
             return html;
         }
-
         async function submitChatMessage() {
             const input = document.getElementById('chat-user-input');
             const query = input.value.trim();
             if (!query) return;
-
             const chatBody = document.getElementById('chat-body');
-
             // Render User Message
             const userMsgDiv = document.createElement('div');
             userMsgDiv.className = 'chat-message user-msg';
             userMsgDiv.innerHTML = `<div class="chat-bubble">${escapeHtml(query)}</div>`;
             chatBody.appendChild(userMsgDiv);
-
             input.value = '';
             chatBody.scrollTop = chatBody.scrollHeight;
-
             const lang = detectUserLanguage(query);
             renderRandomChips(lang);
-
             const qLower = query.toLowerCase();
-
             // Client-side Security Override for Contact Info
             const isContactInquiry = (
                 /\b(contact|phone|email|emel|hubungi|whatsapp|turnstile|modal)\b/i.test(qLower) ||
@@ -3626,11 +3197,9 @@ Natural conversation is ALWAYS the highest priority.
                 } else {
                     securityReply = `🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against automated web scraping.<br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 Verify & Reveal Contact Details</button>`;
                 }
-
                 appendBotMessage(securityReply);
                 return;
             }
-
             // Render AI Thinking Spinner
             const thinkingDiv = document.createElement('div');
             thinkingDiv.className = 'chat-message bot-msg';
@@ -3643,9 +3212,7 @@ Natural conversation is ALWAYS the highest priority.
             `;
             chatBody.appendChild(thinkingDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
-
             let botAnswer = "";
-
             try {
                 botAnswer = await fetchKimiK25Ai(query);
             } catch (err) {
@@ -3655,14 +3222,11 @@ Natural conversation is ALWAYS the highest priority.
                 const indicator = document.getElementById('ai-thinking-indicator');
                 if (indicator) indicator.remove();
             }
-
             if (!botAnswer || typeof botAnswer !== 'string' || botAnswer.trim().length === 0) {
                 botAnswer = generateNativeSpontaneousAnswer(query, lang);
             }
-
             appendBotMessage(botAnswer);
         }
-
         function appendBotMessage(htmlContent) {
             const chatBody = document.getElementById('chat-body');
             const botMsgDiv = document.createElement('div');
@@ -3674,8 +3238,6 @@ Natural conversation is ALWAYS the highest priority.
             chatBody.appendChild(botMsgDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
         }
-
-
         const PRIMARY_MODEL_CASCADE = [
             "glm-5.1",
             "glm-5.2",
@@ -3686,15 +3248,12 @@ Natural conversation is ALWAYS the highest priority.
             "deepseek-v4-pro",
             "deepseek-v4-flash"
         ];
-
         let CHAT_CONVERSATION_HISTORY = [];
-
         /* ─────────────────────────────────────────────────────────────
            ResumeAgent Intelligent Model Selection Engine (v2.0)
            Phase 2: SHADOW MODE (Zero Production Risk)
         ───────────────────────────────────────────────────────────── */
         const SHADOW_MODE_ACTIVE = true;
-
         const RESUME_AGENT_MODEL_REGISTRY = [
             { id: "glm-5.1", name: "GLM 5.1 Representative", specialties: ["GENERAL_CONVERSATION", "RECRUITER_GREETING", "PROFILE_OVERVIEW"], reasoningCapability: 85 },
             { id: "glm-5.2", name: "GLM 5.2 Vision Specialist", specialties: ["COMPUTER_VISION", "YOLOV8", "OPENCV", "HARDWARE_INSPECTION"], reasoningCapability: 90 },
@@ -3705,7 +3264,6 @@ Natural conversation is ALWAYS the highest priority.
             { id: "kimi-k2.7", name: "Kimi K2.7 Multilingual & Dialect", specialties: ["MULTILINGUAL", "DIALECT_KELANTAN", "DIALECT_NORTHERN", "DIALECT_NOGORI"], reasoningCapability: 88 },
             { id: "hy3-tencent", name: "HY3 Tencent Networking Specialist", specialties: ["NETWORKING", "CISCO_CCNA", "OSPF", "VLAN", "SECURITY_ACL", "TROUBLESHOOTING"], reasoningCapability: 94 }
         ];
-
         function classifyUserIntent(userQuery) {
             const q = userQuery.toLowerCase();
             const isNetworking = /\b(network|networking|ccna|cisco|ospf|vlan|routing|switch|ip|tcp|udp|wireshark|packet|subnet|dns|dhcp|firewall|acl)\b/i.test(q);
@@ -3715,11 +3273,9 @@ Natural conversation is ALWAYS the highest priority.
             const isArch = /\b(architecture|breakdown|documentation|deep dive|explain in detail|how it works|system design|methodology)\b/i.test(q);
             const isSummary = /\b(summary|summarise|summarize|quick|fast|short|bullet|overview|brief)\b/i.test(q);
             const isDialect = /\b(kelate|kecek|dialek|loghat|nogori|den|hang|habaq|bah|kamek|kitak|kome|gapo|kawe|demo)\b/i.test(q);
-
             let primaryIntent = "GENERAL_CONVERSATION";
             let domain = "general";
             let confidence = 0.88;
-
             if (isNetworking) { primaryIntent = "NETWORKING"; domain = "cisco_ccna"; confidence = 0.96; }
             else if (isCode) { primaryIntent = "PROGRAMMING"; domain = "software_engineering"; confidence = 0.95; }
             else if (isVision) { primaryIntent = "COMPUTER_VISION"; domain = "yolov8_opencv"; confidence = 0.95; }
@@ -3727,10 +3283,8 @@ Natural conversation is ALWAYS the highest priority.
             else if (isArch) { primaryIntent = "ARCHITECTURE"; domain = "system_design"; confidence = 0.93; }
             else if (isSummary) { primaryIntent = "RAPID_SUMMARY"; domain = "quick_screening"; confidence = 0.94; }
             else if (isDialect) { primaryIntent = "MULTILINGUAL"; domain = "malaysian_dialect"; confidence = 0.94; }
-
             return { primaryIntent, domain, confidence };
         }
-
         function scoreModelsForIntent(classification) {
             const scores = RESUME_AGENT_MODEL_REGISTRY.map(model => {
                 let score = 0;
@@ -3749,32 +3303,25 @@ Natural conversation is ALWAYS the highest priority.
             scores.sort((a, b) => b.score - a.score);
             return scores[0];
         }
-
         function selectModelByQuery(query) {
             const classification = classifyUserIntent(query);
             const bestMatch = scoreModelsForIntent(classification);
-            
             console.log(`[Shadow Mode Engine] Production: glm-5.1 | Predicted: ${bestMatch.modelId} | Intent: ${classification.primaryIntent} | Score: ${bestMatch.score} | Conf: ${Math.round(classification.confidence * 100)}%`);
-
             if (SHADOW_MODE_ACTIVE) {
                 return "glm-5.1"; // 100% Zero Production Risk during Shadow Mode
             }
             return bestMatch.modelId;
         }
-
         // RootSys Cloud AI Endpoint with 1M Token Context Persistence & High-Speed Execution
         async function fetchKimiK25Ai(userQuery) {
             const selectedModel = selectModelByQuery(userQuery);
             console.log(`[Ultra-Fast AI Router] Dispatching to '${selectedModel}' via Cloudflare Secure Proxy.`);
-
             CHAT_CONVERSATION_HISTORY.push({ role: "user", content: userQuery });
             if (CHAT_CONVERSATION_HISTORY.length > 40) {
                 CHAT_CONVERSATION_HISTORY = CHAT_CONVERSATION_HISTORY.slice(-30);
             }
-
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 45000);
-
             const isPrimary8Model = PRIMARY_MODEL_CASCADE.includes(selectedModel);
             const payload = {
                 model: selectedModel,
@@ -3787,11 +3334,9 @@ Natural conversation is ALWAYS the highest priority.
             if (!isPrimary8Model) {
                 payload.max_tokens = 1024; // Only cap tokens for 9Router fallback models
             }
-
             const endpoints = [
                 "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions"
             ];
-
             let lastErr = null;
             for (const ep of endpoints) {
                 try {
@@ -3803,7 +3348,6 @@ Natural conversation is ALWAYS the highest priority.
                         signal: controller.signal,
                         body: JSON.stringify(payload)
                     });
-
                     if (response.ok) {
                         clearTimeout(timeoutId);
                         const data = await response.json();
@@ -3815,12 +3359,9 @@ Natural conversation is ALWAYS the highest priority.
                     lastErr = err;
                 }
             }
-
             clearTimeout(timeoutId);
             throw lastErr || new Error("All AI endpoints timed out");
         }
-
-
         /* -------------------------------------------------------------
            UNIVERSAL DYNAMIC 1D CNN TYPO PREDICTOR & WORD CORRECTOR
            Architecture:
@@ -3832,7 +3373,6 @@ Natural conversation is ALWAYS the highest priority.
         ------------------------------------------------------------- */
         let UNIVERSAL_CNN_VOCAB_FEATURES = null;
         let UNIVERSAL_WORD_SET = null;
-
         function extractChar1DCNNFeatures(word) {
             const clean = word.toLowerCase().replace(/[^a-z0-9]/g, '');
             if (!clean || clean.length < 2) return null;
@@ -3856,11 +3396,9 @@ Natural conversation is ALWAYS the highest priority.
                 endChar: clean[clean.length - 1]
             };
         }
-
         function initUniversalCNNEngine() {
             if (UNIVERSAL_CNN_VOCAB_FEATURES) return;
             UNIVERSAL_WORD_SET = new Set();
-
             function collectWords(obj) {
                 if (!obj) return;
                 if (typeof obj === 'string') {
@@ -3879,7 +3417,6 @@ Natural conversation is ALWAYS the highest priority.
                     }
                 }
             }
-
             const baseConversationalWords = [
                 "bagus", "terbaik", "good", "nice", "great", "cool", "awesome", "perfect", "mantap", "cantik", "okey", "okay",
                 "hello", "greetings", "selamat", "salam", "khabar", "terima", "kasih", "thanks", "thank", "help", "please",
@@ -3890,24 +3427,19 @@ Natural conversation is ALWAYS the highest priority.
                 "start", "monday", "work", "job", "what", "can", "you", "do"
             ];
             baseConversationalWords.forEach(w => UNIVERSAL_WORD_SET.add(w));
-
             if (typeof RESUME_DATA !== 'undefined') {
                 collectWords(RESUME_DATA);
             }
-
             UNIVERSAL_CNN_VOCAB_FEATURES = Array.from(UNIVERSAL_WORD_SET).map(word => ({
                 target: word,
                 feat: extractChar1DCNNFeatures(word)
             })).filter(item => item.feat !== null);
         }
-
         function predictTypoWithCNN(inputWord) {
             initUniversalCNNEngine();
             const inputClean = inputWord.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
             if (!inputClean || inputClean.length <= 2) return inputWord;
-
             if (UNIVERSAL_WORD_SET && UNIVERSAL_WORD_SET.has(inputClean)) return inputWord;
-
             const PHONETIC_MAP = {
                 "bgys": "bagus", "bgs": "bagus", "bagos": "bagus",
                 "gud": "good", "god": "good",
@@ -3916,18 +3448,14 @@ Natural conversation is ALWAYS the highest priority.
                 "ccnaa": "ccna", "yolo8": "yolov8", "pyton": "python", "wireshak": "wireshark"
             };
             if (PHONETIC_MAP[inputClean]) return PHONETIC_MAP[inputClean];
-
             const inputFeat = extractChar1DCNNFeatures(inputClean);
             if (!inputFeat) return inputWord;
-
             let bestTarget = inputWord;
             let maxConvScore = -1.0;
-
             for (const item of UNIVERSAL_CNN_VOCAB_FEATURES) {
                 const targetFeat = item.feat;
                 if (!targetFeat) continue;
                 if (Math.abs(inputFeat.length - targetFeat.length) > 2) continue;
-
                 let bigramMatches = 0, totalBigrams = 0;
                 for (const bg in inputFeat.bigrams) {
                     totalBigrams += inputFeat.bigrams[bg];
@@ -3935,7 +3463,6 @@ Natural conversation is ALWAYS the highest priority.
                         bigramMatches += Math.min(inputFeat.bigrams[bg], targetFeat.bigrams[bg]);
                     }
                 }
-
                 let trigramMatches = 0, totalTrigrams = 0;
                 for (const tg in inputFeat.trigrams) {
                     totalTrigrams += inputFeat.trigrams[tg];
@@ -3943,35 +3470,28 @@ Natural conversation is ALWAYS the highest priority.
                         trigramMatches += Math.min(inputFeat.trigrams[tg], targetFeat.trigrams[tg]);
                     }
                 }
-
                 const bigramScore = totalBigrams > 0 ? (bigramMatches / Math.max(totalBigrams, Object.keys(targetFeat.bigrams).length)) : 0;
                 const trigramScore = totalTrigrams > 0 ? (trigramMatches / Math.max(totalTrigrams, Object.keys(targetFeat.trigrams).length)) : 0;
                 const startScore = (inputFeat.startChar === targetFeat.startChar) ? 1.0 : 0.0;
                 const endScore = (inputFeat.endChar === targetFeat.endChar) ? 1.0 : 0.0;
-
                 const set1 = new Set(inputClean.split(''));
                 const set2 = new Set(targetFeat.word.split(''));
                 let charIntersection = 0;
                 set1.forEach(c => { if (set2.has(c)) charIntersection++; });
                 const charScore = charIntersection / Math.max(set1.size, set2.size);
-
                 const convLogit = (0.35 * bigramScore) + (0.25 * trigramScore) + (0.25 * charScore) + (0.075 * startScore) + (0.075 * endScore);
-
                 if (convLogit > 0.50 && convLogit > maxConvScore) {
                     maxConvScore = convLogit;
                     bestTarget = item.target;
                 }
             }
-
             return (maxConvScore >= 0.50) ? bestTarget : inputWord;
         }
-
         function correctQueryTyposWithCNN(queryText) {
             if (!queryText) return queryText;
             const words = queryText.split(/\s+/);
             const correctedWords = words.map(w => predictTypoWithCNN(w));
             let result = correctedWords.join(' ');
-
             // Multi-word compound typo correction (e.g., "ccna entarprise" → "ccna enterprise")
             if (typeof IRFAN_KNOWLEDGE_BASE !== 'undefined') {
                 const compoundPhrases = [
@@ -4009,12 +3529,10 @@ Natural conversation is ALWAYS the highest priority.
             }
             return result;
         }
-
         /* Structured Retrieval Engine over RESUME_DATA (Last-Resort Fallback) */
         function generateNativeSpontaneousAnswer(inputQuery, lang) {
             const normalizedQuery = (typeof correctQueryTyposWithCNN === 'function') ? correctQueryTyposWithCNN(inputQuery) : inputQuery;
             const q = (normalizedQuery || inputQuery).toLowerCase().trim();
-
             // 0.05 CASUAL SMALL TALK INTERCEPTOR (NATURAL HUMAN VIBE)
             if (q.includes('makan belum') || q.includes('dah makan') || q.includes('makan dah')) {
                 return `Haha, saya kan AI, tak makan. Awak dah makan ke?`;
@@ -4028,7 +3546,6 @@ Natural conversation is ALWAYS the highest priority.
             if (q.includes('merajuk')) {
                 return `Haha, mana ada merajuk. Gurau je tadi!`;
             }
-
             // 0.0 MALAYSIAN DIALECT LIGHT ADAPTATION INTERCEPTOR (MAX 2-3 WORDS)
             const isKelantanDialect = /\b(kecek kelate|ore mano|demo ore|gapo dia|gapo dio|kawe|oghe kelate|bakpe|make|tubik|dok puso|kito gu|kecek)\b/i.test(q) || q.includes('kecek kelate') || q.includes('ore mano') || q.includes('demo ore');
             if (isKelantanDialect) {
@@ -4040,27 +3557,22 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Boleh. Kawe sedia bantu terangkan pasal profil kejuruteraan, pensijilan CCNA, atau projek YOLOv8 Irfan. Gapo demo nak tahu?`;
             }
-
             const isNogoriDialect = /\b(kome|den|apo|yo|takdo|nogori)\b/i.test(q) || q.includes('nogori');
             if (isNogoriDialect) {
                 return `Den bukan orang Nogori, tapi boleh la guna sikit-sikit. Apo yang kome nak tahu pasal Irfan?`;
             }
-
             const isUtaraDialect = /\b(hang|depa|hampa|awaq|habaq mai|kalut|mai|loqlaq)\b/i.test(q) || q.includes('habaq mai') || q.includes('hang paham');
             if (isUtaraDialect) {
                 return `Hang nak tengok projek atau kelayakan dia ka? Boleh je, beritahu saja apa yang hang nak tahu pasai Irfan.`;
             }
-
             const isSabahDialect = /\b(sia|kamurang|ngam|astaga|buyuk|palui|gia|tapuk)\b/i.test(q) || (q.includes('bah') && q.includes('sia'));
             if (isSabahDialect) {
                 return `Boleh bah. Apa yang ko mau tahu pasal pengalaman, CCNA, atau projek YOLOv8 Irfan?`;
             }
-
             const isSarawakDialect = /\b(kamek|kitak|nya|nang|iboh|kelakar|padah|sinee|polah)\b/i.test(q) || q.includes('kamek nak');
             if (isSarawakDialect) {
                 return `Boleh juak. Apa yang kitak nak tahu pasal projek capstone atau pensijilan Irfan?`;
             }
-
             // 0. OUTDATED METRICS INTERCEPT RULE
             const isOutdatedMetricQuery = q.includes('98.6') || q.includes('97.8') || (q.includes('150') && (q.includes('epoch') || q.includes('epochs'))) || q.includes('99.4');
             if (isOutdatedMetricQuery) {
@@ -4069,7 +3581,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `The portfolio's earlier version contained different performance figures. Those figures were subsequently removed during fact-checking. The current verified benchmark is 77.4% precision and 72.0% recall at 50 epochs, with under 90ms real-time inference latency.`;
             }
-
             // 0.1 UNDOCUMENTED DETAILS / RECRUITER TRAPS (DO NOT INVENT ANSWERS)
             const isUndocumentedDetail = 
                 q.includes('yolov5') || 
@@ -4088,7 +3599,6 @@ Natural conversation is ALWAYS the highest priority.
                 (q.includes('azure') && (q.includes('infra') || q.includes('deployment') || q.includes('manage'))) ||
                 (q.includes('how') && q.includes('measure') && q.includes('latency')) ||
                 q.includes('model latency or complete system');
-
             if (isUndocumentedDetail) {
                 if (lang === 'bm') {
                     return `Butiran khusus tersebut tidak didokumentasikan dalam maklumat portfolio sedia ada saya.`;
@@ -4097,7 +3607,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `That specific detail isn't documented in my current portfolio information.`;
             }
-
             // 0.2 COMMERCIAL DEPLOYMENT / SENIOR EXPERIENCE HONESTY GUARD
             if (q.includes('commercially deployed') || q.includes('paying customers') || q.includes('lotus or jaya grocer') || q.includes('company buy') || q.includes('buy your checkout') || q.includes('commercial retail company')) {
                 if (lang === 'bm') {
@@ -4105,21 +3614,18 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan's self-checkout system is an academic final-year degree capstone prototype. It has not been commercially deployed in retail stores, but serves as a fully functional proof-of-concept demonstrating visual and barcode dual verification.`;
             }
-
             if ((q.includes('ospf') || q.includes('vlan')) && (q.includes('production') || q.includes('live enterprise') || q.includes('commercial enterprise'))) {
                 if (lang === 'bm') {
                     return `Irfan mempunyai pengalaman rangkaian Cisco CCNA berasaskan akademik dan makmal (termasuk OSPF, VLAN, STP, dan simulasi Cisco Packet Tracer), tetapi bukan penyebaran pengeluaran komersial enterprise.`;
                 }
                 return `Irfan has academic and lab-based Cisco CCNA enterprise networking experience (including OSPF, VLANs, STP, and Packet Tracer topology simulation), but not commercial enterprise production deployment.`;
             }
-
             if ((q.includes('cybersecurity engineer') || q.includes('soc analyst') || q.includes('penetration tester')) && (q.includes('professional') || q.includes('work as') || q.includes('worked as'))) {
                 if (lang === 'bm') {
                     return `Irfan memegang pensijilan rasmi Cisco Endpoint Security dan Cyber Threat Management, tetapi latar belakang utamanya ialah Kejuruteraan Komputer dan Sokongan IT. Beliau bersedia untuk peranan peringkat permulaan (entry-level).`;
                 }
                 return `Irfan holds official Cisco Endpoint Security and Cyber Threat Management certifications, but his primary background is Computer Engineering and IT Support. He is qualified for entry-level security and infrastructure roles.`;
             }
-
             // 0.3 TECHNICAL CONCEPT & DEFINITION HANDLERS (YOLOv8, OpenCV, OSPF, VLAN, CCNA, MySQL)
             const isYoloVersionQuery = (q.includes('version') || q.includes('versi') || q.includes('sejarah') || q.includes('history') || q.includes('list')) && (q.includes('yolo') || q.includes('model'));
             if (isYoloVersionQuery) {
@@ -4128,7 +3634,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Evolution of YOLO Model Versions (You Only Look Once):</strong><br>• <strong>YOLOv1 – YOLOv3 (2015–2018):** Created by Joseph Redmon on Darknet.<br>• <strong>YOLOv4 & YOLOv5 (2020):** YOLOv5 by Ultralytics migrated the framework to PyTorch.<br>• <strong>YOLOv6, YOLOv7 & YOLOv8 (2022–2023):** YOLOv8 introduced unified detection, segmentation, and pose estimation.<br>• <strong>YOLOv9, YOLOv10 & YOLOv11 (2024):** YOLOv10 features NMS-free inference, and YOLOv11 is the latest release.<br><br>🤖 <strong>Version Used by Irfan:</strong><br>Irfan deployed **YOLOv8 PyTorch** in his Capstone Project (<strong>Hybrid Self-Checkout System</strong>), trained for <strong>50 epochs</strong> (77.4% Precision, 72.0% Recall, &lt;90ms latency).`;
             }
-
             const isYoloConceptQuery = q.includes('yolo') || q.includes('yolov8');
             if (isYoloConceptQuery) {
                 if (lang === 'bm') {
@@ -4143,13 +3648,11 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Conceptual Explanation of Cisco CCNA (Cisco Certified Network Associate):</strong><br><strong>CCNA</strong> is an industry-standard networking certification program developed by Cisco Systems. It validates comprehensive expertise in enterprise networking fundamentals, including:<br>• <strong>Routing & Switching:</strong> OSPF, Spanning Tree (STP), VLANs, Inter-VLAN Routing, and IPv4/IPv6 Subnetting.<br>• <strong>Security & Automation:</strong> Access Control Lists (ACLs), Endpoint Security, and Network Automation (Python & REST APIs).<br><br>📜 <strong>Irfan's Official Credentials:</strong><br>Irfan holds <strong>two official Cisco CCNA Certifications</strong> (Enterprise Networking & Automation and Switching, Routing & Wireless Essentials) awarded by Cisco Networking Academy (23 February 2026).`;
             }
-
             const isDbQuery = q.includes('database') || q.includes('mysql');
             const isLangQuery = (q.includes('programming language') || q.includes('language did you use') || q.includes('bahasa pengaturcaraan')) && !q.includes('speak');
             const isModelQuery = (q.includes('model did you use') || q.includes('computer vision model') || q.includes('detection model')) && !q.includes('why');
             const isScannerQuery = q.includes('scanner') || q.includes('barcode reader') || q.includes('hid');
             const isVisionLibQuery = q.includes('opencv') || q.includes('vision library') || q.includes('image processing library');
-
             if (isDbQuery && (q.includes('project') || q.includes('checkout') || q.includes('system') || q.includes('capstone') || q.includes('what') || q.includes('use'))) {
                 return `MySQL was used for product catalog and inventory database synchronization in the capstone project.`;
             }
@@ -4165,12 +3668,10 @@ Natural conversation is ALWAYS the highest priority.
             if (isVisionLibQuery && (q.includes('what') || q.includes('use') || q.includes('library'))) {
                 return `OpenCV was used for live video camera feed capture and image frame preprocessing.`;
             }
-
             // 0.4 PROJECT CONTRIBUTION INTENT SPECIFIC HANDLER
             if ((q.includes('personally') || q.includes('contribution') || q.includes('his role') || q.includes('his contribution') || q.includes('what did irfan do') || q.includes('what did he implement') || q.includes('what did he design')) && (q.includes('project') || q.includes('capstone') || q.includes('checkout') || q.includes('system') || q.includes('built'))) {
                 return `Irfan's documented personal contributions to the project include: (1) Trained custom YOLOv8 object detection model for 50 epochs on local product dataset; (2) Developed cross-verification logic comparing barcode product IDs against camera vision detections; (3) Integrated USB barcode scanner hardware with OpenCV live camera feed and MySQL database; (4) Conducted dual split-view camera experiments to resolve product occlusion issues.`;
             }
-
             // 1. GREETINGS & CASUAL CHAT (WORLDWIDE EXPRESSIONS & SLANG)
             const isGreeting = /\b(hi|hello|hai|hey|greetings|selamat|salam|apa khabar|how are you|nice to meet you|good morning|good afternoon|good evening|morning|boss|assalamualaikum|how is it going|what's up|sup|wbu|and you|yo|bro|buddy|friend|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|anyone|anybody|in the house|bot|assistant)\b/i.test(q) || q.includes('你好') || q.includes('您好') || q.includes('哈啰') || q.includes('嗨') || q.includes('வணக்கம்') || q.includes('晚上好') || q.includes('早上好') || q.includes('下午好') || q.includes('认识你') || q.includes('நலமா') || q.includes('assalamualaikum');
             if (isGreeting && q.length <= 50) {
@@ -4193,7 +3694,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `Hello there! 👋 Great to connect with you. How can I assist you today? Feel free to ask anything about Irfan's Computer Engineering background, CCNA certifications, or capstone project!`;
                 }
             }
-
             // 1.1 POSITIVE AFFIRMATIONS & FRIENDLY ACKNOWLEDGMENTS ("good", "nice", "cool", "great", "ok", "sweet", "awesome", etc.)
             const isAffirmation = /^(good|nice|cool|great|awesome|sweet|perfect|excellent|wonderful|amazing|brilliant|fantastic|super|love it|impressive|sounds good|good job|very good|so good|alright|all right|ok|okay|sure|got it|understood|fair enough|fine|yep|yeah|yes|true|right|exactly|i see|terbaik|bagus|cantik|mantap|gempak|padu|baik|okey|boleh|setuju|faham|很好|不错|棒|好的|行|赞|太好了|可以|明白|懂了|是的|நல்லது|சரி|சூப்பர்|அற்புதம்)[!.?]*$/i.test(q)
                 || q === 'good' || q === 'nice' || q === 'cool' || q === 'great' || q === 'awesome' || q === 'ok' || q === 'okay' || q === 'sure' || q === 'got it' || q === 'terbaik' || q === 'bagus' || q === 'cantik' || q === 'mantap' || q === '很好' || q === '不错' || q === '好的';
@@ -4208,7 +3708,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `Glad to hear that! 😊 Is there anything specific you'd like to explore next about Irfan's Computer Engineering background, Cisco CCNA certifications, or YOLOv8 capstone project?`;
                 }
             }
-
             // 1.2 HELP & CAPABILITIES ("what can you do", "help", "who made you", "capabilities")
             if (q.includes('what can you do') || q.includes('help me') || q.includes('capabilities') || q.includes('what do you do') || q.includes('who made you') || q.includes('who built you') || q.includes('bantu') || q.includes('apa boleh buat') || q.includes('能做什么') || q.includes('帮助')) {
                 if (lang === 'bm') {
@@ -4219,7 +3718,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `I'm Irfan's official AI assistant! 🤖 I can help you evaluate his Cisco CCNA credentials, YOLOv8 computer vision capstone project, academic CGPA, work experience, or assist you in scheduling an interview!`;
                 }
             }
-
             // 2. GRATITUDE & POLITE SIGN-OFFS
             if (q.includes('thank') || q.includes('thanks') || q.includes('terima kasih') || q.includes('kasih') || q.includes('goodbye') || q.includes('bye') || q.includes('jumpa') || q.includes('lagi') || q.includes('谢谢') || q.includes('感谢') || q.includes('再见') || q.includes('நன்றி') || q.includes('சந்திப்போம்') || q.includes('sama sama') || q.includes('sama-sama') || q.includes('see you') || q.includes('later')) {
                 if (lang === 'bm') {
@@ -4227,7 +3725,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `You're very welcome! 😊 Thank you for exploring Irfan's portfolio. Feel free to use the contact form above if you'd like to schedule an interview or discuss potential opportunities!`;
             }
-
             // 3. IDENTITY
             if (/\b(who|siapa|identity)\b/i.test(q) || q.includes('你是谁') || q.includes('யார்') || q.includes('yourself') || q.includes('about irfan') || q.includes('background') || q.includes('ceritakan') || q.includes('latar belakang') || q.includes('summary') || q.includes('profile') || q.includes('关于') || q.includes('介绍') || q.includes('சொல்லுங்கள்') || q.includes('网站') || q.includes('biodata') || q.includes('背景')) {
                 if (lang === 'bm') {
@@ -4235,7 +3732,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.name}.<br><br>I'm here to help you evaluate Irfan's Computer Engineering background (${RESUME_DATA.profile.degree}), CCNA credentials, age (${RESUME_DATA.profile.age}), and technical capabilities.`;
             }
-
             // 4. AGE
             if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁') || q.includes('bape umur') || q.includes('出生') || q.includes('多大') || q.includes('年份') || q.includes('வயது') || q.includes('birth')) {
                 if (lang === 'bm') {
@@ -4243,7 +3739,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
             }
-
             // 5. MILITARY RESERVE & STRESS RESILIENCE
             if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience') || q.includes('stress') || q.includes('pressure') || q.includes('tekanan') || q.includes('高压') || q.includes('应对') || q.includes('மன') || q.includes('அழுத்தம்') || q.includes('军队') || q.includes('经历') || q.includes('இராணுவ') || q.includes('后备军')) {
                 if (lang === 'bm') {
@@ -4251,7 +3746,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan serves in the <strong>Military Reserve (Volunteer) (Territorial Army Reserve)</strong>. This military background instills exceptional personal discipline, high stress resilience, rapid adaptability, and strong teamwork values.`;
             }
-
             // 6. CAREER GOALS & FUTURE VISION
             if (q.includes('goal') || q.includes('goals') || q.includes('future') || q.includes('matlamat') || q.includes('cita') || q.includes('cita-cita') || q.includes('5 years') || q.includes('aspire') || q.includes('aspiration') || q.includes('aspirations') || q.includes('vision') || q.includes('wawasan') || q.includes('kerjaya') || q.includes('愿景') || q.includes('规划') || q.includes('5年') || q.includes('இலக்குகள்') || q.includes('目标')) {
                 if (lang === 'bm') {
@@ -4259,7 +3753,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Irfan's Career Aspirations:</strong><br>Irfan aims to grow into a senior Systems & Network Engineer, bridging Industrial AI, IoT hardware, and Cisco Enterprise networking to build resilient automation solutions.`;
             }
-
             // 7. PROBLEM-SOLVING METHODOLOGY & TROUBLESHOOTING
             if (q.includes('troubleshoot') || q.includes('troubleshooting') || q.includes('bug') || q.includes('bugs') || q.includes('selesaikan masalah') || q.includes('problem solving') || q.includes('methodology') || q.includes('debug') || q.includes('故障') || q.includes('排查') || q.includes('思路') || q.includes('தீர்க்கும்') || q.includes('முறை') || q.includes('pendekatan')) {
                 if (lang === 'bm') {
@@ -4267,7 +3760,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Irfan's Troubleshooting & Problem-Solving Approach:</strong><br>1. <strong>Root-Cause Isolation:</strong> Systematic inspection using raw log tracebacks, Wireshark packet captures, or logic analyzers.<br>2. <strong>Controlled Sandbox Testing:</strong> Reproducing bugs in isolated environments.<br>3. <strong>Permanent Mitigation:</strong> Writing clean modular fixes backed by automated regression verification.`;
             }
-
             // 8. TEAMWORK & LEADERSHIP STYLE
             if (q.includes('team') || q.includes('teamwork') || q.includes('leadership') || q.includes('leader') || q.includes('pasukan') || q.includes('berpasukan') || q.includes('团队') || q.includes('合作') || q.includes('领导') || q.includes('குழுப்பணி') || q.includes('collaboration') || q.includes('kepimpinan')) {
                 if (lang === 'bm') {
@@ -4275,7 +3767,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan is a <strong>highly disciplined team player and empathetic communicator</strong>. His reserve military leadership in Military Reserve (Volunteer) taught him to prioritize clear team communication, mutual accountability, and supporting team members.`;
             }
-
             // 9. FAST LEARNING & ADAPTABILITY
             if (q.includes('fast learner') || q.includes('learn') || q.includes('belajar cepat') || q.includes('cepat') || q.includes('adapt') || q.includes('自学') || q.includes('适应') || q.includes('கற்றுக்கொள்ளும்') || q.includes('学习能力')) {
                 if (lang === 'bm') {
@@ -4283,7 +3774,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan is a <strong>rapid, self-driven learner</strong>. He independently mastered YOLOv8 PyTorch computer vision, Cloudflare Workers, and Festo Industrial AI within weeks to execute high-precision technical projects.`;
             }
-
             // 10. JOB SUITABILITY & RECOMMENDATION (SUGGESTION CHIP TARGET)
             if (q.includes('recommend') || q.includes('suitable') || q.includes('fit') || q.includes('sesuai') || q.includes('job ni') || q.includes('适合') || q.includes('岗位') || q.includes('பொருத்த') || q.includes('வேலை')) {
                 if (lang === 'bm') {
@@ -4296,7 +3786,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `<strong>Highly Recommended for Engineering Roles!</strong> 🚀<br><br>Irfan is an exceptional candidate for Network Engineering, Embedded Systems, IT Support, and Industrial AI roles. He bridges Cisco CCNA networking credentials, YOLOv8 PyTorch computer vision, and Military Reserve (Volunteer) military reserve discipline.`;
                 }
             }
-
             // 11. SECRET SKILL / SUPERPOWER (SUGGESTION CHIP TARGET)
             if (q.includes('secret') || q.includes('rahsia') || q.includes('隐藏') || q.includes('மறைமுக') || q.includes('hidden')) {
                 if (lang === 'bm') {
@@ -4309,7 +3798,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `<strong>Irfan's Secret Skill:</strong> 💡<br>Rapid self-learning capability — mastering complex new frameworks (Cloudflare Workers, Festo Industrial AI, YOLOv8 PyTorch) within days while maintaining operational composure forged in military reserve training.`;
                 }
             }
-
             // 12. OPEN INVITATION / ASK ANYTHING (SUGGESTION CHIP TARGET)
             if (q.includes('ask me anything') || q.includes('tanya je') || q.includes('随便问') || q.includes('எதைப் பற்றி') || (q.includes('anything') && q.length <= 25)) {
                 if (lang === 'bm') {
@@ -4322,7 +3810,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `Ask away! 😊 Feel free to ask anything about Irfan's Diploma CGPA, Cisco CCNA certification, YOLOv8 capstone project, location in Klang Valley, or employment availability!`;
                 }
             }
-
             // 13. MULTILINGUAL PROMPT NUDGE (SUGGESTION CHIP TARGET)
             if (q.includes('cuba tanya') || q.includes('try asking') || q.includes('试试') || q.includes('கேட்கலாம்') || q.includes('bahasa or') || q.includes('malay or')) {
                 if (lang === 'bm') {
@@ -4335,7 +3822,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `Yes! This AI Assistant natively supports 4 languages! 🌐 Feel free to ask questions in <strong>English, Bahasa Melayu, Chinese (华语), or Tamil (தமிழ்)</strong>.`;
                 }
             }
-
             // 10. LOCATION & RELOCATION
             if (q.includes('location') || q.includes('Klang Valley') || q.includes('selangor') || q.includes('tinggal') || q.includes('live') || q.includes('relocate') || q.includes('travel') || q.includes('remote') || q.includes('onsite') || q.includes('hybrid') || q.includes('pindah') || q.includes('where') || q.includes('located') || q.includes('mana') || q.includes('duduk') || q.includes('住哪里') || q.includes('இருக்கிறீர்கள்') || q.includes('outstation') || q.includes('出差') || q.includes('புச்சோங்')) {
                 if (lang === 'bm') {
@@ -4343,7 +3829,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan is based in <strong>Klang Valley, Malaysia</strong>. He is open to On-site, Hybrid, or Remote roles, and willing to travel outstation or relocate for suitable engineering opportunities.`;
             }
-
             // 11. WHY HIRE IRFAN / STRENGTHS
             if (q.includes('hire') || q.includes('choose') || q.includes('strength') || q.includes('strengths') || q.includes('kelebihan') || q.includes('sebab ambil') || q.includes('different') || q.includes('special') || q.includes('unik') || q.includes('terbaik') || q.includes('ambil') || q.includes('kena ambil') || q.includes('pilih') || q.includes('patut') || q.includes('kenapa') || q.includes('亮点') || q.includes('சிறப்பு') || q.includes('அம்சம்') || q.includes('highlights') || q.includes('雇用') || q.includes('ஏன்') || q.includes('选择')) {
                 if (lang === 'bm') {
@@ -4356,7 +3841,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `<strong>Why Hire Irfan?</strong><br>1. <strong>Bridging Hardware, Networks & AI:</strong> Proficient across Cisco CCNA Enterprise, IoT/Embedded systems, and YOLOv8 PyTorch computer vision.<br>2. <strong>Proven Academic Excellence:</strong> Best Student Award winner (CGPA 3.58) & High Precision Capstone Project (77.4% precision, <90ms latency).<br>3. <strong>Military Discipline:</strong> Military Reserve (Volunteer) reserve background delivering high stress resilience and strong operational focus.`;
                 }
             }
-
             // 12. WEB DEV & FULLSTACK
             if (q.includes('web') || q.includes('fullstack') || q.includes('full stack') || q.includes('frontend') || q.includes('backend') || q.includes('html') || q.includes('css') || q.includes('javascript') || q.includes('react') || q.includes('node') || q.includes('api') || q.includes('restful') || q.includes('இணையதள') || q.includes('உருவாக்கம்')) {
                 if (lang === 'bm') {
@@ -4364,7 +3848,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan builds modern web applications utilizing <strong>HTML5, Vanilla CSS3 (Glassmorphism & Responsive Layouts), JavaScript (ES6+), Node.js, and RESTful API Integration</strong>.`;
             }
-
             // 13. LANGUAGES SPOKEN
             if (q.includes('languages spoken') || q.includes('cakap bahasa') || q.includes('bisa bahasa') || q.includes('mandarin') || q.includes('fluency') || q.includes('bahasa') || q.includes('kuasai') || q.includes('语言') || q.includes('说哪些') || q.includes('மொழிகள்') || q.includes('பேசுவீர்கள்') || q.includes('fluent') || q.includes('fasih') || q.includes('精通')) {
                 if (lang === 'bm') {
@@ -4372,7 +3855,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with foundational understanding of regional languages.`;
             }
-
             // 14. AVAILABILITY & GRADUATION
             if (q.includes('available') || q.includes('availability') || q.includes('start') || q.includes('bila boleh') || q.includes('notice') || q.includes('graduation') || q.includes('graduat') || q.includes('bila habis') || q.includes('expected') || q.includes('毕业') || q.includes('到岗') || q.includes('பட்டமளிப்பு') || q.includes('எப்போது') || q.includes('segera')) {
                 if (lang === 'bm') {
@@ -4380,7 +3862,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.`;
             }
-
             // 15. SALARY & REMUNERATION
             if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout') || q.includes('薪水') || q.includes('薪资') || q.includes('சம்பளம்')) {
                 if (lang === 'bm') {
@@ -4393,7 +3874,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `Regarding salary expectations and compensation packages, Irfan is open for discussion during interview sessions or direct professional communication.`;
                 }
             }
-
             // 16. SHIFT & FLEXIBILITY
             if (q.includes('shift') || q.includes('syif') || q.includes('overtime') || q.includes('waktu kerja') || q.includes('working hours') || q.includes('夜班') || q.includes('轮班') || q.includes('加班') || q.includes('ஷிப்ட்') || q.includes('hujung minggu') || q.includes('远程')) {
                 if (lang === 'bm') {
@@ -4406,7 +3886,6 @@ Natural conversation is ALWAYS the highest priority.
                     return `Irfan is highly flexible with work arrangements (including shift work, site deployment, and overtime), honed by his disciplined military reserve training in Military Reserve (Volunteer) (high stress resilience).`;
                 }
             }
-
             // 18. HARDWARE & IOT & EMBEDDED
             if (q.includes('iot') || q.includes('arduino') || q.includes('embedded') || q.includes('sensor') || q.includes('sensors') || q.includes('hardware') || q.includes('electronic') || q.includes('electronics') || q.includes('easyeda') || q.includes('pcb') || q.includes('传感器') || q.includes('集成') || q.includes('terbenam')) {
                 if (lang === 'bm') {
@@ -4414,7 +3893,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan possesses solid hands-on experience in <strong>Embedded Systems, IoT, Arduino, Sensor Integration, and EasyEDA Circuit Design</strong> gained during his Electronic Engineering (Computer) Diploma at Politeknik Port Dickson.`;
             }
-
             // 19. NETWORKING PROTOCOLS (STP / RSTP / FIBER OPTIC)
             if (q.includes('stp') || q.includes('rstp') || q.includes('spanning tree') || q.includes('fiber') || q.includes('optic') || q.includes('splicing') || q.includes('attenuation')) {
                 if (lang === 'bm') {
@@ -4422,7 +3900,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Networking Protocols & Fiber Optics:</strong><br>• Irfan is proficient in STP/RSTP (Spanning Tree Protocol) for loop-free Ethernet network topologies.<br>• Irfan holds an official certification in <strong>Fiber Optic Splicing & Polishing</strong> (Technical Workshop, Feb 2018).`;
             }
-
             // 20. DRIVER'S LICENSE & TRANSPORTATION
             if (q.includes('driver') || q.includes('license') || q.includes('transport') || q.includes('car') || q.includes('lesen') || q.includes('kenderaan') || q.includes('kereta') || q.includes('motor') || q.includes('驾照') || q.includes('车辆')) {
                 if (lang === 'bm') {
@@ -4430,7 +3907,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan possesses a <strong>valid driver's license and own transport</strong>, enabling convenient mobility for on-site support, client visits, or deployment across Selangor/KL, Penang, Johor, or outstation locations.`;
             }
-
             // 21. SOFT SKILLS & NON-TECHNICAL STAKEHOLDER COMMUNICATION
             if (q.includes('soft skill') || q.includes('soft-skill') || q.includes('soft skills') || q.includes('stakeholder') || q.includes('non-technical') || q.includes('communicate') || q.includes('communication') || q.includes('komunikasi') || q.includes('interpersonal')) {
                 if (lang === 'bm') {
@@ -4438,7 +3914,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Irfan's Core Soft Skills:</strong><br>• <strong>Clear Technical Communication:</strong> Translates complex technical architectures (Cisco CCNA, YOLOv8 AI) into business terms for non-technical stakeholders.<br>• <strong>Stress Resilience & Discipline:</strong> Forged in Military Reserve (Volunteer) military reserve training.<br>• <strong>Cross-Functional Collaboration & Adaptability.</strong>`;
             }
-
             // 22. PREFERRED IDE & DEVELOPMENT WORKFLOW
             if (q.includes('ide') || q.includes('workflow') || q.includes('editor') || q.includes('vs code') || q.includes('git') || q.includes('github') || q.includes('development environment')) {
                 if (lang === 'bm') {
@@ -4446,7 +3921,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Irfan's Development Workflow & Tooling:</strong><br>• <strong>IDE:</strong> VS Code & PyCharm.<br>• <strong>Version Control & CI/CD:</strong> Git & GitHub automation pipelines.<br>• <strong>Hardware & Simulation:</strong> Cisco Packet Tracer, EasyEDA, and OpenCV/YOLOv8 PyTorch.`;
             }
-
             // 23. OPINION ON AI REPLACING ENGINEERS
             if (q.includes('replace') || q.includes('replacing') || q.includes('ai replace') || q.includes('menggantikan') || q.includes('ganti') || q.includes('替代')) {
                 if (lang === 'bm') {
@@ -4454,7 +3928,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `<strong>Irfan's Perspective on AI:</strong><br>AI doesn't replace engineers — engineers leveraging AI and automation (like YOLOv8, LLMs, and Industrial AI) replace those who don't. Irfan actively combines AI automation with hands-on networking and hardware engineering.`;
             }
-
             // 24. PENANG / JOHOR / RELOCATION (MULTILINGUAL LOCATION ENHANCEMENT)
             if (q.includes('penang') || q.includes('johor') || q.includes('kl') || q.includes('selangor') || q.includes('pulau pinang') || q.includes('kedah') || q.includes('perak') || q.includes('outstation')) {
                 if (lang === 'bm') {
@@ -4464,7 +3937,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Yes! Irfan is based in Klang Valley, Malaysia, but is <strong>fully open to working or relocating to Penang, Johor, KL, or outstation assignments</strong>. He possesses a valid driver's license and own transport.`;
             }
-
             // 25. AWS / CLOUD CERTIFICATION ENHANCEMENT (MULTILINGUAL)
             if (q.includes('aws') || q.includes('azure') || q.includes('cloud') || q.includes('云端') || q.includes('认证')) {
                 if (lang === 'bm') {
@@ -4474,7 +3946,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `Irfan holds official <strong>Cisco CCNA Enterprise, Endpoint Security, Cyber Threat Management, and Festo Industrial AI certifications</strong>. While not holding AWS/Azure certificates yet, he has solid hands-on cloud experience with Cloudflare Workers, REST APIs, and CI/CD pipelines.`;
             }
-
             // 26. CONTACT DETAILS (WORD BOUNDARY & COLLISION PROTECTED)
             const isContactQuery = (
                 /\b(contact|phone|email|emel|hubungi|whatsapp|turnstile|modal)\b/i.test(q) ||
@@ -4488,7 +3959,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
                 return `You can complete the Cloudflare Turnstile verification in the Contact modal to reveal Irfan's official Email & Phone number directly!`;
             }
-
             // 14. GENERAL RESUME_DATA KEYWORD OVERLAP SCORING (Content words only)
             const scores = {
                 diploma_cgpa: 0,
@@ -4503,21 +3973,17 @@ Natural conversation is ALWAYS the highest priority.
                 skills_it_support: 0,
                 skills_industrial_ai: 0
             };
-
             // Narrow sub-question flags
             const isDiplomaSpecific = (q.includes('diploma') || q.includes('port dickson')) && !q.includes('sijil') && !q.includes('degree');
             const isCertificateSpecific = (q.includes('sijil') || q.includes('komuniti') || q.includes('selandar')) && !q.includes('diploma') && !q.includes('degree');
             const isDegreeSpecific = (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor')) && !q.includes('diploma');
-            
             const isCcnaSpecific = (q.includes('ccna') || q.includes('cisco')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila') || q.includes('dapat'));
             const isFestoSpecific = (q.includes('festo')) && (q.includes('date') || q.includes('dates') || q.includes('tarikh') || q.includes('when') || q.includes('bila'));
-
             const isPrecisionSpecific = q.includes('precision') && !q.includes('recall');
             const isRecallSpecific = q.includes('recall') && !q.includes('precision');
             const isEpochSpecific = (q.includes('epoch') || q.includes('epochs') || q.includes('pusingan')) && !q.includes('precision') && !q.includes('recall');
             const isLatencySpecific = (q.includes('latency') || q.includes('latensi') || q.includes('speed') || q.includes('masa')) && (q.includes('inference') || q.includes('inferens') || q.includes('camera') || q.includes('kamera'));
             const isAccuracySpecific = q.includes('accuracy') || q.includes('ketepatan') || q.includes('accurate');
-
             // General keyword overlap scoring against RESUME_DATA
             if (q.includes('diploma') || q.includes('port dickson') || q.includes('3.26') || q.includes('文凭') || q.includes('学历')) scores.diploma_cgpa += 5;
             if (q.includes('education') || q.includes('pendidikan') || q.includes('academic') || q.includes('akademik') || q.includes('school') || q.includes('belajar') || q.includes('study')) scores.diploma_cgpa += 4;
@@ -4525,15 +3991,12 @@ Natural conversation is ALWAYS the highest priority.
                 scores.diploma_cgpa += 4;
                 scores.cert_sijil_cgpa += 4;
             }
-
             if (q.includes('sijil') || q.includes('certificate') || q.includes('certificates') || q.includes('cert') || q.includes('certs') || q.includes('komuniti') || q.includes('selandar') || q.includes('3.58') || q.includes('best student') || q.includes('terbaik')) {
                 scores.cert_sijil_cgpa += 5;
                 scores.ccna_dates += 4;
             }
             if (q.includes('degree') || q.includes('ijazah') || q.includes('utem') || q.includes('bachelor') || q.includes(' honours') || q.includes('sarjana muda')) scores.degree_utem += 5;
-
             if (q.includes('capstone') || q.includes('project') || q.includes('projek') || q.includes('checkout') || q.includes('precision') || q.includes('recall') || q.includes('yolo') || q.includes('yolov8') || q.includes('epochs') || q.includes('epoch') || q.includes('latency') || q.includes('accuracy') || q.includes('performance') || q.includes('results') || q.includes('prestasi') || q.includes('keputusan') || q.includes('opencv') || q.includes('barcode') || q.includes('vision') || q.includes('computer vision') || q.includes('image processing') || q.includes('split') || q.includes('camera') || q.includes('experiment') || q.includes('毕业') || q.includes('效果') || q.includes('திட்டம்') || q.includes('வெற்றி') || q.includes('结账') || q.includes('条形码') || q.includes('双重')) scores.capstone_metrics += 5;
-
             if (q.includes('ccna') || q.includes('cisco') || q.includes('சிஸ்கோ') || q.includes('考考')) {
                 scores.skills_networking += 5;
             }
@@ -4541,22 +4004,14 @@ Natural conversation is ALWAYS the highest priority.
                 scores.ccna_dates += 2;
                 scores.festo_cert += 2;
             }
-
             if (q.includes('festo') || q.includes('didactic') || q.includes('predictive') || q.includes('maintenance') || q.includes('预测') || q.includes('维护') || q.includes('automasi') || q.includes('penyelenggaraan') || q.includes('ramalan') || q.includes('工业') || q.includes('自动化')) scores.festo_cert += 5;
-
             if (q.includes('programming') || q.includes('python') || q.includes('c++') || q.includes('coding') || q.includes('language') || q.includes('languages') || q.includes('bahasa pengaturcaraan') || q.includes('kod') || q.includes('sql') || q.includes('mysql') || q.includes('git') || q.includes('pandai') || q.includes('coder') || q.includes('code')) scores.skills_programming += 5;
-
             if (q.includes('ospf') || q.includes('vlan') || q.includes('protocol') || q.includes('protocols') || q.includes('protokol') || q.includes('tcp/ip') || q.includes('wireshark') || q.includes('rangkaian') || q.includes('routing') || q.includes('switching') || q.includes('networking') || q.includes('network') || q.includes('நெட்வொர்க்கிங்')) scores.skills_networking += 5;
-
             if (q.includes('cybersecurity') || q.includes('keselamatan') || q.includes('firewall') || q.includes('threat') || q.includes('endpoint')) scores.skills_cybersecurity += 5;
-
             if (q.includes('support') || q.includes('desktop') || q.includes('windows') || q.includes('sokongan') || q.includes('hardware')) scores.skills_it_support += 5;
-
             if (q.includes('industrial ai') || q.includes('automation') || q.includes('iot') || q.includes('arduino')) scores.skills_industrial_ai += 5;
-
             if (q.includes('who') || q.includes('siapa') || q.includes('identity') || q.includes('你是谁')) scores.identity += 5;
             if (q.includes('age') || q.includes('umur') || q.includes('tahun') || q.includes('lahir') || q.includes('born') || q.includes('old') || q.includes('几岁')) scores.age += 5;
-
             let maxCategory = "";
             let maxScore = 0;
             for (const [cat, score] of Object.entries(scores)) {
@@ -4565,13 +4020,11 @@ Natural conversation is ALWAYS the highest priority.
                     maxCategory = cat;
                 }
             }
-
             if (maxScore >= 2) {
                 const dip = RESUME_DATA.education[1];
                 const cert = RESUME_DATA.education[2];
                 const deg = RESUME_DATA.education[0];
                 const proj = RESUME_DATA.projects[0];
-
                 switch (maxCategory) {
                     case 'diploma_cgpa': {
                         if (isDiplomaSpecific) {
@@ -4713,7 +4166,6 @@ Natural conversation is ALWAYS the highest priority.
                     }
                 }
             }
-
             // Dynamic Out-Of-The-Box Reasoning Generator for Offline/Unrestricted Queries
             const cleanTopic = userQuery.replace(/[?\u203d\u2047]/g, '').trim();
             if (lang === 'bm') {
@@ -4726,11 +4178,9 @@ Natural conversation is ALWAYS the highest priority.
                 return `<strong>Great Out-Of-The-Box Question!</strong> 💡<br>Regarding <em>"${escapeHtml(cleanTopic)}"</em>: As an unconstrained AI representative, I evaluate this concept using broad engineering and real-world analytical reasoning. Whether exploring general technical principles, programming logic, or connecting it to Irfan's computer vision and Cisco CCNA background, I am fully ready to discuss!`;
             }
         }
-
         function escapeHtml(str) {
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
-
         function explode3DNode(type, btnEl) {
             document.querySelectorAll('#capstone-3d-nodes .prompt-chip').forEach(b => {
                 b.style.borderColor = 'var(--border-card)';
@@ -4738,7 +4188,6 @@ Natural conversation is ALWAYS the highest priority.
             });
             btnEl.style.borderColor = 'var(--emerald)';
             btnEl.style.color = 'var(--emerald)';
-
             const details = {
                 camera: "<strong>Camera Vision Node:</strong> Captures high-res product stream for YOLOv8 model inference. Trained over 50 epochs on local Malaysian product dataset with Mosaic augmentation and dual split-view camera fusion, achieving 77.4% precision and 72.0% recall under varying lighting angles.",
                 barcode: "<strong>USB Barcode Reader Node:</strong> Instant 1D/2D barcode product ID lookup via serial HID interface, cross-referencing visual item confidence scores in real time.",
@@ -4748,7 +4197,6 @@ Natural conversation is ALWAYS the highest priority.
             const detailBox = document.getElementById('capstone-node-detail');
             if (detailBox) detailBox.innerHTML = details[type] || details.camera;
         }
-
         /* -------------------------------------------------------------
            5. Enhanced Three.js 3D Constellation & Orbiting Wireframe Mesh Nodes
         ------------------------------------------------------------- */
@@ -4756,44 +4204,36 @@ Natural conversation is ALWAYS the highest priority.
             try {
                 const canvas = document.getElementById('webgl-canvas');
                 if (!canvas || typeof THREE === 'undefined') return;
-
                 const scene = new THREE.Scene();
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 camera.position.z = 35;
-
                 const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
                 // 3D Particle Constellation
                 const particleCount = 220;
                 const geometry = new THREE.BufferGeometry();
                 const positions = new Float32Array(particleCount * 3);
-
                 for (let i = 0; i < particleCount * 3; i += 3) {
                     positions[i] = (Math.random() - 0.5) * 90;
                     positions[i + 1] = (Math.random() - 0.5) * 90;
                     positions[i + 2] = (Math.random() - 0.5) * 90;
                 }
-
                 geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
                 const material = new THREE.PointsMaterial({ size: 1.1, color: 0x38bdf8, transparent: true, opacity: 0.5 });
                 const particleSystem = new THREE.Points(geometry, material);
                 scene.add(particleSystem);
-
                 // Orbiting 3D Wireframe Node Geometry (AI / Network System Core)
                 const nodeGeo1 = new THREE.IcosahedronGeometry(6, 1);
                 const nodeMat1 = new THREE.MeshBasicMaterial({ color: 0x34d399, wireframe: true, transparent: true, opacity: 0.35 });
                 const nodeMesh1 = new THREE.Mesh(nodeGeo1, nodeMat1);
                 nodeMesh1.position.set(-20, 10, -10);
                 scene.add(nodeMesh1);
-
                 const nodeGeo2 = new THREE.OctahedronGeometry(5, 0);
                 const nodeMat2 = new THREE.MeshBasicMaterial({ color: 0xc084fc, wireframe: true, transparent: true, opacity: 0.4 });
                 const nodeMesh2 = new THREE.Mesh(nodeGeo2, nodeMat2);
                 nodeMesh2.position.set(22, -12, -15);
                 scene.add(nodeMesh2);
-
                 // Interactive Mouse Parallax Lerp
                 let mouseX = 0, mouseY = 0;
                 let targetX = 0, targetY = 0;
@@ -4801,30 +4241,23 @@ Natural conversation is ALWAYS the highest priority.
                     mouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
                     mouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
                 });
-
                 let animFrame3D = null;
                 function animate3D() {
                     animFrame3D = requestAnimationFrame(animate3D);
                     targetX += (mouseX - targetX) * 0.05;
                     targetY += (mouseY - targetY) * 0.05;
-
                     particleSystem.rotation.y += 0.0008;
                     particleSystem.rotation.x += 0.0004;
-
                     nodeMesh1.rotation.x += 0.005;
                     nodeMesh1.rotation.y += 0.008;
-
                     nodeMesh2.rotation.x -= 0.006;
                     nodeMesh2.rotation.y += 0.007;
-
                     camera.position.x += (targetX * 20 - camera.position.x) * 0.05;
                     camera.position.y += (-targetY * 20 - camera.position.y) * 0.05;
                     camera.lookAt(scene.position);
-
                     renderer.render(scene, camera);
                 }
                 animate3D();
-
                 // Pause 3D animation when tab is hidden to save battery/CPU
                 document.addEventListener('visibilitychange', () => {
                     if (document.hidden) { cancelAnimationFrame(animFrame3D); }
@@ -4835,7 +4268,6 @@ Natural conversation is ALWAYS the highest priority.
             }
         });
     </script>
-
     <script>
         // Custom UI Helper JS for Theme, Filters, Modals
         function toggleTheme() {
@@ -4843,23 +4275,18 @@ Natural conversation is ALWAYS the highest priority.
             body.classList.toggle('light-theme');
             const isLight = body.classList.contains('light-theme');
             body.setAttribute('data-theme', isLight ? 'light' : 'dark');
-            
             try {
                 localStorage.setItem('theme', isLight ? 'light' : 'dark');
             } catch(e) {}
-            
             // Sync all theme toggle buttons across desktop & mobile
             const themeBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle-btn');
             themeBtns.forEach(btn => {
                 if (btn) btn.innerText = isLight ? '☀️' : '🌙';
             });
-
             // Sync meta theme-color for browser chrome
             const themeMeta = document.getElementById('meta-theme-color');
             if (themeMeta) themeMeta.setAttribute('content', isLight ? '#f8fafc' : '#080c14');
         }
-
-        
         window.openPdfModalById = function openPdfModalById(certId) {
             let cert = (typeof CERT_REGISTRY !== 'undefined' && Array.isArray(CERT_REGISTRY)) ? CERT_REGISTRY.find(c => c.id === certId) : null;
             if (cert && cert.filename) {
@@ -4868,7 +4295,6 @@ Natural conversation is ALWAYS the highest priority.
                 openPdfModal('certificates/CCNA_Enterprise_Networking_Security_Automation.pdf', 'Verified Certificate Preview');
             }
         };
-
         window.openPdfModal = function openPdfModal(pdfPath, title) {
             const titleElem = document.getElementById('pdf-modal-title');
             const iframeElem = document.getElementById('pdf-modal-iframe');
@@ -4884,7 +4310,6 @@ Natural conversation is ALWAYS the highest priority.
                 overlayElem.style.opacity = '1';
             }
         };
-
         window.closePdfModal = function closePdfModal() {
             const overlayElem = document.getElementById('pdf-modal-overlay');
             if (overlayElem) {
@@ -4894,19 +4319,15 @@ Natural conversation is ALWAYS the highest priority.
             const iframeElem = document.getElementById('pdf-modal-iframe');
             if (iframeElem) iframeElem.src = '';
         };
-
         // Global Escape key handler — close any open modal or dropdown
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closePdfModal();
                 closeSecurityModal();
                 if (typeof closeNavDropdown === 'function') closeNavDropdown();
-
             }
         });
-
         const CLOUDFLARE_WORKER_URL = "https://contact-gate-worker.cabalme4.workers.dev/";
-
         window.revealCandidateInfo = function revealCandidateInfo(email, phone) {
             const revealedEmail = document.getElementById('revealed-email');
             const revealedPhone = document.getElementById('revealed-phone');
@@ -4915,17 +4336,14 @@ Natural conversation is ALWAYS the highest priority.
             const resumePdfLink = document.getElementById('revealed-resume-pdf');
             const revealedBox = document.getElementById('contact-details-revealed');
             const container = document.getElementById('cf-turnstile-container');
-
             const targetEmail = email || 'irfanfahmi.work@gmail.com';
             const targetPhone = phone || '+60 16-243 2023';
             const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
-
             if (revealedEmail) revealedEmail.innerText = targetEmail;
             if (revealedPhone) revealedPhone.innerText = targetPhone;
             if (emailLink) emailLink.href = 'mailto:' + targetEmail;
             if (waLink) waLink.href = 'https://wa.me/' + rawPhoneDigits;
             if (resumePdfLink) resumePdfLink.href = 'resume/resume.pdf';
-
             if (container) container.style.display = 'none';
             if (revealedBox) {
                 revealedBox.style.display = 'block';
@@ -4933,11 +4351,9 @@ Natural conversation is ALWAYS the highest priority.
                 revealedBox.style.opacity = '1';
             }
         };
-
         window.openSecurityModal = function openSecurityModal() {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
-
             const modal = document.getElementById('security-modal-overlay');
             if (modal) {
                 modal.classList.add('active');
@@ -4945,17 +4361,14 @@ Natural conversation is ALWAYS the highest priority.
                 modal.style.visibility = 'visible';
                 modal.style.opacity = '1';
             }
-
             // Zero-Trust Security Gate: Keep contact details hidden until Turnstile verifies
             const revealedBox = document.getElementById('contact-details-revealed');
             if (revealedBox) revealedBox.style.display = 'none';
-
             const container = document.getElementById('cf-turnstile-container');
             if (container) {
                 container.style.display = 'flex';
                 container.innerHTML = '<div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-secondary);font-size:0.85rem;"><svg width="20" height="20" viewBox="0 0 24 24" style="animation:spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4" stroke-dashoffset="10" stroke-linecap="round"/></svg> Loading verification...</div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
             }
-
             if (window.turnstile && container) {
                 try {
                     turnstile.render('#cf-turnstile-container', {
@@ -4975,7 +4388,6 @@ Natural conversation is ALWAYS the highest priority.
                 }, 2500);
             }
         };
-
         window.closeSecurityModal = function closeSecurityModal() {
             const modal = document.getElementById('security-modal-overlay');
             if (modal) {
@@ -4983,14 +4395,11 @@ Natural conversation is ALWAYS the highest priority.
                 modal.style.display = 'none';
             }
         };
-
         window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
             const errorMsgEl = document.getElementById('captcha-error-msg');
             if (errorMsgEl) errorMsgEl.style.display = 'none';
-
             // Instant release upon Turnstile client-side human verification
             revealCandidateInfo('irfanfahmi.work@gmail.com', '+60 16-243 2023');
-
             // Async background verification ping (non-blocking)
             if (token && typeof fetch !== 'undefined') {
                 try {
@@ -5008,7 +4417,6 @@ Natural conversation is ALWAYS the highest priority.
                 }
             }
         };
-
         function toggleMobileBioDetails(btn) {
             const details = document.getElementById('mobile-bio-details');
             if (!details) return;
@@ -5016,7 +4424,6 @@ Natural conversation is ALWAYS the highest priority.
             const isActive = details.classList.contains('active');
             btn.innerText = isActive ? '📋 Hide Candidate Details ▲' : '📋 Show Candidate Details ▼';
         }
-
         function openProjectModal(type) {
             if (type === 'checkout') {
                 openPdfModal('certificates/UTeM_Degree_Computer_Engineering.pdf', 'Hybrid Self-Checkout Architecture');
@@ -5028,34 +4435,25 @@ Natural conversation is ALWAYS the highest priority.
                 openPdfModal('certificates/CCNA_Enterprise_Networking_Security_Automation.pdf', 'Cisco Enterprise Network Topology');
             }
         }
-
-
-
         // 3D Constellation Background Animation (Three.js)
-        window.addEventListener('DOMContentLoaded', function init3DCanvas() {
+        window.addEventListener('load', function init3DCanvas() {
             const canvas = document.getElementById('canvas-3d');
             if (!canvas || !window.THREE) return;
-
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
-
             const geometry = new THREE.BufferGeometry();
             const count = 120;
             const positions = new Float32Array(count * 3);
-
             for (let i = 0; i < count * 3; i++) {
                 positions[i] = (Math.random() - 0.5) * 15;
             }
-
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
             const material = new THREE.PointsMaterial({ size: 0.04, color: 0x38bdf8, transparent: true, opacity: 0.7 });
             const points = new THREE.Points(geometry, material);
             scene.add(points);
-
             camera.position.z = 5;
-
             let animFrame2 = null;
             function animate() {
                 animFrame2 = requestAnimationFrame(animate);
@@ -5064,25 +4462,25 @@ Natural conversation is ALWAYS the highest priority.
                 renderer.render(scene, camera);
             }
             animate();
-
             // Pause secondary 3D canvas when tab hidden
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) { cancelAnimationFrame(animFrame2); }
                 else { animate(); }
             });
-
+                        let resizeTimeout;
             window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
+                if (resizeTimeout) cancelAnimationFrame(resizeTimeout);
+                resizeTimeout = requestAnimationFrame(() => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
             });
         });
     </script>
-
     <!-- Canonical Certificate Registry Data Store & Dynamic Renderer -->
     <script>
       let CERT_REGISTRY = [];
-
       async function loadCertRegistry() {
         try {
           const res = await fetch('certificates/registry.json');
@@ -5097,7 +4495,6 @@ Natural conversation is ALWAYS the highest priority.
           console.error('Error fetching cert registry:', e);
         }
       }
-
       function renderCertGrid(items) {
         const container = document.getElementById('certs-grid-container');
         if (!container) return;
@@ -5113,7 +4510,6 @@ Natural conversation is ALWAYS the highest priority.
           </div>
         `).join('');
       }
-
       function updateFilterCounts(items) {
         const counts = {
           all: items.length,
@@ -5134,7 +4530,6 @@ Natural conversation is ALWAYS the highest priority.
           <button class="filter-chip" onclick="filterCerts('experience')">Service & Professional Experience (${counts.experience})</button>
         `;
       }
-
       function filterCerts(cat) {
         document.querySelectorAll('.filter-chip').forEach(b => {
           b.classList.toggle('active', b.getAttribute('onclick').includes("('" + cat + "')"));
@@ -5145,10 +4540,8 @@ Natural conversation is ALWAYS the highest priority.
           renderCertGrid(CERT_REGISTRY.filter(c => c.category === cat));
         }
       }
-
       document.addEventListener('DOMContentLoaded', loadCertRegistry);
     </script>
-
     <!-- Dribbble-Style Mobile Floating Bottom Navigation Dock -->
     <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
         <a href="#about" class="dock-item" title="About">
@@ -5172,9 +4565,5 @@ Natural conversation is ALWAYS the highest priority.
             <span class="dock-label">Live AI</span>
         </a>
     </nav>
-
-
 </body>
 </html>
-
-
