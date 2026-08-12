@@ -1,11 +1,11 @@
-# 🚀 MUHAMMAD IRFAN FAHMI — Computer Engineering Portfolio & AI Assistant
+﻿# 🚀 MUHAMMAD IRFAN FAHMI — Computer Engineering Portfolio & AI Assistant
 
 [![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-0284c7.svg?style=for-the-badge&logo=github)](https://l3al3y.github.io/Portfolio/)
 [![Cisco CCNA Certified](https://img.shields.io/badge/Cisco-CCNA_Certified-0284c7.svg?style=for-the-badge&logo=cisco)](certificates/)
 [![Festo Industrial AI](https://img.shields.io/badge/Festo-Industrial_AI-059669.svg?style=for-the-badge)](certificates/)
 [![Verified Certifications](https://img.shields.io/badge/Certifications-18_Verified_Records-7c3aed.svg?style=for-the-badge)](certificates/)
 
-> **Official Personal Engineering Portfolio** for **MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR** — Computer Engineering Technology graduate specializing in Network Engineering, IT Infrastructure, Cyber Security, Computer Vision, and Industrial AI.
+> **Official Personal Engineering Portfolio** for **Muhammad Irfan Fahmi** — Computer Engineering Technology graduate specializing in Network Engineering, IT Infrastructure, Cyber Security, Computer Vision, and Industrial AI.
 
 ---
 
@@ -22,17 +22,17 @@
 ## 👨‍💻 Candidate Profile
 
 ```text
-Name:           MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
-Target Roles:   Network Engineer | IT Infrastructure | IT Support | Cyber Security | AI Automation
-Degree:         Bachelor of Computer Engineering Technology (Computer Systems) with Honours — UTeM
+Name:           Muhammad Irfan Fahmi
+Target Roles:   AI & Computer Vision | Network Engineering | Industrial Automation
+Degree:         Bachelor of Computer Engineering (Hons) — UTeM
 Diploma:        Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson
 Certificate:    Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar (Best Student Award)
 Certifications: Cisco CCNA (Enterprise Networking, Switching, Routing & Wireless)
                 Festo Industrial Automation with AI
                 Cisco Endpoint Security & Cyber Threat Management
 Languages:      Bahasa Melayu (Native), English (Fluent)
-Location:       Puchong, Selangor, Malaysia (Open to On-site, Hybrid, Relocation & Outstation)
-Military:       Askar Wataniah (Territorial Army Reserve)
+Location:       Klang Valley, Malaysia (Open to On-site, Hybrid, Relocation & Outstation)
+Military:       Military Reserve (Volunteer)
 ```
 
 ---
@@ -83,6 +83,12 @@ graph TD
 
 ---
 
+## 🌟 Open Source Contribution
+Contributed Governance Consensus Agent (Parliament of Minds) to ashishpatel26/500-AI-Agents-Projects (36.2k★) — PR #167
+Link: https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167
+
+---
+
 ## 🛠️ Tech Stack
 
 | Layer | Technologies |
@@ -90,7 +96,7 @@ graph TD
 | **Frontend** | HTML5, Vanilla CSS3 (Glassmorphism), JavaScript, Three.js |
 | **AI Engine** | CNN Typo Corrector, Intent Classifier, Multi-Model Router |
 | **Backend** | Cloudflare Workers, Turnstile, Rate Limiter |
-| **AI Providers** | RootSys Cloud (GLM-5.1), OpenRouter (Nemotron, GPT-OSS, Gemma-4) |
+| **AI Providers** | Multi-model AI providers (configured server-side) |
 | **Deployment** | GitHub Pages, Cloudflare Edge |
 
 ---
@@ -113,4 +119,4 @@ Contact details are protected behind **Cloudflare Turnstile CAPTCHA** and edge p
 
 ---
 
-© 2026 **Muhammad Irfan Fahmi Bin Samsul Kamar** · Built with HTML5, Vanilla CSS3, JavaScript & Cloudflare Workers.
+© 2026 **Muhammad Irfan Fahmi** · Built with HTML5, Vanilla CSS3, JavaScript & Cloudflare Workers.
