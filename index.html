@@ -2367,15 +2367,15 @@ document.body.setAttribute('data-theme', 'dark');
                 <h2 class="section-title">Education & Technical Timeline</h2>
             </div>
                                                 <div class="timeline-wrap">
-                <!-- 1. Universiti Teknikal Malaysia Melaka (UTeM) (OCT 2022 — EXPECTED NOV 2026) -->
+                <!-- 1. Universiti Teknikal Malaysia Melaka (UTeM) (OCT 2022 — NOV 2026) -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <div class="timeline-date">OCT 2022 — EXPECTED NOV 2026</div>
+                        <div class="timeline-date">OCT 2022 — NOV 2026</div>
                         <div class="timeline-role">Bachelor of Computer Engineering (Hons)</div>
                         <div class="timeline-org">Universiti Teknikal Malaysia Melaka (UTeM)</div>
                         <div class="timeline-desc">
-                            Currently pursuing Bachelor of Computer Engineering with focus areas including AI, networking, embedded systems, and automation.
+                            Completed Bachelor of Computer Engineering with focus areas including AI, networking, embedded systems, and automation.
                         </div>
                     </div>
                 </div>
@@ -2952,7 +2952,7 @@ dob: "8 March 1999",
 location: "Klang Valley, Malaysia",
 degree: "Bachelor of Computer Engineering with Honours",
 institution: "Universiti Teknikal Malaysia Melaka (UTeM)",
-expectedGraduation: "November 2026",
+expectedGraduation: "2 November 2026 (Graduated)",
 military: "Military Reserve (Volunteer) (Territorial Army Reserve - High Discipline & Stress Resilience)",
 linkedin: "https://linkedin.com/in/mifi99",
 github: "https://github.com/l3al3y"
@@ -2961,7 +2961,7 @@ education: [
 {
 degree: "Bachelor of Computer Engineering with Honours",
 institution: "Universiti Teknikal Malaysia Melaka (UTeM)",
-dates: "Oct 2022 – Present (Expected Nov 2026)",
+dates: "Oct 2022 – Nov 2026 (Graduated)",
 notes: "Focus on Computer Networks, Systems, Computer Vision & AI"
 },
 {
@@ -3066,7 +3066,7 @@ Natural conversation is ALWAYS the highest priority.
 - Full Name: Muhammad Irfan Fahmi
 - Location: Klang Valley, Malaysia (Willing to relocate/travel to Penang, Johor, KL, or outstation)
 - Education:
-* Bachelor of Computer Engineering with Honours, Universiti Teknikal Malaysia Melaka (UTeM) — Oct 2022 – Present (Expected Graduation: Nov 2026, Year 4 Student).
+* Bachelor of Computer Engineering with Honours, Universiti Teknikal Malaysia Melaka (UTeM) — Oct 2022 – Nov 2026 (Graduated).
 * Diploma in Electronic Engineering (Computer), Politeknik Port Dickson — Dec 2018 – May 2022 (3.26 CGPA).
 * Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian), Kolej Komuniti Selandar — Jul 2017 – Feb 2019 (3.58 CGPA, Best Student Award).
 - Work Experience:
@@ -3718,9 +3718,9 @@ return `Hello! 👋 I am the official AI Assistant for ${RESUME_DATA.profile.nam
 }
 if (/\b(age|umur|tahun|lahir|born|old)\b/i.test(q) || q.includes('几岁') || q.includes('bape umur') || q.includes('出生') || q.includes('多大') || q.includes('年份') || q.includes('வயது') || q.includes('birth')) {
 if (lang === 'bm') {
-return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau kini berada di tahun akhir pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (dijangka bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
+return `Irfan berumur <strong>${RESUME_DATA.profile.age}</strong>. Beliau telah menamatkan pengajian ${RESUME_DATA.profile.degree} di ${RESUME_DATA.profile.institution} (bergraduan pada ${RESUME_DATA.profile.expectedGraduation}).`;
 }
-return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He is completing his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (expected graduation ${RESUME_DATA.profile.expectedGraduation}).`;
+return `Irfan is <strong>${RESUME_DATA.profile.age}</strong>. He has completed his ${RESUME_DATA.profile.degree} at ${RESUME_DATA.profile.institution} (graduated ${RESUME_DATA.profile.expectedGraduation}).`;
 }
 if (q.includes('wataniah') || q.includes('askar') || q.includes('military') || q.includes('army') || q.includes('tentera') || q.includes('reserve') || q.includes('disiplin') || q.includes('discipline') || q.includes('resilience') || q.includes('stress') || q.includes('pressure') || q.includes('tekanan') || q.includes('高压') || q.includes('应对') || q.includes('மன') || q.includes('அழுத்தம்') || q.includes('军队') || q.includes('经历') || q.includes('இராணுவ') || q.includes('后备军')) {
 if (lang === 'bm') {
@@ -3827,9 +3827,9 @@ return `Irfan is fluent in <strong>Bahasa Melayu & English</strong>, with founda
 }
 if (q.includes('available') || q.includes('availability') || q.includes('start') || q.includes('bila boleh') || q.includes('notice') || q.includes('graduation') || q.includes('graduat') || q.includes('bila habis') || q.includes('expected') || q.includes('毕业') || q.includes('到岗') || q.includes('பட்டமளிப்பு') || q.includes('எப்போது') || q.includes('segera')) {
 if (lang === 'bm') {
-return `Irfan dijangka bergraduan pada <strong>November 2026</strong> dari UTeM. Beliau sedia membincangkan tarikh mula kerja dan penyertaan latihan industri/sepenuh masa mengikut jadual universiti dan keperluan majikan.`;
+return `Irfan telah <strong>bergraduan</strong> dari UTeM (2 November 2026). Beliau sedia membincangkan tarikh mula kerja dan penyertaan latihan industri/sepenuh masa mengikut keperluan majikan.`;
 }
-return `Irfan's expected graduation is <strong>November 2026</strong> from UTeM. He is available to discuss start dates for internship or full-time opportunities according to employer timelines.`;
+return `Irfan has <strong>graduated</strong> from UTeM (2 November 2026). He is available to discuss start dates for internship or full-time opportunities according to employer timelines.`;
 }
 if (q.includes('gaji') || q.includes('salary') || q.includes('pay') || q.includes('remuneration') || q.includes('income') || q.includes('payout') || q.includes('薪水') || q.includes('薪资') || q.includes('சம்பளம்')) {
 if (lang === 'bm') {
