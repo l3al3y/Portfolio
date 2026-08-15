@@ -2028,6 +2028,56 @@ document.body.setAttribute('data-theme', 'dark');
 } catch (e) {}
 })();
     </script>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://l3al3y.github.io/Portfolio/#person",
+          "name": "Muhammad Irfan Fahmi",
+          "jobTitle": ["AI Automation Engineer", "Network Engineering", "IT Ops"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Klang Valley",
+            "addressCountry": "Malaysia"
+          },
+          "url": "https://l3al3y.github.io/Portfolio/",
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Universiti Teknikal Malaysia Melaka (UTeM)"
+          },
+          "sameAs": [
+            "https://github.com/l3al3y",
+            "https://linkedin.com/in/mifi99"
+          ]
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Certification",
+          "name": "Cisco Certified Network Associate (CCNA)",
+          "recognizedBy": { "@type": "Organization", "name": "Cisco" }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Certification",
+          "name": "Industrial AI Specialist",
+          "recognizedBy": { "@type": "Organization", "name": "Festo" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Hybrid Self-Checkout System (Vision + Barcode)",
+          "description": "YOLOv8-powered hybrid self-checkout system for fraud prevention using real-time computer vision cross-referencing with barcode scans."
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Hermes Agent - Autonomous Multi-Model AI",
+          "description": "An autonomous AI agent running 24/7 on edge hardware that makes decisions using a Parliament of Minds."
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Accessibility: Skip to main content -->
