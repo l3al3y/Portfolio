@@ -1,44 +1,7 @@
-# Python Bytecode & Cache
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-
-# Environments & Dependencies
-.venv/
-venv/
-ENV/
-env/
-library/
-
-# Logs & Data Persistence
-logs/*.log
-*.log
-
-# OS & IDE Temp Files
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 *.swp
 *~
-~$*.xlsx
-
-# Local SQLite databases (Keep schema, ignore transient DB binaries if needed)
-*.sqlite3
-
-# Credentials & Environment Variables
-.env
-.env.*
-!.env.example
-
-# Confidential Database & Local Spreadsheets
-data/*.db
-data/*.xlsx
-*.db
-*.xlsx
-
-# Agent & Workspace Cache
-.gemini/
-scratch/
-
+*.log
