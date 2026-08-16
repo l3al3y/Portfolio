@@ -13,7 +13,6 @@
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
 
 [![Live Site](https://img.shields.io/badge/🌐%20Live%20Site-l3al3y.github.io%2FPortfolio-58A6FF?style=flat-square)](https://l3al3y.github.io/Portfolio/)
-[![Backend](https://img.shields.io/badge/⚙️%20Backend-Cloudflare%20Worker-1DA1F2?style=flat-square)](https://github.com/l3al3y/Portfolio-Backend)
 [![Open to Work](https://img.shields.io/badge/✅%20Open%20to%20Work-Available-2EA043?style=flat-square)](https://l3al3y.github.io/Portfolio/)
 
 ---
@@ -21,7 +20,6 @@
 ## Quick Links
 
 - 🔗 **Live site:** [l3al3y.github.io/Portfolio](https://l3al3y.github.io/Portfolio/)
-- 🗄️ **Backend repo:** [l3al3y/Portfolio-Backend](https://github.com/l3al3y/Portfolio-Backend)
 - 📄 **Resume:** [`resume/resume.pdf`](resume/resume.pdf)
 - 🏅 **Certificates:** 18 verified records — [`certificates/registry.json`](certificates/registry.json)
 
