@@ -35,10 +35,12 @@ npx serve .
 
 ## Architecture
 
-This is a **static** site — a single `index.html` paired with a **Cloudflare Worker**
-backend for chat/contact. It includes an **offline Q&A fallback** when the API is down.
+A **fast, zero-cost, serverless** architecture — the frontend is served as static files
+on GitHub Pages (no server to run, no hosting bill), while all interactivity is handled
+by a **Cloudflare Worker** backend.
 
-- **Frontend (this repo):** static HTML/CSS/JS, no build step
+- **Frontend (this repo):** instant-loading HTML/CSS/JS — Three.js animation, AI chat,
+  contact form, dynamic backend health detection
 - **Backend (separate repo):** Cloudflare Worker — `/api/health` + `/v1/chat/completions`
 - **Resilience:** if the Worker is unreachable, the site falls back to a built-in offline
   Q&A engine so the portfolio assistant still works
