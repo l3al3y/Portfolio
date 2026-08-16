@@ -2554,7 +2554,7 @@ document.body.setAttribute('data-theme', 'dark');
             </div>
             <div style="font-size: 0.85rem; color: var(--text-muted);">
                 © 2026 Muhammad Irfan Fahmi · Computer Engineering Graduate · UTeM<br>
-                Built with HTML5, Vanilla CSS3 & Autonomous AI Agent Infrastructure. • ⚙️ AI Assistant: Maintenance Mode
+                Built with HTML5, Vanilla CSS3 & Autonomous AI Agent Infrastructure. • ⚙️ AI Assistant: <span id="ai-footer-status">Checking...</span>
             </div>
         </div>
     </footer>
@@ -2831,10 +2831,21 @@ Auto-checks: Live (API up), Offline (API down), Maintenance (manual flag)
 const BACKEND_HEALTH_URL = "https://contact-gate-worker.cabalme4.workers.dev/api/health";
 const BACKEND_CHAT_URL = "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions";
 let backendStatus = "checking";
-async function checkBackendStatus() {
+function setBackendStatusUI(status, labelText, color) {
+backendStatus = status;
 const statusLabel = document.getElementById('ai-status-label');
+if (statusLabel) {
+statusLabel.innerHTML = labelText;
+statusLabel.style.color = color;
+}
+const footerStatus = document.getElementById('ai-footer-status');
+if (footerStatus) {
+footerStatus.innerHTML = status.charAt(0).toUpperCase() + status.slice(1);
+footerStatus.style.color = color;
+}
+}
+async function checkBackendStatus() {
 const greeting = document.getElementById('ai-greeting');
-if (!statusLabel) return;
 try {
 const controller = new AbortController();
 const timeoutId = setTimeout(() => controller.abort(), 8000);
@@ -2847,25 +2858,15 @@ clearTimeout(timeoutId);
 if (!response.ok) throw new Error('Health check failed');
 const data = await response.json();
 if (data.maintenance === true || data.status === 'maintenance') {
-backendStatus = 'maintenance';
+setBackendStatusUI('maintenance', '● Maintenance Mode', '#fbbf24');
+if (greeting) greeting.innerHTML = '🔧 The AI Career Assistant is being upgraded with new multi-model consensus infrastructure. Please check back soon, or contact Irfan directly via the contact section below.';
 } else {
-backendStatus = 'live';
+setBackendStatusUI('live', '● Online • AI Assistant Active', '#4ade80');
+if (greeting) greeting.innerHTML = 'Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan\'s technical experience, CCNA credentials, capstone project, or career background. Ask me anything!';
 }
 } catch (err) {
-backendStatus = 'offline';
-}
-if (backendStatus === 'live') {
-statusLabel.innerHTML = '● Online • AI Assistant Active';
-statusLabel.style.color = '#4ade80';
-if (greeting) greeting.innerHTML = 'Hello / Salam / 您好 / வணக்கம்! 👋 Explore Irfan\'s technical experience, CCNA credentials, capstone project, or career background. Ask me anything!';
-} else if (backendStatus === 'offline') {
-statusLabel.innerHTML = '● Offline • Backend Unavailable';
-statusLabel.style.color = '#f87171';
+setBackendStatusUI('offline', '● Offline • Backend Unavailable', '#f87171');
 if (greeting) greeting.innerHTML = '⚠️ The AI Assistant is temporarily unavailable. Please try again later, or contact Irfan directly via the contact section below.';
-} else if (backendStatus === 'maintenance') {
-statusLabel.innerHTML = '● Maintenance Mode';
-statusLabel.style.color = '#fbbf24';
-if (greeting) greeting.innerHTML = '🔧 The AI Career Assistant is being upgraded with new multi-model consensus infrastructure. Please check back soon, or contact Irfan directly via the contact section below.';
 }
 }
 document.addEventListener('DOMContentLoaded', function() {
