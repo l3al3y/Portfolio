@@ -3265,7 +3265,7 @@ try {
 botAnswer = await fetchKimiK25Ai(query);
 } catch (err) {
 console.warn("Live AI endpoint error, executing candidate context fallback:", err);
-botAnswer = generateNativeSpontaneousAnswer(query, lang);
+botAnswer = `[DEBUG] AI Error: ${err.message}\n\n` + generateNativeSpontaneousAnswer(query, lang);
 } finally {
 const indicator = document.getElementById('ai-thinking-indicator');
 if (indicator) indicator.remove();
@@ -3401,6 +3401,9 @@ const data = await response.json();
 const replyText = data.choices[0].message.content;
 CHAT_CONVERSATION_HISTORY.push({ role: "assistant", content: replyText });
 return formatBotMarkdown(replyText);
+} else {
+const errText = await response.text();
+throw new Error(`HTTP ${response.status}: ${errText.substring(0, 50)}`);
 }
 } catch (err) {
 lastErr = err;
