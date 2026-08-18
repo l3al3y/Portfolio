@@ -4333,7 +4333,7 @@ const waLink = document.getElementById('revealed-wa-link');
 const resumePdfLink = document.getElementById('revealed-resume-pdf');
 const revealedBox = document.getElementById('contact-details-revealed');
 const container = document.getElementById('cf-turnstile-container');
-const targetEmail = email || 'irfanfahmi.work@gmail.com';
+const targetEmail = email || 'hello@irfanfahmi.com';
 const targetPhone = phone || '+60 16-243 2023';
 const rawPhoneDigits = targetPhone.replace(/[^0-9]/g, '');
 if (revealedEmail) revealedEmail.innerText = targetEmail;
@@ -4393,7 +4393,7 @@ modal.style.display = 'none';
 window.onTurnstileSuccess = async function onTurnstileSuccess(token) {
 const errorMsgEl = document.getElementById('captcha-error-msg');
 if (errorMsgEl) errorMsgEl.style.display = 'none';
-revealCandidateInfo('irfanfahmi.work@gmail.com', '+60 16-243 2023');
+revealCandidateInfo('hello@irfanfahmi.com', '+60 16-243 2023');
 if (token && typeof fetch !== 'undefined') {
 try {
 fetch(CLOUDFLARE_WORKER_URL, {
