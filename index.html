@@ -2829,7 +2829,7 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 DYNAMIC BACKEND STATUS DETECTION
 Auto-checks: Live (API up), Offline (API down), Maintenance (manual flag)
 ------------------------------------------------------------- */
-const BACKEND_HEALTH_URL = "https://contact-gate-worker.cabalme4.workers.dev/api/health";
+const BACKEND_HEALTH_URL = "https://contact-gate-worker.cabalme4.workers.dev/health";
 const BACKEND_CHAT_URL = "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions";
 let backendStatus = "checking";
 function setBackendStatusUI(status, labelText, color) {
