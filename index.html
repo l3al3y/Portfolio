@@ -2852,8 +2852,7 @@ const controller = new AbortController();
 const timeoutId = setTimeout(() => controller.abort(), 8000);
 const response = await fetch(BACKEND_HEALTH_URL, {
 method: 'GET',
-signal: controller.signal,
-headers: { 'User-Agent': 'Portfolio-Status-Check' }
+signal: controller.signal
 });
 clearTimeout(timeoutId);
 if (!response.ok) throw new Error('Health check failed');
