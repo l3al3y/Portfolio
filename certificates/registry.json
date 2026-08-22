@@ -178,5 +178,75 @@
     "category_label": "SERVICE & PROFESSIONAL EXPERIENCE",
     "filename": "7Eleven_Work_Experience.pdf",
     "thumbnail": ""
+  },
+  {
+    "id": "cert-19",
+    "title": "Rakyat Digital — Agentic AI for All",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "agentic-ai-for-all.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-20",
+    "title": "Rakyat Digital — AI Visionary",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "ai-visionary.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-21",
+    "title": "Rakyat Digital — AI Safety",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "ai-safety.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-22",
+    "title": "Rakyat Digital — Cloud Untuk Rakyat",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "cloud-untuk-rakyat.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-23",
+    "title": "Rakyat Digital — Cybersecurity",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "cybersecurity.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-24",
+    "title": "Rakyat Digital — Generative AI",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "generative-ai.pdf",
+    "thumbnail": ""
+  },
+  {
+    "id": "cert-25",
+    "title": "Rakyat Digital — Quantum Computing",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "quantum-computing.pdf",
+    "thumbnail": ""
   }
 ]
