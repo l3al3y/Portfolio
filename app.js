@@ -57,14 +57,32 @@ b1&&(b1.innerHTML=resetHtml);
 b2&&(b2.innerHTML=resetHtml);
 CHAT_CONVERSATION_HISTORY=[];
 renderRandomChips("en");
-}function detectUserLanguage(e){if(/[\u4e00-\u9fa5]/.test(e))return"cn";if(/[\u0b80-\u0bff]/.test(e))return"in";if(/[\u3040-\u30ff\u31f0-\u31ff]/.test(e))return"ja";if(/[\u0e00-\u0e7f]/.test(e))return"th";if(/[\u0600-\u06ff]/.test(e))return"ar";const n=e.toLowerCase();if(["siapa","awak","kamu","anda","umur","kemahiran","projek","hubungi","berapa","selamat","apa","boleh","bila","lahir","telefon","emel","melayu","hai","terima","kasih","bagaimana","kerja","maklumat","sijil","gred","tarikh","gaji","pandai","shift","sebab","sikit","beri","bagi","versi","terangkan","jelaskan","apakah","mana","nak","saya","tak","ada","kat","tolong","demo","kawe","oghe","gapo","kelate","make","tubik","bakpe","hok","tranung","starang","gining","dok","hang","depa","hampa","awaq","habaq","kalut","mai","loqlaq","kome","teman","ate","mika","ghoyak","ekau","den","eso","lobih","jang","aok","koi","awok","sia","bah","kamurang","ngam","palui","kamek","kitak","nang","iboh","kelakar","padah","polah"].some(e=>n.includes(e)))return"bm";return["quien","eres","hola","edad","anos","como","habilidades","proyecto"].some(e=>n.includes(e))?"es":"en"}function formatBotMarkdown(e){if(!e)return"";let n=e;return n=n.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"),n=n.replace(/\*(.*?)\*/g,"<em>$1</em>"),n=n.replace(/^\s*[\-\*]\s+(.*?)$/gm,"• $1"),n=n.replace(/### (.*?)$/gm,'<h4 style="margin:6px 0 2px 0;">$1</h4>'),n=n.replace(/## (.*?)$/gm,'<h3 style="margin:8px 0 4px 0;">$1</h3>'),n=n.replace(/# (.*?)$/gm,'<h2 style="margin:10px 0 6px 0;">$1</h2>'),n=n.replace(/\n/g,"<br>"),n}async function submitChatMessage() {
+}function detectUserLanguage(e){if(/[\u4e00-\u9fa5]/.test(e))return"cn";if(/[\u0b80-\u0bff]/.test(e))return"in";if(/[\u3040-\u30ff\u31f0-\u31ff]/.test(e))return"ja";if(/[\u0e00-\u0e7f]/.test(e))return"th";if(/[\u0600-\u06ff]/.test(e))return"ar";const n=e.toLowerCase();if(["siapa","awak","kamu","anda","umur","kemahiran","projek","hubungi","berapa","selamat","apa","boleh","bila","lahir","telefon","emel","melayu","hai","terima","kasih","bagaimana","kerja","maklumat","sijil","gred","tarikh","gaji","pandai","shift","sebab","sikit","beri","bagi","versi","terangkan","jelaskan","apakah","mana","nak","saya","tak","ada","kat","tolong","demo","kawe","oghe","gapo","kelate","make","tubik","bakpe","hok","tranung","starang","gining","dok","hang","depa","hampa","awaq","habaq","kalut","mai","loqlaq","kome","teman","ate","mika","ghoyak","ekau","den","eso","lobih","jang","aok","koi","awok","sia","bah","kamurang","ngam","palui","kamek","kitak","nang","iboh","kelakar","padah","polah"].some(e=>n.includes(e)))return"bm";return["quien","eres","hola","edad","anos","como","habilidades","proyecto"].some(e=>n.includes(e))?"es":"en"}function formatBotMarkdown(e){if(!e)return"";let n=e;return n=n.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"),n=n.replace(/\*(.*?)\*/g,"<em>$1</em>"),n=n.replace(/^\s*[\-\*]\s+(.*?)$/gm,"• $1"),n=n.replace(/### (.*?)$/gm,'<h4 style="margin:6px 0 2px 0;">$1</h4>'),n=n.replace(/## (.*?)$/gm,'<h3 style="margin:8px 0 4px 0;">$1</h3>'),n=n.replace(/# (.*?)$/gm,'<h2 style="margin:10px 0 6px 0;">$1</h2>'),n=n.replace(/\n/g,"<br>"),n}let isGeneratingChat = false;
+let lastChatMessageTimestamp = 0;
+
+async function submitChatMessage() {
+  if (isGeneratingChat) return;
+
+  const now = Date.now();
+  if (now - lastChatMessageTimestamp < 800) {
+    return;
+  }
+
   const e1 = document.getElementById("chat-user-input");
   const e2 = document.getElementById("mobile-chat-user-input");
+  const btn1 = e1 ? e1.parentElement?.querySelector("button") : null;
+  const btn2 = e2 ? e2.parentElement?.querySelector("button") : null;
+
   const rawText = (e2 && e2.value.trim()) || (e1 && e1.value.trim()) || "";
   if (!rawText) return;
 
-  if (e1) e1.value = "";
-  if (e2) e2.value = "";
+  lastChatMessageTimestamp = now;
+  isGeneratingChat = true;
+
+  if (e1) { e1.value = ""; e1.disabled = true; }
+  if (e2) { e2.value = ""; e2.disabled = true; }
+  if (btn1) { btn1.disabled = true; btn1.style.opacity = "0.6"; }
+  if (btn2) { btn2.disabled = true; btn2.style.opacity = "0.6"; }
 
   const b1 = document.getElementById("chat-body");
   const b2 = document.getElementById("mobile-chat-body");
@@ -101,6 +119,12 @@ renderRandomChips("en");
       verifyMsg = '🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against automated web scraping.<br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 Verify & Reveal Contact Details</button>';
     }
     appendBotMessage(verifyMsg);
+    
+    isGeneratingChat = false;
+    if (e1) { e1.disabled = false; e1.focus(); }
+    if (e2) { e2.disabled = false; }
+    if (btn1) { btn1.disabled = false; btn1.style.opacity = ""; }
+    if (btn2) { btn2.disabled = false; btn2.style.opacity = ""; }
     return;
   }
 
@@ -130,6 +154,13 @@ renderRandomChips("en");
     answer = generateNativeSpontaneousAnswer(rawText, lang);
   } finally {
     document.querySelectorAll(".ai-thinking-indicator").forEach(el => el.remove());
+    setTimeout(() => {
+      isGeneratingChat = false;
+      if (e1) { e1.disabled = false; e1.focus(); }
+      if (e2) { e2.disabled = false; }
+      if (btn1) { btn1.disabled = false; btn1.style.opacity = ""; }
+      if (btn2) { btn2.disabled = false; btn2.style.opacity = ""; }
+    }, 400);
   }
 
   if (!answer || typeof answer !== "string" || answer.trim().length === 0) {
@@ -533,9 +564,26 @@ window.addEventListener('resize', function() {
   }
 }, { passive: true });
 
-"loading" === document.readyState ? document.addEventListener("DOMContentLoaded", initMobileRouter) : initMobileRouter();
+function handleChatEnter(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    submitChatMessage();
+  }
+}
+
+function sendSuggestedPrompt(text) {
+  if (!text) return;
+  const e1 = document.getElementById("chat-user-input");
+  const e2 = document.getElementById("mobile-chat-user-input");
+  if (e1) e1.value = text;
+  if (e2) e2.value = text;
+  submitChatMessage();
+}
 
 window.switchMobileTab = switchMobileTab;
 window.handleDockTabClick = handleDockTabClick;
+window.handleChatEnter = handleChatEnter;
 window.handleMobileChatEnter = handleMobileChatEnter;
+window.submitChatMessage = submitChatMessage;
 window.submitMobileChatMessage = submitMobileChatMessage;
+window.sendSuggestedPrompt = sendSuggestedPrompt;
