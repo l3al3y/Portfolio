@@ -50,7 +50,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
-        <link rel="stylesheet" href="style.css?v=3.1">
+        <link rel="stylesheet" href="style.css?v=3.2">
     <style>
 /* Modern Animated Theme Slider Switch */
 .theme-toggle-switch {
@@ -227,8 +227,8 @@ body.light-theme .mobile-bottom-dock,body[data-theme="light"] .mobile-bottom-doc
 body.light-theme .dock-item.active,body[data-theme="light"] .dock-item.active{color:#0369a1 !important;background:rgba(3,105,161,0.12) !important}
 body.light-theme .dock-item.dock-ai-tab.active,body[data-theme="light"] .dock-item.dock-ai-tab.active{color:#7e22ce !important;background:rgba(126,34,206,0.12) !important}
 </style>
-    <link rel="preload" as="style" href="style.css?v=3.1" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css?v=3.1"></noscript>
+    <link rel="preload" as="style" href="style.css?v=3.2" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css?v=3.2"></noscript>
     <script>
 window.revealCandidateInfo = window.revealCandidateInfo || function(){};
 window.onTurnstileSuccess = window.onTurnstileSuccess || function(){};
@@ -395,10 +395,9 @@ document.body.setAttribute('data-theme', 'dark');
                 <p class="hero-subtitle">
                     Computer Engineering (Hons) graduate from UTeM, available immediately. Cisco CCNA Certified & Festo Industrial AI Specialist. Built an autonomous multi-model AI agent (Parliament of Minds) running 24/7 on edge hardware, real-time YOLOv8 anti-evasion vision systems, and network automation solutions. Open to relocation.
                 </p>
-                <div class="hero-cta-group" style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
-                    <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.6rem; font-size: 0.95rem;">Explore Projects ➔</a>
-                    <a href="https://arcade.irfanfahmi.com" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.75rem 1.45rem; font-size: 0.95rem; border-color: #a855f7; color: #c084fc;">🎮 Play Mini Arcade ↗</a>
-                    <a href="https://ai-oracle-view.lovable.app/" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.75rem 1.4rem; font-size: 0.95rem;">View Live System →</a>
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-primary" style="padding: 0.75rem 1.75rem; font-size: 1rem;">Explore Projects ➔</a>
+                    <a href="https://ai-oracle-view.lovable.app/" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.75rem 1.75rem; font-size: 1rem;">View Live System →</a>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card">
@@ -535,8 +534,8 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 0 auto;">
                 <!-- Single Verified Capstone Project -->
                 <article class="project-card">
-                    <div class="project-banner" role="img" aria-label="Hybrid Self-Checkout System thumbnail">
-                        <div class="project-banner-badge">FEATURED CAPSTONE</div>
+                    <div class="project-banner" role="img" aria-label="Hybrid Self-Checkout System thumbnail" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(2, 132, 199, 0.2)); border-bottom: 1px solid rgba(56, 189, 248, 0.25);">
+                        <div class="project-banner-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">FEATURED CAPSTONE</div>
                         <h3 class="project-banner-title" style="margin: 0;">Hybrid Self-Checkout System (Vision + Barcode)</h3>
                     </div>
                     <div class="project-body">
@@ -556,6 +555,10 @@ document.body.setAttribute('data-theme', 'dark');
                                 <div class="metric-val">&lt;90ms</div>
                                 <div class="metric-lbl">Camera Latency</div>
                             </div>
+                            <div class="metric-item">
+                                <div class="metric-val">Dual-Cam</div>
+                                <div class="metric-lbl">Sensor Fusion</div>
+                            </div>
                         </div>
                         <div class="tech-tags">
                             <span class="tech-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg> YOLOv8 PyTorch</span>
@@ -571,8 +574,8 @@ document.body.setAttribute('data-theme', 'dark');
                 </article>
                 <!-- Hermes Agent Project -->
                 <article class="project-card">
-                    <div class="project-banner" role="img" aria-label="Hermes Agent thumbnail">
-                        <div class="project-banner-badge">FEATURED SYSTEM</div>
+                    <div class="project-banner" role="img" aria-label="Hermes Agent thumbnail" style="background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(16, 185, 129, 0.2)); border-bottom: 1px solid rgba(52, 211, 153, 0.25);">
+                        <div class="project-banner-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35);">FEATURED SYSTEM</div>
                         <h3 class="project-banner-title" style="margin: 0;">Hermes Agent — Autonomous Multi-Model AI</h3>
                     </div>
                     <div class="project-body">
@@ -987,7 +990,7 @@ document.body.setAttribute('data-theme', 'dark');
         </div>
     </div>
     <!-- UI Helper & Preserved Chatbot JS -->
-        <script src="app.js?v=3.1" defer></script>
+        <script src="app.js?v=3.2" defer></script>
     <!-- Dribbble-Style Mobile Floating Bottom Navigation Dock -->
     <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
         <a href="#home" class="dock-item active" data-tab="tab-home" onclick="handleDockTabClick(event, 'tab-home')" aria-label="Home" aria-current="page">
