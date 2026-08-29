@@ -6,6 +6,7 @@
 
 <p align="center">
   <a href="https://irfanfahmi.com"><img src="https://img.shields.io/badge/🌐%20Production%20Website-irfanfahmi.com-00d4ff?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Website"></a>
+  <a href="https://live.irfanfahmi.com"><img src="https://img.shields.io/badge/⚡%20Live%20Telemetry-live.irfanfahmi.com-10b981?style=for-the-badge&logo=prometheus&logoColor=white" alt="Live Telemetry"></a>
   <a href="https://arcade.irfanfahmi.com"><img src="https://img.shields.io/badge/🎮%20Mini%20Arcade-arcade.irfanfahmi.com-a855f7?style=for-the-badge&logo=gamepad&logoColor=white" alt="Mini Arcade"></a>
   <a href="https://linkedin.com/in/mifi99"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 </p>
@@ -30,6 +31,7 @@
 He bridges **hardware, enterprise networking, computer vision, and autonomous AI systems** to build resilient, real-world engineering solutions.
 
 - 🌐 **Primary Portfolio:** [irfanfahmi.com](https://irfanfahmi.com)
+- ⚡ **Live Telemetry Dashboard:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
 - 🎮 **Mini Arcade Platform:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
 - 📄 **Verified Resume:** [`resume/resume.pdf`](resume/resume.pdf)
 - 🏅 **Credential Registry:** [`certificates/registry.json`](certificates/registry.json) (25 verified records)
@@ -39,8 +41,9 @@ He bridges **hardware, enterprise networking, computer vision, and autonomous AI
 ## 🚀 Featured Engineering Projects (Proof of Work)
 
 ### 1. 🤖 [Parliament of Minds](https://irfanfahmi.com#projects) — Autonomous Multi-Model Consensus AI Agent
-An enterprise-grade, 24/7 autonomous multi-model AI agent running on edge hardware.
+An enterprise-grade, 24/7 autonomous multi-model AI agent running on edge hardware with live telemetry at **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
 - **Architecture:** Eliminates AI hallucinations using a consensus governance layer with 5 decision modes and adversarial cross-checking before executing actions.
+- **Live System Telemetry:** Live dashboard deployed at [live.irfanfahmi.com](https://live.irfanfahmi.com).
 - **Open Source Contribution:** Successfully contributed and merged into [`ashishpatel26/500-AI-Agents-Projects`](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36.2k★) via **PR #167**.
 - **Key Capabilities:** Continuous telemetry monitoring, multi-model cascade voting, and automated self-healing.
 
@@ -87,14 +90,17 @@ The portfolio utilizes a **zero-cost, ultra-fast, edge-first serverless architec
 ```mermaid
 graph TD
     A[Visitor Browser] -->|HTTPS| B[GitHub Pages: irfanfahmi.com]
-    A -->|Arcade Nav| C[Cloudflare Pages: arcade.irfanfahmi.com]
-    A -->|AI Chat / Turnstile| D[Cloudflare Worker: contact-gate-worker]
-    D -->|Secured Proxy| E[RootSys Cloud AI Cascade Engine]
-    D -->|Rate Limiter & Bot Defense| F[Cloudflare Turnstile]
-    B -->|Offline Fallback Engine| G[Local 1D-CNN Typo & Multilingual Parser]
+    A -->|Live Telemetry| C[Live System: live.irfanfahmi.com]
+    A -->|Arcade Games| D[Cloudflare Pages: arcade.irfanfahmi.com]
+    A -->|AI Chat / Turnstile| E[Cloudflare Worker: contact-gate-worker]
+    E -->|Secured Proxy| F[RootSys Cloud AI Cascade Engine]
+    E -->|Rate Limiter & Bot Defense| G[Cloudflare Turnstile]
+    B -->|Offline Fallback Engine| H[Local 1D-CNN Typo & Multilingual Parser]
 ```
 
 - **Frontend (`Portfolio`):** Pure Vanilla HTML5, modern CSS3 (Glassmorphism, Dark/Light Themes, Mobile Bottom Dock), and optimized ES6+ JavaScript.
+- **Live Telemetry (`live.irfanfahmi.com`):** Real-time monitoring dashboard for autonomous agents and edge systems.
+- **Mini Arcade (`arcade.irfanfahmi.com`):** Interactive browser games suite powered by Minimax AI.
 - **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`) and Turnstile contact gate verification.
 - **Offline Reliability:** Built-in 1D-CNN character feature extractor and multilingual response generator ensure the AI chatbot responds immediately even during network downtime.
 
@@ -140,6 +146,7 @@ Portfolio/
 ## 📬 Contact & Connect
 
 - 🌐 **Website:** [irfanfahmi.com](https://irfanfahmi.com)
+- ⚡ **Live Telemetry:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
 - 🎮 **Mini Arcade:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
 - 💼 **LinkedIn:** [linkedin.com/in/mifi99](https://linkedin.com/in/mifi99)
 - 🐙 **GitHub:** [github.com/l3al3y](https://github.com/l3al3y)
