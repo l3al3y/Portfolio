@@ -403,3 +403,25 @@ body[data-theme="light"] .footer-verification a,
 html.light-theme .footer-verification a {
     text-decoration: none !important;
 }
+
+/* Disabled & Thinking State for Chatbot */
+.chat-input:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.chat-input-area button:disabled,
+#chat-send-btn:disabled,
+#mobile-chat-send-btn:disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    filter: grayscale(80%) !important;
+}
+
+.prompt-chip:disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
