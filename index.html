@@ -225,8 +225,8 @@ body.light-theme .mobile-bottom-dock,body[data-theme="light"] .mobile-bottom-doc
 body.light-theme .dock-item.active,body[data-theme="light"] .dock-item.active{color:#0369a1 !important;background:rgba(3,105,161,0.12) !important}
 body.light-theme .dock-item.dock-ai-tab.active,body[data-theme="light"] .dock-item.dock-ai-tab.active{color:#7e22ce !important;background:rgba(126,34,206,0.12) !important}
 </style>
-    <link rel="preload" as="style" href="style.css?v=2.5" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css?v=2.5"></noscript>
+    <link rel="preload" as="style" href="style.css?v=3.0" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css?v=3.0"></noscript>
     <script>
 window.revealCandidateInfo = window.revealCandidateInfo || function(){};
 window.onTurnstileSuccess = window.onTurnstileSuccess || function(){};
@@ -800,7 +800,7 @@ document.body.setAttribute('data-theme', 'dark');
             </div>
             <div class="chat-input-area">
                 <input type="text" id="mobile-chat-user-input" class="chat-input" placeholder="Ask about Irfan's experience..." onkeydown="handleMobileChatEnter(event)">
-                <button class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff; padding: 0.55rem 0.95rem; border-radius: 999px;" onclick="submitMobileChatMessage()">Send ➔</button>
+                <button id="mobile-chat-send-btn" class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff; padding: 0.55rem 0.95rem; border-radius: 999px;" onclick="submitMobileChatMessage()">Send ➔</button>
             </div>
         </div>
     </div>
@@ -928,11 +928,11 @@ document.body.setAttribute('data-theme', 'dark');
         </div>
         <div class="chat-input-area">
             <input type="text" id="chat-user-input" class="chat-input" placeholder="Ask about Irfan's experience..." onkeydown="handleChatEnter(event)">
-            <button class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff; padding: 0.5rem 0.85rem;" onclick="submitChatMessage()">Send ➔</button>
+            <button id="chat-send-btn" class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #6366f1); color:#fff; padding: 0.5rem 0.85rem;" onclick="submitChatMessage()">Send ➔</button>
         </div>
     </div>
     <!-- UI Helper & Preserved Chatbot JS -->
-        <script src="app.js?v=2.5" defer></script>
+        <script src="app.js?v=3.0" defer></script>
     <!-- Dribbble-Style Mobile Floating Bottom Navigation Dock -->
     <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
         <a href="#home" class="dock-item active" data-tab="tab-home" onclick="handleDockTabClick(event, 'tab-home')" aria-label="Home" aria-current="page">
