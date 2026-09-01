@@ -248,5 +248,15 @@
     "category_label": "DIGITAL UPSKILLING & AI",
     "filename": "quantum-computing.pdf",
     "thumbnail": ""
+  },
+  {
+    "id": "cert-26",
+    "title": "Rakyat Digital — AI Nation 2030",
+    "issuer": "Rakyat Digital (Kementerian Digital)",
+    "date": "Verified Digital Credential",
+    "category": "rakyat_digital",
+    "category_label": "DIGITAL UPSKILLING & AI",
+    "filename": "ai-nation-2030.pdf",
+    "thumbnail": ""
   }
 ]
