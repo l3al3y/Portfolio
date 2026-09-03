@@ -40,7 +40,7 @@ async function checkBackendStatus(forceCheck = false) {
 
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 6500);
+    const timeout = setTimeout(() => controller.abort(), 12000);
 
     // 1. Probe health endpoint with active model probe
     const healthRes = await fetch(BACKEND_HEALTH_URL + "?probe=all&t=" + Date.now(), {
