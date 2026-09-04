@@ -1,7 +1,7 @@
-﻿{
+{
   "manifest_version": 3,
   "name": "IrfanLLM — Touchless AI Manga Controller",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Zero-touch hands-free webtoon reader for DemonicScans and manga sites using front camera AI posture recognition.",
   "author": "Muhammad Irfan Fahmi",
   "permissions": [
