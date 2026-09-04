@@ -91,6 +91,29 @@
             font-size: 0.85rem;
             margin-top: 0.5rem;
         }
+        .gesture-photo-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+        .gesture-photo-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-highlight);
+            box-shadow: 0 12px 30px rgba(56,189,248,0.2);
+        }
+        .gesture-photo-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -150,27 +173,51 @@
             Test the controller live in your browser right now! Click below to activate your front camera, then use the hand postures below to control scrolling and navigation:
         </p>
 
-        <!-- Visual Gesture Guide Grid -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.85rem; margin:1.25rem 0 1.5rem;">
-            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(56, 189, 248, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.35rem;">✊</div>
-                <div style="font-weight:700; color:var(--primary); font-size:0.95rem; margin-bottom:0.3rem;">Page Down (Scroll Down)</div>
-                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Hold curled fist at <strong>chest level</strong> with hand tilted down (~45°). Scrolls reading panel down fluidly.</div>
+        <!-- Real Demonstration Photos Gesture Guide -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; margin:1.5rem 0 1.25rem;">
+            <!-- 1. Page Down Card -->
+            <div class="gesture-photo-card" style="border-color: rgba(56, 189, 248, 0.4);">
+                <div style="position:relative; overflow:hidden; border-radius:10px; margin-bottom:0.85rem; border:1px solid rgba(56, 189, 248, 0.3);">
+                    <img src="assets/manga/gesture_pagedown.jpg" alt="Irfan demonstrating Page Down hand posture" class="gesture-photo-img">
+                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.85); color:var(--primary); font-size:0.75rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid var(--primary); font-family:var(--font-mono);">POSTURE 1: DOWN</span>
+                </div>
+                <h3 style="font-weight:800; color:var(--primary); font-size:1.05rem; margin:0 0 0.4rem;">Page Down (Scroll Down)</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5; margin:0;">
+                    Hold a curled fist at <strong>chest level</strong> with knuckles angled downward (~45°). MediaPipe detects the 71D geometry and smoothly scrolls down.
+                </p>
             </div>
-            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(192, 132, 252, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.35rem;">☝️</div>
-                <div style="font-weight:700; color:var(--purple); font-size:0.95rem; margin-bottom:0.3rem;">Page Up (Scroll Up)</div>
-                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Tilt fist or knuckle upward <strong>under chin level</strong> (~118°). Scrolls reading panel back up fluidly.</div>
+
+            <!-- 2. Page Up Card -->
+            <div class="gesture-photo-card" style="border-color: rgba(192, 132, 252, 0.4);">
+                <div style="position:relative; overflow:hidden; border-radius:10px; margin-bottom:0.85rem; border:1px solid rgba(192, 132, 252, 0.3);">
+                    <img src="assets/manga/gesture_pageup.jpg" alt="Irfan demonstrating Page Up hand posture" class="gesture-photo-img">
+                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.85); color:var(--purple); font-size:0.75rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid var(--purple); font-family:var(--font-mono);">POSTURE 2: UP</span>
+                </div>
+                <h3 style="font-weight:800; color:var(--purple); font-size:1.05rem; margin:0 0 0.4rem;">Page Up (Scroll Up)</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5; margin:0;">
+                    Tilt fist or knuckles upward resting <strong>under your chin</strong> (~118° upward angle). Smoothly scrolls reading content back up.
+                </p>
             </div>
-            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(52, 211, 153, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.35rem;">🖐️</div>
-                <div style="font-weight:700; color:var(--emerald); font-size:0.95rem; margin-bottom:0.3rem;">Neutral / Idle (Stop)</div>
-                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Lower or relax hand away from camera. Reading panel stays stationary with zero return-stroke recoil.</div>
+
+            <!-- 3. Neutral / Idle Card -->
+            <div class="gesture-photo-card" style="border-color: rgba(52, 211, 153, 0.4);">
+                <div style="position:relative; overflow:hidden; border-radius:10px; margin-bottom:0.85rem; border:1px solid rgba(52, 211, 153, 0.3);">
+                    <img src="assets/manga/gesture_idle.jpg" alt="Irfan demonstrating Idle neutral posture" class="gesture-photo-img">
+                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.85); color:var(--emerald); font-size:0.75rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid var(--emerald); font-family:var(--font-mono);">POSTURE 3: IDLE</span>
+                </div>
+                <h3 style="font-weight:800; color:var(--emerald); font-size:1.05rem; margin:0 0 0.4rem;">Neutral / Idle (Stationary)</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5; margin:0;">
+                    Lower or relax your hand away from the camera. Reading viewport stays completely still with zero return-stroke false triggers.
+                </p>
             </div>
-            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(251, 191, 36, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.35rem;">👈 📖 👉</div>
-                <div style="font-weight:700; color:#fbbf24; font-size:0.95rem; margin-bottom:0.3rem;">Air Buttons (Prev / Next)</div>
-                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Hover hand on left or right screen border to turn chapters (active on actual webtoon websites).</div>
+        </div>
+
+        <!-- Air Buttons Quick Tip -->
+        <div style="margin:0 0 1.5rem; padding:0.85rem 1.1rem; border-radius:10px; background:rgba(251, 191, 36, 0.08); border:1px solid rgba(251, 191, 36, 0.25); display:flex; align-items:center; gap:0.75rem; font-size:0.85rem; color:var(--text-sub);">
+            <span style="font-size:1.4rem;">👈 📖 👉</span>
+            <div>
+                <strong style="color:#fbbf24;">Virtual Air Buttons (&lt; PREV / NEXT &gt;):</strong>
+                Hover hand over left or right screen border to turn chapters (designed for actual manga sites like DemonicScans, Asura, and MangaDex).
             </div>
         </div>
 
