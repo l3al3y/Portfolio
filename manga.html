@@ -151,7 +151,7 @@
         </p>
 
         <div class="demo-controls">
-            <button id="btn-camera" class="btn btn-primary" onclick="startCameraDemo()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
+            <button id="btn-camera" class="btn btn-primary" onclick="toggleCameraDemo()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
                 Activate Front Camera Demo
             </button>
             <button class="btn btn-outline" onclick="copyBookmarkletCode()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
@@ -255,12 +255,24 @@
         });
     }
 
-    function startCameraDemo() {
+    function toggleCameraDemo() {
         const btn = document.getElementById("btn-camera");
         if (window.__IRFANLLM_ACTIVE__) {
-            btn.innerText = "Camera Already Active";
+            if (typeof window.__IRFANLLM_STOP__ === "function") {
+                window.__IRFANLLM_STOP__();
+            } else {
+                window.__IRFANLLM_ACTIVE__ = false;
+                btn.innerText = "Activate Front Camera Demo";
+                btn.style.background = "";
+                btn.disabled = false;
+            }
             return;
         }
+        startCameraDemo();
+    }
+
+    function startCameraDemo() {
+        const btn = document.getElementById("btn-camera");
         btn.innerText = "Starting Front Camera...";
         btn.disabled = true;
 
