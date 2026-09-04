@@ -221,4 +221,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     }
+
+    // In-Popup Donation Drawer Toggle Handler
+    const btnDonateToggle = document.getElementById("btn-donate-toggle");
+    const donateDrawer = document.getElementById("donate-drawer");
+    const donateChevron = document.getElementById("donate-chevron");
+
+    if (btnDonateToggle && donateDrawer) {
+        btnDonateToggle.addEventListener("click", () => {
+            const isHidden = donateDrawer.style.display === "none" || !donateDrawer.style.display;
+            donateDrawer.style.display = isHidden ? "block" : "none";
+            if (donateChevron) {
+                donateChevron.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+            }
+        });
+    }
 });
+
