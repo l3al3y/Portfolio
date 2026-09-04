@@ -451,6 +451,94 @@
             </div>
         </div>
     </section>
+
+    <!-- Engineering Changelog & Version History -->
+    <section class="demo-card" style="margin-top:2rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1.25rem;">
+            <div>
+                <h2 style="font-size:1.35rem; font-weight:800; color:#fff; margin:0;">
+                    Release History &amp; Version Changelog
+                </h2>
+                <p style="font-size:0.83rem; color:var(--text-sub); margin:0.2rem 0 0;">
+                    Complete engineering progression and version-by-version improvements
+                </p>
+            </div>
+            <span style="font-size:0.75rem; background:rgba(56,189,248,0.12); color:var(--primary); border:1px solid var(--primary); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700; font-family:var(--font-mono);">
+                Latest: v1.3.0 Live
+            </span>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:1.2rem;">
+            <!-- v1.3.0 -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid rgba(16,185,129,0.4); border-radius:12px; padding:1.25rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:var(--emerald); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.3.0</span>
+                        <strong style="color:#fff; font-size:1rem;">Chapter Persistence &amp; Continuous Reading Session</strong>
+                    </div>
+                    <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04 (Current)</span>
+                </div>
+                <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
+                    <li><strong>Continuous Chapter Persistence:</strong> Solved the browser page-unload teardown issue when advancing to new chapters using tab-level session persistence.</li>
+                    <li><strong>Smart Content Script Auto-Resume:</strong> Added an idle background listener in <code>content.js</code> that detects active reading sessions and automatically re-launches the controller and front camera on the new chapter URL with zero manual clicks.</li>
+                    <li><strong>Clean Session Teardown:</strong> Clicking <em>✕ Stop</em> on the banner or <em>🔴 Disable</em> in the popup completely clears the reading session to prevent unwanted auto-starts.</li>
+                </ul>
+            </div>
+
+            <!-- v1.2.0 -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-card); border-radius:12px; padding:1.25rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:var(--primary); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.2.0</span>
+                        <strong style="color:#fff; font-size:1rem;">Universal Website Access &amp; Cloud Auto-Sync</strong>
+                    </div>
+                    <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
+                </div>
+                <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
+                    <li><strong>Universal Multi-Site Access:</strong> Expanded permissions to <code>&lt;all_urls&gt;</code> &mdash; works across DemonicScans, AsuraScans, MangaDex, Webtoons, ReaperScans, FlameComics, or any web page.</li>
+                    <li><strong>On-Demand Enable / Disable Control:</strong> Redesigned extension popup with current-tab domain detection and clear <em>🟢 Enable</em> / <em>🔴 Disable</em> toggle buttons.</li>
+                    <li><strong>Cloud Live-Sync Architecture:</strong> The extension queries <code>irfanfahmi.com/controller.js</code> on launch, enabling instant silent code updates from GitHub without requiring users to reinstall zip files.</li>
+                    <li><strong>Touchable On-Screen Navigation:</strong> Added <code>pointer-events: auto</code> to <code>&lt; PREV</code> and <code>NEXT &gt;</code> buttons for direct mobile touchscreen taps.</li>
+                    <li><strong>Universal Chapter Link Detection:</strong> Implemented regex and chapter-number parsing to reliably discover Next/Prev links across scanlation engines.</li>
+                </ul>
+            </div>
+
+            <!-- v1.1.0 -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-card); border-radius:12px; padding:1.25rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:var(--purple); color:#fff; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.1.0</span>
+                        <strong style="color:#fff; font-size:1rem;">Smartphone Touch-Fluid Kinetic Scrolling &amp; Air Swipe Flick</strong>
+                    </div>
+                    <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
+                </div>
+                <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
+                    <li><strong>Display-Synchronized Physics Loop:</strong> Decoupled page scrolling from the 300ms AI inference interval into an independent 60Hz/90Hz/120Hz display refresh loop (<code>requestAnimationFrame</code>).</li>
+                    <li><strong>Kinetic Momentum Inertia:</strong> Implemented exponential friction damping (<code>0.935</code>), so releasing the hand smoothly coasts to a halt rather than stopping abruptly.</li>
+                    <li><strong>Air Swipe Flick Gesture:</strong> Added vertical wrist velocity tracking that imparts an instant swipe momentum boost (~400px glide).</li>
+                    <li><strong>Interactive Speed Presets:</strong> Added a floating on-screen pill button to toggle between 0.7x (Gentle), 1.0x (Normal), and 1.4x (Fast) reading speeds on the fly.</li>
+                    <li><strong>CSS Scroll Smoothing Conflict Fix:</strong> Overrode interfering CSS <code>scroll-behavior: smooth</code> on reader containers to guarantee 100% direct compositor frame rendering.</li>
+                </ul>
+            </div>
+
+            <!-- v1.0.0 -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-card); border-radius:12px; padding:1.25rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#475569; color:#fff; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.0.0</span>
+                        <strong style="color:#fff; font-size:1rem;">Official Manifest V3 Chrome Extension Packaging</strong>
+                    </div>
+                    <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
+                </div>
+                <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
+                    <li><strong>Manifest V3 Architecture:</strong> Packaged into a compliant Chrome extension replacing legacy bookmarklets and userscripts.</li>
+                    <li><strong>Edge AI Pipeline:</strong> Integrated MediaPipe Hands JS (21 3D landmarks, 71 geometric features) with an embedded Random Forest posture classifier running at &lt;0.1ms per frame.</li>
+                    <li><strong>Dual-Hand Gestures:</strong> Right hand curled fist (Page Down), left hand under-chin tilt (Page Up), and resting neutral (no recoil false triggers).</li>
+                    <li><strong>Floating HUD &amp; PiP:</strong> Added non-intrusive status banner, camera picture-in-picture with minimize/close buttons, and virtual air navigation buttons.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer>
