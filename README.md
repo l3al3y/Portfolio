@@ -83,18 +83,6 @@ An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 
 All credentials and records are digitally verifiable with interactive previews at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates):
 
-<p align="center">
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/All-(26)-38bdf8?style=for-the-badge" alt="All (26)"></a>
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Cisco%20%26%20Cybersecurity-(4)-1e293b?style=for-the-badge" alt="Cisco & Cybersecurity (4)"></a>
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Digital%20Upskilling%20%26%20AI-(8)-1e293b?style=for-the-badge" alt="Digital Upskilling & AI (8)"></a>
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Industrial%20Automation%20%26%20Technical%20Training-(4)-1e293b?style=for-the-badge" alt="Industrial Automation & Technical Training (4)"></a>
-</p>
-<p align="center">
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Academic%20Qualifications-(3)-1e293b?style=for-the-badge" alt="Academic Qualifications (3)"></a>
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Awards%20%26%20Achievements-(5)-1e293b?style=for-the-badge" alt="Awards & Achievements (5)"></a>
-  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Service%20%26%20Professional%20Experience-(2)-1e293b?style=for-the-badge" alt="Service & Professional Experience (2)"></a>
-</p>
-
 | Category | Count | Primary Focus &amp; Issuing Authorities |
 | :--- | :---: | :--- |
 | 🛡️ **Cisco &amp; Cybersecurity** | **4** | CCNA Enterprise Networking, Switching &amp; Routing, Endpoint Security, Cyber Threat Management |
