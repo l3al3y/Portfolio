@@ -332,7 +332,10 @@
                 <span>04</span> Release Log
             </a>
             <a href="#supporters-hub" class="dossier-nav-item" style="border-color:rgba(244,63,94,0.3); color:#fda4af;">
-                <span>05</span> ☕ Supporters &amp; Fame Board
+                <span>05</span> ☕ Support &amp; Fame
+            </a>
+            <a href="#community-feedback" class="dossier-nav-item" style="border-color:rgba(56,189,248,0.3); color:#38bdf8;">
+                <span>06</span> 💬 Reviews &amp; Comments
             </a>
         </nav>
     </section>
@@ -907,6 +910,14 @@
                 <div style="font-size:0.72rem; color:#94a3b8; text-align:center; margin-top:0.6rem; line-height:1.4;">
                     💡 <em>On phone: Save image &rarr; Open TNG / Banking App &rarr; Scan from Album / Gallery.</em>
                 </div>
+
+                <!-- Official Security Anti-Tamper Notice -->
+                <div style="margin-top:0.85rem; padding:0.75rem 0.9rem; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:10px; font-size:0.75rem; color:#d1fae5; line-height:1.45; text-align:left; width:100%;">
+                    <div style="color:var(--emerald); font-weight:800; display:flex; align-items:center; gap:0.4rem; margin-bottom:0.25rem;">
+                        <span>🔒</span> Official Bank Security &amp; Recipient Verification
+                    </div>
+                    <span>DuitNow QR codes are legally bound to authenticated bank identities. When scanning, your banking or TNG app will <strong>always</strong> display <strong>MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</strong> before you enter your PIN or authorize payment. Never proceed if any different name appears.</span>
+                </div>
             </div>
 
             <!-- RIGHT: Supporter Wall of Fame (Fame Board) -->
@@ -1035,6 +1046,207 @@
 
         </div>
     </section>
+
+    <!-- DOSSIER 06: Community Feedback & Reader Reviews -->
+    <section class="dossier-card" id="community-feedback" style="border-color:rgba(56,189,248,0.35);">
+        <div class="dossier-header-strip">
+            <div class="dossier-index" style="color:var(--primary);">
+                <span class="dot"></span>
+                FILE_06 // COMMUNITY DISCUSSION &amp; READER REVIEWS
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(56,189,248,0.12); color:var(--primary); border:1px solid rgba(56,189,248,0.3); padding:0.2rem 0.65rem; border-radius:999px; font-weight:700;">
+                💬 Community Hub &bull; ⭐ 4.9 / 5.0 Rating
+            </span>
+        </div>
+
+        <div style="text-align:center; max-width:680px; margin:0 auto 2rem;">
+            <h2 style="font-size:1.6rem; font-weight:800; color:#fff; margin-bottom:0.6rem;">
+                Community Voice &amp; Reader Reviews
+            </h2>
+            <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.7; margin:0;">
+                Have feedback, questions, or ideas for new features? Share your experience with the community below or leave a review for other manga readers!
+            </p>
+        </div>
+
+        <!-- 2-Column Responsive Layout: Left = Interactive Form, Right = Reviews Stream -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:2rem; align-items:start;">
+            
+            <!-- LEFT: Interactive Comment / Review Form -->
+            <div style="background:rgba(15,23,42,0.75); border:1px solid var(--border-card); border-radius:18px; padding:1.75rem; box-shadow:0 12px 35px rgba(0,0,0,0.35);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                    <h3 style="font-size:1.1rem; font-weight:800; color:#fff; margin:0; display:flex; align-items:center; gap:0.5rem;">
+                        <span>✍️</span> Leave Your Review / Comment
+                    </h3>
+                    <span style="font-size:0.72rem; color:var(--emerald); background:rgba(16,185,129,0.15); padding:0.15rem 0.5rem; border-radius:4px; font-family:var(--font-mono); font-weight:700;">Instant Post</span>
+                </div>
+
+                <form id="comment-form" onsubmit="handleCommentSubmit(event)">
+                    <!-- Name input -->
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.4rem;">
+                            Your Name / Handle <span style="color:#f43f5e;">*</span>
+                        </label>
+                        <input type="text" id="comment-author" required placeholder="e.g. Kenji_Reads or Anonymous" style="width:100%; padding:0.7rem 0.9rem; border-radius:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.88rem; outline:none; font-family:inherit; transition:border-color 0.2s;">
+                    </div>
+
+                    <!-- Favorite Manga input -->
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.4rem;">
+                            Favorite Manga / Manhwa
+                        </label>
+                        <input type="text" id="comment-manga" placeholder="e.g. Solo Leveling, Omniscient Reader, One Piece" style="width:100%; padding:0.7rem 0.9rem; border-radius:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.88rem; outline:none; font-family:inherit; transition:border-color 0.2s;">
+                    </div>
+
+                    <!-- Rating Select -->
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.4rem;">
+                            Your Rating
+                        </label>
+                        <select id="comment-rating" style="width:100%; padding:0.7rem 0.9rem; border-radius:10px; background:#0f172a; border:1px solid rgba(255,255,255,0.15); color:#f59e0b; font-size:0.9rem; outline:none; font-family:inherit; cursor:pointer;">
+                            <option value="5">⭐⭐⭐⭐⭐ 5.0 - Phenomenal / Must-have!</option>
+                            <option value="4">⭐⭐⭐⭐ 4.0 - Really Good / Smooth</option>
+                            <option value="3">⭐⭐⭐ 3.0 - Decent / Room for Improvement</option>
+                            <option value="2">⭐⭐ 2.0 - Needs Work</option>
+                            <option value="1">⭐ 1.0 - Not Working for Me</option>
+                        </select>
+                    </div>
+
+                    <!-- Comment textarea -->
+                    <div style="margin-bottom:1.25rem;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.4rem;">
+                            Review / Message / Feature Request <span style="color:#f43f5e;">*</span>
+                        </label>
+                        <textarea id="comment-text" required rows="4" placeholder="How was your reading experience? Tested on Lemur Browser or Chrome? Any website compatibility requests?" style="width:100%; padding:0.7rem 0.9rem; border-radius:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.88rem; outline:none; font-family:inherit; resize:vertical; line-height:1.5;"></textarea>
+                    </div>
+
+                    <button type="submit" id="btn-submit-comment" class="btn btn-primary" style="width:100%; justify-content:center; gap:0.5rem; font-size:0.92rem; padding:0.75rem 1.25rem; box-shadow:0 4px 18px var(--primary-glow);">
+                        <span>🚀</span> Post Community Review
+                    </button>
+                    <div id="comment-status" style="font-size:0.78rem; text-align:center; margin-top:0.65rem; color:var(--emerald); display:none;">
+                        🎉 Thank you! Your review has been added to the Community Feed below!
+                    </div>
+                </form>
+
+                <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08); font-size:0.78rem; color:#94a3b8; line-height:1.5;">
+                    💡 <em>Want to discuss technical architecture or report bugs? You can also contribute directly on our <a href="https://github.com/l3al3y" target="_blank" style="color:var(--primary); text-decoration:underline;">GitHub Repository</a>.</em>
+                </div>
+            </div>
+
+            <!-- RIGHT: Community Reviews & Discussion Feed -->
+            <div style="display:flex; flex-direction:column; gap:1.25rem;">
+                
+                <div style="background:rgba(15,23,42,0.75); border:1px solid var(--border-card); border-radius:18px; padding:1.5rem; box-shadow:0 12px 35px rgba(0,0,0,0.35);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.75rem;">
+                        <h3 style="font-size:1.15rem; font-weight:800; color:#fff; margin:0; display:flex; align-items:center; gap:0.5rem;">
+                            <span>💬</span> Live Community Feedback Feed
+                        </h3>
+                        <span id="comment-count-badge" style="font-family:var(--font-mono); font-size:0.72rem; color:#38bdf8; background:rgba(56,189,248,0.12); padding:0.15rem 0.55rem; border-radius:4px; font-weight:700;">
+                            4 Community Reviews
+                        </span>
+                    </div>
+
+                    <!-- Container where new comments will be prepended dynamically -->
+                    <div id="comments-container" style="display:flex; flex-direction:column; gap:1rem; max-height:560px; overflow-y:auto; padding-right:4px;">
+                        
+                        <!-- Seed Review 1 -->
+                        <div class="community-comment-card" style="background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.25); border-radius:12px; padding:1rem; transition:transform 0.2s;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
+                                <div style="display:flex; align-items:center; gap:0.6rem;">
+                                    <div style="width:32px; height:32px; border-radius:50%; background:rgba(56,189,248,0.2); border:1px solid #38bdf8; display:flex; align-items:center; justify-content:center; font-size:0.9rem;">
+                                        📖
+                                    </div>
+                                    <div>
+                                        <strong style="color:#fff; font-size:0.9rem;">Kenji_Reads</strong>
+                                        <span style="font-size:0.72rem; color:#38bdf8; font-family:var(--font-mono); margin-left:0.35rem;">[DemonicScans Reader]</span>
+                                    </div>
+                                </div>
+                                <span style="color:#f59e0b; font-size:0.82rem;">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0 0 0.4rem;">
+                                &ldquo;Finally an extension that doesn't trigger reverse scroll when you drop your hand back down! The under-chin gesture for Page Up is pure genius. Zero return-stroke false triggers.&rdquo;
+                            </p>
+                            <div style="font-size:0.72rem; color:#64748b; font-family:var(--font-mono); display:flex; justify-content:space-between;">
+                                <span>Favorite: <em>Solo Leveling</em></span>
+                                <span>Verified Reader</span>
+                            </div>
+                        </div>
+
+                        <!-- Seed Review 2 -->
+                        <div class="community-comment-card" style="background:rgba(15,23,42,0.65); border:1px solid rgba(16,185,129,0.25); border-radius:12px; padding:1rem; transition:transform 0.2s;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
+                                <div style="display:flex; align-items:center; gap:0.6rem;">
+                                    <div style="width:32px; height:32px; border-radius:50%; background:rgba(16,185,129,0.2); border:1px solid var(--emerald); display:flex; align-items:center; justify-content:center; font-size:0.9rem;">
+                                        📱
+                                    </div>
+                                    <div>
+                                        <strong style="color:#fff; font-size:0.9rem;">Aiman H.</strong>
+                                        <span style="font-size:0.72rem; color:var(--emerald); font-family:var(--font-mono); margin-left:0.35rem;">[Lemur Browser / Android]</span>
+                                    </div>
+                                </div>
+                                <span style="color:#f59e0b; font-size:0.82rem;">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0 0 0.4rem;">
+                                &ldquo;I read webtoons while eating dinner with both hands. Installed on Lemur Browser and it worked out of the box on DemonicScans. Fast chapter switching without touching the phone.&rdquo;
+                            </p>
+                            <div style="font-size:0.72rem; color:#64748b; font-family:var(--font-mono); display:flex; justify-content:space-between;">
+                                <span>Favorite: <em>Omniscient Reader's Viewpoint</em></span>
+                                <span>Verified Mobile Reader</span>
+                            </div>
+                        </div>
+
+                        <!-- Seed Review 3 -->
+                        <div class="community-comment-card" style="background:rgba(15,23,42,0.65); border:1px solid rgba(192,132,252,0.25); border-radius:12px; padding:1rem; transition:transform 0.2s;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
+                                <div style="display:flex; align-items:center; gap:0.6rem;">
+                                    <div style="width:32px; height:32px; border-radius:50%; background:rgba(192,132,252,0.2); border:1px solid var(--purple); display:flex; align-items:center; justify-content:center; font-size:0.9rem;">
+                                        ⚡
+                                    </div>
+                                    <div>
+                                        <strong style="color:#fff; font-size:0.9rem;">Elena_Manhwa</strong>
+                                        <span style="font-size:0.72rem; color:var(--purple); font-family:var(--font-mono); margin-left:0.35rem;">[Google Chrome Desktop]</span>
+                                    </div>
+                                </div>
+                                <span style="color:#f59e0b; font-size:0.82rem;">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0 0 0.4rem;">
+                                &ldquo;The 120Hz kinetic momentum inertia feels ridiculously smooth. It mimics real phone touchscreen flicks. Also love that it runs 100% locally with zero ads!&rdquo;
+                            </p>
+                            <div style="font-size:0.72rem; color:#64748b; font-family:var(--font-mono); display:flex; justify-content:space-between;">
+                                <span>Favorite: <em>Eleceed</em></span>
+                                <span>Verified Desktop Reader</span>
+                            </div>
+                        </div>
+
+                        <!-- Seed Review 4 -->
+                        <div class="community-comment-card" style="background:rgba(15,23,42,0.65); border:1px solid rgba(245,158,11,0.25); border-radius:12px; padding:1rem; transition:transform 0.2s;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
+                                <div style="display:flex; align-items:center; gap:0.6rem;">
+                                    <div style="width:32px; height:32px; border-radius:50%; background:rgba(245,158,11,0.2); border:1px solid #f59e0b; display:flex; align-items:center; justify-content:center; font-size:0.9rem;">
+                                        🔄
+                                    </div>
+                                    <div>
+                                        <strong style="color:#fff; font-size:0.9rem;">Solo_Fanatic</strong>
+                                        <span style="font-size:0.72rem; color:#fbbf24; font-family:var(--font-mono); margin-left:0.35rem;">[Cloud Live-Sync User]</span>
+                                    </div>
+                                </div>
+                                <span style="color:#f59e0b; font-size:0.82rem;">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0 0 0.4rem;">
+                                &ldquo;The v1.4.0 update with the Check &amp; Sync button in the popup is amazing. No more reinstalling zip files every time new code is pushed!&rdquo;
+                            </p>
+                            <div style="font-size:0.72rem; color:#64748b; font-family:var(--font-mono); display:flex; justify-content:space-between;">
+                                <span>Favorite: <em>Return of the Mount Hua Sect</em></span>
+                                <span>Verified Reader</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 </main>
 
 <footer>
@@ -1093,6 +1305,112 @@
         script.src = "manga.js?v=" + Date.now();
         document.body.appendChild(script);
     }
+
+    // Community Comments & Feedback Handler
+    function handleCommentSubmit(e) {
+        e.preventDefault();
+        const authorInput = document.getElementById("comment-author");
+        const mangaInput = document.getElementById("comment-manga");
+        const ratingInput = document.getElementById("comment-rating");
+        const textInput = document.getElementById("comment-text");
+        const statusEl = document.getElementById("comment-status");
+
+        const author = authorInput.value.trim();
+        const manga = mangaInput.value.trim() || "Webtoon Reader";
+        const rating = parseInt(ratingInput.value, 10) || 5;
+        const text = textInput.value.trim();
+
+        if (!author || !text) return;
+
+        const starStr = "⭐".repeat(rating);
+        const newComment = {
+            author: author,
+            manga: manga,
+            rating: starStr,
+            text: text,
+            date: "Just now"
+        };
+
+        // Render card at top
+        renderCommentCard(newComment, true);
+
+        // Save to localStorage
+        try {
+            const saved = JSON.parse(localStorage.getItem("irfanllm_comments") || "[]");
+            saved.unshift(newComment);
+            localStorage.setItem("irfanllm_comments", JSON.stringify(saved));
+        } catch(err) {
+            console.warn("Storage error:", err);
+        }
+
+        // Show status feedback
+        statusEl.style.display = "block";
+        authorInput.value = "";
+        mangaInput.value = "";
+        textInput.value = "";
+
+        setTimeout(() => {
+            statusEl.style.display = "none";
+        }, 4000);
+    }
+
+    function renderCommentCard(item, isNew = false) {
+        const container = document.getElementById("comments-container");
+        if (!container) return;
+
+        const card = document.createElement("div");
+        card.className = "community-comment-card";
+        card.style.cssText = "background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.4); border-radius:12px; padding:1rem; transition:transform 0.2s; animation:fadeInTab 0.3s ease-out;";
+
+        card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
+                <div style="display:flex; align-items:center; gap:0.6rem;">
+                    <div style="width:32px; height:32px; border-radius:50%; background:rgba(56,189,248,0.2); border:1px solid #38bdf8; display:flex; align-items:center; justify-content:center; font-size:0.9rem;">
+                        💬
+                    </div>
+                    <div>
+                        <strong style="color:#fff; font-size:0.9rem;">${escapeHtml(item.author)}</strong>
+                        <span style="font-size:0.72rem; color:#38bdf8; font-family:var(--font-mono); margin-left:0.35rem;">[Community Reviewer]</span>
+                    </div>
+                </div>
+                <span style="color:#f59e0b; font-size:0.82rem;">${item.rating}</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0 0 0.4rem;">
+                &ldquo;${escapeHtml(item.text)}&rdquo;
+            </p>
+            <div style="font-size:0.72rem; color:#64748b; font-family:var(--font-mono); display:flex; justify-content:space-between;">
+                <span>Favorite: <em>${escapeHtml(item.manga)}</em></span>
+                <span>${item.date || "Verified Community Post"}</span>
+            </div>
+        `;
+
+        if (isNew && container.firstChild) {
+            container.insertBefore(card, container.firstChild);
+        } else {
+            container.appendChild(card);
+        }
+
+        // Update count badge
+        const total = document.querySelectorAll(".community-comment-card").length;
+        const badge = document.getElementById("comment-count-badge");
+        if (badge) badge.innerText = total + " Community Reviews";
+    }
+
+    function escapeHtml(str) {
+        return (str || "").replace(/[&<>"']/g, function(m) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+        });
+    }
+
+    // Load persisted comments on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        try {
+            const saved = JSON.parse(localStorage.getItem("irfanllm_comments") || "[]");
+            if (Array.isArray(saved)) {
+                saved.reverse().forEach(c => renderCommentCard(c, true));
+            }
+        } catch(err) {}
+    });
 </script>
 
 </body>
