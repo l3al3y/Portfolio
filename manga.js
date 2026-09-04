@@ -304,12 +304,22 @@
                     btnPrev.style.background = "rgba(0,255,200,0.6)";
                     if (!btnPrevHoverStart) btnPrevHoverStart = now;
                     else if (now - btnPrevHoverStart > 220 && now > cooldownUntil) {
-                        bannerText.innerText = "<< PREV CHAPTER <<";
-                        banner.style.color = "#00ffea";
                         cooldownUntil = now + COOLDOWN_BUTTON;
                         const prevLink = document.querySelector("a[rel='prev'], .nav-prev, .prev-post, .prev_page, #prev-chapter");
-                        if (prevLink) prevLink.click();
-                        else window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+                        if (prevLink) {
+                            bannerText.innerText = "<< PREV CHAPTER <<";
+                            banner.style.color = "#00ffea";
+                            prevLink.click();
+                        } else {
+                            window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+                            if (document.getElementById("webtoon-scroll-area")) {
+                                bannerText.innerText = "<< PREV (Active on Manga Sites) <<";
+                                banner.style.color = "#fbbf24";
+                            } else {
+                                bannerText.innerText = "<< PREV CHAPTER <<";
+                                banner.style.color = "#00ffea";
+                            }
+                        }
                     }
                     return;
                 } else {
@@ -321,12 +331,22 @@
                     btnNext.style.background = "rgba(0,255,200,0.6)";
                     if (!btnNextHoverStart) btnNextHoverStart = now;
                     else if (now - btnNextHoverStart > 220 && now > cooldownUntil) {
-                        bannerText.innerText = ">> NEXT CHAPTER >>";
-                        banner.style.color = "#00ffea";
                         cooldownUntil = now + COOLDOWN_BUTTON;
                         const nextLink = document.querySelector("a[rel='next'], .nav-next, .next-post, .next_page, #next-chapter");
-                        if (nextLink) nextLink.click();
-                        else window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+                        if (nextLink) {
+                            bannerText.innerText = ">> NEXT CHAPTER >>";
+                            banner.style.color = "#00ffea";
+                            nextLink.click();
+                        } else {
+                            window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+                            if (document.getElementById("webtoon-scroll-area")) {
+                                bannerText.innerText = ">> NEXT (Active on Manga Sites) >>";
+                                banner.style.color = "#fbbf24";
+                            } else {
+                                bannerText.innerText = ">> NEXT CHAPTER >>";
+                                banner.style.color = "#00ffea";
+                            }
+                        }
                     }
                     return;
                 } else {

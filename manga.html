@@ -163,6 +163,14 @@
             <div>💡 <strong>Fastest Way to Test:</strong> Copy the bookmarklet and run it on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a> (or any webtoon site). Manga sites have zero camera restrictions, so the camera activates instantly!</div>
             <div style="margin-top:0.35rem; color:var(--text-muted); font-size:0.78rem;">🔒 <em>Note: If testing directly on irfanfahmi.com, GitHub Pages upstream enforces a default camera restriction header. You can remove this in Cloudflare Dashboard &rarr; Rules &rarr; Transform Rules &rarr; Modify Response Header.</em></div>
         </div>
+        <div style="margin-top:0.85rem; padding:0.85rem 1.1rem; border-radius:8px; background:rgba(245, 158, 11, 0.12); border:1px solid #f59e0b; font-size:0.85rem; color:#fde68a;">
+            <div style="display:flex; align-items:center; gap:0.5rem; font-weight:700; color:#fbbf24; margin-bottom:0.35rem;">
+                <span>⚠️</span> IMPORTANT NOTE: Air Buttons (&lt; PREV / NEXT &gt;)
+            </div>
+            <p style="margin:0; color:var(--text-sub); font-size:0.83rem; line-height:1.5;">
+                The dashed blue <strong>&lt; PREV</strong> and <strong>NEXT &gt;</strong> air buttons are designed to click chapter pagination links (<code style="color:var(--primary);">.nav-prev</code>, <code style="color:var(--primary);">.nav-next</code>, or arrow keys) which <strong>only function on actual manga websites</strong> (such as DemonicScans, Asura, or MangaDex). In this interactive demo on irfanfahmi.com, the camera will recognize you hovering over them, but page scrolling (Page Down / Page Up postures) is the primary interactive feature.
+            </p>
+        </div>
 
         <!-- Sample Webtoon Scroll Viewport -->
         <div class="webtoon-viewport" id="webtoon-scroll-area">
@@ -184,6 +192,9 @@
             <div class="webtoon-panel" style="background: linear-gradient(180deg, #131b2e, #0d1117);">
                 <h4>Panel 4: Virtual Air Buttons</h4>
                 <p>Hover your hand over the left edge (&lt; PREV) or right edge (NEXT &gt;) to turn chapters without physical contact.</p>
+                <p style="margin-top:0.75rem; font-size:0.82rem; color:#fbbf24; font-weight:600;">
+                    ⚠️ Note: Previous and Next chapter navigation only triggers on actual manga sites with real chapter links.
+                </p>
             </div>
             <div class="webtoon-panel">
                 <h4>End of Demo Chapter</h4>
