@@ -64,6 +64,10 @@
         if (container && container.parentNode) {
             container.parentNode.removeChild(container);
         }
+        if (donateModal && donateModal.parentNode) {
+            donateModal.parentNode.removeChild(donateModal);
+            donateModal = null;
+        }
         window.__IRFANLLM_ACTIVE__ = false;
         window.__IRFANLLM_STOP__ = null;
         try {
@@ -124,6 +128,79 @@
         }
     };
     banner.appendChild(speedBtn);
+
+    // Supporter / Tip Button (Touch 'n Go DuitNow QR)
+    let donateModal = null;
+    function openDonationModal() {
+        if (donateModal) {
+            donateModal.style.display = "flex";
+            return;
+        }
+        donateModal = document.createElement("div");
+        donateModal.id = "irfanllm-donate-modal";
+        donateModal.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.82);backdrop-filter:blur(6px);z-index:1000000;display:flex;align-items:center;justify-content:center;padding:15px;pointer-events:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;";
+        
+        donateModal.onclick = (e) => {
+            if (e.target === donateModal) donateModal.style.display = "none";
+        };
+
+        const card = document.createElement("div");
+        card.style.cssText = "background:#0f172a;border:1px solid rgba(244,63,94,0.4);border-radius:18px;max-width:320px;width:100%;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px rgba(244,63,94,0.25);text-align:center;color:#fff;box-sizing:border-box;";
+        
+        card.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:800;color:#fda4af;display:flex;align-items:center;gap:6px;">
+                    <span>☕</span> <span>Support Developer</span>
+                </div>
+                <button type="button" id="irfanllm-donate-close" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+            </div>
+            <div style="font-size:11px;color:#94a3b8;margin-bottom:10px;line-height:1.4;">
+                100% Free &amp; Ad-Free! Scan with Touch 'n Go eWallet or DuitNow:
+            </div>
+            <div style="background:#fff;padding:8px;border-radius:12px;display:inline-block;box-shadow:0 8px 25px rgba(0,0,0,0.5);margin-bottom:10px;border:2px solid rgba(244,63,94,0.25);">
+                <img src="https://irfanfahmi.com/assets/manga/tng_qr.png" alt="Touch 'n Go DuitNow QR" style="width:175px;height:auto;display:block;border-radius:8px;">
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px;margin-bottom:10px;">
+                <div style="font-size:11px;font-weight:800;color:#fff;">MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR</div>
+                <div style="font-size:10px;color:#34d399;margin-top:2px;">✓ Verified DuitNow Recipient</div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px;">
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px 2px;">
+                    <div style="font-weight:800;color:#f59e0b;font-size:11px;">☕ RM 3</div>
+                    <div style="font-size:9px;color:#94a3b8;">Teh Tarik</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px 2px;">
+                    <div style="font-weight:800;color:#38bdf8;font-size:11px;">🍜 RM 7</div>
+                    <div style="font-size:9px;color:#94a3b8;">Mee Goreng</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px 2px;">
+                    <div style="font-weight:800;color:#c084fc;font-size:11px;">🚀 RM 15</div>
+                    <div style="font-size:9px;color:#94a3b8;">AI Research</div>
+                </div>
+            </div>
+            <a href="https://irfanfahmi.com/assets/manga/tng_qr.png" target="_blank" style="display:inline-block;color:#38bdf8;font-size:11px;text-decoration:none;font-weight:600;">
+                🔍 Open Full-Size QR in New Tab
+            </a>
+        `;
+
+        donateModal.appendChild(card);
+        document.body.appendChild(donateModal);
+
+        const closeBtn = card.querySelector("#irfanllm-donate-close");
+        if (closeBtn) {
+            closeBtn.onclick = () => donateModal.style.display = "none";
+        }
+    }
+
+    const donateBtn = document.createElement("button");
+    donateBtn.innerText = "☕ Tip";
+    donateBtn.title = "Support Developer via Touch 'n Go / DuitNow";
+    donateBtn.style.cssText = "background:rgba(244,63,94,0.2);color:#fda4af;border:1px solid #f43f5e;border-radius:10px;font-size:11px;padding:2px 7px;cursor:pointer;font-weight:bold;transition:all 0.2s;white-space:nowrap;";
+    donateBtn.onclick = (e) => {
+        e.stopPropagation();
+        openDonationModal();
+    };
+    banner.appendChild(donateBtn);
 
     const bannerCloseBtn = document.createElement("button");
     bannerCloseBtn.innerText = "✕ Stop";

@@ -234,6 +234,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (donateChevron) {
                 donateChevron.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
             }
+            if (isHidden) {
+                setTimeout(() => {
+                    donateDrawer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                }, 50);
+            }
         });
     }
 });
