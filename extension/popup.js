@@ -107,32 +107,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
                 isRunning = false;
             } else {
-                // Enable / Turn ON: Direct live-sync from main (https://irfanfahmi.com/controller.js)
-                const bundleScriptUrl = chrome.runtime.getURL("controller.js");
-
-                await executeInTab((fallbackUrl) => {
-                    if (window.__IRFANLLM_ACTIVE__) return;
-
+                // Enable / Turn ON: Execute hands.js + controller.js directly via chrome.scripting.executeScript
+                // This bypasses the webpage's Content Security Policy (CSP) completely and prevents "Refused to load script" errors!
+                await executeInTab(() => {
                     try {
                         sessionStorage.setItem("__IRFANLLM_ACTIVE__", "true");
                     } catch (e) {}
+                });
 
-                    const prev = document.getElementById("irfanllm-script");
-                    if (prev) prev.remove();
-
-                    const s = document.createElement("script");
-                    s.id = "irfanllm-script";
-                    // Direct dynamic URL from main with cache busting
-                    s.src = "https://irfanfahmi.com/controller.js?v=" + Date.now();
-                    s.onerror = () => {
-                        console.warn("[IrfanLLM] Cloud script unreachable, loading local bundle...");
-                        const fallback = document.createElement("script");
-                        fallback.id = "irfanllm-script";
-                        fallback.src = fallbackUrl;
-                        (document.head || document.documentElement).appendChild(fallback);
-                    };
-                    (document.head || document.documentElement).appendChild(s);
-                }, [bundleScriptUrl]);
+                await chrome.scripting.executeScript({
+                    target: { tabId: activeTab.id },
+                    world: "MAIN",
+                    files: ["hands.js", "controller.js"]
+                });
 
                 isRunning = true;
             }
@@ -175,25 +162,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                         syncStatus.innerText = "Latest code loaded (" + (code.length / 1024).toFixed(1) + " KB) • Ready!";
                         syncStatus.style.color = "#34d399";
 
-                        // If currently active in tab, hot-reload the updated controller!
+                        // If currently active in tab, cleanly re-execute controller without DOM script tags!
                         if (isRunning) {
-                            await executeInTab((bundleUrl) => {
-                                const prev = document.getElementById("irfanllm-script");
-                                if (prev) prev.remove();
+                            await executeInTab(() => {
                                 if (typeof window.__IRFANLLM_STOP__ === "function") {
                                     window.__IRFANLLM_STOP__();
                                 }
-                                const s = document.createElement("script");
-                                s.id = "irfanllm-script";
-                                s.src = "https://irfanfahmi.com/controller.js?v=" + Date.now();
-                                s.onerror = () => {
-                                    const fb = document.createElement("script");
-                                    fb.id = "irfanllm-script";
-                                    fb.src = bundleUrl;
-                                    (document.head || document.documentElement).appendChild(fb);
-                                };
-                                (document.head || document.documentElement).appendChild(s);
-                            }, [chrome.runtime.getURL("controller.js")]);
+                            });
+                            await chrome.scripting.executeScript({
+                                target: { tabId: activeTab.id },
+                                world: "MAIN",
+                                files: ["hands.js", "controller.js"]
+                            });
                         }
 
                         setTimeout(() => {
