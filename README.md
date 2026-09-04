@@ -81,8 +81,6 @@ An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 
 ## 📜 Official Certifications & Credentials (26 Verified Records)
 
-All credentials and records are digitally verifiable with interactive previews at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates):
-
 | Category | Count | Primary Focus &amp; Issuing Authorities |
 | :--- | :---: | :--- |
 | 🛡️ **Cisco &amp; Cybersecurity** | **4** | CCNA Enterprise Networking, Switching &amp; Routing, Endpoint Security, Cyber Threat Management |
