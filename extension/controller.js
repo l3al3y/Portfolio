@@ -66,6 +66,10 @@
         }
         window.__IRFANLLM_ACTIVE__ = false;
         window.__IRFANLLM_STOP__ = null;
+        try {
+            sessionStorage.removeItem("__IRFANLLM_ACTIVE__");
+            sessionStorage.setItem("__IRFANLLM_ACTIVE__", "false");
+        } catch (e) {}
 
         const demoArea = document.getElementById("webtoon-scroll-area");
         if (demoArea) {
@@ -587,6 +591,9 @@
             bannerText.innerText = "IrfanLLM Active! Hold gesture to scroll.";
             banner.style.color = "#00ff66";
             banner.style.borderColor = "#00ff66";
+            try {
+                sessionStorage.setItem("__IRFANLLM_ACTIVE__", "true");
+            } catch (e) {}
 
             // Update on-page trigger button to Stop state
             const pageBtn = document.getElementById("btn-camera");
