@@ -10,29 +10,117 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3.5.1">
     <style>
         .manga-hero {
-            padding: 7rem 0 3rem;
+            padding: 7rem 0 2rem;
             text-align: center;
         }
-        .demo-card {
+        .dossier-nav-bar {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0 auto 3rem;
+            max-width: 860px;
+            padding: 0.4rem;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-card);
+            border-radius: 999px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .dossier-nav-item {
+            padding: 0.45rem 1.15rem;
+            border-radius: 999px;
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .dossier-nav-item:hover {
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-1px);
+        }
+        .dossier-card {
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
-            border: 1px solid var(--border-highlight);
+            border: 1px solid var(--border-card);
             border-radius: var(--radius-lg);
-            padding: 2rem;
-            max-width: 820px;
+            padding: 2.25rem;
+            max-width: 880px;
             margin: 0 auto 3rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px var(--primary-glow);
-            text-align: left;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+            scroll-margin-top: 5.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
         }
-        .demo-controls {
+        .dossier-card:hover {
+            border-color: var(--border-highlight);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 25px var(--primary-glow);
+        }
+        .dossier-header-strip {
             display: flex;
-            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
-            margin-top: 1.25rem;
+            gap: 0.75rem;
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-card);
+        }
+        .dossier-index {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .dossier-index .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+        .gesture-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0 1.25rem;
+        }
+        .gesture-photo-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+        .gesture-photo-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .gesture-photo-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
         }
         .webtoon-viewport {
             border: 2px solid var(--border-card);
@@ -42,7 +130,7 @@
             background: #0b0f19;
             margin-top: 1.5rem;
             padding: 1rem;
-            /* Kinetic physics rendering via requestAnimationFrame */
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
         .webtoon-panel {
             background: #161e2e;
@@ -57,62 +145,25 @@
             padding: 2rem;
             text-align: center;
         }
-        .webtoon-panel h4 { font-size: 1.4rem; color: #f59e0b; margin-bottom: 0.5rem; }
-        .webtoon-panel p { color: var(--text-sub); font-size: 0.95rem; }
-        .code-snippet-box {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm);
-            padding: 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            color: var(--primary);
-            word-break: break-all;
-            margin-top: 1rem;
-            position: relative;
-        }
-        .feature-badge {
+        .webtoon-panel h4 { font-size: 1.35rem; color: #f59e0b; margin-bottom: 0.5rem; }
+        .webtoon-panel p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; }
+        .step-pill {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.25rem 0.65rem;
-            border-radius: 999px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 0.78rem;
+            margin-bottom: 0.6rem;
         }
-        .copy-toast {
-            display: none;
-            color: var(--emerald);
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-        .gesture-photo-card {
-            background: var(--bg-surface);
-            backdrop-filter: var(--glass-backdrop);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition-smooth);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-        }
-        .gesture-photo-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-highlight);
-            box-shadow: 0 12px 30px rgba(56,189,248,0.2);
-        }
-        .gesture-photo-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            border-radius: 8px;
+        @media (max-width: 640px) {
+            .dossier-card { padding: 1.5rem 1.15rem; }
+            .gesture-photo-img { height: 190px; }
+            .dossier-nav-bar { border-radius: 16px; gap: 0.35rem; }
+            .dossier-nav-item { font-size: 0.72rem; padding: 0.35rem 0.75rem; }
         }
     </style>
 </head>
@@ -125,65 +176,92 @@
         </a>
         <div class="nav-actions">
             <a href="/" class="btn btn-outline" style="font-size:0.82rem;">&larr; Main Portfolio</a>
-            <a href="https://github.com/l3al3y/Portfolio" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">GitHub</a>
+            <a href="https://github.com/l3al3y/Portfolio" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">GitHub Repo</a>
         </div>
     </div>
 </header>
 
 <main class="container">
+    <!-- Project Hero Header -->
     <section class="manga-hero">
         <div class="status-pill">
             <span class="status-dot"></span>
-            Edge AI Computer Vision Project
+            Edge AI Computer Vision Project Dossier
         </div>
-        <h1 class="hero-title" style="margin-bottom: 1rem;">
+        <h1 class="hero-title" style="margin-bottom: 0.85rem;">
             IrfanLLM <span>Manga Controller</span>
         </h1>
-        <p class="hero-subtitle" style="margin: 0 auto 2rem; max-width: 680px;">
-            A zero-touch, hands-free reading assistant for PC and mobile. Developed to scroll webtoons and turn pages while eating without touching greasy screens.
+        <p class="hero-subtitle" style="margin: 0 auto 2.25rem; max-width: 680px;">
+            A zero-touch, hands-free reading assistant for PC and mobile. Developed to scroll webtoons and turn chapters smoothly while eating or multitasking without touching greasy screens.
         </p>
 
-        <div class="stats-grid" style="max-width: 820px; margin: 0 auto 2.5rem;">
+        <!-- Key Engineering Metrics -->
+        <div class="stats-grid" style="max-width: 860px; margin: 0 auto 2.5rem;">
             <div class="stat-card">
                 <div class="stat-num">98.6%</div>
                 <div class="stat-label">Cross-Val Accuracy</div>
             </div>
             <div class="stat-card">
                 <div class="stat-num">71D</div>
-                <div class="stat-label">Landmark Features</div>
+                <div class="stat-label">Landmark Vectors</div>
             </div>
             <div class="stat-card">
                 <div class="stat-num">0.30s</div>
-                <div class="stat-label">Tuned Cooldown</div>
+                <div class="stat-label">Hysteresis Lock</div>
             </div>
             <div class="stat-card">
                 <div class="stat-num">&lt;0.1ms</div>
                 <div class="stat-label">Edge Inference</div>
             </div>
         </div>
+
+        <!-- Dossier Navigation Strip -->
+        <nav class="dossier-nav-bar" aria-label="Project Sections">
+            <a href="#interactive-lab" class="dossier-nav-item">
+                <span>01</span> Interactive Lab
+            </a>
+            <a href="#extension-hub" class="dossier-nav-item">
+                <span>02</span> Extension Hub
+            </a>
+            <a href="#architecture" class="dossier-nav-item">
+                <span>03</span> AI Pipeline
+            </a>
+            <a href="#changelog" class="dossier-nav-item">
+                <span>04</span> Release Log
+            </a>
+        </nav>
     </section>
 
-    <!-- Interactive Demo Card -->
-    <section class="demo-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-            <h2 style="font-size:1.4rem; font-weight:800; color:#fff;">Interactive Demo (Front Camera)</h2>
-            <span class="feature-badge">MediaPipe Hands JS + Random Forest</span>
+    <!-- DOSSIER 01: Interactive Lab & Gesture Calibration -->
+    <section class="dossier-card" id="interactive-lab">
+        <div class="dossier-header-strip">
+            <div class="dossier-index">
+                <span class="dot"></span>
+                FILE_01 // INTERACTIVE LAB &amp; GESTURE MATRIX
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(56,189,248,0.1); color:var(--primary); border:1px solid rgba(56,189,248,0.3); padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
+                Live In-Browser Sandbox
+            </span>
         </div>
-        <p style="color:var(--text-sub); margin-top:0.5rem; font-size:0.95rem;">
-            Test the controller live in your browser right now! Click below to activate your front camera. Use your <strong>Right Hand</strong> for Page Down, your <strong>Left Hand</strong> for Page Up, and keep hands lowered (<strong>No Hand Shown</strong>) to stay stationary:
+
+        <h2 style="font-size:1.45rem; font-weight:800; color:#fff; margin-bottom:0.4rem;">
+            Gesture Calibration &amp; Live Demo
+        </h2>
+        <p style="color:var(--text-sub); font-size:0.92rem; line-height:1.6; margin:0;">
+            Test the AI gesture classifier right inside your browser! Activate your front camera below to practice the three core ground-truth postures:
         </p>
 
-        <!-- Real Demonstration Photos Gesture Guide -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; margin:1.5rem 0 1.25rem;">
+        <!-- 3 Authentic Demonstration Postures -->
+        <div class="gesture-photo-grid">
             <!-- 1. Page Down Card (Right Hand) -->
             <div class="gesture-photo-card" style="border-color: rgba(56, 189, 248, 0.4);">
                 <div style="position:relative; overflow:hidden; border-radius:10px; margin-bottom:0.85rem; border:1px solid rgba(56, 189, 248, 0.3);">
                     <img src="assets/manga/gesture_pagedown.jpg" alt="Irfan demonstrating Page Down posture with Right Hand" class="gesture-photo-img">
-                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.88); color:var(--primary); font-size:0.75rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid var(--primary); font-family:var(--font-mono);">POSTURE 1: DOWN (RIGHT HAND)</span>
+                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.88); color:var(--primary); font-size:0.72rem; font-weight:800; padding:0.25rem 0.55rem; border-radius:6px; border:1px solid var(--primary); font-family:var(--font-mono);">POSTURE 1: DOWN (RIGHT HAND)</span>
                 </div>
-                <h3 style="font-weight:800; color:var(--primary); font-size:1.05rem; margin:0 0 0.4rem;">Page Down (Scroll Down) &mdash; Right Hand</h3>
-                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5; margin:0;">
-                    Use your <strong>Right Hand</strong>. Hold a curled fist at <strong>chest level</strong> with knuckles angled downward (~45°). MediaPipe detects the 71D geometry and smoothly scrolls down.
+                <h3 style="font-weight:800; color:var(--primary); font-size:1.05rem; margin:0 0 0.4rem;">Page Down &mdash; Right Hand</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
+                    Hold a curled knuckle fist with your <strong>Right Hand</strong> at chest level (~45° downward tilt). MediaPipe extracts the 71D vector to smoothly glide the page down.
                 </p>
             </div>
 
@@ -191,11 +269,11 @@
             <div class="gesture-photo-card" style="border-color: rgba(192, 132, 252, 0.4);">
                 <div style="position:relative; overflow:hidden; border-radius:10px; margin-bottom:0.85rem; border:1px solid rgba(192, 132, 252, 0.3);">
                     <img src="assets/manga/gesture_pageup.jpg" alt="Irfan demonstrating Page Up posture with Left Hand" class="gesture-photo-img">
-                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.88); color:var(--purple); font-size:0.75rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid var(--purple); font-family:var(--font-mono);">POSTURE 2: UP (LEFT HAND)</span>
+                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.88); color:var(--purple); font-size:0.72rem; font-weight:800; padding:0.25rem 0.55rem; border-radius:6px; border:1px solid var(--purple); font-family:var(--font-mono);">POSTURE 2: UP (LEFT HAND)</span>
                 </div>
-                <h3 style="font-weight:800; color:var(--purple); font-size:1.05rem; margin:0 0 0.4rem;">Page Up (Scroll Up) &mdash; Left Hand</h3>
-                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5; margin:0;">
-                    Use your <strong>Left Hand</strong>. Tilt your fist or knuckles upward resting <strong>under your chin</strong> (~118° upward angle). Smoothly scrolls reading content back up.
+                <h3 style="font-weight:800; color:var(--purple); font-size:1.05rem; margin:0 0 0.4rem;">Page Up &mdash; Left Hand</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
+                    Tilt your <strong>Left Hand</strong> knuckles upward under your chin (~118° upward tilt). Reverses scrolling to fluidly read back up.
                 </p>
             </div>
 
@@ -203,274 +281,318 @@
             <div class="gesture-photo-card" style="border-color: rgba(52, 211, 153, 0.4);">
                 <div style="position:relative; overflow:hidden; border-radius:10px; margin-bottom:0.85rem; border:1px solid rgba(52, 211, 153, 0.3);">
                     <img src="assets/manga/gesture_idle.jpg" alt="Irfan demonstrating Idle posture with No Hand Shown" class="gesture-photo-img">
-                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.88); color:var(--emerald); font-size:0.75rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:6px; border:1px solid var(--emerald); font-family:var(--font-mono);">POSTURE 3: IDLE (NO HAND)</span>
+                    <span style="position:absolute; top:8px; left:8px; background:rgba(8,12,20,0.88); color:var(--emerald); font-size:0.72rem; font-weight:800; padding:0.25rem 0.55rem; border-radius:6px; border:1px solid var(--emerald); font-family:var(--font-mono);">POSTURE 3: IDLE (NO HAND)</span>
                 </div>
-                <h3 style="font-weight:800; color:var(--emerald); font-size:1.05rem; margin:0 0 0.4rem;">Neutral / Idle (Stationary) &mdash; No Hand</h3>
-                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5; margin:0;">
-                    <strong>Do not show any hand</strong> to the camera. Keep both hands lowered, relaxed, or resting out of frame. The reading viewport stays completely still with zero return-stroke false triggers.
+                <h3 style="font-weight:800; color:var(--emerald); font-size:1.05rem; margin:0 0 0.4rem;">Neutral / Idle &mdash; No Hand</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
+                    <strong>Lower both hands away from the camera</strong>. The page remains completely stationary with zero return-stroke false triggers.
                 </p>
             </div>
         </div>
 
-        <!-- Air Buttons Quick Tip -->
-        <div style="margin:0 0 1.5rem; padding:0.85rem 1.1rem; border-radius:10px; background:rgba(251, 191, 36, 0.08); border:1px solid rgba(251, 191, 36, 0.25); display:flex; align-items:center; gap:0.75rem; font-size:0.85rem; color:var(--text-sub);">
-            <span style="font-size:1.4rem;">👈 📖 👉</span>
-            <div>
-                <strong style="color:#fbbf24;">Virtual Air Buttons (&lt; PREV / NEXT &gt;):</strong>
-                Hover hand over left or right screen border to turn chapters (designed for actual manga sites like DemonicScans, Asura, and MangaDex).
+        <!-- Consolidated Unified Air Navigation Note -->
+        <div style="margin:1.25rem 0; padding:0.9rem 1.25rem; border-radius:10px; background:rgba(251, 191, 36, 0.08); border:1px solid rgba(251, 191, 36, 0.3); display:flex; align-items:flex-start; gap:0.85rem; font-size:0.85rem; line-height:1.55;">
+            <span style="font-size:1.4rem; line-height:1;">👈📖👉</span>
+            <div style="color:var(--text-sub);">
+                <strong style="color:#fbbf24;">Air Navigation (&lt; PREV / NEXT &gt;):</strong>
+                Hovering your hand over the dashed blue border buttons turns chapters on actual manga sites (<a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans</a>, Asura, MangaDex). In this local portfolio sandbox, enjoy testing the vertical scrolling postures on the demo panel below!
             </div>
         </div>
 
-        <div class="demo-controls">
-            <button id="btn-camera" class="btn btn-primary" onclick="toggleCameraDemo()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
-                Activate Front Camera Demo
+        <!-- Sole Action Control: Camera Button -->
+        <div style="margin:1.5rem 0 1rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+            <button id="btn-camera" class="btn btn-primary" onclick="toggleCameraDemo()" style="padding:0.8rem 1.8rem; font-size:0.95rem; font-weight:700;">
+                📷 Activate Front Camera Demo
             </button>
-            <a href="assets/manga/irfanllm-manga-extension.zip" download="irfanllm-manga-extension.zip" class="btn btn-outline" style="padding:0.75rem 1.5rem; font-size:0.95rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
-                📥 Download Chrome Extension (.zip)
-            </a>
-        </div>
-        <div style="margin-top:0.85rem; font-size:0.82rem; color:var(--text-sub); line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
-            <div>💡 <strong>Read on Actual Manga Sites:</strong> Download the IrfanLLM Chrome Extension below to scroll hands-free on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a>, Asura, and MangaDex!</div>
-        </div>
-        <div style="margin-top:0.85rem; padding:0.85rem 1.1rem; border-radius:8px; background:rgba(245, 158, 11, 0.12); border:1px solid #f59e0b; font-size:0.85rem; color:#fde68a;">
-            <div style="display:flex; align-items:center; gap:0.5rem; font-weight:700; color:#fbbf24; margin-bottom:0.35rem;">
-                <span>⚠️</span> IMPORTANT NOTE: Air Buttons (&lt; PREV / NEXT &gt;)
-            </div>
-            <p style="margin:0; color:var(--text-sub); font-size:0.83rem; line-height:1.5;">
-                The dashed blue <strong>&lt; PREV</strong> and <strong>NEXT &gt;</strong> air buttons are designed to click chapter pagination links (<code style="color:var(--primary);">.nav-prev</code>, <code style="color:var(--primary);">.nav-next</code>, or arrow keys) which <strong>only function on actual manga websites</strong> (such as DemonicScans, Asura, or MangaDex). In this interactive demo on irfanfahmi.com, the camera will recognize you hovering over them, but page scrolling (Page Down / Page Up postures) is the primary interactive feature.
-            </p>
+            <span style="font-size:0.82rem; color:var(--text-muted); font-family:var(--font-mono);">
+                Client-side inference &bull; No video leaves your device
+            </span>
         </div>
 
-        <!-- Sample Webtoon Scroll Viewport -->
+        <!-- Interactive Webtoon Viewport -->
         <div class="webtoon-viewport" id="webtoon-scroll-area">
             <div class="webtoon-panel" style="background: linear-gradient(180deg, #161e2e, #1e293b);">
                 <h4>Chapter 1: The Touchless Reader</h4>
-                <p>Enjoying hot food or chicken wings with both hands without dirtying your screen.</p>
+                <p>Eating chicken wings, chips, or ramen while reading your favorite webtoon without smudging grease on the screen.</p>
                 <p style="margin-top:1.5rem; color:var(--primary); font-family:var(--font-mono); font-weight:700;">
                     &darr; Hold Page Down Posture (Right Hand) to Scroll Down &darr;
                 </p>
             </div>
             <div class="webtoon-panel" style="background: linear-gradient(180deg, #1e293b, #161e2e);">
                 <h4>Panel 2: Zero Return Stroke Recoil</h4>
-                <p>Velocity heuristics failed because returning your hand after an upward stroke triggered an opposite scroll. Our machine-learning posture classifier detects pose geometry with high cross-validated accuracy, eliminating return-stroke false triggers inherent in velocity heuristics.</p>
+                <p>Legacy swipe heuristics failed because bringing your hand back down triggered a reverse scroll. Our 71D geometric model classifies static hand shape rather than motion vectors, eliminating false return strokes.</p>
                 <p style="margin-top:1rem; color:var(--purple); font-family:var(--font-mono); font-weight:700;">
                     &uarr; Hold Page Up Posture (Left Hand) to Scroll Back Up &uarr;
                 </p>
             </div>
             <div class="webtoon-panel" style="background: linear-gradient(180deg, #161e2e, #131b2e);">
                 <h4>Panel 3: Edge Inference Speed</h4>
-                <p>100 decision trees compiled into 14.6 KB pure JavaScript array traversal. Inference takes less than 0.1ms per frame directly in WebGL / WebAssembly.</p>
+                <p>100 decision trees compiled into pure JavaScript array traversal. Inference takes less than 0.1ms per frame directly in your browser.</p>
             </div>
             <div class="webtoon-panel" style="background: linear-gradient(180deg, #131b2e, #0d1117);">
-                <h4>Panel 4: Virtual Air Buttons</h4>
-                <p>Hover your hand over the left edge (&lt; PREV) or right edge (NEXT &gt;) to turn chapters without physical contact.</p>
-                <p style="margin-top:0.75rem; font-size:0.82rem; color:#fbbf24; font-weight:600;">
-                    ⚠️ Note: Previous and Next chapter navigation only triggers on actual manga sites with real chapter links.
-                </p>
+                <h4>Panel 4: Virtual Air Navigation</h4>
+                <p>Hover your hand over the left edge (&lt; PREV) or right edge (NEXT &gt;) to turn chapters touchlessly on supported scanlation websites.</p>
             </div>
             <div class="webtoon-panel">
                 <h4>End of Demo Chapter</h4>
-                <p style="color:var(--emerald); font-weight:700;">&check; Touchless Reading Goal Achieved!</p>
+                <p style="color:var(--emerald); font-weight:700;">&check; Touchless Reading Verification Complete!</p>
             </div>
         </div>
     </section>
 
-    <!-- Chrome Extension Section -->
-    <section class="demo-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
-            <div style="display:flex; align-items:center; gap:0.75rem;">
-                <img src="favicon-192x192.png" alt="IrfanLLM Icon" style="width:42px; height:42px; border-radius:10px; border:1px solid var(--border-highlight); box-shadow:0 0 15px rgba(56,189,248,0.3);">
+    <!-- DOSSIER 02: Chrome Extension Hub & Deployment Guide -->
+    <section class="dossier-card" id="extension-hub">
+        <div class="dossier-header-strip">
+            <div class="dossier-index">
+                <span class="dot"></span>
+                FILE_02 // CHROME EXTENSION HUB &amp; INSTALLATION
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(16,185,129,0.15); color:var(--emerald); border:1px solid var(--emerald); padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
+                v1.3.0 Live &bull; Manifest V3
+            </span>
+        </div>
+
+        <!-- Extension Header Card with Sole Download Button -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem; margin-bottom:1.5rem; background:rgba(15,23,42,0.6); border:1px solid var(--border-card); border-radius:14px; padding:1.25rem;">
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <img src="favicon-192x192.png" alt="IrfanLLM Icon" style="width:52px; height:52px; border-radius:12px; border:1px solid var(--border-highlight); box-shadow:0 0 20px rgba(56,189,248,0.35);">
                 <div>
-                    <h2 style="font-size:1.35rem; font-weight:800; color:#fff; margin:0; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-                        <span>IrfanLLM Extension</span>
-                        <span style="font-size:0.75rem; background:rgba(16,185,129,0.15); color:var(--emerald); border:1px solid var(--emerald); padding:0.15rem 0.5rem; border-radius:999px; font-weight:700;">v1.3.0 • ⚡ Cloud Auto-Sync &amp; Chapter Persistence</span>
+                    <h2 style="font-size:1.3rem; font-weight:800; color:#fff; margin:0 0 0.25rem;">
+                        IrfanLLM Manga Controller Extension
                     </h2>
-                    <p style="font-size:0.83rem; color:var(--text-sub); margin:0.15rem 0 0;">
-                        Touchless AI Manga Controller for PC (Chrome/Edge/Brave) &amp; Mobile (Lemur/Kiwi Browser)
-                    </p>
+                    <div style="display:flex; gap:0.45rem; flex-wrap:wrap; font-size:0.75rem; font-family:var(--font-mono);">
+                        <span style="color:var(--emerald); background:rgba(16,185,129,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(16,185,129,0.3);">⚡ Cloud Live-Sync</span>
+                        <span style="color:var(--primary); background:rgba(56,189,248,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">🌐 Multi-Site (&lt;all_urls&gt;)</span>
+                        <span style="color:var(--purple); background:rgba(192,132,252,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(192,132,252,0.3);">🔄 Chapter Persistence</span>
+                    </div>
                 </div>
             </div>
-            <a href="assets/manga/irfanllm-manga-extension.zip" download="irfanllm-manga-extension.zip" class="btn btn-primary" style="padding:0.65rem 1.4rem; font-size:0.92rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 15px rgba(2,132,199,0.4);">
-                📥 Download Extension (.zip)
+
+            <!-- Single Official Download Action -->
+            <a href="assets/manga/irfanllm-manga-extension.zip" download="irfanllm-manga-extension.zip" class="btn btn-primary" style="padding:0.75rem 1.6rem; font-size:0.92rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 18px var(--primary-glow);">
+                📥 Download Extension Package (.zip)
             </a>
         </div>
 
-        <p style="color:var(--text-sub); font-size:0.92rem; line-height:1.6; margin-bottom:1.25rem;">
-            Install once &mdash; with <strong>Cloud Auto-Sync</strong>, all future AI updates, gestures, and physics sync automatically without ever removing or reinstalling the file! Use the extension popup to <strong>Enable</strong> or <strong>Disable</strong> touchless reading on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a>, <strong>AsuraComics</strong>, <strong>MangaDex</strong>, or <strong>any manga site</strong>.
+        <p style="color:var(--text-sub); font-size:0.92rem; line-height:1.65; margin-bottom:1.75rem;">
+            Install once &mdash; powered by <strong>Cloud Live-Sync</strong>, all future AI updates, kinetic physics, and website compatibility updates sync dynamically from GitHub without reinstalling. Open the extension popup to <strong>Enable</strong> touchless reading on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a>, <strong>AsuraComics</strong>, <strong>MangaDex</strong>, or any web reader.
         </p>
 
-        <!-- 3-Step Setup Cards -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;">
-            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.15rem;">
-                <div style="font-size:1.6rem; margin-bottom:0.5rem;">📦</div>
-                <h3 style="color:var(--primary); font-size:1rem; margin-bottom:0.35rem; font-weight:800;">Step 1: Download &amp; Extract</h3>
-                <p style="font-size:0.83rem; color:var(--text-sub); line-height:1.5; margin:0;">
-                    Click the <strong>Download Extension (.zip)</strong> button above and extract the zip file to your folder.
-                </p>
+        <!-- Structured 2-Track Installation Guide -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:2rem;">
+            <!-- PC / Laptop Installation Track -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-card); border-radius:14px; padding:1.35rem;">
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; border-bottom:1px solid var(--border-card); padding-bottom:0.75rem;">
+                    <span style="font-size:1.3rem;">💻</span>
+                    <h3 style="font-size:1.05rem; font-weight:800; color:#fff; margin:0;">
+                        Desktop Setup (Chrome / Edge / Brave)
+                    </h3>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:1rem;">
+                    <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+                        <span class="step-pill" style="background:rgba(56,189,248,0.15); color:var(--primary); border:1px solid var(--primary);">1</span>
+                        <div>
+                            <strong style="font-size:0.88rem; color:#fff;">Extract ZIP Archive</strong>
+                            <p style="font-size:0.82rem; color:var(--text-sub); margin:0.15rem 0 0; line-height:1.45;">
+                                Extract <code style="color:var(--primary);">irfanllm-manga-extension.zip</code> into a convenient folder on your computer.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+                        <span class="step-pill" style="background:rgba(192,132,252,0.15); color:var(--purple); border:1px solid var(--purple);">2</span>
+                        <div>
+                            <strong style="font-size:0.88rem; color:#fff;">Enable Developer Mode</strong>
+                            <p style="font-size:0.82rem; color:var(--text-sub); margin:0.15rem 0 0; line-height:1.45;">
+                                Open <code style="color:var(--primary);">chrome://extensions</code> in your address bar and toggle on <strong>Developer mode</strong> (top-right).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+                        <span class="step-pill" style="background:rgba(52,211,153,0.15); color:var(--emerald); border:1px solid var(--emerald);">3</span>
+                        <div>
+                            <strong style="font-size:0.88rem; color:#fff;">Load Unpacked Extension</strong>
+                            <p style="font-size:0.82rem; color:var(--text-sub); margin:0.15rem 0 0; line-height:1.45;">
+                                Click <strong>Load unpacked</strong> (top-left) and select the extracted folder. Pin the IrfanLLM icon to your toolbar!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.15rem;">
-                <div style="font-size:1.6rem; margin-bottom:0.5rem;">⚙️</div>
-                <h3 style="color:var(--purple); font-size:1rem; margin-bottom:0.35rem; font-weight:800;">Step 2: Open Extensions</h3>
-                <p style="font-size:0.83rem; color:var(--text-sub); line-height:1.5; margin:0;">
-                    In Chrome, Edge, or Brave, go to <code style="color:var(--primary);">chrome://extensions</code> in your address bar and switch on <strong>Developer mode</strong> (top-right toggle).
-                </p>
-            </div>
+            <!-- Mobile Android Installation Track -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-card); border-radius:14px; padding:1.35rem;">
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; border-bottom:1px solid var(--border-card); padding-bottom:0.75rem;">
+                    <span style="font-size:1.3rem;">📱</span>
+                    <h3 style="font-size:1.05rem; font-weight:800; color:#fff; margin:0;">
+                        Mobile Setup (Kiwi / Lemur Browser)
+                    </h3>
+                </div>
 
-            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.15rem;">
-                <div style="font-size:1.6rem; margin-bottom:0.5rem;">🚀</div>
-                <h3 style="color:var(--emerald); font-size:1rem; margin-bottom:0.35rem; font-weight:800;">Step 3: Load Unpacked</h3>
-                <p style="font-size:0.83rem; color:var(--text-sub); line-height:1.5; margin:0;">
-                    Click <strong>Load unpacked</strong> (top-left) and select the extracted extension folder. Done!
-                </p>
+                <div style="display:flex; flex-direction:column; gap:1rem;">
+                    <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+                        <span class="step-pill" style="background:rgba(56,189,248,0.15); color:var(--primary); border:1px solid var(--primary);">1</span>
+                        <div>
+                            <strong style="font-size:0.88rem; color:#fff;">Install Kiwi or Lemur Browser</strong>
+                            <p style="font-size:0.82rem; color:var(--text-sub); margin:0.15rem 0 0; line-height:1.45;">
+                                Available for free on Google Play. These browsers support desktop Chromium extensions on Android.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+                        <span class="step-pill" style="background:rgba(192,132,252,0.15); color:var(--purple); border:1px solid var(--purple);">2</span>
+                        <div>
+                            <strong style="font-size:0.88rem; color:#fff;">Download Extension ZIP</strong>
+                            <p style="font-size:0.82rem; color:var(--text-sub); margin:0.15rem 0 0; line-height:1.45;">
+                                Visit <code style="color:var(--primary);">irfanfahmi.com/manga.html</code> inside Kiwi or Lemur and tap the download button above.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+                        <span class="step-pill" style="background:rgba(52,211,153,0.15); color:var(--emerald); border:1px solid var(--emerald);">3</span>
+                        <div>
+                            <strong style="font-size:0.88rem; color:#fff;">Load from .zip in Extensions</strong>
+                            <p style="font-size:0.82rem; color:var(--text-sub); margin:0.15rem 0 0; line-height:1.45;">
+                                In Kiwi: 3 dots (&vellip;) &rarr; Extensions &rarr; Developer mode &rarr; <strong>+ (from .zip)</strong>. Select the zip file and enjoy!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Dedicated Mobile Installation Guide (Kiwi & Lemur Browser) -->
-        <div style="margin-top:1.5rem; background:rgba(15,23,42,0.8); border:1px solid rgba(56, 189, 248, 0.3); border-radius:12px; padding:1.25rem;">
-            <div style="display:flex; align-items:center; gap:0.5rem; color:var(--primary); font-weight:800; font-size:1.05rem; margin-bottom:0.75rem;">
-                <span>📱</span> How to Install on Mobile (Android &amp; Samsung) via Kiwi or Lemur Browser
-            </div>
-            <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0 0 1rem;">
-                Standard mobile browsers (Chrome &amp; Samsung Internet) strictly block all custom extensions. To use the touchless extension on mobile, use <strong>Kiwi Browser</strong> or <strong>Lemur Browser</strong> (free on Google Play, built on Chromium):
-            </p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.85rem;">
-                <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-card); border-radius:8px; padding:0.9rem;">
-                    <strong style="color:#fff; font-size:0.88rem;">1. Install Kiwi or Lemur</strong>
-                    <p style="font-size:0.8rem; color:var(--text-sub); margin:0.35rem 0 0; line-height:1.45;">
-                        Install <strong>Kiwi Browser</strong> or <strong>Lemur Browser</strong> from Google Play Store.
-                    </p>
-                </div>
-                <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-card); border-radius:8px; padding:0.9rem;">
-                    <strong style="color:#fff; font-size:0.88rem;">2. Download .zip</strong>
-                    <p style="font-size:0.8rem; color:var(--text-sub); margin:0.35rem 0 0; line-height:1.45;">
-                        In that browser, visit <code style="color:var(--primary);">irfanfahmi.com/manga.html</code> and tap <strong>Download Extension (.zip)</strong>.
-                    </p>
-                </div>
-                <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-card); border-radius:8px; padding:0.9rem;">
-                    <strong style="color:#fff; font-size:0.88rem;">3. Open Extensions Page</strong>
-                    <p style="font-size:0.8rem; color:var(--text-sub); margin:0.35rem 0 0; line-height:1.45;">
-                        <strong>In Lemur:</strong> Type <code style="color:var(--primary);">chrome://extensions</code> in the address bar (or tap the bottom bar 🧩 icon).<br>
-                        <strong>In Kiwi:</strong> Tap <strong>3 dots (&vellip;)</strong> &rarr; <strong>Extensions</strong>.
-                    </p>
-                </div>
-                <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-card); border-radius:8px; padding:0.9rem;">
-                    <strong style="color:#fff; font-size:0.88rem;">4. Load .zip &amp; Read</strong>
-                    <p style="font-size:0.8rem; color:var(--text-sub); margin:0.35rem 0 0; line-height:1.45;">
-                        Turn ON <strong>Developer mode</strong> &rarr; tap <strong>+ (from .zip)</strong> or <strong>Load</strong> &rarr; select downloaded zip. Open DemonicScans &amp; toggle ON!
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Browser Compatibility Table -->
-        <div style="margin-top:1.5rem; background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.25rem; overflow-x:auto;">
+        <!-- Browser Compatibility Matrix -->
+        <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:14px; padding:1.25rem; overflow-x:auto;">
             <h3 style="font-size:1.05rem; font-weight:800; color:#fff; margin:0 0 0.85rem; display:flex; align-items:center; gap:0.5rem;">
-                <span>🌐</span> Summary of Where IrfanLLM Extension Works
+                <span>🌐</span> Verified Platform Compatibility Matrix
             </h3>
             <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;">
                 <thead>
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.1); color:var(--text-sub);">
-                        <th style="padding:0.6rem 0.75rem;">Platform</th>
-                        <th style="padding:0.6rem 0.75rem;">Browser</th>
-                        <th style="padding:0.6rem 0.75rem; text-align:center;">Extension Support</th>
-                        <th style="padding:0.6rem 0.75rem;">Notes</th>
+                        <th style="padding:0.65rem 0.75rem;">Device</th>
+                        <th style="padding:0.65rem 0.75rem;">Browser</th>
+                        <th style="padding:0.65rem 0.75rem; text-align:center;">Extension Status</th>
+                        <th style="padding:0.65rem 0.75rem;">Integration Details</th>
                     </tr>
                 </thead>
                 <tbody style="color:var(--text-sub);">
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">💻 PC / Laptop</td>
-                        <td style="padding:0.6rem 0.75rem; color:var(--primary); font-weight:600;">Google Chrome</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Load unpacked via <code>chrome://extensions</code></td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">💻 PC / Laptop</td>
+                        <td style="padding:0.65rem 0.75rem; color:var(--primary); font-weight:600;">Google Chrome</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Load unpacked via <code>chrome://extensions</code></td>
                     </tr>
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">💻 PC / Laptop</td>
-                        <td style="padding:0.6rem 0.75rem; color:var(--primary); font-weight:600;">Microsoft Edge</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Load unpacked via <code>edge://extensions</code></td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">💻 PC / Laptop</td>
+                        <td style="padding:0.65rem 0.75rem; color:var(--primary); font-weight:600;">Microsoft Edge</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Load unpacked via <code>edge://extensions</code></td>
                     </tr>
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">💻 PC / Laptop</td>
-                        <td style="padding:0.6rem 0.75rem; color:var(--primary); font-weight:600;">Brave Browser</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Load unpacked via <code>brave://extensions</code></td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">💻 PC / Laptop</td>
+                        <td style="padding:0.65rem 0.75rem; color:var(--primary); font-weight:600;">Brave Browser</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Load unpacked via <code>brave://extensions</code></td>
                     </tr>
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(56,189,248,0.04);">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
-                        <td style="padding:0.6rem 0.75rem; color:var(--emerald); font-weight:700;">Kiwi Browser (Recommended)</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Install direct from <code>.zip</code> in Developer Mode</td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
+                        <td style="padding:0.65rem 0.75rem; color:var(--emerald); font-weight:700;">Kiwi Browser (Recommended)</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Direct install from <code>.zip</code> via Developer Mode</td>
                     </tr>
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
-                        <td style="padding:0.6rem 0.75rem; color:var(--primary); font-weight:600;">Lemur Browser</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Native mobile extension manager</td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
+                        <td style="padding:0.65rem 0.75rem; color:var(--primary); font-weight:600;">Lemur Browser</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:var(--emerald); font-weight:700;">✅ Full Support</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Mobile Chrome extension manager support</td>
                     </tr>
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05); opacity:0.75;">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
-                        <td style="padding:0.6rem 0.75rem;">Google Chrome (Mobile)</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:#f87171; font-weight:700;">❌ Blocked</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Extensions disabled by Google on mobile</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05); opacity:0.75;">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
-                        <td style="padding:0.6rem 0.75rem;">Samsung Internet</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:#f87171; font-weight:700;">❌ Blocked</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Galaxy Store adblockers only; no unpacked extensions</td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
+                        <td style="padding:0.65rem 0.75rem;">Google Chrome Mobile</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:#f87171; font-weight:700;">❌ Blocked</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Extensions disabled by Google on mobile builds</td>
                     </tr>
                     <tr style="opacity:0.75;">
-                        <td style="padding:0.6rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
-                        <td style="padding:0.6rem 0.75rem;">Brave Mobile</td>
-                        <td style="padding:0.6rem 0.75rem; text-align:center; color:#f87171; font-weight:700;">❌ Blocked</td>
-                        <td style="padding:0.6rem 0.75rem; font-size:0.8rem;">Extensions disabled by Brave on mobile</td>
+                        <td style="padding:0.65rem 0.75rem; font-weight:700; color:#fff;">📱 Android Mobile</td>
+                        <td style="padding:0.65rem 0.75rem;">Samsung Internet</td>
+                        <td style="padding:0.65rem 0.75rem; text-align:center; color:#f87171; font-weight:700;">❌ Blocked</td>
+                        <td style="padding:0.65rem 0.75rem; font-size:0.8rem;">Curated Galaxy Store adblockers only</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- Technical Architecture -->
-    <section class="demo-card">
-        <h2 style="font-size:1.3rem; font-weight:800; color:#fff; margin-bottom:1rem;">
-            Machine Learning & Vision Architecture
+    <!-- DOSSIER 03: Machine Learning & Vision Pipeline -->
+    <section class="dossier-card" id="architecture">
+        <div class="dossier-header-strip">
+            <div class="dossier-index">
+                <span class="dot"></span>
+                FILE_03 // MACHINE LEARNING &amp; VISION PIPELINE
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(192,132,252,0.12); color:var(--purple); border:1px solid rgba(192,132,252,0.3); padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
+                Latency: &lt;0.1ms / frame
+            </span>
+        </div>
+
+        <h2 style="font-size:1.45rem; font-weight:800; color:#fff; margin-bottom:0.4rem;">
+            Edge Vision Architecture &amp; Classifier
         </h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;">
-            <div style="background:rgba(0,0,0,0.25); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
-                <h3 style="color:var(--primary); font-size:1rem; margin-bottom:0.4rem;">1. MediaPipe Pipeline</h3>
-                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5;">21 3D landmarks extracted at 30-60 FPS. Normalized relative to wrist coordinate and scaled by palm distance.</p>
+        <p style="color:var(--text-sub); font-size:0.92rem; line-height:1.6; margin-bottom:1.5rem;">
+            Engineered to operate entirely on client-side hardware without sending video streams to external cloud servers:
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1.25rem;">
+            <div style="background:rgba(15,23,42,0.65); padding:1.35rem; border-radius:12px; border:1px solid var(--border-card);">
+                <div style="font-size:1.6rem; margin-bottom:0.5rem;">🖐️</div>
+                <h3 style="color:var(--primary); font-size:1.05rem; margin-bottom:0.4rem; font-weight:800;">1. MediaPipe 71D Pipeline</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
+                    Extracts 21 3D landmarks at 30-60 FPS. Coordinates are normalized relative to wrist origin and scaled by palm span to remain invariant to camera distance.
+                </p>
             </div>
-            <div style="background:rgba(0,0,0,0.25); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
-                <h3 style="color:var(--emerald); font-size:1rem; margin-bottom:0.4rem;">2. Random Forest Model</h3>
-                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5;">100 decision trees (depth 6) trained on ground-truth hand videos. Achieves 98.6% 5-fold cross-validation accuracy with zero reliance on velocity heuristics.</p>
+            <div style="background:rgba(15,23,42,0.65); padding:1.35rem; border-radius:12px; border:1px solid var(--border-card);">
+                <div style="font-size:1.6rem; margin-bottom:0.5rem;">🌲</div>
+                <h3 style="color:var(--emerald); font-size:1.05rem; margin-bottom:0.4rem; font-weight:800;">2. 100-Tree Random Forest</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
+                    Trained directly on ground-truth hand videos. Reaches 98.6% cross-validation accuracy with zero velocity heuristic recoil, executing in &lt;0.1ms via pure JS arrays.
+                </p>
             </div>
-            <div style="background:rgba(0,0,0,0.25); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
-                <h3 style="color:var(--purple); font-size:1rem; margin-bottom:0.4rem;">3. 0.3s Hysteresis Lock</h3>
-                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5;">Debounced scrolling cooldown prevents runaway page turns while maintaining fluid, natural reading speed.</p>
+            <div style="background:rgba(15,23,42,0.65); padding:1.35rem; border-radius:12px; border:1px solid var(--border-card);">
+                <div style="font-size:1.6rem; margin-bottom:0.5rem;">⚡</div>
+                <h3 style="color:var(--purple); font-size:1.05rem; margin-bottom:0.4rem; font-weight:800;">3. Kinetic Momentum Engine</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
+                    Decoupled 60/90/120Hz display refresh loop with exponential friction damping (0.935) and 0.30s debounced hysteresis lock for silky smartphone-grade scrolling.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Engineering Changelog & Version History -->
-    <section class="demo-card" style="margin-top:2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1.25rem;">
-            <div>
-                <h2 style="font-size:1.35rem; font-weight:800; color:#fff; margin:0;">
-                    Release History &amp; Version Changelog
-                </h2>
-                <p style="font-size:0.83rem; color:var(--text-sub); margin:0.2rem 0 0;">
-                    Complete engineering progression and version-by-version improvements
-                </p>
+    <!-- DOSSIER 04: Engineering Release History & Version Changelog -->
+    <section class="dossier-card" id="changelog">
+        <div class="dossier-header-strip">
+            <div class="dossier-index">
+                <span class="dot"></span>
+                FILE_04 // RELEASE HISTORY &amp; VERSION LOG
             </div>
-            <span style="font-size:0.75rem; background:rgba(56,189,248,0.12); color:var(--primary); border:1px solid var(--primary); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700; font-family:var(--font-mono);">
+            <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(56,189,248,0.12); color:var(--primary); border:1px solid var(--primary); padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
                 Latest: v1.3.0 Live
             </span>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:1.2rem;">
+        <h2 style="font-size:1.45rem; font-weight:800; color:#fff; margin-bottom:0.4rem;">
+            Engineering Progression &amp; Version History
+        </h2>
+        <p style="color:var(--text-sub); font-size:0.92rem; line-height:1.6; margin-bottom:1.5rem;">
+            Chronological documentation of architectural improvements and performance upgrades:
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:1.25rem;">
             <!-- v1.3.0 -->
-            <div style="background:rgba(15,23,42,0.7); border:1px solid rgba(16,185,129,0.4); border-radius:12px; padding:1.25rem;">
+            <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(16,185,129,0.4); border-radius:12px; padding:1.25rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem;">
                         <span style="background:var(--emerald); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.3.0</span>
@@ -479,9 +601,9 @@
                     <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04 (Current)</span>
                 </div>
                 <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
-                    <li><strong>Continuous Chapter Persistence:</strong> Solved the browser page-unload teardown issue when advancing to new chapters using tab-level session persistence.</li>
-                    <li><strong>Smart Content Script Auto-Resume:</strong> Added an idle background listener in <code>content.js</code> that detects active reading sessions and automatically re-launches the controller and front camera on the new chapter URL with zero manual clicks.</li>
-                    <li><strong>Clean Session Teardown:</strong> Clicking <em>✕ Stop</em> on the banner or <em>🔴 Disable</em> in the popup completely clears the reading session to prevent unwanted auto-starts.</li>
+                    <li><strong>Continuous Chapter Persistence:</strong> Solved browser page-unload teardown when advancing to new chapters via tab-level session persistence.</li>
+                    <li><strong>Content Script Auto-Resume:</strong> Idle background listener in <code>content.js</code> detects active sessions and re-launches the controller and front camera on the new chapter URL automatically.</li>
+                    <li><strong>Clean Session Teardown:</strong> Clicking <em>✕ Stop</em> on the banner or <em>🔴 Disable</em> in the popup cleanly terminates the session to prevent unwanted auto-starts.</li>
                 </ul>
             </div>
 
@@ -490,16 +612,15 @@
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem;">
                         <span style="background:var(--primary); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.2.0</span>
-                        <strong style="color:#fff; font-size:1rem;">Universal Website Access &amp; Cloud Auto-Sync</strong>
+                        <strong style="color:#fff; font-size:1rem;">Universal Multi-Site Access &amp; Cloud Auto-Sync</strong>
                     </div>
                     <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
                 </div>
                 <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
-                    <li><strong>Universal Multi-Site Access:</strong> Expanded permissions to <code>&lt;all_urls&gt;</code> &mdash; works across DemonicScans, AsuraScans, MangaDex, Webtoons, ReaperScans, FlameComics, or any web page.</li>
-                    <li><strong>On-Demand Enable / Disable Control:</strong> Redesigned extension popup with current-tab domain detection and clear <em>🟢 Enable</em> / <em>🔴 Disable</em> toggle buttons.</li>
-                    <li><strong>Cloud Live-Sync Architecture:</strong> The extension queries <code>irfanfahmi.com/controller.js</code> on launch, enabling instant silent code updates from GitHub without requiring users to reinstall zip files.</li>
-                    <li><strong>Touchable On-Screen Navigation:</strong> Added <code>pointer-events: auto</code> to <code>&lt; PREV</code> and <code>NEXT &gt;</code> buttons for direct mobile touchscreen taps.</li>
-                    <li><strong>Universal Chapter Link Detection:</strong> Implemented regex and chapter-number parsing to reliably discover Next/Prev links across scanlation engines.</li>
+                    <li><strong>Universal Multi-Site Access:</strong> Expanded host permissions to <code>&lt;all_urls&gt;</code> &mdash; runs across DemonicScans, AsuraScans, MangaDex, Webtoons, ReaperScans, or any web reader.</li>
+                    <li><strong>On-Demand Controls:</strong> Domain-detecting popup with clear <em>🟢 Enable</em> and <em>🔴 Disable</em> toggle buttons.</li>
+                    <li><strong>Cloud Live-Sync Architecture:</strong> Extension queries <code>irfanfahmi.com/controller.js</code> dynamically on activation for instant silent updates.</li>
+                    <li><strong>Touchable On-Screen Navigation:</strong> Added direct touch taps to <code>&lt; PREV</code> and <code>NEXT &gt;</code> buttons with universal chapter regex matching.</li>
                 </ul>
             </div>
 
@@ -513,11 +634,10 @@
                     <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
                 </div>
                 <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
-                    <li><strong>Display-Synchronized Physics Loop:</strong> Decoupled page scrolling from the 300ms AI inference interval into an independent 60Hz/90Hz/120Hz display refresh loop (<code>requestAnimationFrame</code>).</li>
-                    <li><strong>Kinetic Momentum Inertia:</strong> Implemented exponential friction damping (<code>0.935</code>), so releasing the hand smoothly coasts to a halt rather than stopping abruptly.</li>
-                    <li><strong>Air Swipe Flick Gesture:</strong> Added vertical wrist velocity tracking that imparts an instant swipe momentum boost (~400px glide).</li>
-                    <li><strong>Interactive Speed Presets:</strong> Added a floating on-screen pill button to toggle between 0.7x (Gentle), 1.0x (Normal), and 1.4x (Fast) reading speeds on the fly.</li>
-                    <li><strong>CSS Scroll Smoothing Conflict Fix:</strong> Overrode interfering CSS <code>scroll-behavior: smooth</code> on reader containers to guarantee 100% direct compositor frame rendering.</li>
+                    <li><strong>Display-Synchronized Physics Loop:</strong> Decoupled scrolling into an independent 60/90/120Hz display refresh loop (<code>requestAnimationFrame</code>).</li>
+                    <li><strong>Kinetic Momentum Inertia:</strong> Exponential friction damping (<code>0.935</code>) allows the page to glide smoothly to a halt.</li>
+                    <li><strong>Air Swipe Flick:</strong> Vertical wrist velocity tracking imparts an instant swipe momentum impulse (~400px glide).</li>
+                    <li><strong>On-the-fly Speed Presets:</strong> Interactive toggle between 0.7x (Gentle), 1.0x (Normal), and 1.4x (Fast) speeds.</li>
                 </ul>
             </div>
 
@@ -531,10 +651,9 @@
                     <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
                 </div>
                 <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
-                    <li><strong>Manifest V3 Architecture:</strong> Packaged into a compliant Chrome extension replacing legacy bookmarklets and userscripts.</li>
-                    <li><strong>Edge AI Pipeline:</strong> Integrated MediaPipe Hands JS (21 3D landmarks, 71 geometric features) with an embedded Random Forest posture classifier running at &lt;0.1ms per frame.</li>
-                    <li><strong>Dual-Hand Gestures:</strong> Right hand curled fist (Page Down), left hand under-chin tilt (Page Up), and resting neutral (no recoil false triggers).</li>
-                    <li><strong>Floating HUD &amp; PiP:</strong> Added non-intrusive status banner, camera picture-in-picture with minimize/close buttons, and virtual air navigation buttons.</li>
+                    <li><strong>Manifest V3 Migration:</strong> Transitioned from legacy bookmarklets into a compliant, one-click Chrome extension.</li>
+                    <li><strong>Zero-Recoil Geometric Posture Model:</strong> Right hand curled fist (Page Down), left hand under-chin tilt (Page Up), and resting neutral (Idle).</li>
+                    <li><strong>Floating HUD &amp; Camera PiP:</strong> Lightweight on-screen heads-up display with camera picture-in-picture and live confidence readout.</li>
                 </ul>
             </div>
         </div>
@@ -553,22 +672,6 @@
 </footer>
 
 <script>
-    function copyBookmarkletCode() {
-        const code = "javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();";
-        navigator.clipboard.writeText(code).then(() => {
-            const toast = document.getElementById("copy-toast");
-            const guideToast = document.getElementById("guide-copy-toast");
-            if (toast) {
-                toast.style.display = "block";
-                setTimeout(() => { toast.style.display = "none"; }, 3500);
-            }
-            if (guideToast) {
-                guideToast.style.display = "inline";
-                setTimeout(() => { guideToast.style.display = "none"; }, 3500);
-            }
-        });
-    }
-
     function toggleCameraDemo() {
         const btn = document.getElementById("btn-camera");
         if (window.__IRFANLLM_ACTIVE__) {
@@ -576,7 +679,7 @@
                 window.__IRFANLLM_STOP__();
             } else {
                 window.__IRFANLLM_ACTIVE__ = false;
-                btn.innerText = "Activate Front Camera Demo";
+                btn.innerText = "📷 Activate Front Camera Demo";
                 btn.style.background = "";
                 btn.disabled = false;
             }
@@ -587,7 +690,7 @@
 
     function startCameraDemo() {
         const btn = document.getElementById("btn-camera");
-        btn.innerText = "Starting Front Camera...";
+        btn.innerText = "⏳ Starting Front Camera...";
         btn.disabled = true;
 
         const script = document.createElement("script");
