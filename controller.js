@@ -372,6 +372,9 @@
     // Dynamic Script Loader
     function loadScript(src) {
         return new Promise((resolve, reject) => {
+            if ((src.includes("hands") || src.includes("mediapipe")) && (typeof Hands !== "undefined" || typeof window.Hands !== "undefined")) {
+                return resolve();
+            }
             if (document.querySelector(`script[src="${src}"]`)) return resolve();
             const s = document.createElement("script");
             s.src = src;
@@ -524,7 +527,9 @@
             banner.style.color = "#00e5ff";
             banner.style.borderColor = "#00e5ff";
             
-            await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js");
+            if (typeof Hands === "undefined" && typeof window.Hands === "undefined") {
+                await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js");
+            }
 
             handsInstance = new Hands({
                 locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
