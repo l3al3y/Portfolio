@@ -206,7 +206,21 @@
     function executeScroll(step) {
         const demoArea = document.getElementById("webtoon-scroll-area");
         if (demoArea) {
-            demoArea.scrollBy({ top: step, behavior: 'smooth' });
+            demoArea.style.borderColor = step > 0 ? "#00ff66" : "#00e5ff";
+            demoArea.style.boxShadow = step > 0 ? "0 0 15px rgba(0,255,102,0.4)" : "0 0 15px rgba(0,229,255,0.4)";
+            setTimeout(() => {
+                demoArea.style.borderColor = "";
+                demoArea.style.boxShadow = "";
+            }, 280);
+
+            const canScrollDown = step > 0 && (demoArea.scrollTop + demoArea.clientHeight < demoArea.scrollHeight - 10);
+            const canScrollUp = step < 0 && (demoArea.scrollTop > 10);
+
+            if (canScrollDown || canScrollUp) {
+                demoArea.scrollBy({ top: step, behavior: 'smooth' });
+            } else {
+                window.scrollBy({ top: step, behavior: 'smooth' });
+            }
         } else {
             window.scrollBy({ top: step, behavior: 'smooth' });
         }
