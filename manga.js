@@ -1,7 +1,9 @@
 // IrfanLLM Mobile Manga Controller - Touchless Front Camera Reader
 (function() {
     if (window.__IRFANLLM_ACTIVE__) {
-        alert("IrfanLLM Controller is already running on this page!");
+        if (typeof window.__IRFANLLM_STOP__ === "function") {
+            window.__IRFANLLM_STOP__();
+        }
         return;
     }
     window.__IRFANLLM_ACTIVE__ = true;
@@ -18,21 +20,72 @@
     let activeStream = null;
     let isProcessing = false;
     let animFrameId = null;
+    let handsInstance = null;
 
-    // 1. Create Floating UI Overlay
+    // 1. Stop / Cleanup Function
+    function stopController() {
+        if (activeStream) {
+            activeStream.getTracks().forEach(t => {
+                try { t.stop(); } catch (e) {}
+            });
+            activeStream = null;
+        }
+        if (animFrameId) {
+            cancelAnimationFrame(animFrameId);
+            animFrameId = null;
+        }
+        if (video) {
+            video.pause();
+            video.srcObject = null;
+        }
+        if (handsInstance && typeof handsInstance.close === "function") {
+            try { handsInstance.close(); } catch (e) {}
+            handsInstance = null;
+        }
+        if (container && container.parentNode) {
+            container.parentNode.removeChild(container);
+        }
+        window.__IRFANLLM_ACTIVE__ = false;
+        window.__IRFANLLM_STOP__ = null;
+
+        const pageBtn = document.getElementById("btn-camera");
+        if (pageBtn) {
+            pageBtn.innerText = "Activate Front Camera Demo";
+            pageBtn.style.background = "";
+            pageBtn.disabled = false;
+        }
+    }
+    window.__IRFANLLM_STOP__ = stopController;
+
+    // 2. Create Floating UI Overlay
     const container = document.createElement("div");
     container.id = "irfanllm-overlay";
     container.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999999;font-family:sans-serif;";
 
     // Status Banner
     const banner = document.createElement("div");
-    banner.style.cssText = "position:fixed;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.88);color:#00ff99;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:bold;border:1px solid #00ff99;box-shadow:0 2px 12px rgba(0,0,0,0.6);transition:all 0.2s;text-align:center;pointer-events:auto;";
-    banner.innerText = "IrfanLLM: Starting Camera...";
+    banner.style.cssText = "position:fixed;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.88);color:#00ff99;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:bold;border:1px solid #00ff99;box-shadow:0 2px 12px rgba(0,0,0,0.6);transition:all 0.2s;text-align:center;pointer-events:auto;display:flex;align-items:center;gap:10px;";
+    
+    const bannerText = document.createElement("span");
+    bannerText.innerText = "IrfanLLM: Starting Camera...";
+    banner.appendChild(bannerText);
+
+    const bannerCloseBtn = document.createElement("button");
+    bannerCloseBtn.innerText = "✕ Stop";
+    bannerCloseBtn.title = "Turn Off Camera & Close Controller";
+    bannerCloseBtn.style.cssText = "background:rgba(220,38,38,0.8);color:#fff;border:none;border-radius:10px;font-size:11px;padding:2px 8px;cursor:pointer;font-weight:bold;transition:background 0.2s;";
+    bannerCloseBtn.onmouseenter = () => bannerCloseBtn.style.background = "#ef4444";
+    bannerCloseBtn.onmouseleave = () => bannerCloseBtn.style.background = "rgba(220,38,38,0.8)";
+    bannerCloseBtn.onclick = (e) => {
+        e.stopPropagation();
+        stopController();
+    };
+    banner.appendChild(bannerCloseBtn);
     container.appendChild(banner);
 
     // Camera Preview Pip
     const camBox = document.createElement("div");
-    camBox.style.cssText = "position:fixed;bottom:15px;right:15px;width:110px;height:140px;background:#111;border-radius:12px;overflow:hidden;border:2px solid #00e5ff;box-shadow:0 4px 12px rgba(0,0,0,0.6);pointer-events:auto;";
+    camBox.style.cssText = "position:fixed;bottom:15px;right:15px;width:115px;height:145px;background:#111;border-radius:12px;overflow:hidden;border:2px solid #00e5ff;box-shadow:0 4px 12px rgba(0,0,0,0.6);pointer-events:auto;";
     
     const video = document.createElement("video");
     video.style.cssText = "width:100%;height:100%;object-fit:cover;transform:scaleX(-1);";
@@ -45,18 +98,29 @@
     video.setAttribute("autoplay", "");
     camBox.appendChild(video);
 
+    // Close Button on Camera PiP
+    const pipCloseBtn = document.createElement("button");
+    pipCloseBtn.innerText = "✕ Close";
+    pipCloseBtn.title = "Stop Camera & Close Controller";
+    pipCloseBtn.style.cssText = "position:absolute;top:3px;left:3px;background:rgba(220,38,38,0.85);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 6px;cursor:pointer;font-weight:bold;z-index:2;";
+    pipCloseBtn.onclick = () => stopController();
+    camBox.appendChild(pipCloseBtn);
+
+    // Hide/Show Toggle on Camera PiP
     const toggleBtn = document.createElement("button");
     toggleBtn.innerText = "Hide";
-    toggleBtn.style.cssText = "position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 6px;cursor:pointer;";
+    toggleBtn.style.cssText = "position:absolute;top:3px;right:3px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 6px;cursor:pointer;z-index:2;";
     toggleBtn.onclick = () => {
-        if (camBox.style.height === "24px") {
-            camBox.style.height = "140px";
-            camBox.style.width = "110px";
+        if (camBox.style.height === "26px") {
+            camBox.style.height = "145px";
+            camBox.style.width = "115px";
             toggleBtn.innerText = "Hide";
+            pipCloseBtn.style.display = "block";
         } else {
-            camBox.style.height = "24px";
-            camBox.style.width = "50px";
+            camBox.style.height = "26px";
+            camBox.style.width = "105px";
             toggleBtn.innerText = "Show";
+            pipCloseBtn.style.display = "none";
         }
     };
     camBox.appendChild(toggleBtn);
@@ -184,27 +248,27 @@
 
     async function init() {
         try {
-            banner.innerText = "Loading MediaPipe AI...";
+            bannerText.innerText = "Loading MediaPipe AI...";
             banner.style.color = "#00e5ff";
+            banner.style.borderColor = "#00e5ff";
             
-            // Only load hands.js - no bloated camera_utils needed!
             await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js");
 
-            const hands = new Hands({
+            handsInstance = new Hands({
                 locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
             });
 
-            hands.setOptions({
+            handsInstance.setOptions({
                 maxNumHands: 1,
                 modelComplexity: 0,
                 minDetectionConfidence: 0.35,
                 minTrackingConfidence: 0.35
             });
 
-            hands.onResults((results) => {
+            handsInstance.onResults((results) => {
                 const now = Date.now();
                 if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
-                    banner.innerText = "IrfanLLM: Ready (Waiting for Hand)";
+                    bannerText.innerText = "IrfanLLM: Ready (Waiting for Hand)";
                     banner.style.color = "#aaa";
                     btnPrev.style.background = "rgba(0,100,200,0.25)";
                     btnNext.style.background = "rgba(0,100,200,0.25)";
@@ -215,7 +279,6 @@
 
                 const lm = results.multiHandLandmarks[0];
                 const indexTip = lm[8];
-                // Mirror coordinates because front camera is mirrored
                 const screenX = (1.0 - indexTip.x) * window.innerWidth;
                 const screenY = indexTip.y * window.innerHeight;
 
@@ -227,7 +290,7 @@
                     btnPrev.style.background = "rgba(0,255,200,0.6)";
                     if (!btnPrevHoverStart) btnPrevHoverStart = now;
                     else if (now - btnPrevHoverStart > 220 && now > cooldownUntil) {
-                        banner.innerText = "<< PREV CHAPTER <<";
+                        bannerText.innerText = "<< PREV CHAPTER <<";
                         banner.style.color = "#00ffea";
                         cooldownUntil = now + COOLDOWN_BUTTON;
                         const prevLink = document.querySelector("a[rel='prev'], .nav-prev, .prev-post, .prev_page, #prev-chapter");
@@ -244,7 +307,7 @@
                     btnNext.style.background = "rgba(0,255,200,0.6)";
                     if (!btnNextHoverStart) btnNextHoverStart = now;
                     else if (now - btnNextHoverStart > 220 && now > cooldownUntil) {
-                        banner.innerText = ">> NEXT CHAPTER >>";
+                        bannerText.innerText = ">> NEXT CHAPTER >>";
                         banner.style.color = "#00ffea";
                         cooldownUntil = now + COOLDOWN_BUTTON;
                         const nextLink = document.querySelector("a[rel='next'], .nav-next, .next-post, .next_page, #next-chapter");
@@ -260,7 +323,7 @@
                 // 2. Middle Zone AI Posture Classification
                 const { feats, dMid } = extractFeatures(lm);
                 if (dMid > 1.35) {
-                    banner.innerText = "Relaxed / Open Hand (Idle)";
+                    bannerText.innerText = "Relaxed / Open Hand (Idle)";
                     banner.style.color = "#ffea00";
                     return;
                 }
@@ -268,26 +331,26 @@
                 const [pDown, pUp] = predictPosture(feats);
 
                 if (pDown >= CONF_THRESHOLD) {
-                    banner.innerText = `vv SCROLL DOWN (${Math.round(pDown*100)}%) vv`;
+                    bannerText.innerText = `vv SCROLL DOWN (${Math.round(pDown*100)}%) vv`;
                     banner.style.color = "#00ff66";
                     if (now >= cooldownUntil) {
                         executeScroll(SCROLL_STEP);
                         cooldownUntil = now + COOLDOWN_SCROLL;
                     }
                 } else if (pUp >= CONF_THRESHOLD) {
-                    banner.innerText = `^^ SCROLL UP (${Math.round(pUp*100)}%) ^^`;
+                    bannerText.innerText = `^^ SCROLL UP (${Math.round(pUp*100)}%) ^^`;
                     banner.style.color = "#00ff66";
                     if (now >= cooldownUntil) {
                         executeScroll(-SCROLL_STEP);
                         cooldownUntil = now + COOLDOWN_SCROLL;
                     }
                 } else {
-                    banner.innerText = "Uncertain Posture (Idle)";
+                    bannerText.innerText = "Uncertain Posture (Idle)";
                     banner.style.color = "#aaa";
                 }
             });
 
-            banner.innerText = "Requesting Front Camera...";
+            bannerText.innerText = "Requesting Front Camera...";
             banner.style.color = "#00e5ff";
 
             activeStream = await acquireCameraStream();
@@ -299,24 +362,25 @@
                 };
             });
 
-            banner.innerText = "IrfanLLM Active! Hold gesture to scroll.";
+            bannerText.innerText = "IrfanLLM Active! Hold gesture to scroll.";
             banner.style.color = "#00ff66";
+            banner.style.borderColor = "#00ff66";
 
-            // Update on-page trigger button if present
+            // Update on-page trigger button to Stop state
             const pageBtn = document.getElementById("btn-camera");
             if (pageBtn) {
-                pageBtn.innerText = "Camera Active!";
-                pageBtn.style.background = "#16a34a";
+                pageBtn.innerText = "⏹️ Stop Camera Demo";
+                pageBtn.style.background = "#dc2626";
                 pageBtn.disabled = false;
             }
 
             // High-performance requestAnimationFrame loop with concurrency protection
             async function frameLoop() {
                 if (!video.paused && !video.ended && video.readyState >= 2) {
-                    if (!isProcessing) {
+                    if (!isProcessing && handsInstance) {
                         isProcessing = true;
                         try {
-                            await hands.send({ image: video });
+                            await handsInstance.send({ image: video });
                         } catch (err) {
                             console.warn("[IrfanLLM] Frame drop:", err);
                         } finally {
@@ -332,8 +396,8 @@
             console.error("[IrfanLLM] Initialization Error:", err);
             const pageBtn = document.getElementById("btn-camera");
             if (pageBtn) {
-                pageBtn.innerText = "Camera Blocked (Tap for Details)";
-                pageBtn.style.background = "#dc2626";
+                pageBtn.innerText = "Activate Front Camera Demo";
+                pageBtn.style.background = "";
                 pageBtn.disabled = false;
             }
 
@@ -345,7 +409,7 @@
             banner.style.color = "#ffffff";
 
             if (isPolicyBlocked) {
-                banner.innerText = "Domain Header Blocked Camera (Tap for Guide)";
+                bannerText.innerText = "Domain Header Blocked Camera (Tap for Guide)";
                 const showPolicyHelp = () => {
                     alert(
                         "CAMERA BLOCKED BY CLOUDFLARE / GITHUB PAGES HEADER:\n\n" +
@@ -359,9 +423,8 @@
                     );
                 };
                 banner.onclick = showPolicyHelp;
-                if (pageBtn) pageBtn.onclick = showPolicyHelp;
             } else if (err.name === "NotAllowedError" || (err.message && err.message.includes("Permission denied"))) {
-                banner.innerText = "Camera Permission Denied in Chrome (Tap for Help)";
+                bannerText.innerText = "Camera Permission Denied (Tap for Help)";
                 const showPermHelp = () => {
                     alert(
                         "CAMERA PERMISSION DENIED:\n\n" +
@@ -371,9 +434,8 @@
                     );
                 };
                 banner.onclick = showPermHelp;
-                if (pageBtn) pageBtn.onclick = showPermHelp;
             } else {
-                banner.innerText = "Camera Error: " + (err.name || err.message);
+                bannerText.innerText = "Camera Error: " + (err.name || err.message);
                 banner.onclick = () => alert("Camera Error:\n" + (err.stack || err.message || err));
             }
         }
