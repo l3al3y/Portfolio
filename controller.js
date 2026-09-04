@@ -177,16 +177,113 @@
     camBox.appendChild(toggleBtn);
     container.appendChild(camBox);
 
-    // Left Air Button (Prev)
+    // Universal Manga Chapter Finder & Navigator
+    function findChapterLink(direction) {
+        // 1. Selector Search across known scanlation platforms
+        const selectors = direction === 'prev' ? [
+            "a[rel='prev']", ".nav-prev a", "a.nav-prev", ".prev-post", ".prev_page", "#prev-chapter",
+            ".btn-prev", ".ch-prev", "a.prev", "button.prev", ".chapter-prev a", "a.btn-prev-chapter",
+            ".chnav.prev a", "a[title*='Previous' i]", "a[title*='Prev' i]", ".select-pagination .prev",
+            ".navi-change-chapter-btn-prev", "a.prev-chapter"
+        ] : [
+            "a[rel='next']", ".nav-next a", "a.nav-next", ".next-post", ".next_page", "#next-chapter",
+            ".btn-next", ".ch-next", "a.next", "button.next", ".chapter-next a", "a.btn-next-chapter",
+            ".chnav.next a", "a[title*='Next' i]", ".select-pagination .next",
+            ".navi-change-chapter-btn-next", "a.next-chapter"
+        ];
+
+        for (const s of selectors) {
+            const el = document.querySelector(s);
+            if (el && (el.href || typeof el.click === "function")) return el;
+        }
+
+        // 2. Exact & Pattern Text Matching on all links/buttons (DemonicScans, Asura, MangaDex)
+        const candidates = Array.from(document.querySelectorAll("a[href], button, [role='button']"));
+        const prevPatterns = [
+            /^\s*(<|«|←)?\s*(prev|previous)\s*(>|»|→)?\s*$/i,
+            /^\s*(prev|previous)\s+chapter\s*$/i,
+            /^\s*chapter\s+(prev|previous)\s*$/i,
+            /^\s*(<|«|←)\s*prev\b/i
+        ];
+        const nextPatterns = [
+            /^\s*(<|«|←)?\s*(next)\s*(>|»|→)?\s*$/i,
+            /^\s*next\s+chapter\s*$/i,
+            /^\s*chapter\s+next\s*$/i,
+            /\bnext\s*(>|»|→)\s*$/i
+        ];
+        const patterns = direction === 'prev' ? prevPatterns : nextPatterns;
+
+        for (const el of candidates) {
+            const txt = (el.innerText || el.textContent || el.getAttribute("aria-label") || "").trim();
+            for (const p of patterns) {
+                if (p.test(txt)) {
+                    return el;
+                }
+            }
+        }
+
+        // 3. Fallback: Parse current URL and find link pointing to (chapter - 1) or (chapter + 1)
+        const currentUrl = window.location.href;
+        const chMatch = currentUrl.match(/chapter[=_/-](\d+)/i);
+        if (chMatch) {
+            const currentCh = parseInt(chMatch[1], 10);
+            const targetCh = direction === 'prev' ? currentCh - 1 : currentCh + 1;
+            if (targetCh >= 0) {
+                const targetLink = document.querySelector(`a[href*="chapter=${targetCh}"], a[href*="chapter-${targetCh}"], a[href*="chapter/${targetCh}"], a[href*="ch-${targetCh}"]`);
+                if (targetLink) return targetLink;
+            }
+        }
+
+        return null;
+    }
+
+    function goToChapter(direction) {
+        const link = findChapterLink(direction);
+        if (link) {
+            bannerText.innerText = direction === 'prev' ? "<< PREV CHAPTER <<" : ">> NEXT CHAPTER >>";
+            banner.style.color = "#00ffea";
+            if (link.href && link.href !== "#" && !link.href.startsWith("javascript:")) {
+                window.location.href = link.href;
+            } else {
+                link.click();
+            }
+        } else {
+            // Keyboard event fallback
+            window.dispatchEvent(new KeyboardEvent('keydown', { key: direction === 'prev' ? 'ArrowLeft' : 'ArrowRight', bubbles: true }));
+            if (document.getElementById("webtoon-scroll-area")) {
+                bannerText.innerText = direction === 'prev' ? "<< PREV (Active on Manga Sites) <<" : ">> NEXT (Active on Manga Sites) >>";
+                banner.style.color = "#fbbf24";
+            } else {
+                bannerText.innerText = direction === 'prev' ? "<< PREV CHAPTER <<" : ">> NEXT CHAPTER >>";
+                banner.style.color = "#00ffea";
+            }
+        }
+    }
+
+    // Left Button (Prev) - Touch tap + Air hover
     const btnPrev = document.createElement("div");
-    btnPrev.style.cssText = "position:fixed;top:30%;left:8px;width:55px;height:160px;background:rgba(0,100,200,0.25);border:2px dashed #00b0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#00e5ff;font-size:13px;font-weight:bold;writing-mode:vertical-rl;text-orientation:mixed;transition:background 0.2s;";
+    btnPrev.style.cssText = "position:fixed;top:30%;left:8px;width:55px;height:160px;background:rgba(0,100,200,0.3);border:2px dashed #00b0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#00e5ff;font-size:13px;font-weight:bold;writing-mode:vertical-rl;text-orientation:mixed;transition:all 0.2s;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;z-index:999999;box-shadow:0 0 10px rgba(0,176,255,0.25);";
     btnPrev.innerText = "< PREV";
+    btnPrev.title = "Tap with finger or Hover hand to go to Previous Chapter";
+    btnPrev.onclick = (e) => {
+        e.stopPropagation();
+        btnPrev.style.background = "rgba(0,255,200,0.7)";
+        setTimeout(() => { btnPrev.style.background = "rgba(0,100,200,0.3)"; }, 250);
+        goToChapter('prev');
+    };
     container.appendChild(btnPrev);
 
-    // Right Air Button (Next)
+    // Right Button (Next) - Touch tap + Air hover
     const btnNext = document.createElement("div");
-    btnNext.style.cssText = "position:fixed;top:30%;right:8px;width:55px;height:160px;background:rgba(0,100,200,0.25);border:2px dashed #00b0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#00e5ff;font-size:13px;font-weight:bold;writing-mode:vertical-rl;text-orientation:mixed;transition:background 0.2s;";
+    btnNext.style.cssText = "position:fixed;top:30%;right:8px;width:55px;height:160px;background:rgba(0,100,200,0.3);border:2px dashed #00b0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#00e5ff;font-size:13px;font-weight:bold;writing-mode:vertical-rl;text-orientation:mixed;transition:all 0.2s;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;z-index:999999;box-shadow:0 0 10px rgba(0,176,255,0.25);";
     btnNext.innerText = "NEXT >";
+    btnNext.title = "Tap with finger or Hover hand to go to Next Chapter";
+    btnNext.onclick = (e) => {
+        e.stopPropagation();
+        btnNext.style.background = "rgba(0,255,200,0.7)";
+        setTimeout(() => { btnNext.style.background = "rgba(0,100,200,0.3)"; }, 250);
+        goToChapter('next');
+    };
     container.appendChild(btnNext);
 
     document.body.appendChild(container);
@@ -384,64 +481,37 @@
                 const screenX = (1.0 - indexTip.x) * window.innerWidth;
                 const screenY = indexTip.y * window.innerHeight;
 
-                // 1. Air Button Checks
-                const inLeft = (screenX <= 80 && screenY >= window.innerHeight * 0.25 && screenY <= window.innerHeight * 0.65);
-                const inRight = (screenX >= window.innerWidth - 80 && screenY >= window.innerHeight * 0.25 && screenY <= window.innerHeight * 0.65);
+                // 1. Air Button Checks (Prev / Next Chapter)
+                const hoverBoundary = Math.max(90, window.innerWidth * 0.22);
+                const inLeft = (screenX <= hoverBoundary && screenY >= window.innerHeight * 0.20 && screenY <= window.innerHeight * 0.70);
+                const inRight = (screenX >= window.innerWidth - hoverBoundary && screenY >= window.innerHeight * 0.20 && screenY <= window.innerHeight * 0.70);
 
                 if (inLeft) {
                     targetVelocity = 0;
-                    btnPrev.style.background = "rgba(0,255,200,0.6)";
+                    btnPrev.style.background = "rgba(0,255,200,0.7)";
                     if (!btnPrevHoverStart) btnPrevHoverStart = now;
                     else if (now - btnPrevHoverStart > 220 && now > cooldownUntil) {
                         cooldownUntil = now + COOLDOWN_BUTTON;
-                        const prevLink = document.querySelector("a[rel='prev'], .nav-prev, .prev-post, .prev_page, #prev-chapter");
-                        if (prevLink) {
-                            bannerText.innerText = "<< PREV CHAPTER <<";
-                            banner.style.color = "#00ffea";
-                            prevLink.click();
-                        } else {
-                            window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
-                            if (document.getElementById("webtoon-scroll-area")) {
-                                bannerText.innerText = "<< PREV (Active on Manga Sites) <<";
-                                banner.style.color = "#fbbf24";
-                            } else {
-                                bannerText.innerText = "<< PREV CHAPTER <<";
-                                banner.style.color = "#00ffea";
-                            }
-                        }
+                        goToChapter('prev');
                     }
                     return;
                 } else {
                     btnPrevHoverStart = null;
-                    btnPrev.style.background = "rgba(0,100,200,0.25)";
+                    btnPrev.style.background = "rgba(0,100,200,0.3)";
                 }
 
                 if (inRight) {
                     targetVelocity = 0;
-                    btnNext.style.background = "rgba(0,255,200,0.6)";
+                    btnNext.style.background = "rgba(0,255,200,0.7)";
                     if (!btnNextHoverStart) btnNextHoverStart = now;
                     else if (now - btnNextHoverStart > 220 && now > cooldownUntil) {
                         cooldownUntil = now + COOLDOWN_BUTTON;
-                        const nextLink = document.querySelector("a[rel='next'], .nav-next, .next-post, .next_page, #next-chapter");
-                        if (nextLink) {
-                            bannerText.innerText = ">> NEXT CHAPTER >>";
-                            banner.style.color = "#00ffea";
-                            nextLink.click();
-                        } else {
-                            window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
-                            if (document.getElementById("webtoon-scroll-area")) {
-                                bannerText.innerText = ">> NEXT (Active on Manga Sites) >>";
-                                banner.style.color = "#fbbf24";
-                            } else {
-                                bannerText.innerText = ">> NEXT CHAPTER >>";
-                                banner.style.color = "#00ffea";
-                            }
-                        }
+                        goToChapter('next');
                     }
                     return;
                 } else {
                     btnNextHoverStart = null;
-                    btnNext.style.background = "rgba(0,100,200,0.25)";
+                    btnNext.style.background = "rgba(0,100,200,0.3)";
                 }
 
                 // 2. Physical Hand Motion Swipe / Flick Detection
