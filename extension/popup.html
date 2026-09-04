@@ -7,27 +7,27 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            width: 290px;
+            width: 300px;
             background: #090d16;
             color: #e2e8f0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            padding: 14px;
+            padding: 16px;
         }
         .header {
             display: flex;
             align-items: center;
             gap: 10px;
             border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             margin-bottom: 12px;
         }
         .header img {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
         }
         .header h1 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #38bdf8;
             font-weight: 800;
             line-height: 1.2;
@@ -36,25 +36,84 @@
             font-size: 0.72rem;
             color: #94a3b8;
         }
-        .btn-launch {
-            display: block;
-            width: 100%;
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: #fff;
-            border: 1px solid #38bdf8;
-            padding: 10px;
+        
+        /* Website & Status card */
+        .site-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+        }
+        .site-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+        .site-name {
             font-size: 0.88rem;
             font-weight: 700;
+            color: #f8fafc;
+            word-break: break-all;
+        }
+        .status-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #94a3b8;
+            transition: all 0.2s;
+        }
+
+        /* Action Buttons */
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 800;
             cursor: pointer;
             text-align: center;
             transition: all 0.2s;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            border: none;
         }
-        .btn-launch:hover {
-            background: linear-gradient(135deg, #0369a1, #0284c7);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        .btn-enable {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #ffffff;
+            border: 1px solid #34d399;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
         }
+        .btn-enable:hover {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+            transform: translateY(-1px);
+        }
+        .btn-disable {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: #ffffff;
+            border: 1px solid #f87171;
+            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+        }
+        .btn-disable:hover {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+            transform: translateY(-1px);
+        }
+
         .guide-box {
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -62,7 +121,7 @@
             padding: 10px;
             margin-bottom: 12px;
             font-size: 0.78rem;
-            line-height: 1.45;
+            line-height: 1.5;
         }
         .guide-item {
             display: flex;
@@ -96,35 +155,46 @@
         <img src="icon.png" alt="IrfanLLM Icon">
         <div>
             <h1>IrfanLLM Manga</h1>
-            <p>Zero-Touch AI Reader</p>
+            <p>Zero-Touch AI Reader (Any Website)</p>
         </div>
     </div>
 
-    <button id="btn-toggle" class="btn-launch">
-        📷 Toggle Controller On Tab
+    <!-- Active Website Card -->
+    <div class="site-card">
+        <div class="site-label">Current Tab</div>
+        <div id="site-url" class="site-name">Detecting page...</div>
+        <div class="status-row">
+            <span id="status-dot" class="status-indicator"></span>
+            <span id="status-text">Checking status...</span>
+        </div>
+    </div>
+
+    <!-- Dynamic Enable / Disable Button -->
+    <button id="btn-toggle" class="btn-action btn-enable">
+        🟢 Enable Controller (Turn ON)
     </button>
 
     <div class="guide-box">
         <div class="guide-item">
             <span class="guide-dot" style="background:#38bdf8;"></span>
-            <span><strong>Right Hand:</strong> Curled fist &rarr; Scroll Down</span>
+            <span><strong>Right Hand:</strong> Curled fist &rarr; Fluid Glide Down</span>
         </div>
         <div class="guide-item">
             <span class="guide-dot" style="background:#c084fc;"></span>
-            <span><strong>Left Hand:</strong> Under chin &rarr; Scroll Up</span>
-        </div>
-        <div class="guide-item">
-            <span class="guide-dot" style="background:#34d399;"></span>
-            <span><strong>No Hand:</strong> Lower arms &rarr; Stationary</span>
+            <span><strong>Left Hand:</strong> Under chin &rarr; Fluid Glide Up</span>
         </div>
         <div class="guide-item">
             <span class="guide-dot" style="background:#fbbf24;"></span>
-            <span><strong>Swipe Flick:</strong> Swift vertical flick &rarr; Momentum glide</span>
+            <span><strong>Swipe Flick:</strong> Hand flick &rarr; Momentum glide</span>
+        </div>
+        <div class="guide-item">
+            <span class="guide-dot" style="background:#94a3b8;"></span>
+            <span><strong>No Hand:</strong> Relax palm &rarr; Stationary</span>
         </div>
     </div>
 
     <div class="footer-links">
-        <a href="https://demonicscans.org" target="_blank">Open DemonicScans &rarr;</a>
+        <a href="https://irfanfahmi.com/manga.html" target="_blank">Instructions & Demo</a>
         <a href="https://irfanfahmi.com" target="_blank">irfanfahmi.com</a>
     </div>
 
