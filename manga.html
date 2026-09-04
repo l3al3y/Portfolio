@@ -225,14 +225,12 @@
             <button id="btn-camera" class="btn btn-primary" onclick="toggleCameraDemo()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
                 Activate Front Camera Demo
             </button>
-            <button class="btn btn-outline" onclick="copyBookmarkletCode()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
-                Copy DemonicScans Bookmarklet
-            </button>
+            <a href="assets/manga/irfanllm-manga-extension.zip" download="irfanllm-manga-extension.zip" class="btn btn-outline" style="padding:0.75rem 1.5rem; font-size:0.95rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+                📥 Download Chrome Extension (.zip)
+            </a>
         </div>
-        <div id="copy-toast" class="copy-toast">&check; Copied clean 1-line bookmarklet to clipboard! Ready to paste into Chrome.</div>
         <div style="margin-top:0.85rem; font-size:0.82rem; color:var(--text-sub); line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
-            <div>💡 <strong>Fastest Way to Test:</strong> Copy the bookmarklet and run it on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a> (or any webtoon site). Manga sites have zero camera restrictions, so the camera activates instantly!</div>
-            <div style="margin-top:0.35rem; color:var(--text-muted); font-size:0.78rem;">🔒 <em>Note: If testing directly on irfanfahmi.com, GitHub Pages upstream enforces a default camera restriction header. You can remove this in Cloudflare Dashboard &rarr; Rules &rarr; Transform Rules &rarr; Modify Response Header.</em></div>
+            <div>💡 <strong>Read on Actual Manga Sites:</strong> Download the IrfanLLM Chrome Extension below to scroll hands-free on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a>, Asura, and MangaDex!</div>
         </div>
         <div style="margin-top:0.85rem; padding:0.85rem 1.1rem; border-radius:8px; background:rgba(245, 158, 11, 0.12); border:1px solid #f59e0b; font-size:0.85rem; color:#fde68a;">
             <div style="display:flex; align-items:center; gap:0.5rem; font-weight:700; color:#fbbf24; margin-bottom:0.35rem;">
@@ -277,114 +275,63 @@
         </div>
     </section>
 
-    <!-- Bookmarklet Setup Guide -->
+    <!-- Chrome Extension Section -->
     <section class="demo-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.85rem;">
-            <h2 style="font-size:1.35rem; font-weight:800; color:#fff; margin:0;">
-                How to Use on DemonicScans &amp; Any Manga Website
-            </h2>
-            <span class="feature-badge">Zero Extension Needed</span>
-        </div>
-
-        <div style="background:rgba(56, 189, 248, 0.08); border:1px solid rgba(56, 189, 248, 0.25); border-radius:10px; padding:0.9rem 1.1rem; margin-bottom:1.25rem; font-size:0.88rem; color:var(--text-sub); line-height:1.55;">
-            💡 <strong>How it works:</strong> <code style="color:var(--primary);">manga.html</code> is this showcase page. To read on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a> (or Asura, MangaDex, etc.), you run the AI controller script (<code style="color:var(--primary);">irfanfahmi.com/manga.js</code>) on the manga page using any of the automated or bookmark options below:
-        </div>
-
-        <!-- Automatic 1-Click Installation Hub -->
-        <div style="margin-bottom:1.5rem; background:rgba(30, 41, 59, 0.7); border:1px solid rgba(56, 189, 248, 0.35); border-radius:12px; padding:1.2rem;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.75rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+                <img src="favicon-192x192.png" alt="IrfanLLM Icon" style="width:42px; height:42px; border-radius:10px; border:1px solid var(--border-highlight); box-shadow:0 0 15px rgba(56,189,248,0.3);">
                 <div>
-                    <h3 style="color:#fff; font-size:1.1rem; font-weight:800; margin:0 0 0.25rem;">
-                        ⚡ 1-Click Automatic Install &amp; Save
-                    </h3>
-                    <p style="color:var(--text-sub); font-size:0.83rem; margin:0;">
-                        Choose your preferred automated installation method for PC or Mobile:
+                    <h2 style="font-size:1.35rem; font-weight:800; color:#fff; margin:0;">
+                        IrfanLLM Chrome Extension
+                    </h2>
+                    <p style="font-size:0.83rem; color:var(--text-sub); margin:0.15rem 0 0;">
+                        Official Touchless AI Manga Controller for Chrome, Edge, Brave &amp; Kiwi Browser
                     </p>
                 </div>
-                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-                    <!-- Auto-Install Userscript (Tampermonkey / Violentmonkey / Kiwi) -->
-                    <a href="manga.user.js" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.83rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
-                        🚀 1-Click Auto Install (Userscript)
-                    </a>
-                    <!-- Download Bookmark File for Chrome/Edge -->
-                    <a href="assets/manga/irfan_manga_bookmark.html" download="irfan_manga_bookmark.html" class="btn btn-outline" style="padding:0.45rem 1rem; font-size:0.83rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
-                        📥 Download Bookmark File (.html)
-                    </a>
-                </div>
             </div>
-            <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.5; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.65rem;">
-                💡 <strong>Which one should I choose?</strong><br>
-                &bull; <strong>Userscript:</strong> Requires <strong>Tampermonkey</strong> (PC) or <strong>Kiwi Browser</strong> (Mobile). Installs automatically with 1 click.<br>
-                &bull; <strong>Standard Chrome / Edge (PC):</strong> Click <strong>📥 Download Bookmark File</strong> &rarr; Import into Chrome, or drag the blue button below!<br>
-                &bull; <strong>Standard Chrome (Mobile Phone):</strong> Use <strong>Method 1</strong> below to save it as a bookmark in 1 minute.
+            <a href="assets/manga/irfanllm-manga-extension.zip" download="irfanllm-manga-extension.zip" class="btn btn-primary" style="padding:0.65rem 1.4rem; font-size:0.92rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 15px rgba(2,132,199,0.4);">
+                📥 Download Extension (.zip)
+            </a>
+        </div>
+
+        <p style="color:var(--text-sub); font-size:0.92rem; line-height:1.6; margin-bottom:1.25rem;">
+            No bookmarks, no typing, and no console commands! Simply install the extension once, and IrfanLLM activates automatically on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a>, <strong>AsuraComics</strong>, <strong>MangaDex</strong>, and your favorite webtoon sites.
+        </p>
+
+        <!-- 3-Step Setup Cards -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;">
+            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.15rem;">
+                <div style="font-size:1.6rem; margin-bottom:0.5rem;">📦</div>
+                <h3 style="color:var(--primary); font-size:1rem; margin-bottom:0.35rem; font-weight:800;">Step 1: Download &amp; Extract</h3>
+                <p style="font-size:0.83rem; color:var(--text-sub); line-height:1.5; margin:0;">
+                    Click the <strong>Download Extension (.zip)</strong> button above and extract the zip file to your folder.
+                </p>
+            </div>
+
+            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.15rem;">
+                <div style="font-size:1.6rem; margin-bottom:0.5rem;">⚙️</div>
+                <h3 style="color:var(--purple); font-size:1rem; margin-bottom:0.35rem; font-weight:800;">Step 2: Open Extensions</h3>
+                <p style="font-size:0.83rem; color:var(--text-sub); line-height:1.5; margin:0;">
+                    In Chrome, Edge, or Brave, go to <code style="color:var(--primary);">chrome://extensions</code> in your address bar and switch on <strong>Developer mode</strong> (top-right toggle).
+                </p>
+            </div>
+
+            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.15rem;">
+                <div style="font-size:1.6rem; margin-bottom:0.5rem;">🚀</div>
+                <h3 style="color:var(--emerald); font-size:1rem; margin-bottom:0.35rem; font-weight:800;">Step 3: Load Unpacked</h3>
+                <p style="font-size:0.83rem; color:var(--text-sub); line-height:1.5; margin:0;">
+                    Click <strong>Load unpacked</strong> (top-left) and select the extracted extension folder. Done!
+                </p>
             </div>
         </div>
 
-        <!-- 1-Line Code Snippet Box with Copy Button -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-            <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">Or Run Manually via Bookmarklet / Console:</span>
-            <div style="display:flex; align-items:center; gap:0.5rem;">
-                <span id="guide-copy-toast" style="display:none; color:var(--emerald); font-weight:700; font-size:0.8rem;">&check; Copied!</span>
-                <button class="btn btn-outline" onclick="copyBookmarkletCode()" style="padding:0.35rem 0.85rem; font-size:0.8rem;">
-                    📋 Copy Code
-                </button>
+        <div style="margin-top:1.25rem; padding:0.85rem 1.1rem; border-radius:10px; background:rgba(56, 189, 248, 0.08); border:1px solid rgba(56, 189, 248, 0.25); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; font-size:0.85rem; color:var(--text-sub);">
+            <div>
+                📱 <strong>On Mobile (Android):</strong> Install <strong>Kiwi Browser</strong> or <strong>Lemur Browser</strong> from Google Play (they support Chrome extensions), then load this unpacked extension with the same 3 steps!
             </div>
-        </div>
-        <div class="code-snippet-box" style="margin-bottom:1.5rem; word-break:break-all;">
-            javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();
-        </div>
-
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem;">
-            <!-- Method 1: Mobile Chrome (Phone) -->
-            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.2rem; display:flex; flex-direction:column; gap:0.75rem;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:var(--primary); font-weight:800; font-size:1rem;">
-                    <span>📱</span> Method 1: On Android / Mobile Phone
-                </div>
-                <div style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; display:flex; flex-direction:column; gap:0.6rem;">
-                    <div>
-                        <strong style="color:#fff;">Step 1 &mdash; Bookmark any page:</strong><br>
-                        In mobile Chrome, tap the top-right <strong>3 dots (&vellip;)</strong> &rarr; tap the <strong>Star (&starf;)</strong> icon to create a bookmark.
-                    </div>
-                    <div>
-                        <strong style="color:#fff;">Step 2 &mdash; Edit the bookmark:</strong><br>
-                        Tap <strong>"Edit"</strong> at the bottom prompt (or go to <strong>3 dots &rarr; Bookmarks &rarr; Edit</strong>).
-                    </div>
-                    <div>
-                        <strong style="color:#fff;">Step 3 &mdash; Paste script:</strong><br>
-                        Change Name to <code style="color:var(--primary);">Manga</code>. In the <strong>URL field</strong>, delete the existing link and paste the code above. Tap back to save.
-                    </div>
-                    <div>
-                        <strong style="color:#fff;">Step 4 &mdash; Launch on DemonicScans:</strong><br>
-                        Open <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">demonicscans.org</a> and start reading any chapter. Tap your <strong>Chrome address bar</strong>, type <code style="color:var(--primary);">Manga</code>, and tap the star (&starf;) result!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Method 2: PC / Laptop (Desktop) -->
-            <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border-card); border-radius:12px; padding:1.2rem; display:flex; flex-direction:column; gap:0.75rem;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:var(--purple); font-weight:800; font-size:1rem;">
-                    <span>💻</span> Method 2: On PC / Laptop (Chrome / Edge / Brave)
-                </div>
-                <div style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; display:flex; flex-direction:column; gap:0.6rem;">
-                    <div>
-                        <strong style="color:#fff;">Option A &mdash; One-Drag Bookmark Bar (Fastest):</strong><br>
-                        Make sure your Bookmarks Bar is visible (<kbd style="background:#1e293b; padding:2px 6px; border-radius:4px; font-size:0.75rem;">Ctrl + Shift + B</kbd>). Drag this button directly onto your bar:
-                        <div style="margin-top:0.5rem;">
-                            <a href="javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();"
-                               class="btn btn-primary"
-                               style="display:inline-block; padding:0.45rem 0.9rem; font-size:0.82rem; cursor:grab; text-decoration:none;"
-                               onclick="event.preventDefault(); alert('Drag and drop this button onto your browser Bookmarks Bar (Ctrl+Shift+B)!');">
-                                📑 Drag Me to Bookmarks Bar
-                            </a>
-                        </div>
-                        Then on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">demonicscans.org</a>, simply click it!
-                    </div>
-                    <div style="margin-top:0.35rem;">
-                        <strong style="color:#fff;">Option B &mdash; Developer Console (Instant):</strong><br>
-                        On DemonicScans, press <kbd style="background:#1e293b; padding:2px 6px; border-radius:4px; font-size:0.75rem;">F12</kbd> &rarr; click <strong>Console</strong> &rarr; paste the code above &rarr; press <kbd style="background:#1e293b; padding:2px 6px; border-radius:4px; font-size:0.75rem;">Enter</kbd>.
-                    </div>
-                </div>
-            </div>
+            <a href="https://demonicscans.org" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.9rem; font-size:0.8rem; text-decoration:none;">
+                Open DemonicScans &rarr;
+            </a>
         </div>
     </section>
 
