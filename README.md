@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/Industrial%20AI-Festo%20Didactic-007AC2?style=flat-square&logo=festo&logoColor=white" alt="Festo AI">
   <img src="https://img.shields.io/badge/Cloudflare%20Workers-Edge%20Proxy-F38020?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare Workers">
   <img src="https://img.shields.io/badge/TypeScript-React-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Certifications-25%20Verified-2EA043?style=flat-square&logo=credential&logoColor=white" alt="25 Certifications">
+  <img src="https://img.shields.io/badge/Certifications-26%20Verified-2EA043?style=flat-square&logo=credential&logoColor=white" alt="26 Certifications">
   <img src="https://img.shields.io/badge/Open%20to%20Work-Available-success?style=flat-square" alt="Open to Work">
 </p>
 
@@ -35,7 +35,7 @@ He bridges **hardware, enterprise networking, computer vision, and autonomous AI
 - ⚡ **Live Telemetry Dashboard:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
 - 🎮 **Mini Arcade Platform:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
 - 📄 **Verified Resume:** [`resume/resume.pdf`](resume/resume.pdf)
-- 🏅 **Credential Registry:** [`certificates/registry.json`](certificates/registry.json) (25 verified records)
+- 🏅 **Credential Registry:** [`certificates/registry.json`](certificates/registry.json) (26 verified records across 6 categories)
 
 ---
 
@@ -79,19 +79,38 @@ An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 
 ---
 
-## 📜 Official Certifications & Credentials (25 Records)
+## 📜 Official Certifications & Credentials (26 Verified Records)
 
-All certificates are digitally verifiable with official documentation in [`certificates/`](certificates/):
+All 26 credentials and documents are digitally verified and viewable directly on [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates) or in [`certificates/`](certificates/):
 
-| Category | Credential Title | Issuer / Authority | Date |
-| :--- | :--- | :--- | :--- |
-| **Networking** | **CCNA:** Enterprise Networking, Security, & Automation | Cisco Networking Academy / UTeM | Feb 2026 |
-| **Networking** | **CCNA:** Switching, Routing, and Wireless Essentials | Cisco Networking Academy / UTeM | Feb 2026 |
-| **Industrial AI** | **Festo Professional Certificate:** Industrial Automation with AI | Festo Didactic | Jul 2026 |
-| **Cybersecurity** | **Endpoint Security** Certification | Cisco Networking Academy | Dec 2024 |
-| **Cybersecurity** | **Cyber Threat Management** Certification | Cisco Networking Academy | Nov 2024 |
-| **Fiber Optics** | **Fiber Optic Splicing & Polishing** Workshop | Technical Workshop | Feb 2018 |
-| **Gov Upskilling** | **7x Rakyat Digital Credentials** (Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum) | Kementerian Digital Malaysia | 2026 |
+| Category | Credential / Document Title | Issuer / Authority | Date | Verified File |
+| :--- | :--- | :--- | :--- | :---: |
+| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Enterprise Networking, Security, and Automation | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/CCNA_Enterprise_Networking_Security_Automation.pdf) |
+| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Switching, Routing, and Wireless Essentials | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf) |
+| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Endpoint Security | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/Endpoint_Security.pdf) |
+| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Cyber Threat Management | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/Cyber_Threat_Management.pdf) |
+| **Industrial Automation &amp; Training** | Festo Professional Certificate — Industrial Automation with AI in Manufacturing | Festo Didactic & STDC | 14–16 July 2026 | [`PDF`](certificates/Festo_Industrial_AI_Automation.pdf) |
+| **Industrial Automation &amp; Training** | Kursus Arduino — Kolej Komuniti Selandar | Kolej Komuniti Selandar | 9 September 2017 | [`PDF`](certificates/Kursus_Arduino_Kolej_Komuniti_Selandar.pdf) |
+| **Industrial Automation &amp; Training** | Sijil Penyertaan — Kursus Basic IoT | Kolej Komuniti Bukit Beruang | 28 Mac 2018 | [`PDF`](certificates/Kursus_Basic_IoT_Kolej_Komuniti_Bukit_Beruang.pdf) |
+| **Industrial Automation &amp; Training** | Sijil Penyertaan — Kursus Fiber Optik "Splicing & Polishing" | Kolej Komuniti Selandar | 3 Februari 2018 | [`PDF`](certificates/Kursus_Fiber_Optik_Splicing_Polishing.pdf) |
+| **Academic Qualification** | Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson | Politeknik Port Dickson | Dec 2018 – May 2022 | [`PDF`](certificates/Politeknik_Diploma_Electronic_Computer.pdf) |
+| **Academic Qualification** | Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar | Kolej Komuniti Selandar | July 2017 – Feb 2019 | [`PDF`](certificates/Sijil_Sistem_Komputer_dan_Rangkaian.pdf) |
+| **Academic Qualification** | Sijil Pelajaran Malaysia (SPM 2016) — Lembaga Peperiksaan Malaysia | Lembaga Peperiksaan Malaysia | Tahun 2016 | [`PDF`](certificates/SPM_Certificate.pdf) |
+| **Awards &amp; Achievements** | INOTEK 2025 Innovation & Technology Competition (Third Place — IoT Weight Tracking System) | UTeM Faculty of Electronics and Computer Technology | 15 January 2025 | [`PDF`](certificates/INOTEK_2025_Third_Place.pdf) |
+| **Awards &amp; Achievements** | Anugerah Pelajar Terbaik Semester (Sijil Sistem Komputer dan Rangkaian) Sesi Mac 2018 | Kolej Komuniti Selandar | Sesi Mac 2018 | [`PDF`](certificates/Anugerah_Pelajar_Terbaik_Sesi_Mac_2018.pdf) |
+| **Awards &amp; Achievements** | Anugerah Pengarah (Director's List Award) — Semester 2 Sesi November 2017 | Kolej Komuniti Selandar | Semester 2 Nov 2017 | [`PDF`](certificates/Anugerah_Pengarah_Semester_2_2017.pdf) |
+| **Awards &amp; Achievements** | Sijil Cemerlang — Pelajar Cemerlang Matapelajaran (Asas Komunikasi dan Rangkaian) | Kolej Komuniti Selandar | Sesi Nov 2017 | [`PDF`](certificates/Pelajar_Cemerlang_Asas_Komunikasi_Rangkaian.pdf) |
+| **Awards &amp; Achievements** | Sijil Penghargaan — WiMyL (Where Is My Lecturer) Gold Award | Kolej Komuniti Selandar | Mei 2018 | [`PDF`](certificates/WiMyL_Gold_Award.pdf) |
+| **Service &amp; Professional Experience** | Sijil Kursus Asas Perajurit Muda Sukarela (Siri 2/2019) — Rejimen 508 Askar Wataniah | Rejimen 508 Askar Wataniah | 1–30 May 2019 | [`PDF`](certificates/Askar_Wataniah_Reserve_Service.pdf) |
+| **Service &amp; Professional Experience** | 7-Eleven Malaysia Sdn Bhd (New Employee Training Program) | 7-Eleven Malaysia Sdn Bhd | 17 January 2017 | [`PDF`](certificates/7Eleven_Work_Experience.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — Agentic AI for All | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/agentic-ai-for-all.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — AI Visionary | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/ai-visionary.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — AI Safety | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/ai-safety.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — Cloud Untuk Rakyat | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/cloud-untuk-rakyat.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — Cybersecurity | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/cybersecurity.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — Generative AI | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/generative-ai.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — Quantum Computing | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/quantum-computing.pdf) |
+| **Digital Upskilling &amp; Ai** | Rakyat Digital — AI Nation 2030 | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/ai-nation-2030.pdf) |
 
 ---
 
@@ -102,6 +121,7 @@ The portfolio utilizes a **zero-cost, ultra-fast, edge-first serverless architec
 ```mermaid
 graph TD
     A[Visitor Browser] -->|HTTPS| B[GitHub Pages: irfanfahmi.com]
+    A -->|Touchless Manga Reader| M[Edge AI Vision: manga.html / manga.js]
     A -->|Live Telemetry| C[Live System: live.irfanfahmi.com]
     A -->|Arcade Games| D[Cloudflare Pages: arcade.irfanfahmi.com]
     A -->|AI Chat / Turnstile| E[Cloudflare Worker: contact-gate-worker]
@@ -111,6 +131,7 @@ graph TD
 ```
 
 - **Frontend (`Portfolio`):** Pure Vanilla HTML5, modern CSS3 (Glassmorphism, Dark/Light Themes, Mobile Bottom Dock), and optimized ES6+ JavaScript.
+- **Edge AI Vision (`manga.html` / `manga.js`):** In-browser MediaPipe Hands + Scikit-Learn Random Forest posture classifier with native WebRTC front-camera streaming.
 - **Live Telemetry (`live.irfanfahmi.com`):** Real-time monitoring dashboard for autonomous agents and edge systems.
 - **Mini Arcade (`arcade.irfanfahmi.com`):** Interactive browser games suite powered by Minimax AI.
 - **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`) and Turnstile contact gate verification.
@@ -149,7 +170,7 @@ Portfolio/
 ├── app.js                      # AI representative router, 3D explorer & UI logic
 ├── CNAME                       # Custom domain mapping (irfanfahmi.com)
 ├── certificates/               # PDF credentials & digital certificates
-│   └── registry.json           # 25 verified certificate records
+│   └── registry.json           # 26 verified certificate records across 6 categories
 ├── resume/                     # Official engineering resume
 │   └── resume.pdf
 └── assets/                     # Media, icons, and diagrams
