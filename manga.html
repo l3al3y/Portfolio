@@ -450,7 +450,7 @@
                 FILE_02 // CHROME EXTENSION HUB &amp; INSTALLATION
             </div>
             <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(16,185,129,0.15); color:var(--emerald); border:1px solid var(--emerald); padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
-                v1.3.0 Live &bull; Manifest V3
+                v1.4.0 Live &bull; Manifest V3
             </span>
         </div>
 
@@ -464,6 +464,7 @@
                     </h2>
                     <div style="display:flex; gap:0.45rem; flex-wrap:wrap; font-size:0.75rem; font-family:var(--font-mono);">
                         <span style="color:var(--emerald); background:rgba(16,185,129,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(16,185,129,0.3);">⚡ Cloud Live-Sync</span>
+                        <span style="color:#38bdf8; background:rgba(56,189,248,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">🔄 Native Update Support</span>
                         <span style="color:var(--primary); background:rgba(56,189,248,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">🌐 Multi-Site (&lt;all_urls&gt;)</span>
                         <span style="color:var(--purple); background:rgba(192,132,252,0.12); padding:0.15rem 0.5rem; border-radius:4px; border:1px solid rgba(192,132,252,0.3);">🔄 Chapter Persistence</span>
                     </div>
@@ -476,9 +477,34 @@
             </a>
         </div>
 
-        <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.7; margin-bottom:1.75rem;">
+        <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.7; margin-bottom:1.25rem;">
             Install once &mdash; powered by <strong>Cloud Live-Sync</strong>, all future AI updates, kinetic physics, and website compatibility updates sync dynamically from GitHub without reinstalling. Open the extension popup to <strong>Enable</strong> touchless reading on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a>, <strong>AsuraComics</strong>, <strong>MangaDex</strong>, or any web reader.
         </p>
+
+        <!-- Zero Reinstallation Update Card -->
+        <div style="margin-bottom:1.75rem; padding:1.15rem 1.35rem; border-radius:12px; background:linear-gradient(135deg, rgba(56,189,248,0.08), rgba(16,185,129,0.08)); border:1px solid rgba(56,189,248,0.3); display:flex; flex-direction:column; gap:0.6rem;">
+            <div style="display:flex; align-items:center; gap:0.6rem; font-weight:800; color:#fff; font-size:0.95rem;">
+                <span style="font-size:1.2rem;">⚡</span>
+                <span>Zero Manual Reinstall: How Updates Work (v1.4.0)</span>
+            </div>
+            <p style="margin:0; font-size:0.86rem; color:var(--text-sub); line-height:1.6;">
+                Whenever code changes or new features are pushed to GitHub, you do <strong>not</strong> need to delete or manually re-insert new extension zip files:
+            </p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.75rem; margin-top:0.25rem;">
+                <div style="background:rgba(15,23,42,0.6); padding:0.75rem 1rem; border-radius:8px; border:1px solid var(--border-card);">
+                    <strong style="color:#34d399; font-size:0.85rem; display:block; margin-bottom:0.25rem;">Option 1: 1-Tap In-Popup Sync</strong>
+                    <p style="margin:0; font-size:0.8rem; color:var(--text-sub); line-height:1.45;">
+                        Click the IrfanLLM extension icon and tap <span style="font-family:var(--font-mono); color:#34d399; font-weight:700;">🔄 Check &amp; Sync Code from Main</span> to immediately fetch and hot-reload the latest JavaScript.
+                    </p>
+                </div>
+                <div style="background:rgba(15,23,42,0.6); padding:0.75rem 1rem; border-radius:8px; border:1px solid var(--border-card);">
+                    <strong style="color:var(--primary); font-size:0.85rem; display:block; margin-bottom:0.25rem;">Option 2: Native Browser "Update" Button</strong>
+                    <p style="margin:0; font-size:0.8rem; color:var(--text-sub); line-height:1.45;">
+                        In <span style="font-family:var(--font-mono); color:#38bdf8;">chrome://extensions</span> (or Lemur's extension menu), tap the native <strong style="color:#fff;">Update</strong> button. IrfanLLM's <span style="font-family:var(--font-mono); color:#38bdf8;">updates.xml</span> queries the server automatically.
+                    </p>
+                </div>
+            </div>
+        </div>
 
         <!-- Spacious, Eye-Friendly Installation Switcher -->
         <div class="install-tab-switch" role="tablist">
@@ -701,7 +727,7 @@
                 FILE_04 // RELEASE HISTORY &amp; VERSION LOG
             </div>
             <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(56,189,248,0.12); color:var(--primary); border:1px solid var(--primary); padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
-                Latest: v1.3.0 Live
+                Latest: v1.4.0 Live
             </span>
         </div>
 
@@ -713,14 +739,32 @@
         </p>
 
         <div style="display:flex; flex-direction:column; gap:1.25rem;">
-            <!-- v1.3.0 -->
+            <!-- v1.4.0 -->
             <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(16,185,129,0.4); border-radius:12px; padding:1.25rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem;">
-                        <span style="background:var(--emerald); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.3.0</span>
-                        <strong style="color:#fff; font-size:1rem;">Chapter Persistence &amp; Continuous Reading Session</strong>
+                        <span style="background:var(--emerald); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.4.0</span>
+                        <strong style="color:#fff; font-size:1rem;">Native Browser Update Engine &amp; Direct Cloud Live-Sync</strong>
                     </div>
                     <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04 (Current)</span>
+                </div>
+                <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
+                    <li><strong>Native Chromium Update Engine (<code>updates.xml</code>):</strong> Integrated official Chromium auto-update protocol. Clicking the native <em>Update</em> button in <code>chrome://extensions</code> (Lemur Browser or Google Chrome) now automatically updates the extension without requiring manual zip file removal or reinstallation.</li>
+                    <li><strong>In-Popup 1-Tap Cloud Sync:</strong> Added a dedicated <em>🔄 Check &amp; Sync Code from Main</em> button inside the extension popup (<code>popup.html</code>). It immediately fetches latest JavaScript directly from <code>https://irfanfahmi.com/controller.js</code> and hot-reloads running reading tabs on the fly.</li>
+                    <li><strong>Background Service Worker:</strong> Added Manifest V3 background service worker (<code>background.js</code>) that automatically checks and synchronizes controller code on browser startup and extension install.</li>
+                    <li><strong>Direct Dynamic Script Injection:</strong> Upgraded <code>content.js</code> and <code>popup.js</code> to inject cache-busted dynamic cloud scripts (<code>controller.js?v=Date.now()</code>), bypassing inline script CSP restrictions and guaranteeing 100% fresh code from GitHub on every chapter change or activation.</li>
+                    <li><strong>Offline Fallback Resilience:</strong> Seamless fallback to bundled local code if network connectivity is unavailable.</li>
+                </ul>
+            </div>
+
+            <!-- v1.3.0 -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-card); border-radius:12px; padding:1.25rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:var(--primary); color:#000; font-size:0.75rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; font-family:var(--font-mono);">v1.3.0</span>
+                        <strong style="color:#fff; font-size:1rem;">Chapter Persistence &amp; Continuous Reading Session</strong>
+                    </div>
+                    <span style="font-size:0.78rem; color:var(--text-sub); font-family:var(--font-mono);">2026-09-04</span>
                 </div>
                 <ul style="margin:0; padding-left:1.2rem; font-size:0.85rem; color:var(--text-sub); line-height:1.65;">
                     <li><strong>Continuous Chapter Persistence:</strong> Solved browser page-unload teardown when advancing to new chapters via tab-level session persistence.</li>
