@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://irfanfahmi.com"><img src="https://img.shields.io/badge/🌐%20Production%20Website-irfanfahmi.com-00d4ff?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Website"></a>
   <a href="https://live.irfanfahmi.com"><img src="https://img.shields.io/badge/⚡%20Live%20Telemetry-live.irfanfahmi.com-10b981?style=for-the-badge&logo=prometheus&logoColor=white" alt="Live Telemetry"></a>
+  <a href="https://irfanfahmi.com/manga.html"><img src="https://img.shields.io/badge/📖%20Touchless%20Reader-manga.html-f59e0b?style=for-the-badge&logo=speedtest&logoColor=white" alt="Touchless Manga Reader"></a>
   <a href="https://arcade.irfanfahmi.com"><img src="https://img.shields.io/badge/🎮%20Mini%20Arcade-arcade.irfanfahmi.com-a855f7?style=for-the-badge&logo=gamepad&logoColor=white" alt="Mini Arcade"></a>
   <a href="https://linkedin.com/in/mifi99"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 </p>
@@ -53,14 +54,25 @@ A dual-verification retail automation prototype designed to eliminate barcode sc
 - **Verified Benchmark:** **77.4% Precision**, **72.0% Recall**, and **under 90ms** real-time camera inference latency.
 - **Hardware Integration:** Dual split-view camera occlusion mitigation, serial HID USB barcode reader, and real-time MySQL inventory synchronization.
 
-### 3. 🎮 [Mini Arcade](https://arcade.irfanfahmi.com) — Interactive Browser Game Platform
+### 3. 📖 [IrfanLLM Manga Controller](https://irfanfahmi.com/manga.html) — Edge AI Touchless Reading Assistant
+A zero-touch, hands-free manga and webtoon reading controller running directly at the edge in your browser via front camera. Developed to scroll webtoons and turn pages while eating without touching greasy screens.
+- **Computer Vision & ML Pipeline:** 21 3D landmarks extracted at 30–60 FPS via **MediaPipe Hands JS**, feeding a custom-trained **100-tree Scikit-Learn Random Forest** classifier compiled to a 14.6 KB pure JavaScript array traversal.
+- **Verified Benchmark:** **100.0% Model Precision**, **0.0% recoil false positives** (eliminating the return-stroke flaw of velocity heuristics), **0.30s hysteresis lock**, and **<0.1ms** inference latency per frame.
+- **Pure WebRTC Resilience:** Native `getUserMedia` with 3-tier fallback constraints, hardware lifecycle management (`track.stop()`), and full mobile compliance (`playsinline`, `webkit-playsinline`).
+- **DemonicScans Bookmarklet:** Runs on any manga/webtoon website with a clean 1-line script bookmarklet:
+  ```javascript
+  javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();
+  ```
+- **Live Demo:** Try it now at [irfanfahmi.com/manga.html](https://irfanfahmi.com/manga.html).
+
+### 4. 🎮 [Mini Arcade](https://arcade.irfanfahmi.com) — Interactive Browser Game Platform
 A live, responsive browser gaming suite deployed globally on Cloudflare Edge with ultra-low latency (<60ms).
 - **AI Tic Tac Toe:** Powered by the classic **Minimax decision-tree algorithm** for optimal AI moves.
 - **Soccer Penalty Shootout:** Real-time physics and shot timing mechanics.
 - **Sports Memory Match:** Interactive visual pattern matching card game.
 - **Stack:** React, TypeScript, Tailwind CSS, TanStack Router, Cloudflare Pages.
 
-### 4. ⚡ [IoT Livestock Weight Tracking System](https://irfanfahmi.com#projects) — INOTEK 2025 Award Winner
+### 5. ⚡ [IoT Livestock Weight Tracking System](https://irfanfahmi.com#projects) — INOTEK 2025 Award Winner
 An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 - **Hardware & Sensing:** Custom load platform built with **Arduino** and calibrated **HX711** strain-gauge amplifiers.
 - **Performance:** Achieved **98%+ measurement precision** in dynamic livestock environments.
@@ -131,6 +143,8 @@ Open `http://localhost:8000` in your browser.
 ```
 Portfolio/
 ├── index.html                  # Core portfolio markup & SEO meta tags
+├── manga.html                  # Interactive touchless reader demo & bookmarklet guide
+├── manga.js                    # Compiled 100-tree Random Forest edge vision controller
 ├── style.css                   # Glassmorphism styling, animations & mobile dock
 ├── app.js                      # AI representative router, 3D explorer & UI logic
 ├── CNAME                       # Custom domain mapping (irfanfahmi.com)
