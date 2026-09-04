@@ -147,8 +147,32 @@
             <span class="feature-badge">MediaPipe Hands JS + Random Forest</span>
         </div>
         <p style="color:var(--text-sub); margin-top:0.5rem; font-size:0.95rem;">
-            Test the controller live in your browser right now! Click below to activate your front camera, then hold your hand in the <strong>Page Down</strong> posture (curled fist at chest) or <strong>Page Up</strong> posture (fist tilted under chin) to scroll.
+            Test the controller live in your browser right now! Click below to activate your front camera, then use the hand postures below to control scrolling and navigation:
         </p>
+
+        <!-- Visual Gesture Guide Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.85rem; margin:1.25rem 0 1.5rem;">
+            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(56, 189, 248, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
+                <div style="font-size:2rem; margin-bottom:0.35rem;">✊</div>
+                <div style="font-weight:700; color:var(--primary); font-size:0.95rem; margin-bottom:0.3rem;">Page Down (Scroll Down)</div>
+                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Hold curled fist at <strong>chest level</strong> with hand tilted down (~45°). Scrolls reading panel down fluidly.</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(192, 132, 252, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
+                <div style="font-size:2rem; margin-bottom:0.35rem;">☝️</div>
+                <div style="font-weight:700; color:var(--purple); font-size:0.95rem; margin-bottom:0.3rem;">Page Up (Scroll Up)</div>
+                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Tilt fist or knuckle upward <strong>under chin level</strong> (~118°). Scrolls reading panel back up fluidly.</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(52, 211, 153, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
+                <div style="font-size:2rem; margin-bottom:0.35rem;">🖐️</div>
+                <div style="font-weight:700; color:var(--emerald); font-size:0.95rem; margin-bottom:0.3rem;">Neutral / Idle (Stop)</div>
+                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Lower or relax hand away from camera. Reading panel stays stationary with zero return-stroke recoil.</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(251, 191, 36, 0.35); border-radius:10px; padding:1.1rem; text-align:center;">
+                <div style="font-size:2rem; margin-bottom:0.35rem;">👈 📖 👉</div>
+                <div style="font-weight:700; color:#fbbf24; font-size:0.95rem; margin-bottom:0.3rem;">Air Buttons (Prev / Next)</div>
+                <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.45;">Hover hand on left or right screen border to turn chapters (active on actual webtoon websites).</div>
+            </div>
+        </div>
 
         <div class="demo-controls">
             <button id="btn-camera" class="btn btn-primary" onclick="toggleCameraDemo()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
