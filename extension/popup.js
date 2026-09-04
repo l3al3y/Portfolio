@@ -100,6 +100,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     if (typeof window.__IRFANLLM_STOP__ === "function") {
                         window.__IRFANLLM_STOP__();
                     }
+                    try {
+                        sessionStorage.removeItem("__IRFANLLM_ACTIVE__");
+                        sessionStorage.setItem("__IRFANLLM_ACTIVE__", "false");
+                    } catch (e) {}
                 });
                 isRunning = false;
             } else {
@@ -117,6 +121,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     clearTimeout(timer);
                     if (resp.ok) {
                         remoteCode = await resp.text();
+                        if (remoteCode.length > 500) {
+                            chrome.storage.local.set({ "irfanllm_cloud_code": remoteCode });
+                        }
                         console.log("[IrfanLLM] Cloud auto-update synced (" + remoteCode.length + " bytes)");
                     }
                 } catch (netErr) {
@@ -125,6 +132,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 await executeInTab((codeToRun, fallbackUrl) => {
                     if (window.__IRFANLLM_ACTIVE__) return;
+
+                    try {
+                        sessionStorage.setItem("__IRFANLLM_ACTIVE__", "true");
+                    } catch (e) {}
 
                     const prev = document.getElementById("irfanllm-script");
                     if (prev) prev.remove();
