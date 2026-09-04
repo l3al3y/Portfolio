@@ -41,4 +41,4 @@ All notable improvements and architectural upgrades to the IrfanLLM Touchless AI
   - **Left Hand** (Under chin tilt, ~118° angle): Page Up / Scroll Up.
   - **No Hand / Neutral**: Completely stationary reading mode with zero return-stroke recoil.
 * **Floating Head-Up Display**: Added a non-intrusive status banner, on-screen camera picture-in-picture (PiP) with minimize/close buttons, and virtual air navigation buttons.
-* **Cross-Browser Verification**: Verified support for Chrome, Microsoft Edge, Brave, and Android mobile browsers (Kiwi Browser & Lemur Browser).
+* **Cross-Browser Verification**: Official tested & verified platforms on **Google Chrome** (Desktop PC/Laptop) and **Lemur Browser** (Android Mobile), with full compatibility for Microsoft Edge, Brave, and Kiwi Browser.
