@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Permissions-Policy" content="camera=*, microphone=()">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>IrfanLLM Manga Controller | Touchless AI Reading Assistant | Muhammad Irfan Fahmi</title>
+    <meta name="description" content="Touchless AI manga and webtoon reading controller by Muhammad Irfan Fahmi. MediaPipe Hands + Scikit-Learn Random Forest posture classifier running at the edge.">
+    <link rel="canonical" href="https://irfanfahmi.com/manga.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3.5.1">
+    <style>
+        .manga-hero {
+            padding: 7rem 0 3rem;
+            text-align: center;
+        }
+        .demo-card {
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            max-width: 820px;
+            margin: 0 auto 3rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px var(--primary-glow);
+            text-align: left;
+        }
+        .demo-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
+        .webtoon-viewport {
+            border: 2px solid var(--border-card);
+            border-radius: var(--radius-md);
+            height: 480px;
+            overflow-y: auto;
+            background: #0b0f19;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            scroll-behavior: smooth;
+        }
+        .webtoon-panel {
+            background: #161e2e;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            min-height: 320px;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        .webtoon-panel h4 { font-size: 1.4rem; color: #f59e0b; margin-bottom: 0.5rem; }
+        .webtoon-panel p { color: var(--text-sub); font-size: 0.95rem; }
+        .code-snippet-box {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--primary);
+            word-break: break-all;
+            margin-top: 1rem;
+            position: relative;
+        }
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .copy-toast {
+            display: none;
+            color: var(--emerald);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-content">
+        <a href="/" class="brand-logo">
+            Irfan<span>Fahmi</span>
+        </a>
+        <div class="nav-actions">
+            <a href="/" class="btn btn-outline" style="font-size:0.82rem;">&larr; Main Portfolio</a>
+            <a href="https://github.com/l3al3y/Portfolio" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">GitHub</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="manga-hero">
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            Edge AI Computer Vision Project
+        </div>
+        <h1 class="hero-title" style="margin-bottom: 1rem;">
+            IrfanLLM <span>Manga Controller</span>
+        </h1>
+        <p class="hero-subtitle" style="margin: 0 auto 2rem; max-width: 680px;">
+            A zero-touch, hands-free reading assistant for PC and mobile. Developed to scroll webtoons and turn pages while eating without touching greasy screens.
+        </p>
+
+        <div class="stats-grid" style="max-width: 820px; margin: 0 auto 2.5rem;">
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Model Precision</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">71D</div>
+                <div class="stat-label">Landmark Features</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">0.30s</div>
+                <div class="stat-label">Tuned Cooldown</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">0.0%</div>
+                <div class="stat-label">Recoil False Positives</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Card -->
+    <section class="demo-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <h2 style="font-size:1.4rem; font-weight:800; color:#fff;">Interactive Demo (Front Camera)</h2>
+            <span class="feature-badge">MediaPipe Hands JS + Random Forest</span>
+        </div>
+        <p style="color:var(--text-sub); margin-top:0.5rem; font-size:0.95rem;">
+            Test the controller live in your browser right now! Click below to activate your front camera, then hold your hand in the <strong>Page Down</strong> posture (curled fist at chest) or <strong>Page Up</strong> posture (fist tilted under chin) to scroll.
+        </p>
+
+        <div class="demo-controls">
+            <button id="btn-camera" class="btn btn-primary" onclick="startCameraDemo()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
+                Activate Front Camera Demo
+            </button>
+            <button class="btn btn-outline" onclick="copyBookmarkletCode()" style="padding:0.75rem 1.5rem; font-size:0.95rem;">
+                Copy DemonicScans Bookmarklet
+            </button>
+        </div>
+        <div id="copy-toast" class="copy-toast">&check; Copied clean 1-line bookmarklet to clipboard! Ready to paste into Chrome.</div>
+
+        <!-- Sample Webtoon Scroll Viewport -->
+        <div class="webtoon-viewport" id="webtoon-scroll-area">
+            <div class="webtoon-panel" style="background: linear-gradient(180deg, #161e2e, #1e293b);">
+                <h4>Chapter 1: The Touchless Reader</h4>
+                <p>Enjoying hot food or chicken wings with both hands without dirtying your screen.</p>
+                <p style="margin-top:1.5rem; color:var(--primary); font-family:var(--font-mono); font-weight:700;">
+                    &darr; Hold Page Down Posture to Scroll Down &darr;
+                </p>
+            </div>
+            <div class="webtoon-panel" style="background: linear-gradient(180deg, #1e293b, #161e2e);">
+                <h4>Panel 2: Zero Return Stroke Recoil</h4>
+                <p>Velocity heuristics failed because returning your hand after an upward stroke triggered an opposite scroll. Our machine-learning posture classifier detects pose geometry with 100% precision, ignoring return movement completely.</p>
+            </div>
+            <div class="webtoon-panel" style="background: linear-gradient(180deg, #161e2e, #131b2e);">
+                <h4>Panel 3: Edge Inference Speed</h4>
+                <p>100 decision trees compiled into 14.6 KB pure JavaScript array traversal. Inference takes less than 0.1ms per frame directly in WebGL / WebAssembly.</p>
+            </div>
+            <div class="webtoon-panel" style="background: linear-gradient(180deg, #131b2e, #0d1117);">
+                <h4>Panel 4: Virtual Air Buttons</h4>
+                <p>Hover your hand over the left edge (&lt; PREV) or right edge (NEXT &gt;) to turn chapters without physical contact.</p>
+            </div>
+            <div class="webtoon-panel">
+                <h4>End of Demo Chapter</h4>
+                <p style="color:var(--emerald); font-weight:700;">&check; Touchless Reading Goal Achieved!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bookmarklet Setup Guide -->
+    <section class="demo-card">
+        <h2 style="font-size:1.3rem; font-weight:800; color:#fff; margin-bottom:0.75rem;">
+            How to Use on DemonicScans & Manga Websites
+        </h2>
+        <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.6;">
+            Because this controller is hosted directly on <strong>irfanfahmi.com/manga.js</strong>, you can use it on any mobile or desktop webtoon site with a simple 1-line bookmarklet:
+        </p>
+
+        <div class="code-snippet-box">
+            javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();
+        </div>
+
+        <div style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.65rem; font-size:0.9rem; color:var(--text-sub);">
+            <div><strong>Step 1:</strong> In Chrome, create a new bookmark named <code style="color:var(--primary);">Irfan Manga</code>.</div>
+            <div><strong>Step 2:</strong> Paste the code above into the URL field.</div>
+            <div><strong>Step 3:</strong> Open <code style="color:var(--primary);">demonicscans.org</code> on your phone. Tap the address bar, type <code style="color:var(--primary);">Irfan</code>, and tap the star icon. The touchless controller activates immediately!</div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="demo-card">
+        <h2 style="font-size:1.3rem; font-weight:800; color:#fff; margin-bottom:1rem;">
+            Machine Learning & Vision Architecture
+        </h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;">
+            <div style="background:rgba(0,0,0,0.25); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
+                <h3 style="color:var(--primary); font-size:1rem; margin-bottom:0.4rem;">1. MediaPipe Pipeline</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5;">21 3D landmarks extracted at 30-60 FPS. Normalized relative to wrist coordinate and scaled by palm distance.</p>
+            </div>
+            <div style="background:rgba(0,0,0,0.25); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
+                <h3 style="color:var(--emerald); font-size:1rem; margin-bottom:0.4rem;">2. Random Forest Model</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5;">100 decision trees (depth 6) trained on ground-truth hand videos. Achieves 100.0% 5-fold cross-validation accuracy.</p>
+            </div>
+            <div style="background:rgba(0,0,0,0.25); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
+                <h3 style="color:var(--purple); font-size:1rem; margin-bottom:0.4rem;">3. 0.3s Hysteresis Lock</h3>
+                <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.5;">Debounced scrolling cooldown prevents runaway page turns while maintaining fluid, natural reading speed.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <p>&copy; 2026 Muhammad Irfan Fahmi. Computer Engineering Graduate &amp; AI Automation Specialist.</p>
+        <div class="footer-verification">
+            <a href="/">Portfolio Home</a>
+            <a href="https://github.com/l3al3y" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/irfan-fahmi-63402621b/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function copyBookmarkletCode() {
+        const code = "javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();";
+        navigator.clipboard.writeText(code).then(() => {
+            const toast = document.getElementById("copy-toast");
+            toast.style.display = "block";
+            setTimeout(() => { toast.style.display = "none"; }, 3500);
+        });
+    }
+
+    function startCameraDemo() {
+        const btn = document.getElementById("btn-camera");
+        btn.innerText = "Camera Active!";
+        btn.style.background = "#16a34a";
+
+        const script = document.createElement("script");
+        script.src = "manga.js";
+        document.body.appendChild(script);
+    }
+</script>
+
+</body>
+</html>
