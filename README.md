@@ -42,14 +42,14 @@ He bridges **hardware, enterprise networking, computer vision, and autonomous AI
 ## 🚀 Featured Engineering Projects (Proof of Work)
 
 ### 1. 🤖 [Parliament of Minds](https://irfanfahmi.com#projects) — Autonomous Multi-Model Consensus AI Agent
-An enterprise-grade, 24/7 autonomous multi-model AI agent running on edge hardware with live telemetry at **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
-- **Architecture:** Eliminates AI hallucinations using a consensus governance layer with 5 decision modes and adversarial cross-checking before executing actions.
+A resilient, 24/7 autonomous multi-model consensus AI agent running on dedicated edge hardware with live telemetry at **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
+- **Architecture:** Mitigates AI hallucinations using a consensus governance layer with 5 decision modes and adversarial cross-checking before executing actions.
 - **Live System Telemetry:** Live dashboard deployed at [live.irfanfahmi.com](https://live.irfanfahmi.com).
 - **Open Source Contribution:** Successfully contributed and merged into [`ashishpatel26/500-AI-Agents-Projects`](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36.2k★) via **PR #167**.
 - **Key Capabilities:** Continuous telemetry monitoring, multi-model cascade voting, and automated self-healing.
 
 ### 2. 👁️ [Hybrid Self-Checkout System](https://irfanfahmi.com#projects) — Computer Vision & Barcode Fusion (Capstone)
-A dual-verification retail automation prototype designed to eliminate barcode scan evasion and item swapping.
+A dual-verification retail automation prototype designed to detect and mitigate barcode scan evasion and item swapping.
 - **Deep Learning Model:** Custom-trained **YOLOv8 PyTorch** model fine-tuned for 50 epochs on local Malaysian retail items.
 - **Verified Benchmark:** **77.4% Precision**, **72.0% Recall**, and **under 90ms** real-time camera inference latency.
 - **Hardware Integration:** Dual split-view camera occlusion mitigation, serial HID USB barcode reader, and real-time MySQL inventory synchronization.
@@ -57,7 +57,7 @@ A dual-verification retail automation prototype designed to eliminate barcode sc
 ### 3. 📖 [IrfanLLM Manga Controller](https://irfanfahmi.com/manga.html) — Edge AI Touchless Reading Assistant
 A zero-touch, hands-free manga and webtoon reading controller running directly at the edge in your browser via front camera. Developed to scroll webtoons and turn pages while eating without touching greasy screens.
 - **Computer Vision & ML Pipeline:** 21 3D landmarks extracted at 30–60 FPS via **MediaPipe Hands JS**, feeding a custom-trained **100-tree Scikit-Learn Random Forest** classifier compiled to a 14.6 KB pure JavaScript array traversal.
-- **Verified Benchmark:** **100.0% Model Precision**, **0.0% recoil false positives** (eliminating the return-stroke flaw of velocity heuristics), **0.30s hysteresis lock**, and **<0.1ms** inference latency per frame.
+- **Verified Benchmark:** **98.6% Cross-Validation Accuracy** on ground-truth demonstration datasets, **Zero-Recoil Geometric Classification** (eliminating return-stroke false triggers inherent in velocity heuristics), **0.30s debounced hysteresis lock**, and **<0.1ms** client-side inference latency per frame.
 - **Pure WebRTC Resilience:** Native `getUserMedia` with 3-tier fallback constraints, hardware lifecycle management (`track.stop()`), and full mobile compliance (`playsinline`, `webkit-playsinline`).
 - **DemonicScans Bookmarklet:** Runs on any manga/webtoon website with a clean 1-line script bookmarklet:
   ```javascript
@@ -75,7 +75,7 @@ A live, responsive browser gaming suite deployed globally on Cloudflare Edge wit
 ### 5. ⚡ [IoT Livestock Weight Tracking System](https://irfanfahmi.com#projects) — INOTEK 2025 Award Winner
 An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 - **Hardware & Sensing:** Custom load platform built with **Arduino** and calibrated **HX711** strain-gauge amplifiers.
-- **Performance:** Achieved **98%+ measurement precision** in dynamic livestock environments.
+- **Performance:** Achieved **98%+ measurement consistency** with digital signal filtering (calibrated HX711 load cell) during prototype trials.
 
 ---
 
