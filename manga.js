@@ -15,16 +15,19 @@
     let cooldownUntil = 0;
     let btnPrevHoverStart = null;
     let btnNextHoverStart = null;
+    let activeStream = null;
+    let isProcessing = false;
+    let animFrameId = null;
 
-    // 1. Create Floating UI
+    // 1. Create Floating UI Overlay
     const container = document.createElement("div");
     container.id = "irfanllm-overlay";
     container.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999999;font-family:sans-serif;";
 
     // Status Banner
     const banner = document.createElement("div");
-    banner.style.cssText = "position:fixed;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);color:#00ff99;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:bold;border:1px solid #00ff99;box-shadow:0 2px 10px rgba(0,0,0,0.5);transition:all 0.2s;";
-    banner.innerText = "IrfanLLM: Starting Front Camera...";
+    banner.style.cssText = "position:fixed;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.88);color:#00ff99;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:bold;border:1px solid #00ff99;box-shadow:0 2px 12px rgba(0,0,0,0.6);transition:all 0.2s;text-align:center;pointer-events:auto;";
+    banner.innerText = "IrfanLLM: Starting Camera...";
     container.appendChild(banner);
 
     // Camera Preview Pip
@@ -35,11 +38,16 @@
     video.style.cssText = "width:100%;height:100%;object-fit:cover;transform:scaleX(-1);";
     video.playsInline = true;
     video.muted = true;
+    video.autoplay = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
     camBox.appendChild(video);
 
     const toggleBtn = document.createElement("button");
     toggleBtn.innerText = "Hide";
-    toggleBtn.style.cssText = "position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 5px;";
+    toggleBtn.style.cssText = "position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 6px;cursor:pointer;";
     toggleBtn.onclick = () => {
         if (camBox.style.height === "24px") {
             camBox.style.height = "140px";
@@ -68,13 +76,14 @@
 
     document.body.appendChild(container);
 
-    // 2. Load MediaPipe Hands via CDN
+    // Dynamic Script Loader
     function loadScript(src) {
         return new Promise((resolve, reject) => {
+            if (document.querySelector(`script[src="${src}"]`)) return resolve();
             const s = document.createElement("script");
             s.src = src;
             s.onload = resolve;
-            s.onerror = reject;
+            s.onerror = () => reject(new Error("Failed to load: " + src));
             document.head.appendChild(s);
         });
     }
@@ -130,10 +139,55 @@
         return { feats, dMid };
     }
 
+    function executeScroll(step) {
+        const demoArea = document.getElementById("webtoon-scroll-area");
+        if (demoArea) {
+            demoArea.scrollBy({ top: step, behavior: 'smooth' });
+        } else {
+            window.scrollBy({ top: step, behavior: 'smooth' });
+        }
+    }
+
+    // Resilient Camera Acquisition with multi-tier fallback
+    async function acquireCameraStream() {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            throw new Error("getUserMedia is not supported on this browser context.");
+        }
+
+        // Check if Permissions-Policy is blocking camera on this document
+        if (document.permissionsPolicy && typeof document.permissionsPolicy.allowsFeature === 'function') {
+            if (!document.permissionsPolicy.allowsFeature('camera')) {
+                const err = new Error("POLICY_BLOCKED");
+                err.name = "PermissionsPolicyViolation";
+                throw err;
+            }
+        }
+
+        const constraintsList = [
+            { video: { facingMode: { ideal: "user" }, width: { ideal: 640 }, height: { ideal: 480 } } },
+            { video: { facingMode: "user" } },
+            { video: true }
+        ];
+
+        let lastErr = null;
+        for (const c of constraintsList) {
+            try {
+                const s = await navigator.mediaDevices.getUserMedia(c);
+                if (s) return s;
+            } catch (e) {
+                lastErr = e;
+                console.warn("[IrfanLLM] Constraint failed:", c, e);
+            }
+        }
+        throw lastErr || new Error("Failed to acquire camera stream");
+    }
+
     async function init() {
         try {
             banner.innerText = "Loading MediaPipe AI...";
-            await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js");
+            banner.style.color = "#00e5ff";
+            
+            // Only load hands.js - no bloated camera_utils needed!
             await loadScript("https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js");
 
             const hands = new Hands({
@@ -176,7 +230,6 @@
                         banner.innerText = "<< PREV CHAPTER <<";
                         banner.style.color = "#00ffea";
                         cooldownUntil = now + COOLDOWN_BUTTON;
-                        // Try clicking prev chapter or press Left Arrow
                         const prevLink = document.querySelector("a[rel='prev'], .nav-prev, .prev-post, .prev_page, #prev-chapter");
                         if (prevLink) prevLink.click();
                         else window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
@@ -218,14 +271,14 @@
                     banner.innerText = `vv SCROLL DOWN (${Math.round(pDown*100)}%) vv`;
                     banner.style.color = "#00ff66";
                     if (now >= cooldownUntil) {
-                        window.scrollBy({ top: SCROLL_STEP, behavior: 'smooth' });
+                        executeScroll(SCROLL_STEP);
                         cooldownUntil = now + COOLDOWN_SCROLL;
                     }
                 } else if (pUp >= CONF_THRESHOLD) {
                     banner.innerText = `^^ SCROLL UP (${Math.round(pUp*100)}%) ^^`;
                     banner.style.color = "#00ff66";
                     if (now >= cooldownUntil) {
-                        window.scrollBy({ top: -SCROLL_STEP, behavior: 'smooth' });
+                        executeScroll(-SCROLL_STEP);
                         cooldownUntil = now + COOLDOWN_SCROLL;
                     }
                 } else {
@@ -235,30 +288,93 @@
             });
 
             banner.innerText = "Requesting Front Camera...";
-            const cam = new Camera(video, {
-                onFrame: async () => {
-                    await hands.send({ image: video });
-                },
-                width: 320,
-                height: 240,
-                facingMode: "user"
+            banner.style.color = "#00e5ff";
+
+            activeStream = await acquireCameraStream();
+            video.srcObject = activeStream;
+
+            await new Promise((resolve) => {
+                video.onloadedmetadata = () => {
+                    video.play().then(resolve).catch(resolve);
+                };
             });
-            await cam.start();
+
             banner.innerText = "IrfanLLM Active! Hold gesture to scroll.";
             banner.style.color = "#00ff66";
 
+            // Update on-page trigger button if present
+            const pageBtn = document.getElementById("btn-camera");
+            if (pageBtn) {
+                pageBtn.innerText = "Camera Active!";
+                pageBtn.style.background = "#16a34a";
+                pageBtn.disabled = false;
+            }
+
+            // High-performance requestAnimationFrame loop with concurrency protection
+            async function frameLoop() {
+                if (!video.paused && !video.ended && video.readyState >= 2) {
+                    if (!isProcessing) {
+                        isProcessing = true;
+                        try {
+                            await hands.send({ image: video });
+                        } catch (err) {
+                            console.warn("[IrfanLLM] Frame drop:", err);
+                        } finally {
+                            isProcessing = false;
+                        }
+                    }
+                }
+                animFrameId = requestAnimationFrame(frameLoop);
+            }
+            animFrameId = requestAnimationFrame(frameLoop);
+
         } catch (err) {
-            console.error("IrfanLLM error:", err);
-            if (err.name === "NotAllowedError" || (err.message && err.message.includes("Permission denied"))) {
-                banner.innerText = "Camera Blocked (Tap for Fix)";
-                banner.style.color = "#ff4444";
-                banner.style.cursor = "pointer";
-                banner.onclick = () => {
-                    alert("Camera Permission Denied!\n\n1. Check browser permission: Tap the Lock / Tune icon in your Chrome address bar -> Site Settings -> Allow Camera.\n\n2. If on irfanfahmi.com: GitHub Pages enforces a restrictive Permissions-Policy header. Use the 1-line bookmarklet on DemonicScans (which has zero restrictions!), or remove the header in Cloudflare Transform Rules.");
+            console.error("[IrfanLLM] Initialization Error:", err);
+            const pageBtn = document.getElementById("btn-camera");
+            if (pageBtn) {
+                pageBtn.innerText = "Camera Blocked (Tap for Details)";
+                pageBtn.style.background = "#dc2626";
+                pageBtn.disabled = false;
+            }
+
+            const isPolicyBlocked = (err.name === "PermissionsPolicyViolation" || err.message === "POLICY_BLOCKED" || (err.message && err.message.toLowerCase().includes("permissions policy")));
+
+            banner.style.cursor = "pointer";
+            banner.style.background = "rgba(180,0,0,0.92)";
+            banner.style.borderColor = "#ff4444";
+            banner.style.color = "#ffffff";
+
+            if (isPolicyBlocked) {
+                banner.innerText = "Domain Header Blocked Camera (Tap for Guide)";
+                const showPolicyHelp = () => {
+                    alert(
+                        "CAMERA BLOCKED BY CLOUDFLARE / GITHUB PAGES HEADER:\n\n" +
+                        "GitHub Pages enforces 'Permissions-Policy: camera=()' on all custom domains by default.\n\n" +
+                        "2 WAYS TO RESOLVE:\n" +
+                        "1. DEMONICSCANS BOOKMARKLET (Immediate):\n" +
+                        "Use the 1-line bookmarklet on demonicscans.org (or any manga site). DemonicScans does NOT have this header, so the camera opens immediately!\n\n" +
+                        "2. CLOUDFLARE DASHBOARD FIX (2 Minutes):\n" +
+                        "Open dash.cloudflare.com -> Select irfanfahmi.com -> Rules -> Transform Rules -> Modify Response Header.\n" +
+                        "Rule: URI Path starts with '/manga' -> Action: Remove response header 'Permissions-Policy' (or set camera=*)."
+                    );
                 };
+                banner.onclick = showPolicyHelp;
+                if (pageBtn) pageBtn.onclick = showPolicyHelp;
+            } else if (err.name === "NotAllowedError" || (err.message && err.message.includes("Permission denied"))) {
+                banner.innerText = "Camera Permission Denied in Chrome (Tap for Help)";
+                const showPermHelp = () => {
+                    alert(
+                        "CAMERA PERMISSION DENIED:\n\n" +
+                        "1. Tap the Tune / Lock icon in your browser's address bar.\n" +
+                        "2. Go to 'Site settings' -> 'Permissions' -> 'Camera'.\n" +
+                        "3. Change to 'Allow' and refresh the page."
+                    );
+                };
+                banner.onclick = showPermHelp;
+                if (pageBtn) pageBtn.onclick = showPermHelp;
             } else {
-                banner.innerText = "Camera Error: " + (err.message || err.name);
-                banner.style.color = "#ff3333";
+                banner.innerText = "Camera Error: " + (err.name || err.message);
+                banner.onclick = () => alert("Camera Error:\n" + (err.stack || err.message || err));
             }
         }
     }

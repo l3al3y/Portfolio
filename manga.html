@@ -159,8 +159,9 @@
             </button>
         </div>
         <div id="copy-toast" class="copy-toast">&check; Copied clean 1-line bookmarklet to clipboard! Ready to paste into Chrome.</div>
-        <div style="margin-top:0.85rem; font-size:0.82rem; color:var(--text-muted); display:flex; align-items:center; gap:0.4rem;">
-            <span>💡 <strong>Tip:</strong> If prompted, tap <strong>Allow</strong> for camera access. On manga websites (e.g. DemonicScans), the 1-line bookmarklet runs with full camera permissions.</span>
+        <div style="margin-top:0.85rem; font-size:0.82rem; color:var(--text-sub); line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-card);">
+            <div>💡 <strong>Fastest Way to Test:</strong> Copy the bookmarklet and run it on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a> (or any webtoon site). Manga sites have zero camera restrictions, so the camera activates instantly!</div>
+            <div style="margin-top:0.35rem; color:var(--text-muted); font-size:0.78rem;">🔒 <em>Note: If testing directly on irfanfahmi.com, GitHub Pages upstream enforces a default camera restriction header. You can remove this in Cloudflare Dashboard &rarr; Rules &rarr; Transform Rules &rarr; Modify Response Header.</em></div>
         </div>
 
         <!-- Sample Webtoon Scroll Viewport -->
@@ -256,11 +257,15 @@
 
     function startCameraDemo() {
         const btn = document.getElementById("btn-camera");
-        btn.innerText = "Camera Active!";
-        btn.style.background = "#16a34a";
+        if (window.__IRFANLLM_ACTIVE__) {
+            btn.innerText = "Camera Already Active";
+            return;
+        }
+        btn.innerText = "Starting Front Camera...";
+        btn.disabled = true;
 
         const script = document.createElement("script");
-        script.src = "manga.js";
+        script.src = "manga.js?v=" + Date.now();
         document.body.appendChild(script);
     }
 </script>
