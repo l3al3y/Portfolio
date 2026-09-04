@@ -248,9 +248,18 @@
             banner.style.color = "#00ff66";
 
         } catch (err) {
-            banner.innerText = "Error: " + err.message;
-            banner.style.color = "#ff3333";
             console.error("IrfanLLM error:", err);
+            if (err.name === "NotAllowedError" || (err.message && err.message.includes("Permission denied"))) {
+                banner.innerText = "Camera Blocked (Tap for Fix)";
+                banner.style.color = "#ff4444";
+                banner.style.cursor = "pointer";
+                banner.onclick = () => {
+                    alert("Camera Permission Denied!\n\n1. Check browser permission: Tap the Lock / Tune icon in your Chrome address bar -> Site Settings -> Allow Camera.\n\n2. If on irfanfahmi.com: GitHub Pages enforces a restrictive Permissions-Policy header. Use the 1-line bookmarklet on DemonicScans (which has zero restrictions!), or remove the header in Cloudflare Transform Rules.");
+                };
+            } else {
+                banner.innerText = "Camera Error: " + (err.message || err.name);
+                banner.style.color = "#ff3333";
+            }
         }
     }
 
