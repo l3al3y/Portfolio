@@ -103,17 +103,50 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
                 isRunning = false;
             } else {
-                // Enable / Turn ON (inject controller.js directly from extension bundle)
-                const scriptUrl = chrome.runtime.getURL("controller.js");
-                await executeInTab((url) => {
+                // Enable / Turn ON: Auto-sync latest cloud code (never need manual reinstall)
+                const bundleScriptUrl = chrome.runtime.getURL("controller.js");
+                let remoteCode = null;
+
+                try {
+                    const abortCtrl = new AbortController();
+                    const timer = setTimeout(() => abortCtrl.abort(), 2500); // 2.5s network timeout
+                    const resp = await fetch("https://irfanfahmi.com/controller.js?v=" + Date.now(), {
+                        signal: abortCtrl.signal,
+                        cache: "no-store"
+                    });
+                    clearTimeout(timer);
+                    if (resp.ok) {
+                        remoteCode = await resp.text();
+                        console.log("[IrfanLLM] Cloud auto-update synced (" + remoteCode.length + " bytes)");
+                    }
+                } catch (netErr) {
+                    console.log("[IrfanLLM] Offline or slow network, running bundled controller");
+                }
+
+                await executeInTab((codeToRun, fallbackUrl) => {
                     if (window.__IRFANLLM_ACTIVE__) return;
-                    const existing = document.getElementById("irfanllm-script");
-                    if (existing) existing.remove();
+
+                    const prev = document.getElementById("irfanllm-script");
+                    if (prev) prev.remove();
+
                     const s = document.createElement("script");
                     s.id = "irfanllm-script";
-                    s.src = url;
+
+                    if (codeToRun && codeToRun.length > 500) {
+                        try {
+                            s.textContent = codeToRun;
+                            (document.head || document.documentElement).appendChild(s);
+                            return;
+                        } catch (inlineErr) {
+                            console.warn("[IrfanLLM] Inline CSP block, falling back to bundle URL", inlineErr);
+                        }
+                    }
+
+                    // Local extension bundle fallback
+                    s.src = fallbackUrl;
                     (document.head || document.documentElement).appendChild(s);
-                }, [scriptUrl]);
+                }, [remoteCode, bundleScriptUrl]);
+
                 isRunning = true;
             }
         } catch (err) {
