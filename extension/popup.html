@@ -211,10 +211,62 @@
         <span>⚡</span> <span>Cloud Auto-Sync: <strong>Always Up-to-Date</strong></span>
     </div>
 
-    <!-- Supporter & TNG DuitNow QR Link -->
-    <a href="https://irfanfahmi.com/manga.html#supporters-hub" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:6px; width:100%; padding:8px 10px; border-radius:8px; background:linear-gradient(135deg, rgba(244,63,94,0.15), rgba(245,158,11,0.15)); border:1px solid rgba(244,63,94,0.35); color:#fda4af; text-decoration:none; font-size:0.78rem; font-weight:700; margin-bottom:10px; transition:all 0.2s;">
-        <span>☕</span> <span>Support Developer &amp; Fame Board (TNG / DuitNow)</span>
-    </a>
+    <!-- In-Popup Support & TNG DuitNow Donation Section -->
+    <div style="margin-bottom:12px;">
+        <button id="btn-donate-toggle" type="button" style="width:100%; padding:9px 12px; border-radius:10px; background:linear-gradient(135deg, rgba(244,63,94,0.18), rgba(245,158,11,0.18)); border:1px solid rgba(244,63,94,0.4); color:#fda4af; font-size:0.8rem; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:space-between; transition:all 0.2s;">
+            <span style="display:flex; align-items:center; gap:6px;">
+                <span>☕</span>
+                <span>Support Developer (TNG QR)</span>
+            </span>
+            <span id="donate-chevron" style="font-size:0.7rem; transition:transform 0.2s; color:#fda4af;">▼</span>
+        </button>
+
+        <div id="donate-drawer" style="display:none; background:rgba(15,23,42,0.95); border:1px solid rgba(244,63,94,0.35); border-radius:10px; padding:12px; margin-top:8px; text-align:center;">
+            <div style="font-size:0.72rem; color:#cbd5e1; margin-bottom:8px; line-height:1.4;">
+                <strong>100% Free &amp; Ad-Free!</strong><br>
+                Scan with Touch 'n Go eWallet or DuitNow:
+            </div>
+
+            <!-- TNG QR Display -->
+            <div style="background:#ffffff; padding:6px; border-radius:12px; display:inline-block; box-shadow:0 6px 20px rgba(0,0,0,0.6); margin-bottom:8px; border:2px solid rgba(244,63,94,0.25);">
+                <img src="tng_qr.png" alt="Touch 'n Go DuitNow QR Code" style="width:170px; height:auto; display:block; border-radius:8px;">
+            </div>
+
+            <!-- Verified Recipient Box -->
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:6px 8px; margin-bottom:8px;">
+                <div style="font-size:0.74rem; font-weight:800; color:#ffffff; letter-spacing:0.01em;">
+                    MUHAMMAD IRFAN FAHMI BIN SAMSUL KAMAR
+                </div>
+                <div style="font-size:0.68rem; color:#34d399; font-weight:600; margin-top:2px;">
+                    ✓ Verified DuitNow Recipient
+                </div>
+            </div>
+
+            <!-- Suggested Tiers Chips -->
+            <div style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.5px; color:#94a3b8; font-weight:700; margin-bottom:5px;">
+                Suggested Tiers (Any amount welcome)
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:5px; margin-bottom:8px;">
+                <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:5px 2px;">
+                    <div style="font-weight:800; color:#f59e0b; font-size:0.78rem;">☕ RM 3</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">Teh Tarik</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:5px 2px;">
+                    <div style="font-weight:800; color:#38bdf8; font-size:0.78rem;">🍜 RM 7</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">Mee Goreng</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:5px 2px;">
+                    <div style="font-weight:800; color:#c084fc; font-size:0.78rem;">🚀 RM 15</div>
+                    <div style="font-size:0.6rem; color:#94a3b8;">AI Research</div>
+                </div>
+            </div>
+
+            <!-- Open Full QR Link -->
+            <a href="tng_qr.png" target="_blank" style="display:inline-flex; align-items:center; gap:4px; font-size:0.72rem; color:#38bdf8; text-decoration:none; font-weight:600;">
+                <span>🔍</span> <span>Open Full-Size QR in New Tab</span>
+            </a>
+        </div>
+    </div>
 
     <div class="footer-links">
         <a href="https://irfanfahmi.com/manga.html" target="_blank">Instructions &amp; Demo</a>
