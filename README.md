@@ -81,36 +81,30 @@ An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 
 ## 📜 Official Certifications & Credentials (26 Verified Records)
 
-All 26 credentials and documents are digitally verified and viewable directly on [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates) or in [`certificates/`](certificates/):
+All credentials and records are digitally verifiable with interactive previews at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates):
 
-| Category | Credential / Document Title | Issuer / Authority | Date | Verified File |
-| :--- | :--- | :--- | :--- | :---: |
-| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Enterprise Networking, Security, and Automation | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/CCNA_Enterprise_Networking_Security_Automation.pdf) |
-| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Switching, Routing, and Wireless Essentials | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/CCNA_Switching_Routing_Wireless_Essentials.pdf) |
-| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Endpoint Security | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/Endpoint_Security.pdf) |
-| **Cisco &amp; Cybersecurity** | Cisco Networking Academy — Cyber Threat Management | Cisco Networking Academy | Verified Digital Badge | [`PDF`](certificates/Cyber_Threat_Management.pdf) |
-| **Industrial Automation &amp; Training** | Festo Professional Certificate — Industrial Automation with AI in Manufacturing | Festo Didactic & STDC | 14–16 July 2026 | [`PDF`](certificates/Festo_Industrial_AI_Automation.pdf) |
-| **Industrial Automation &amp; Training** | Kursus Arduino — Kolej Komuniti Selandar | Kolej Komuniti Selandar | 9 September 2017 | [`PDF`](certificates/Kursus_Arduino_Kolej_Komuniti_Selandar.pdf) |
-| **Industrial Automation &amp; Training** | Sijil Penyertaan — Kursus Basic IoT | Kolej Komuniti Bukit Beruang | 28 Mac 2018 | [`PDF`](certificates/Kursus_Basic_IoT_Kolej_Komuniti_Bukit_Beruang.pdf) |
-| **Industrial Automation &amp; Training** | Sijil Penyertaan — Kursus Fiber Optik "Splicing & Polishing" | Kolej Komuniti Selandar | 3 Februari 2018 | [`PDF`](certificates/Kursus_Fiber_Optik_Splicing_Polishing.pdf) |
-| **Academic Qualification** | Diploma in Electronic Engineering (Computer) — Politeknik Port Dickson | Politeknik Port Dickson | Dec 2018 – May 2022 | [`PDF`](certificates/Politeknik_Diploma_Electronic_Computer.pdf) |
-| **Academic Qualification** | Sijil Sistem Komputer dan Rangkaian — Kolej Komuniti Selandar | Kolej Komuniti Selandar | July 2017 – Feb 2019 | [`PDF`](certificates/Sijil_Sistem_Komputer_dan_Rangkaian.pdf) |
-| **Academic Qualification** | Sijil Pelajaran Malaysia (SPM 2016) — Lembaga Peperiksaan Malaysia | Lembaga Peperiksaan Malaysia | Tahun 2016 | [`PDF`](certificates/SPM_Certificate.pdf) |
-| **Awards &amp; Achievements** | INOTEK 2025 Innovation & Technology Competition (Third Place — IoT Weight Tracking System) | UTeM Faculty of Electronics and Computer Technology | 15 January 2025 | [`PDF`](certificates/INOTEK_2025_Third_Place.pdf) |
-| **Awards &amp; Achievements** | Anugerah Pelajar Terbaik Semester (Sijil Sistem Komputer dan Rangkaian) Sesi Mac 2018 | Kolej Komuniti Selandar | Sesi Mac 2018 | [`PDF`](certificates/Anugerah_Pelajar_Terbaik_Sesi_Mac_2018.pdf) |
-| **Awards &amp; Achievements** | Anugerah Pengarah (Director's List Award) — Semester 2 Sesi November 2017 | Kolej Komuniti Selandar | Semester 2 Nov 2017 | [`PDF`](certificates/Anugerah_Pengarah_Semester_2_2017.pdf) |
-| **Awards &amp; Achievements** | Sijil Cemerlang — Pelajar Cemerlang Matapelajaran (Asas Komunikasi dan Rangkaian) | Kolej Komuniti Selandar | Sesi Nov 2017 | [`PDF`](certificates/Pelajar_Cemerlang_Asas_Komunikasi_Rangkaian.pdf) |
-| **Awards &amp; Achievements** | Sijil Penghargaan — WiMyL (Where Is My Lecturer) Gold Award | Kolej Komuniti Selandar | Mei 2018 | [`PDF`](certificates/WiMyL_Gold_Award.pdf) |
-| **Service &amp; Professional Experience** | Sijil Kursus Asas Perajurit Muda Sukarela (Siri 2/2019) — Rejimen 508 Askar Wataniah | Rejimen 508 Askar Wataniah | 1–30 May 2019 | [`PDF`](certificates/Askar_Wataniah_Reserve_Service.pdf) |
-| **Service &amp; Professional Experience** | 7-Eleven Malaysia Sdn Bhd (New Employee Training Program) | 7-Eleven Malaysia Sdn Bhd | 17 January 2017 | [`PDF`](certificates/7Eleven_Work_Experience.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — Agentic AI for All | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/agentic-ai-for-all.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — AI Visionary | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/ai-visionary.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — AI Safety | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/ai-safety.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — Cloud Untuk Rakyat | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/cloud-untuk-rakyat.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — Cybersecurity | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/cybersecurity.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — Generative AI | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/generative-ai.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — Quantum Computing | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/quantum-computing.pdf) |
-| **Digital Upskilling &amp; Ai** | Rakyat Digital — AI Nation 2030 | Rakyat Digital (Kementerian Digital) | Verified Digital Credential | [`PDF`](certificates/ai-nation-2030.pdf) |
+<p align="center">
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/All-(26)-38bdf8?style=for-the-badge" alt="All (26)"></a>
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Cisco%20%26%20Cybersecurity-(4)-1e293b?style=for-the-badge" alt="Cisco & Cybersecurity (4)"></a>
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Digital%20Upskilling%20%26%20AI-(8)-1e293b?style=for-the-badge" alt="Digital Upskilling & AI (8)"></a>
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Industrial%20Automation%20%26%20Technical%20Training-(4)-1e293b?style=for-the-badge" alt="Industrial Automation & Technical Training (4)"></a>
+</p>
+<p align="center">
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Academic%20Qualifications-(3)-1e293b?style=for-the-badge" alt="Academic Qualifications (3)"></a>
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Awards%20%26%20Achievements-(5)-1e293b?style=for-the-badge" alt="Awards & Achievements (5)"></a>
+  <a href="https://irfanfahmi.com#certificates"><img src="https://img.shields.io/badge/Service%20%26%20Professional%20Experience-(2)-1e293b?style=for-the-badge" alt="Service & Professional Experience (2)"></a>
+</p>
+
+| Category | Count | Primary Focus &amp; Issuing Authorities |
+| :--- | :---: | :--- |
+| 🛡️ **Cisco &amp; Cybersecurity** | **4** | CCNA Enterprise Networking, Switching &amp; Routing, Endpoint Security, Cyber Threat Management |
+| 🤖 **Digital Upskilling &amp; AI** | **8** | Kementerian Digital (Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum, AI Nation 2030) |
+| ⚙️ **Industrial Automation &amp; Technical Training** | **4** | Festo Professional Industrial AI in Manufacturing, Arduino Automation, Basic IoT, Fiber Optic Splicing |
+| 🎓 **Academic Qualifications** | **3** | Politeknik Port Dickson (Diploma Computer Eng), Kolej Komuniti Selandar (Computer Systems), SPM |
+| 🏆 **Awards &amp; Achievements** | **5** | INOTEK 2025 (3rd Place), Best Student Award (Pelajar Terbaik), Director's List, WiMyL Gold Award |
+| 🎖️ **Service &amp; Professional Experience** | **2** | Rejimen 508 Askar Wataniah (Military Reserve), 7-Eleven Malaysia Professional Training |
+
+> 💡 *To view, inspect, or download individual certificate PDFs, open the interactive credentials explorer at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates).*
 
 ---
 
