@@ -287,12 +287,39 @@
         </div>
 
         <div style="background:rgba(56, 189, 248, 0.08); border:1px solid rgba(56, 189, 248, 0.25); border-radius:10px; padding:0.9rem 1.1rem; margin-bottom:1.25rem; font-size:0.88rem; color:var(--text-sub); line-height:1.55;">
-            💡 <strong>How it works:</strong> <code style="color:var(--primary);">manga.html</code> is this showcase page. To read on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a> (or Asura, MangaDex, etc.), you run the AI controller script (<code style="color:var(--primary);">irfanfahmi.com/manga.js</code>) on the manga page using either method below:
+            💡 <strong>How it works:</strong> <code style="color:var(--primary);">manga.html</code> is this showcase page. To read on <a href="https://demonicscans.org" target="_blank" style="color:var(--primary); text-decoration:underline;">DemonicScans.org</a> (or Asura, MangaDex, etc.), you run the AI controller script (<code style="color:var(--primary);">irfanfahmi.com/manga.js</code>) on the manga page using any of the automated or bookmark options below:
+        </div>
+
+        <!-- Automatic 1-Click Installation Hub -->
+        <div style="margin-bottom:1.5rem; background:rgba(30, 41, 59, 0.7); border:1px solid rgba(56, 189, 248, 0.35); border-radius:12px; padding:1.2rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.75rem;">
+                <div>
+                    <h3 style="color:#fff; font-size:1.1rem; font-weight:800; margin:0 0 0.25rem;">
+                        ⚡ 1-Click Automatic Install &amp; Save
+                    </h3>
+                    <p style="color:var(--text-sub); font-size:0.83rem; margin:0;">
+                        Choose your preferred automated installation method for PC or Mobile:
+                    </p>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                    <!-- Auto-Install Userscript (Tampermonkey / Violentmonkey / Kiwi) -->
+                    <a href="manga.user.js" class="btn btn-primary" style="padding:0.45rem 1rem; font-size:0.83rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+                        🚀 1-Click Auto Install (Userscript)
+                    </a>
+                    <!-- Download Bookmark File for Chrome/Edge -->
+                    <a href="assets/manga/irfan_manga_bookmark.html" download="irfan_manga_bookmark.html" class="btn btn-outline" style="padding:0.45rem 1rem; font-size:0.83rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+                        📥 Download Bookmark File (.html)
+                    </a>
+                </div>
+            </div>
+            <div style="font-size:0.82rem; color:var(--text-sub); line-height:1.5; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.65rem;">
+                ✨ <strong>Userscript Method (Tampermonkey / Violentmonkey / Kiwi Browser):</strong> Clicking <em>"1-Click Auto Install"</em> automatically opens the browser extension install prompt. Once installed, IrfanLLM activates automatically every time you open DemonicScans!
+            </div>
         </div>
 
         <!-- 1-Line Code Snippet Box with Copy Button -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-            <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">Bookmarklet / Console Code:</span>
+            <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">Or Run Manually via Bookmarklet / Console:</span>
             <div style="display:flex; align-items:center; gap:0.5rem;">
                 <span id="guide-copy-toast" style="display:none; color:var(--emerald); font-weight:700; font-size:0.8rem;">&check; Copied!</span>
                 <button class="btn btn-outline" onclick="copyBookmarkletCode()" style="padding:0.35rem 0.85rem; font-size:0.8rem;">
