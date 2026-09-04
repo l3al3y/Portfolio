@@ -267,6 +267,32 @@
             .dossier-nav-item { font-size: 0.72rem; padding: 0.35rem 0.75rem; }
             .install-step-card { flex-direction: column; gap: 0.65rem; padding: 1.15rem 1.15rem; }
         }
+
+        /* Hall of Fame Dynamic Modal & Podium Cards */
+        .fame-modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(8px);
+            z-index: 999999;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .fame-modal-card {
+            background: #0f172a;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 20px;
+            max-width: 520px;
+            width: 100%;
+            padding: 2rem;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 35px rgba(245, 158, 11, 0.25);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInTab 0.25s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -920,121 +946,53 @@
                 </div>
             </div>
 
-            <!-- RIGHT: Supporter Wall of Fame (Fame Board) -->
+            <!-- RIGHT: Dynamic Supporter Hall of Fame (Auto-Ranked) -->
             <div style="display:flex; flex-direction:column; gap:1.25rem;">
                 
-                <div style="background:rgba(15,23,42,0.75); border:1px solid var(--border-card); border-radius:18px; padding:1.5rem; box-shadow:0 12px 35px rgba(0,0,0,0.35);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.75rem;">
-                        <h3 style="font-size:1.15rem; font-weight:800; color:#fff; margin:0; display:flex; align-items:center; gap:0.5rem;">
-                            <span>🏆</span> Supporter Wall of Fame
+                <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(245,158,11,0.35); border-radius:18px; padding:1.5rem; box-shadow:0 12px 35px rgba(0,0,0,0.35);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.75rem;">
+                        <h3 style="font-size:1.18rem; font-weight:800; color:#fff; margin:0; display:flex; align-items:center; gap:0.5rem;">
+                            <span>🏆</span> Supporter Hall of Fame
                         </h3>
-                        <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--emerald); background:rgba(16,185,129,0.12); padding:0.15rem 0.5rem; border-radius:4px; font-weight:700;">
-                            Live Community Board
+                        <span id="fame-count-badge" style="font-family:var(--font-mono); font-size:0.72rem; color:#fbbf24; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); padding:0.15rem 0.55rem; border-radius:4px; font-weight:700;">
+                            Live Ranked Podium
                         </span>
                     </div>
 
-                    <p style="font-size:0.86rem; color:var(--text-sub); line-height:1.6; margin-bottom:1.25rem;">
-                        A permanent tribute to our generous patrons and manga readers who keep this project independent and ad-free:
+                    <p style="font-size:0.86rem; color:var(--text-sub); line-height:1.6; margin-bottom:1.15rem;">
+                        Supporters are ranked dynamically (<strong style="color:#fbbf24;">#1 Supreme Champion</strong>, <strong style="color:#cbd5e1;">#2 Benefactor</strong>, <strong style="color:#f59e0b;">#3 Patron</strong>).
+                        <span style="color:#34d399;">Your donation amount stays 100% private</span> &mdash; if your contribution tops the current leader, you automatically claim the #1 Crown!
                     </p>
 
-                    <!-- Leaderboard Entries -->
-                    <div style="display:flex; flex-direction:column; gap:0.75rem;">
-                        
-                        <!-- Founder Entry -->
-                        <div style="display:flex; align-items:center; justify-content:space-between; gap:0.75rem; background:linear-gradient(135deg, rgba(245,158,11,0.12), rgba(244,63,94,0.08)); border:1px solid rgba(245,158,11,0.35); border-radius:12px; padding:0.85rem 1rem;">
-                            <div style="display:flex; align-items:center; gap:0.75rem;">
-                                <div style="width:38px; height:38px; border-radius:50%; background:rgba(245,158,11,0.2); border:1px solid #f59e0b; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
-                                    👑
-                                </div>
-                                <div>
-                                    <div style="font-size:0.92rem; font-weight:800; color:#fff; display:flex; align-items:center; gap:0.4rem;">
-                                        Muhammad Irfan Fahmi
-                                        <span style="font-size:0.68rem; background:rgba(245,158,11,0.25); color:#fbbf24; padding:0.1rem 0.4rem; border-radius:4px; font-family:var(--font-mono); font-weight:800;">CREATOR</span>
-                                    </div>
-                                    <div style="font-size:0.75rem; color:#fcd34d; margin-top:2px;">
-                                        &ldquo;Built with passion for hands-free manga reading worldwide.&rdquo;
-                                    </div>
-                                </div>
-                            </div>
-                            <span style="font-family:var(--font-mono); font-size:0.75rem; color:#fbbf24; font-weight:800; white-space:nowrap;">
-                                Founder
-                            </span>
-                        </div>
+                    <!-- Dynamic Ranked Podium Entries Container -->
+                    <div id="fame-board-container" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem;">
+                        <!-- Injected dynamically via renderFameBoard() -->
+                    </div>
 
-                        <!-- Pioneer Supporter Slot 1 (Open for Backers) -->
-                        <div style="display:flex; align-items:center; justify-content:space-between; gap:0.75rem; background:rgba(15,23,42,0.6); border:1px dashed rgba(56,189,248,0.4); border-radius:12px; padding:0.85rem 1rem;">
-                            <div style="display:flex; align-items:center; gap:0.75rem;">
-                                <div style="width:38px; height:38px; border-radius:50%; background:rgba(56,189,248,0.15); border:1px solid #38bdf8; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
-                                    🌟
-                                </div>
-                                <div>
-                                    <div style="font-size:0.92rem; font-weight:800; color:#e0f2fe;">
-                                        Community Pioneer #1
-                                    </div>
-                                    <div style="font-size:0.75rem; color:#94a3b8; margin-top:2px;">
-                                        <em>Reserved for our 1st backer &bull; Will you claim this spot?</em>
-                                    </div>
-                                </div>
-                            </div>
-                            <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:700; background:rgba(56,189,248,0.1); padding:0.15rem 0.5rem; border-radius:4px;">
-                                Open Slot
-                            </span>
-                        </div>
+                    <!-- 1-Tap Claim Rank Button -->
+                    <button type="button" onclick="openClaimFameModal()" class="btn btn-primary" style="width:100%; justify-content:center; gap:0.5rem; font-size:0.92rem; padding:0.8rem 1.25rem; box-shadow:0 4px 18px rgba(245,158,11,0.35); background:linear-gradient(135deg, #f59e0b, #d97706); border-color:#fbbf24; cursor:pointer;">
+                        <span>👑</span> Claim Your Rank &amp; Take the #1 Spot!
+                    </button>
 
-                        <!-- Supporter Slot 2 -->
-                        <div style="display:flex; align-items:center; justify-content:space-between; gap:0.75rem; background:rgba(15,23,42,0.4); border:1px dashed rgba(255,255,255,0.15); border-radius:12px; padding:0.85rem 1rem;">
-                            <div style="display:flex; align-items:center; gap:0.75rem;">
-                                <div style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
-                                    ☕
-                                </div>
-                                <div>
-                                    <div style="font-size:0.92rem; font-weight:700; color:#cbd5e1;">
-                                        Manga Lover Slot #2
-                                    </div>
-                                    <div style="font-size:0.75rem; color:#64748b; margin-top:2px;">
-                                        <em>Available &bull; Tip any amount &amp; display your favorite manga quote!</em>
-                                    </div>
-                                </div>
-                            </div>
-                            <span style="font-family:var(--font-mono); font-size:0.72rem; color:#94a3b8; font-weight:700; background:rgba(255,255,255,0.05); padding:0.15rem 0.5rem; border-radius:4px;">
-                                Open Slot
-                            </span>
-                        </div>
-
-                        <!-- Supporter Slot 3 -->
-                        <div style="display:flex; align-items:center; justify-content:space-between; gap:0.75rem; background:rgba(15,23,42,0.4); border:1px dashed rgba(255,255,255,0.15); border-radius:12px; padding:0.85rem 1rem;">
-                            <div style="display:flex; align-items:center; gap:0.75rem;">
-                                <div style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
-                                    ☕
-                                </div>
-                                <div>
-                                    <div style="font-size:0.92rem; font-weight:700; color:#cbd5e1;">
-                                        Manga Lover Slot #3
-                                    </div>
-                                    <div style="font-size:0.75rem; color:#64748b; margin-top:2px;">
-                                        <em>Available &bull; Tip any amount &amp; join the community hall of fame!</em>
-                                    </div>
-                                </div>
-                            </div>
-                            <span style="font-family:var(--font-mono); font-size:0.72rem; color:#94a3b8; font-weight:700; background:rgba(255,255,255,0.05); padding:0.15rem 0.5rem; border-radius:4px;">
-                                Open Slot
-                            </span>
-                        </div>
-
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; font-size:0.72rem; color:#64748b;">
+                        <span>⚡ Top supporter automatically takes #1</span>
+                        <button type="button" onclick="openAdminFameModal()" style="background:none; border:none; color:#64748b; font-size:0.72rem; cursor:pointer; font-family:var(--font-mono); text-decoration:underline;">
+                            ⚙️ Owner Verify
+                        </button>
                     </div>
                 </div>
 
                 <!-- Claim Fame Board Badge Card -->
                 <div style="background:linear-gradient(135deg, rgba(56,189,248,0.08), rgba(16,185,129,0.08)); border:1px solid rgba(56,189,248,0.3); border-radius:14px; padding:1.25rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem; font-weight:800; color:#fff; font-size:0.92rem; margin-bottom:0.4rem;">
-                        <span>✨</span> How to Claim Your Spot on the Fame Board
+                        <span>✨</span> How the Dynamic Ranking Works
                     </div>
                     <p style="font-size:0.82rem; color:var(--text-sub); line-height:1.55; margin:0 0 0.85rem;">
-                        After scanning the DuitNow / TNG QR code, let us know who you are so we can immortalize your name, handle, or favorite manga shoutout on the Fame Board:
+                        Scan the TNG DuitNow QR &rarr; Tap <strong>Claim Your Rank</strong> &rarr; If your tier tops the current leader, you instantly take the <strong>#1 Supreme Champion</strong> spot!
                     </p>
                     <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
-                        <a href="/#contact" class="btn btn-primary" style="flex:1; min-width:180px; font-size:0.84rem; justify-content:center; padding:0.55rem 0.9rem; text-decoration:none;">
-                            💬 Contact to Claim Badge
+                        <a href="/#contact" class="btn btn-outline" style="flex:1; min-width:180px; font-size:0.84rem; justify-content:center; padding:0.55rem 0.9rem; text-decoration:none;">
+                            💬 Contact Creator Direct
                         </a>
                         <a href="https://github.com/l3al3y" target="_blank" class="btn btn-outline" style="font-size:0.84rem; padding:0.55rem 0.9rem; text-decoration:none;">
                             🐙 GitHub Profile
@@ -1247,6 +1205,99 @@
 
         </div>
     </section>
+
+    <!-- Claim Fame Board Rank Modal -->
+    <div id="claim-fame-modal" class="fame-modal-backdrop">
+        <div class="fame-modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h3 style="font-size:1.2rem; font-weight:800; color:#fff; margin:0; display:flex; align-items:center; gap:0.5rem;">
+                    <span>👑</span> Claim Your Hall of Fame Rank
+                </h3>
+                <button type="button" onclick="closeClaimFameModal()" style="background:none; border:none; color:#94a3b8; font-size:1.4rem; cursor:pointer; line-height:1;">&times;</button>
+            </div>
+
+            <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:10px; padding:0.75rem 0.9rem; margin-bottom:1.25rem; font-size:0.78rem; color:#d1fae5; line-height:1.5;">
+                🔒 <strong>100% Financial Privacy:</strong> Your exact RM amount is <strong>never</strong> shown on the board. It is only used to compute your Rank position (#1, #2, #3). If your contribution tops the current leader, you automatically claim the #1 Crown!
+            </div>
+
+            <form id="fame-claim-form" onsubmit="handleFameClaimSubmit(event)">
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.35rem;">
+                        Your Name / Handle <span style="color:#f43f5e;">*</span>
+                    </label>
+                    <input type="text" id="fame-input-name" required placeholder="e.g. ShadowMonarch or Alex W." style="width:100%; padding:0.7rem 0.85rem; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.88rem; outline:none; font-family:inherit;">
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.35rem;">
+                        Favorite Manga / Manhwa
+                    </label>
+                    <input type="text" id="fame-input-manga" placeholder="e.g. Solo Leveling, Omniscient Reader, One Piece" style="width:100%; padding:0.7rem 0.85rem; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.88rem; outline:none; font-family:inherit;">
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.35rem;">
+                        Custom Shoutout / Motto <span style="color:#f43f5e;">*</span>
+                    </label>
+                    <input type="text" id="fame-input-quote" required placeholder="e.g. Touchless reading is pure future tech!" style="width:100%; padding:0.7rem 0.85rem; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.88rem; outline:none; font-family:inherit;">
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.35rem;">
+                        TNG Donation Tier (Used ONLY to compute rank &bull; Kept Private)
+                    </label>
+                    <select id="fame-input-tier" style="width:100%; padding:0.7rem 0.85rem; border-radius:8px; background:#0f172a; border:1px solid rgba(255,255,255,0.15); color:#fbbf24; font-size:0.88rem; outline:none; font-family:inherit; cursor:pointer;">
+                        <option value="5000">🔥 Supreme Champion Tier (Highest Score &bull; Takes #1!)</option>
+                        <option value="2500">🚀 Grand Benefactor Tier</option>
+                        <option value="1000">🍜 Elite Supporter Tier</option>
+                        <option value="500">☕ Coffee / Teh Tarik Backer Tier</option>
+                        <option value="150">🌟 Community Patron Tier</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom:1.25rem;">
+                    <label style="display:block; font-size:0.8rem; font-weight:700; color:#cbd5e1; margin-bottom:0.35rem;">
+                        TNG Transaction Reference (Optional verification)
+                    </label>
+                    <input type="text" id="fame-input-ref" placeholder="e.g. TNG-XXXX or payment time" style="width:100%; padding:0.7rem 0.85rem; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#94a3b8; font-size:0.85rem; outline:none; font-family:var(--font-mono);">
+                </div>
+
+                <div style="display:flex; gap:0.75rem;">
+                    <button type="button" onclick="closeClaimFameModal()" class="btn btn-outline" style="flex:1; justify-content:center;">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex:2; justify-content:center; background:linear-gradient(135deg, #f59e0b, #d97706); border-color:#fbbf24; box-shadow:0 4px 18px rgba(245,158,11,0.35); font-weight:800;">
+                        <span>🏆</span> Calculate &amp; Claim Rank
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Owner Admin Modal -->
+    <div id="admin-fame-modal" class="fame-modal-backdrop">
+        <div class="fame-modal-card" style="border-color:rgba(56,189,248,0.4); max-width:440px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h3 style="font-size:1.1rem; font-weight:800; color:#fff; margin:0;">
+                    ⚙️ Owner / Creator Administration
+                </h3>
+                <button type="button" onclick="closeAdminFameModal()" style="background:none; border:none; color:#94a3b8; font-size:1.3rem; cursor:pointer;">&times;</button>
+            </div>
+            <p style="font-size:0.82rem; color:var(--text-sub); margin-bottom:1rem;">
+                Enter creator passcode to manage or reset Hall of Fame entries:
+            </p>
+            <input type="password" id="admin-passcode" placeholder="Enter PIN (1999)" style="width:100%; padding:0.7rem 0.85rem; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:0.9rem; margin-bottom:1rem;">
+            <div style="display:flex; gap:0.5rem;">
+                <button type="button" onclick="handleAdminReset()" class="btn btn-outline" style="flex:1; justify-content:center; color:#f87171; border-color:rgba(248,113,113,0.3);">
+                    Reset to Defaults
+                </button>
+                <button type="button" onclick="handleAdminUnlock()" class="btn btn-primary" style="flex:1; justify-content:center;">
+                    Verify / Unlock
+                </button>
+            </div>
+            <div id="admin-status" style="font-size:0.75rem; text-align:center; margin-top:0.6rem; display:none;"></div>
+        </div>
+    </div>
 </main>
 
 <footer>
@@ -1402,9 +1453,288 @@
         });
     }
 
-    // Load persisted comments on page load
+    // ==========================================
+    // Dynamic Supporter Hall of Fame (Auto-Ranked)
+    // ==========================================
+
+    const DEFAULT_FAME_LIST = [
+        {
+            id: "founder",
+            name: "Muhammad Irfan Fahmi",
+            isFounder: true,
+            badgeTitle: "CREATOR & FOUNDER",
+            manga: "Solo Leveling & Tower of God",
+            quote: "Built with passion for hands-free manga reading worldwide.",
+            score: 999999,
+            date: "Founder"
+        },
+        {
+            id: "pioneer_1",
+            name: "Aiman H.",
+            isFounder: false,
+            badgeTitle: "SUPREME CHAMPION",
+            manga: "Omniscient Reader's Viewpoint",
+            quote: "Dethroned the board! Best hands-free reader for Lemur Browser.",
+            score: 2500,
+            date: "2026-09-04"
+        },
+        {
+            id: "pioneer_2",
+            name: "Kenji_Reads",
+            isFounder: false,
+            badgeTitle: "GRAND BENEFACTOR",
+            manga: "DemonicScans Fanatic",
+            quote: "Zero return-stroke recoil is pure magic.",
+            score: 1000,
+            date: "2026-09-04"
+        },
+        {
+            id: "pioneer_3",
+            name: "Elena_Manhwa",
+            isFounder: false,
+            badgeTitle: "ELITE PATRON",
+            manga: "Eleceed",
+            quote: "120Hz kinetic scroll glides like real paper.",
+            score: 500,
+            date: "2026-09-04"
+        }
+    ];
+
+    function getFameList() {
+        try {
+            const raw = localStorage.getItem("irfanllm_fame_board");
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            }
+        } catch(e) {}
+        return JSON.parse(JSON.stringify(DEFAULT_FAME_LIST));
+    }
+
+    function saveFameList(list) {
+        try {
+            localStorage.setItem("irfanllm_fame_board", JSON.stringify(list));
+        } catch(e) {}
+    }
+
+    function renderFameBoard() {
+        const container = document.getElementById("fame-board-container");
+        if (!container) return;
+
+        const allEntries = getFameList();
+
+        // Separate Founder from ranked community supporters
+        const founder = allEntries.find(e => e.isFounder) || DEFAULT_FAME_LIST[0];
+        const community = allEntries.filter(e => !e.isFounder);
+
+        // Sort community supporters descending by private score
+        community.sort((a, b) => (b.score || 0) - (a.score || 0));
+
+        let html = '';
+
+        // 1. Founder Card (Always Honorary Anchor)
+        html += `
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:0.75rem; background:linear-gradient(135deg, rgba(245,158,11,0.14), rgba(244,63,94,0.08)); border:1px solid rgba(245,158,11,0.4); border-radius:14px; padding:0.85rem 1rem;">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div style="width:38px; height:38px; border-radius:50%; background:rgba(245,158,11,0.22); border:1px solid #f59e0b; display:flex; align-items:center; justify-content:center; font-size:1.15rem; flex-shrink:0;">
+                        👑
+                    </div>
+                    <div>
+                        <div style="font-size:0.92rem; font-weight:800; color:#fff; display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+                            ${escapeHtml(founder.name)}
+                            <span style="font-size:0.68rem; background:rgba(245,158,11,0.25); color:#fbbf24; padding:0.1rem 0.4rem; border-radius:4px; font-family:var(--font-mono); font-weight:800;">FOUNDER</span>
+                        </div>
+                        <div style="font-size:0.75rem; color:#fcd34d; margin-top:2px;">
+                            &ldquo;${escapeHtml(founder.quote)}&rdquo;
+                        </div>
+                    </div>
+                </div>
+                <span style="font-family:var(--font-mono); font-size:0.75rem; color:#fbbf24; font-weight:800; white-space:nowrap;">
+                    Creator
+                </span>
+            </div>
+        `;
+
+        // 2. Ranked Community Supporters
+        community.forEach((item, index) => {
+            const rankNumber = index + 1;
+            let rankBadge = '';
+            let cardStyle = '';
+            let avatarIcon = '⭐';
+            let titleText = '';
+
+            if (rankNumber === 1) {
+                // #1 Supreme Champion (Takes #1 Crown!)
+                avatarIcon = '🥇';
+                titleText = 'CHAMPION';
+                cardStyle = 'background:linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.08)); border:1px solid #f59e0b; box-shadow:0 0 20px rgba(245,158,11,0.25);';
+                rankBadge = `<span style="font-family:var(--font-mono); font-size:0.78rem; color:#000; background:#fbbf24; font-weight:800; padding:0.15rem 0.55rem; border-radius:6px; box-shadow:0 0 10px rgba(251,191,36,0.5);">#1 CROWN</span>`;
+            } else if (rankNumber === 2) {
+                // #2 Grand Benefactor
+                avatarIcon = '🥈';
+                titleText = 'BENEFACTOR';
+                cardStyle = 'background:rgba(148,163,184,0.1); border:1px solid #94a3b8;';
+                rankBadge = `<span style="font-family:var(--font-mono); font-size:0.75rem; color:#fff; background:#475569; font-weight:800; padding:0.15rem 0.5rem; border-radius:6px;">#2 SILVER</span>`;
+            } else if (rankNumber === 3) {
+                // #3 Elite Supporter
+                avatarIcon = '🥉';
+                titleText = 'PATRON';
+                cardStyle = 'background:rgba(217,119,6,0.1); border:1px solid rgba(217,119,6,0.5);';
+                rankBadge = `<span style="font-family:var(--font-mono); font-size:0.75rem; color:#fbbf24; background:rgba(217,119,6,0.2); font-weight:800; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid rgba(217,119,6,0.4);">#3 BRONZE</span>`;
+            } else {
+                // #4+ Backers
+                avatarIcon = '🌟';
+                titleText = 'BACKER';
+                cardStyle = 'background:rgba(15,23,42,0.6); border:1px solid var(--border-card);';
+                rankBadge = `<span style="font-family:var(--font-mono); font-size:0.72rem; color:#94a3b8; background:rgba(255,255,255,0.06); font-weight:700; padding:0.15rem 0.45rem; border-radius:4px;">#${rankNumber}</span>`;
+            }
+
+            html += `
+                <div class="fame-entry-card" style="display:flex; align-items:center; justify-content:space-between; gap:0.75rem; border-radius:12px; padding:0.85rem 1rem; transition:transform 0.2s; ${cardStyle}">
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <div style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+                            ${avatarIcon}
+                        </div>
+                        <div>
+                            <div style="font-size:0.92rem; font-weight:800; color:#fff; display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+                                ${escapeHtml(item.name)}
+                                <span style="font-size:0.68rem; color:#94a3b8; font-family:var(--font-mono); background:rgba(255,255,255,0.06); padding:0.1rem 0.35rem; border-radius:4px;">${titleText}</span>
+                            </div>
+                            <div style="font-size:0.75rem; color:#cbd5e1; margin-top:2px;">
+                                &ldquo;${escapeHtml(item.quote || "Supported IrfanLLM")}&rdquo;
+                            </div>
+                            <div style="font-size:0.7rem; color:#64748b; font-family:var(--font-mono); margin-top:1px;">
+                                <span>Favorite: <em>${escapeHtml(item.manga || "Manga Fan")}</em></span>
+                            </div>
+                        </div>
+                    </div>
+                    ${rankBadge}
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+
+        // Update badge
+        const badge = document.getElementById("fame-count-badge");
+        if (badge) badge.innerText = `${community.length + 1} Ranked Champions`;
+    }
+
+    // Modal Triggers
+    function openClaimFameModal() {
+        const m = document.getElementById("claim-fame-modal");
+        if (m) m.style.display = "flex";
+    }
+
+    function closeClaimFameModal() {
+        const m = document.getElementById("claim-fame-modal");
+        if (m) m.style.display = "none";
+    }
+
+    function openAdminFameModal() {
+        const m = document.getElementById("admin-fame-modal");
+        if (m) m.style.display = "flex";
+    }
+
+    function closeAdminFameModal() {
+        const m = document.getElementById("admin-fame-modal");
+        if (m) m.style.display = "none";
+    }
+
+    // Handle Supporter Claim Submission
+    function handleFameClaimSubmit(e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById("fame-input-name");
+        const mangaInput = document.getElementById("fame-input-manga");
+        const quoteInput = document.getElementById("fame-input-quote");
+        const tierSelect = document.getElementById("fame-input-tier");
+        const refInput = document.getElementById("fame-input-ref");
+
+        const name = nameInput.value.trim();
+        const manga = mangaInput.value.trim() || "Webtoon Fan";
+        const quote = quoteInput.value.trim();
+        const score = parseInt(tierSelect.value, 10) || 500;
+        const ref = refInput.value.trim();
+
+        if (!name || !quote) return;
+
+        const currentList = getFameList();
+        const currentCommunity = currentList.filter(e => !e.isFounder);
+        currentCommunity.sort((a, b) => (b.score || 0) - (a.score || 0));
+
+        const currentChampion = currentCommunity[0];
+        const tookFirstPlace = !currentChampion || score > (currentChampion.score || 0);
+
+        const newEntry = {
+            id: "supporter_" + Date.now(),
+            name: name,
+            isFounder: false,
+            manga: manga,
+            quote: quote,
+            score: score,
+            ref: ref,
+            date: "2026-09-05"
+        };
+
+        currentList.push(newEntry);
+        saveFameList(currentList);
+        renderFameBoard();
+        closeClaimFameModal();
+
+        // Celebration Announcement
+        if (tookFirstPlace) {
+            alert(`👑 INCREDIBLE! You just took the #1 SUPREME CHAMPION SPOT on the Hall of Fame!\n\nThank you ${name} for your outstanding support!`);
+        } else {
+            alert(`🎉 CONGRATULATIONS ${name}!\n\nYou have officially secured your ranked position on the Supporter Hall of Fame!`);
+        }
+
+        const board = document.getElementById("supporters-hub");
+        if (board) board.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Admin Passcode & Reset Handler
+    function handleAdminReset() {
+        const pass = document.getElementById("admin-passcode").value;
+        if (pass === "1999" || pass === "irfan99") {
+            saveFameList(DEFAULT_FAME_LIST);
+            renderFameBoard();
+            closeAdminFameModal();
+            alert("✅ Hall of Fame has been reset to default champions.");
+        } else {
+            alert("❌ Incorrect creator passcode.");
+        }
+    }
+
+    function handleAdminUnlock() {
+        const pass = document.getElementById("admin-passcode").value;
+        if (pass === "1999" || pass === "irfan99") {
+            closeAdminFameModal();
+            const list = getFameList();
+            const names = list.map((e, i) => `${i}: ${e.name} (Score: ${e.score})`).join("\n");
+            const toRemove = prompt(`Admin Panel:\nEnter index number to remove:\n\n${names}`);
+            if (toRemove !== null && toRemove !== "") {
+                const idx = parseInt(toRemove, 10);
+                if (!isNaN(idx) && list[idx]) {
+                    if (list[idx].isFounder) {
+                        alert("Cannot remove Founder.");
+                        return;
+                    }
+                    const removed = list.splice(idx, 1);
+                    saveFameList(list);
+                    renderFameBoard();
+                    alert(`Removed: ${removed[0].name}`);
+                }
+            }
+        } else {
+            alert("❌ Incorrect creator passcode.");
+        }
+    }
+
+    // Load persisted comments and fame board on page load
     document.addEventListener("DOMContentLoaded", () => {
         try {
+            renderFameBoard();
             const saved = JSON.parse(localStorage.getItem("irfanllm_comments") || "[]");
             if (Array.isArray(saved)) {
                 saved.reverse().forEach(c => renderCommentCard(c, true));
