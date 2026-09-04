@@ -9,10 +9,21 @@
     window.__IRFANLLM_ACTIVE__ = true;
 
     const POSTURE_MODEL = {"classes": [1, 2], "n_estimators": 100, "trees": [[[6, 0.2117048278450966, 1, 2, [0.7002801120448179, 0.29971988795518206]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.32540126889944077, 1, 2, [0.7366946778711485, 0.26330532212885155]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.1231829971075058, 1, 2, [0.7058823529411765, 0.29411764705882354]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[9, 0.3154120668768883, 1, 2, [0.6694677871148459, 0.33053221288515405]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[60, -0.11060245335102081, 1, 2, [0.7030812324929971, 0.2969187675070028]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.14192544773686677, 1, 2, [0.7058823529411765, 0.29411764705882354]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[9, 0.27739713340997696, 1, 2, [0.7282913165266106, 0.27170868347338933]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[42, -0.02841392159461975, 1, 2, [0.7170868347338936, 0.28291316526610644]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[69, 0.2394532710313797, 1, 2, [0.7338935574229691, 0.2661064425770308]], [-2, -2.0, -1, -1, [1.0, 0.0]], [-2, -2.0, -1, -1, [0.0, 1.0]]], [[24, 0.16385890543460846, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[33, 0.06379610300064087, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[63, -1.594558596611023, 1, 2, [0.6862745098039216, 0.3137254901960784]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[42, -0.033954352140426636, 1, 2, [0.6946778711484594, 0.30532212885154064]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[6, 0.21403124183416367, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.1231829971075058, 1, 2, [0.7507002801120448, 0.24929971988795518]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[21, 0.17811377346515656, 1, 2, [0.7086834733893558, 0.2913165266106443]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[63, -1.594558596611023, 1, 2, [0.7338935574229691, 0.2661064425770308]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[19, -1.3285654783248901, 1, 2, [0.6918767507002801, 0.3081232492997199]], [-2, -2.0, -1, -1, [0.0, 1.0]], [36, -0.043511003255844116, 3, 4, [0.8458904109589042, 0.1541095890410959]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[33, 0.06379610300064087, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[3, 0.12266664579510689, 1, 4, [0.7086834733893558, 0.2913165266106443]], [39, 0.16180984675884247, 2, 3, [0.15, 0.85]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]], [24, 0.17788336426019669, 5, 6, [0.9915611814345991, 0.008438818565400843]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[27, -0.016821548342704773, 1, 2, [0.7142857142857143, 0.2857142857142857]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[42, -0.02841392159461975, 1, 2, [0.7002801120448179, 0.29971988795518206]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[30, 0.051978349685668945, 1, 2, [0.6694677871148459, 0.33053221288515405]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[45, -0.03335833549499512, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.16934220725670457, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[33, 0.07156530022621155, 1, 2, [0.6946778711484594, 0.30532212885154064]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[69, 0.23948025703430176, 1, 2, [0.6946778711484594, 0.30532212885154064]], [-2, -2.0, -1, -1, [1.0, 0.0]], [-2, -2.0, -1, -1, [0.0, 1.0]]], [[63, -1.594558596611023, 1, 2, [0.6862745098039216, 0.3137254901960784]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[69, 0.23791848123073578, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [1.0, 0.0]], [-2, -2.0, -1, -1, [0.0, 1.0]]], [[30, 0.051978349685668945, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[9, 0.28122904151678085, 1, 2, [0.6666666666666666, 0.3333333333333333]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[54, -0.09222453832626343, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[63, -1.594558596611023, 1, 2, [0.7030812324929971, 0.2969187675070028]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[27, -0.011853605508804321, 1, 2, [0.6862745098039216, 0.3137254901960784]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[9, 0.27739713340997696, 1, 2, [0.7058823529411765, 0.29411764705882354]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[30, 0.051978349685668945, 1, 2, [0.7310924369747899, 0.2689075630252101]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[33, 0.06379610300064087, 1, 2, [0.7366946778711485, 0.26330532212885155]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[9, 0.27739713340997696, 1, 2, [0.6862745098039216, 0.3137254901960784]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[63, -1.594558596611023, 1, 2, [0.7675070028011205, 0.23249299719887956]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.1231829971075058, 1, 2, [0.7394957983193278, 0.2605042016806723]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.1367844515480101, 1, 2, [0.7366946778711485, 0.26330532212885155]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[21, 0.17704735696315765, 1, 2, [0.7142857142857143, 0.2857142857142857]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[54, -0.09222453832626343, 1, 2, [0.7030812324929971, 0.2969187675070028]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[42, -0.02841392159461975, 1, 2, [0.6974789915966386, 0.3025210084033613]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.29806550592184067, 1, 2, [0.7282913165266106, 0.27170868347338933]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[42, -0.04470545053482056, 1, 2, [0.6974789915966386, 0.3025210084033613]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[45, -0.03203010559082031, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[60, -0.10236608982086182, 1, 2, [0.7058823529411765, 0.29411764705882354]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.1296275109052658, 1, 2, [0.6946778711484594, 0.30532212885154064]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[15, 0.1328301578760147, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[55, -0.4361068606376648, 1, 4, [0.6946778711484594, 0.30532212885154064]], [39, -0.06818988919258118, 2, 3, [0.10588235294117647, 0.8941176470588236]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]], [12, 0.2774081900715828, 5, 6, [0.8786764705882353, 0.1213235294117647]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[24, 0.16321305930614471, 1, 2, [0.680672268907563, 0.31932773109243695]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[63, -1.6019262671470642, 1, 2, [0.6946778711484594, 0.30532212885154064]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.3175578936934471, 1, 2, [0.680672268907563, 0.31932773109243695]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.32540126889944077, 1, 2, [0.7282913165266106, 0.27170868347338933]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[54, -0.06504480540752411, 1, 2, [0.7591036414565826, 0.24089635854341737]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.10540267080068588, 1, 2, [0.7310924369747899, 0.2689075630252101]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[33, 0.06379610300064087, 1, 2, [0.7002801120448179, 0.29971988795518206]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.14192544773686677, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[6, 0.21270280331373215, 1, 2, [0.7086834733893558, 0.2913165266106443]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.10540267080068588, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[6, 0.21270280331373215, 1, 2, [0.7394957983193278, 0.2605042016806723]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[18, 0.12842360138893127, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[33, 0.05102206766605377, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[21, 0.17704735696315765, 1, 2, [0.7591036414565826, 0.24089635854341737]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[27, -0.026275619864463806, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[45, -0.0434035062789917, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.1367844515480101, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[18, 0.153352752327919, 1, 2, [0.680672268907563, 0.31932773109243695]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[18, 0.14957471191883087, 1, 2, [0.7030812324929971, 0.2969187675070028]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.3261997401714325, 1, 2, [0.6946778711484594, 0.30532212885154064]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[42, -0.0519031286239624, 1, 2, [0.7086834733893558, 0.2913165266106443]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[69, 0.23764047026634216, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [1.0, 0.0]], [-2, -2.0, -1, -1, [0.0, 1.0]]], [[58, -0.44819962978363037, 1, 4, [0.7394957983193278, 0.2605042016806723]], [59, -0.34223319590091705, 2, 3, [0.04838709677419355, 0.9516129032258065]], [-2, -2.0, -1, -1, [1.0, 0.0]], [-2, -2.0, -1, -1, [0.0, 1.0]], [63, -1.6205082535743713, 5, 6, [0.8847457627118644, 0.1152542372881356]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.1326783448457718, 1, 2, [0.7170868347338936, 0.28291316526610644]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.31835636496543884, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[9, 0.28040458261966705, 1, 2, [0.7338935574229691, 0.2661064425770308]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[18, 0.14957471191883087, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[48, -0.06241104006767273, 1, 2, [0.6694677871148459, 0.33053221288515405]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[39, -0.12884938716888428, 1, 2, [0.7366946778711485, 0.26330532212885155]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[54, -0.11535938084125519, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.11423543095588684, 1, 2, [0.6890756302521008, 0.31092436974789917]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[54, -0.1425391137599945, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[15, 0.1015625, 1, 2, [0.742296918767507, 0.25770308123249297]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[15, 0.13484176993370056, 1, 2, [0.7282913165266106, 0.27170868347338933]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[57, -0.11423543095588684, 1, 2, [0.7254901960784313, 0.27450980392156865]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[48, -0.05067569017410278, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[15, 0.11319451779127121, 1, 2, [0.7563025210084033, 0.24369747899159663]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[54, -0.09222453832626343, 1, 2, [0.6918767507002801, 0.3081232492997199]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.3032892346382141, 1, 2, [0.711484593837535, 0.28851540616246496]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.3032892346382141, 1, 2, [0.7226890756302521, 0.2773109243697479]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[30, 0.06341207027435303, 1, 2, [0.7030812324929971, 0.2969187675070028]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[21, 0.17811377346515656, 1, 2, [0.7058823529411765, 0.29411764705882354]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[21, 0.17811377346515656, 1, 2, [0.7310924369747899, 0.2689075630252101]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[69, 0.2381765991449356, 1, 2, [0.7086834733893558, 0.2913165266106443]], [-2, -2.0, -1, -1, [1.0, 0.0]], [-2, -2.0, -1, -1, [0.0, 1.0]]], [[24, 0.17788336426019669, 1, 2, [0.7058823529411765, 0.29411764705882354]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[24, 0.17788336426019669, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[51, -0.14192544773686677, 1, 2, [0.7086834733893558, 0.2913165266106443]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[12, 0.31835636496543884, 1, 2, [0.7983193277310925, 0.20168067226890757]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]], [[18, 0.13813184201717377, 1, 2, [0.7198879551820728, 0.2801120448179272]], [-2, -2.0, -1, -1, [0.0, 1.0]], [-2, -2.0, -1, -1, [1.0, 0.0]]]]};
-    const CONF_THRESHOLD = 0.82;
-    const COOLDOWN_SCROLL = 300; // 0.3s
+    const CONF_THRESHOLD = 0.80;
     const COOLDOWN_BUTTON = 700; // 0.7s
-    const SCROLL_STEP = 420;
+    const BASE_CRUISE_SPEED = 10.5; // continuous pixels per frame at 60fps (~630px/sec)
+    const FLICK_BOOST = 22.0;       // kinetic swipe impulse (matches smartphone touchscreen flick)
+    const FRICTION = 0.935;         // exponential momentum damping
+    const ACCELERATION = 0.16;      // smooth ease-in when gesture starts
+
+    let speedMultiplier = 1.0;
+    let currentVelocity = 0.0;
+    let targetVelocity = 0.0;
+    let lastPhysicsTime = performance.now();
+    let physicsAnimId = null;
+
+    let lastWristY = null;
+    let lastWristTime = 0;
 
     let cooldownUntil = 0;
     let btnPrevHoverStart = null;
@@ -34,6 +45,14 @@
             cancelAnimationFrame(animFrameId);
             animFrameId = null;
         }
+        if (physicsAnimId) {
+            cancelAnimationFrame(physicsAnimId);
+            physicsAnimId = null;
+        }
+        currentVelocity = 0;
+        targetVelocity = 0;
+        lastWristY = null;
+        lastWristTime = 0;
         if (video) {
             video.pause();
             video.srcObject = null;
@@ -47,6 +66,12 @@
         }
         window.__IRFANLLM_ACTIVE__ = false;
         window.__IRFANLLM_STOP__ = null;
+
+        const demoArea = document.getElementById("webtoon-scroll-area");
+        if (demoArea) {
+            demoArea.style.borderColor = "";
+            demoArea.style.boxShadow = "";
+        }
 
         const pageBtn = document.getElementById("btn-camera");
         if (pageBtn) {
@@ -70,10 +95,36 @@
     bannerText.innerText = "IrfanLLM: Starting Camera...";
     banner.appendChild(bannerText);
 
+    // Speed Preset Toggle Button (Gentle 0.7x, Normal 1.0x, Fast 1.4x)
+    const speedBtn = document.createElement("button");
+    speedBtn.innerText = "⚡ 1.0x";
+    speedBtn.title = "Tap to cycle reading speed (0.7x, 1.0x, 1.4x)";
+    speedBtn.style.cssText = "background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid #38bdf8;border-radius:10px;font-size:11px;padding:2px 7px;cursor:pointer;font-weight:bold;transition:all 0.2s;white-space:nowrap;";
+    speedBtn.onclick = (e) => {
+        e.stopPropagation();
+        if (speedMultiplier === 1.0) {
+            speedMultiplier = 1.4;
+            speedBtn.innerText = "⚡ 1.4x";
+            speedBtn.style.color = "#f59e0b";
+            speedBtn.style.borderColor = "#f59e0b";
+        } else if (speedMultiplier === 1.4) {
+            speedMultiplier = 0.7;
+            speedBtn.innerText = "⚡ 0.7x";
+            speedBtn.style.color = "#a78bfa";
+            speedBtn.style.borderColor = "#a78bfa";
+        } else {
+            speedMultiplier = 1.0;
+            speedBtn.innerText = "⚡ 1.0x";
+            speedBtn.style.color = "#38bdf8";
+            speedBtn.style.borderColor = "#38bdf8";
+        }
+    };
+    banner.appendChild(speedBtn);
+
     const bannerCloseBtn = document.createElement("button");
     bannerCloseBtn.innerText = "✕ Stop";
     bannerCloseBtn.title = "Turn Off Camera & Close Controller";
-    bannerCloseBtn.style.cssText = "background:rgba(220,38,38,0.8);color:#fff;border:none;border-radius:10px;font-size:11px;padding:2px 8px;cursor:pointer;font-weight:bold;transition:background 0.2s;";
+    bannerCloseBtn.style.cssText = "background:rgba(220,38,38,0.8);color:#fff;border:none;border-radius:10px;font-size:11px;padding:2px 8px;cursor:pointer;font-weight:bold;transition:background 0.2s;white-space:nowrap;";
     bannerCloseBtn.onmouseenter = () => bannerCloseBtn.style.background = "#ef4444";
     bannerCloseBtn.onmouseleave = () => bannerCloseBtn.style.background = "rgba(220,38,38,0.8)";
     bannerCloseBtn.onclick = (e) => {
@@ -203,27 +254,56 @@
         return { feats, dMid };
     }
 
-    function executeScroll(step) {
+    function performScroll(dy) {
         const demoArea = document.getElementById("webtoon-scroll-area");
         if (demoArea) {
-            demoArea.style.borderColor = step > 0 ? "#00ff66" : "#00e5ff";
-            demoArea.style.boxShadow = step > 0 ? "0 0 15px rgba(0,255,102,0.4)" : "0 0 15px rgba(0,229,255,0.4)";
-            setTimeout(() => {
+            demoArea.scrollTop += dy;
+            if (Math.abs(currentVelocity) > 1.0) {
+                demoArea.style.borderColor = currentVelocity > 0 ? "#00ff66" : "#00e5ff";
+                demoArea.style.boxShadow = currentVelocity > 0 ? "0 0 12px rgba(0,255,102,0.3)" : "0 0 12px rgba(0,229,255,0.3)";
+            } else {
                 demoArea.style.borderColor = "";
                 demoArea.style.boxShadow = "";
-            }, 280);
-
-            const canScrollDown = step > 0 && (demoArea.scrollTop + demoArea.clientHeight < demoArea.scrollHeight - 10);
-            const canScrollUp = step < 0 && (demoArea.scrollTop > 10);
-
-            if (canScrollDown || canScrollUp) {
-                demoArea.scrollBy({ top: step, behavior: 'smooth' });
-            } else {
-                window.scrollBy({ top: step, behavior: 'smooth' });
             }
-        } else {
-            window.scrollBy({ top: step, behavior: 'smooth' });
+            return;
         }
+
+        const before = window.scrollY || window.pageYOffset || (document.documentElement ? document.documentElement.scrollTop : 0);
+        window.scrollBy(0, dy);
+        const after = window.scrollY || window.pageYOffset || (document.documentElement ? document.documentElement.scrollTop : 0);
+
+        // Fallback for reader areas that use custom scrollable containers
+        if (before === after && Math.abs(dy) > 0.5) {
+            const scroller = document.scrollingElement || document.querySelector("#readerarea, .reader-area, .reading-content, .chapter-content, #chapter-container, main");
+            if (scroller && scroller.scrollHeight > scroller.clientHeight) {
+                scroller.scrollTop += dy;
+            }
+        }
+    }
+
+    // High-frequency kinetic physics loop (runs on display refresh rate: 60Hz / 90Hz / 120Hz)
+    function physicsLoop(now) {
+        if (!window.__IRFANLLM_ACTIVE__) return;
+
+        const dt = Math.min(Math.max((now - lastPhysicsTime) / 16.67, 0.2), 2.5);
+        lastPhysicsTime = now;
+
+        if (targetVelocity !== 0) {
+            // Smoothly ease into target cruise speed (smartphone touch drag)
+            currentVelocity += (targetVelocity - currentVelocity) * ACCELERATION * dt;
+        } else {
+            // Exponential kinetic friction coasting (smartphone swipe inertia)
+            currentVelocity *= Math.pow(FRICTION, dt);
+            if (Math.abs(currentVelocity) < 0.18) {
+                currentVelocity = 0;
+            }
+        }
+
+        if (Math.abs(currentVelocity) > 0.08) {
+            performScroll(currentVelocity * dt);
+        }
+
+        physicsAnimId = requestAnimationFrame(physicsLoop);
     }
 
     // Resilient Camera Acquisition with multi-tier fallback
@@ -282,8 +362,16 @@
             handsInstance.onResults((results) => {
                 const now = Date.now();
                 if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
-                    bannerText.innerText = "IrfanLLM: Ready (Waiting for Hand)";
-                    banner.style.color = "#aaa";
+                    targetVelocity = 0;
+                    lastWristY = null;
+                    lastWristTime = 0;
+                    if (Math.abs(currentVelocity) > 0.8) {
+                        bannerText.innerText = currentVelocity > 0 ? "vv Gliding... vv" : "^^ Gliding... ^^";
+                        banner.style.color = "#38bdf8";
+                    } else {
+                        bannerText.innerText = "IrfanLLM: Ready (Waiting for Hand)";
+                        banner.style.color = "#aaa";
+                    }
                     btnPrev.style.background = "rgba(0,100,200,0.25)";
                     btnNext.style.background = "rgba(0,100,200,0.25)";
                     btnPrevHoverStart = null;
@@ -301,6 +389,7 @@
                 const inRight = (screenX >= window.innerWidth - 80 && screenY >= window.innerHeight * 0.25 && screenY <= window.innerHeight * 0.65);
 
                 if (inLeft) {
+                    targetVelocity = 0;
                     btnPrev.style.background = "rgba(0,255,200,0.6)";
                     if (!btnPrevHoverStart) btnPrevHoverStart = now;
                     else if (now - btnPrevHoverStart > 220 && now > cooldownUntil) {
@@ -328,6 +417,7 @@
                 }
 
                 if (inRight) {
+                    targetVelocity = 0;
                     btnNext.style.background = "rgba(0,255,200,0.6)";
                     if (!btnNextHoverStart) btnNextHoverStart = now;
                     else if (now - btnNextHoverStart > 220 && now > cooldownUntil) {
@@ -354,33 +444,61 @@
                     btnNext.style.background = "rgba(0,100,200,0.25)";
                 }
 
-                // 2. Middle Zone AI Posture Classification
+                // 2. Physical Hand Motion Swipe / Flick Detection
+                const wrist = lm[0];
+                if (lastWristY !== null && lastWristTime > 0) {
+                    const elapsed = (now - lastWristTime) / 1000;
+                    if (elapsed > 0.02 && elapsed < 0.25) {
+                        const vY = (wrist.y - lastWristY) / elapsed; // normalized camera speed
+                        if (vY > 1.25) {
+                            // Swift downward hand motion -> boost scroll down
+                            currentVelocity = Math.min(Math.max(currentVelocity, 0) + (FLICK_BOOST * speedMultiplier), 32);
+                            bannerText.innerText = "⚡ Swipe Flick Down";
+                            banner.style.color = "#00ffea";
+                        } else if (vY < -1.25) {
+                            // Swift upward hand motion -> boost scroll up
+                            currentVelocity = Math.max(Math.min(currentVelocity, 0) - (FLICK_BOOST * speedMultiplier), -32);
+                            bannerText.innerText = "⚡ Swipe Flick Up";
+                            banner.style.color = "#00ffea";
+                        }
+                    }
+                }
+                lastWristY = wrist.y;
+                lastWristTime = now;
+
+                // 3. Middle Zone AI Posture Classification
                 const { feats, dMid } = extractFeatures(lm);
                 if (dMid > 1.35) {
-                    bannerText.innerText = "Relaxed / Open Hand (Idle)";
-                    banner.style.color = "#ffea00";
+                    targetVelocity = 0;
+                    if (Math.abs(currentVelocity) > 0.8) {
+                        bannerText.innerText = currentVelocity > 0 ? "vv Gliding... vv" : "^^ Gliding... ^^";
+                        banner.style.color = "#38bdf8";
+                    } else {
+                        bannerText.innerText = "Relaxed / Open Hand (Idle)";
+                        banner.style.color = "#ffea00";
+                    }
                     return;
                 }
 
                 const [pDown, pUp] = predictPosture(feats);
 
                 if (pDown >= CONF_THRESHOLD) {
-                    bannerText.innerText = `vv SCROLL DOWN (${Math.round(pDown*100)}%) vv`;
+                    targetVelocity = BASE_CRUISE_SPEED * speedMultiplier;
+                    bannerText.innerText = `vv Fluid Glide Down (${Math.round(pDown*100)}%) vv`;
                     banner.style.color = "#00ff66";
-                    if (now >= cooldownUntil) {
-                        executeScroll(SCROLL_STEP);
-                        cooldownUntil = now + COOLDOWN_SCROLL;
-                    }
                 } else if (pUp >= CONF_THRESHOLD) {
-                    bannerText.innerText = `^^ SCROLL UP (${Math.round(pUp*100)}%) ^^`;
+                    targetVelocity = -BASE_CRUISE_SPEED * speedMultiplier;
+                    bannerText.innerText = `^^ Fluid Glide Up (${Math.round(pUp*100)}%) ^^`;
                     banner.style.color = "#00ff66";
-                    if (now >= cooldownUntil) {
-                        executeScroll(-SCROLL_STEP);
-                        cooldownUntil = now + COOLDOWN_SCROLL;
-                    }
                 } else {
-                    bannerText.innerText = "Uncertain Posture (Idle)";
-                    banner.style.color = "#aaa";
+                    targetVelocity = 0;
+                    if (Math.abs(currentVelocity) > 0.8) {
+                        bannerText.innerText = currentVelocity > 0 ? "vv Gliding... vv" : "^^ Gliding... ^^";
+                        banner.style.color = "#38bdf8";
+                    } else {
+                        bannerText.innerText = "Uncertain Posture (Idle)";
+                        banner.style.color = "#aaa";
+                    }
                 }
             });
 
@@ -422,9 +540,13 @@
                         }
                     }
                 }
-                animFrameId = requestAnimationFrame(frameLoop);
+                if (window.__IRFANLLM_ACTIVE__) {
+                    animFrameId = requestAnimationFrame(frameLoop);
+                }
             }
             animFrameId = requestAnimationFrame(frameLoop);
+            lastPhysicsTime = performance.now();
+            physicsAnimId = requestAnimationFrame(physicsLoop);
 
         } catch (err) {
             console.error("[IrfanLLM] Initialization Error:", err);
