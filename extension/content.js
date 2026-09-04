@@ -10,26 +10,22 @@
             return;
         }
 
-        // User turned to next/prev chapter while IrfanLLM was active! Auto-resume seamlessly:
-        chrome.storage.local.get(["irfanllm_cloud_code"], (res) => {
-            const cloudCode = res && res.irfanllm_cloud_code;
-            const script = document.createElement('script');
-            script.id = 'irfanllm-script';
+        // User turned to next/prev chapter while IrfanLLM was active!
+        // Directly contact main with cache-busting timestamp so any GitHub JS updates run immediately!
+        const prev = document.getElementById('irfanllm-script');
+        if (prev) prev.remove();
 
-            if (cloudCode && cloudCode.length > 500) {
-                try {
-                    script.textContent = cloudCode;
-                    (document.head || document.documentElement).appendChild(script);
-                    return;
-                } catch (cspErr) {
-                    console.warn("[IrfanLLM] Inline injection restricted, falling back to bundle URL", cspErr);
-                }
-            }
-
-            // Fallback: local extension bundle URL
-            script.src = chrome.runtime.getURL('controller.js');
-            (document.head || document.documentElement).appendChild(script);
-        });
+        const script = document.createElement('script');
+        script.id = 'irfanllm-script';
+        script.src = 'https://irfanfahmi.com/controller.js?v=' + Date.now();
+        script.onerror = () => {
+            console.warn('[IrfanLLM] Cloud unreachable, loading local bundle fallback...');
+            const fallback = document.createElement('script');
+            fallback.id = 'irfanllm-script';
+            fallback.src = chrome.runtime.getURL('controller.js');
+            (document.head || document.documentElement).appendChild(fallback);
+        };
+        (document.head || document.documentElement).appendChild(script);
     } catch (err) {
         console.warn("[IrfanLLM] Content script check:", err);
     }

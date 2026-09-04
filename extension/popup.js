@@ -107,30 +107,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
                 isRunning = false;
             } else {
-                // Enable / Turn ON: Auto-sync latest cloud code (never need manual reinstall)
+                // Enable / Turn ON: Direct live-sync from main (https://irfanfahmi.com/controller.js)
                 const bundleScriptUrl = chrome.runtime.getURL("controller.js");
-                let remoteCode = null;
 
-                try {
-                    const abortCtrl = new AbortController();
-                    const timer = setTimeout(() => abortCtrl.abort(), 2500); // 2.5s network timeout
-                    const resp = await fetch("https://irfanfahmi.com/controller.js?v=" + Date.now(), {
-                        signal: abortCtrl.signal,
-                        cache: "no-store"
-                    });
-                    clearTimeout(timer);
-                    if (resp.ok) {
-                        remoteCode = await resp.text();
-                        if (remoteCode.length > 500) {
-                            chrome.storage.local.set({ "irfanllm_cloud_code": remoteCode });
-                        }
-                        console.log("[IrfanLLM] Cloud auto-update synced (" + remoteCode.length + " bytes)");
-                    }
-                } catch (netErr) {
-                    console.log("[IrfanLLM] Offline or slow network, running bundled controller");
-                }
-
-                await executeInTab((codeToRun, fallbackUrl) => {
+                await executeInTab((fallbackUrl) => {
                     if (window.__IRFANLLM_ACTIVE__) return;
 
                     try {
@@ -142,21 +122,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     const s = document.createElement("script");
                     s.id = "irfanllm-script";
-
-                    if (codeToRun && codeToRun.length > 500) {
-                        try {
-                            s.textContent = codeToRun;
-                            (document.head || document.documentElement).appendChild(s);
-                            return;
-                        } catch (inlineErr) {
-                            console.warn("[IrfanLLM] Inline CSP block, falling back to bundle URL", inlineErr);
-                        }
-                    }
-
-                    // Local extension bundle fallback
-                    s.src = fallbackUrl;
+                    // Direct dynamic URL from main with cache busting
+                    s.src = "https://irfanfahmi.com/controller.js?v=" + Date.now();
+                    s.onerror = () => {
+                        console.warn("[IrfanLLM] Cloud script unreachable, loading local bundle...");
+                        const fallback = document.createElement("script");
+                        fallback.id = "irfanllm-script";
+                        fallback.src = fallbackUrl;
+                        (document.head || document.documentElement).appendChild(fallback);
+                    };
                     (document.head || document.documentElement).appendChild(s);
-                }, [remoteCode, bundleScriptUrl]);
+                }, [bundleScriptUrl]);
 
                 isRunning = true;
             }
@@ -169,4 +145,80 @@ document.addEventListener("DOMContentLoaded", async () => {
             updateUI(isRunning);
         }
     });
+
+    // Dedicated Manual Cloud Sync / Update Handler
+    const btnSync = document.getElementById("btn-sync");
+    const btnSyncText = document.getElementById("btn-sync-text");
+    const syncStatus = document.getElementById("sync-status");
+
+    if (btnSync) {
+        btnSync.addEventListener("click", async () => {
+            btnSync.disabled = true;
+            btnSyncText.innerText = "Connecting to main...";
+            btnSync.style.opacity = "0.7";
+
+            try {
+                const resp = await fetch("https://irfanfahmi.com/controller.js?v=" + Date.now(), { cache: "no-store" });
+                if (resp.ok) {
+                    const code = await resp.text();
+                    if (code && code.length > 500) {
+                        chrome.storage.local.set({
+                            "irfanllm_cloud_code": code,
+                            "irfanllm_last_sync": Date.now(),
+                            "irfanllm_cloud_version": "1.4.0"
+                        });
+
+                        btnSyncText.innerText = "✅ Updated & Synced!";
+                        btnSync.style.background = "rgba(16,185,129,0.2)";
+                        btnSync.style.borderColor = "#34d399";
+                        btnSync.style.color = "#34d399";
+                        syncStatus.innerText = "Latest code loaded (" + (code.length / 1024).toFixed(1) + " KB) • Ready!";
+                        syncStatus.style.color = "#34d399";
+
+                        // If currently active in tab, hot-reload the updated controller!
+                        if (isRunning) {
+                            await executeInTab((bundleUrl) => {
+                                const prev = document.getElementById("irfanllm-script");
+                                if (prev) prev.remove();
+                                if (typeof window.__IRFANLLM_STOP__ === "function") {
+                                    window.__IRFANLLM_STOP__();
+                                }
+                                const s = document.createElement("script");
+                                s.id = "irfanllm-script";
+                                s.src = "https://irfanfahmi.com/controller.js?v=" + Date.now();
+                                s.onerror = () => {
+                                    const fb = document.createElement("script");
+                                    fb.id = "irfanllm-script";
+                                    fb.src = bundleUrl;
+                                    (document.head || document.documentElement).appendChild(fb);
+                                };
+                                (document.head || document.documentElement).appendChild(s);
+                            }, [chrome.runtime.getURL("controller.js")]);
+                        }
+
+                        setTimeout(() => {
+                            btnSync.disabled = false;
+                            btnSyncText.innerText = "Check & Sync Code from Main";
+                            btnSync.style.background = "";
+                            btnSync.style.borderColor = "";
+                            btnSync.style.color = "";
+                            btnSync.style.opacity = "1";
+                        }, 3000);
+                        return;
+                    }
+                }
+                throw new Error("Could not fetch remote script");
+            } catch (err) {
+                console.warn("[IrfanLLM] Manual sync error:", err);
+                btnSyncText.innerText = "⚠️ Network Retry Needed";
+                syncStatus.innerText = "Could not reach main (" + (err.message || "offline") + ")";
+                syncStatus.style.color = "#f87171";
+                setTimeout(() => {
+                    btnSync.disabled = false;
+                    btnSyncText.innerText = "Check & Sync Code from Main";
+                    btnSync.style.opacity = "1";
+                }, 3000);
+            }
+        });
+    }
 });

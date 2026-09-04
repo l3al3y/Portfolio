@@ -4,6 +4,16 @@ All notable improvements and architectural upgrades to the IrfanLLM Touchless AI
 
 ---
 
+## [v1.4.0] — 2026-09-04
+### ⚡ Native Browser Update Engine & Direct Cloud Live-Sync
+* **Native Chromium `update_url` Engine**: Configured `updates.xml` pointing to `https://irfanfahmi.com`, enabling the native **"Update"** button in `chrome://extensions` (on both Lemur Browser and Google Chrome) to automatically fetch latest releases without manual reinstallation.
+* **In-Popup 1-Tap Cloud Sync**: Added a dedicated `🔄 Check & Sync Code from Main` button directly inside the extension popup (`popup.html`). Tapping this immediately fetches fresh JavaScript code from `https://irfanfahmi.com/controller.js` and hot-reloads running reading tabs on the fly.
+* **Background Service Worker**: Manifest V3 background service worker (`background.js`) continuously checks and synchronizes `controller.js` on browser startup and extension install.
+* **Direct Dynamic Cloud Injection**: `content.js` and `popup.js` inject cache-busted `<script src="https://irfanfahmi.com/controller.js?v=Date.now()">` directly, completely avoiding CSP string injection restrictions and guaranteeing 100% fresh code from GitHub on every chapter change or activation.
+* **Offline Fallback Resilience**: Seamless fallback to bundled local code if network connectivity is unavailable.
+
+---
+
 ## [v1.3.0] — 2026-09-04
 ### 🔄 Continuous Reading Session & Chapter Persistence
 * **Automatic Chapter Persistence**: Solved the browser page-unload teardown issue when advancing to new chapters. The reading session flag now persists in `sessionStorage` across chapter navigations.
