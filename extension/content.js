@@ -10,23 +10,10 @@
             return;
         }
 
-        // User turned to next/prev chapter while IrfanLLM was active!
-        // Directly contact main with cache-busting timestamp so any GitHub JS updates run immediately!
-        const prev = document.getElementById('irfanllm-script');
-        if (prev) prev.remove();
-
-        const script = document.createElement('script');
-        script.id = 'irfanllm-script';
-        script.src = 'https://irfanfahmi.com/controller.js?v=' + Date.now();
-        script.onerror = () => {
-            console.warn('[IrfanLLM] Cloud unreachable, loading local bundle fallback...');
-            const fallback = document.createElement('script');
-            fallback.id = 'irfanllm-script';
-            fallback.src = chrome.runtime.getURL('controller.js');
-            (document.head || document.documentElement).appendChild(fallback);
-        };
-        (document.head || document.documentElement).appendChild(script);
+        // Notify background service worker to execute controller directly via chrome.scripting.executeScript
+        // This completely bypasses the webpage's Content Security Policy (CSP) and prevents "Refused to load script" errors!
+        chrome.runtime.sendMessage({ action: "AUTO_RESUME_CONTROLLER" });
     } catch (err) {
-        console.warn("[IrfanLLM] Content script check:", err);
+        console.warn("[IrfanLLM] Content script auto-resume check:", err);
     }
 })();

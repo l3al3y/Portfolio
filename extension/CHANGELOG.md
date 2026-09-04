@@ -4,6 +4,15 @@ All notable improvements and architectural upgrades to the IrfanLLM Touchless AI
 
 ---
 
+## [v1.4.1] — 2026-09-05
+### 🛡️ Complete Content Security Policy (CSP) Bypass & Bundled MediaPipe
+* **Zero-DOM Script Injection**: Migrated all script execution in `content.js`, `popup.js`, and `background.js` to `chrome.scripting.executeScript`. This completely eliminates `Refused to load script` errors caused by strict website Content Security Policies (such as `script-src 'self'` on DemonicScans).
+* **Bundled `hands.js`**: Bundled `@mediapipe/hands` directly inside the extension (`hands.js`, 45KB), eliminating external CDN dependencies, cutting load latency to 0ms, and preventing CSP CDN blocks.
+* **In-Page TNG DuitNow Tip Modal**: Added `☕ Tip` directly into `controller.js` floating HUD banner so readers on mobile can access Touch 'n Go DuitNow donation details directly on the manga page.
+* **In-Popup Smooth Auto-Scroll**: Tapping `☕ Support Developer (TNG QR) ▼` in the extension popup automatically scrolls smoothly to display the full QR code and recipient details.
+
+---
+
 ## [v1.4.0] — 2026-09-04
 ### ⚡ Native Browser Update Engine & Direct Cloud Live-Sync
 * **Native Chromium `update_url` Engine**: Configured `updates.xml` pointing to `https://irfanfahmi.com`, enabling the native **"Update"** button in `chrome://extensions` (on both Lemur Browser and Google Chrome) to automatically fetch latest releases without manual reinstallation.

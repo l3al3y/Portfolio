@@ -1,4 +1,4 @@
-﻿// IrfanLLM Chrome Extension - Background Service Worker
+// IrfanLLM Chrome Extension - Background Service Worker
 // Automatically keeps the extension synchronized with irfanfahmi.com
 
 const CLOUD_URL = "https://irfanfahmi.com/controller.js";
@@ -35,6 +35,21 @@ chrome.runtime.onStartup.addListener(() => {
 
 // Listen for messages from popup or content script
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
+    if (req && req.action === "AUTO_RESUME_CONTROLLER" && sender.tab && sender.tab.id) {
+        chrome.scripting.executeScript({
+            target: { tabId: sender.tab.id },
+            world: "MAIN",
+            files: ["hands.js", "controller.js"]
+        }).then(() => {
+            console.log("[IrfanLLM Background] Successfully auto-resumed controller on tab", sender.tab.id);
+            sendResponse({ success: true });
+        }).catch(err => {
+            console.warn("[IrfanLLM Background] Auto-resume failed:", err);
+            sendResponse({ success: false, error: err.message });
+        });
+        return true;
+    }
+
     if (req && req.action === "SYNC_NOW") {
         syncWithMain().then((ok) => {
             sendResponse({ success: ok, time: Date.now() });
