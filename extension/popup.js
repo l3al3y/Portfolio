@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         chrome.storage.local.set({
                             "irfanllm_cloud_code": code,
                             "irfanllm_last_sync": Date.now(),
-                            "irfanllm_cloud_version": "1.4.0"
+                            "irfanllm_cloud_version": "1.4.1"
                         });
 
                         btnSyncText.innerText = "✅ Updated & Synced!";
