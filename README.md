@@ -105,7 +105,7 @@ graph TD
     A -->|Live Telemetry| C[Live System: live.irfanfahmi.com]
     A -->|Arcade Games| D[Cloudflare Pages: arcade.irfanfahmi.com]
     A -->|AI Chat / Turnstile| E[Cloudflare Worker: contact-gate-worker]
-    E -->|Secured Proxy| F[RootSys Cloud AI Cascade Engine]
+    E -->|Secured Proxy| F[Cloud AI Cascade Engine]
     E -->|Rate Limiter & Bot Defense| G[Cloudflare Turnstile]
     B -->|Offline Fallback Engine| H[Local 1D-CNN Typo & Multilingual Parser]
 ```
