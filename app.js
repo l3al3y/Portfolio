@@ -2,8 +2,12 @@ window.addEventListener("touchstart",function e(){document.documentElement.class
   backendStatus = e;
   const i = document.getElementById("ai-status-label");
   const m = document.getElementById("mobile-ai-status-label");
-  if (i) { i.innerHTML = n; i.style.color = a; }
-  if (m) { m.innerHTML = n; m.style.color = a; }
+  let labelText = n;
+  if (e === "live") {
+    labelText += ' • <a href="https://live.irfanfahmi.com" target="_blank" rel="noopener noreferrer" style="color:#38e8ff;text-decoration:underline;font-weight:700;">Hermes A54 Node</a>';
+  }
+  if (i) { i.innerHTML = labelText; i.style.color = a; }
+  if (m) { m.innerHTML = labelText; m.style.color = a; }
   const t = document.getElementById("ai-footer-status");
   if (t) {
     if (e === "live") {
@@ -142,7 +146,85 @@ b1&&(b1.innerHTML=resetHtml);
 b2&&(b2.innerHTML=resetHtml);
 CHAT_CONVERSATION_HISTORY=[];
 renderRandomChips("en");
-}function detectUserLanguage(e){if(/[\u4e00-\u9fa5]/.test(e))return"cn";if(/[\u0b80-\u0bff]/.test(e))return"in";if(/[\u3040-\u30ff\u31f0-\u31ff]/.test(e))return"ja";if(/[\u0e00-\u0e7f]/.test(e))return"th";if(/[\u0600-\u06ff]/.test(e))return"ar";const n=e.toLowerCase();if(["siapa","awak","kamu","anda","umur","kemahiran","projek","hubungi","berapa","selamat","apa","boleh","bila","lahir","telefon","emel","melayu","hai","terima","kasih","bagaimana","kerja","maklumat","sijil","gred","tarikh","gaji","pandai","shift","sebab","sikit","beri","bagi","versi","terangkan","jelaskan","apakah","mana","nak","saya","tak","ada","kat","tolong","demo","kawe","oghe","gapo","kelate","make","tubik","bakpe","hok","tranung","starang","gining","dok","hang","depa","hampa","awaq","habaq","kalut","mai","loqlaq","kome","teman","ate","mika","ghoyak","ekau","den","eso","lobih","jang","aok","koi","awok","sia","bah","kamurang","ngam","palui","kamek","kitak","nang","iboh","kelakar","padah","polah"].some(e=>n.includes(e)))return"bm";return["quien","eres","hola","edad","anos","como","habilidades","proyecto"].some(e=>n.includes(e))?"es":"en"}function formatBotMarkdown(e){if(!e)return"";let n=e;return n=n.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"),n=n.replace(/\*(.*?)\*/g,"<em>$1</em>"),n=n.replace(/^\s*[\-\*]\s+(.*?)$/gm,"• $1"),n=n.replace(/### (.*?)$/gm,'<h4 style="margin:6px 0 2px 0;">$1</h4>'),n=n.replace(/## (.*?)$/gm,'<h3 style="margin:8px 0 4px 0;">$1</h3>'),n=n.replace(/# (.*?)$/gm,'<h2 style="margin:10px 0 6px 0;">$1</h2>'),n=n.replace(/\n/g,"<br>"),n}let isGeneratingChat = false;
+}function detectUserLanguage(e){if(/[\u4e00-\u9fa5]/.test(e))return"cn";if(/[\u0b80-\u0bff]/.test(e))return"in";if(/[\u3040-\u30ff\u31f0-\u31ff]/.test(e))return"ja";if(/[\u0e00-\u0e7f]/.test(e))return"th";if(/[\u0600-\u06ff]/.test(e))return"ar";const n=e.toLowerCase();if(["siapa","awak","kamu","anda","umur","kemahiran","projek","hubungi","berapa","selamat","apa","boleh","bila","lahir","telefon","emel","melayu","hai","terima","kasih","bagaimana","kerja","maklumat","sijil","gred","tarikh","gaji","pandai","shift","sebab","sikit","beri","bagi","versi","terangkan","jelaskan","apakah","mana","nak","saya","tak","ada","kat","tolong","demo","kawe","oghe","gapo","kelate","make","tubik","bakpe","hok","tranung","starang","gining","dok","hang","depa","hampa","awaq","habaq","kalut","mai","loqlaq","kome","teman","ate","mika","ghoyak","ekau","den","eso","lobih","jang","aok","koi","awok","sia","bah","kamurang","ngam","palui","kamek","kitak","nang","iboh","kelakar","padah","polah"].some(e=>n.includes(e)))return"bm";return["quien","eres","hola","edad","anos","como","habilidades","proyecto"].some(e=>n.includes(e))?"es":"en"}window.scrollToPortfolioSection = function(sectionType) {
+  let target = null;
+  const cards = document.querySelectorAll(".project-card");
+
+  if (sectionType === "capstone") {
+    for (const card of cards) {
+      if (card.textContent.includes("Self-Checkout") || card.textContent.includes("Capstone") || card.textContent.includes("Barcode")) {
+        target = card;
+        break;
+      }
+    }
+    if (!target) target = document.getElementById("projects");
+  } else if (sectionType === "hermes") {
+    for (const card of cards) {
+      if (card.textContent.includes("Hermes") || card.textContent.includes("Parliament")) {
+        target = card;
+        break;
+      }
+    }
+    if (!target) target = document.getElementById("projects");
+  } else if (sectionType === "certifications") {
+    target = document.getElementById("certificates") || document.getElementById("tab-certs");
+  } else if (sectionType === "experience") {
+    target = document.getElementById("experience");
+  } else if (sectionType === "projects") {
+    target = document.getElementById("projects");
+  }
+
+  if (target) {
+    const tabBtn = document.querySelector(`[data-tab="${target.id}"]`) || 
+                   (target.closest("#tab-certs") ? document.querySelector('[data-tab="tab-certs"]') : null);
+    if (tabBtn && typeof tabBtn.click === "function") {
+      tabBtn.click();
+    }
+
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    target.classList.remove("highlight-pulse");
+    void target.offsetWidth;
+    target.classList.add("highlight-pulse");
+    setTimeout(() => target.classList.remove("highlight-pulse"), 2500);
+  }
+};
+
+function formatBotMarkdown(e) {
+  if (!e) return "";
+  let n = e;
+  n = n.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  n = n.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  n = n.replace(/^\s*[\-\*]\s+(.*?)$/gm, "• $1");
+  n = n.replace(/### (.*?)$/gm, '<h4 style="margin:6px 0 2px 0;">$1</h4>');
+  n = n.replace(/## (.*?)$/gm, '<h3 style="margin:8px 0 4px 0;">$1</h3>');
+  n = n.replace(/# (.*?)$/gm, '<h2 style="margin:10px 0 6px 0;">$1</h2>');
+  n = n.replace(/\n/g, "<br>");
+
+  const lower = e.toLowerCase();
+  const actions = [];
+
+  if (lower.includes("capstone") || lower.includes("self-checkout") || lower.includes("yolov8") || lower.includes("barcode")) {
+    actions.push('<button class="chat-action-btn" onclick="window.scrollToPortfolioSection(\'capstone\')">🎯 View Capstone Project</button>');
+  }
+  if (lower.includes("arcade") || lower.includes("tictactoe") || lower.includes("game") || lower.includes("shinobi")) {
+    actions.push('<a class="chat-action-btn" href="https://arcade.irfanfahmi.com" target="_blank" rel="noopener noreferrer">🎮 Open Mini Arcade ↗</a>');
+  }
+  if (lower.includes("hermes") || lower.includes("parliament") || lower.includes("telemetry") || lower.includes("node")) {
+    actions.push('<a class="chat-action-btn telemetry-btn" href="https://live.irfanfahmi.com" target="_blank" rel="noopener noreferrer">⚡ View Live Telemetry ↗</a>');
+  }
+  if (lower.includes("ccna") || lower.includes("cert") || lower.includes("festo") || lower.includes("cisco") || lower.includes("rakyat digital")) {
+    actions.push('<button class="chat-action-btn" onclick="window.scrollToPortfolioSection(\'certifications\')">📜 View Certifications</button>');
+  }
+  if (lower.includes("experience") || lower.includes("work") || lower.includes("job") || lower.includes("global elite") || lower.includes("askar")) {
+    actions.push('<button class="chat-action-btn" onclick="window.scrollToPortfolioSection(\'experience\')">💼 View Work Experience</button>');
+  }
+
+  if (actions.length > 0) {
+    n += '<div class="chat-action-container">' + actions.slice(0, 3).join("") + '</div>';
+  }
+
+  return n;
+}let isGeneratingChat = false;
 let lastChatMessageTimestamp = 0;
 
 function setChatUIBusy(busy) {
