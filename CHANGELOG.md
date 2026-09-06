@@ -1,6 +1,15 @@
 # 🚀 IrfanLLM Manga Controller — Release History & Changelog
 
-All notable improvements and architectural upgrades to the IrfanLLM Touchless AI Manga Controller are documented in this file.
+All notable improvements and architectural upgrades to the IrfanLLM Touchless AI Manga Controller and Portfolio AI Infrastructure are documented in this file.
+
+---
+
+## [v1.5.0] — 2026-09-07
+### 🤖 Multi-Tier Autonomous AI Gateway & OmniRoute Integration
+* **Permanent OmniRoute Gateway (`omni.irfanfahmi.com`)**: Integrated OmniRoute as Tier 1 primary model provider via permanent Cloudflare Tunnel, routing to a 12-model LKGP free pool (`big-pickle`, `mimo-v2.5-free`) at $0.00 inference cost.
+* **Edge Multi-Tier Fallback Cascade**: Rebuilt Cloudflare Edge Worker (`contact-gate-worker`) with an 8-tier failover cascade: OmniRoute $\rightarrow$ OpenRouter Free Auto-Router $\rightarrow$ Nemotron 3.5 Lightning $\rightarrow$ CheaperInference GPT-5 Mini $\rightarrow$ Meta Llama 3.3 70B & GLM Flash $\rightarrow$ DeepSeek $\rightarrow$ Local 1D-CNN browser engine.
+* **Non-Blocking Resilience**: If the local gateway sleeps or disconnects, the edge worker seamlessly cascades within 8 seconds without exposing errors to website visitors.
+* **Optimized Client Request Latency**: Reduced client-side network request abort timeout from 45s down to 20s in `app.js`.
 
 ---
 

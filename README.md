@@ -105,7 +105,10 @@ graph TD
     A -->|Live Telemetry| C[Live System: live.irfanfahmi.com]
     A -->|Arcade Games| D[Cloudflare Pages: arcade.irfanfahmi.com]
     A -->|AI Chat / Turnstile| E[Cloudflare Worker: contact-gate-worker]
-    E -->|Secured Proxy| F[Cloud AI Cascade Engine]
+    E -->|Tier 1: Permanent Tunnel| O[OmniRoute Gateway: omni.irfanfahmi.com]
+    E -->|Tier 2: 100% Free Edge| F[OpenRouter Free Auto-Router]
+    E -->|Tier 3: Low-Cost Fast Fallback| K[CheaperInference: GPT-5 Mini]
+    E -->|Tier 4: Protected Fallback| L[Meta Llama 3.3 70B & GLM Flash]
     E -->|Rate Limiter & Bot Defense| G[Cloudflare Turnstile]
     B -->|Offline Fallback Engine| H[Local 1D-CNN Typo & Multilingual Parser]
 ```
@@ -114,8 +117,8 @@ graph TD
 - **Edge AI Vision (`manga.html` / `manga.js`):** In-browser MediaPipe Hands + Scikit-Learn Random Forest posture classifier with native WebRTC front-camera streaming.
 - **Live Telemetry (`live.irfanfahmi.com`):** Real-time monitoring dashboard for autonomous agents and edge systems.
 - **Mini Arcade (`arcade.irfanfahmi.com`):** Interactive browser games suite powered by Minimax AI.
-- **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`) and Turnstile contact gate verification.
-- **Offline Reliability:** Built-in 1D-CNN character feature extractor and multilingual response generator ensure the AI chatbot responds immediately even during network downtime.
+- **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`), Turnstile contact gate verification, and multi-tier failover across OmniRoute (`omni.irfanfahmi.com`), OpenRouter, and CheaperInference.
+- **Offline Reliability:** Built-in 1D-CNN character feature extractor and multilingual response generator ensure the AI chatbot responds immediately even during total network downtime.
 
 ---
 
