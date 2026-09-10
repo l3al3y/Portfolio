@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "IrfanLLM — Touchless AI Manga Controller",
-  "version": "1.4.1",
-  "description": "Zero-touch hands-free manga reader with Cloud Live-Sync, chapter persistence, and instant web updates for DemonicScans and all manga sites.",
+  "version": "1.5.1",
+  "description": "Zero-touch hands-free manga reader with Apple Dynamic Island interface, Cloud Live-Sync, chapter persistence, and instant web updates for DemonicScans and all manga sites.",
   "author": "Muhammad Irfan Fahmi",
   "update_url": "https://irfanfahmi.com/updates.xml",
   "permissions": [

@@ -61,6 +61,14 @@
             try { handsInstance.close(); } catch (e) {}
             handsInstance = null;
         }
+        if (typeof stealthTimeout !== "undefined" && stealthTimeout) {
+            clearTimeout(stealthTimeout);
+            stealthTimeout = null;
+        }
+        const oldStyle = document.getElementById("irfanllm-dynamic-island-styles");
+        if (oldStyle && oldStyle.parentNode) {
+            oldStyle.parentNode.removeChild(oldStyle);
+        }
         if (container && container.parentNode) {
             container.parentNode.removeChild(container);
         }
@@ -90,46 +98,143 @@
     }
     window.__IRFANLLM_STOP__ = stopController;
 
-    // 2. Create Floating UI Overlay
+    // 2. Create Floating UI Overlay with Apple-Style Dynamic Island
     const container = document.createElement("div");
     container.id = "irfanllm-overlay";
-    container.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999999;font-family:sans-serif;";
+    container.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999999;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif;";
 
-    // Status Banner
-    const banner = document.createElement("div");
-    banner.style.cssText = "position:fixed;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.88);color:#00ff99;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:bold;border:1px solid #00ff99;box-shadow:0 2px 12px rgba(0,0,0,0.6);transition:all 0.2s;text-align:center;pointer-events:auto;display:flex;align-items:center;gap:10px;";
-    
-    const bannerText = document.createElement("span");
-    bannerText.innerText = "IrfanLLM: Starting Camera...";
-    banner.appendChild(bannerText);
-
-    // Speed Preset Toggle Button (Gentle 0.7x, Normal 1.0x, Fast 1.4x)
-    const speedBtn = document.createElement("button");
-    speedBtn.innerText = "⚡ 1.0x";
-    speedBtn.title = "Tap to cycle reading speed (0.7x, 1.0x, 1.4x)";
-    speedBtn.style.cssText = "background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid #38bdf8;border-radius:10px;font-size:11px;padding:2px 7px;cursor:pointer;font-weight:bold;transition:all 0.2s;white-space:nowrap;";
-    speedBtn.onclick = (e) => {
-        e.stopPropagation();
-        if (speedMultiplier === 1.0) {
-            speedMultiplier = 1.4;
-            speedBtn.innerText = "⚡ 1.4x";
-            speedBtn.style.color = "#f59e0b";
-            speedBtn.style.borderColor = "#f59e0b";
-        } else if (speedMultiplier === 1.4) {
-            speedMultiplier = 0.7;
-            speedBtn.innerText = "⚡ 0.7x";
-            speedBtn.style.color = "#a78bfa";
-            speedBtn.style.borderColor = "#a78bfa";
-        } else {
-            speedMultiplier = 1.0;
-            speedBtn.innerText = "⚡ 1.0x";
-            speedBtn.style.color = "#38bdf8";
-            speedBtn.style.borderColor = "#38bdf8";
+    // Embedded Dynamic Island CSS Styles
+    const styleEl = document.createElement("style");
+    styleEl.id = "irfanllm-dynamic-island-styles";
+    styleEl.textContent = `
+        @keyframes irfanllm-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.75); opacity: 0.45; }
         }
-    };
-    banner.appendChild(speedBtn);
+        .irfanllm-island-root {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000000;
+            pointer-events: auto;
+            user-select: none;
+            -webkit-user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .irfanllm-pill {
+            height: 36px;
+            min-width: 140px;
+            max-width: 290px;
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 9999px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,0,0,0.9);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            color: #f8fafc;
+        }
+        .irfanllm-pill:hover {
+            border-color: rgba(255, 255, 255, 0.28);
+            transform: scale(1.02);
+        }
+        .irfanllm-pill.stealth {
+            min-width: 44px !important;
+            width: 44px !important;
+            height: 7px !important;
+            padding: 0 !important;
+            border-radius: 9999px !important;
+            background: rgba(0,0,0,0.35) !important;
+            border-color: rgba(255,255,255,0.06) !important;
+            box-shadow: none !important;
+            opacity: 0.35 !important;
+        }
+        .irfanllm-pill.stealth * {
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+        .irfanllm-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+            flex-shrink: 0;
+            transition: background 0.25s, box-shadow 0.25s;
+        }
+        .irfanllm-dot.pulse {
+            animation: irfanllm-pulse 1.8s infinite ease-in-out;
+        }
+        .irfanllm-card {
+            width: 320px;
+            max-width: calc(100vw - 24px);
+            background: rgba(8, 12, 22, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 24px;
+            padding: 16px 18px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(56,189,248,0.2);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+            color: #f8fafc;
+            animation: irfanllm-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes irfanllm-pop {
+            from { opacity: 0; transform: scale(0.92) translateY(-10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .irfanllm-edge-zone {
+            position: fixed;
+            top: 25%;
+            bottom: 25%;
+            width: 55px;
+            pointer-events: auto;
+            z-index: 999998;
+            display: flex;
+            align-items: center;
+        }
+        .irfanllm-edge-pill {
+            padding: 14px 8px;
+            border-radius: 14px;
+            background: rgba(8, 12, 22, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            font-size: 11px;
+            font-weight: 800;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6), 0 0 15px rgba(56,189,248,0.25);
+            opacity: 0;
+            cursor: pointer;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .irfanllm-edge-pill.hovered {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            border-color: #34d399 !important;
+            color: #34d399 !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.7), 0 0 20px rgba(52,211,153,0.5) !important;
+        }
+    `;
+    document.head.appendChild(styleEl);
 
-    // Supporter / Tip Button (Touch 'n Go DuitNow QR)
+    // Supporter / Tip Modal (Touch 'n Go DuitNow QR)
     let donateModal = null;
     function openDonationModal() {
         if (donateModal) {
@@ -192,33 +297,277 @@
         }
     }
 
-    const donateBtn = document.createElement("button");
-    donateBtn.innerText = "☕ Tip";
-    donateBtn.title = "Support Developer via Touch 'n Go / DuitNow";
-    donateBtn.style.cssText = "background:rgba(244,63,94,0.2);color:#fda4af;border:1px solid #f43f5e;border-radius:10px;font-size:11px;padding:2px 7px;cursor:pointer;font-weight:bold;transition:all 0.2s;white-space:nowrap;";
-    donateBtn.onclick = (e) => {
+    // Dynamic Island Structure
+    const islandRoot = document.createElement("div");
+    islandRoot.className = "irfanllm-island-root";
+
+    const islandPill = document.createElement("div");
+    islandPill.id = "irfanllm-island-pill";
+    islandPill.className = "irfanllm-pill";
+    islandPill.title = "Tap to open IrfanLLM Controls";
+
+    // Left: Indicator Dot & Status Text
+    const leftBox = document.createElement("div");
+    leftBox.style.cssText = "display:flex;align-items:center;gap:8px;overflow:hidden;white-space:nowrap;";
+
+    const statusDot = document.createElement("div");
+    statusDot.className = "irfanllm-dot pulse";
+
+    const islandText = document.createElement("span");
+    islandText.id = "irfanllm-status-text";
+    islandText.style.cssText = "font-size:12px;font-weight:700;letter-spacing:-0.2px;color:#f8fafc;transition:color 0.2s;";
+    islandText.innerText = "IrfanLLM: Starting Camera...";
+
+    leftBox.appendChild(statusDot);
+    leftBox.appendChild(islandText);
+
+    // Right: Speed Badge
+    const speedBadge = document.createElement("div");
+    speedBadge.id = "irfanllm-speed-badge";
+    speedBadge.style.cssText = "font-size:10px;font-weight:800;background:rgba(255,255,255,0.1);color:#38bdf8;padding:2px 7px;border-radius:9999px;border:1px solid rgba(56,189,248,0.3);flex-shrink:0;transition:all 0.2s;";
+    speedBadge.innerText = "1.0x";
+
+    islandPill.appendChild(leftBox);
+    islandPill.appendChild(speedBadge);
+    islandRoot.appendChild(islandPill);
+
+    // Expanded Island Card (Control Sheet)
+    const expandedCard = document.createElement("div");
+    expandedCard.id = "irfanllm-expanded-card";
+    expandedCard.className = "irfanllm-card";
+
+    // Card Header
+    const cardHeader = document.createElement("div");
+    cardHeader.style.cssText = "display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:8px;";
+    cardHeader.innerHTML = `
+        <div style="display:flex;align-items:center;gap:7px;">
+            <span style="font-size:14px;">🏝️</span>
+            <span style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.3px;">IrfanLLM Dynamic Island</span>
+            <span style="font-size:9px;font-weight:800;background:rgba(56,189,248,0.2);color:#38bdf8;padding:1px 5px;border-radius:4px;">v1.5.1</span>
+        </div>
+        <button type="button" id="irfanllm-card-collapse" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:12px;cursor:pointer;padding:3px 8px;border-radius:9999px;font-weight:700;">▲</button>
+    `;
+    expandedCard.appendChild(cardHeader);
+
+    // Reading Speed Segmented Pills
+    const speedSection = document.createElement("div");
+    speedSection.style.cssText = "display:flex;flex-direction:column;gap:5px;";
+    speedSection.innerHTML = `<div style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Reading Speed</div>`;
+    
+    const speedGroup = document.createElement("div");
+    speedGroup.style.cssText = "display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:rgba(255,255,255,0.04);padding:3px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);";
+    
+    const speeds = [
+        { val: 0.7, label: "0.7x Gentle", color: "#a78bfa" },
+        { val: 1.0, label: "1.0x Normal", color: "#38bdf8" },
+        { val: 1.4, label: "1.4x Fast",   color: "#f59e0b" }
+    ];
+
+    const speedBtns = speeds.map(s => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.style.cssText = `border:none;border-radius:9px;padding:6px 4px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s;background:${speedMultiplier === s.val ? "rgba(255,255,255,0.15)" : "transparent"};color:${speedMultiplier === s.val ? s.color : "#94a3b8"};`;
+        b.innerText = s.label;
+        b.onclick = (e) => {
+            e.stopPropagation();
+            speedMultiplier = s.val;
+            speedBadge.innerText = s.val.toFixed(1) + "x";
+            speedBadge.style.color = s.color;
+            speedBadge.style.borderColor = s.color;
+            speedBtns.forEach(other => {
+                other.style.background = "transparent";
+                other.style.color = "#94a3b8";
+            });
+            b.style.background = "rgba(255,255,255,0.15)";
+            b.style.color = s.color;
+        };
+        speedGroup.appendChild(b);
+        return b;
+    });
+    speedSection.appendChild(speedGroup);
+    expandedCard.appendChild(speedSection);
+
+    // Chapter Navigation Buttons
+    const chapterSection = document.createElement("div");
+    chapterSection.style.cssText = "display:grid;grid-template-columns:1fr 1fr;gap:8px;";
+    
+    const cardPrevBtn = document.createElement("button");
+    cardPrevBtn.type = "button";
+    cardPrevBtn.style.cssText = "background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:10px;padding:8px;color:#38bdf8;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all 0.2s;";
+    cardPrevBtn.innerHTML = "⏮ Prev Chapter";
+    cardPrevBtn.onclick = (e) => { e.stopPropagation(); goToChapter('prev'); };
+    
+    const cardNextBtn = document.createElement("button");
+    cardNextBtn.type = "button";
+    cardNextBtn.style.cssText = "background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:10px;padding:8px;color:#38bdf8;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all 0.2s;";
+    cardNextBtn.innerHTML = "⏭ Next Chapter";
+    cardNextBtn.onclick = (e) => { e.stopPropagation(); goToChapter('next'); };
+    
+    chapterSection.appendChild(cardPrevBtn);
+    chapterSection.appendChild(cardNextBtn);
+    expandedCard.appendChild(chapterSection);
+
+    // Utilities Row: Camera Toggle, Donate, Stop
+    const utilSection = document.createElement("div");
+    utilSection.style.cssText = "display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding-top:4px;border-top:1px solid rgba(255,255,255,0.06);";
+    
+    // Cam toggle
+    const cardCamBtn = document.createElement("button");
+    cardCamBtn.type = "button";
+    cardCamBtn.style.cssText = "background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:7px 4px;color:#cbd5e1;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s;";
+    cardCamBtn.innerText = "📷 Cam PiP";
+    cardCamBtn.onclick = (e) => {
+        e.stopPropagation();
+        if (camBox.style.display === "none") {
+            camBox.style.display = "block";
+            cardCamBtn.style.color = "#34d399";
+            cardCamBtn.style.borderColor = "#34d399";
+        } else {
+            camBox.style.display = "none";
+            cardCamBtn.style.color = "#cbd5e1";
+            cardCamBtn.style.borderColor = "rgba(255,255,255,0.1)";
+        }
+    };
+    
+    // Tip btn
+    const cardTipBtn = document.createElement("button");
+    cardTipBtn.type = "button";
+    cardTipBtn.style.cssText = "background:rgba(244,63,94,0.15);border:1px solid rgba(244,63,94,0.3);border-radius:10px;padding:7px 4px;color:#fda4af;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s;";
+    cardTipBtn.innerText = "☕ Tip QR";
+    cardTipBtn.onclick = (e) => {
         e.stopPropagation();
         openDonationModal();
     };
-    banner.appendChild(donateBtn);
 
-    const bannerCloseBtn = document.createElement("button");
-    bannerCloseBtn.innerText = "✕ Stop";
-    bannerCloseBtn.title = "Turn Off Camera & Close Controller";
-    bannerCloseBtn.style.cssText = "background:rgba(220,38,38,0.8);color:#fff;border:none;border-radius:10px;font-size:11px;padding:2px 8px;cursor:pointer;font-weight:bold;transition:background 0.2s;white-space:nowrap;";
-    bannerCloseBtn.onmouseenter = () => bannerCloseBtn.style.background = "#ef4444";
-    bannerCloseBtn.onmouseleave = () => bannerCloseBtn.style.background = "rgba(220,38,38,0.8)";
-    bannerCloseBtn.onclick = (e) => {
+    // Stop btn
+    const cardStopBtn = document.createElement("button");
+    cardStopBtn.type = "button";
+    cardStopBtn.style.cssText = "background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:7px 4px;color:#fca5a5;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s;";
+    cardStopBtn.innerText = "🔴 Stop";
+    cardStopBtn.onclick = (e) => {
         e.stopPropagation();
         stopController();
     };
-    banner.appendChild(bannerCloseBtn);
-    container.appendChild(banner);
 
-    // Camera Preview Pip
+    utilSection.appendChild(cardCamBtn);
+    utilSection.appendChild(cardTipBtn);
+    utilSection.appendChild(cardStopBtn);
+    expandedCard.appendChild(utilSection);
+
+    islandRoot.appendChild(expandedCard);
+    container.appendChild(islandRoot);
+
+    // Expand / Collapse & Auto-Stealth Logic
+    let isIslandExpanded = false;
+    let stealthTimeout = null;
+
+    function collapseIsland() {
+        if (!isIslandExpanded) return;
+        isIslandExpanded = false;
+        expandedCard.style.display = "none";
+        islandPill.style.display = "flex";
+        resetStealthTimer();
+    }
+
+    function expandIsland() {
+        if (isIslandExpanded) return;
+        isIslandExpanded = true;
+        clearTimeout(stealthTimeout);
+        islandPill.classList.remove("stealth");
+        expandedCard.style.display = "flex";
+    }
+
+    islandPill.onclick = (e) => {
+        e.stopPropagation();
+        if (islandPill.classList.contains("stealth")) {
+            resetStealthTimer();
+            return;
+        }
+        expandIsland();
+    };
+
+    const collapseBtn = expandedCard.querySelector("#irfanllm-card-collapse");
+    if (collapseBtn) {
+        collapseBtn.onclick = (e) => {
+            e.stopPropagation();
+            collapseIsland();
+        };
+    }
+
+    function resetStealthTimer() {
+        if (isIslandExpanded) return;
+        islandPill.classList.remove("stealth");
+        clearTimeout(stealthTimeout);
+        stealthTimeout = setTimeout(() => {
+            if (!isIslandExpanded && Math.abs(currentVelocity) < 0.2) {
+                islandPill.classList.add("stealth");
+            }
+        }, 3500);
+    }
+
+    islandRoot.onmouseenter = () => resetStealthTimer();
+    window.addEventListener("touchstart", (e) => {
+        if (e.touches && e.touches[0] && e.touches[0].clientY < 60) {
+            resetStealthTimer();
+        }
+    }, { passive: true });
+
+    // Close expanded card if user taps outside
+    document.addEventListener("click", (e) => {
+        if (isIslandExpanded && !islandRoot.contains(e.target) && (!donateModal || !donateModal.contains(e.target))) {
+            collapseIsland();
+        }
+    });
+
+    // Backward-Compatible Proxies for seamless existing logic integration
+    const bannerText = {
+        _text: "IrfanLLM: Starting Camera...",
+        set innerText(txt) {
+            this._text = txt;
+            islandText.innerText = txt;
+            resetStealthTimer();
+        },
+        get innerText() {
+            return this._text;
+        }
+    };
+
+    const banner = {
+        style: {
+            set color(c) {
+                statusDot.style.background = c;
+                statusDot.style.boxShadow = `0 0 10px ${c}`;
+                if (c === "#00ff66" || c === "#10b981") {
+                    islandPill.style.borderColor = "rgba(16, 185, 129, 0.45)";
+                } else if (c === "#38bdf8" || c === "#00ffea" || c === "#00e5ff") {
+                    islandPill.style.borderColor = "rgba(56, 189, 248, 0.45)";
+                } else if (c === "#ffea00" || c === "#fbbf24") {
+                    islandPill.style.borderColor = "rgba(245, 158, 11, 0.45)";
+                } else if (c === "#ffffff" || c === "#ff4444") {
+                    islandPill.style.borderColor = "rgba(239, 68, 68, 0.6)";
+                } else {
+                    islandPill.style.borderColor = "rgba(255, 255, 255, 0.16)";
+                }
+            },
+            set borderColor(c) {
+                islandPill.style.borderColor = c;
+            },
+            set background(bg) {},
+            set cursor(cur) {
+                islandPill.style.cursor = cur;
+            }
+        },
+        appendChild() {},
+        set onclick(fn) {
+            islandPill.onclick = fn;
+        }
+    };
+
+    // Sleek Camera Preview PiP (Hidden by default for clean, unobstructed reading)
     const camBox = document.createElement("div");
-    camBox.style.cssText = "position:fixed;bottom:15px;right:15px;width:115px;height:145px;background:#111;border-radius:12px;overflow:hidden;border:2px solid #00e5ff;box-shadow:0 4px 12px rgba(0,0,0,0.6);pointer-events:auto;";
-    
+    camBox.id = "irfanllm-cambox";
+    camBox.style.cssText = "position:fixed;bottom:16px;right:16px;width:92px;height:120px;background:#000;border-radius:18px;overflow:hidden;border:1.5px solid rgba(56,189,248,0.35);box-shadow:0 12px 30px rgba(0,0,0,0.8);pointer-events:auto;display:none;z-index:999997;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);";
+
     const video = document.createElement("video");
     video.style.cssText = "width:100%;height:100%;object-fit:cover;transform:scaleX(-1);";
     video.playsInline = true;
@@ -230,32 +579,18 @@
     video.setAttribute("autoplay", "");
     camBox.appendChild(video);
 
-    // Close Button on Camera PiP
+    // Sleek Close button on Camera PiP
     const pipCloseBtn = document.createElement("button");
-    pipCloseBtn.innerText = "✕ Close";
-    pipCloseBtn.title = "Stop Camera & Close Controller";
-    pipCloseBtn.style.cssText = "position:absolute;top:3px;left:3px;background:rgba(220,38,38,0.85);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 6px;cursor:pointer;font-weight:bold;z-index:2;";
-    pipCloseBtn.onclick = () => stopController();
-    camBox.appendChild(pipCloseBtn);
-
-    // Hide/Show Toggle on Camera PiP
-    const toggleBtn = document.createElement("button");
-    toggleBtn.innerText = "Hide";
-    toggleBtn.style.cssText = "position:absolute;top:3px;right:3px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:4px;font-size:10px;padding:2px 6px;cursor:pointer;z-index:2;";
-    toggleBtn.onclick = () => {
-        if (camBox.style.height === "26px") {
-            camBox.style.height = "145px";
-            camBox.style.width = "115px";
-            toggleBtn.innerText = "Hide";
-            pipCloseBtn.style.display = "block";
-        } else {
-            camBox.style.height = "26px";
-            camBox.style.width = "105px";
-            toggleBtn.innerText = "Show";
-            pipCloseBtn.style.display = "none";
-        }
+    pipCloseBtn.innerText = "✕";
+    pipCloseBtn.title = "Hide Camera Preview";
+    pipCloseBtn.style.cssText = "position:absolute;top:5px;right:5px;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:50%;width:20px;height:20px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;";
+    pipCloseBtn.onclick = (e) => {
+        e.stopPropagation();
+        camBox.style.display = "none";
+        cardCamBtn.style.color = "#cbd5e1";
+        cardCamBtn.style.borderColor = "rgba(255,255,255,0.1)";
     };
-    camBox.appendChild(toggleBtn);
+    camBox.appendChild(pipCloseBtn);
     container.appendChild(camBox);
 
     // Universal Manga Chapter Finder & Navigator
@@ -341,31 +676,97 @@
         }
     }
 
-    // Left Button (Prev) - Touch tap + Air hover
-    const btnPrev = document.createElement("div");
-    btnPrev.style.cssText = "position:fixed;top:30%;left:8px;width:55px;height:160px;background:rgba(0,100,200,0.3);border:2px dashed #00b0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#00e5ff;font-size:13px;font-weight:bold;writing-mode:vertical-rl;text-orientation:mixed;transition:all 0.2s;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;z-index:999999;box-shadow:0 0 10px rgba(0,176,255,0.25);";
-    btnPrev.innerText = "< PREV";
-    btnPrev.title = "Tap with finger or Hover hand to go to Previous Chapter";
-    btnPrev.onclick = (e) => {
+    // Invisible Smart Edge Navigation (100% unobstructed reading - zero blue dashed borders!)
+    const edgePrev = document.createElement("div");
+    edgePrev.className = "irfanllm-edge-zone";
+    edgePrev.style.left = "0";
+    edgePrev.style.justifyContent = "flex-start";
+
+    const edgePillPrev = document.createElement("div");
+    edgePillPrev.className = "irfanllm-edge-pill";
+    edgePillPrev.style.marginLeft = "6px";
+    edgePillPrev.style.transform = "translateX(-15px)";
+    edgePillPrev.innerText = "‹ PREV";
+    edgePillPrev.title = "Tap or Hover hand to go to Previous Chapter";
+    edgePrev.appendChild(edgePillPrev);
+
+    edgePrev.onclick = (e) => {
         e.stopPropagation();
-        btnPrev.style.background = "rgba(0,255,200,0.7)";
-        setTimeout(() => { btnPrev.style.background = "rgba(0,100,200,0.3)"; }, 250);
+        edgePillPrev.classList.add("hovered");
+        setTimeout(() => edgePillPrev.classList.remove("hovered"), 250);
         goToChapter('prev');
     };
-    container.appendChild(btnPrev);
+    edgePrev.onmouseenter = () => {
+        edgePillPrev.style.opacity = "1";
+        edgePillPrev.style.transform = "translateX(0)";
+    };
+    edgePrev.onmouseleave = () => {
+        if (!btnPrevHoverStart) {
+            edgePillPrev.style.opacity = "0";
+            edgePillPrev.style.transform = "translateX(-15px)";
+        }
+    };
+    container.appendChild(edgePrev);
 
-    // Right Button (Next) - Touch tap + Air hover
-    const btnNext = document.createElement("div");
-    btnNext.style.cssText = "position:fixed;top:30%;right:8px;width:55px;height:160px;background:rgba(0,100,200,0.3);border:2px dashed #00b0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#00e5ff;font-size:13px;font-weight:bold;writing-mode:vertical-rl;text-orientation:mixed;transition:all 0.2s;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;z-index:999999;box-shadow:0 0 10px rgba(0,176,255,0.25);";
-    btnNext.innerText = "NEXT >";
-    btnNext.title = "Tap with finger or Hover hand to go to Next Chapter";
-    btnNext.onclick = (e) => {
+    const edgeNext = document.createElement("div");
+    edgeNext.className = "irfanllm-edge-zone";
+    edgeNext.style.right = "0";
+    edgeNext.style.justifyContent = "flex-end";
+
+    const edgePillNext = document.createElement("div");
+    edgePillNext.className = "irfanllm-edge-pill";
+    edgePillNext.style.marginRight = "6px";
+    edgePillNext.style.transform = "translateX(15px)";
+    edgePillNext.innerText = "NEXT ›";
+    edgePillNext.title = "Tap or Hover hand to go to Next Chapter";
+    edgeNext.appendChild(edgePillNext);
+
+    edgeNext.onclick = (e) => {
         e.stopPropagation();
-        btnNext.style.background = "rgba(0,255,200,0.7)";
-        setTimeout(() => { btnNext.style.background = "rgba(0,100,200,0.3)"; }, 250);
+        edgePillNext.classList.add("hovered");
+        setTimeout(() => edgePillNext.classList.remove("hovered"), 250);
         goToChapter('next');
     };
-    container.appendChild(btnNext);
+    edgeNext.onmouseenter = () => {
+        edgePillNext.style.opacity = "1";
+        edgePillNext.style.transform = "translateX(0)";
+    };
+    edgeNext.onmouseleave = () => {
+        if (!btnNextHoverStart) {
+            edgePillNext.style.opacity = "0";
+            edgePillNext.style.transform = "translateX(15px)";
+        }
+    };
+    container.appendChild(edgeNext);
+
+    // Compatibility proxies so MediaPipe hover tracking smoothly triggers edge pill animations
+    const btnPrev = {
+        style: {
+            set background(bg) {
+                if (bg && (bg.includes("255") || bg.includes("0.7"))) {
+                    edgePillPrev.classList.add("hovered");
+                } else {
+                    edgePillPrev.classList.remove("hovered");
+                    edgePillPrev.style.opacity = "0";
+                    edgePillPrev.style.transform = "translateX(-15px)";
+                }
+            }
+        }
+    };
+
+    const btnNext = {
+        style: {
+            set background(bg) {
+                if (bg && (bg.includes("255") || bg.includes("0.7"))) {
+                    edgePillNext.classList.add("hovered");
+                } else {
+                    edgePillNext.classList.remove("hovered");
+                    edgePillNext.style.opacity = "0";
+                    edgePillNext.style.transform = "translateX(15px)";
+                }
+            }
+        }
+    };
 
     document.body.appendChild(container);
 
