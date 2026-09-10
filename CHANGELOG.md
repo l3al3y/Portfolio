@@ -2,6 +2,15 @@
 
 All notable improvements and architectural upgrades to the IrfanLLM Touchless AI Manga Controller and Portfolio AI Infrastructure are documented in this file.
 
+## [v1.5.1] — 2026-09-10
+### 🏝️ iPhone Dynamic Island UI/UX & Invisible Smart Edge Navigation
+* **Apple-Style Dynamic Island**: Replaced the bulky top HUD box with a sleek OLED pitch-black Dynamic Island pill (36px). Features fluid spring physics (`cubic-bezier(0.16, 1, 0.3, 1)`), a pulsing status dot, and live action morphing (`↓ Scrolling`, `↑ Scrolling`, `⚡ Swipe Glide`).
+* **Auto-Stealth (Ghost Mode)**: Automatically collapses the island into a discreet 7px micro-notch after 3.5 seconds of reading inactivity, ensuring 100% of manga artwork and text is unobstructed. Instantly springs back to life when a hand gesture or touch is detected.
+* **Tap-to-Expand Control Sheet**: Tapping the island springs open an Apple-style glassmorphic control card with speed selectors (`0.7x Gentle`, `1.0x Normal`, `1.4x Fast`), chapter jump buttons, camera PiP toggle, TNG DuitNow tip modal, and power-off control.
+* **Invisible Smart Edge Navigation**: Completely eliminated the two giant 55px × 160px dashed blue boxes (`< PREV` and `NEXT >`) that were blocking manga dialogue and artwork. Replaced with invisible edge trigger zones that only reveal a sleek floating glass chevron (`‹ PREV` and `NEXT ›`) when a hand approaches or the edge is touched.
+* **Stealth Camera PiP**: Camera preview is hidden by default to keep reading pure and private, and can be toggled on-demand into a compact 92px × 120px rounded micro-preview from the Dynamic Island.
+* **Enhanced Cloud Live-Sync**: Upgraded the in-popup `🔄 Check & Sync Code from Main` handler with immediate dynamic hot-reloading into active tabs.
+
 ---
 
 ## [v1.5.0] — 2026-09-07

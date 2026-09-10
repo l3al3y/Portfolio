@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         chrome.storage.local.set({
                             "irfanllm_cloud_code": code,
                             "irfanllm_last_sync": Date.now(),
-                            "irfanllm_cloud_version": "1.4.1"
+                            "irfanllm_cloud_version": "1.5.1"
                         });
 
                         btnSyncText.innerText = "✅ Updated & Synced!";
@@ -162,18 +162,36 @@ document.addEventListener("DOMContentLoaded", async () => {
                         syncStatus.innerText = "Latest code loaded (" + (code.length / 1024).toFixed(1) + " KB) • Ready!";
                         syncStatus.style.color = "#34d399";
 
-                        // If currently active in tab, cleanly re-execute controller without DOM script tags!
+                        // If currently active in tab, cleanly re-execute controller with newest code
                         if (isRunning) {
                             await executeInTab(() => {
                                 if (typeof window.__IRFANLLM_STOP__ === "function") {
                                     window.__IRFANLLM_STOP__();
                                 }
                             });
-                            await chrome.scripting.executeScript({
-                                target: { tabId: activeTab.id },
-                                world: "MAIN",
-                                files: ["hands.js", "controller.js"]
-                            });
+                            try {
+                                await chrome.scripting.executeScript({
+                                    target: { tabId: activeTab.id },
+                                    world: "MAIN",
+                                    func: (remoteCode) => {
+                                        try {
+                                            const s = document.createElement("script");
+                                            s.textContent = remoteCode;
+                                            (document.head || document.documentElement).appendChild(s);
+                                            s.remove();
+                                        } catch (e) {
+                                            (new Function(remoteCode))();
+                                        }
+                                    },
+                                    args: [code]
+                                });
+                            } catch (e) {
+                                await chrome.scripting.executeScript({
+                                    target: { tabId: activeTab.id },
+                                    world: "MAIN",
+                                    files: ["hands.js", "controller.js"]
+                                });
+                            }
                         }
 
                         setTimeout(() => {

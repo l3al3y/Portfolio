@@ -12,7 +12,7 @@ async function syncWithMain() {
                 chrome.storage.local.set({
                     "irfanllm_cloud_code": code,
                     "irfanllm_last_sync": Date.now(),
-                    "irfanllm_cloud_version": "1.4.1"
+                    "irfanllm_cloud_version": "1.5.1"
                 });
                 console.log("[IrfanLLM Background] Successfully synced controller.js from main (" + code.length + " bytes)");
                 return true;
