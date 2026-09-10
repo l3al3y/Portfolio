@@ -484,25 +484,34 @@
         </p>
 
         <!-- Zero Reinstallation Update Card -->
-        <div style="margin-bottom:1.75rem; padding:1.15rem 1.35rem; border-radius:12px; background:linear-gradient(135deg, rgba(56,189,248,0.08), rgba(16,185,129,0.08)); border:1px solid rgba(56,189,248,0.3); display:flex; flex-direction:column; gap:0.6rem;">
-            <div style="display:flex; align-items:center; gap:0.6rem; font-weight:800; color:#fff; font-size:0.95rem;">
-                <span style="font-size:1.2rem;">⚡</span>
-                <span>Zero Manual Reinstall: How Updates Work (v1.5.1)</span>
+        <div style="margin-bottom:1.75rem; padding:1.25rem 1.4rem; border-radius:14px; background:linear-gradient(135deg, rgba(56,189,248,0.1), rgba(16,185,129,0.1)); border:1px solid rgba(56,189,248,0.35); display:flex; flex-direction:column; gap:0.65rem; box-shadow:0 8px 25px rgba(0,0,0,0.3);">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+                <div style="display:flex; align-items:center; gap:0.6rem; font-weight:800; color:#fff; font-size:1.02rem;">
+                    <span style="font-size:1.25rem;">⚡</span>
+                    <span>Install Once &mdash; Pull Any New Update with 1 Click!</span>
+                </div>
+                <span style="font-size:0.75rem; font-family:var(--font-mono); background:rgba(16,185,129,0.2); color:#34d399; padding:0.2rem 0.6rem; border-radius:999px; font-weight:700;">
+                    Production Live-Sync Ready
+                </span>
             </div>
-            <p style="margin:0; font-size:0.86rem; color:var(--text-sub); line-height:1.6;">
-                Whenever code changes or new features are pushed to GitHub, you do <strong>not</strong> need to delete or manually re-insert new extension zip files:
+            <p style="margin:0; font-size:0.88rem; color:var(--text-sub); line-height:1.6;">
+                You never need to re-download or manually replace extension files when new features are released. Everything is synchronized dynamically:
             </p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.75rem; margin-top:0.25rem;">
-                <div style="background:rgba(15,23,42,0.6); padding:0.75rem 1rem; border-radius:8px; border:1px solid var(--border-card);">
-                    <strong style="color:#34d399; font-size:0.85rem; display:block; margin-bottom:0.25rem;">Option 1: 1-Tap In-Popup Sync</strong>
-                    <p style="margin:0; font-size:0.8rem; color:var(--text-sub); line-height:1.45;">
-                        Click the IrfanLLM extension icon and tap <span style="font-family:var(--font-mono); color:#34d399; font-weight:700;">🔄 Check &amp; Sync Code from Main</span> to immediately fetch and hot-reload the latest JavaScript.
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.85rem; margin-top:0.35rem;">
+                <div style="background:rgba(15,23,42,0.7); padding:0.85rem 1.1rem; border-radius:10px; border:1px solid rgba(52,211,153,0.3);">
+                    <strong style="color:#34d399; font-size:0.88rem; display:flex; align-items:center; gap:6px; margin-bottom:0.3rem;">
+                        <span>🔄</span> <span>1-Tap In-Popup Sync (Recommended)</span>
+                    </strong>
+                    <p style="margin:0; font-size:0.82rem; color:var(--text-sub); line-height:1.5;">
+                        Simply tap the IrfanLLM extension icon and click <strong style="color:#fff; font-family:var(--font-mono);">🔄 Check &amp; Sync Code from Main</strong>. It immediately pulls the newest AI gesture models, Dynamic Island upgrades, and website fixes directly into your running tabs!
                     </p>
                 </div>
-                <div style="background:rgba(15,23,42,0.6); padding:0.75rem 1rem; border-radius:8px; border:1px solid var(--border-card);">
-                    <strong style="color:var(--primary); font-size:0.85rem; display:block; margin-bottom:0.25rem;">Option 2: Native Browser "Update" Button</strong>
-                    <p style="margin:0; font-size:0.8rem; color:var(--text-sub); line-height:1.45;">
-                        In <span style="font-family:var(--font-mono); color:#38bdf8;">chrome://extensions</span> (or Lemur's extension menu), tap the native <strong style="color:#fff;">Update</strong> button. IrfanLLM's <span style="font-family:var(--font-mono); color:#38bdf8;">updates.xml</span> queries the server automatically.
+                <div style="background:rgba(15,23,42,0.7); padding:0.85rem 1.1rem; border-radius:10px; border:1px solid var(--border-card);">
+                    <strong style="color:var(--primary); font-size:0.88rem; display:flex; align-items:center; gap:6px; margin-bottom:0.3rem;">
+                        <span>⚙️</span> <span>Native Browser "Update" Button</span>
+                    </strong>
+                    <p style="margin:0; font-size:0.82rem; color:var(--text-sub); line-height:1.5;">
+                        Inside <span style="font-family:var(--font-mono); color:#38bdf8;">chrome://extensions</span> (or Lemur's extension manager), clicking the native <strong style="color:#fff;">Update</strong> button triggers IrfanLLM's official <span style="font-family:var(--font-mono); color:#38bdf8;">updates.xml</span> manifest query.
                     </p>
                 </div>
             </div>
