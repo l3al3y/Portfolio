@@ -13,12 +13,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Python-3.14-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/Cisco%20CCNA-Enterprise%20Networking-005BBB?style=flat-square&logo=cisco&logoColor=white" alt="Cisco CCNA">
   <img src="https://img.shields.io/badge/Computer%20Vision-YOLOv8%20%7C%20PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="YOLOv8">
   <img src="https://img.shields.io/badge/Industrial%20AI-Festo%20Didactic-007AC2?style=flat-square&logo=festo&logoColor=white" alt="Festo AI">
   <img src="https://img.shields.io/badge/Cloudflare%20Workers-Edge%20Proxy-F38020?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare Workers">
-  <img src="https://img.shields.io/badge/TypeScript-React-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Dual--Bot-Telegram%20Architecture-229ED9?style=flat-square&logo=telegram&logoColor=white" alt="Dual-Bot Telegram">
+  <img src="https://img.shields.io/badge/Causal%20AI-Judea%20Pearl%20Level%203-8B5CF6?style=flat-square" alt="Judea Pearl SCM">
   <img src="https://img.shields.io/badge/Certifications-26%20Verified-2EA043?style=flat-square&logo=credential&logoColor=white" alt="26 Certifications">
   <img src="https://img.shields.io/badge/Open%20to%20Work-Available-success?style=flat-square" alt="Open to Work">
 </p>
@@ -41,12 +42,17 @@ He bridges **hardware, enterprise networking, computer vision, and autonomous AI
 
 ## 🚀 Featured Engineering Projects (Proof of Work)
 
-### 1. 🤖 [Parliament of Minds](https://irfanfahmi.com#projects) — Autonomous Multi-Model Consensus AI Agent
-A resilient, 24/7 autonomous multi-model consensus AI agent running on dedicated edge hardware with live telemetry at **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
-- **Architecture:** Mitigates AI hallucinations using a consensus governance layer with 5 decision modes and adversarial cross-checking before executing actions.
-- **Live System Telemetry:** Live dashboard deployed at [live.irfanfahmi.com](https://live.irfanfahmi.com).
-- **Open Source Contribution:** Successfully contributed and merged into [`ashishpatel26/500-AI-Agents-Projects`](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36.2k★) via **PR #167**.
-- **Key Capabilities:** Continuous telemetry monitoring, multi-model cascade voting, and automated self-healing.
+### 1. 🤖 [Hermes Agent — Parliament of Minds](https://irfanfahmi.com#projects) (Featured System · Dual-Bot AGI & Causal Trading)
+A 24/7 autonomous multi-model consensus AI agent deployed on dedicated edge hardware (Samsung Galaxy A54 Termux node) with real-time telemetry streaming to **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
+- **Dual-Bot Operational Architecture:**
+  - **`@botpalingpadu_bot` (Execution Engine & Trade Crons):** High-frequency trade sniper, position lifecycle monitoring, dynamic SL/TP execution, and automated scheduling.
+  - **`@l3al3y_bot` (Cognitive Brain & Interactive AGI):** Reasoning core, long-term semantic memory, counterfactual debate, and recruiter/developer queries.
+- **Judea Pearl Level 3 Counterfactual Causal Engine:**
+  - Employs Structural Causal Models (SCM) for post-mortem analysis of every closed position.
+  - Generates invariant rules to eliminate systematic loss modes: **noise-immune 2.50 pt SL floor** and **+3.0 pt trailing breakeven lock**.
+- **Verified Live Trading Metrics:** **57.9% Win Rate**, **2.16 Profit Factor** (+308% profit) across 95+ closed trades on live execution telemetry.
+- **Consensus Governance:** 5 voting modes across 12–24 parallel LLM voters to eliminate hallucinations.
+- **Open Source Contribution:** Contributed to [`ashishpatel26/500-AI-Agents-Projects`](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36.2k★) via **PR #167**.
 
 ### 2. 👁️ [Hybrid Self-Checkout System](https://irfanfahmi.com#projects) — Computer Vision & Barcode Fusion (Capstone)
 A dual-verification retail automation prototype designed to detect and mitigate barcode scan evasion and item swapping.
@@ -81,14 +87,14 @@ An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
 
 ## 📜 Official Certifications & Credentials (26 Verified Records)
 
-| Category | Count | Primary Focus &amp; Issuing Authorities |
+| Category | Count | Primary Focus & Issuing Authorities |
 | :--- | :---: | :--- |
-| 🛡️ **Cisco &amp; Cybersecurity** | **4** | CCNA Enterprise Networking, Switching &amp; Routing, Endpoint Security, Cyber Threat Management |
-| 🤖 **Digital Upskilling &amp; AI** | **8** | Kementerian Digital (Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum, AI Nation 2030) |
-| ⚙️ **Industrial Automation &amp; Technical Training** | **4** | Festo Professional Industrial AI in Manufacturing, Arduino Automation, Basic IoT, Fiber Optic Splicing |
+| 🛡️ **Cisco & Cybersecurity** | **4** | CCNA Enterprise Networking, Switching & Routing, Endpoint Security, Cyber Threat Management |
+| 🤖 **Digital Upskilling & AI** | **8** | Kementerian Digital (Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum, AI Nation 2030) |
+| ⚙️ **Industrial Automation & Technical Training** | **4** | Festo Professional Industrial AI in Manufacturing, Arduino Automation, Basic IoT, Fiber Optic Splicing |
 | 🎓 **Academic Qualifications** | **3** | Politeknik Port Dickson (Diploma Computer Eng), Kolej Komuniti Selandar (Computer Systems), SPM |
-| 🏆 **Awards &amp; Achievements** | **5** | INOTEK 2025 (3rd Place), Best Student Award (Pelajar Terbaik), Director's List, WiMyL Gold Award |
-| 🎖️ **Service &amp; Professional Experience** | **2** | Rejimen 508 Askar Wataniah (Military Reserve), 7-Eleven Malaysia Professional Training |
+| 🏆 **Awards & Achievements** | **5** | INOTEK 2025 (3rd Place), Best Student Award (Pelajar Terbaik), Director's List, WiMyL Gold Award |
+| 🎖️ **Service & Professional Experience** | **2** | Rejimen 508 Askar Wataniah (Military Reserve), 7-Eleven Malaysia Professional Training |
 
 > 💡 *To view, inspect, or download individual certificate PDFs, open the interactive credentials explorer at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates).*
 
@@ -105,19 +111,19 @@ graph TD
     A -->|Live Telemetry| C[Live System: live.irfanfahmi.com]
     A -->|Arcade Games| D[Cloudflare Pages: arcade.irfanfahmi.com]
     A -->|AI Chat / Turnstile| E[Cloudflare Worker: contact-gate-worker]
-    E -->|Tier 1: Permanent Tunnel| O[OmniRoute Gateway: omni.irfanfahmi.com]
-    E -->|Tier 2: 100% Free Edge| F[OpenRouter Free Auto-Router]
-    E -->|Tier 3: Low-Cost Fast Fallback| K[CheaperInference: GPT-5 Mini]
-    E -->|Tier 4: Protected Fallback| L[Meta Llama 3.3 70B & GLM Flash]
+    E -->|Tier 1: Primary Router| O[OmniRoute Gateway: auto combo]
+    E -->|Tier 2: Ultra-Fast Fallback| F1[OpenRouter: GLM 5.3 Flash ~1.4s]
+    E -->|Tier 3: Deep Reasoning| F2[OpenRouter: Llama 3.3 70B Instruct]
+    E -->|Tier 4: Free Edge Pool| F3[OpenRouter: Nemotron 3.5 & Free Auto]
     E -->|Rate Limiter & Bot Defense| G[Cloudflare Turnstile]
     B -->|Offline Fallback Engine| H[Local 1D-CNN Typo & Multilingual Parser]
 ```
 
 - **Frontend (`Portfolio`):** Pure Vanilla HTML5, modern CSS3 (Glassmorphism, Dark/Light Themes, Mobile Bottom Dock), and optimized ES6+ JavaScript.
 - **Edge AI Vision (`manga.html` / `manga.js`):** In-browser MediaPipe Hands + Scikit-Learn Random Forest posture classifier with native WebRTC front-camera streaming.
-- **Live Telemetry (`live.irfanfahmi.com`):** Real-time monitoring dashboard for autonomous agents and edge systems.
+- **Live Telemetry (`live.irfanfahmi.com`):** Real-time monitoring dashboard for autonomous agents, trade logs, and Judea Pearl causal post-mortems.
 - **Mini Arcade (`arcade.irfanfahmi.com`):** Interactive browser games suite powered by Minimax AI.
-- **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`), Turnstile contact gate verification, and multi-tier failover across OmniRoute (`omni.irfanfahmi.com`), OpenRouter, and CheaperInference.
+- **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`), Turnstile contact gate verification, and resilient multi-model failover.
 - **Offline Reliability:** Built-in 1D-CNN character feature extractor and multilingual response generator ensure the AI chatbot responds immediately even during total network downtime.
 
 ---
