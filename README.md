@@ -18,7 +18,7 @@
   <img src="https://img.shields.io/badge/Computer%20Vision-YOLOv8%20%7C%20PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="YOLOv8">
   <img src="https://img.shields.io/badge/Industrial%20AI-Festo%20Didactic-007AC2?style=flat-square&logo=festo&logoColor=white" alt="Festo AI">
   <img src="https://img.shields.io/badge/Cloudflare%20Workers-Edge%20Proxy-F38020?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare Workers">
-  <img src="https://img.shields.io/badge/Dual--Bot-Telegram%20Architecture-229ED9?style=flat-square&logo=telegram&logoColor=white" alt="Dual-Bot Telegram">
+  <img src="https://img.shields.io/badge/Dual--Bot-Telegram%20Architecture-229ED9?style=flat-square&logo=telegram&logoColor=white" alt="Dual-Engine Architecture">
   <img src="https://img.shields.io/badge/Causal%20AI-Judea%20Pearl%20Level%203-8B5CF6?style=flat-square" alt="Judea Pearl SCM">
   <img src="https://img.shields.io/badge/Certifications-26%20Verified-2EA043?style=flat-square&logo=credential&logoColor=white" alt="26 Certifications">
   <img src="https://img.shields.io/badge/Open%20to%20Work-Available-success?style=flat-square" alt="Open to Work">
@@ -42,11 +42,11 @@ He bridges **hardware, enterprise networking, computer vision, and autonomous AI
 
 ## 🚀 Featured Engineering Projects (Proof of Work)
 
-### 1. 🤖 [Hermes Agent — Parliament of Minds](https://irfanfahmi.com#projects) (Featured System · Dual-Bot AGI & Causal Trading)
+### 1. 🤖 [Hermes Agent — Parliament of Minds](https://irfanfahmi.com#projects) (Featured System · Dual-Engine AGI & Causal Trading)
 A 24/7 autonomous multi-model consensus AI agent deployed on dedicated edge hardware (Samsung Galaxy A54 Termux node) with real-time telemetry streaming to **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
-- **Dual-Bot Operational Architecture:**
-  - **`@botpalingpadu_bot` (Execution Engine & Trade Crons):** High-frequency trade sniper, position lifecycle monitoring, dynamic SL/TP execution, and automated scheduling.
-  - **`@l3al3y_bot` (Cognitive Brain & Interactive AGI):** Reasoning core, long-term semantic memory, counterfactual debate, and recruiter/developer queries.
+- **Dual-Engine Operational Architecture:**
+  - **Execution Engine (Automated Trade Crons & Sniper):** High-frequency trade execution, position lifecycle monitoring, dynamic SL/TP execution, and automated scheduling.
+  - **Cognitive Core (Interactive AGI):** Reasoning brain, long-term semantic memory, counterfactual debate, and recruiter/developer queries.
 - **Judea Pearl Level 3 Counterfactual Causal Engine:**
   - Employs Structural Causal Models (SCM) for post-mortem analysis of every closed position.
   - Generates invariant rules to eliminate systematic loss modes: **noise-immune 2.50 pt SL floor** and **+3.0 pt trailing breakeven lock**.
