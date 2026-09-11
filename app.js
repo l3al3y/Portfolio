@@ -139,14 +139,49 @@ function toggleFloatingChat() {
     }
   }
 }window.addEventListener("load",function(){checkBackendStatus(true);if(typeof setInterval==="function")setInterval(function(){checkBackendStatus(false)},6e4)});if(typeof document!=="undefined"){if(document.readyState==="complete"||document.readyState==="interactive"){checkBackendStatus(true);}else{document.addEventListener("DOMContentLoaded",function(){checkBackendStatus(true);});}}const SUGGESTION_CHIPS={en:["Tell me about Mini Arcade! 🎮","Recommend me for this job? 🚀","What makes you different? ✨","Test my CCNA networking knowledge! 🔌","Try asking in Bahasa or 华语! 🌐","Did your capstone AI project work? 🤖","What's your secret skill? 💡","Ask me anything 👀","Diploma CGPA & background? 🎓"],bm:["Ceritakan pasal Mini Arcade! 🎮","Sesuai ke Irfan untuk job ni? 🚀","Apa kelebihan utama Irfan? ✨","Uji ilmu networking Cisco saya! 🔌","Cuba tanya dalam English atau 华语! 🌐","Jadi ke projek AI capstone Irfan? 🤖","Apa skill rahsia Irfan? 💡","Tanya je apa-apa 👀","CGPA Diploma & latar belakang? 🎓"],cn:["介绍一下 Mini Arcade 街机平台！🎮","我适合这个岗位吗？🚀","你最大的亮点是什么？✨","考考我的 Cisco 网络知识！🔌","试试用 Malay 或 English 提问！🌐","毕业 AI 项目效果怎么样？🤖","有什么隐藏技能吗？💡","随便问，什么都可以 👀","文凭 CGPA 和学历背景？🎓"],in:["Mini Arcade பற்றி கூறுங்கள்! 🎮","இந்த வேலைக்கு நான் பொருத்தமானவனா? 🚀","உங்களின் சிறப்பு அம்சம் என்ன? ✨","எனது சிஸ்கோ நெட்வொர்க்கிங் அறிவை சோதியுங்கள்! 🔌","ஆங்கிலம் அல்லது மலாய் மொழியிலும் கேட்கலாம்! 🌐","உங்கள் AI திட்டம் வெற்றிபெற்றதா? 🤖","உங்களிடம் உள்ள மறைமுக திறன் என்ன? 💡","எதைப் பற்றி வேண்டுமானாலும் கேட்கலாம் 👀","டிப்ளமோ CGPA மற்றும் கல்வி தகுதி? 🎓"]};function renderRandomChips(e="en"){const n=document.getElementById("chat-suggested-chips"),m=document.getElementById("mobile-chat-suggested-chips");const a=[...SUGGESTION_CHIPS[e]||SUGGESTION_CHIPS.en].sort(()=>.5-Math.random()).slice(0,4);const chipHtml=a.map(e=>{const n=escapeHtml(e);return`<button class="prompt-chip" onclick="sendSuggestedPrompt('${n.replace(/'/g,"\\'")}')">${n}</button>`}).join("");n&&(n.innerHTML=chipHtml);m&&(m.innerHTML=chipHtml);}const executiveSummaries={en:"\"I'm a Computer Engineering graduate who enjoys turning ideas into practical solutions through software, networking, and AI. My interests span IT support, full-stack web development, cloud technologies, and automation, and I'm always looking for opportunities to learn and apply new tools. I enjoy building projects that improve workflows, strengthen my technical skills, and demonstrate real-world problem-solving. My goal is to grow into an engineer who bridges hardware, software, and artificial intelligence to create reliable and impactful technology.\"",bm:'"Saya merupakan graduan Kejuruteraan Komputer yang bersemangat merealisasikan idea kepada penyelesaian praktikal melalui perisian, rangkaian, dan kecerdasan buatan (AI). Minat saya merangkumi sokongan IT, pembangunan web full-stack, teknologi awan (cloud), dan automasi, serta sentiasa mencari peluang untuk mempelajari dan mengaplikasikan alatan baharu. Saya gemar membina projek yang menaik taraf aliran kerja, memperkukuh kemahiran teknikal, dan mempamerkan penyelesaian masalah dunia sebenar. Matlamat saya adalah untuk berkembang sebagai jurutera yang merapatkan jurang antara perkakasan, perisian, dan kecerdasan buatan bagi menghasilkan teknologi yang boleh dipercayai dan berimpak tinggi."',cn:'"我是计算机工程系的毕业生，热衷于通过软件、网络和人工智能将创意转化为实用解决方案。我的兴趣涵盖IT支持、全栈Web开发、云技术和自动化，并始终寻找学习和应用新工具的机会。我喜欢开发能够优化工作流程、提升技术能力并解决现实难题的项目。我的目标是成长为一名融汇硬件、软件和人工智能的工程师，创造出可靠且具备深远影响力的技术。"',in:'"நான் மென்பொருள், நெட்வொர்க்கிங் மற்றும் AI மூலம் யோசனைகளை நடைமுறை தீர்வுகளாக மாற்றுவதை விரும்பும் கணினி பொறியியல் பட்டதாரி. எனது ஆர்வங்கள் IT ஆதரவு, முழு-ஸ்டாக் வலை உருவாக்கம், மேகக்கணி தொழில்நுட்பங்கள் மற்றும் தானியங்கி அமைப்புகளை உள்ளடக்கியது. வன்பொருள், மென்பொருள் மற்றும் செயற்கை நுண்ணறிவை இணைத்து நம்பகமான தொழில்நுட்பத்தை உருவாக்குவதே எனது இலக்காகும்."'};function switchSummaryLang(e,n){document.querySelectorAll(".lang-btn").forEach(e=>e.classList.remove("active")),n.classList.add("active");const a=document.getElementById("executive-summary-text");a&&(a.style.opacity=0,setTimeout(()=>{a.innerText=executiveSummaries[e]||executiveSummaries.en,a.style.opacity=1},150))}function copyTextFromElement(e){const n=document.getElementById(e),a=n?n.innerText:null;a&&"--"!==a&&(navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(a).then(()=>{alert("Copied to clipboard: "+a)}).catch(()=>{fallbackCopyText(a)}):fallbackCopyText(a))}function fallbackCopyText(e){const n=document.createElement("textarea");n.value=e,n.style.cssText="position:fixed;left:-9999px;opacity:0",document.body.appendChild(n),n.select();try{document.execCommand("copy"),alert("Copied to clipboard: "+e)}catch(e){console.warn("Copy failed:",e)}document.body.removeChild(n)}const RESUME_DATA={profile:{name:"Muhammad Irfan Fahmi",dob:"8 March 1999",age:"27 years old (Born: 8 March 1999)",location:"Klang Valley, Malaysia",degree:"Bachelor of Computer Engineering with Honours",institution:"Universiti Teknikal Malaysia Melaka (UTeM)",expectedGraduation:"2 November 2026 (Graduated)",military:"Military Reserve (Volunteer) (Territorial Army Reserve - High Discipline & Stress Resilience)",linkedin:"https://linkedin.com/in/mifi99",github:"https://github.com/l3al3y"},education:[{degree:"Bachelor of Computer Engineering with Honours",institution:"Universiti Teknikal Malaysia Melaka (UTeM)",dates:"Oct 2022 – Nov 2026 (Graduated)",notes:"Focus on Computer Networks, Systems, Computer Vision & AI"},{degree:"Diploma in Electronic Engineering (Computer)",institution:"Politeknik Port Dickson",dates:"Dec 2018 – May 2022",cgpa:"3.26 / 4.00"},{degree:"Certificate in Computer Systems and Networking (Sijil Sistem Komputer dan Rangkaian)",institution:"Kolej Komuniti Selandar",dates:"Jul 2017 – Feb 2019",cgpa:"3.58 / 4.00",awards:"Best Student Award (Anugerah Pelajar Terbaik) & Outstanding Achievement"}],experience:[{company:"Global Elite Ventures Sdn. Bhd",role:"Technical Staff",dates:"27 Sept 2021 – 31 July 2022",highlights:"Contributed to implementation & optimization of advanced technical solutions, technical troubleshooting, hardware/software deployment, ensuring operational efficiency."},{company:"ARNN Technologies Sdn Bhd & Karar Solution Sdn Bhd",role:"Contract Assistant Engineer",dates:"1 June 2020 – 30 July 2020",highlights:"Assisted in development & execution of engineering projects, applying technical troubleshooting and problem-solving to achieve project objectives."},{company:"OKCS Seri Kembangan",role:"Technician",dates:"1 June 2018 – 1 Nov 2018",highlights:"Performed diagnostic and repair tasks on complex technical systems, hardware maintenance, software configuration, ensuring optimal equipment functionality."}],certifications:[{title:"Festo Industrial Automation with AI",issuer:"Festo Didactic",date:"16 July 2026"},{title:"CCNA: Enterprise Networking & Automation",issuer:"Cisco Networking Academy / UTeM",date:"23 Feb 2026"},{title:"CCNA: Switching, Routing & Wireless",issuer:"Cisco Networking Academy / UTeM",date:"23 Feb 2026"},{title:"Endpoint Security Certification",issuer:"Cisco Networking Academy",date:"12 Dec 2024"},{title:"Cyber Threat Management",issuer:"Cisco Networking Academy",date:"17 Nov 2024"},{title:"Fiber Optic Splicing & Polishing",issuer:"Technical Workshop",date:"3 Feb 2018"},{title:"Rakyat Digital — Agentic AI for All",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — AI Visionary",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — AI Safety",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — Cloud Untuk Rakyat",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — Cybersecurity",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — Generative AI",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — Quantum Computing",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"},{title:"Rakyat Digital — AI Nation 2030",issuer:"Rakyat Digital (Kementerian Digital)",date:"2026"}],skills:{networking:["CCNA","TCP/IP","IPv4/IPv6","VLAN","Inter-VLAN Routing","OSPF","Switching","LAN","WAN","STP","EtherChannel","DHCP","DNS","NAT","ACL","WLAN","Wireshark","Cisco Packet Tracer","Network Troubleshooting"],cybersecurity:["Cybersecurity","Endpoint Security","Cyber Threat Management","Host Hardening","Firewall","Incident Response","Security Monitoring","Threat Mitigation"],itSupport:["Windows Administration","Desktop Support","Technical Support","Hardware Troubleshooting","User Support","Customer Support","Software & Driver Installation","Printer Support","Microsoft Office","Technical Documentation"],industrialAI:["Industrial Automation","Artificial Intelligence (AI)","Predictive Maintenance","Manufacturing Data Analytics","OpenCV","YOLOv8","Computer Vision","Arduino","Sensor Integration","IoT","Embedded Systems"],programming:["Python","C","C++","SQL","MySQL","Git","GitHub","VS Code","EasyEDA"]},projects:[{title:"Parliament of Minds (Hermes Agent)",type:"Dual-Bot Autonomous AGI & Causal Trading System",url:"https://live.irfanfahmi.com",metrics:"57.9% Win Rate, 2.16 Profit Factor, Level 3 SCM Causal Engine, Dual-Engine Architecture",bullets:["Autonomous multi-model consensus AI agent running 24/7 on dedicated edge hardware with real-time telemetry at live.irfanfahmi.com.","Architected dual-engine operational split separating high-frequency automated trade execution from cognitive reasoning, memory, and interactive analytics.","Engineered Judea Pearl Level 3 Counterfactual Causal Engine generating invariant risk rules (noise-immune 2.50 pt SL floor, +3.0 pt trailing breakeven) with 57.9% win rate and 2.16 profit factor.","Open-sourced to ashishpatel26/500-AI-Agents-Projects (36.2k★) via PR #167."]},{title:"Hybrid Self-Checkout System (Barcode Scanner + Computer Vision)",type:"Capstone Project",metrics:"77.4% precision, 72.0% recall at 50 epochs, under 90ms real-time inference latency",bullets:["Engineered dual-verification checkout using OpenCV, YOLOv8, USB barcode scanner, and MySQL database integration.","Achieved 77.4% precision and 72.0% recall at 50 epochs on local product dataset with split-view camera fusion and under 90ms real-time inference latency."]}, {title:"Mini Arcade (Interactive Web Games Suite)",type:"Live Web Application",url:"https://arcade.irfanfahmi.com",metrics:"3 game modes, minimax AI, responsive edge-rendered UI",bullets:["Interactive browser games platform featuring AI Tic Tac Toe with minimax algorithmic logic, soccer penalty shootout, and sports memory match.","Live at arcade.irfanfahmi.com on Cloudflare edge."]}, {title:"IrfanLLM (Touchless AI Manga Controller)",type:"Edge Computer Vision Project",url:"https://irfanfahmi.com/manga.html",metrics:"98.6% cross-val accuracy, 71D landmark geometry, 0.3s cooldown, zero recoil",bullets:["Touchless front-camera reading assistant for PC and mobile to read webtoons while eating without dirtying screens.","Custom 71D hand geometry feature engineering with 100-tree Random Forest classifier achieving 98.6% cross-validation accuracy and zero-recoil geometric classification.","Live interactive demo at irfanfahmi.com/manga.html and 1-line bookmarklet at irfanfahmi.com/manga.js."]}]},SYSTEM_PROMPT="IRFAN FAHMI AI — OFFICIAL DIGITAL REPRESENTATIVE SYSTEM PROMPT\\n\\n=== 1. GROUND TRUTH CANDIDATE PROFILE (STRICT FACTS — ZERO HALLUCINATION) ===\\n\\n[CANDIDATE IDENTITY]\\n• Full Name: Muhammad Irfan Fahmi bin Samsul Kamar\\n• Age: 27 years old (Born: 8 March 1999)\\n• Origin & Location: Puchong, Selangor (Klang Valley, Malaysia). Open to relocation (KL, Penang, Johor, outstation, hybrid/remote).\\n• Title: Computer Engineering Graduate | Cisco CCNA Certified | Festo Industrial AI Specialist\\n• Official Websites:\\n  - Main Portfolio: https://irfanfahmi.com\\n  - Real-time AI Telemetry: https://live.irfanfahmi.com (Parliament of Minds 24/7 edge platform)\\n  - Mini Arcade: https://arcade.irfanfahmi.com (Browser game suite)\\n\\n[ACADEMIC HISTORY - EXACT INSTITUTIONS & CGPA]\\n1. Universiti Teknikal Malaysia Melaka (UTeM) | Oct 2022 – Nov 2026 (Graduated)\\n   - Degree: Bachelor of Computer Engineering with Honours\\n   - Degree Classification Rule: Degree CGPA and Honours classification (e.g. First Class, Second Class) are intentionally unlisted on the public portfolio. Factually state that his degree CGPA is unlisted. NEVER guess, invent, or claim \\\"First Class\\\" or \\\"Second Class Upper\\\".\\n2. Politeknik Port Dickson | Dec 2018 – May 2022\\n   - Diploma: Diploma in Electronic Engineering (Computer)\\n   - CGPA: 3.26 / 4.00\\n3. Kolej Komuniti Selandar | Jul 2017 – Feb 2019\\n   - Certificate: Sijil Sistem Komputer dan Rangkaian (Computer Systems & Networking)\\n   - CGPA: 3.58 / 4.00 (🏆 Awarded Best Student of the Semester / Anugerah Pelajar Terbaik & Director's List)\\n\\n[VERIFIED PROJECTS - EXACT IDENTIFICATION]\\n1. CAPSTONE FINAL YEAR PROJECT: \\\"Hybrid Self-Checkout System\\\"\\n   - Tech Stack: Computer Vision (YOLOv8 trained for 50 epochs) + OpenCV + USB Barcode Scanner + MySQL Database.\\n   - Verified Benchmarks: 77.4% Precision, 72.0% Recall, and under 90ms real-time camera inference latency.\\n   - Core Function: Cross-references barcode scan data against visual classification in real-time to detect item swapping and scan evasion.\\n2. AUTONOMOUS AI SYSTEM: \"Parliament of Minds\" (Hermes Agent)\n   - Tech Stack: 24/7 autonomous multi-model consensus AI agent deployed on edge hardware with Dual-Engine architecture.\n   - Dual-Engine Split: High-frequency automated trade execution & crons isolated from AGI reasoning, cognitive memory & interactive user queries.\n   - Causal Engine: Level 3 Structural Causal Models (Judea Pearl SCM) for counterfactual trade post-mortems and noise-immune 2.50 pt dynamic risk floor.\n   - Verified Live Trading Metrics: 57.9% Win Rate, 2.16 Profit Factor across live execution telemetry.\n   - Live Telemetry Dashboard: https://live.irfanfahmi.com\n   - Core Function: Uses 5 distinct decision & voting modes across 12-24 parallel LLM voters to mitigate hallucinations through peer verification. Open-sourced to 500-AI-Agents-Projects (PR #167).\n\n3. AWARD-WINNING IoT PROJECT: \\\"IoT Livestock Weight Tracking System\\\"\\n   - Tech Stack: Arduino microcontrollers, HX711 amplifier, load cell strain gauges, C/C++ firmware.\\n   - Award: INOTEK 2025 Innovation Competition (Third Place), achieving 98%+ measurement precision.\\n4. WEB GAME ARCADE: \\\"Mini Arcade\\\"\\n   - Tech Stack: Edge-rendered browser game platform with Minimax AI Tic-Tac-Toe, penalty shootout, and memory match.\\n   - Live URL: https://arcade.irfanfahmi.com\\n5. TOUCHLESS COMPUTER VISION AI: \\\"IrfanLLM Manga Controller\\\"\\n   - Tech Stack: MediaPipe Hands (WebGL) + Scikit-Learn Random Forest (100 trees, 71D landmark feature engineering) + OpenCV (CLAHE).\\n   - Verified Benchmarks: 98.6% cross-validation accuracy on ground-truth video dataset, zero-recoil geometric classification (eliminating return-stroke false triggers), 0.30s debounced scroll cooldown, <0.1ms edge inference.\\n   - Live Demo: https://irfanfahmi.com/manga.html | Script: https://irfanfahmi.com/manga.js\\n   - Core Function: Zero-touch hands-free reading assistant for PC and mobile webtoons so users can read while eating without touching greasy screens.\\n\\n[VERIFIED CERTIFICATIONS INVENTORY (26 TOTAL RECORDS)]\\n• Cisco & Cybersecurity (4):\\n  1. Cisco CCNA: Enterprise Networking, Security, and Automation (Cisco / UTeM, 23 Feb 2026)\\n  2. Cisco CCNA: Switching, Routing, and Wireless Essentials (Cisco / UTeM, 23 Feb 2026)\\n  3. Cisco Endpoint Security (Cisco Networking Academy, 12 Dec 2024)\\n  4. Cisco Cyber Threat Management (Cisco Networking Academy, 17 Nov 2024)\\n• Industrial Automation & Technical Training (4):\\n  5. Festo Professional Certificate: Industrial Automation with AI in Manufacturing (Festo Didactic & STDC, 16 July 2026)\\n  6. Kursus Arduino (Kolej Komuniti Selandar, 9 Sep 2017)\\n  7. Kursus Basic IoT (Kolej Komuniti Bukit Beruang, 28 Mac 2018)\\n  8. Kursus Fiber Optik Splicing & Polishing (Kolej Komuniti Selandar, 3 Feb 2018)\\n• Academic Qualifications (3):\\n  9. Diploma in Electronic Engineering - Computer (Politeknik Port Dickson)\\n  10. Sijil Sistem Komputer dan Rangkaian (Kolej Komuniti Selandar)\\n  11. Sijil Pelajaran Malaysia (SPM 2016)\\n• Awards & Honors (5):\\n  12. INOTEK 2025 Third Place Award (IoT Weight Tracking System)\\n  13. Anugerah Pelajar Terbaik Sesi Mac 2018 (KK Selandar)\\n  14. Anugerah Pengarah Semester 2 Nov 2017 (KK Selandar)\\n  15. Pelajar Cemerlang Asas Komunikasi dan Rangkaian (KK Selandar)\\n  16. WiMyL (Where Is My Lecturer) Gold Award (KK Selandar)\\n• Service & Professional Experience (2):\\n  17. Sijil Kursus Asas Perajurit Muda Sukarela (Rejimen 508 Askar Wataniah, 1–30 May 2019)\\n  18. 7-Eleven Malaysia New Employee Training Program (17 Jan 2017)\\n• Rakyat Digital Government Credentials — Kementerian Digital Malaysia (8):\\n  19. Rakyat Digital — Agentic AI for All (2026)\\n  20. Rakyat Digital — AI Visionary (2026)\\n  21. Rakyat Digital — AI Safety (2026)\\n  22. Rakyat Digital — Cloud Untuk Rakyat (2026)\\n  23. Rakyat Digital — Cybersecurity (2026)\\n  24. Rakyat Digital — Generative AI (2026)\\n  25. Rakyat Digital — Quantum Computing (2026)\\n  26. Rakyat Digital — AI Nation 2030 (2026)\\n\\n[WORK EXPERIENCE & MILITARY SERVICE]\\n1. Global Elite Ventures Sdn. Bhd | Technical Staff (27 Sep 2021 – 31 Jul 2022)\\n   - Technical troubleshooting, hardware/software deployment, operational efficiency optimization.\\n2. ARNN Technologies Sdn Bhd & Karar Solution | Contract Assistant Engineer (1 Jun 2020 – 30 Jul 2020)\\n   - Engineering project execution, technical troubleshooting, and problem-solving.\\n3. OKCS Seri Kembangan | Technician (1 Jun 2018 – 1 Nov 2018)\\n   - Diagnostic hardware repair, PC maintenance, system configuration, customer support.\\n4. Rejimen 508 Askar Wataniah (Malaysian Army Reserve) | Basic Volunteer Recruit (May 2019)\\n   - High-discipline tactical resilience, teamwork under pressure, structured execution.\\n\\n=== 2. OPERATING RULES & VOICE ===\\n1. IDENTITY: You are the AI Representative for Muhammad Irfan Fahmi. Speak professionally in the third person (\\\"Muhammad Irfan Fahmi\\\", \\\"Irfan\\\", \\\"dia\\\", \\\"beliau\\\"). Never claim to be Irfan personally.\\n2. STRICT TRUTHFULNESS: Only use facts from Section 1. Never invent fake companies, grades, or classifications.\\n3. WHY HIRE (PROOF OF WORK): Emphasize that Irfan has tangible proof-of-work:\\n   - 2x Cisco CCNA certifications (OSPF, VLAN, STP, Enterprise Routing).\\n   - Built a 24/7 multi-model consensus AI agent running live at live.irfanfahmi.com.\\n   - Capstone YOLOv8 computer vision system with 77.4% precision and <90ms latency.\\n   - Festo Industrial AI Certified.\\n   - 26 verified credentials and a strong academic foundation (3.26 Diploma CGPA, 3.58 Best Student).\\n4. MULTILINGUAL: Understand and respond fluently in English, Bahasa Melayu, Chinese, Tamil, and Malaysian dialects.";
-function clearChat() {
-  const resetHtml = '<div class="bot-bubble"><p>Conversation cleared. Feel free to ask about Irfan\'s Cisco CCNA certifications, capstone project, or work experience!</p></div>';
-  const b1=document.getElementById("chat-body"),b2=document.getElementById("mobile-chat-body");
-b1&&(b1.innerHTML=resetHtml);
-b2&&(b2.innerHTML=resetHtml);
-CHAT_CONVERSATION_HISTORY=[];
-renderRandomChips("en");
-}function detectUserLanguage(e){if(/[\u4e00-\u9fa5]/.test(e))return"cn";if(/[\u0b80-\u0bff]/.test(e))return"in";if(/[\u3040-\u30ff\u31f0-\u31ff]/.test(e))return"ja";if(/[\u0e00-\u0e7f]/.test(e))return"th";if(/[\u0600-\u06ff]/.test(e))return"ar";const n=e.toLowerCase();if(["siapa","awak","kamu","anda","umur","kemahiran","projek","hubungi","berapa","selamat","apa","boleh","bila","lahir","telefon","emel","melayu","hai","terima","kasih","bagaimana","kerja","maklumat","sijil","gred","tarikh","gaji","pandai","shift","sebab","sikit","beri","bagi","versi","terangkan","jelaskan","apakah","mana","nak","saya","tak","ada","kat","tolong","demo","kawe","oghe","gapo","kelate","make","tubik","bakpe","hok","tranung","starang","gining","dok","hang","depa","hampa","awaq","habaq","kalut","mai","loqlaq","kome","teman","ate","mika","ghoyak","ekau","den","eso","lobih","jang","aok","koi","awok","sia","bah","kamurang","ngam","palui","kamek","kitak","nang","iboh","kelakar","padah","polah"].some(e=>n.includes(e)))return"bm";return["quien","eres","hola","edad","anos","como","habilidades","proyecto"].some(e=>n.includes(e))?"es":"en"}window.scrollToPortfolioSection = function(sectionType) {
+/* ==========================================================================
+   Rebuilt Chatbot Engine (Dual-Interface, SSE Streaming, Unified State)
+   Hermes Edge / Cloudflare Workers Multi-Model Cascade
+   ========================================================================== */
+
+let CHAT_MESSAGES = [
+  {
+    id: "msg_welcome",
+    role: "assistant",
+    content: "Hi there! 👋 I am Irfan's AI Assistant. Feel free to ask anything about his Computer Engineering background, Cisco CCNA credentials, YOLOv8 capstone project, or career experience.",
+    timestamp: Date.now()
+  }
+];
+
+let isGeneratingChat = false;
+let lastChatMessageTimestamp = 0;
+let chatAbortController = null;
+let currentStreamingMsgId = null;
+let currentStreamingText = "";
+
+function escapeHtml(str) {
+  if (typeof str !== "string") return "";
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function detectUserLanguage(e) {
+  if (!e) return "en";
+  if (/[\u4e00-\u9fa5]/.test(e)) return "cn";
+  if (/[\u0b80-\u0bff]/.test(e)) return "in";
+  if (/[\u3040-\u30ff\u31f0-\u31ff]/.test(e)) return "ja";
+  if (/[\u0e00-\u0e7f]/.test(e)) return "th";
+  if (/[\u0600-\u06ff]/.test(e)) return "ar";
+  const n = e.toLowerCase();
+  if (["siapa","awak","kamu","anda","umur","kemahiran","projek","hubungi","berapa","selamat","apa","boleh","bila","lahir","telefon","emel","melayu","hai","terima","kasih","bagaimana","kerja","maklumat","sijil","gred","tarikh","gaji","pandai","shift","sebab","sikit","beri","bagi","versi","terangkan","jelaskan","apakah","mana","nak","saya","tak","ada","kat","tolong","demo","kawe","oghe","gapo","kelate","make","tubik","bakpe","hok","tranung","starang","gining","dok","hang","depa","hampa","awaq","habaq","kalut","mai","loqlaq","kome","teman","ate","mika","ghoyak","ekau","den","eso","lobih","jang","aok","koi","awok","sia","bah","kamurang","ngam","palui","kamek","kitak","nang","iboh","kelakar","padah","polah"].some(k => n.includes(k))) return "bm";
+  return ["quien","eres","hola","edad","anos","como","habilidades","proyecto"].some(k => n.includes(k)) ? "es" : "en";
+}
+
+window.scrollToPortfolioSection = function(sectionType) {
   let target = null;
   const cards = document.querySelectorAll(".project-card");
 
@@ -192,14 +227,31 @@ renderRandomChips("en");
 function formatBotMarkdown(e) {
   if (!e) return "";
   let n = e;
+
+  // Code blocks ```lang\ncode```
+  n = n.replace(/```([a-zA-Z0-9_\-\s]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+    return `<pre><code>${escapeHtml(code.trim())}</code></pre>`;
+  });
+
+  // Inline code `code`
+  n = n.replace(/`([^`]+)`/g, (match, code) => `<code>${escapeHtml(code)}</code>`);
+
+  // Bold & Italic
   n = n.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   n = n.replace(/\*(.*?)\*/g, "<em>$1</em>");
+
+  // Bullet items
   n = n.replace(/^\s*[\-\*]\s+(.*?)$/gm, "• $1");
+
+  // Headings
   n = n.replace(/### (.*?)$/gm, '<h4 style="margin:6px 0 2px 0;">$1</h4>');
   n = n.replace(/## (.*?)$/gm, '<h3 style="margin:8px 0 4px 0;">$1</h3>');
   n = n.replace(/# (.*?)$/gm, '<h2 style="margin:10px 0 6px 0;">$1</h2>');
+
+  // Linebreaks (convert newlines)
   n = n.replace(/\n/g, "<br>");
 
+  // Interactive Action Badges
   const lower = e.toLowerCase();
   const actions = [];
 
@@ -224,8 +276,127 @@ function formatBotMarkdown(e) {
   }
 
   return n;
-}let isGeneratingChat = false;
-let lastChatMessageTimestamp = 0;
+}
+
+function renderChatMessages(streamingMsgId = null, partialContent = "") {
+  const b1 = document.getElementById("chat-body");
+  const b2 = document.getElementById("mobile-chat-body");
+  if (!b1 && !b2) return;
+
+  const b1NearBottom = b1 ? (b1.scrollHeight - b1.scrollTop - b1.clientHeight < 64) : true;
+  const b2NearBottom = b2 ? (b2.scrollHeight - b2.scrollTop - b2.clientHeight < 64) : true;
+
+  const html = CHAT_MESSAGES.map(m => {
+    const isAssistant = m.role === "assistant";
+    const isStreamingThis = Boolean(streamingMsgId && m.id === streamingMsgId);
+    const contentText = isStreamingThis ? partialContent : m.content;
+    const timeStr = new Date(m.timestamp || Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+    if (!isAssistant) {
+      return `
+        <div class="chat-message user-msg" data-msg-id="${m.id}">
+          <div class="chat-bubble">${escapeHtml(contentText)}</div>
+        </div>
+      `;
+    }
+
+    let innerContent = "";
+    if (isStreamingThis && !contentText) {
+      innerContent = '<span style="color:var(--text-muted); font-style:italic;">Thinking...</span><span class="streaming-cursor"></span>';
+    } else {
+      innerContent = formatBotMarkdown(contentText) + (isStreamingThis ? '<span class="streaming-cursor"></span>' : '');
+    }
+
+    return `
+      <div class="chat-message bot-msg" data-msg-id="${m.id}">
+        <div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🤖</div>
+        <div class="bot-bubble">
+          ${innerContent}
+          <div class="chat-msg-toolbar">
+            <span class="chat-time">${timeStr}</span>
+            ${!isStreamingThis && contentText ? `<button class="chat-tool-btn" id="copy-btn-${m.id}" onclick="copyChatMessage('${m.id}')" title="Copy message">📋 Copy</button>` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  if (b1) {
+    b1.innerHTML = html;
+    if (b1NearBottom) b1.scrollTop = b1.scrollHeight;
+  }
+  if (b2) {
+    b2.innerHTML = html;
+    if (b2NearBottom) b2.scrollTop = b2.scrollHeight;
+  }
+}
+
+function copyChatMessage(msgId) {
+  const msg = CHAT_MESSAGES.find(m => m.id === msgId);
+  if (!msg || !msg.content) return;
+
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = formatBotMarkdown(msg.content);
+  const actions = tempDiv.querySelector(".chat-action-container");
+  if (actions) actions.remove();
+  const textToCopy = (tempDiv.textContent || tempDiv.innerText || msg.content).trim();
+
+  const handleSuccess = () => {
+    document.querySelectorAll(`[id="copy-btn-${msgId}"]`).forEach(btn => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = "✓ Copied!";
+      btn.classList.add("copied");
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.classList.remove("copied");
+      }, 2000);
+    });
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(textToCopy).then(handleSuccess).catch(() => {
+      fallbackCopyText(textToCopy, handleSuccess);
+    });
+  } else {
+    fallbackCopyText(textToCopy, handleSuccess);
+  }
+}
+
+function fallbackCopyText(text, callback) {
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.top = "-9999px";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const successful = document.execCommand("copy");
+    document.body.removeChild(ta);
+    if (successful && typeof callback === "function") callback();
+  } catch (err) {
+    console.warn("Clipboard fallback failed:", err);
+  }
+}
+
+function stopGeneratingChat() {
+  if (chatAbortController) {
+    try {
+      chatAbortController.abort();
+    } catch (err) {}
+    chatAbortController = null;
+  }
+  if (currentStreamingMsgId) {
+    const msg = CHAT_MESSAGES.find(m => m.id === currentStreamingMsgId);
+    if (msg) {
+      msg.content = currentStreamingText || "Generation stopped.";
+    }
+    currentStreamingMsgId = null;
+    currentStreamingText = "";
+    renderChatMessages();
+  }
+  setChatUIBusy(false);
+}
 
 function setChatUIBusy(busy) {
   isGeneratingChat = busy;
@@ -234,23 +405,25 @@ function setChatUIBusy(busy) {
   const e2 = document.getElementById("mobile-chat-user-input");
   const btn1 = document.getElementById("chat-send-btn") || (e1 ? e1.parentElement?.querySelector("button") : null);
   const btn2 = document.getElementById("mobile-chat-send-btn") || (e2 ? e2.parentElement?.querySelector("button") : null);
+  const stop1 = document.getElementById("chat-stop-btn");
+  const stop2 = document.getElementById("mobile-chat-stop-btn");
   const chips = document.querySelectorAll(".prompt-chip, #chat-suggested-chips button, #mobile-chat-suggested-chips button");
 
   if (e1) {
     e1.disabled = busy;
     e1.readOnly = busy;
     e1.style.cursor = busy ? "not-allowed" : "text";
-    e1.style.opacity = busy ? "0.6" : "1";
-    e1.placeholder = busy ? "Thinking..." : "Ask about Irfan's experience...";
-    if (!busy) setTimeout(() => { try { e1.focus(); } catch(err){} }, 80);
+    e1.style.opacity = busy ? "0.7" : "1";
+    e1.placeholder = busy ? "AI is typing..." : "Ask about Irfan's experience...";
+    if (!busy) setTimeout(() => { try { e1.focus(); } catch(err){} }, 100);
   }
 
   if (e2) {
     e2.disabled = busy;
     e2.readOnly = busy;
     e2.style.cursor = busy ? "not-allowed" : "text";
-    e2.style.opacity = busy ? "0.6" : "1";
-    e2.placeholder = busy ? "Thinking..." : "Ask about Irfan's experience...";
+    e2.style.opacity = busy ? "0.7" : "1";
+    e2.placeholder = busy ? "AI is typing..." : "Ask about Irfan's experience...";
   }
 
   if (btn1) {
@@ -259,7 +432,6 @@ function setChatUIBusy(busy) {
     btn1.style.opacity = busy ? "0.35" : "1";
     btn1.style.cursor = busy ? "not-allowed" : "pointer";
     btn1.style.filter = busy ? "grayscale(80%)" : "none";
-    btn1.innerHTML = busy ? '<span>...</span>' : 'Send ➔';
   }
 
   if (btn2) {
@@ -268,14 +440,155 @@ function setChatUIBusy(busy) {
     btn2.style.opacity = busy ? "0.35" : "1";
     btn2.style.cursor = busy ? "not-allowed" : "pointer";
     btn2.style.filter = busy ? "grayscale(80%)" : "none";
-    btn2.innerHTML = busy ? '<span>...</span>' : 'Send ➔';
   }
+
+  if (stop1) stop1.classList.toggle("visible", busy);
+  if (stop2) stop2.classList.toggle("visible", busy);
 
   chips.forEach(c => {
     c.disabled = busy;
     c.style.pointerEvents = busy ? "none" : "auto";
-    c.style.opacity = busy ? "0.35" : "1";
+    c.style.opacity = busy ? "0.4" : "1";
     c.style.cursor = busy ? "not-allowed" : "pointer";
+  });
+}
+
+function clearChat() {
+  stopGeneratingChat();
+  CHAT_MESSAGES = [
+    {
+      id: "msg_" + Date.now(),
+      role: "assistant",
+      content: "Conversation cleared. Feel free to ask anything about Irfan's Computer Engineering background, Cisco CCNA credentials, YOLOv8 capstone project, or work experience!",
+      timestamp: Date.now()
+    }
+  ];
+  renderChatMessages();
+  if (typeof renderRandomChips === "function") {
+    renderRandomChips("en");
+  }
+}
+
+async function streamFromGateway(userText, assistantMsgId) {
+  const endpoint = "https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions";
+  chatAbortController = new AbortController();
+
+  const historyMessages = CHAT_MESSAGES
+    .filter(m => m.id !== assistantMsgId && m.content)
+    .slice(-10)
+    .map(m => ({ role: m.role, content: m.content }));
+
+  const payload = {
+    model: "auto",
+    stream: true,
+    messages: [
+      { role: "system", content: SYSTEM_PROMPT },
+      ...historyMessages
+    ],
+    temperature: 0.5,
+    max_tokens: 1024
+  };
+
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload),
+    signal: chatAbortController.signal
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => "");
+    throw new Error(`Gateway returned HTTP ${response.status}: ${errorText.substring(0, 100)}`);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder("utf-8");
+  let buffer = "";
+  currentStreamingMsgId = assistantMsgId;
+  currentStreamingText = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith(":") || !trimmed.startsWith("data:")) continue;
+      const dataStr = trimmed.slice(5).trim();
+      if (dataStr === "[DONE]") break;
+
+      try {
+        const json = JSON.parse(dataStr);
+        const token = json.choices?.[0]?.delta?.content;
+        if (token) {
+          currentStreamingText += token;
+          renderChatMessages(assistantMsgId, currentStreamingText);
+        }
+      } catch (err) {
+        // Ignore partial JSON parse chunks
+      }
+    }
+  }
+
+  // Sanitize any guardrail headers that may have leaked
+  let cleaned = currentStreamingText
+    .replace(/^(?:User\s*Safety|Safety(?:\s*Assessment|\s*Classification)?|Moderation(?:\s*Result)?)\s*:\s*(?:safe|unsafe|harmful|harmless|pass|normal|none)[^\n]*\n*/gi, "")
+    .replace(/(?:User\s*Safety|Safety)\s*:\s*(?:safe|unsafe|normal)/gi, "")
+    .trim();
+
+  if (!cleaned) {
+    throw new Error("Empty response after streaming completed.");
+  }
+
+  const msg = CHAT_MESSAGES.find(m => m.id === assistantMsgId);
+  if (msg) msg.content = cleaned;
+
+  currentStreamingMsgId = null;
+  currentStreamingText = "";
+  renderChatMessages();
+}
+
+function simulateTypewriterResponse(assistantMsgId, fullText) {
+  return new Promise((resolve) => {
+    currentStreamingMsgId = assistantMsgId;
+    currentStreamingText = "";
+    chatAbortController = new AbortController();
+
+    const cleanedText = fullText
+      .replace(/^(?:User\s*Safety|Safety(?:\s*Assessment|\s*Classification)?|Moderation(?:\s*Result)?)\s*:\s*(?:safe|unsafe|harmful|harmless|pass|normal|none)[^\n]*\n*/gi, "")
+      .trim();
+
+    const words = cleanedText.split(" ");
+    let idx = 0;
+
+    const interval = setInterval(() => {
+      if (chatAbortController && chatAbortController.signal.aborted) {
+        clearInterval(interval);
+        resolve();
+        return;
+      }
+
+      if (idx >= words.length) {
+        clearInterval(interval);
+        const msg = CHAT_MESSAGES.find(m => m.id === assistantMsgId);
+        if (msg) msg.content = cleanedText;
+        currentStreamingMsgId = null;
+        currentStreamingText = "";
+        renderChatMessages();
+        resolve();
+        return;
+      }
+
+      currentStreamingText += (idx === 0 ? "" : " ") + words[idx];
+      idx++;
+      renderChatMessages(assistantMsgId, currentStreamingText);
+    }, 28);
   });
 }
 
@@ -283,9 +596,7 @@ async function submitChatMessage(explicitText) {
   if (isGeneratingChat) return;
 
   const now = Date.now();
-  if (now - lastChatMessageTimestamp < 600) {
-    return;
-  }
+  if (now - lastChatMessageTimestamp < 400) return;
 
   const e1 = document.getElementById("chat-user-input");
   const e2 = document.getElementById("mobile-chat-user-input");
@@ -298,35 +609,28 @@ async function submitChatMessage(explicitText) {
 
   lastChatMessageTimestamp = now;
 
-  // Clear inputs immediately
   if (e1) e1.value = "";
   if (e2) e2.value = "";
 
-  // Immediately lock all chat inputs, buttons, and chips
   setChatUIBusy(true);
 
-  const b1 = document.getElementById("chat-body");
-  const b2 = document.getElementById("mobile-chat-body");
-
-  const bubbleHtml = `<div class="chat-bubble">${escapeHtml(rawText)}</div>`;
-  if (b1) {
-    const userMsg1 = document.createElement("div");
-    userMsg1.className = "chat-message user-msg";
-    userMsg1.innerHTML = bubbleHtml;
-    b1.appendChild(userMsg1);
-    b1.scrollTop = b1.scrollHeight;
-  }
-  if (b2) {
-    const userMsg2 = document.createElement("div");
-    userMsg2.className = "chat-message user-msg";
-    userMsg2.innerHTML = bubbleHtml;
-    b2.appendChild(userMsg2);
-    b2.scrollTop = b2.scrollHeight;
-  }
-
   const lang = detectUserLanguage(rawText);
-  renderRandomChips(lang);
+  if (typeof renderRandomChips === "function") {
+    renderRandomChips(lang);
+  }
 
+  const userMsgId = "msg_user_" + Date.now();
+  const assistantMsgId = "msg_asst_" + (Date.now() + 1);
+
+  // 1. Add User Message
+  CHAT_MESSAGES.push({
+    id: userMsgId,
+    role: "user",
+    content: rawText,
+    timestamp: Date.now()
+  });
+
+  // 2. Check Security / Turnstile Guardrail for Contact info
   const lower = rawText.toLowerCase();
   if ((/\b(contact|phone|email|emel|hubungi|whatsapp|turnstile|modal)\b/i.test(lower) || /\breach (out|me|irfan)\b/i.test(lower) || /\bcall (me|irfan|him)\b/i.test(lower) || lower.includes("telefon") || lower.includes("nombor") || lower.includes("联系") || lower.includes("电话") || lower.includes("邮箱") || lower.includes("தொலைபேசி")) && !lower.includes("recall")) {
     let verifyMsg = "";
@@ -339,73 +643,75 @@ async function submitChatMessage(explicitText) {
     } else {
       verifyMsg = '🔒 <strong>Security Verification Required:</strong><br>Candidate direct contact details are protected against automated web scraping.<br><br><button class="btn btn-primary" onclick="openSecurityModal()" style="margin-top:0.4rem; padding:0.45rem 0.9rem; font-size:0.85rem; cursor:pointer;">🔓 Verify & Reveal Contact Details</button>';
     }
-    appendBotMessage(verifyMsg);
+
+    CHAT_MESSAGES.push({
+      id: assistantMsgId,
+      role: "assistant",
+      content: verifyMsg,
+      timestamp: Date.now()
+    });
+    renderChatMessages();
     setChatUIBusy(false);
     return;
   }
 
-  // Instant Greeting Fast-Path: 0ms response for pure greetings (eliminates 21s wait and cold inference cascade)
+  // 3. Instant Greeting Fast-Path
   const trimmedLower = rawText.trim().toLowerCase();
   const isPureGreeting = (
     /^(hi|hello|hai|hey|heyy|heyyy|greetings|selamat|salam|assalamualaikum|apa khabar|how are you|good morning|good afternoon|good evening|morning|boss|sup|yo|bro|hola|bonjour|ciao|namaste|salut|konnichiwa|hallo|ola|olá|你好|您好|哈啰|嗨|வணக்கம்)[!.,?\s]*$/i.test(trimmedLower)
   );
+
+  // Initialize placeholder assistant message
+  CHAT_MESSAGES.push({
+    id: assistantMsgId,
+    role: "assistant",
+    content: "",
+    timestamp: Date.now()
+  });
+  renderChatMessages(assistantMsgId, "");
+
   if (isPureGreeting) {
-    const instantGreeting = generateNativeSpontaneousAnswer(rawText, lang);
-    appendBotMessage(instantGreeting);
+    const instantGreeting = (typeof generateNativeSpontaneousAnswer === "function")
+      ? generateNativeSpontaneousAnswer(rawText, lang)
+      : "Hello! 👋 I'm Irfan's AI Assistant. How can I help you today?";
+    await simulateTypewriterResponse(assistantMsgId, instantGreeting);
     setChatUIBusy(false);
     return;
   }
 
-  const thinkingText = lang === "bm" ? "Sedang berfikir..." : lang === "cn" ? "正在思考中..." : lang === "in" ? "சிந்திக்கிறது..." : "Thinking...";
-  const thinkingHtml = `\n<div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🤖</div>\n<div class="chat-bubble" style="color: var(--text-muted); font-style: italic;">${thinkingText}</div>\n`;
-
-  if (b1) {
-    const ind1 = document.createElement("div");
-    ind1.className = "chat-message bot-msg ai-thinking-indicator";
-    ind1.innerHTML = thinkingHtml;
-    b1.appendChild(ind1);
-    b1.scrollTop = b1.scrollHeight;
-  }
-  if (b2) {
-    const ind2 = document.createElement("div");
-    ind2.className = "chat-message bot-msg ai-thinking-indicator";
-    ind2.innerHTML = thinkingHtml;
-    b2.appendChild(ind2);
-    b2.scrollTop = b2.scrollHeight;
-  }
-
-  let answer = "";
+  // 4. Live Gateway SSE Streaming
   try {
-    answer = await fetchKimiK25Ai(rawText);
+    await streamFromGateway(rawText, assistantMsgId);
   } catch (err) {
-    console.warn("Live AI endpoint error, executing candidate context fallback:", err);
-    answer = generateNativeSpontaneousAnswer(rawText, lang);
+    console.warn("[Hermes AI Engine] Live stream failed or interrupted:", err);
+    if (!chatAbortController || !chatAbortController.signal.aborted) {
+      const fallbackAns = (typeof generateNativeSpontaneousAnswer === "function")
+        ? generateNativeSpontaneousAnswer(rawText, lang)
+        : "I am ready to assist you with Irfan's portfolio, qualifications, and project background. Please feel free to ask any question!";
+      await simulateTypewriterResponse(assistantMsgId, fallbackAns);
+    }
   } finally {
-    document.querySelectorAll(".ai-thinking-indicator").forEach(el => el.remove());
     setChatUIBusy(false);
+    chatAbortController = null;
   }
+}
 
-  if (!answer || typeof answer !== "string" || answer.trim().length === 0) {
-    answer = generateNativeSpontaneousAnswer(rawText, lang);
+// Global exposes
+window.stopGeneratingChat = stopGeneratingChat;
+window.copyChatMessage = copyChatMessage;
+window.clearChat = clearChat;
+window.submitChatMessage = submitChatMessage;
+window.renderChatMessages = renderChatMessages;
+
+// Initialize on DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  renderChatMessages();
+  if (typeof renderRandomChips === "function") {
+    renderRandomChips("en");
   }
-  appendBotMessage(answer);
-}function appendBotMessage(e){
-const b1=document.getElementById("chat-body"),b2=document.getElementById("mobile-chat-body");
-if(b1){
-const a=document.createElement("div");
-a.className="chat-message bot-msg";
-a.innerHTML=`\n<div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🤖</div>\n<div class="chat-bubble">${e}</div>\n`;
-b1.appendChild(a);
-b1.scrollTop=b1.scrollHeight;
-}
-if(b2){
-const a2=document.createElement("div");
-a2.className="chat-message bot-msg";
-a2.innerHTML=`\n<div class="chat-bot-avatar" style="width:28px; height:28px; font-size:0.75rem;">🤖</div>\n<div class="chat-bubble">${e}</div>\n`;
-b2.appendChild(a2);
-b2.scrollTop=b2.scrollHeight;
-}
-}window.addEventListener("DOMContentLoaded",()=>{renderRandomChips("en")});const PRIMARY_MODEL_CASCADE=["glm-5.1","glm-5.2","minimax-m3","kimi-k3","kimi-k2.7","hy3-tencent","deepseek-v4-pro","deepseek-v4-flash"];let CHAT_CONVERSATION_HISTORY=[];const SHADOW_MODE_ACTIVE=!1,RESUME_AGENT_MODEL_REGISTRY=[{id:"glm-5.1",name:"GLM 5.1 Representative",specialties:["GENERAL_CONVERSATION","RECRUITER_GREETING","PROFILE_OVERVIEW"],reasoningCapability:85},{id:"glm-5.2",name:"GLM 5.2 Vision Specialist",specialties:["COMPUTER_VISION","YOLOV8","OPENCV","HARDWARE_INSPECTION"],reasoningCapability:90},{id:"deepseek-v4-pro",name:"DeepSeek V4 Pro Engineering",specialties:["PROGRAMMING","CODE_DEBUGGING","PYTHON","CPP","SQL","ALGORITHMS"],reasoningCapability:98},{id:"deepseek-v4-flash",name:"DeepSeek V4 Flash Summarizer",specialties:["RAPID_SUMMARY","QUICK_STATUS","FAST_SCREENING"],reasoningCapability:80},{id:"minimax-m3",name:"MiniMax M3 Profile Evaluator",specialties:["PROFILE_EVALUATION","CANDIDATE_ASSESSMENT","RESUME_MAPPING"],reasoningCapability:92},{id:"kimi-k3",name:"Kimi K3 Technical Architect",specialties:["ARCHITECTURE","LONG_DOCS","SYSTEM_DESIGN","DETAILED_METHODOLOGY"],reasoningCapability:95},{id:"kimi-k2.7",name:"Kimi K2.7 Multilingual & Dialect",specialties:["MULTILINGUAL","DIALECT_KELANTAN","DIALECT_NORTHERN","DIALECT_NOGORI"],reasoningCapability:88},{id:"hy3-tencent",name:"HY3 Tencent Networking Specialist",specialties:["NETWORKING","CISCO_CCNA","OSPF","VLAN","SECURITY_ACL","TROUBLESHOOTING"],reasoningCapability:94}];function classifyUserIntent(e){const n=e.toLowerCase(),a=/\b(network|networking|ccna|cisco|ospf|vlan|routing|switch|ip|tcp|udp|wireshark|packet|subnet|dns|dhcp|firewall|acl)\b/i.test(n),i=/\b(code|script|python|c\+\+|c|sql|debug|algorithm|syntax|error|bug|fix|function|loop|compiler|variable|class)\b/i.test(n),t=/\b(vision|yolo|yolov8|yolov10|camera|image|frame|occlusion|detection|opencv|bounding box)\b/i.test(n),r=/\b(evaluate|review|suitability|assess|fit|recruiter|qualifications|experience|hire|skills)\b/i.test(n),s=/\b(architecture|breakdown|documentation|deep dive|explain in detail|how it works|system design|methodology)\b/i.test(n),o=/\b(summary|summarise|summarize|quick|fast|short|bullet|overview|brief)\b/i.test(n),l=/\b(kelate|kecek|dialek|loghat|nogori|den|hang|habaq|bah|kamek|kitak|kome|gapo|kawe|demo)\b/i.test(n);let c="GENERAL_CONVERSATION",d="general",u=.88;return a?(c="NETWORKING",d="cisco_ccna",u=.96):i?(c="PROGRAMMING",d="software_engineering",u=.95):t?(c="COMPUTER_VISION",d="yolov8_opencv",u=.95):r?(c="PROFILE_EVALUATION",d="candidate_assessment",u=.92):s?(c="ARCHITECTURE",d="system_design",u=.93):o?(c="RAPID_SUMMARY",d="quick_screening",u=.94):l&&(c="MULTILINGUAL",d="malaysian_dialect",u=.94),{primaryIntent:c,domain:d,confidence:u}}function scoreModelsForIntent(e){const n=RESUME_AGENT_MODEL_REGISTRY.map(n=>{let a=0;return n.specialties.includes(e.primaryIntent)&&(a+=45),"cisco_ccna"===e.domain&&"hy3-tencent"===n.id&&(a+=35),"software_engineering"===e.domain&&"deepseek-v4-pro"===n.id&&(a+=35),"yolov8_opencv"===e.domain&&"glm-5.2"===n.id&&(a+=35),"candidate_assessment"===e.domain&&"minimax-m3"===n.id&&(a+=35),"system_design"===e.domain&&"kimi-k3"===n.id&&(a+=35),"quick_screening"===e.domain&&"deepseek-v4-flash"===n.id&&(a+=35),"malaysian_dialect"===e.domain&&"kimi-k2.7"===n.id&&(a+=35),"glm-5.1"===n.id&&(a+=35),a+=Math.round(.15*n.reasoningCapability),{modelId:n.id,name:n.name,score:a}});return n.sort((e,n)=>n.score-e.score),n[0]}function selectModelByQuery(e){const n=classifyUserIntent(e),a=scoreModelsForIntent(n);return console.log(`[Shadow Mode Engine] Production: glm-5.1 | Predicted: ${a.modelId} | Intent: ${n.primaryIntent} | Score: ${a.score} | Conf: ${Math.round(100*n.confidence)}%`),a.modelId}async function fetchKimiK25Ai(e){const n=selectModelByQuery(e);console.log(`[Ultra-Fast AI Router] Dispatching to '${n}' via Cloudflare Secure Proxy.`),CHAT_CONVERSATION_HISTORY.push({role:"user",content:e}),CHAT_CONVERSATION_HISTORY.length>40&&(CHAT_CONVERSATION_HISTORY=CHAT_CONVERSATION_HISTORY.slice(-30));const a=new AbortController,i=setTimeout(()=>a.abort(),12e3),t=PRIMARY_MODEL_CASCADE.includes(n),r={model:n,messages:[{role:"system",content:SYSTEM_PROMPT},{role:"user",content:e}],temperature:.5};t||(r.max_tokens=1024);const s=["https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions"];let o=null;for(const p of s)try{const n=await fetch(p,{method:"POST",headers:{"Content-Type":"application/json"},signal:a.signal,body:JSON.stringify(r)});if(n.ok){clearTimeout(i);let resText=(await n.json())?.choices?.[0]?.message?.content||"";resText=resText.replace(/^(?:User\s*Safety|Safety(?:\s*Assessment|\s*Classification)?|Moderation(?:\s*Result)?)\s*:\s*(?:safe|unsafe|harmful|harmless|pass|normal|none)[^\n]*\n*/gi,"").trim();resText=resText.replace(/(?:User\s*Safety|Safety)\s*:\s*(?:safe|unsafe|normal)/gi,"").trim();if(!resText)throw new Error("Empty response after guardrail sanitization");CHAT_CONVERSATION_HISTORY.push({role:"assistant",content:resText});return formatBotMarkdown(resText)}{const e=await n.text();throw new Error(`HTTP ${n.status}: ${e.substring(0,50)}`)}}catch(e){o=e}throw clearTimeout(i),o||new Error("All AI endpoints timed out")}let UNIVERSAL_CNN_VOCAB_FEATURES=null,UNIVERSAL_WORD_SET=null;function extractChar1DCNNFeatures(e){const n=e.toLowerCase().replace(/[^a-z0-9]/g,"");if(!n||n.length<2)return null;const a=n.length,i={};for(let e=0;e<a-1;e++){const a=n.substring(e,e+2);i[a]=(i[a]||0)+1}const t={};for(let e=0;e<a-2;e++){const a=n.substring(e,e+3);t[a]=(t[a]||0)+1}return{word:n,length:a,bigrams:i,trigrams:t,startChar:n[0],endChar:n[n.length-1]}}function initUniversalCNNEngine(){if(UNIVERSAL_CNN_VOCAB_FEATURES)return;UNIVERSAL_WORD_SET=new Set;["bagus","terbaik","good","nice","great","cool","awesome","perfect","mantap","cantik","okey","okay","hello","greetings","selamat","salam","khabar","terima","kasih","thanks","thank","help","please","interview","resume","contact","email","phone","location","salary","experience","projects","education","ospf","vlan","ccna","yolov8","opencv","pytorch","python","wireshark","festo","arduino","cisco","tcp","dhcp","hola","bonjour","konnichiwa","ciao","namaste","salut","hallo","amazing","brilliant","gempak","padu","web","stack","dev","code","app","tech","fullstack","frontend","backend","site","data","user","net","start","monday","work","job","what","can","you","do","morning","afternoon","evening","night","skills","skill","kemahiran","kepakaran","kebolehan","pengangkutan","transport","car","kereta","lesen","license","degree","diploma","ijazah","gaji","syif","shift","waktu","masa","projek","certificate","sijil","cybersecurity","keselamatan","network","rangkaian","siapa","umur","age","lahir","born","tinggal","live","puchong","selangor","klang","valley","malaysia"].forEach(e=>UNIVERSAL_WORD_SET.add(e)),void 0!==RESUME_DATA&&function e(n){if(n)if("string"==typeof n)n.replace(/<[^>]*>/g," ").replace(/[^a-zA-Z0-9\s]/g," ").split(/\s+/).forEach(e=>{const n=e.toLowerCase().trim();n.length>=3&&!/^\d+$/.test(n)&&UNIVERSAL_WORD_SET.add(n)});else if(Array.isArray(n))n.forEach(n=>e(n));else if("object"==typeof n)for(const a in n)e(n[a])}(RESUME_DATA),UNIVERSAL_CNN_VOCAB_FEATURES=Array.from(UNIVERSAL_WORD_SET).map(e=>({target:e,feat:extractChar1DCNNFeatures(e)})).filter(e=>null!==e.feat)}function predictTypoWithCNN(e){initUniversalCNNEngine();const n=e.toLowerCase().trim().replace(/[^a-z0-9]/g,"");if(!n||n.length<=2)return e;if(UNIVERSAL_WORD_SET&&UNIVERSAL_WORD_SET.has(n))return e;const a={bgys:"bagus",bgs:"bagus",bagos:"bagus",gud:"good",god:"good",osfp:"ospf",valn:"vlan",terbaek:"terbaik",trbaik:"terbaik",ccnaa:"ccna",yolo8:"yolov8",pyton:"python",wireshak:"wireshark"};if(a[n])return a[n];const i=extractChar1DCNNFeatures(n);if(!i)return e;let t=e,r=-1;for(const e of UNIVERSAL_CNN_VOCAB_FEATURES){const a=e.feat;if(!a)continue;if(Math.abs(i.length-a.length)>2)continue;let s=0,o=0;for(const e in i.bigrams)o+=i.bigrams[e],a.bigrams[e]&&(s+=Math.min(i.bigrams[e],a.bigrams[e]));let l=0,c=0;for(const e in i.trigrams)c+=i.trigrams[e],a.trigrams[e]&&(l+=Math.min(i.trigrams[e],a.trigrams[e]));const d=o>0?s/Math.max(o,Object.keys(a.bigrams).length):0,u=c>0?l/Math.max(c,Object.keys(a.trigrams).length):0,g=i.startChar===a.startChar?1:0,m=i.endChar===a.endChar?1:0,p=new Set(n.split("")),h=new Set(a.word.split(""));let f=0;p.forEach(e=>{h.has(e)&&f++});const b=.35*d+.25*u+.25*(f/Math.max(p.size,h.size))+.075*g+.075*m;b>=.72&&b>r&&(r=b,t=e.target)}return r>=.72?t:e}function correctQueryTyposWithCNN(e){if(!e)return e;let n=e.split(/\s+/).map(e=>predictTypoWithCNN(e)).join(" ");if("undefined"!=typeof IRFAN_KNOWLEDGE_BASE){const e=["enterprise networking","self checkout","computer engineering","cyber threat","endpoint security","industrial automation","packet tracer","data glove","Military Reserve (Volunteer)","fiber optic","machine learning","deep learning","artificial intelligence"],a=n.toLowerCase();for(const i of e){const e=i.split(" "),t=a.split(/\s+/);for(let a=0;a<t.length-1;a++){if(t[a]+" "+t[a+1]!==i){const i=extractChar1DCNNFeatures(t[a]),r=extractChar1DCNNFeatures(e[0]),s=extractChar1DCNNFeatures(t[a+1]),o=extractChar1DCNNFeatures(e[1]);let l=0,c=0,d=0;for(let e=0;e<i.length;e++)l+=i[e]*r[e],c+=i[e]*i[e],d+=r[e]*r[e];const u=c&&d?l/(Math.sqrt(c)*Math.sqrt(d)):0;let g=0,m=0,p=0;for(let e=0;e<s.length;e++)g+=s[e]*o[e],m+=s[e]*s[e],p+=o[e]*o[e];const h=m&&p?g/(Math.sqrt(m)*Math.sqrt(p)):0;if(u>=.65&&h>=.65){const i=n.split(/\s+/);i[a]=e[0],i[a+1]=e[1],n=i.join(" ")}}}}}return n}function generateNativeSpontaneousAnswer(e,n){const a=(("function"==typeof correctQueryTyposWithCNN?correctQueryTyposWithCNN(e):e)||e).toLowerCase().trim();if (/\b(u ok|you ok|are you ok|you okay|are you okay|ok tak|ada orang tak|are you alive|you there|are you there)\b/i.test(a)) {
+});
+
+let UNIVERSAL_CNN_VOCAB_FEATURES=null,UNIVERSAL_WORD_SET=null;function extractChar1DCNNFeatures(e){const n=e.toLowerCase().replace(/[^a-z0-9]/g,"");if(!n||n.length<2)return null;const a=n.length,i={};for(let e=0;e<a-1;e++){const a=n.substring(e,e+2);i[a]=(i[a]||0)+1}const t={};for(let e=0;e<a-2;e++){const a=n.substring(e,e+3);t[a]=(t[a]||0)+1}return{word:n,length:a,bigrams:i,trigrams:t,startChar:n[0],endChar:n[n.length-1]}}function initUniversalCNNEngine(){if(UNIVERSAL_CNN_VOCAB_FEATURES)return;UNIVERSAL_WORD_SET=new Set;["bagus","terbaik","good","nice","great","cool","awesome","perfect","mantap","cantik","okey","okay","hello","greetings","selamat","salam","khabar","terima","kasih","thanks","thank","help","please","interview","resume","contact","email","phone","location","salary","experience","projects","education","ospf","vlan","ccna","yolov8","opencv","pytorch","python","wireshark","festo","arduino","cisco","tcp","dhcp","hola","bonjour","konnichiwa","ciao","namaste","salut","hallo","amazing","brilliant","gempak","padu","web","stack","dev","code","app","tech","fullstack","frontend","backend","site","data","user","net","start","monday","work","job","what","can","you","do","morning","afternoon","evening","night","skills","skill","kemahiran","kepakaran","kebolehan","pengangkutan","transport","car","kereta","lesen","license","degree","diploma","ijazah","gaji","syif","shift","waktu","masa","projek","certificate","sijil","cybersecurity","keselamatan","network","rangkaian","siapa","umur","age","lahir","born","tinggal","live","puchong","selangor","klang","valley","malaysia"].forEach(e=>UNIVERSAL_WORD_SET.add(e)),void 0!==RESUME_DATA&&function e(n){if(n)if("string"==typeof n)n.replace(/<[^>]*>/g," ").replace(/[^a-zA-Z0-9\s]/g," ").split(/\s+/).forEach(e=>{const n=e.toLowerCase().trim();n.length>=3&&!/^\d+$/.test(n)&&UNIVERSAL_WORD_SET.add(n)});else if(Array.isArray(n))n.forEach(n=>e(n));else if("object"==typeof n)for(const a in n)e(n[a])}(RESUME_DATA),UNIVERSAL_CNN_VOCAB_FEATURES=Array.from(UNIVERSAL_WORD_SET).map(e=>({target:e,feat:extractChar1DCNNFeatures(e)})).filter(e=>null!==e.feat)}function predictTypoWithCNN(e){initUniversalCNNEngine();const n=e.toLowerCase().trim().replace(/[^a-z0-9]/g,"");if(!n||n.length<=2)return e;if(UNIVERSAL_WORD_SET&&UNIVERSAL_WORD_SET.has(n))return e;const a={bgys:"bagus",bgs:"bagus",bagos:"bagus",gud:"good",god:"good",osfp:"ospf",valn:"vlan",terbaek:"terbaik",trbaik:"terbaik",ccnaa:"ccna",yolo8:"yolov8",pyton:"python",wireshak:"wireshark"};if(a[n])return a[n];const i=extractChar1DCNNFeatures(n);if(!i)return e;let t=e,r=-1;for(const e of UNIVERSAL_CNN_VOCAB_FEATURES){const a=e.feat;if(!a)continue;if(Math.abs(i.length-a.length)>2)continue;let s=0,o=0;for(const e in i.bigrams)o+=i.bigrams[e],a.bigrams[e]&&(s+=Math.min(i.bigrams[e],a.bigrams[e]));let l=0,c=0;for(const e in i.trigrams)c+=i.trigrams[e],a.trigrams[e]&&(l+=Math.min(i.trigrams[e],a.trigrams[e]));const d=o>0?s/Math.max(o,Object.keys(a.bigrams).length):0,u=c>0?l/Math.max(c,Object.keys(a.trigrams).length):0,g=i.startChar===a.startChar?1:0,m=i.endChar===a.endChar?1:0,p=new Set(n.split("")),h=new Set(a.word.split(""));let f=0;p.forEach(e=>{h.has(e)&&f++});const b=.35*d+.25*u+.25*(f/Math.max(p.size,h.size))+.075*g+.075*m;b>=.72&&b>r&&(r=b,t=e.target)}return r>=.72?t:e}function correctQueryTyposWithCNN(e){if(!e)return e;let n=e.split(/\s+/).map(e=>predictTypoWithCNN(e)).join(" ");if("undefined"!=typeof IRFAN_KNOWLEDGE_BASE){const e=["enterprise networking","self checkout","computer engineering","cyber threat","endpoint security","industrial automation","packet tracer","data glove","Military Reserve (Volunteer)","fiber optic","machine learning","deep learning","artificial intelligence"],a=n.toLowerCase();for(const i of e){const e=i.split(" "),t=a.split(/\s+/);for(let a=0;a<t.length-1;a++){if(t[a]+" "+t[a+1]!==i){const i=extractChar1DCNNFeatures(t[a]),r=extractChar1DCNNFeatures(e[0]),s=extractChar1DCNNFeatures(t[a+1]),o=extractChar1DCNNFeatures(e[1]);let l=0,c=0,d=0;for(let e=0;e<i.length;e++)l+=i[e]*r[e],c+=i[e]*i[e],d+=r[e]*r[e];const u=c&&d?l/(Math.sqrt(c)*Math.sqrt(d)):0;let g=0,m=0,p=0;for(let e=0;e<s.length;e++)g+=s[e]*o[e],m+=s[e]*s[e],p+=o[e]*o[e];const h=m&&p?g/(Math.sqrt(m)*Math.sqrt(p)):0;if(u>=.65&&h>=.65){const i=n.split(/\s+/);i[a]=e[0],i[a+1]=e[1],n=i.join(" ")}}}}}return n}function generateNativeSpontaneousAnswer(e,n){const a=(("function"==typeof correctQueryTyposWithCNN?correctQueryTyposWithCNN(e):e)||e).toLowerCase().trim();if (/\b(u ok|you ok|are you ok|you okay|are you okay|ok tak|ada orang tak|are you alive|you there|are you there)\b/i.test(a)) {
   return "bm" === n
     ? "Ya, saya di sini dan sedia membantu! 👋 Anda boleh bertanya apa-apa soalan mengenai latar belakang kejuruteraan komputer Irfan, pensijilan Cisco CCNA, projek capstone YOLOv8, atau pengalaman kerja beliau."
     : "Yes, I\'m here and ready to help! 👋 Feel free to ask anything about Irfan\'s Computer Engineering background, Cisco CCNA credentials, YOLOv8 capstone project, or career experience.";
