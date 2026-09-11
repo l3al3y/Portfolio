@@ -741,3 +741,160 @@ html.light-theme .footer-verification a {
     z-index: 50;
 }
 
+/* ==========================================================================
+   Rebuilt Chatbot Modern UI (SSE Streaming, Toolbars, Codeblocks)
+   ========================================================================== */
+.chat-stop-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    color: #f87171;
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.chat-stop-btn.visible {
+    display: inline-flex !important;
+}
+
+.chat-stop-btn:hover {
+    background: rgba(239, 68, 68, 0.28);
+    border-color: #ef4444;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.streaming-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: var(--primary);
+    margin-left: 3px;
+    vertical-align: middle;
+    animation: blinkCursor 0.75s infinite;
+    border-radius: 1px;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.chat-msg-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
+    padding-top: 0.35rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.chat-tool-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    border-radius: 6px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition-smooth);
+}
+
+.chat-tool-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: rgba(56, 189, 248, 0.1);
+}
+
+.chat-time {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-left: auto;
+    font-family: var(--font-mono);
+}
+
+.chat-bubble pre {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #38bdf8;
+    line-height: 1.45;
+}
+
+.chat-bubble code {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    color: #38bdf8;
+}
+
+.chat-bubble pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+.chat-bubble ul, .chat-bubble ol {
+    margin: 0.4rem 0 0.4rem 1.1rem;
+    padding: 0;
+}
+
+.chat-bubble li {
+    margin-bottom: 0.25rem;
+}
+
+/* Light theme support for rebuilt chatbot elements */
+body.light-theme .chat-stop-btn,
+body[data-theme="light"] .chat-stop-btn {
+    background: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #b91c1c !important;
+}
+
+body.light-theme .chat-tool-btn,
+body[data-theme="light"] .chat-tool-btn {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+body.light-theme .chat-tool-btn:hover,
+body[data-theme="light"] .chat-tool-btn:hover {
+    color: #0369a1 !important;
+    border-color: #0369a1 !important;
+    background: #e0f2fe !important;
+}
+
+body.light-theme .chat-bubble pre,
+body[data-theme="light"] .chat-bubble pre {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #0369a1 !important;
+}
+
+body.light-theme .chat-bubble code,
+body[data-theme="light"] .chat-bubble code {
+    background: #e2e8f0 !important;
+    color: #0369a1 !important;
+}
+
+
