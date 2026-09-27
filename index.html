@@ -54,6 +54,12 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
         <link rel="stylesheet" href="style.css?v=3.4">
     <style>
+/* Project banner thumbnail overlay */
+.project-banner{position:relative !important;background-size:cover !important;background-position:center !important}
+.project-banner::after{content:'' !important;position:absolute !important;top:0;left:0;right:0;bottom:0;background:rgba(8,12,20,0.78) !important;pointer-events:none;z-index:0 !important}
+.project-banner>*{position:relative !important;z-index:1 !important}
+.project-banner .project-banner-badge{text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.project-banner .project-banner-title{text-shadow:0 2px 6px rgba(0,0,0,0.6)}
 /* Modern Animated Theme Slider Switch */
 .theme-toggle-switch {
     display: inline-flex;
@@ -537,7 +543,7 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 0 auto;">
                 <!-- Single Verified Capstone Project -->
                 <article class="project-card">
-                    <div class="project-banner" role="img" aria-label="Hybrid Self-Checkout System thumbnail" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(2, 132, 199, 0.2)); border-bottom: 1px solid rgba(56, 189, 248, 0.25);">
+                    <div class="project-banner" role="img" aria-label="Hybrid Self-Checkout System thumbnail" style="background-image: url('assets/thumb-yolov8.png'); background-color: rgba(2, 132, 199, 0.15); border-bottom: 1px solid rgba(56, 189, 248, 0.25);">
                         <div class="project-banner-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">FEATURED CAPSTONE</div>
                         <h3 class="project-banner-title" style="margin: 0;">Hybrid Self-Checkout System (Vision + Barcode)</h3>
                     </div>
@@ -577,7 +583,7 @@ document.body.setAttribute('data-theme', 'dark');
                 </article>
                 <!-- Hermes Agent Project -->
                 <article class="project-card">
-                    <div class="project-banner" role="img" aria-label="Hermes Agent thumbnail" style="background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(16, 185, 129, 0.2)); border-bottom: 1px solid rgba(52, 211, 153, 0.25);">
+                    <div class="project-banner" role="img" aria-label="Hermes Agent thumbnail" style="background-image: url('assets/thumb-hermes.png'); background-color: rgba(16, 185, 129, 0.15); border-bottom: 1px solid rgba(52, 211, 153, 0.25);">
                         <div class="project-banner-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35);">FEATURED SYSTEM · DUAL-BOT AGI</div>
                         <h3 class="project-banner-title" style="margin: 0;">Hermes Agent — Autonomous Multi-Model Consensus &amp; Causal Trading System</h3>
                     </div>
@@ -622,7 +628,7 @@ document.body.setAttribute('data-theme', 'dark');
                 </article>
                 <!-- Mini Arcade Project Card -->
                 <article class="project-card">
-                    <div class="project-banner" role="img" aria-label="Mini Arcade Games Platform thumbnail" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(99, 102, 241, 0.2)); border-bottom: 1px solid rgba(168, 85, 247, 0.25);">
+                    <div class="project-banner" role="img" aria-label="Mini Arcade Games Platform thumbnail" style="background-image: url('assets/thumb-arcade.png'); background-color: rgba(99, 102, 241, 0.15); border-bottom: 1px solid rgba(168, 85, 247, 0.25);">
                         <div class="project-banner-badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4);">LIVE APPLICATION</div>
                         <h3 class="project-banner-title" style="margin: 0;">🎮 Mini Arcade — Interactive Browser Games Platform</h3>
                     </div>
@@ -661,7 +667,7 @@ document.body.setAttribute('data-theme', 'dark');
                 </article>
                 <!-- IrfanLLM Manga Controller Project Card -->
                 <article class="project-card">
-                    <div class="project-banner" role="img" aria-label="IrfanLLM Manga Controller thumbnail" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(52, 211, 153, 0.2)); border-bottom: 1px solid rgba(56, 189, 248, 0.25);">
+                    <div class="project-banner" role="img" aria-label="IrfanLLM Manga Controller thumbnail" style="background-image: url('assets/thumb-irfanllm.png'); background-color: rgba(52, 211, 153, 0.15); border-bottom: 1px solid rgba(56, 189, 248, 0.25);">
                         <div class="project-banner-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);">EDGE COMPUTER VISION · AI</div>
                         <h3 class="project-banner-title" style="margin: 0;">📖 IrfanLLM — Touchless AI Manga &amp; Webtoon Controller</h3>
                     </div>

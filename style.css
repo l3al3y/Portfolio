@@ -1010,6 +1010,31 @@ header.scrolled {
     animation: fadeInSection 0.5s ease-out both;
 }
 
+/* Project banner thumbnails */
+.project-banner {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+}
+.project-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 12, 20, 0.78);
+    pointer-events: none;
+}
+.project-banner > * {
+    position: relative;
+    z-index: 1;
+}
+.project-banner .project-banner-badge {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.project-banner .project-banner-title {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
