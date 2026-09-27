@@ -1,183 +1,148 @@
-# Muhammad Irfan Fahmi — Engineering Portfolio
+# Muhammad Irfan Fahmi — AI & Data Engineer Portfolio
 
 <p align="center">
-  <strong>Computer Engineering Graduate · Cisco CCNA Certified · AI & Edge Systems Builder</strong>
+  <strong>AI & Data Engineer · Computer Engineering (Hons) · Cisco CCNA Certified</strong>
 </p>
 
 <p align="center">
-  <a href="https://irfanfahmi.com"><img src="https://img.shields.io/badge/🌐%20Production%20Website-irfanfahmi.com-00d4ff?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Website"></a>
-  <a href="https://live.irfanfahmi.com"><img src="https://img.shields.io/badge/⚡%20Live%20Telemetry-live.irfanfahmi.com-10b981?style=for-the-badge&logo=prometheus&logoColor=white" alt="Live Telemetry"></a>
-  <a href="https://irfanfahmi.com/manga.html"><img src="https://img.shields.io/badge/📖%20Touchless%20Reader-manga.html-f59e0b?style=for-the-badge&logo=speedtest&logoColor=white" alt="Touchless Manga Reader"></a>
-  <a href="https://arcade.irfanfahmi.com"><img src="https://img.shields.io/badge/🎮%20Mini%20Arcade-arcade.irfanfahmi.com-a855f7?style=for-the-badge&logo=gamepad&logoColor=white" alt="Mini Arcade"></a>
-  <a href="https://linkedin.com/in/mifi99"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://irfanfahmi.com"><img src="https://img.shields.io/badge/🌐_Portfolio-irfanfahmi.com-00d4ff?style=for-the-badge" alt="Live Website"></a>
+  <a href="https://live.irfanfahmi.com"><img src="https://img.shields.io/badge/⚡_Telemetry-live.irfanfahmi.com-10b981?style=for-the-badge" alt="Live Telemetry"></a>
+  <a href="https://arcade.irfanfahmi.com"><img src="https://img.shields.io/badge/🎮_Arcade-arcade.irfanfahmi.com-a855f7?style=for-the-badge" alt="Mini Arcade"></a>
+  <a href="https://linkedin.com/in/mifi99"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn"></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.14-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Cisco%20CCNA-Enterprise%20Networking-005BBB?style=flat-square&logo=cisco&logoColor=white" alt="Cisco CCNA">
-  <img src="https://img.shields.io/badge/Computer%20Vision-YOLOv8%20%7C%20PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="YOLOv8">
-  <img src="https://img.shields.io/badge/Industrial%20AI-Festo%20Didactic-007AC2?style=flat-square&logo=festo&logoColor=white" alt="Festo AI">
-  <img src="https://img.shields.io/badge/Cloudflare%20Workers-Edge%20Proxy-F38020?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare Workers">
-  <img src="https://img.shields.io/badge/Dual--Bot-Telegram%20Architecture-229ED9?style=flat-square&logo=telegram&logoColor=white" alt="Dual-Engine Architecture">
-  <img src="https://img.shields.io/badge/Causal%20AI-Judea%20Pearl%20Level%203-8B5CF6?style=flat-square" alt="Judea Pearl SCM">
-  <img src="https://img.shields.io/badge/Certifications-26%20Verified-2EA043?style=flat-square&logo=credential&logoColor=white" alt="26 Certifications">
-  <img src="https://img.shields.io/badge/Open%20to%20Work-Available-success?style=flat-square" alt="Open to Work">
+  <img src="https://img.shields.io/badge/YOLOv8-PyTorch-EE4C2C?style=flat-square&amp;logo=pytorch&amp;logoColor=white" alt="YOLOv8">
+  <img src="https://img.shields.io/badge/Cisco_CCNA-Certified-005BBB?style=flat-square&amp;logo=cisco&amp;logoColor=white" alt="CCNA">
+  <img src="https://img.shields.io/badge/Festo-Industrial_AI-007AC2?style=flat-square" alt="Festo">
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Cloudflare-Edge-F38020?style=flat-square&amp;logo=cloudflare&amp;logoColor=white" alt="Cloudflare">
+  <img src="https://img.shields.io/badge/Certs-26_Verified-2EA043?style=flat-square" alt="26 Certifications">
+  <img src="https://img.shields.io/badge/Open_to_Work-Available-success?style=flat-square" alt="Open to Work">
 </p>
 
 ---
 
-## 🌟 Executive Summary
+## About
 
-**Muhammad Irfan Fahmi** is a Computer Engineering graduate from **Universiti Teknikal Malaysia Melaka (UTeM)** with a solid foundation in **Electronic Engineering (Computer)** from **Politeknik Port Dickson** and **Best Student Award** honors from **Kolej Komuniti Selandar**.
+Computer Engineering (Hons) graduate from **Universiti Teknikal Malaysia Melaka (UTeM)**. I build end-to-end AI systems — from training YOLOv8 models and building LLM agent pipelines to deploying FastAPI backends with Docker.
 
-He bridges **hardware, enterprise networking, computer vision, and autonomous AI systems** to build resilient, real-world engineering solutions.
+Based in Klang Valley, Malaysia. Open to relocation.
 
-- 🌐 **Primary Portfolio:** [irfanfahmi.com](https://irfanfahmi.com)
-- ⚡ **Live Telemetry Dashboard:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
-- 🎮 **Mini Arcade Platform:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
-- 📄 **Verified Resume:** [`resume/resume.pdf`](resume/resume.pdf)
-- 🏅 **Credential Registry:** [`certificates/registry.json`](certificates/registry.json) (26 verified records across 6 categories)
-
----
-
-## 🚀 Featured Engineering Projects (Proof of Work)
-
-### 1. 🤖 [Hermes Agent — Parliament of Minds](https://irfanfahmi.com#projects) (Featured System · Dual-Engine AGI & Causal Trading)
-A 24/7 autonomous multi-model consensus AI agent deployed on dedicated edge hardware (Samsung Galaxy A54 Termux node) with real-time telemetry streaming to **[live.irfanfahmi.com](https://live.irfanfahmi.com)**.
-- **Dual-Engine Operational Architecture:**
-  - **Execution Engine (Automated Trade Crons & Sniper):** High-frequency trade execution, position lifecycle monitoring, dynamic SL/TP execution, and automated scheduling.
-  - **Cognitive Core (Interactive AGI):** Reasoning brain, long-term semantic memory, counterfactual debate, and recruiter/developer queries.
-- **Judea Pearl Level 3 Counterfactual Causal Engine:**
-  - Employs Structural Causal Models (SCM) for post-mortem analysis of every closed position.
-  - Generates invariant rules to eliminate systematic loss modes: **noise-immune 2.50 pt SL floor** and **+3.0 pt trailing breakeven lock**.
-- **Verified Live Trading Metrics:** **57.9% Win Rate**, **2.16 Profit Factor** (+308% profit) across 95+ closed trades on live execution telemetry.
-- **Consensus Governance:** 5 voting modes across 12–24 parallel LLM voters to eliminate hallucinations.
-- **Open Source Contribution:** Contributed to [`ashishpatel26/500-AI-Agents-Projects`](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36.2k★) via **PR #167**.
-
-### 2. 👁️ [Hybrid Self-Checkout System](https://irfanfahmi.com#projects) — Computer Vision & Barcode Fusion (Capstone)
-A dual-verification retail automation prototype designed to detect and mitigate barcode scan evasion and item swapping.
-- **Deep Learning Model:** Custom-trained **YOLOv8 PyTorch** model fine-tuned for 50 epochs on local Malaysian retail items.
-- **Verified Benchmark:** **77.4% Precision**, **72.0% Recall**, and **under 90ms** real-time camera inference latency.
-- **Hardware Integration:** Dual split-view camera occlusion mitigation, serial HID USB barcode reader, and real-time MySQL inventory synchronization.
-
-### 3. 📖 [IrfanLLM Manga Controller](https://irfanfahmi.com/manga.html) — Edge AI Touchless Reading Assistant
-A zero-touch, hands-free manga and webtoon reading controller running directly at the edge in your browser via front camera. Developed to scroll webtoons and turn pages while eating without touching greasy screens.
-- **Computer Vision & ML Pipeline:** 21 3D landmarks extracted at 30–60 FPS via **MediaPipe Hands JS**, feeding a custom-trained **100-tree Scikit-Learn Random Forest** classifier compiled to a 14.6 KB pure JavaScript array traversal.
-- **Verified Benchmark:** **98.6% Cross-Validation Accuracy** on ground-truth demonstration datasets, **Zero-Recoil Geometric Classification** (eliminating return-stroke false triggers inherent in velocity heuristics), **0.30s debounced hysteresis lock**, and **<0.1ms** client-side inference latency per frame.
-- **Pure WebRTC Resilience:** Native `getUserMedia` with 3-tier fallback constraints, hardware lifecycle management (`track.stop()`), and full mobile compliance (`playsinline`, `webkit-playsinline`).
-- **DemonicScans Bookmarklet:** Runs on any manga/webtoon website with a clean 1-line script bookmarklet:
-  ```javascript
-  javascript:(function(){const s=document.createElement('script');s.src='https://irfanfahmi.com/manga.js';document.head.appendChild(s);})();
-  ```
-- **Live Demo:** Try it now at [irfanfahmi.com/manga.html](https://irfanfahmi.com/manga.html).
-
-### 4. 🎮 [Mini Arcade](https://arcade.irfanfahmi.com) — Interactive Browser Game Platform
-A live, responsive browser gaming suite deployed globally on Cloudflare Edge with ultra-low latency (<60ms).
-- **AI Tic Tac Toe:** Powered by the classic **Minimax decision-tree algorithm** for optimal AI moves.
-- **Soccer Penalty Shootout:** Real-time physics and shot timing mechanics.
-- **Sports Memory Match:** Interactive visual pattern matching card game.
-- **Stack:** React, TypeScript, Tailwind CSS, TanStack Router, Cloudflare Pages.
-
-### 5. ⚡ [IoT Livestock Weight Tracking System](https://irfanfahmi.com#projects) — INOTEK 2025 Award Winner
-An industrial IoT automation platform awarded **3rd Place at INOTEK 2025**.
-- **Hardware & Sensing:** Custom load platform built with **Arduino** and calibrated **HX711** strain-gauge amplifiers.
-- **Performance:** Achieved **98%+ measurement consistency** with digital signal filtering (calibrated HX711 load cell) during prototype trials.
+- 🌐 **Portfolio:** [irfanfahmi.com](https://irfanfahmi.com)
+- ⚡ **Live Telemetry:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
+- 🎮 **Mini Arcade:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
+- 📄 **Resume:** [`resume/resume.pdf`](resume/resume.pdf)
+- 🏅 **Credentials:** [`certificates/registry.json`](certificates/registry.json) (26 verified records)
 
 ---
 
-## 📜 Official Certifications & Credentials (26 Verified Records)
+## Featured Projects
 
-| Category | Count | Primary Focus & Issuing Authorities |
+### 1. 👁️ [Hybrid Self-Checkout System](https://github.com/l3al3y/FYP-PROJECT) — Computer Vision + Barcode Fusion (Capstone)
+Dual-verification retail automation to detect barcode scan evasion and item swapping using real-time computer vision.
+- Custom-trained **YOLOv8** model, 50 epochs on Malaysian retail items
+- **77.4% Precision**, **72.0% Recall**, **<90ms** inference latency
+- Dual split-view cameras, serial HID USB barcode reader, MySQL sync
+
+### 2. 🤖 [Hermes Agent](https://live.irfanfahmi.com) — Autonomous Multi-Model AI on Edge Hardware
+A 24/7 autonomous AI agent system running on a Samsung Galaxy A54 (Termux/Linux). Orchestrates multiple LLM providers with consensus-based decision making, automatic failover, and structured causal reasoning.
+- Multi-LLM provider routing with consensus governance
+- Causal post-mortem engine for automated error analysis
+- Real-time telemetry at [live.irfanfahmi.com](https://live.irfanfahmi.com)
+- Contributed to [500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36k+ ★) — [PR #167](https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167)
+
+### 3. 📖 [IrfanLLM Manga Controller](https://irfanfahmi.com/manga.html) — Touchless AI Reading Assistant
+Zero-touch reading assistant powered by hand gesture recognition via front camera.
+- **98.6%** cross-validation accuracy, 71D hand geometry features
+- 100-tree Random Forest classifier compiled to 14.6KB JavaScript
+- **<0.1ms** client-side inference, zero-recoil geometric classification
+- Bookmarklet: works on any manga/webtoon site
+
+### 4. 🎮 [Mini Arcade](https://arcade.irfanfahmi.com) — Browser Games Platform
+Interactive gaming suite on Cloudflare Edge with <60ms latency.
+- AI Tic Tac Toe (Minimax), Soccer Penalty, Sports Memory Match
+- React, TypeScript, Tailwind CSS, Cloudflare Pages
+
+### 5. ⚡ IoT Livestock Weight Tracking — INOTEK 2025 Award Winner
+Industrial IoT platform with Arduino and calibrated HX711 strain-gauge sensors. 98%+ measurement consistency. **3rd Place at INOTEK 2025**.
+
+---
+
+## Certifications (26 Verified)
+
+| Category | Count | Highlights |
 | :--- | :---: | :--- |
-| 🛡️ **Cisco & Cybersecurity** | **4** | CCNA Enterprise Networking, Switching & Routing, Endpoint Security, Cyber Threat Management |
-| 🤖 **Digital Upskilling & AI** | **8** | Kementerian Digital (Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum, AI Nation 2030) |
-| ⚙️ **Industrial Automation & Technical Training** | **4** | Festo Professional Industrial AI in Manufacturing, Arduino Automation, Basic IoT, Fiber Optic Splicing |
-| 🎓 **Academic Qualifications** | **3** | Politeknik Port Dickson (Diploma Computer Eng), Kolej Komuniti Selandar (Computer Systems), SPM |
-| 🏆 **Awards & Achievements** | **5** | INOTEK 2025 (3rd Place), Best Student Award (Pelajar Terbaik), Director's List, WiMyL Gold Award |
-| 🎖️ **Service & Professional Experience** | **2** | Rejimen 508 Askar Wataniah (Military Reserve), 7-Eleven Malaysia Professional Training |
+| 🛡️ Cisco & Cybersecurity | **4** | CCNA Enterprise Networking, Switching & Routing, Endpoint Security, Cyber Threat Management |
+| 🤖 Digital Upskilling & AI | **8** | Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum Computing |
+| ⚙️ Industrial Automation | **4** | Festo Industrial AI, Arduino, Basic IoT, Fiber Optic Splicing |
+| 🎓 Academic Qualifications | **3** | B. Comp Eng (Hons) UTeM, Diploma Electronic Eng, Certificate Computer Networking |
+| 🏆 Awards & Achievements | **5** | INOTEK 2025 (3rd), Best Student Award, Director's List, WiMyL Gold |
+| 🎖️ Service & Experience | **2** | Military Reserve (Volunteer), 7-Eleven Professional Training |
 
-> 💡 *To view, inspect, or download individual certificate PDFs, open the interactive credentials explorer at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates).*
+> View all credentials at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates)
 
 ---
 
-## 🏗️ System Architecture
-
-The portfolio utilizes a **zero-cost, ultra-fast, edge-first serverless architecture**:
+## Architecture
 
 ```mermaid
 graph TD
-    A[Visitor Browser] -->|HTTPS| B[GitHub Pages: irfanfahmi.com]
-    A -->|Touchless Manga Reader| M[Edge AI Vision: manga.html / manga.js]
-    A -->|Live Telemetry| C[Live System: live.irfanfahmi.com]
-    A -->|Arcade Games| D[Cloudflare Pages: arcade.irfanfahmi.com]
-    A -->|AI Chat / Turnstile| E[Cloudflare Worker: contact-gate-worker]
-    E -->|Tier 1: Primary Router| O[OmniRoute Gateway: auto combo]
-    E -->|Tier 2: Ultra-Fast Fallback| F1[OpenRouter: GLM 5.3 Flash ~1.4s]
-    E -->|Tier 3: Deep Reasoning| F2[OpenRouter: Llama 3.3 70B Instruct]
-    E -->|Tier 4: Free Edge Pool| F3[OpenRouter: Nemotron 3.5 & Free Auto]
-    E -->|Rate Limiter & Bot Defense| G[Cloudflare Turnstile]
-    B -->|Offline Fallback Engine| H[Local 1D-CNN Typo & Multilingual Parser]
+    A[Visitor] -->|HTTPS| B[GitHub Pages: irfanfahmi.com]
+    A -->|Telemetry| C[live.irfanfahmi.com]
+    A -->|Arcade| D[Cloudflare Pages: arcade.irfanfahmi.com]
+    A -->|AI Chat| E[Cloudflare Worker: contact-gate]
+    E -->|Multi-Provider| F[LLM Routing with Failover]
+    E -->|Bot Defense| G[Cloudflare Turnstile]
+    B -->|Offline| H[1D-CNN Typo Corrector]
 ```
 
-- **Frontend (`Portfolio`):** Pure Vanilla HTML5, modern CSS3 (Glassmorphism, Dark/Light Themes, Mobile Bottom Dock), and optimized ES6+ JavaScript.
-- **Edge AI Vision (`manga.html` / `manga.js`):** In-browser MediaPipe Hands + Scikit-Learn Random Forest posture classifier with native WebRTC front-camera streaming.
-- **Live Telemetry (`live.irfanfahmi.com`):** Real-time monitoring dashboard for autonomous agents, trade logs, and Judea Pearl causal post-mortems.
-- **Mini Arcade (`arcade.irfanfahmi.com`):** Interactive browser games suite powered by Minimax AI.
-- **Backend Edge Proxy ([`Portfolio-Backend`](https://github.com/l3al3y/Portfolio-Backend)):** Cloudflare Worker handling rate-limited AI completion routing (`/v1/chat/completions`), Turnstile contact gate verification, and resilient multi-model failover.
-- **Offline Reliability:** Built-in 1D-CNN character feature extractor and multilingual response generator ensure the AI chatbot responds immediately even during total network downtime.
+- **Frontend:** Vanilla HTML5, CSS3 (dark/light themes, glassmorphism, mobile bottom dock), ES6+ JS
+- **Edge AI:** In-browser MediaPipe Hands + Random Forest classifier via WebRTC
+- **Backend:** [Portfolio-Backend](https://github.com/l3al3y/Portfolio-Backend) — Cloudflare Worker with rate-limited AI chat, Turnstile verification, multi-model failover
+- **Offline:** Built-in 1D-CNN ensures chatbot responds during network downtime
 
 ---
 
-## 💻 Local Development Setup
-
-Clone the repository and launch a local web server:
+## Local Development
 
 ```bash
-# Clone the repository
 git clone https://github.com/l3al3y/Portfolio.git
 cd Portfolio
-
-# Run via Python built-in server
 python -m http.server 8000
-
-# Or run via Node / npx
-npx serve .
+# Open http://localhost:8000
 ```
-
-Open `http://localhost:8000` in your browser.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 Portfolio/
-├── index.html                  # Core portfolio markup & SEO meta tags
-├── manga.html                  # Interactive touchless reader demo & bookmarklet guide
-├── manga.js                    # Compiled 100-tree Random Forest edge vision controller
-├── style.css                   # Glassmorphism styling, animations & mobile dock
-├── app.js                      # AI representative router, 3D explorer & UI logic
-├── CNAME                       # Custom domain mapping (irfanfahmi.com)
-├── certificates/               # PDF credentials & digital certificates
-│   └── registry.json           # 26 verified certificate records across 6 categories
-├── resume/                     # Official engineering resume
-│   └── resume.pdf
-└── assets/                     # Media, icons, and diagrams
+├── index.html              # Portfolio page with SEO meta
+├── manga.html              # Touchless reader demo
+├── manga.js                # Random Forest vision controller
+├── style.css               # Styling, animations, mobile dock
+├── app.js                  # AI chatbot, 3D canvas, UI logic
+├── certificates/           # PDF certs + registry.json (26 records)
+├── resume/resume.pdf       # Official resume
+└── assets/                 # Thumbnails, OG preview, icons
+    ├── og-preview.png
+    ├── thumb-yolov8.png
+    ├── thumb-hermes.png
+    ├── thumb-arcade.png
+    └── thumb-irfanllm.png
 ```
 
 ---
 
-## 📬 Contact & Connect
+## Contact
 
-- 🌐 **Website:** [irfanfahmi.com](https://irfanfahmi.com)
-- ⚡ **Live Telemetry:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
-- 🎮 **Mini Arcade:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
-- 💼 **LinkedIn:** [linkedin.com/in/mifi99](https://linkedin.com/in/mifi99)
-- 🐙 **GitHub:** [github.com/l3al3y](https://github.com/l3al3y)
-- 📍 **Location:** Klang Valley, Malaysia *(Open to On-site, Hybrid, Remote & Relocation)*
-
----
+- 🌐 [irfanfahmi.com](https://irfanfahmi.com)
+- 💼 [linkedin.com/in/mifi99](https://linkedin.com/in/mifi99)
+- 🐙 [github.com/l3al3y](https://github.com/l3al3y)
+- 📍 Klang Valley, Malaysia (open to relocation)
 
 <p align="center">
-  <sub>Built with engineering precision. Muhammad Irfan Fahmi &copy; 2026.</sub>
+  <sub>Muhammad Irfan Fahmi © 2026</sub>
 </p>
