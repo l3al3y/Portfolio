@@ -119,19 +119,46 @@ python -m http.server 8000
 
 ```
 Portfolio/
-├── index.html              # Portfolio page with SEO meta
-├── manga.html              # Touchless reader demo
-├── manga.js                # Random Forest vision controller
-├── style.css               # Styling, animations, mobile dock
-├── app.js                  # AI chatbot, 3D canvas, UI logic
-├── certificates/           # PDF certs + registry.json (26 records)
-├── resume/resume.pdf       # Official resume
-└── assets/                 # Thumbnails, OG preview, icons
-    ├── og-preview.png
-    ├── thumb-yolov8.png
-    ├── thumb-hermes.png
-    ├── thumb-arcade.png
-    └── thumb-irfanllm.png
+├── index.html                  # Main portfolio page with SEO meta
+├── manga.html                  # Touchless reader demo page
+├── privacy.html                # Privacy policy
+├── terms.html                  # Terms of service
+├── style.css                   # Styling, animations, mobile dock
+├── app.js                      # AI chatbot, 3D canvas, UI logic
+├── manga.js                    # Random Forest vision controller
+├── controller.js               # Manga gesture controller module
+├── CNAME                       # Custom domain (irfanfahmi.com)
+├── sitemap.xml                 # SEO sitemap
+├── robots.txt                  # Crawler directives
+├── _headers                    # Custom HTTP headers
+├── favicon.svg                 # Vector favicon
+├── favicon.ico                 # Legacy favicon
+├── favicon-32x32.png           # 32px favicon
+├── favicon-192x192.png         # 192px favicon (PWA)
+├── apple-touch-icon.png        # iOS home screen icon
+├── .nojekyll                   # Bypass Jekyll on GitHub Pages
+├── googleeb52c0cc14a917bd.html # Google Search Console verification
+├── updates.xml                 # Update feed
+├── CHANGELOG.md                # Version history
+├── certificates/               # 26 PDF certs + registry.json
+│   └── registry.json           # Certificate metadata (26 records)
+├── resume/
+│   └── resume.pdf              # Official resume
+├── assets/
+│   ├── og-preview.png          # Open Graph social preview (1200x630)
+│   ├── og-preview.svg          # OG preview source
+│   ├── thumb-yolov8.png        # YOLOv8 project thumbnail
+│   ├── thumb-hermes.png        # Hermes telemetry thumbnail
+│   ├── thumb-arcade.png        # Arcade project thumbnail
+│   ├── thumb-irfanllm.png      # IrfanLLM project thumbnail
+│   └── manga/                  # Manga controller assets
+├── extension/                  # IrfanLLM browser extension
+│   ├── manifest.json
+│   ├── popup.html
+│   └── ...
+└── .github/
+    └── workflows/
+        └── deploy-pages.yml    # GitHub Pages deploy workflow
 ```
 
 ---
