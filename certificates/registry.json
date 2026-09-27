@@ -258,16 +258,5 @@
     "category_label": "DIGITAL UPSKILLING & AI",
     "filename": "ai-nation-2030.pdf",
     "thumbnail": ""
-  },
-  {
-    "id": "cert-27",
-    "title": "IBM Data Engineering Professional Certificate",
-    "issuer": "IBM via Coursera",
-    "date": "In Progress",
-    "category": "rakyat_digital",
-    "category_label": "DIGITAL UPSKILLING & AI",
-    "filename": "",
-    "thumbnail": "",
-    "in_progress": true
   }
 ]
