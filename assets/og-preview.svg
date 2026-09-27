@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080c14"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="60" y="520" width="1080" height="3" rx="2" fill="url(#accent)" opacity="0.4"/>
+  <text x="80" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="#f8fafc">Muhammad Irfan Fahmi</text>
+  <text x="80" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="#38bdf8">Computer Engineer &amp; AI Automation</text>
+  <text x="80" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="500" fill="#94a3b8">CCNA Certified · YOLOv8 · Python · Festo Industrial AI</text>
+  <text x="80" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="500" fill="#94a3b8">UTeM Computer Engineering (Hons) Graduate</text>
+  <rect x="80" y="430" width="180" height="44" rx="22" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="120" y="458" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#38bdf8">🌐 irfanfahmi.com</text>
+  <rect x="280" y="430" width="150" height="44" rx="22" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="310" y="458" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#34d399">⚡ Open to Work</text>
+  <circle cx="1060" cy="280" r="120" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.2"/>
+  <circle cx="1060" cy="280" r="80" fill="none" stroke="#818cf8" stroke-width="1.5" opacity="0.15"/>
+  <text x="1020" y="295" font-size="64">👨‍💻</text>
+  <text x="80" y="580" font-family="monospace" font-size="16" font-weight="600" fill="#64748b">github.com/l3al3y · linkedin.com/in/mifi99</text>
+</svg>
