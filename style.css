@@ -120,6 +120,19 @@
   .pc-only {
     display: none !important;
   }
+  /* Mobile header: show only MIF.dev logo, hide nav links & actions */
+  header .nav-links {
+    display: none !important;
+  }
+  header .nav-actions {
+    display: none !important;
+  }
+  header .nav-content {
+    justify-content: center !important;
+  }
+  header {
+    padding: 0.6rem 0 !important;
+  }
 }
 
 @media (min-width: 769px) {
