@@ -416,7 +416,7 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="stat-label">YOLOv8 Latency</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-num">26</div>
+                        <div class="stat-num">27</div>
                         <div class="stat-label">Verified Certs</div>
                     </div>
                 </div>
@@ -773,7 +773,7 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="timeline-role">Bachelor of Computer Engineering (Hons)</div>
                         <div class="timeline-org">Universiti Teknikal Malaysia Melaka (UTeM)</div>
                         <div class="timeline-desc">
-                            Completed Bachelor of Computer Engineering with focus areas including AI, networking, embedded systems, and automation.
+                            Focus areas: AI/ML, computer networking, embedded systems, industrial automation. Capstone: YOLOv8 hybrid self-checkout system (77.4% precision, dual-camera). Key courses: Digital Signal Processing, Computer Architecture, Data Communications, Microcontroller Systems.
                         </div>
                     </div>
                 </div>
@@ -785,7 +785,7 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="timeline-role">Technical Staff</div>
                         <div class="timeline-org">Global Elite Ventures Sdn. Bhd</div>
                         <div class="timeline-desc">
-                            Contributed to technical solution optimization, hardware/software deployment, and system troubleshooting.
+                            Hardware deployment and system troubleshooting for client sites. Configured workstations, installed networking equipment, performed on-site diagnostics and repairs. Managed inventory and coordinated with vendors for parts procurement.
                         </div>
                     </div>
                 </div>
@@ -797,7 +797,7 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="timeline-role">Diploma in Electronic Engineering (Computer)</div>
                         <div class="timeline-org">Politeknik Port Dickson • CGPA: 3.26</div>
                         <div class="timeline-desc">
-                            Completed Diploma studies in computer electronics, embedded systems, and technical engineering fundamentals.
+                            Diploma with CGPA 3.26. Core studies: analog/digital electronics, microcontroller programming (C/C++), circuit design, PCB fabrication. Built sensor-based projects using Arduino and HX711 strain gauges.
                         </div>
                     </div>
                 </div>
@@ -809,7 +809,7 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="timeline-role">Contract Engineer & Technician</div>
                         <div class="timeline-org">ARNN Technologies &middot; OKCS Seri Kembangan</div>
                         <div class="timeline-desc">
-                            Early career roles in hardware diagnostics, system troubleshooting, and engineering project support. Built practical foundations in maintenance, repair, and technical operations.
+                            PC assembly, OS installation, hardware diagnostics, and client-facing repair work. Hands-on troubleshooting of desktops, laptops, and networking equipment across multiple service locations.
                         </div>
                     </div>
                 </div>
@@ -850,13 +850,13 @@ document.body.setAttribute('data-theme', 'dark');
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">05 // Verified Credentials</span>
-                <h2 class="section-title">Certifications & Honors Collection (26 Verified Records)</h2>
+                <h2 class="section-title">Certifications & Honors Collection (27 Verified Records)</h2>
             </div>
             <!-- Filter Chips -->
             <div class="cert-filters" id="cert-filter-chips">
-                <button class="filter-chip active" onclick="filterCerts('all')">All (26)</button>
+                <button class="filter-chip active" onclick="filterCerts('all')">All (27)</button>
                 <button class="filter-chip" onclick="filterCerts('cisco')">Cisco & Cybersecurity (4)</button>
-                <button class="filter-chip" onclick="filterCerts('rakyat_digital')">Digital Upskilling & AI (8)</button>
+                <button class="filter-chip" onclick="filterCerts('rakyat_digital')">Digital Upskilling & AI (9)</button>
                 <button class="filter-chip" onclick="filterCerts('industrial')">Industrial Automation & Technical Training (4)</button>
                 <button class="filter-chip" onclick="filterCerts('academic')">Academic Qualifications (3)</button>
                 <button class="filter-chip" onclick="filterCerts('awards')">Awards & Achievements (5)</button>
@@ -1057,6 +1057,18 @@ document.body.setAttribute('data-theme', 'dark');
     </nav>
     <script>
     (function(){
+      // Header scroll effect
+      var header = document.querySelector('header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }, { passive: true });
+      }
+      // Mobile dock show
       if (window.innerWidth <= 768) {
         var d = document.querySelector('.mobile-bottom-dock');
         if (d) d.style.setProperty('display', 'flex', 'important');
