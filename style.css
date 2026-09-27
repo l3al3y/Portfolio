@@ -910,4 +910,113 @@ body[data-theme="light"] .chat-bubble code {
     color: #0369a1 !important;
 }
 
+/* ==========================================================================
+   PHASE 1: Entrance Animations & Visual Polish
+   ========================================================================== */
+
+/* Fade-in + slide-up entrance */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-section .career-status-board {
+    animation: fadeSlideUp 0.6s ease-out both;
+}
+.hero-section .hero-title {
+    animation: fadeSlideUp 0.6s 0.15s ease-out both;
+}
+.hero-section .hero-subtitle {
+    animation: fadeSlideUp 0.6s 0.3s ease-out both;
+}
+.hero-section .hero-cta-group {
+    animation: fadeSlideUp 0.6s 0.4s ease-out both;
+}
+.hero-section .stats-grid {
+    animation: fadeSlideUp 0.6s 0.5s ease-out both;
+}
+.hero-section .hero-profile-card {
+    animation: fadeSlideUp 0.7s 0.35s ease-out both;
+}
+
+/* Biodata card glow border */
+.hero-profile-card {
+    border: 1px solid rgba(56, 189, 248, 0.15) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(56, 189, 248, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+.hero-profile-card:hover {
+    border-color: rgba(56, 189, 248, 0.3) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35),
+                0 0 40px rgba(56, 189, 248, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Ticker fade-out masks on edges */
+.ticker-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.ticker-wrap::before,
+.ticker-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 2;
+    pointer-events: none;
+}
+.ticker-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-base), transparent);
+}
+.ticker-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg-base), transparent);
+}
+
+/* Header scroll enhancement */
+header.scrolled {
+    background: rgba(8, 12, 20, 0.95) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    border-bottom-color: rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Stat card hover glow */
+.stat-card:hover .stat-num {
+    text-shadow: 0 0 12px var(--primary-glow);
+    transition: text-shadow 0.3s ease;
+}
+
+/* Pillar card hover lift + glow */
+.pillar-card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.pillar-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(56, 189, 248, 0.2) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(56, 189, 248, 0.08) !important;
+}
+
+/* Scroll-triggered fade-in for sections */
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.section-header {
+    animation: fadeInSection 0.5s ease-out both;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 
