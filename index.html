@@ -235,6 +235,34 @@ html.light-theme .theme-icon-sun,
 body.light-theme .mobile-bottom-dock,body[data-theme="light"] .mobile-bottom-dock{background:rgba(255,255,255,0.95) !important;border-color:#0369a1 !important;box-shadow:0 12px 30px rgba(0,0,0,0.12) !important}
 body.light-theme .dock-item.active,body[data-theme="light"] .dock-item.active{color:#0369a1 !important;background:rgba(3,105,161,0.12) !important}
 body.light-theme .dock-item.dock-ai-tab.active,body[data-theme="light"] .dock-item.dock-ai-tab.active{color:#7e22ce !important;background:rgba(126,34,206,0.12) !important}
+/* font-inherit for controls (fixes Arial on buttons) */
+button,input,select,textarea{font:inherit}
+/* Hero metrics row */
+.hero-metrics-row{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:1.25rem;border:1px solid var(--border-card);border-radius:var(--radius-sm);overflow:hidden;background:var(--bg-card)}
+.hero-metric-item{padding:0.625rem 0.75rem;border-bottom:1px solid var(--border-card);border-right:1px solid var(--border-card)}
+.hero-metric-item:nth-child(2){border-right:none}
+.hero-metric-wide{grid-column:1/-1;border-right:none;border-bottom:none}
+.hero-metric-val{display:block;font-family:var(--font-mono);font-size:0.875rem;font-weight:700;color:var(--text-main);line-height:1.3}
+.hero-metric-lbl{display:block;font-size:0.75rem;color:var(--text-muted);line-height:1.35;margin-top:0.125rem}
+@media(max-width:768px){.hero-metrics-row{grid-template-columns:1fr}.hero-metric-item{border-right:none}.hero-metric-item:nth-child(2){border-bottom:1px solid var(--border-card)}}
+/* Architecture <details> */
+.arch-details{margin-top:1rem;border:1px solid var(--border-card);border-radius:var(--radius-sm)}
+.arch-summary{padding:0.625rem 0.75rem;font-size:0.8125rem;font-weight:700;color:var(--text-sub);cursor:pointer;list-style:none;user-select:none}
+.arch-summary::-webkit-details-marker{display:none}
+.arch-summary::before{content:'\25B6\00A0\00A0';font-size:0.625rem;color:var(--text-muted);transition:transform 0.2s;display:inline-block}
+.arch-details[open]>.arch-summary::before{transform:rotate(90deg)}
+.arch-body{padding:0 0.75rem 0.75rem;font-size:0.8125rem;color:var(--text-sub);line-height:1.55}
+.arch-heading{font-weight:700;font-size:0.8125rem;color:var(--text-main);margin:0.75rem 0 0.25rem}.arch-heading:first-child{margin-top:0}
+.arch-list{list-style:none;padding:0;margin:0}.arch-list li{padding-left:0.75rem;position:relative;margin-bottom:0.25rem}.arch-list li::before{content:'-';position:absolute;left:0;color:var(--text-muted)}
+/* Footer regulatory cards */
+.reg-affiliations{width:100%;max-width:680px;margin:0 auto 1.5rem}
+.reg-title{font-family:var(--font-mono);font-size:0.6875rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-bottom:0.75rem}
+.reg-cards{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.reg-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-sm);padding:0.75rem}
+.reg-card-org{font-size:0.8125rem;font-weight:700;color:var(--text-main);line-height:1.3;margin-bottom:0.25rem}
+.reg-card-role{font-size:0.75rem;color:var(--text-sub);line-height:1.3}
+.reg-card-status{font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-muted);margin-top:0.375rem;padding-top:0.375rem;border-top:1px solid var(--border-card)}
+@media(max-width:640px){.reg-cards{grid-template-columns:1fr}}
 </style>
 
     <script>
@@ -317,7 +345,7 @@ document.body.setAttribute('data-theme', 'dark');
           "@type": "SoftwareSourceCode",
           "name": "Hermes Agent - Autonomous Multi-Model AI & Causal Trading System",
           "url": "https://live.irfanfahmi.com",
-          "description": "An autonomous multi-model AI system running 24/7 on edge hardware with a Judea Pearl Level 3 Counterfactual Causal Engine and multi-model consensus governance."
+          "description": "A multi-model AI system on a Samsung Galaxy A54 (Termux) with a causal engine and 13-model consensus governance. 103 closed signals, 63.1% win rate."
         },
         {
           "@type": "SoftwareApplication",
@@ -426,6 +454,23 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="stat-label">Verified Certs</div>
                     </div>
                 </div>
+                <div class="hero-metrics-row">
+                    <div class="hero-metric-item">
+                        <span class="hero-metric-lbl">Edge inference</span>
+                        <span class="hero-metric-val">&lt;90ms</span>
+                        <span class="hero-metric-lbl">YOLOv8 camera latency (FYP capstone)</span>
+                    </div>
+                    <div class="hero-metric-item">
+                        <span class="hero-metric-lbl">System availability</span>
+                        <span class="hero-metric-val">Auto-restart &le;2 min</span>
+                        <span class="hero-metric-lbl">Cron watchdog, Hermes agent on Termux (Samsung A54)</span>
+                    </div>
+                    <div class="hero-metric-item hero-metric-wide">
+                        <span class="hero-metric-lbl">Professional track</span>
+                        <span class="hero-metric-val">Graduate Engineer (BEM) &middot; Graduate Technologist (MBOT)</span>
+                        <span class="hero-metric-lbl">Applications submitted, certificates pending</span>
+                    </div>
+                </div>
                 <!-- Space-Optimized Android Mobile Profile Bar -->
                 <div class="mobile-only mobile-hero-profile-card">
                     <div class="mobile-profile-header">
@@ -494,7 +539,7 @@ document.body.setAttribute('data-theme', 'dark');
                 <span class="section-tag">01 // Engineering Identity</span>
                 <h2 class="section-title">Building AI Systems From Data to Deployment</h2>
                 <p style="max-width: 700px; margin: 1.5rem auto 2rem; text-align: center; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">
-                    I build systems that think. My philosophy: <strong>Build → Test → Break → Understand → Improve</strong>. From YOLOv8 anti-fraud vision at checkout counters to a Parliament of Minds AI agent making consensus decisions 24/7 on edge hardware — I turn engineering problems into autonomous solutions. Available immediately for full-time roles in AI engineering, networking, or industrial automation.
+                    I build systems that think. My philosophy: <strong>Build, Test, Break, Understand, Improve</strong>. From YOLOv8 anti-fraud vision at checkout counters to a 13-model consensus system on a phone running Termux. Available immediately for full-time roles in AI engineering, networking, or industrial automation.
                 </p>
             </div>
             <div class="about-pillars-grid">
@@ -584,29 +629,29 @@ document.body.setAttribute('data-theme', 'dark');
                 <!-- Hermes Agent Project -->
                 <article class="project-card">
                     <div class="project-banner" role="img" aria-label="Hermes Agent thumbnail" style="background-image: url('assets/thumb-hermes.png'); background-color: rgba(16, 185, 129, 0.15); border-bottom: 1px solid rgba(52, 211, 153, 0.25);">
-                        <div class="project-banner-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35);">FEATURED SYSTEM · DUAL-BOT AGI</div>
-                        <h3 class="project-banner-title" style="margin: 0;">Hermes Agent — Autonomous Multi-Model Consensus &amp; Causal Trading System</h3>
+                        <div class="project-banner-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35);">FEATURED SYSTEM</div>
+                        <h3 class="project-banner-title" style="margin: 0;">Hermes Agent &mdash; Multi-Model Consensus &amp; Causal Trading System</h3>
                     </div>
                     <div class="project-body">
                         <p class="project-desc" style="margin: 0;">
-                            An autonomous AI agent running 24/7 on a dedicated Samsung Galaxy A54 Android node (Termux). Features a specialized <strong>Dual-Engine Architecture</strong> separating high-frequency automated trade execution from AGI cognitive orchestration, integrated with a <strong>Judea Pearl Level 3 Counterfactual Causal Engine</strong> that synthesizes invariant operational rules (noise-immune 2.50 pt SL floor, +3.0 pt trailing breakeven) and an active Trading Gate (95+ closed trades, 57.9% win rate, 2.16 profit factor).
+                            An AI agent running on a Samsung Galaxy A54 (Termux/Linux, aarch64, 7.3 GB RAM). Two processes: <strong>hermes serve</strong> (~170 MB RSS) and <strong>hermes gateway</strong> (~280 MB RSS), restarted every 2 minutes by a cron watchdog. Queries 13 LLM models (DeepSeek, GLM, Kimi, Minimax, Hunyuan) through a <strong>Parliament of Minds consensus</strong> engine for XAUUSD trade signals. Includes a causal post-mortem system (6 analyses to date) and Google Workspace integration (8 OAuth scopes). 103 closed signals from Aug 24 to Sep 15 2026; system paused since Sep 22 strategy refit.
                         </p>
                         <div class="project-metrics-box">
                             <div class="metric-item">
-                                <div class="metric-val">57.9%</div>
-                                <div class="metric-lbl">Win Rate (95 Trades)</div>
+                                <div class="metric-val">63.1%</div>
+                                <div class="metric-lbl">Win Rate (103 Signals)</div>
                             </div>
                             <div class="metric-item">
-                                <div class="metric-val">2.16</div>
-                                <div class="metric-lbl">Profit Factor (+308%)</div>
+                                <div class="metric-val">2.28</div>
+                                <div class="metric-lbl">Profit Factor</div>
                             </div>
                             <div class="metric-item">
-                                <div class="metric-val">Level 3</div>
-                                <div class="metric-lbl">Causal Engine (SCM)</div>
+                                <div class="metric-val">13</div>
+                                <div class="metric-lbl">LLM Models in Roster</div>
                             </div>
                             <div class="metric-item">
-                                <div class="metric-val">Dual-Engine</div>
-                                <div class="metric-lbl">Isolated Execution &amp; Cognition</div>
+                                <div class="metric-val">~450 MB</div>
+                                <div class="metric-lbl">Combined RSS (serve + gateway)</div>
                             </div>
                         </div>
                         <div class="tech-tags">
@@ -624,6 +669,27 @@ document.body.setAttribute('data-theme', 'dark');
                         <div style="margin-top: 1rem; font-size: 0.85rem; padding: 0.75rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 4px; color: var(--text-sub);">
                             🌟 <a href="https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167" target="_blank" style="color: inherit; text-decoration: none;"><strong>Open Source:</strong> Contributed Governance Consensus Agent (Parliament of Minds) to ashishpatel26/500-AI-Agents-Projects (36.2k★) — PR #167</a>
                         </div>
+                        <details class="arch-details">
+                            <summary class="arch-summary">System Architecture</summary>
+                            <div class="arch-body">
+                                <div class="arch-heading">Google Workspace Integration</div>
+                                <ul class="arch-list">
+                                    <li>OAuth 2.0 installed-app flow (not PKCE), 8 scopes: contacts.readonly, drive, gmail.modify, gmail.readonly, gmail.send, spreadsheets, calendar, documents</li>
+                                    <li>Cloudflare Workers reverse proxy, Turnstile bot verification on contact form</li>
+                                </ul>
+                                <div class="arch-heading">Multi-Model Consensus (consensus_matrix.py)</div>
+                                <ul class="arch-list">
+                                    <li>13 models via RootSys provider: deepseek-v4.1-flash, deepseek-v4-flash, deepseek-v4-pro, glm-5.2, glm-5.1, glm-5.3, glm-5.3-flash, glm-5.3-flashx, kimi-k2.7, kimi-k3, minimax-m3, hy3-tencent, hy4-preview</li>
+                                    <li>N models x 3 temperature variants, cross-agreement weighting, confidence score 0&ndash;100</li>
+                                </ul>
+                                <div class="arch-heading">Process Management (Termux / Linux ARM64)</div>
+                                <ul class="arch-list">
+                                    <li>hermes serve: ~170 MB RSS (agent runtime). hermes gateway: ~280 MB RSS (API gateway). Combined ~450 MB on 7.3 GB device RAM</li>
+                                    <li>Cron watchdog every 2 min (hermes_watchdog.sh &rarr; daemon_runner.py), termux-wake-lock, /proc scanning for process health</li>
+                                    <li>SQLite signal DB: 103 closed, 6 causal post-mortems, 4 strategy refits. Last trade Sep 15; paused after Sep 22 refit concluded zero-trade stance</li>
+                                </ul>
+                            </div>
+                        </details>
                     </div>
                 </article>
                 <!-- Mini Arcade Project Card -->
@@ -909,6 +975,21 @@ document.body.setAttribute('data-theme', 'dark');
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
+            <div class="reg-affiliations">
+                <div class="reg-title">Professional Registrations</div>
+                <div class="reg-cards">
+                    <div class="reg-card">
+                        <div class="reg-card-org">Board of Engineers Malaysia (BEM)</div>
+                        <div class="reg-card-role">Graduate Engineer</div>
+                        <div class="reg-card-status">Applied &middot; certificate pending</div>
+                    </div>
+                    <div class="reg-card">
+                        <div class="reg-card-org">Malaysia Board of Technologists (MBOT)</div>
+                        <div class="reg-card-role">Graduate Technologist</div>
+                        <div class="reg-card-status">Applied &middot; certificate pending &middot; IT field</div>
+                    </div>
+                </div>
+            </div>
             <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-main);">
                 Muhammad Irfan Fahmi
             </div>
