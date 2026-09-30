@@ -276,6 +276,14 @@ button,input,select,textarea{font:inherit}
 .reg-step-line.done{background:var(--emerald)}
 .reg-step-line.active{background:linear-gradient(90deg,var(--emerald),var(--amber))}
 @keyframes reg-pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(251,191,36,0.4)}50%{opacity:0.7;box-shadow:0 0 0 4px rgba(251,191,36,0)}}
+/* System availability dot animation */
+.avail-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--emerald);margin-right:0.375rem;vertical-align:middle;animation:avail-ping 3s ease-in-out infinite}
+@keyframes avail-ping{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(52,211,153,0.5)}40%{opacity:0.85;box-shadow:0 0 0 5px rgba(52,211,153,0)}60%{opacity:0.85;box-shadow:0 0 0 5px rgba(52,211,153,0)}100%{opacity:1;box-shadow:0 0 0 0 rgba(52,211,153,0.5)}}
+/* Hero registration grid */
+.hero-reg-track{padding:0.75rem}
+.hero-reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.375rem}
+.hero-reg-grid .reg-card{border:none;padding:0;background:none}
+@media(max-width:640px){.hero-reg-grid{grid-template-columns:1fr}}
 </style>
 
     <script>
@@ -459,29 +467,47 @@ document.body.setAttribute('data-theme', 'dark');
                         <div class="stat-label">Degree Graduate</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-num">&lt;90ms</div>
-                        <div class="stat-label">YOLOv8 Latency</div>
-                    </div>
-                    <div class="stat-card">
                         <div class="stat-num">26</div>
                         <div class="stat-label">Verified Certs</div>
                     </div>
                 </div>
                 <div class="hero-metrics-row">
                     <div class="hero-metric-item">
+                        <span class="hero-metric-lbl">System availability</span>
+                        <span class="hero-metric-val"><span class="avail-dot"></span>Auto-restart &le;2 min</span>
+                        <span class="hero-metric-lbl">Cron watchdog, Hermes agent on Termux (Samsung A54)</span>
+                    </div>
+                    <div class="hero-metric-item">
                         <span class="hero-metric-lbl">Edge inference</span>
                         <span class="hero-metric-val">&lt;90ms</span>
                         <span class="hero-metric-lbl">YOLOv8 camera latency (FYP capstone)</span>
                     </div>
-                    <div class="hero-metric-item">
-                        <span class="hero-metric-lbl">System availability</span>
-                        <span class="hero-metric-val">Auto-restart &le;2 min</span>
-                        <span class="hero-metric-lbl">Cron watchdog, Hermes agent on Termux (Samsung A54)</span>
-                    </div>
-                    <div class="hero-metric-item hero-metric-wide">
-                        <span class="hero-metric-lbl">Professional track</span>
-                        <span class="hero-metric-val">Graduate Engineer (BEM) &middot; Graduate Technologist (MBOT)</span>
-                        <span class="hero-metric-lbl">Applications submitted, certificates pending</span>
+                    <div class="hero-metric-item hero-metric-wide hero-reg-track">
+                        <span class="hero-metric-lbl">Professional registrations</span>
+                        <div class="hero-reg-grid">
+                            <div class="reg-card">
+                                <div class="reg-card-org">Board of Engineers Malaysia (BEM)</div>
+                                <div class="reg-card-role">Graduate Engineer</div>
+                                <div class="reg-status-track">
+                                    <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Registered</span></div>
+                                    <div class="reg-step-line done"></div>
+                                    <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Submitted</span></div>
+                                    <div class="reg-step-line active"></div>
+                                    <div class="reg-step active"><span class="reg-dot"></span><span class="reg-step-lbl">Pending Certificate</span></div>
+                                </div>
+                            </div>
+                            <div class="reg-card">
+                                <div class="reg-card-org">Malaysia Board of Technologists (MBOT)</div>
+                                <div class="reg-card-role">Graduate Technologist &middot; IT field</div>
+                                <div class="reg-status-track">
+                                    <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Registered</span></div>
+                                    <div class="reg-step-line done"></div>
+                                    <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Submitted</span></div>
+                                    <div class="reg-step-line active"></div>
+                                    <div class="reg-step active"><span class="reg-dot"></span><span class="reg-step-lbl">Pending Certificate</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Space-Optimized Android Mobile Profile Bar -->
@@ -988,33 +1014,6 @@ document.body.setAttribute('data-theme', 'dark');
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <div class="reg-affiliations">
-                <div class="reg-title">Professional Registrations</div>
-                <div class="reg-cards">
-                    <div class="reg-card">
-                        <div class="reg-card-org">Board of Engineers Malaysia (BEM)</div>
-                        <div class="reg-card-role">Graduate Engineer</div>
-                        <div class="reg-status-track">
-                            <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Registered</span></div>
-                            <div class="reg-step-line done"></div>
-                            <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Submitted</span></div>
-                            <div class="reg-step-line active"></div>
-                            <div class="reg-step active"><span class="reg-dot"></span><span class="reg-step-lbl">Pending Certificate</span></div>
-                        </div>
-                    </div>
-                    <div class="reg-card">
-                        <div class="reg-card-org">Malaysia Board of Technologists (MBOT)</div>
-                        <div class="reg-card-role">Graduate Technologist &middot; IT field</div>
-                        <div class="reg-status-track">
-                            <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Registered</span></div>
-                            <div class="reg-step-line done"></div>
-                            <div class="reg-step done"><span class="reg-dot"></span><span class="reg-step-lbl">Submitted</span></div>
-                            <div class="reg-step-line active"></div>
-                            <div class="reg-step active"><span class="reg-dot"></span><span class="reg-step-lbl">Pending Certificate</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-main);">
                 Muhammad Irfan Fahmi
             </div>
