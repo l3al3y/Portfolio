@@ -315,10 +315,11 @@
             </div>
             <div class="stat-card">
                 <div class="stat-num">&lt;0.1ms</div>
-                <div class="stat-label">Edge Inference</div>
+                <div class="stat-label">Reported Classifier Time</div>
             </div>
         </div>
 
+        <p style="max-width:760px;margin:0 auto 2rem;color:var(--text-muted);font-size:0.85rem;">The 98.6% score is reported cross-validation accuracy, not a measured accuracy across all users or reading sessions. The reported classifier time excludes camera capture and MediaPipe landmark extraction. Gesture behaviour depends on lighting, visibility, hardware, and browser support.</p>
         <!-- Dossier Navigation Strip -->
         <nav class="dossier-nav-bar" aria-label="Project Sections">
             <a href="#interactive-lab" class="dossier-nav-item">
@@ -389,7 +390,7 @@
                 </div>
                 <h3 style="font-weight:800; color:var(--emerald); font-size:1.05rem; margin:0 0 0.4rem;">Neutral / Idle &mdash; No Hand</h3>
                 <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.55; margin:0;">
-                    <strong>Lower both hands away from the camera</strong>. The page remains completely stationary with zero return-stroke false triggers.
+                    <strong>Lower both hands away from the camera</strong>. The idle posture is designed to keep the page stationary and reduce return-stroke false triggers.
                 </p>
             </div>
         </div>
@@ -424,7 +425,7 @@
             </div>
             <div class="webtoon-panel" style="background: linear-gradient(180deg, #1a253a, #151d2c);">
                 <h4>Panel 2: Zero Return Stroke Recoil</h4>
-                <p>Legacy swipe heuristics failed because bringing your hand back down triggered a reverse scroll. Our 71D geometric model classifies static hand shape rather than motion vectors, eliminating false return strokes.</p>
+                <p>Legacy swipe heuristics could trigger a reverse scroll when bringing a hand back down. The 71D geometric model classifies static hand shape rather than motion vectors to reduce false return strokes.</p>
                 <span class="webtoon-cue-badge" style="background:rgba(192,132,252,0.15); color:var(--purple); border:1px solid var(--purple);">
                     &uarr; Hold Page Up (Left Hand) to Scroll Back Up &uarr;
                 </span>

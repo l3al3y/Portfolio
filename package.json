@@ -1,0 +1,9 @@
+{
+  "name": "irfan-fahmi-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test --test-isolation=none tests/*.test.mjs"
+  }
+}

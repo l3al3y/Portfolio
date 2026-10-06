@@ -13,5 +13,7 @@
   Cache-Control: public, max-age=31536000, immutable
 /apple-touch-icon.png
   Cache-Control: public, max-age=31536000, immutable
+# Documents and their registry have stable, mutable URLs. Revalidate on Pages.
+# This file applies to Cloudflare Pages; GitHub Pages headers are checked separately.
 /certificates/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=0, must-revalidate

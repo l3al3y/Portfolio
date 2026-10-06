@@ -1,175 +1,73 @@
-# Muhammad Irfan Fahmi — AI & Data Engineer Portfolio
+# Irfan Fahmi — Personal Portfolio
 
-<p align="center">
-  <strong>AI & Data Engineer · Computer Engineering (Hons) · Cisco CCNA Certified</strong>
-</p>
+A working portfolio for AI and computer engineering projects. The presentation puts Irfan and his work first, with real project images, dark/light themes, and the existing static HTML/CSS/JavaScript stack.
 
-<p align="center">
-  <a href="https://irfanfahmi.com"><img src="https://img.shields.io/badge/🌐_Portfolio-irfanfahmi.com-00d4ff?style=for-the-badge" alt="Live Website"></a>
-  <a href="https://live.irfanfahmi.com"><img src="https://img.shields.io/badge/⚡_Telemetry-live.irfanfahmi.com-10b981?style=for-the-badge" alt="Live Telemetry"></a>
-  <a href="https://arcade.irfanfahmi.com"><img src="https://img.shields.io/badge/🎮_Arcade-arcade.irfanfahmi.com-a855f7?style=for-the-badge" alt="Mini Arcade"></a>
-  <a href="https://linkedin.com/in/mifi99"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn"></a>
-</p>
+## Local preview
 
-<p align="center">
-  <img src="https://img.shields.io/badge/YOLOv8-PyTorch-EE4C2C?style=flat-square&amp;logo=pytorch&amp;logoColor=white" alt="YOLOv8">
-  <img src="https://img.shields.io/badge/Cisco_CCNA-Certified-005BBB?style=flat-square&amp;logo=cisco&amp;logoColor=white" alt="CCNA">
-  <img src="https://img.shields.io/badge/Festo-Industrial_AI-007AC2?style=flat-square" alt="Festo">
-  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI">
-  <img src="https://img.shields.io/badge/Cloudflare-Edge-F38020?style=flat-square&amp;logo=cloudflare&amp;logoColor=white" alt="Cloudflare">
-  <img src="https://img.shields.io/badge/Certs-26_Verified-2EA043?style=flat-square" alt="26 Certifications">
-  <img src="https://img.shields.io/badge/Open_to_Work-Available-success?style=flat-square" alt="Open to Work">
-</p>
+Requires Node.js 24 or newer. No dependency installation or build step is needed.
 
----
-
-## About
-
-Computer Engineering (Hons) graduate from **Universiti Teknikal Malaysia Melaka (UTeM)**. I build end-to-end AI systems — from training YOLOv8 models and building LLM agent pipelines to deploying FastAPI backends with Docker.
-
-Based in Klang Valley, Malaysia. Open to relocation.
-
-- 🌐 **Portfolio:** [irfanfahmi.com](https://irfanfahmi.com)
-- ⚡ **Live Telemetry:** [live.irfanfahmi.com](https://live.irfanfahmi.com)
-- 🎮 **Mini Arcade:** [arcade.irfanfahmi.com](https://arcade.irfanfahmi.com)
-- 📄 **Resume:** [`resume/resume.pdf`](resume/resume.pdf)
-- 🏅 **Credentials:** [`certificates/registry.json`](certificates/registry.json) (26 verified records)
-
----
-
-## Featured Projects
-
-### 1. 👁️ [Hybrid Self-Checkout System](https://github.com/l3al3y/FYP-PROJECT) — Computer Vision + Barcode Fusion (Capstone)
-Dual-verification retail automation to detect barcode scan evasion and item swapping using real-time computer vision.
-- Custom-trained **YOLOv8** model, 50 epochs on Malaysian retail items
-- **77.4% Precision**, **72.0% Recall**, **<90ms** inference latency
-- Dual split-view cameras, serial HID USB barcode reader, MySQL sync
-
-### 2. 🤖 [Hermes Agent](https://live.irfanfahmi.com) — Autonomous Multi-Model AI on Edge Hardware
-A 24/7 autonomous AI agent system running on a Samsung Galaxy A54 (Termux/Linux). Orchestrates multiple LLM providers with consensus-based decision making, automatic failover, and structured causal reasoning.
-- Multi-LLM provider routing with consensus governance
-- Causal post-mortem engine for automated error analysis
-- Real-time telemetry at [live.irfanfahmi.com](https://live.irfanfahmi.com)
-- Contributed to [500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects) (36k+ ★) — [PR #167](https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167)
-
-### 3. 📖 [IrfanLLM Manga Controller](https://irfanfahmi.com/manga.html) — Touchless AI Reading Assistant
-Zero-touch reading assistant powered by hand gesture recognition via front camera.
-- **98.6%** cross-validation accuracy, 71D hand geometry features
-- 100-tree Random Forest classifier compiled to 14.6KB JavaScript
-- **<0.1ms** client-side inference, zero-recoil geometric classification
-- Bookmarklet: works on any manga/webtoon site
-
-### 4. 🎮 [Mini Arcade](https://arcade.irfanfahmi.com) — Browser Games Platform
-Interactive gaming suite on Cloudflare Edge with <60ms latency.
-- AI Tic Tac Toe (Minimax), Soccer Penalty, Sports Memory Match
-- React, TypeScript, Tailwind CSS, Cloudflare Pages
-
-### 5. ⚡ IoT Livestock Weight Tracking — INOTEK 2025 Award Winner
-Industrial IoT platform with Arduino and calibrated HX711 strain-gauge sensors. 98%+ measurement consistency. **3rd Place at INOTEK 2025**.
-
----
-
-## Certifications (26 Verified)
-
-| Category | Count | Highlights |
-| :--- | :---: | :--- |
-| 🛡️ Cisco & Cybersecurity | **4** | CCNA Enterprise Networking, Switching & Routing, Endpoint Security, Cyber Threat Management |
-| 🤖 Digital Upskilling & AI | **8** | Agentic AI, AI Visionary, AI Safety, Cloud, Cybersecurity, GenAI, Quantum Computing |
-| ⚙️ Industrial Automation | **4** | Festo Industrial AI, Arduino, Basic IoT, Fiber Optic Splicing |
-| 🎓 Academic Qualifications | **3** | B. Comp Eng (Hons) UTeM, Diploma Electronic Eng, Certificate Computer Networking |
-| 🏆 Awards & Achievements | **5** | INOTEK 2025 (3rd), Best Student Award, Director's List, WiMyL Gold |
-| 🎖️ Service & Experience | **2** | Military Reserve (Volunteer), 7-Eleven Professional Training |
-
-> View all credentials at [irfanfahmi.com#certificates](https://irfanfahmi.com#certificates)
-
----
-
-## Architecture
-
-```mermaid
-graph TD
-    A[Visitor] -->|HTTPS| B[GitHub Pages: irfanfahmi.com]
-    A -->|Telemetry| C[live.irfanfahmi.com]
-    A -->|Arcade| D[Cloudflare Pages: arcade.irfanfahmi.com]
-    A -->|AI Chat| E[Cloudflare Worker: contact-gate]
-    E -->|Multi-Provider| F[LLM Routing with Failover]
-    E -->|Bot Defense| G[Cloudflare Turnstile]
-    B -->|Offline| H[1D-CNN Typo Corrector]
+```sh
+npm start
 ```
 
-- **Frontend:** Vanilla HTML5, CSS3 (dark/light themes, glassmorphism, mobile bottom dock), ES6+ JS
-- **Edge AI:** In-browser MediaPipe Hands + Random Forest classifier via WebRTC
-- **Backend:** [Portfolio-Backend](https://github.com/l3al3y/Portfolio-Backend) — Cloudflare Worker with rate-limited AI chat, Turnstile verification, multi-model failover
-- **Offline:** Built-in 1D-CNN ensures chatbot responds during network downtime
+Open **http://127.0.0.1:8000**. The server binds to localhost. Deployment uses the existing GitHub Pages workflow.
 
----
-
-## Local Development
-
-```bash
-git clone https://github.com/l3al3y/Portfolio.git
-cd Portfolio
-python -m http.server 8000
-# Open http://localhost:8000
+```sh
+npm test
 ```
 
----
+## Preserved functionality
 
-## Project Structure
+- Infinite hero marquee with a pause control, global motion preference, and system reduced-motion support.
+- Hero BEM/MBOT application trackers: Registered → Submitted → Pending Certificate. Certificates remain pending.
+- Desktop shows the full portfolio with top navigation. At 768px and below, the floating dock switches separate Home, Projects, Skills & Experience, Certs and AI Chat destinations. Mobile also has an accessible navigation sheet for contact, résumé and other links.
+- Five sourced case studies, project filters, manual hero tabs, original demos, telemetry and external links.
+- Existing 26-document certificate registry with search, category filters, filter reset, incremental reveal and genuine PDF-derived previews.
+- Streaming assistant, stop/retry/clear/copy controls and useful unavailable-service states.
+- Cloudflare contact verification and résumé entry points, followed by the original résumé PDF preview.
+- Original privacy/terms content, gesture controller and extension.
 
+## Structure
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | Semantic page, hero marquee/registrations, navigation and dialogs |
+| `lab/content.js` | Source-backed case studies, approach and assistant facts |
+| `lab/portfolio.css`, `lab/design.css`, `lab/fonts.css` | Shared presentation, revised device compositions, dark/light tokens and local fonts |
+| `lab/hero.js` | Visitor-controlled project showcase and keyboard tabs |
+| `lab/portfolio-motion.js` | Marquee pause, reduced motion and decorative transitions |
+| `lab/navigation.js` | Mobile screen routing, anchor aliases/history, desktop section navigation, accessible menu and keyboard clearance |
+| `lab/main.js` | Project filters, case studies, credentials and document previews |
+| `lab/integrations.js` | Existing gateway payloads, SSE parser, health and contact contracts |
+| `lab/assistant.js`, `lab/contact.js` | Conversation and verification interfaces |
+| `lab/project-art.js` | Clearly labelled illustrations for checkout and livestock |
+| `certificates/registry.json` | Canonical credential records |
+| `assets/documents/` | Previews rendered from actual PDFs |
+| `manga.html`, `controller.js`, `assets/manga/` | Original gesture demo and extension |
+| `privacy.html`, `terms.html` | Existing legal content |
+
+Legacy `app.js` and `style.css` remain for demo compatibility. The original Systems Lab prototype modules are inactive on the main page. Fonts are self-hosted with OFL licenses. No new runtime framework or third-party generation service is required.
+
+The revised hero restores the personal MIF.dev identity. Desktop pairs the introduction with a candidate summary and compact original project media. Mobile puts the marquee and pending registration trackers before the candidate disclosure and media. Longer About/assistant details collapse on phones. Case studies and documents use full-height phone dialogs; the assistant composer stays visible above the dock on the tested 390 × 844 viewport.
+
+## Evidence and integrations
+
+[REMAKE_NOTES.md](REMAKE_NOTES.md) records the live-site and authenticated frontend/private-backend inspection, required hero preservation, and actual Worker contracts. [SOURCE_NOTES.md](SOURCE_NOTES.md) records the project and document evidence. [DESIGN_V2_VERIFICATION.md](DESIGN_V2_VERIFICATION.md) records the approved revision's checks and limits; [VERIFICATION.md](VERIFICATION.md) preserves the earlier implementation checks.
+
+The existing Worker endpoints and request formats are unchanged. Provider secrets and protected contacts remain server-side; the Turnstile site key is intentionally public. The page keeps conversation history in memory and sends relevant context to the existing gateway when asked. Upstream retention is not fully audited, and no new retention promise is made.
+
+The GitHub Pages deployment workflow now runs the Node tests before upload/deployment. It still deploys on a push to main. The existing `_headers` file is specific to Cloudflare Pages and does not configure GitHub Pages. Credential fetches request revalidation; the optional Pages document rules also revalidate mutable URLs.
+
+## Document maintenance
+
+After replacing a registry PDF or résumé, regenerate its previews:
+
+```sh
+python scripts/generate_previews.py
 ```
-Portfolio/
-├── index.html                  # Main portfolio page with SEO meta
-├── manga.html                  # Touchless reader demo page
-├── privacy.html                # Privacy policy
-├── terms.html                  # Terms of service
-├── style.css                   # Styling, animations, mobile dock
-├── app.js                      # AI chatbot, 3D canvas, UI logic
-├── manga.js                    # Random Forest vision controller
-├── controller.js               # Manga gesture controller module
-├── CNAME                       # Custom domain (irfanfahmi.com)
-├── sitemap.xml                 # SEO sitemap
-├── robots.txt                  # Crawler directives
-├── _headers                    # Custom HTTP headers
-├── favicon.svg                 # Vector favicon
-├── favicon.ico                 # Legacy favicon
-├── favicon-32x32.png           # 32px favicon
-├── favicon-192x192.png         # 192px favicon (PWA)
-├── apple-touch-icon.png        # iOS home screen icon
-├── .nojekyll                   # Bypass Jekyll on GitHub Pages
-├── googleeb52c0cc14a917bd.html # Google Search Console verification
-├── updates.xml                 # Update feed
-├── CHANGELOG.md                # Version history
-├── certificates/               # 26 PDF certs + registry.json
-│   └── registry.json           # Certificate metadata (26 records)
-├── resume/
-│   └── resume.pdf              # Official resume
-├── assets/
-│   ├── og-preview.png          # Open Graph social preview (1200x630)
-│   ├── og-preview.svg          # OG preview source
-│   ├── thumb-yolov8.png        # YOLOv8 project thumbnail
-│   ├── thumb-hermes.png        # Hermes telemetry thumbnail
-│   ├── thumb-arcade.png        # Arcade project thumbnail
-│   ├── thumb-irfanllm.png      # IrfanLLM project thumbnail
-│   └── manga/                  # Manga controller assets
-├── extension/                  # IrfanLLM browser extension
-│   ├── manifest.json
-│   ├── popup.html
-│   └── ...
-└── .github/
-    └── workflows/
-        └── deploy-pages.yml    # GitHub Pages deploy workflow
-```
 
----
+This optional script requires pypdfium2 and Pillow. Neither is a website runtime dependency.
 
-## Contact
+## Approved release
 
-- 🌐 [irfanfahmi.com](https://irfanfahmi.com)
-- 💼 [linkedin.com/in/mifi99](https://linkedin.com/in/mifi99)
-- 🐙 [github.com/l3al3y](https://github.com/l3al3y)
-- 📍 Klang Valley, Malaysia (open to relocation)
-
-<p align="center">
-  <sub>Muhammad Irfan Fahmi © 2026</sub>
-</p>
+The revised desktop/mobile design was approved on 6 October 2026 for publication to GitHub. The release is based on `efba5e09f4118487a153d463f7134f03f3d11582`; revert the release commit to restore that version while preserving history. The backend integration contracts remain unchanged. Deployment success must be checked in GitHub Actions after publication; local test results alone do not establish that the live site has updated.
