@@ -5,3 +5,26 @@ Thumbs.db
 *.swp
 *~
 *.log
+
+# Local/private material must not return to the public portfolio.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.db
+*.sqlite
+*.sqlite3
+*.apk
+*.xapk
+*.npk
+assets/smc/
+work/
+outputs/
+public-site/
+node_modules/
+__pycache__/

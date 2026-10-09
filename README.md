@@ -1,4 +1,4 @@
-# Irfan Fahmi — Personal Portfolio
+# Irfan Fahmi â€” Personal Portfolio
 
 A working portfolio for AI and computer engineering projects. The presentation puts Irfan and his work first, with real project images, dark/light themes, and the existing static HTML/CSS/JavaScript stack.
 
@@ -19,12 +19,12 @@ npm test
 ## Preserved functionality
 
 - Infinite hero marquee with a pause control, global motion preference, and system reduced-motion support.
-- Hero BEM/MBOT application trackers: Registered → Submitted → Pending Certificate. Certificates remain pending.
-- Desktop shows the full portfolio with top navigation. At 768px and below, the floating dock switches separate Home, Projects, Skills & Experience, Certs and AI Chat destinations. Mobile also has an accessible navigation sheet for contact, résumé and other links.
+- Hero BEM/MBOT application trackers: Registered â†’ Submitted â†’ Pending Certificate. Certificates remain pending.
+- Desktop shows the full portfolio with top navigation. At 768px and below, the floating dock switches separate Home, Projects, Skills & Experience, Certs and AI Chat destinations. Mobile also has an accessible navigation sheet for contact, rÃ©sumÃ© and other links.
 - Five sourced case studies, project filters, manual hero tabs, original demos, telemetry and external links.
 - Existing 26-document certificate registry with search, category filters, filter reset, incremental reveal and genuine PDF-derived previews.
 - Streaming assistant, stop/retry/clear/copy controls and useful unavailable-service states.
-- Cloudflare contact verification and résumé entry points, followed by the original résumé PDF preview.
+- Cloudflare contact verification and rÃ©sumÃ© entry points, followed by the original rÃ©sumÃ© PDF preview.
 - Original privacy/terms content, gesture controller and extension.
 
 ## Structure
@@ -48,7 +48,7 @@ npm test
 
 Legacy `app.js` and `style.css` remain for demo compatibility. The original Systems Lab prototype modules are inactive on the main page. Fonts are self-hosted with OFL licenses. No new runtime framework or third-party generation service is required.
 
-The revised hero restores the personal MIF.dev identity. Desktop pairs the introduction with a candidate summary and compact original project media. Mobile puts the marquee and pending registration trackers before the candidate disclosure and media. Longer About/assistant details collapse on phones. Case studies and documents use full-height phone dialogs; the assistant composer stays visible above the dock on the tested 390 × 844 viewport.
+The revised hero restores the personal MIF.dev identity. Desktop pairs the introduction with a candidate summary and compact original project media. Mobile puts the marquee and pending registration trackers before the candidate disclosure and media. Longer About/assistant details collapse on phones. Case studies and documents use full-height phone dialogs; the assistant composer stays visible above the dock on the tested 390 Ã— 844 viewport.
 
 ## Evidence and integrations
 
@@ -60,7 +60,7 @@ The GitHub Pages deployment workflow now runs the Node tests before upload/deplo
 
 ## Document maintenance
 
-After replacing a registry PDF or résumé, regenerate its previews:
+After replacing a registry PDF or rÃ©sumÃ©, regenerate its previews:
 
 ```sh
 python scripts/generate_previews.py
@@ -71,3 +71,11 @@ This optional script requires pypdfium2 and Pillow. Neither is a website runtime
 ## Approved release
 
 The revised desktop/mobile design was approved on 6 October 2026 for publication to GitHub. The release is based on `efba5e09f4118487a153d463f7134f03f3d11582`; revert the release commit to restore that version while preserving history. The backend integration contracts remain unchanged. Deployment success must be checked in GitHub Actions after publication; local test results alone do not establish that the live site has updated.
+
+## Public repository boundary
+
+This repository contains the portfolio frontend and its intentionally published project/document assets. Keep provider credentials, contact/account records, job-application databases, phone diagnostics, signing keys and local build artifacts outside it. `.gitignore` helps prevent accidental staging; it does not sanitize existing Git history or release assets.
+
+SMC development and build records belong in the private `l3al3y/smc-crows-source` repository. Its public site and current release files belong in `l3al3y/smc-crows-downloads`. Portfolio retains only a small recovery page and the legacy resource release URLs required by previously installed APKs. The current SMC release is available at https://irfanfahmi.com/smc/.
+
+GitHub Pages publishes an explicit website staging directory rather than the entire checkout. Tests, development scripts, Markdown work notes and repository configuration are excluded from that artifact. Published certificate and résumé assets remain intentional public content.
