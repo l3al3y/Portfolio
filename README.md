@@ -79,3 +79,17 @@ This repository contains the portfolio frontend and its intentionally published 
 SMC development and build records belong in the private `l3al3y/smc-crows-source` repository. Its public site and current release files belong in `l3al3y/smc-crows-downloads`. Portfolio retains only a small recovery page and the legacy resource release URLs required by previously installed APKs. The current SMC release is available at https://irfanfahmi.com/smc/.
 
 GitHub Pages publishes an explicit website staging directory rather than the entire checkout. Tests, development scripts, Markdown work notes and repository configuration are excluded from that artifact. Published certificate and résumé assets remain intentional public content.
+
+
+## Credential protection
+
+Keep provider keys in server-side environment variables or a local secret store, never in website JavaScript, APKs, public source ZIPs or Git commits. GitHub standard secret scanning and push protection are enabled. The repository-specific checker also recognizes Rootsys keys and inspects small ZIP members; it reports file locations and credential types without printing values. CI checks the committed tree and blocks deployment on findings.
+
+For prevention before a local commit, install and enable the provided hook once per fresh clone:
+
+`sh
+python -m pip install pre-commit
+python -m pre_commit install
+`
+
+You can also run python scripts/check_secrets.py --staged before committing. Hooks are opt-in for each clone. CI runs after a push and cannot undo an already exposed key. Revoke or rotate any published credential, even after history cleanup. Re-clone after the October 2026 sanitation; never merge or push the old contaminated history back into this repository. Preserve original local work separately.
