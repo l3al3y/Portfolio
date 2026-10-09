@@ -29,6 +29,12 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Check public files for credentials
+        run: python3 scripts/check_secrets.py
+
+      - name: Test credential guard
+        run: python3 -m unittest discover -s tests -p test_secret_guard.py
+
       - name: Test portfolio
         run: npm test
 
