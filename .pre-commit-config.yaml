@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: public-secret-check
+        name: Check staged files for credentials
+        entry: python scripts/check_secrets.py --staged
+        language: system
+        pass_filenames: false
+        always_run: true
