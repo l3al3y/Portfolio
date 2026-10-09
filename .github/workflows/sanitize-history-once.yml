@@ -1,0 +1,162 @@
+name: Sanitize approved Portfolio history once
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portfolio-history-sanitation
+  cancel-in-progress: false
+
+jobs:
+  sanitize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the authorized temporary commit and full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact scrub and publish only main and two release tags
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          """One-use GitHub runner sanitation. Never publishes backups or credential values."""
+          import hashlib
+          import io
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          import sys
+          import urllib.request
+          import zipfile
+          
+          BASE = 'e622615f76e19d4c149d7bb7cefc27d59e35aec0'
+          CLEAN_BASE = '5669fc37ec9052ba25ed4e1d082ba13de1205149'
+          BASE_TREE = 'f8ac62c8ffca63e93068afbed946dcf93f1f7613'
+          WORKFLOW = '.github/workflows/sanitize-history-once.yml'
+          BEFORE_TAGS = {
+              'smc-android-20261008-r2': '2e32b0c9357e6967ae0a750c74103052855ebf74',
+              'smc-resources-2080256-r1': 'a302344f2f488e1b31a097d1c2d36c66c2b58138',
+          }
+          AFTER_TAGS = {
+              'smc-android-20261008-r2': '69ba1653539444115cb770966c2104ae7acb8ae1',
+              'smc-resources-2080256-r1': '7a1bf40a89aa7f494e08b28e5a5df4115b62b3c0',
+          }
+          REMOVED = ['assets/smc/', 'agent/', 'config/', 'contact-gate-worker/', 'data/',
+                     'docs/', 'src/', 'web/', 'PROJECT_MEMORY.md', 'AGENTS.md', '.env.example',
+                     'cli.py', 'Dockerfile', 'docker-compose.yml', 'requirements.txt',
+                     'terminal.html', 'Resume maukerja.pdf', 'resume/resume.html',
+                     'resume/resume.md', 'resume/resume.txt', 'resume/verify_ats.py',
+                     'scripts/automate_edge_maukerja.py', 'scripts/evaluate_chatbot.py',
+                     'scripts/generate_and_evaluate_1k.py', 'scripts/generate_pdf.py',
+                     'scripts/run_parallel_models_update.py', 'scripts/send_dummy_job.py',
+                     'scripts/sync_excel.py', 'tests/test_candidate.py', 'tests/test_chatbot_engine.py',
+                     'tests/test_cli.py', 'tests/test_database.py', 'tests/test_issue.py',
+                     'tests/test_llm_client.py', 'tests/test_motion_connector.py', 'tests/test_portals.py']
+          
+          
+          def command(*args, cwd=None, env=None, data=None):
+              return subprocess.check_output(list(args), cwd=cwd, env=env, input=data).decode().strip()
+          
+          
+          def run(source, head, destination, module, apply=False):
+              assert re.fullmatch('[0-9a-f]{40}', head)
+              assert not destination.exists()
+              input_bundle = destination.with_suffix('.input.bundle')
+              assert not input_bundle.exists()
+              command('git', 'bundle', 'create', str(input_bundle), '--all', cwd=source)
+              command('git', 'clone', '--mirror', str(input_bundle), str(destination))
+              def git(*args, data=None, env=None):
+                  return command('git', *args, cwd=destination, data=data, env=env)
+              assert git('rev-parse', head + '^') == BASE, 'Unexpected parent: refuses later edits'
+              assert git('rev-parse', BASE + '^{tree}') == BASE_TREE
+              assert git('diff', '--name-only', BASE, head) == WORKFLOW, 'Unexpected changed paths'
+              expected_tree = git('rev-parse', head + '^{tree}')
+              for name, before in BEFORE_TAGS.items():
+                  assert git('rev-parse', 'refs/tags/' + name) == before, 'Tag changed'
+              git('update-ref', 'refs/heads/main', head)
+              expected_refs = ['refs/heads/main'] + ['refs/tags/' + name for name in BEFORE_TAGS]
+              for ref in git('for-each-ref', '--format=%(refname)').splitlines():
+                  if ref not in expected_refs:
+                      git('update-ref', '-d', ref)
+              git('symbolic-ref', 'HEAD', 'refs/heads/main')
+              args = [sys.executable, str(module), '--force', '--invert-paths']
+              for path in REMOVED:
+                  args += ['--path', path]
+              args += ['--blob-callback', "blob.data = re.sub(br'fiq-[A-Za-z0-9]{20,}', b'REDACTED_PROVIDER_KEY', blob.data)\nif b'\\x00' not in blob.data[:4096]:\n    blob.data = re.sub(br'C:[\\\\/]+Users[\\\\/]+[^\\s\"<>]+', b'REDACTED_LOCAL_PATH', blob.data)",
+                       '--message-callback', "return re.sub(br'fiq-[A-Za-z0-9]{20,}', b'REDACTED_PROVIDER_KEY', message)"]
+              command(*args, cwd=destination)
+              assert git('rev-parse', 'main^') == CLEAN_BASE, 'Does not match reviewed exact preview'
+              assert git('rev-parse', 'main^{tree}') == expected_tree, 'Current tree changed'
+              for name, after in AFTER_TAGS.items():
+                  assert git('rev-parse', 'refs/tags/' + name) == after, 'Sanitized tag mismatch'
+              assert sorted(git('for-each-ref', '--format=%(refname)').splitlines()) == sorted(expected_refs)
+              objects = git('rev-list', '--objects', '--all').splitlines()
+              oids = [line.split(' ', 1)[0] for line in objects]
+              rows = git('cat-file', '--batch-check=%(objectname) %(objecttype)', data=('\n'.join(oids)+'\n').encode()).splitlines()
+              count = 0
+              patterns = [br'fiq-[A-Za-z0-9]{20,}', br'-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----',
+                          br'\b(?:sk-(?:proj-|ant-)?[A-Za-z0-9_-]{20,}|AIza[0-9A-Za-z_-]{30,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{30,})']
+              for row in rows:
+                  oid, kind = row.split()
+                  if kind not in ('blob', 'commit'):
+                      continue
+                  data = subprocess.check_output(['git', 'cat-file', kind, oid], cwd=destination)
+                  if kind == 'blob':
+                      count += 1
+                  for pattern in patterns:
+                      assert not re.search(pattern, data), 'Credential pattern remains; value omitted'
+              for commit in git('rev-list', '--all').splitlines():
+                  for path in git('ls-tree', '-r', '--name-only', commit).splitlines():
+                      assert not any(path == blocked or (blocked.endswith('/') and path.startswith(blocked)) for blocked in REMOVED), 'Removed history path remains'
+              new_head = git('rev-parse', 'main')
+              report = {'status': 'verified preview', 'main_before': head, 'main_after': new_head,
+                        'reviewed_parent': CLEAN_BASE, 'current_tree_unchanged': True,
+                        'retained_blobs': count, 'retained_commits': int(git('rev-list', '--all', '--count')),
+                        'tags_after': AFTER_TAGS, 'root_key_revocation': 'user handles provider account',
+                        'temporary_workflow': 'remove through authenticated GitHub UI after successful job'}
+              if apply:
+                  assert os.environ['GITHUB_REPOSITORY'] == 'l3al3y/Portfolio'
+                  assert os.environ['GITHUB_REF'] == 'refs/heads/main'
+                  url = 'https://github.com/l3al3y/Portfolio.git'
+                  # Standard ephemeral GitHub Actions token, supplied only through askpass.
+                  askpass = destination.parent / 'portfolio-git-askpass.sh'
+                  askpass.write_text('#!/bin/sh\ncase "$1" in\n*Username*) printf "%s\\n" "x-access-token" ;;\n*Password*) printf "%s\\n" "$GH_TOKEN" ;;\nesac\n', encoding='utf-8')
+                  askpass.chmod(0o700)
+                  env = dict(os.environ, GIT_ASKPASS=str(askpass), GIT_TERMINAL_PROMPT='0')
+                  live = dict(line.split()[::-1] for line in git('ls-remote', url, 'refs/heads/main', *['refs/tags/' + n for n in BEFORE_TAGS], env=env).splitlines())
+                  assert live == {'refs/heads/main': head, **{'refs/tags/' + n: s for n, s in BEFORE_TAGS.items()}}, 'Live refs changed; no push'
+                  push = ['push', '--atomic', '--force-with-lease=refs/heads/main:' + head]
+                  for name, sha in BEFORE_TAGS.items():
+                      push.append('--force-with-lease=refs/tags/' + name + ':' + sha)
+                  push += [url] + [ref + ':' + ref for ref in expected_refs]
+                  git(*push, env=env)
+                  live_after = dict(line.split()[::-1] for line in git('ls-remote', url, *expected_refs, env=env).splitlines())
+                  assert live_after == {'refs/heads/main': new_head, **{'refs/tags/' + n: s for n, s in AFTER_TAGS.items()}}, 'Remote verification mismatch'
+                  report['status'] = 'remote main and both release tags sanitized'
+              print(json.dumps(report, indent=2))
+              return report
+          
+          
+          if __name__ == '__main__':
+              temp = Path(os.environ['RUNNER_TEMP'])
+              wheel_url = 'https://files.pythonhosted.org/packages/60/60/d3943f0880ebcb7e0bdf79254d10dddd39c7b656eeecae32b8806ff66dec/git_filter_repo-2.47.0-py3-none-any.whl'
+              data = urllib.request.urlopen(wheel_url, timeout=60).read()
+              assert hashlib.sha256(data).hexdigest() == '2cd04929b9024e83e65db571cbe36aec65ead0cb5f9ec5abe42158654af5ad83'
+              with zipfile.ZipFile(io.BytesIO(data)) as package:
+                  module_data = package.read('git_filter_repo.py')
+              assert hashlib.sha256(module_data).hexdigest() == '67447413e273fc76809289111748870b6f6072f08b17efe94863a92d810b7d94'
+              module = temp / 'verified-git-filter-repo.py'
+              module.write_bytes(module_data)
+              report = run(Path(os.environ['GITHUB_WORKSPACE']), os.environ['GITHUB_SHA'], temp / 'portfolio-sanitized.git', module, apply=True)
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as stream:
+                  stream.write('## Portfolio history sanitation\n\n```json\n' + json.dumps(report, indent=2) + '\n```\n')
+          PY
