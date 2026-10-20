@@ -23,13 +23,14 @@ The preview serves http://127.0.0.1:8000. `stage_site.py` requires a fresh outpu
 - `index.html`, `projects/`, `about/`, `credentials/`, `contact/`: pages.
 - `lab/hiring.css`: responsive presentation and light/dark themes; local fonts remain in `lab/fonts.css`.
 - `lab/main.js`: collapsed projects, case-study dialogs, document viewer, credential filters and theme toggle.
+- `lab/smc-live.js`: current SMC counters from `/smc/api/apk-stat`, refreshed every minute only while visible, with manual refresh and explicit unavailable/stale states.
 - `lab/content.js`: source-backed project narratives and assistant context.
 - `lab/assistant.js`, `lab/contact.js`, `lab/integrations.js`: original assistant and Cloudflare verified-contact contracts.
 - `certificates/registry.json`: 26 credential documents, with original PDF previews in `assets/documents/`.
-- `assets/portfolio-intro.mp4`, `assets/portfolio-film.jpg`: 30-second, 1280 × 720, 30 fps silent Remotion introduction and poster.
+- `assets/irfan-employer-pitch.mp4`, `assets/employer-pitch-poster.jpg`: narrated 54-second, 1280 × 720, 30 fps Remotion introduction with animated clicks and SMC evidence. The original silent film remains available at its existing URL.
 - `assets/checkout-architecture.svg`: clearly labelled architecture illustration, not a live screenshot.
 
-The Remotion source and MCP renderer are delivered separately from the static website; visitors do not need Remotion, React or MCP. Video controls are visitor-operated and the video does not autoplay. The legacy motion and navigation modules remain for compatibility and their existing tests.
+The Remotion source and MCP renderer are delivered separately from the static website; visitors do not need Remotion, React or MCP. Video controls are visitor-operated and the video does not autoplay. Narration uses open-source Piper and the CC BY 4.0 LibriTTS-R voice model; attribution, transcript, captions and metrics sources are public assets. The video contains a dated snapshot; live figures are fetched separately beside it. The legacy motion and navigation modules remain for compatibility and their existing tests.
 
 ## Evidence and integrations
 

@@ -1,3 +1,4 @@
+import { initSMCLive } from './smc-live.js';
 import { projects, approach } from './content.js';
 import { initAssistant } from './assistant.js';
 import { initContact } from './contact.js';
@@ -146,3 +147,5 @@ $('#theme-toggle').addEventListener('click',()=>{const theme=document.documentEl
 function syncTheme(){$('#theme-toggle').setAttribute('aria-label',`Switch to ${document.documentElement.dataset.theme==='dark'?'light':'dark'} theme`);$('meta[name="theme-color"]').content=document.documentElement.dataset.theme==='dark'?'#0d1117':'#f6f4ee';}
 syncTheme();
 if($('#chat-log'))initAssistant();contact=initContact({onResume:()=>openDocument('resume/resume.pdf','Muhammad Irfan Fahmi — Résumé')});
+
+initSMCLive();

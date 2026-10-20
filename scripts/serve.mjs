@@ -3,11 +3,12 @@ import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root=path.resolve(fileURLToPath(new URL('../',import.meta.url)));
-const mime={'.mp4':'video/mp4','.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.pdf':'application/pdf','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.woff2':'font/woff2','.jpg':'image/jpeg','.zip':'application/zip','.ico':'image/x-icon','.xml':'application/xml'};
+const mime={'.vtt':'text/vtt; charset=utf-8','.txt':'text/plain; charset=utf-8','.mp4':'video/mp4','.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.pdf':'application/pdf','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.woff2':'font/woff2','.jpg':'image/jpeg','.zip':'application/zip','.ico':'image/x-icon','.xml':'application/xml'};
 http.createServer(async(req,res)=>{
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
   try{
     let pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
+    if(pathname==='/smc/api/apk-stat'){const upstream=await fetch('https://irfanfahmi.com/smc/api/apk-stat',{signal:AbortSignal.timeout(8000),cache:'no-store'});res.writeHead(upstream.status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(await upstream.text());return;}
     if(pathname==='/')pathname='/index.html';
     const file=path.resolve(root,'.'+pathname);
     if(!file.startsWith(root+path.sep)||pathname.split('/').some(p=>p.startsWith('.'))){res.writeHead(403);res.end();return;}

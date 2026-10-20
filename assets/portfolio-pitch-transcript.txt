@@ -1,0 +1,19 @@
+MEET IRFAN
+I'm Muhammad Irfan Fahmi. I build practical systems across A I, software, and Android engineering.
+
+HIGHLIGHT PROJECT
+My highlight is S M C Crows: taking a community project from Android compatibility investigation to tested releases, setup guides, and distribution.
+
+RECORDED REACH
+Public counters record over twenty seven thousand Android download requests across releases. The latest Windows online installer has more than six hundred GitHub downloads.
+
+MORE THAN ONE STACK
+I also connect computer vision with barcode input, and turn hand gestures into useful browser controls. I bring Python, C plus plus, and JavaScript.
+
+WHAT I BRING TO A TEAM
+I work through the whole system: investigate the problem, implement a solution, test real behaviour, and document what works. S M C includes a reported one hundred and twenty F P S device test.
+
+LET'S TALK
+If your team needs someone who can build, debug, document, and keep learning, let's talk. Explore my work and résumé at irfan fahmi dot com.
+
+Metrics: recorded requests include retries; snapshot 21 October 2026. Synthetic narration.

@@ -1,0 +1,2 @@
+Narration generated locally with Piper, using the en_US-libritts_r-medium voice, speaker 0. Synthetic narration; not a recording or clone of Irfan. Model dataset: LibriTTS-R, CC BY 4.0, https://www.openslr.org/141/. Model: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/libritts_r/medium. License: https://creativecommons.org/licenses/by/4.0/. Audio edited for timing and mixed with an original click effect.
+SMC community APK merger/developer: MiloSuam. Original game: NetEase Games. Android kit: Super Mecha Crows. Technical assistance: Kisaki Bo-ru and TRazH.
