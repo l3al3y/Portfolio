@@ -1,7 +1,20 @@
 // Public facts checked against the original portfolio, résumé, project source, and registry.
 export const projects = [
   {
-    id: 'checkout', number: '01', title: 'Hybrid Self-Checkout', category: 'Computer vision · Capstone',
+    id: 'smc-crows', number: '01', title: 'SMC Crows v3.0', category: 'Android systems · Release engineering',
+    summary: 'Android 17 target compatibility, multi-tier dynamic hardware skinning, and non-destructive account preservation for thousands of mobile pilots.',
+    image: 'assets/smc/SMC-audit-lobby.png', alt: 'SMC Crows v3.0 lobby and character interface',
+    stack: ['Android SDK 37', 'Dynamic Skinning', 'ARM64 Neon', 'Cloudflare R2'],
+    problem: 'Modern Android 17 runtime changes, 16 KB page-size enforcement, and aggressive GPU memory mapping in modern Qualcomm Adreno drivers caused fatal crashes and severe stutter on modern flagships.',
+    implementation: 'I engineered the v3.0 release pipeline targeting Android 17 (SDK 37) with pageSizeCompat="0x20" and 16 KB ZIP page alignment. Developed a multi-tier dynamic skinning optimizer that routes 100% GPU hardware skinning for pilots (120 FPS) while using selective CPU Neon skinning for mechas to prevent GPU memory crashes. Built automated non-destructive account backup and a 15-part parallel Cloudflare R2 chunk distribution engine with MediaFire mirror fallback.',
+    constraints: 'The vendor engine contains 29 legacy native libraries below 16 KB ELF boundary, requiring manifest compatibility mode. Tested across Samsung Galaxy S26 Ultra and Galaxy A54 devices.',
+    outcome: 'Delivered smooth 120 FPS pilot movement and stable mecha combat on Android 17 hardware with zero driver freezes observed during testing. Successfully distributed via dual-route high-availability CDN while protecting player account progression.',
+    result: '120 FPS · Android 17 target', resultNote: 'Device-tested on Samsung S26 Ultra',
+    links: [{label: 'Explore SMC case study', url: 'smc/index.html'}, {label: 'Download APK', url: 'smc/downloads/index.html'}],
+    sources: [{label: 'SMC Release & Documentation', url: 'smc/index.html'}, {label: 'APK SHA-256 Verification', url: 'smc/downloads/index.html'}]
+  },
+  {
+    id: 'checkout', number: '02', title: 'Hybrid Self-Checkout', category: 'Computer vision · Capstone',
     summary: 'A second pair of eyes for the checkout counter. Barcode identity meets visual verification.',
     image: 'assets/thumb-yolov8.png', alt: 'Original Hybrid Self-Checkout project screenshot',
     stack: ['YOLOv8', 'OpenCV', 'Python', 'MySQL'],
@@ -14,7 +27,7 @@ export const projects = [
     sources: [{label: 'Project README & architecture', url: 'https://github.com/l3al3y/FYP-PROJECT#readme'}]
   },
   {
-    id: 'hermes', number: '02', title: 'Hermes', category: 'Agent systems · Edge infrastructure',
+    id: 'hermes', number: '03', title: 'Hermes', category: 'Agent systems · Edge infrastructure',
     summary: 'Many models. One decision pipeline. An experiment in consensus, failure, and recovery on a phone.',
     image: 'assets/thumb-hermes.png', alt: 'Original Hermes telemetry dashboard screenshot',
     stack: ['Python', 'Termux', 'LLM orchestration', 'Cloudflare'],
@@ -27,7 +40,7 @@ export const projects = [
     sources: [{label: 'Contribution and review status', url: 'https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167'}, {label: 'System telemetry', url: 'https://live.irfanfahmi.com'}]
   },
   {
-    id: 'gesture', number: '03', title: 'Gesture recognition', category: 'Human interaction · Browser ML',
+    id: 'gesture', number: '04', title: 'Gesture recognition', category: 'Human interaction · Browser ML',
     summary: 'Read without touching the screen. Hand geometry becomes a quiet, practical interface.',
     image: 'assets/thumb-irfanllm.png', alt: 'Original IrfanLLM touchless reader interface',
     stack: ['MediaPipe Hands', 'Random Forest', 'JavaScript', 'Python'],
@@ -40,7 +53,7 @@ export const projects = [
     sources: [{label: 'Demo and implementation notes', url: 'manga.html'}, {label: 'Controller source', url: 'https://github.com/l3al3y/Portfolio/blob/main/controller.js'}]
   },
   {
-    id: 'livestock', number: '04', title: 'IoT livestock monitoring', category: 'Embedded systems · Team project',
+    id: 'livestock', number: '05', title: 'IoT livestock monitoring', category: 'Embedded systems · Team project',
     summary: 'From a physical load to a useful reading. A connected weighing platform built around the sensor.',
     image: '', alt: '', stack: ['Arduino', 'HX711', 'Load cells', 'C/C++'],
     problem: 'Tracking livestock weight requires a repeatable way to turn physical measurements into readings that can be monitored over time.',
@@ -52,7 +65,7 @@ export const projects = [
     sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing résumé', url: 'resume/resume.pdf'}]
   },
   {
-    id: 'arcade', number: '05', title: 'Mini Arcade', category: 'Interactive software · Web',
+    id: 'arcade', number: '06', title: 'Mini Arcade', category: 'Interactive software · Web',
     summary: 'A small playground for decisions, timing, and memory. Short sessions, built for the browser.',
     image: 'assets/thumb-arcade.png', alt: 'Original Mini Arcade games interface',
     stack: ['React', 'TypeScript', 'Game logic', 'Tailwind CSS'],

@@ -1,0 +1,8 @@
+name = "irfanfahmi-portfolio-api"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-db"
+database_id = "<YOUR_D1_DATABASE_ID_FROM_CLOUDFLARE>"

@@ -1,6 +1,7 @@
+const allSections = ['home','projects','approach','about','certificates','assistant','contact'];
 const screenSections = {
-  home: ['home','approach','contact'], projects: ['projects'], about: ['about'],
-  certificates: ['certificates'], assistant: ['assistant']
+  home: allSections, projects: allSections, about: allSections,
+  certificates: allSections, assistant: allSections, contact: allSections
 };
 
 // Preserve original portfolio links alongside the new case-study URLs.
