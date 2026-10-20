@@ -1,3 +1,5 @@
+> Update, 21 October 2026: the supplied BEM certificate confirms Graduate Engineer registration in the Computer branch, approved 15 October 2026. The portfolio links to the official BEM directory entry at https://engineer.org.my/public/Engineers/Index/325542; the certificate is not published. MBOT remains pending. The notes below retain their historical check dates.
+
 # Source notes — checked 6 October 2026
 
 Research preceded copywriting. Sources were the live portfolio, authenticated GitHub frontend files, the existing résumé, all credential PDFs, the FYP repository, the contribution PR, and live demos. No testimonial, award, performance metric, or project outcome was fabricated.

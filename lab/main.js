@@ -1,8 +1,8 @@
-import { initSMCLive } from './smc-live.js?v=audit3';
-import { projects, approach } from './content.js?v=audit3';
-import { initAssistant } from './assistant.js?v=audit3';
-import { initContact } from './contact.js?v=audit3';
-import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=audit3';
+import { initSMCLive } from './smc-live.js?v=bem20261021';
+import { projects, approach } from './content.js?v=bem20261021';
+import { initAssistant } from './assistant.js?v=bem20261021';
+import { initContact } from './contact.js?v=bem20261021';
+import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=bem20261021';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

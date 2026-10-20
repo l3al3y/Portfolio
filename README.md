@@ -37,7 +37,7 @@ The Remotion source and MCP renderer are delivered separately from the static we
 
 ## Evidence and integrations
 
-Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM and MBOT certificates remain pending. Cisco Networking Academy documents are course completions. Degree completion has not been newly confirmed.
+Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM Graduate Engineer registration in Computer Engineering was approved on 15 October 2026; the portfolio links to the official BEM public directory for verification. The certificate is not published. MBOT remains an application with its certificate pending. Cisco Networking Academy documents are course completions. Degree completion has not been newly confirmed.
 
 Résumé and public email/LinkedIn links are available directly. Additional contact details retain Cloudflare verification. The assistant is optional, sends questions to the existing gateway on request, and keeps frontend history in memory. No backend keys are included.
 
