@@ -1,4 +1,4 @@
-import { layers } from './content.js?v=bem20261021';
+import { layers } from './content.js?v=bem20261021-final';
 
 const readPreference = () => { try { return localStorage.getItem('lab-motion'); } catch { return null; } };
 export function initMotion() {

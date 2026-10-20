@@ -1,4 +1,4 @@
-import { gateway, verifyContact } from './integrations.js?v=bem20261021';
+import { gateway, verifyContact } from './integrations.js?v=bem20261021-final';
 
 export function initContact({onResume=()=>{}}={}){
   const dialog=document.querySelector('#contact-dialog'),container=document.querySelector('#turnstile-container');
@@ -35,7 +35,7 @@ export function initContact({onResume=()=>{}}={}){
             if(resumeRequested){resumeRequested=false;dialog.close();onResume();return;}
             const email=document.createElement('a');email.href=`mailto:${contact.email}`;email.textContent=contact.email;
             const phone=document.createElement('a');phone.href=`https://wa.me/${contact.phone.replace(/\D/g,'')}`;phone.textContent=`WhatsApp · ${contact.phone}`;phone.target='_blank';phone.rel='noopener noreferrer';
-            const resume=document.createElement('button');resume.className='text-button';resume.dataset.resume='';resume.textContent='View résumé ↗';
+            const resume=document.createElement('button');resume.className='text-button';resume.dataset.resume='';resume.textContent='View resume ↗';
             details.append(email,phone,resume);details.hidden=false;container.hidden=true;status.textContent='Verified. Choose a contact method below.';
           }catch(e){if(current===version&&dialog.open){status.textContent=e.name==='AbortError'?'Verification timed out. Please retry.':e instanceof TypeError?'The contact gateway could not be reached. Please retry.':e.message;}}
           finally{clearTimeout(timer);if(current===version)document.querySelector('#contact-retry').disabled=false;}

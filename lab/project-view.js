@@ -1,4 +1,4 @@
-import { projectArt } from './project-art.js?v=bem20261021';
+import { projectArt } from './project-art.js?v=bem20261021-final';
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const external = url => /^https:\/\//.test(url) ? 'target="_blank" rel="noopener noreferrer"' : '';
 export const media = {

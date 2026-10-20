@@ -1,4 +1,4 @@
-// Public facts checked against the original portfolio, résumé, project source, and registry.
+// Public facts checked against the original portfolio, resume, project source, and registry.
 export const projects = [
   {
     id: 'smc-crows', number: '01', title: 'SMC Crows', category: 'Android systems · Community project',
@@ -20,7 +20,7 @@ export const projects = [
     problem: 'A barcode alone cannot tell whether the item in front of the camera is the item being scanned. Missed scans and item switching create gaps in conventional self-checkout.',
     implementation: 'I built a hybrid validation pipeline that identifies local retail products with YOLOv8 and compares detections with USB barcode scanner input. Python and OpenCV handle the video stream; MySQL stores product and transaction data. Split-view experiments address occlusion by observing products from multiple angles.',
     constraints: 'Similar packaging, overlapping items, lighting changes, and missed detections make visual verification difficult. The model was trained on a custom dataset of Malaysian retail items, including bread, tissues, toothpaste, and Maggi. Raising recall remains an improvement target.',
-    outcome: 'The project repository reports approximately 77.4% precision and 72.0% recall after 50 epochs. These are model evaluation figures, not a measured reduction in retail fraud. The portfolio and résumé disagree on inference latency, so no latency figure is presented here.',
+    outcome: 'The project repository reports approximately 77.4% precision and 72.0% recall after 50 epochs. These are model evaluation figures, not a measured reduction in retail fraud. The portfolio and resume disagree on inference latency, so no latency figure is presented here.',
     result: '77.4% precision', resultNote: 'Reported model benchmark · 50 epochs',
     links: [{label: 'Explore source', url: 'https://github.com/l3al3y/FYP-PROJECT'}],
     sources: [{label: 'Project README & architecture', url: 'https://github.com/l3al3y/FYP-PROJECT#readme'}]
@@ -56,12 +56,12 @@ export const projects = [
     summary: 'An Arduino and load-cell weighing system with connected monitoring.',
     image: '', alt: '', stack: ['Arduino', 'HX711', 'Load cells', 'C/C++'],
     problem: 'Tracking livestock weight requires a repeatable way to turn physical measurements into readings that can be monitored over time.',
-    implementation: 'The résumé documents an IoT load-cell weighing platform using Arduino microcontrollers, HX711 amplifiers, C/C++ signal filtering firmware, and real-time telemetry dashboards. I contributed to the weighing and monitoring system as part of the team named on the INOTEK certificate.',
-    constraints: 'Calibration and signal stability matter as much as connectivity. The résumé reports a measurement precision claim but supplies no test protocol or reference weights; it is therefore omitted from the headline results.',
+    implementation: 'The resume documents an IoT load-cell weighing platform using Arduino microcontrollers, HX711 amplifiers, C/C++ signal filtering firmware, and real-time telemetry dashboards. I contributed to the weighing and monitoring system as part of the team named on the INOTEK certificate.',
+    constraints: 'Calibration and signal stability matter as much as connectivity. The resume reports a measurement precision claim but supplies no test protocol or reference weights; it is therefore omitted from the headline results.',
     outcome: 'The team received Third Place for “Development of Livestock Weight Tracking System Based on IoT” at INOTEK 2025 (Series 1), held on 15 January 2025. The certificate verifies the team award; it does not validate sensor accuracy or a production deployment.',
     result: 'INOTEK 2025 · Third Place', resultNote: 'Documented team award · 15 January 2025',
     links: [{label: 'View award document', url: 'certificates/INOTEK_2025_Third_Place.pdf', preview: true}],
-    sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing résumé', url: 'resume/resume.pdf'}]
+    sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing resume', url: 'resume/resume.pdf'}]
   },
   {
     id: 'arcade', number: '06', title: 'Mini Arcade', category: 'Interactive software · Web',
@@ -95,4 +95,4 @@ export const approach = [
 
 export const professionalRegistrationContext = 'BEM: registered Graduate Engineer in the Computer branch, approved 15 October 2026, supported by the supplied BEM Certificate of Registration of Graduate Engineer. The portfolio links to the official BEM public directory entry at https://engineer.org.my/public/Engineers/Index/325542 for verification. The certificate itself is not published. This is Graduate Engineer registration, not Professional Engineer or Ir. status. MBOT: Graduate Technologist (IT field) application submitted; certificate still pending. Do not describe MBOT as approved or issued.';
 
-export const assistantContext = `You are the portfolio assistant for Irfan Fahmi. Use only the supplied portfolio facts. Be concise and distinguish reported benchmarks from verified outcomes. Do not invent dates, achievements, contact information or project details. Cisco credentials are Networking Academy course completions, not evidence of passing the CCNA professional exam. Education: Bachelor of Computer Engineering with Honours at UTeM, Oct 2022–Present according to existing résumé; completion date is not confirmed. Diploma in Electronic Engineering (Computer), Politeknik Port Dickson, Dec 2018–May 2022. Certificate in Computer Systems and Networking, Kolej Komuniti Selandar, Jul 2017–Feb 2019. Based in Klang Valley, Malaysia. Interests span hardware, software, networks and AI. Contact details require the site's Cloudflare verification. Refer visitors to Contact for direct access. Projects: ${JSON.stringify(projects.map(({title, problem, implementation, constraints, outcome}) => ({title, problem, implementation, constraints, outcome})))}`;
+export const assistantContext = `You are the portfolio assistant for Irfan Fahmi. Use only the supplied portfolio facts. Be concise and distinguish reported benchmarks from verified outcomes. Do not invent dates, achievements, contact information or project details. Cisco credentials are Networking Academy course completions, not evidence of passing the CCNA professional exam. Education: Bachelor of Computer Engineering with Honours at UTeM, Oct 2022–Present according to existing resume; completion date is not confirmed. Diploma in Electronic Engineering (Computer), Politeknik Port Dickson, Dec 2018–May 2022. Certificate in Computer Systems and Networking, Kolej Komuniti Selandar, Jul 2017–Feb 2019. Based in Klang Valley, Malaysia. Interests span hardware, software, networks and AI. Contact details require the site's Cloudflare verification. Refer visitors to Contact for direct access. Projects: ${JSON.stringify(projects.map(({title, problem, implementation, constraints, outcome}) => ({title, problem, implementation, constraints, outcome})))}`;

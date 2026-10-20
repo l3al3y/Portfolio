@@ -12,6 +12,8 @@ test('issued BEM registration and pending MBOT stay distinct across public entry
   assert.ok(html.includes('href="https://engineer.org.my/public/Engineers/Index/325542"'));
   assert.ok(html.includes('Verify BEM registration'));
   assert.ok(!html.includes('BEM_Graduate_Engineer_Redacted.pdf'));
+  assert.ok(html.includes('View resume'));
+  assert.ok(!html.includes('résumé'));
  }
  assert.match(professionalRegistrationContext,/registered Graduate Engineer in the Computer branch, approved 15 October 2026/);
  assert.match(professionalRegistrationContext,/MBOT:.*still pending/);

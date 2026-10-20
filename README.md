@@ -2,7 +2,7 @@
 
 Personal portfolio for AI, software and embedded systems roles, published at https://irfanfahmi.com/.
 
-The October 2026 redesign uses a compact dark/light layout inspired by the SMC portal. Six project accordions start collapsed, with standalone case-study pages and legacy hash dialogs and source links. The homepage highlights availability, relevant skills, résumé and contact links. Related Projects, Experience, Credentials and Contact pages share the same design.
+The October 2026 redesign uses a compact dark/light layout inspired by the SMC portal. Six project accordions start collapsed, with standalone case-study pages and legacy hash dialogs and source links. The homepage highlights availability, relevant skills, resume and contact links. Related Projects, Experience, Credentials and Contact pages share the same design.
 
 ## Preview and checks
 
@@ -39,7 +39,7 @@ The Remotion source and MCP renderer are delivered separately from the static we
 
 Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM Graduate Engineer registration in Computer Engineering was approved on 15 October 2026; the portfolio links to the official BEM public directory for verification. The certificate is not published. MBOT remains an application with its certificate pending. Cisco Networking Academy documents are course completions. Degree completion has not been newly confirmed.
 
-Résumé and public email/LinkedIn links are available directly. Additional contact details retain Cloudflare verification. The assistant is optional, sends questions to the existing gateway on request, and keeps frontend history in memory. No backend keys are included.
+Resume and public email/LinkedIn links are available directly. Additional contact details retain Cloudflare verification. The assistant is optional, sends questions to the existing gateway on request, and keeps frontend history in memory. No backend keys are included.
 
 Original demos, extension, telemetry, arcade, PDFs and legal pages remain available. The existing source/evidence notes are retained as historical records of earlier versions.
 
