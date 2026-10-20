@@ -3,7 +3,7 @@ export const projects = [
   {
     id: 'smc-crows', number: '01', title: 'SMC Crows v3.0', category: 'Android systems · Release engineering',
     summary: 'Android 17 target compatibility, multi-tier dynamic hardware skinning, and non-destructive account preservation for thousands of mobile pilots.',
-    image: 'assets/smc/SMC-audit-lobby.png', alt: 'SMC Crows v3.0 lobby and character interface',
+    image: '', alt: '',
     stack: ['Android SDK 37', 'Dynamic Skinning', 'ARM64 Neon', 'Cloudflare R2'],
     problem: 'Modern Android 17 runtime changes, 16 KB page-size enforcement, and aggressive GPU memory mapping in modern Qualcomm Adreno drivers caused fatal crashes and severe stutter on modern flagships.',
     implementation: 'I engineered the v3.0 release pipeline targeting Android 17 (SDK 37) with pageSizeCompat="0x20" and 16 KB ZIP page alignment. Developed a multi-tier dynamic skinning optimizer that routes 100% GPU hardware skinning for pilots (120 FPS) while using selective CPU Neon skinning for mechas to prevent GPU memory crashes. Built automated non-destructive account backup and a 15-part parallel Cloudflare R2 chunk distribution engine with MediaFire mirror fallback.',

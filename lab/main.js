@@ -11,7 +11,7 @@ export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':
 const external = url => /^https:\/\//.test(url) ? 'target="_blank" rel="noopener noreferrer"' : '';
 
 const media = {
-  'smc-crows': { src:'assets/smc/SMC-audit-lobby.png', alt:'SMC Crows v3.0 character lobby and adaptive skinning UI', caption:'In-game capture · Android 17 compatibility build', filter:'systems' },
+  'smc-crows': { caption:'Illustration · Android 17 dynamic skinning', filter:'systems' },
   checkout: { caption:'Illustration · vision + barcode verification', filter:'vision' },
   hermes: { src:'assets/thumb-hermes.png', alt:'Archived Hermes operations dashboard', caption:'Archived dashboard capture · not live telemetry', filter:'agents' },
   gesture: { src:'assets/manga/gesture_pageup.jpg', alt:'Irfan demonstrating a hand gesture for the touchless reader', caption:'Original gesture training image', filter:'vision' },
