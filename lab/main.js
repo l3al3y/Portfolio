@@ -1,17 +1,14 @@
 import { projects, approach } from './content.js';
-import { initMotion } from './portfolio-motion.js';
 import { initAssistant } from './assistant.js';
 import { initContact } from './contact.js';
 import { projectArt } from './project-art.js';
-import { initHero } from './hero.js';
-import { initNavigation } from './navigation.js';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const external = url => /^https:\/\//.test(url) ? 'target="_blank" rel="noopener noreferrer"' : '';
 
 const media = {
-  'smc-crows': { caption:'Illustration · Android 17 dynamic skinning', filter:'systems' },
+  'smc-crows': { caption:'Illustration · Android release engineering', filter:'systems' },
   checkout: { caption:'Illustration · vision + barcode verification', filter:'vision' },
   hermes: { src:'assets/thumb-hermes.png', alt:'Archived Hermes operations dashboard', caption:'Archived dashboard capture · not live telemetry', filter:'agents' },
   gesture: { src:'assets/manga/gesture_pageup.jpg', alt:'Irfan demonstrating a hand gesture for the touchless reader', caption:'Original gesture training image', filter:'vision' },
@@ -20,17 +17,14 @@ const media = {
 };
 function projectMedia(p){const m=media[p.id];return m.src?`<img src="${m.src}" alt="${escapeHtml(m.alt)}" loading="lazy" decoding="async">`:projectArt(p.id);}
 function renderProjects(filter='all'){
-  const visible=projects.filter(p=>filter==='all'||media[p.id].filter===filter);
-  $('#projects-grid').innerHTML=visible.map(p=>{
-    const demo=p.links.find(l=>/Try|Launch|Telemetry/.test(l.label));
-    return `<article class="project-card ${p.id==='smc-crows'||visible.length===1?'featured':''}" data-reveal><button class="project-visual ${p.id==='gesture'?'gesture-photo':''}" data-case="${p.id}" aria-label="Read ${p.title} case study">${projectMedia(p)}<span class="project-number">SELECTED / ${p.number}</span><span class="media-caption">${media[p.id].caption}</span><span class="project-open" aria-hidden="true">↗</span></button><div class="project-copy"><p class="project-meta">${p.category}</p><h3>${p.title}</h3><p class="project-summary">${p.summary}</p><div class="tags">${p.stack.map(t=>`<span>${t}</span>`).join('')}</div><p class="project-provenance">${media[p.id].caption}</p>${demo?`<a class="project-demo" href="${demo.url}" ${external(demo.url)}>${demo.label} ↗</a>`:''}<div class="project-bottom"><div class="project-result"><strong>${p.result}</strong><small>${p.resultNote}</small></div><button data-case="${p.id}">Read case study ↗</button></div></div></article>`;
-  }).join('');
+  if(!$('#projects-grid'))return;
+  const visible=projects.filter(p=>filter==='all'||media[p.id].filter===filter||(filter==='systems'&&['agents','play'].includes(media[p.id].filter)));
+  $('#projects-grid').innerHTML=visible.map(p=>`<details class="project-row" id="project-${p.id}"><summary><span class="project-index">${p.number}</span><span class="project-heading"><span class="project-meta">${escapeHtml(p.category)}</span><strong>${escapeHtml(p.title)}</strong><span class="project-one-line">${escapeHtml(p.summary)}</span></span><span class="project-signal">${escapeHtml(p.result)}<small>${escapeHtml(p.resultNote)}</small></span><span class="detail-indicator" aria-hidden="true">＋</span></summary><div class="project-expanded"><div><div class="tags">${p.stack.map(t=>`<span>${escapeHtml(t)}</span>`).join('')}</div><h3>What I built</h3><p>${escapeHtml(p.implementation)}</p><h3>Result & evidence</h3><p>${escapeHtml(p.outcome)}</p><div class="inline-links"><button class="button" data-case="${p.id}">Full case study ↗</button>${p.links.slice(0,1).map(l=>l.preview?`<button class="text-button" data-document="${l.url}" data-title="Project evidence">${l.label} ↗</button>`:`<a class="text-button" href="${l.url}" ${external(l.url)}>${l.label} ↗</a>`).join('')}</div></div><figure><div>${projectMedia(p)}</div><figcaption>${media[p.id].caption}</figcaption></figure></div></details>`).join('');
   $('#project-status').textContent=`Showing ${visible.length} of ${projects.length} projects.`;
-  document.dispatchEvent(new Event('portfolio:content'));
 }
-$('#project-filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;$('#project-filters').querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===b)));renderProjects(b.dataset.filter);});
+$('#project-filters')?.addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;$('#project-filters').querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===b)));renderProjects(b.dataset.filter);});
+$('#collapse-projects')?.addEventListener('click',()=>{document.querySelectorAll('.project-row').forEach(row=>row.open=false);});
 renderProjects();
-$('#approach-steps').innerHTML = approach.map(([title,text],i)=>`<article class="approach-step"><span class="mono">0${i+1} /</span><h3>${title}${i===4?' ↺':''}</h3><p>${text}</p></article>`).join('');
 
 document.querySelectorAll('dialog').forEach(dialog => {
   const close=()=>dialog.id==='case-dialog'?dismissCase():dialog.close();
@@ -141,15 +135,14 @@ async function loadCredentials(){
   }catch{$('#credential-status').textContent='The credential registry could not be loaded. Please check your connection and retry.';$('#credential-retry').hidden=false;}
   finally{clearTimeout(timer);$('#credential-search').disabled=!registry.length;$('#credential-category').disabled=!registry.length;$('#credential-reset').disabled=!registry.length;}
 }
-$('#credential-search').addEventListener('input',()=>{limit=9;renderCredentials();});
-$('#credential-category').addEventListener('change',()=>{limit=9;renderCredentials();});
-$('#credential-reset').addEventListener('click',()=>{$('#credential-search').value='';$('#credential-category').value='all';limit=9;renderCredentials();});
-$('#credential-more').addEventListener('click',()=>{limit+=9;renderCredentials();});
-$('#credential-retry').addEventListener('click',loadCredentials);
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){loadCredentials();observer.disconnect();}},{rootMargin:'500px'});observer.observe($('#certificates'));}else loadCredentials();
+$('#credential-search')?.addEventListener('input',()=>{limit=9;renderCredentials();});
+$('#credential-category')?.addEventListener('change',()=>{limit=9;renderCredentials();});
+$('#credential-reset')?.addEventListener('click',()=>{$('#credential-search').value='';$('#credential-category').value='all';limit=9;renderCredentials();});
+$('#credential-more')?.addEventListener('click',()=>{limit+=9;renderCredentials();});
+$('#credential-retry')?.addEventListener('click',loadCredentials);
+if($('#certificates')&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){loadCredentials();observer.disconnect();}},{rootMargin:'500px'});observer.observe($('#certificates'));}else if($('#certificates'))loadCredentials();
 
 $('#theme-toggle').addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;try{localStorage.setItem('lab-theme',theme);}catch{}syncTheme();});
-function syncTheme(){$('#theme-toggle').setAttribute('aria-label',`Switch to ${document.documentElement.dataset.theme==='dark'?'light':'dark'} theme`);$('meta[name="theme-color"]').content=document.documentElement.dataset.theme==='dark'?'#0c1117':'#f6f4ee';}
+function syncTheme(){$('#theme-toggle').setAttribute('aria-label',`Switch to ${document.documentElement.dataset.theme==='dark'?'light':'dark'} theme`);$('meta[name="theme-color"]').content=document.documentElement.dataset.theme==='dark'?'#0d1117':'#f6f4ee';}
 syncTheme();
-initNavigation();
-initMotion();initHero();initAssistant();contact=initContact({onResume:()=>openDocument('resume/resume.pdf','Muhammad Irfan Fahmi — Résumé')});
+if($('#chat-log'))initAssistant();contact=initContact({onResume:()=>openDocument('resume/resume.pdf','Muhammad Irfan Fahmi — Résumé')});

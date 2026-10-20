@@ -1,21 +1,20 @@
 // Public facts checked against the original portfolio, résumé, project source, and registry.
 export const projects = [
   {
-    id: 'smc-crows', number: '01', title: 'SMC Crows v3.0', category: 'Android systems · Release engineering',
-    summary: 'Android 17 target compatibility, multi-tier dynamic hardware skinning, and non-destructive account preservation for thousands of mobile pilots.',
-    image: '', alt: '',
-    stack: ['Android SDK 37', 'Dynamic Skinning', 'ARM64 Neon', 'Cloudflare R2'],
-    problem: 'Modern Android 17 runtime changes, 16 KB page-size enforcement, and aggressive GPU memory mapping in modern Qualcomm Adreno drivers caused fatal crashes and severe stutter on modern flagships.',
-    implementation: 'I engineered the v3.0 release pipeline targeting Android 17 (SDK 37) with pageSizeCompat="0x20" and 16 KB ZIP page alignment. Developed a multi-tier dynamic skinning optimizer that routes 100% GPU hardware skinning for pilots (120 FPS) while using selective CPU Neon skinning for mechas to prevent GPU memory crashes. Built automated non-destructive account backup and a 15-part parallel Cloudflare R2 chunk distribution engine with MediaFire mirror fallback.',
-    constraints: 'The vendor engine contains 29 legacy native libraries below 16 KB ELF boundary, requiring manifest compatibility mode. Tested across Samsung Galaxy S26 Ultra and Galaxy A54 devices.',
-    outcome: 'Delivered smooth 120 FPS pilot movement and stable mecha combat on Android 17 hardware with zero driver freezes observed during testing. Successfully distributed via dual-route high-availability CDN while protecting player account progression.',
-    result: '120 FPS · Android 17 target', resultNote: 'Device-tested on Samsung S26 Ultra',
-    links: [{label: 'Explore SMC case study', url: 'smc/index.html'}, {label: 'Download APK', url: 'smc/downloads/index.html'}],
-    sources: [{label: 'SMC Release & Documentation', url: 'smc/index.html'}, {label: 'APK SHA-256 Verification', url: 'smc/downloads/index.html'}]
+    id: 'smc-crows', number: '01', title: 'SMC Crows', category: 'Android systems · Community project',
+    summary: 'Release engineering for a community Android game: compatibility, distribution and account recovery.',
+    image: '', alt: '', stack: ['Android', 'ARM64', 'Release tooling', 'Cloudflare'],
+    problem: 'Keeping a legacy Android game usable on newer devices requires investigating runtime compatibility, packaging constraints and failures on real hardware.',
+    implementation: 'I work on Android compatibility investigation, release packaging, device testing and the SMC Crows distribution portal. The project also documents installation and account backup and recovery so players can follow the release process.',
+    constraints: 'This is a community project built around a third-party game. Compatibility depends on the device, Android version and release; individual test results do not establish support for every device.',
+    outcome: 'The published SMC portal provides release information, setup guides, account recovery guidance and device-test records. Those release-specific records are the reference for compatibility and performance claims.',
+    result: 'Android release pipeline', resultNote: 'Community engineering · see release evidence',
+    links: [{label: 'Explore SMC Crows', url: 'smc/index.html'}],
+    sources: [{label: 'Release documentation & device tests', url: 'https://irfanfahmi.com/smc/'}]
   },
   {
     id: 'checkout', number: '02', title: 'Hybrid Self-Checkout', category: 'Computer vision · Capstone',
-    summary: 'A second pair of eyes for the checkout counter. Barcode identity meets visual verification.',
+    summary: 'Barcode scanning paired with computer vision to verify retail items.',
     image: 'assets/thumb-yolov8.png', alt: 'Original Hybrid Self-Checkout project screenshot',
     stack: ['YOLOv8', 'OpenCV', 'Python', 'MySQL'],
     problem: 'A barcode alone cannot tell whether the item in front of the camera is the item being scanned. Missed scans and item switching create gaps in conventional self-checkout.',
@@ -28,20 +27,20 @@ export const projects = [
   },
   {
     id: 'hermes', number: '03', title: 'Hermes', category: 'Agent systems · Edge infrastructure',
-    summary: 'Many models. One decision pipeline. An experiment in consensus, failure, and recovery on a phone.',
+    summary: 'Multi-model orchestration with consensus, telemetry and recovery on mobile hardware.',
     image: 'assets/thumb-hermes.png', alt: 'Original Hermes telemetry dashboard screenshot',
     stack: ['Python', 'Termux', 'LLM orchestration', 'Cloudflare'],
     problem: 'An autonomous system needs more than a model response: it needs a way to weigh disagreement, handle unavailable providers, and inspect decisions after they fail.',
     implementation: 'The documented Hermes setup runs on a Samsung Galaxy A54 using Termux/Linux. A “Parliament of Minds” routes multiple LLM models through a consensus process for XAUUSD signal experiments. Separate serve and gateway processes, a cron watchdog, telemetry, and causal post-mortems support operation and review.',
     constraints: 'Mobile hardware and external model availability constrain reliability. Consensus does not guarantee correctness. The original portfolio records a strategy refit pause from 22 September 2026; current operational status belongs to the telemetry console.',
-    outcome: 'The result is a documented multi-model orchestration experiment with observable operations and recovery mechanisms. Historical trading figures on the previous site have not been independently verified and are not presented as evidence of real-world investment performance. The contribution to 500-AI-Agents-Projects is PR #167: open and unmerged when checked on 6 October 2026.',
+    outcome: 'The result is a documented multi-model orchestration experiment with observable operations and recovery mechanisms. Historical trading figures on the previous site have not been independently verified and are not presented as evidence of real-world investment performance. The contribution to 500-AI-Agents-Projects is PR #167: open and unmerged when checked on 6 October 2026; that is a historical check, not a current status assertion.',
     result: 'Consensus + recovery', resultNote: 'Experimental system · contribution submitted',
-    links: [{label: 'Telemetry console', url: 'https://live.irfanfahmi.com'}, {label: 'View open PR #167', url: 'https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167'}],
+    links: [{label: 'Telemetry console', url: 'https://live.irfanfahmi.com'}, {label: 'View contribution PR #167', url: 'https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167'}],
     sources: [{label: 'Contribution and review status', url: 'https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/167'}, {label: 'System telemetry', url: 'https://live.irfanfahmi.com'}]
   },
   {
     id: 'gesture', number: '04', title: 'Gesture recognition', category: 'Human interaction · Browser ML',
-    summary: 'Read without touching the screen. Hand geometry becomes a quiet, practical interface.',
+    summary: 'A browser-based hand gesture controller for touchless reading.',
     image: 'assets/thumb-irfanllm.png', alt: 'Original IrfanLLM touchless reader interface',
     stack: ['MediaPipe Hands', 'Random Forest', 'JavaScript', 'Python'],
     problem: 'Reading manga or webtoons while eating makes a touchscreen an awkward interface. A touchless controller needs deliberate gestures without scrolling again on the return stroke.',
@@ -54,7 +53,7 @@ export const projects = [
   },
   {
     id: 'livestock', number: '05', title: 'IoT livestock monitoring', category: 'Embedded systems · Team project',
-    summary: 'From a physical load to a useful reading. A connected weighing platform built around the sensor.',
+    summary: 'An Arduino and load-cell weighing system with connected monitoring.',
     image: '', alt: '', stack: ['Arduino', 'HX711', 'Load cells', 'C/C++'],
     problem: 'Tracking livestock weight requires a repeatable way to turn physical measurements into readings that can be monitored over time.',
     implementation: 'The résumé documents an IoT load-cell weighing platform using Arduino microcontrollers, HX711 amplifiers, C/C++ signal filtering firmware, and real-time telemetry dashboards. I contributed to the weighing and monitoring system as part of the team named on the INOTEK certificate.',
@@ -66,7 +65,7 @@ export const projects = [
   },
   {
     id: 'arcade', number: '06', title: 'Mini Arcade', category: 'Interactive software · Web',
-    summary: 'A small playground for decisions, timing, and memory. Short sessions, built for the browser.',
+    summary: 'Browser games exploring decision logic, interaction and application state.',
     image: 'assets/thumb-arcade.png', alt: 'Original Mini Arcade games interface',
     stack: ['React', 'TypeScript', 'Game logic', 'Tailwind CSS'],
     problem: 'A browser game needs clear feedback, responsive controls, and enough structure to make a short session feel complete.',

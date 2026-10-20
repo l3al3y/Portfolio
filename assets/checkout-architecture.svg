@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" aria-labelledby="title desc">
+<title id="title">Hybrid Self-Checkout architecture illustration</title><desc id="desc">A camera and barcode scanner provide separate inputs for a Python verification pipeline and MySQL product records.</desc>
+<defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#a5b1bf" stroke-opacity=".07"/></pattern></defs>
+<rect width="720" height="440" fill="#0d1520"/><rect width="720" height="440" fill="url(#grid)"/>
+<g font-family="sans-serif"><text x="42" y="43" fill="#a5b1bf" font-size="11" letter-spacing="2">HYBRID SELF-CHECKOUT / SYSTEM DESIGN</text>
+<rect x="42" y="85" width="236" height="118" rx="9" fill="#17232f" stroke="#364656"/>
+<path d="M72 117h17l6-8h26l6 8h14v45H72z" fill="none" stroke="#b6dce0" stroke-width="2"/><circle cx="106" cy="139" r="13" fill="none" stroke="#b6dce0" stroke-width="2"/>
+<text x="158" y="132" fill="#f2f1ed" font-size="17">Camera</text><text x="158" y="154" fill="#a5b1bf" font-size="12">YOLOv8 + OpenCV</text>
+<rect x="42" y="235" width="236" height="118" rx="9" fill="#17232f" stroke="#364656"/>
+<g stroke="#ef7c89"><path d="M74 265v45m6-45v45m10-45v45m5-45v45m11-45v45m5-45v45m8-45v45m9-45v45m7-45v45" stroke-width="3"/></g>
+<text x="158" y="283" fill="#f2f1ed" font-size="17">Barcode</text><text x="158" y="305" fill="#a5b1bf" font-size="12">Scanned product ID</text>
+<g stroke="#748798" stroke-width="2" fill="none"><path d="M278 145h47v75h49M278 295h47v-75"/><path d="m365 214 9 6-9 6"/></g>
+<rect x="379" y="161" width="291" height="118" rx="9" fill="#20303b" stroke="#86b9be"/>
+<circle cx="411" cy="196" r="10" fill="none" stroke="#ef7c89"/><path d="m406 196 4 4 7-8" fill="none" stroke="#ef7c89" stroke-width="2"/>
+<text x="434" y="203" fill="#f2f1ed" font-size="21">Cross-verify</text><text x="406" y="239" fill="#a5b1bf" font-size="13">Visual detection ↔ product identity</text>
+<path d="M523 279v39" fill="none" stroke="#748798" stroke-width="2"/>
+<rect x="419" y="318" width="210" height="43" rx="6" fill="#17232f" stroke="#364656"/>
+<text x="445" y="344" fill="#b6dce0" font-size="13">MySQL product records</text>
+<text x="42" y="401" fill="#748798" font-size="10" letter-spacing="1.5">ARCHITECTURE ILLUSTRATION · NOT A LIVE SYSTEM CAPTURE</text></g></svg>
