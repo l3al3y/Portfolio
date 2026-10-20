@@ -9,7 +9,7 @@ export const projects = [
     constraints: 'This is a community project built around a third-party game. Compatibility depends on the device, Android version and release; individual test results do not establish support for every device.',
     outcome: 'The published SMC portal provides release information, setup guides, account recovery guidance and device-test records. Those release-specific records are the reference for compatibility and performance claims.',
     result: 'Android release pipeline', resultNote: 'Community engineering · see release evidence',
-    links: [{label: 'Explore SMC Crows', url: 'smc/index.html'}],
+    links: [{label: 'Explore SMC Crows', url: 'smc/'}],
     sources: [{label: 'Release documentation & device tests', url: 'https://irfanfahmi.com/smc/'}]
   },
   {

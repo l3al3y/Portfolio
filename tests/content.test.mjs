@@ -12,7 +12,7 @@ test('case studies have required substance and preserved local destinations',asy
   assert.equal(projects.length,6);
   for(const p of projects){for(const key of ['problem','implementation','constraints','outcome'])assert.ok(p[key].length>80);
     if(p.image)assert.ok((await stat(new URL(p.image,root))).size>0);
-    for(const link of [...p.links,...p.sources]){if(!link.url.startsWith('https:'))assert.ok((await stat(new URL(link.url,root))).size>0);}
+    for(const link of [...p.links,...p.sources]){if(!link.url.startsWith('https:')){let path=new URL(link.url,root);if((await stat(path)).isDirectory())path=new URL('index.html',path);assert.ok((await stat(path)).size>0);}}
   }
   assert.match(projects.find(p=>p.id==='hermes').outcome,/open and unmerged/);
   assert.match(projects.find(p=>p.id==='gesture').outcome,/not a measured accuracy/);

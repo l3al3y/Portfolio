@@ -35,6 +35,9 @@ jobs:
       - name: Test credential guard
         run: python3 -m unittest discover -s tests -p test_secret_guard.py
 
+      - name: Generate project pages
+        run: node scripts/build-project-pages.mjs
+
       - name: Test portfolio
         run: npm test
 

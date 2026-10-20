@@ -1,27 +1,19 @@
-import { initSMCLive } from './smc-live.js';
-import { projects, approach } from './content.js';
-import { initAssistant } from './assistant.js';
-import { initContact } from './contact.js';
-import { projectArt } from './project-art.js';
+import { initSMCLive } from './smc-live.js?v=audit3';
+import { projects, approach } from './content.js?v=audit3';
+import { initAssistant } from './assistant.js?v=audit3';
+import { initContact } from './contact.js?v=audit3';
+import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=audit3';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const external = url => /^https:\/\//.test(url) ? 'target="_blank" rel="noopener noreferrer"' : '';
 
-const media = {
-  'smc-crows': { caption:'Illustration · Android release engineering', filter:'systems' },
-  checkout: { caption:'Illustration · vision + barcode verification', filter:'vision' },
-  hermes: { src:'assets/thumb-hermes.png', alt:'Archived Hermes operations dashboard', caption:'Archived dashboard capture · not live telemetry', filter:'agents' },
-  gesture: { src:'assets/manga/gesture_pageup.jpg', alt:'Irfan demonstrating a hand gesture for the touchless reader', caption:'Original gesture training image', filter:'vision' },
-  livestock: { caption:'Illustration · load-cell measurement', filter:'embedded' },
-  arcade: { src:'assets/thumb-arcade.png', alt:'Mini Arcade interface with its browser games', caption:'Original Mini Arcade interface capture', filter:'play' }
-};
-function projectMedia(p){const m=media[p.id];return m.src?`<img src="${m.src}" alt="${escapeHtml(m.alt)}" loading="lazy" decoding="async">`:projectArt(p.id);}
 function renderProjects(filter='all'){
   if(!$('#projects-grid'))return;
-  const visible=projects.filter(p=>filter==='all'||media[p.id].filter===filter||(filter==='systems'&&['agents','play'].includes(media[p.id].filter)));
-  $('#projects-grid').innerHTML=visible.map(p=>`<details class="project-row" id="project-${p.id}"><summary><span class="project-index">${p.number}</span><span class="project-heading"><span class="project-meta">${escapeHtml(p.category)}</span><strong>${escapeHtml(p.title)}</strong><span class="project-one-line">${escapeHtml(p.summary)}</span></span><span class="project-signal">${escapeHtml(p.result)}<small>${escapeHtml(p.resultNote)}</small></span><span class="detail-indicator" aria-hidden="true">＋</span></summary><div class="project-expanded"><div><div class="tags">${p.stack.map(t=>`<span>${escapeHtml(t)}</span>`).join('')}</div><h3>What I built</h3><p>${escapeHtml(p.implementation)}</p><h3>Result & evidence</h3><p>${escapeHtml(p.outcome)}</p><div class="inline-links"><button class="button" data-case="${p.id}">Full case study ↗</button>${p.links.slice(0,1).map(l=>l.preview?`<button class="text-button" data-document="${l.url}" data-title="Project evidence">${l.label} ↗</button>`:`<a class="text-button" href="${l.url}" ${external(l.url)}>${l.label} ↗</a>`).join('')}</div></div><figure><div>${projectMedia(p)}</div><figcaption>${media[p.id].caption}</figcaption></figure></div></details>`).join('');
+  const visible=filterProjects(projects,filter);
+  $('#projects-grid').innerHTML=visible.map(projectRow).join('');
   $('#project-status').textContent=`Showing ${visible.length} of ${projects.length} projects.`;
+  document.querySelectorAll('[data-project-total]').forEach(el=>el.textContent=String(projects.length).padStart(2,'0'));
 }
 $('#project-filters')?.addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;$('#project-filters').querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===b)));renderProjects(b.dataset.filter);});
 $('#collapse-projects')?.addEventListener('click',()=>{document.querySelectorAll('.project-row').forEach(row=>row.open=false);});
@@ -39,7 +31,7 @@ function openCase(id) {
   $('#case-content').querySelectorAll('a[href="resume/resume.pdf"]').forEach(link=>{const button=document.createElement('button');button.className='text-button';button.dataset.resume='';button.textContent=link.textContent;link.replaceWith(button);});
   if(!caseDialog.open)caseDialog.showModal();
   caseDialog.scrollTop=0;
-  $('#case-copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent='Link copied';}catch{e.target.textContent='Copy the URL from your browser to share this case study.';}});
+  $('#case-copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(new URL(`projects/${p.id}/`,document.baseURI).href);e.target.textContent='Link copied';}catch{e.target.textContent='Copy the URL from your browser to share this case study.';}});
 }
 let caseClosing=false;
 function dismissCase(){
@@ -50,20 +42,20 @@ function dismissCase(){
   // a rapid click underneath race the asynchronous history traversal.
   if(history.state?.portfolioCase&&history.state.returnHash)history.back();
   else{
-    history.replaceState(null,'','#projects');window.dispatchEvent(new HashChangeEvent('hashchange'));
-    const heading=$('#work-heading');heading.tabIndex=-1;heading.focus({preventScroll:true});
+    history.replaceState(null,'',location.pathname+location.search+($('#projects')?'#projects':'#main-content'));window.dispatchEvent(new HashChangeEvent('hashchange'));
+    const heading=$('#work-heading')||$('#main-content');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
   }
 }
 caseDialog.addEventListener('cancel',event=>{event.preventDefault();dismissCase();});
 caseDialog.addEventListener('close',()=>{
-  if(location.hash.startsWith('#case-')){history.replaceState(null,'','#projects');window.dispatchEvent(new HashChangeEvent('hashchange'));}
+  if(location.hash.startsWith('#case-')){history.replaceState(null,'',location.pathname+location.search+($('#projects')?'#projects':'#main-content'));window.dispatchEvent(new HashChangeEvent('hashchange'));}
 });
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-case]');if(!b)return;
   if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
   e.preventDefault();
   const hash=`#case-${b.dataset.case}`;
-  if(location.hash!==hash){history.pushState({portfolioCase:true,returnHash:location.hash||'#home'},'',hash);window.dispatchEvent(new HashChangeEvent('hashchange'));}
+  if(location.hash!==hash){history.pushState({portfolioCase:true,returnHash:location.hash||'#home'},'',location.pathname+location.search+hash);window.dispatchEvent(new HashChangeEvent('hashchange'));}
   else openCase(b.dataset.case);
 });
 function readHash(){caseClosing=false;if(location.hash.startsWith('#case-'))openCase(location.hash.slice(6));else if(caseDialog.open)caseDialog.close();}

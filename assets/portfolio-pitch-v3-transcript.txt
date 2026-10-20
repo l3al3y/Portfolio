@@ -1,0 +1,19 @@
+MEET IRFAN
+Hi, I'm Irfan Fahmi. I enjoy building things, figuring out why they break, and getting them working.
+
+HIGHLIGHT PROJECT
+Take SMC Crows. I work on Android compatibility, device testing, and the release portal. That means helping people install the game, update it, and keep their accounts safe.
+
+RECORDED REACH
+The portal has recorded over twenty-seven thousand Android download requests across releases. These include retries, so they aren't unique players. The latest Windows installer has over six hundred downloads.
+
+MORE THAN ONE STACK
+I've also built a vision-based self-checkout system and a gesture controller for touchless reading. I connect models to interfaces people can actually use.
+
+WHAT I BRING TO A TEAM
+I like owning the whole problem: investigate, build, test on real hardware, then explain the setup and the limits.
+
+LET'S TALK
+I'm looking for an engineering role where I can contribute and keep learning. Explore my work at irfan fahmi dot com. Let's talk.
+
+Narration: Kokoro stock synthetic voice. Metric snapshot: 21 October 2026. Download requests include retries; they are not unique players.

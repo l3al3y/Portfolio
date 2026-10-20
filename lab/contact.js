@@ -1,4 +1,4 @@
-import { gateway, verifyContact } from './integrations.js';
+import { gateway, verifyContact } from './integrations.js?v=audit3';
 
 export function initContact({onResume=()=>{}}={}){
   const dialog=document.querySelector('#contact-dialog'),container=document.querySelector('#turnstile-container');

@@ -7,7 +7,7 @@ DEST = ROOT / "public-site"
 if DEST.exists():
     raise SystemExit("public-site already exists; use a fresh checkout for staging")
 DEST.mkdir()
-for name in [".nojekyll", "CNAME", "_headers", "index.html", "manga.html", "privacy.html", "terms.html", "app.js", "style.css", "controller.js", "manga.js", "favicon.ico", "favicon.svg", "favicon-32x32.png", "favicon-192x192.png", "apple-touch-icon.png", "googleeb52c0cc14a917bd.html", "robots.txt", "sitemap.xml", "updates.xml"]:
+for name in [".nojekyll", "CNAME", "_headers", "index.html", "404.html", "manga.html", "privacy.html", "terms.html", "app.js", "style.css", "controller.js", "manga.js", "favicon.ico", "favicon.svg", "favicon-32x32.png", "favicon-192x192.png", "apple-touch-icon.png", "googleeb52c0cc14a917bd.html", "robots.txt", "sitemap.xml", "updates.xml"]:
     shutil.copy2(ROOT / name, DEST / name)
 for name in ["assets", "certificates", "extension", "lab", "resume", "smc", "projects", "about", "credentials", "contact"]:
     shutil.copytree(ROOT / name, DEST / name, ignore=shutil.ignore_patterns("smc") if name == "assets" else None)

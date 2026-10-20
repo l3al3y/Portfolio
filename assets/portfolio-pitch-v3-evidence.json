@@ -1,0 +1,43 @@
+{
+  "snapshotDateMalaysia": "2026-10-21",
+  "android": {
+    "recordedRequestsAcrossReleases": 27338,
+    "currentV3Requests": 3419,
+    "breakdown": {
+      "starts": 2790,
+      "mirror_requests": 629,
+      "previous_v2": 11918,
+      "previous_v2_mirror": 1212,
+      "previous_setup": 4248,
+      "previous_v1": 1849,
+      "previous_r4": 4689,
+      "previous_r2": 2,
+      "historical_v4": 1
+    },
+    "definition": "APK download requests; not completed downloads or unique players",
+    "source": "https://irfanfahmi.com/smc/api/apk-stat"
+  },
+  "windows": {
+    "latestOnlineInstallerDownloadCount": 671,
+    "release": "smc-windows-nightfall-1.8.1-20261018",
+    "asset": "SMC-Crows-Nightfall-Online-Installer-1.8.1.exe",
+    "source": "https://api.github.com/repos/l3al3y/smc-crows-downloads/releases/tags/smc-windows-nightfall-1.8.1-20261018",
+    "definition": "GitHub asset download counter; not unique installed users"
+  },
+  "performance": {
+    "reportedFPS": 120,
+    "device": "Samsung Galaxy S26 Ultra",
+    "os": "Android 17",
+    "scope": "User-reported device test, not a cross-device performance guarantee",
+    "source": "https://irfanfahmi.com/smc/phone-tests/"
+  },
+  "voice": {
+    "synthetic": true,
+    "engine": "kokoro-js 1.2.1 / ONNX CPU q8",
+    "model": "Kokoro-82M-v1.0",
+    "voice": "am_michael",
+    "speed": 0.96,
+    "modelLicense": "Apache-2.0",
+    "source": "https://huggingface.co/hexgrad/Kokoro-82M"
+  }
+}

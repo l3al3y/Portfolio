@@ -1,4 +1,4 @@
-import { layers } from './content.js';
+import { layers } from './content.js?v=audit3';
 
 const readPreference = () => { try { return localStorage.getItem('lab-motion'); } catch { return null; } };
 export function initMotion() {

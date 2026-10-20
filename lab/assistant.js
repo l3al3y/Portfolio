@@ -1,5 +1,5 @@
-import { assistantContext, professionalRegistrationContext } from './content.js';
-import { checkHealth, requestChat } from './integrations.js';
+import { assistantContext, professionalRegistrationContext } from './content.js?v=audit3';
+import { checkHealth, requestChat } from './integrations.js?v=audit3';
 
 // A small, text-only Markdown renderer. No model-provided HTML or links execute.
 function renderAnswer(element,text){
