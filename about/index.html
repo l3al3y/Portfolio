@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0c1117">
+  <title>Experience & Philosophy — Irfan Fahmi</title>
+  <meta name="description" content="Background, engineering philosophy, technical competency matrix, and education of Muhammad Irfan Fahmi.">
+  <link rel="canonical" href="https://irfanfahmi.com/about/">
+  <meta property="og:title" content="Experience & Philosophy — Irfan Fahmi">
+  <meta property="og:description" content="Background, engineering philosophy, technical competency matrix, and education of Muhammad Irfan Fahmi.">
+  <meta property="og:url" content="https://irfanfahmi.com/about/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://irfanfahmi.com/assets/og-portfolio.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <script>try{const t=localStorage.getItem('lab-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}</script>
+  <link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../lab/portfolio.css?v=5">
+  <link rel="stylesheet" href="../lab/design.css?v=5">
+  <style>
+    .subpage-hero { padding: 60px 0 32px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+    .subpage-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px; color: var(--text); }
+    .subpage-hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 760px; line-height: 1.6; margin: 0; }
+    .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 56px auto 24px; }
+    .quick-card { padding: 22px; border-radius: 14px; border: 1px solid var(--line); background: rgba(18,27,24,0.6); text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; gap: 8px; }
+    .quick-card:hover { border-color: var(--lime); transform: translateY(-2px); }
+    .quick-card strong { color: var(--lime); font-size: 1.05rem; }
+    .quick-card span { color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+    .active-nav { color: var(--lime) !important; font-weight: 600; border-bottom: 2px solid var(--lime); padding-bottom: 4px; }
+    .card-metric { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px; font-family: var(--mono); font-size: 0.8rem; font-weight: 600; }
+    .metric-lime { background: rgba(196,241,123,0.15); color: var(--lime); border: 1px solid rgba(196,241,123,0.3); }
+    .metric-cyan { background: rgba(56,189,248,0.15); color: var(--cyan); border: 1px solid rgba(56,189,248,0.3); }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../" aria-label="Irfan Fahmi, home">
+    <span class="brand-mark" aria-hidden="true">MIF<span>.dev</span></span>
+    <span class="brand-name">Irfan Fahmi<small>AI &amp; COMPUTER ENGINEERING</small></span>
+  </a>
+  <nav id="main-nav" aria-label="Main navigation">
+    <a href="../" >Home</a>
+    <a href="../projects/" >Projects</a>
+    <a href="../smc/" >SMC Flagship</a>
+    <a href="../about/" class="active-nav" aria-current="page">Experience</a>
+    <a href="../credentials/" >Credentials</a>
+    <a href="../contact/" >Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a class="button quiet" href="../resume/resume.pdf" target="_blank" rel="noopener noreferrer" style="font-weight:600">Résumé (PDF) <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<main id="main-content" class="wrap">
+  <header class="subpage-hero">
+    <p class="eyebrow" style="color:var(--lime)">02 / BACKGROUND &amp; PROFILE</p>
+    <h1>Experience &amp; Approach</h1>
+    <p class="lead">Graduate Engineer in Computer Engineering (UTeM). I connect AI, hardware, and software to make intelligent systems practical outside of Jupyter notebooks.</p>
+  </header>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;margin-bottom:48px">
+    <section style="padding:28px;border:1px solid var(--line);border-radius:14px;background:rgba(18,27,24,0.6)">
+      <h2 style="font-size:1.45rem;color:var(--text);margin:0 0 16px">Engineering Philosophy</h2>
+      <p style="color:var(--muted);line-height:1.65;font-size:0.95rem;margin-bottom:14px">
+        An AI model in isolation is incomplete. Its real value begins when it is bound to physical constraints: camera frame rates, hardware cache alignments, sensor noise, power budgets, and unreliable network links.
+      </p>
+      <p style="color:var(--muted);line-height:1.65;font-size:0.95rem;margin:0">
+        My focus is on end-to-end integration: training lightweight computer vision architectures, writing low-latency C/C++ firmware, designing multi-agent consensus pipelines, and packaging high-availability Android release APKs for thousands of active users.
+      </p>
+    </section>
+
+    <section style="padding:28px;border:1px solid var(--line);border-radius:14px;background:rgba(18,27,24,0.6)">
+      <h2 style="font-size:1.45rem;color:var(--text);margin:0 0 16px">Key Status &amp; Location</h2>
+      <dl style="display:grid;grid-template-columns:140px 1fr;gap:12px;font-size:0.92rem;margin:0">
+        <dt style="color:var(--lime);font-weight:600">Degree</dt>
+        <dd style="color:var(--text);margin:0">Bachelor of Computer Engineering Technology (Computer Systems) with Honours — UTeM</dd>
+        
+        <dt style="color:var(--lime);font-weight:600">Professional</dt>
+        <dd style="color:var(--text);margin:0">BEM Graduate Engineer &amp; MBOT Graduate Technologist (Registered / Processing)</dd>
+        
+        <dt style="color:var(--lime);font-weight:600">Location</dt>
+        <dd style="color:var(--text);margin:0">Klang Valley, Malaysia</dd>
+        
+        <dt style="color:var(--lime);font-weight:600">Mobility</dt>
+        <dd style="color:var(--text);margin:0">Open to domestic &amp; international relocation</dd>
+        
+        <dt style="color:var(--lime);font-weight:600">Availability</dt>
+        <dd style="color:var(--text);margin:0">Immediate start</dd>
+      </dl>
+    </section>
+  </div>
+
+  <section style="margin-bottom:48px;padding:32px;border:1px solid var(--line);border-radius:16px;background:rgba(18,27,24,0.4)">
+    <h2 style="font-size:1.65rem;color:var(--text);margin:0 0 20px">Technical Competency Matrix</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+      <div style="padding:16px;border-radius:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05)">
+        <strong style="color:var(--lime);font-size:0.95rem;display:block;margin-bottom:8px">Computer Vision &amp; AI</strong>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.5;margin:0">YOLOv8, OpenCV, MediaPipe Hands, Random Forest browser inference, PyTorch, image preprocessing, multi-camera split-view validation.</p>
+      </div>
+      <div style="padding:16px;border-radius:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05)">
+        <strong style="color:var(--cyan);font-size:0.95rem;display:block;margin-bottom:8px">Systems &amp; Release Engineering</strong>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.5;margin:0">Android 17 / SDK 37 compatibility, 16 KB page-size ZIP alignment, ARM64 Neon dynamic skinning, 32-bit ZIP boundary compliance.</p>
+      </div>
+      <div style="padding:16px;border-radius:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05)">
+        <strong style="color:var(--lime);font-size:0.95rem;display:block;margin-bottom:8px">Embedded Hardware &amp; IoT</strong>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.5;margin:0">Arduino, C/C++ firmware, HX711 load-cell signal amplifiers, I2C/SPI sensor interfaces, serial communication protocols, telemetry.</p>
+      </div>
+      <div style="padding:16px;border-radius:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05)">
+        <strong style="color:var(--cyan);font-size:0.95rem;display:block;margin-bottom:8px">Cloud &amp; Infrastructure</strong>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.5;margin:0">Cloudflare Workers, R2 chunk streaming, D1 relational databases, Termux edge server orchestration, Git version control, CI/CD.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:32px;border:1px solid var(--line);border-radius:16px;background:rgba(18,27,24,0.4)">
+    <h2 style="font-size:1.65rem;color:var(--text);margin:0 0 20px">Education &amp; Key Milestones</h2>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="border-left:2px solid var(--lime);padding-left:18px">
+        <span style="font-family:var(--mono);font-size:0.8rem;color:var(--lime)">2022 — 2026 · UNIVERSITI TEKNIKAL MALAYSIA MELAKA (UTEM)</span>
+        <h3 style="font-size:1.2rem;color:var(--text);margin:4px 0">Bachelor of Computer Engineering Technology (Computer Systems) with Honours</h3>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.5;margin:0">Focus on embedded microprocessor systems, computer vision algorithms, and distributed computing. Capstone: Hybrid Self-Checkout with YOLOv8.</p>
+      </div>
+      <div style="border-left:2px solid var(--cyan);padding-left:18px">
+        <span style="font-family:var(--mono);font-size:0.8rem;color:var(--cyan)">2025 · INOTEK NATIONAL INNOVATION</span>
+        <h3 style="font-size:1.2rem;color:var(--text);margin:4px 0">National Innovation &amp; Technology Exhibition (INOTEK 2025)</h3>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.5;margin:0">Awarded official innovation achievement certificate for the IoT livestock weighing &amp; real-time telemetry monitoring platform.</p>
+      </div>
+      <div style="border-left:2px solid var(--lime);padding-left:18px">
+        <span style="font-family:var(--mono);font-size:0.8rem;color:var(--lime)">2026 · SUPER MECHA CHAMPIONS COMMUNITY RELEASE</span>
+        <h3 style="font-size:1.2rem;color:var(--text);margin:4px 0">Lead Release Engineer — SMC Crows v3.0</h3>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.5;margin:0">Overcame Android 17 runtime crashes for thousands of active players by developing dynamic GPU/CPU skinning and dual CDN parallel distribution.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="quick-grid wrap" aria-label="Explore other areas"><a class="quick-card" href="../projects/"><strong>Explore Projects ↗</strong><span>Detailed deep-dives on computer vision, release pipelines, and agents.</span></a><a class="quick-card" href="../smc/"><strong>SMC Flagship Portal ↗</strong><span>120 FPS dynamic hardware skinning, Android 17 compatibility, and downloads.</span></a><a class="quick-card" href="../credentials/"><strong>Verifiable Credentials (26) ↗</strong><span>Academic degrees, Cisco, and national technology achievement records.</span></a><a class="quick-card" href="../contact/"><strong>Contact & Hire ↗</strong><span>Direct email, LinkedIn, and un-gated PDF résumé download.</span></a></div>
+<footer class="wrap" style="margin-top:40px;padding-top:24px;border-top:1px solid var(--line)">
+  <div class="footer-top">
+    <a class="brand" href="../">MIF<span class="cyan">.dev</span> <span class="footer-name">Irfan Fahmi<br>AI &amp; Systems Engineering</span></a>
+    <div class="inline-links">
+      <a href="../projects/">Projects ↗</a>
+      <a href="../smc/">SMC Flagship ↗</a>
+      <a href="../about/">Experience ↗</a>
+      <a href="../credentials/">26 Credentials ↗</a>
+      <a href="https://github.com/l3al3y" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a href="https://linkedin.com/in/mifi99" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="mailto:cabalme4@gmail.com">cabalme4@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom small">
+    <span>© 2026 Muhammad Irfan Fahmi · BEM / MBOT Graduate Engineer (UTeM)</span>
+    <div>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../terms.html">Terms</a>
+      <a href="#">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+<nav class="mobile-bottom-dock" aria-label="Quick mobile navigation">
+  <a href="../">Home</a>
+  <a href="../projects/">Projects</a>
+  <a href="../smc/" style="color:var(--lime);font-weight:600">SMC</a>
+  <a href="../credentials/">Certs</a>
+  <a href="../contact/">Contact</a>
+</nav>
+</body>
+</html>

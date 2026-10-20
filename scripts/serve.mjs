@@ -11,8 +11,14 @@ http.createServer(async(req,res)=>{
     if(pathname==='/')pathname='/index.html';
     const file=path.resolve(root,'.'+pathname);
     if(!file.startsWith(root+path.sep)||pathname.split('/').some(p=>p.startsWith('.'))){res.writeHead(403);res.end();return;}
-    const info=await stat(file);if(!info.isFile())throw new Error();
-    res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Content-Length':info.size,'Cache-Control':'no-store'});
-    if(req.method==='HEAD')res.end();else res.end(await readFile(file));
+    let targetFile = file;
+    let info = await stat(targetFile).catch(()=>null);
+    if(info && info.isDirectory()){
+      targetFile = path.join(targetFile, 'index.html');
+      info = await stat(targetFile).catch(()=>null);
+    }
+    if(!info || !info.isFile())throw new Error();
+    res.writeHead(200,{'Content-Type':mime[path.extname(targetFile)]||'application/octet-stream','Content-Length':info.size,'Cache-Control':'no-store'});
+    if(req.method==='HEAD')res.end();else res.end(await readFile(targetFile));
   }catch{res.writeHead(404,{'Content-Type':'text/plain'});res.end('Not found');}
 }).listen(8000,'127.0.0.1',()=>console.log('Irfan Fahmi portfolio preview: http://127.0.0.1:8000'));
