@@ -74,7 +74,8 @@ if __name__ == '__main__':
             raise SystemExit('Publishing is restricted to the reviewed repository and exact workflow head.')
         remote = 'https://github.com/l3al3y/Portfolio.git'
         # Checkout's short-lived token stays in its auth header; no credentials in URLs.
-        subprocess.run(['git', 'remote', 'add', 'origin', remote], check=True)
+        operation = 'set-url' if 'origin' in git('remote').decode().split() else 'add'
+        subprocess.run(['git', 'remote', operation, 'origin', remote], check=True)
         leases = ['--force-with-lease=' + ref + ':' + old for ref, old in refs.items()]
         subprocess.run(['git', 'push', '--atomic', *leases, 'origin', *[ref + ':' + ref for ref in refs]], check=True)
     Path(os.environ.get('RUNNER_TEMP', tempfile.gettempdir()), 'history-sanitization.json').write_text(json.dumps(receipt, indent=2))
