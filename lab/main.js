@@ -1,8 +1,8 @@
-import { initSMCLive } from './smc-live.js?v=bem20261021-final';
-import { projects, approach } from './content.js?v=bem20261021-final';
-import { initAssistant } from './assistant.js?v=bem20261021-final';
-import { initContact } from './contact.js?v=bem20261021-final';
-import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=bem20261021-final';
+import { initSMCLive } from './smc-live.js?v=atmosphere20261021';
+import { projects, approach } from './content.js?v=atmosphere20261021';
+import { initAssistant } from './assistant.js?v=atmosphere20261021';
+import { initContact } from './contact.js?v=atmosphere20261021';
+import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=atmosphere20261021';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -136,7 +136,7 @@ $('#credential-retry')?.addEventListener('click',loadCredentials);
 if($('#certificates')&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){loadCredentials();observer.disconnect();}},{rootMargin:'500px'});observer.observe($('#certificates'));}else if($('#certificates'))loadCredentials();
 
 $('#theme-toggle').addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;try{localStorage.setItem('lab-theme',theme);}catch{}syncTheme();});
-function syncTheme(){$('#theme-toggle').setAttribute('aria-label',`Switch to ${document.documentElement.dataset.theme==='dark'?'light':'dark'} theme`);$('meta[name="theme-color"]').content=document.documentElement.dataset.theme==='dark'?'#0d1117':'#f6f4ee';}
+function syncTheme(){$('#theme-toggle').setAttribute('aria-label',`Switch to ${document.documentElement.dataset.theme==='dark'?'light':'dark'} theme`);$('meta[name="theme-color"]').content=document.documentElement.dataset.theme==='dark'?'#101b2b':'#f3f4f0';}
 syncTheme();
 if($('#chat-log'))initAssistant();contact=initContact({onResume:()=>openDocument('resume/resume.pdf','Muhammad Irfan Fahmi — Resume')});
 

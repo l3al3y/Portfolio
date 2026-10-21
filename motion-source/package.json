@@ -1,0 +1,20 @@
+{
+  "name": "irfan-portfolio-atmosphere",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:background": "esbuild background-entry.js --bundle --format=esm --platform=browser --minify --alias:@hyperframes/core=./node_modules/@hyperframes/core/dist/adapters/gsap.js --outfile=../lab/background.js",
+    "build:render": "esbuild render-entry.jsx --bundle --format=esm --platform=browser --outfile=render-bundle.js",
+    "build:hyperframes": "node prepare-hyperframes.mjs && esbuild hyperframes-entry.js --bundle --format=esm --platform=browser --minify --alias:@hyperframes/core=./node_modules/@hyperframes/core/dist/adapters/gsap.js --outfile=hyperframes-bundle.js"
+  },
+  "dependencies": {
+    "@hyperframes/core": "0.8.180",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@remotion/web-renderer": "4.0.536",
+    "esbuild": "0.28.1",
+    "gsap": "3.15.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.536"
+  }
+}

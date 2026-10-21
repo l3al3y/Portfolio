@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Background preference test harness</title><link rel="stylesheet" href="../lab/atmosphere.css"></head>
+<body style="padding:40px;color:white;font:16px sans-serif"><h1>Background preference harness</h1><p>Test-only simulated preferences; no operating-system settings are changed.</p>
+<button id="reduce">Simulate reduced motion</button><button id="restore">Restore normal motion</button>
+<button id="background-toggle" aria-pressed="true"><span class="motion-icon"></span><span class="motion-label"></span></button>
+<div class="portfolio-atmosphere" aria-hidden="true"><video class="atmosphere-film" data-src="../assets/portfolio-atmosphere.mp4" muted loop playsinline preload="none"></video></div>
+<script>
+const requestedCase=new URLSearchParams(location.search).get('case');
+let isReduced=requestedCase==='reduced',listeners=[];
+const nativeMatchMedia=window.matchMedia.bind(window);
+window.matchMedia=query=>query.includes('prefers-reduced-motion')?{get matches(){return isReduced},addEventListener(type,listener){listeners.push(listener)}}:nativeMatchMedia(query);
+if(requestedCase==='data')Object.defineProperty(navigator,'connection',{value:{saveData:true},configurable:true});
+localStorage.setItem('portfolio-background','on');
+document.querySelector('#reduce').onclick=()=>{isReduced=true;listeners.forEach(f=>f());};
+document.querySelector('#restore').onclick=()=>{isReduced=false;listeners.forEach(f=>f());};
+</script><script type="module" src="../lab/background.js"></script></body></html>

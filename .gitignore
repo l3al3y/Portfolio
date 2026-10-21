@@ -28,3 +28,8 @@ outputs/
 public-site/
 node_modules/
 __pycache__/
+motion-source/render-bundle.js
+motion-source/hyperframes-bundle.js
+atmosphere-public-site/
+motion-source/assets/
+motion-source/atmosphere.css

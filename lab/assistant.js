@@ -1,5 +1,5 @@
-import { assistantContext, professionalRegistrationContext } from './content.js?v=bem20261021-final';
-import { checkHealth, requestChat } from './integrations.js?v=bem20261021-final';
+import { assistantContext, professionalRegistrationContext } from './content.js?v=atmosphere20261021';
+import { checkHealth, requestChat } from './integrations.js?v=atmosphere20261021';
 
 // A small, text-only Markdown renderer. No model-provided HTML or links execute.
 function renderAnswer(element,text){

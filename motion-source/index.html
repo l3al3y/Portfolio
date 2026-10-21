@@ -1,0 +1,10 @@
+<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Portfolio atmosphere · Hyperframes composition</title>
+<link rel="stylesheet" href="atmosphere.css"><style>html,body{margin:0;width:1600px;height:1000px;background:#101b2b}#stage{position:relative;width:1600px;height:1000px;overflow:hidden}.network-layer{position:absolute;inset:0}</style></head><body>
+<div id="stage" data-composition-id="portfolio-network" data-start="0" data-duration="16" data-width="1600" data-height="1000">
+<video id="ambient-film" class="clip atmosphere-film" src="assets/portfolio-atmosphere.mp4" data-start="0" data-duration="16" data-track-index="0" muted playsinline></video>
+<div id="network-layer" class="clip network-layer" data-start="0" data-duration="16" data-track-index="1"></div>
+</div><script type="module">
+import {mountNetwork} from './hyperframes-bundle.js';
+window.__timelines=window.__timelines||{};
+window.__timelines['portfolio-network']=mountNetwork(document.querySelector('#stage')).timeline;
+</script></body></html>

@@ -1,0 +1,23 @@
+/* Remotion atmosphere + Hyperframes vector network. Content retains a calm center. */
+:root{--bg:#101b2b;--surface:#172335;--muted:#b3bfcd;--line:#354357;--cursor-fill:#d7e9ef;--cursor-stroke:#101b2b}
+:root[data-theme=light]{--bg:#f3f4f0;--surface:#e9eeeb;--muted:#4e6071;--line:#c4cec9;--cursor-fill:#345e6d;--cursor-stroke:#f3f4f0}
+body{isolation:isolate}
+.portfolio-atmosphere{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 90% 8%,#29596b66,transparent 65%),radial-gradient(ellipse at 5% 85%,#8c4c5e38,transparent 58%),var(--bg)}
+.atmosphere-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.84}
+.atmosphere-network{position:absolute;inset:0;width:100%;height:100%;color:#86c9d4;opacity:.25}
+.network-lines{opacity:.5}.network-junctions{opacity:.6}
+.network-cursor,.click-ring,.click-core,.signal-a,.signal-b{opacity:0}
+.portfolio-atmosphere::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#101b2b77 0%,#101b2b44 50%,#101b2b11 100%)}
+:root[data-theme=light] .portfolio-atmosphere{background:radial-gradient(ellipse at 90% 8%,#b0dad877,transparent 65%),radial-gradient(ellipse at 5% 85%,#e3c5cf66,transparent 58%),var(--bg)}
+:root[data-theme=light] .atmosphere-film{opacity:.05;mix-blend-mode:multiply}
+:root[data-theme=light] .atmosphere-network{color:#286a7c;opacity:.22}
+:root[data-theme=light] .portfolio-atmosphere::after{background:linear-gradient(90deg,#f3f4f077,#f3f4f022)}
+.header-actions{gap:14px}
+#background-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:0 10px;border:1px solid var(--line);border-radius:5px;font:10px var(--mono);white-space:nowrap;color:var(--muted)}
+#background-toggle:hover{border-color:var(--accent);color:var(--text)}
+#background-toggle:disabled{opacity:.65;cursor:default}
+.motion-icon{font:15px sans-serif;min-width:12px}
+.interaction-ring{position:absolute;width:14px;height:14px;border:1px solid var(--cyan);border-radius:50%;transform:translate(-50%,-50%);animation:interaction-pulse .75s ease-out forwards}
+@keyframes interaction-pulse{from{opacity:.65;transform:translate(-50%,-50%) scale(1)}to{opacity:0;transform:translate(-50%,-50%) scale(4)}}
+@media(max-width:700px){.header-actions{gap:10px}#background-toggle{width:34px;padding:0}.motion-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.atmosphere-network{opacity:.18}}
+@media(prefers-reduced-motion:reduce){.atmosphere-film{display:none}.interaction-ring{display:none}}

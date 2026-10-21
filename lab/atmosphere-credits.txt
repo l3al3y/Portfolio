@@ -1,0 +1,7 @@
+Portfolio atmosphere: original motion design for Irfan Fahmi, 21 October 2026.
+Ambient loop rendered locally using Remotion 4.0.536 via a project-local MCP tool.
+Vector network: Hyperframes core 0.8.180 createGSAPFrameAdapter, by HeyGen,
+Apache License 2.0; see hyperframes-LICENSE.txt. GSAP 3.15.0 by GreenSock,
+https://gsap.com/standard-license (license notice retained in background.js).
+Source composition and pinned dependencies are in the repository's motion-source folder.
+The live background contains no audio.
