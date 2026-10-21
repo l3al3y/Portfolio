@@ -18,6 +18,7 @@ PATTERNS = {
     'Google API key': re.compile(br'\bAIza[0-9A-Za-z_-]{30,}'),
     'AWS access key': re.compile(br'\bAKIA[0-9A-Z]{16}'),
     'Private signing key': re.compile(br'-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----'),
+    'Government identification number': re.compile(br'(?<![0-9A-Za-z])\d{6}-\d{2}-[0-9Xx*]{4}(?![0-9A-Za-z])'),
 }
 MAX_FILE = 32 * 1024 * 1024
 MAX_ARCHIVE = 64 * 1024 * 1024
@@ -83,6 +84,7 @@ def main(argv=None):
         relative = PurePosixPath(name)
         # Refuse secret containers even when a value is not detectable.
         if (relative.name == '.env' or relative.name.startswith('.env.') and relative.name != '.env.example'
+                or relative.name == '.dev.vars' or relative.name.startswith('.dev.vars.') and relative.name != '.dev.vars.example'
                 or relative.suffix.lower() in {'.key', '.pem', '.p12', '.pfx', '.jks', '.keystore', '.db', '.sqlite', '.sqlite3'}):
             findings.append(f'{safe_label(name)}: private file type must stay outside the public repository')
         size = int(git('cat-file', '-s', oid))

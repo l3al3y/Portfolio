@@ -1,4 +1,4 @@
-import { gateway, verifyContact } from './integrations.js?v=atmosphere20261021';
+import { gateway, verifyContact } from './integrations.js?v=roots20261021';
 
 export function initContact({onResume=()=>{}}={}){
   const dialog=document.querySelector('#contact-dialog'),container=document.querySelector('#turnstile-container');

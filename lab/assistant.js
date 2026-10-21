@@ -1,68 +1,65 @@
-import { assistantContext, professionalRegistrationContext } from './content.js?v=atmosphere20261021';
-import { checkHealth, requestChat } from './integrations.js?v=atmosphere20261021';
-
-// A small, text-only Markdown renderer. No model-provided HTML or links execute.
-function renderAnswer(element,text){
-  const parts=text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
-  element.replaceChildren(...parts.map(part=>{
-    if(part.startsWith('**')&&part.endsWith('**')){const strong=document.createElement('strong');strong.textContent=part.slice(2,-2);return strong;}
-    if(part.startsWith('`')&&part.endsWith('`')){const code=document.createElement('code');code.textContent=part.slice(1,-1);return code;}
-    return document.createTextNode(part);
-  }));
-}
+import {checkHealth,requestChat} from './integrations.js?v=roots20261021';
+import {renderAnswer,conversationMessages} from './chat-render.js?v=roots20261021';
 
 export function initAssistant(){
-  const $=s=>document.querySelector(s);
-  const log=$('#chat-log'),input=$('#chat-input'),error=$('#chat-error'),retry=$('#chat-retry');
-  let history=[],controller=null,generation=0,lastQuestion='',lastHistory=[];
-  function busy(state){$('#chat-send').disabled=state;$('#chat-health').disabled=state;$('#chat-stop').hidden=!state;input.disabled=state;$('#chat-suggestions').querySelectorAll('button').forEach(b=>b.disabled=state);retry.disabled=state;log.setAttribute('aria-busy',String(state));}
-  function message(role,text){
-    const block=document.createElement('div');block.className=`chat-message ${role}`;
-    const label=document.createElement('span');label.className='mono';label.textContent=role==='user'?'YOU':'PORTFOLIO ASSISTANT';
-    const p=document.createElement('p');p.textContent=text;block.append(label,p);log.append(block);log.scrollTop=log.scrollHeight;
-    return {block,p};
-  }
-  async function send(question,isRetry=false){
-    if(controller || !question.trim())return;
-    question=question.trim().slice(0,2000);
-    const turn=++generation;controller=new AbortController();const active=controller;
-    let timedOut=false;const timeout=setTimeout(()=>{timedOut=true;active.abort();},60000);
-    error.hidden=true;retry.hidden=true;lastQuestion=question;
-    if(!isRetry)lastHistory=history.slice();
-    history=lastHistory.slice();
-    if(!isRetry){log.querySelector('.chat-greeting')?.remove();message('user',question);}
-    input.value='';busy(true);$('#chat-status').textContent='Connecting to the AI gateway…';
-    const answer=message('assistant','Waiting for the model…');let received='';
-    try{
-      const text=await requestChat([{role:'system',content:assistantContext+'\n'+professionalRegistrationContext+'\nDo not infer current hosting from legacy portfolio claims. Mini Arcade has Lovable-generated metadata; its current hosting account configuration is unverified. The main portfolio uses GitHub Pages behind Cloudflare. Describe capabilities through documented projects, rather than inventing proficiency levels or deployment claims.'},...history.slice(-10),{role:'user',content:question}],value=>{
-        if(turn!==generation)return;received=value;renderAnswer(answer.p,value);$('#chat-status').textContent='Receiving response…';
-        const nearBottom=log.scrollHeight-log.scrollTop-log.clientHeight<130;if(nearBottom)log.scrollTop=log.scrollHeight;
-      },active.signal);
-      if(turn!==generation)return;
-      history.push({role:'user',content:question},{role:'assistant',content:text});$('#chat-status').textContent='Response complete.';
-      const copy=document.createElement('button');copy.className='text-button';copy.textContent='Copy response';
-      copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(text);copy.textContent='Copied';}catch{copy.textContent='Copy unavailable—select the response text.';}});answer.block.append(copy);
-    }catch(e){
-      if(turn!==generation)return;
-      if(received){answer.p.textContent=received;const note=document.createElement('small');note.textContent='Partial response. The conversation did not record this answer.';answer.block.append(note);}else answer.block.remove();
-      const stopped=e.name==='AbortError'&&!timedOut;
-      error.textContent=stopped?'Response stopped. You can retry or ask another question.':timedOut?'The response timed out. Please retry, or explore the project notes.':e instanceof TypeError?'Unable to connect to the assistant. Check your connection, or try again later.':e.message;
-      error.hidden=false;retry.hidden=false;$('#chat-status').textContent=stopped?'Stopped.': 'Service unavailable for this request.';
-    }finally{clearTimeout(timeout);if(turn===generation){controller=null;busy(false);}}
-  }
-  $('#chat-form').addEventListener('submit',e=>{e.preventDefault();send(input.value);});
-  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();send(input.value);}});
-  $('#chat-suggestions').addEventListener('click',e=>{const b=e.target.closest('button');if(b)send(b.textContent);});
-  $('#chat-stop').addEventListener('click',()=>controller?.abort());
-  retry.addEventListener('click',()=>send(lastQuestion,true));
-  $('#chat-clear').addEventListener('click',()=>{
-    ++generation;controller?.abort();controller=null;history=[];lastHistory=[];lastQuestion='';
-    log.innerHTML='<div class="chat-greeting"><span class="mono">IRFAN’S PORTFOLIO ASSISTANT</span><p>What would you like to explore?</p></div>';
-    error.hidden=true;retry.hidden=true;input.value='';$('#chat-status').textContent='Conversation cleared.';busy(false);input.focus();
-  });
-  $('#chat-health').addEventListener('click',async()=>{
-    const b=$('#chat-health');b.disabled=true;$('#chat-status').textContent='Checking gateway…';
-    const c=new AbortController(),timer=setTimeout(()=>c.abort(),12000);
-    try{const status=await checkHealth(c.signal);if(!controller)$('#chat-status').textContent=status;}catch{if(!controller)$('#chat-status').textContent='Gateway unavailable. Please try later.';}finally{clearTimeout(timer);b.disabled=!!controller;}
-  });
+ const $=s=>document.querySelector(s),log=$('#chat-log'),input=$('#chat-input'),error=$('#chat-error'),retry=$('#chat-retry');
+ let history=[],controller=null,generation=0,lastQuestion='',lastHistory=[],failedBlock=null;
+ const status=(text,state='ready')=>{$('#chat-status').textContent=text;$('#chat-panel').dataset.state=state;};
+ function resize(){input.style.height='auto';input.style.height=Math.min(input.scrollHeight,180)+'px';$('#chat-count').textContent=input.value.length+' / 2000';}
+ function busy(on){
+  $('#chat-send').disabled=on;$('#chat-health').disabled=on;$('#chat-stop').hidden=!on;input.disabled=on;retry.disabled=on;
+  $('#chat-suggestions').querySelectorAll('button').forEach(b=>b.disabled=on);log.setAttribute('aria-busy',String(on));
+ }
+ function message(role,text){
+  const block=document.createElement('article');block.className='chat-message '+role;
+  const label=document.createElement('span');label.className='chat-speaker';label.textContent=role==='user'?'You':'Irfan’s assistant';
+  const content=document.createElement('div');content.className='chat-answer';content.textContent=text;
+  block.append(label,content);log.append(block);log.scrollTop=log.scrollHeight;return {block,content};
+ }
+ async function send(question,isRetry=false){
+  if(controller||!question.trim())return;
+  question=question.trim().slice(0,2000);const turn=++generation,active=new AbortController();controller=active;
+  let timedOut=false;const timeout=setTimeout(()=>{timedOut=true;active.abort();},65000);
+  error.hidden=true;retry.hidden=true;lastQuestion=question;
+  if(!isRetry){lastHistory=history.slice();failedBlock=null;}else{failedBlock?.remove();failedBlock=null;}
+  history=lastHistory.slice();log.querySelector('.chat-greeting')?.remove();
+  if(!isRetry)message('user',question);
+  input.value='';resize();busy(true);status('Finding the relevant project evidence…','busy');
+  const answer=message('assistant','One moment…');answer.block.dataset.pending='true';let received='';
+  try{
+   const text=await requestChat(conversationMessages(history,question),value=>{
+    if(turn!==generation)return;
+    const follow=log.scrollHeight-log.scrollTop-log.clientHeight<150;
+    received=value;answer.block.dataset.pending='false';renderAnswer(answer.content,value);status('Writing an answer…','busy');if(follow)log.scrollTop=log.scrollHeight;
+   },active.signal);
+   if(turn!==generation)return;
+   history.push({role:'user',content:question},{role:'assistant',content:text});history=history.slice(-8);status('Ready for your next question.');
+   answer.block.dataset.pending='false';
+   const actions=document.createElement('div');actions.className='chat-answer-actions';const copy=document.createElement('button');copy.type='button';copy.textContent='Copy answer';
+   copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(text);copy.textContent='Copied';}catch{copy.textContent='Select the answer to copy it.';}});actions.append(copy);answer.block.append(actions);
+  }catch(e){
+   if(turn!==generation)return;
+   answer.block.dataset.pending='false';
+   if(received){renderAnswer(answer.content,received);const note=document.createElement('small');note.textContent='Incomplete answer · retry to finish.';answer.block.append(note);failedBlock=answer.block;}else answer.block.remove();
+   const stopped=e.name==='AbortError'&&!timedOut;
+   error.textContent=stopped?'Answer stopped. Retry or ask another question.':timedOut?'That took too long. Please retry, or open the project evidence below.':e instanceof TypeError?'Could not connect. Please check your connection and retry.':e.message;
+   error.hidden=false;retry.hidden=false;status(stopped?'Stopped.':'Please try again shortly.','error');
+  }finally{clearTimeout(timeout);if(turn===generation){controller=null;busy(false);}}
+ }
+ $('#chat-form').addEventListener('submit',e=>{e.preventDefault();send(input.value);});
+ input.addEventListener('input',resize);
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();send(input.value);}});
+ $('#chat-suggestions').addEventListener('click',e=>{const b=e.target.closest('button');if(b)send(b.dataset.question||b.textContent);});
+ $('#chat-stop').addEventListener('click',()=>controller?.abort());retry.addEventListener('click',()=>send(lastQuestion,true));
+ $('#chat-clear').addEventListener('click',()=>{
+  ++generation;controller?.abort();controller=null;history=[];lastHistory=[];lastQuestion='';failedBlock=null;log.replaceChildren();
+  const greeting=document.createElement('div');greeting.className='chat-greeting';const title=document.createElement('h3');title.textContent='What would you like to know about Irfan?';const p=document.createElement('p');p.textContent='Explore a project, compare his experience with a role, or ask where to find the evidence.';greeting.append(title,p);log.append(greeting);
+  error.hidden=true;retry.hidden=true;input.value='';resize();busy(false);status('New conversation.');input.focus();
+ });
+ $('#chat-health').addEventListener('click',async()=>{
+  const button=$('#chat-health');button.disabled=true;status('Checking connection…');const c=new AbortController(),timer=setTimeout(()=>c.abort(),12000);
+  try{const text=await checkHealth(c.signal);if(!controller)status(text);}catch{if(!controller)status('Connection unavailable. You can still read every project.','error');}
+  finally{clearTimeout(timer);button.disabled=!!controller;}
+ });
+ resize();
 }

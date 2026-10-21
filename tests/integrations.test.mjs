@@ -11,14 +11,14 @@ test('SSE flushes final event without trailing blank line',async()=>{assert.equa
 test('empty and malformed model responses surface useful errors',async()=>{
   await assert.rejects(readChatStream(stream('data: [DONE]\n\n'),()=>{}),/empty response/);
   await assert.rejects(readChatStream(stream('data: invalid\n\n'),()=>{}),/unreadable response/);
-  await assert.rejects(readChatStream(stream('data: {"error":"unavailable"}\n\n'),()=>{}),/model reported an error/);
+  await assert.rejects(readChatStream(stream('data: {"error":"unavailable"}\n\n'),()=>{}),/interrupted/);
 });
 test('abort stops stream processing',async()=>{const c=new AbortController();c.abort();await assert.rejects(readChatStream(stream('data: [DONE]\n\n'),()=>{},c.signal),{name:'AbortError'});});
-test('chat preserves original endpoint and payload, accepts JSON fallback',async()=>{
+test('chat sends only conversation messages to the portfolio backend and accepts JSON fallback',async()=>{
   const messages=[{role:'user',content:'Explain checkout'}];
   const text=await requestChat(messages,()=>{},undefined,async(url,options)=>{
     assert.equal(url,gateway.chat);assert.equal(options.method,'POST');
-    const body=JSON.parse(options.body);assert.equal(body.model,'auto');assert.equal(body.stream,true);assert.equal(body.max_tokens,1024);assert.deepEqual(body.messages,messages);
+    const body=JSON.parse(options.body);assert.deepEqual(body,{messages});assert.equal(options.headers.Authorization,undefined);
     return new Response(JSON.stringify({choices:[{message:{content:'Answer'}}]}),{headers:{'content-type':'application/json'}});
   });assert.equal(text,'Answer');
 });

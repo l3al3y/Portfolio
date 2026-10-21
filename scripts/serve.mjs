@@ -5,9 +5,17 @@ import { fileURLToPath } from 'node:url';
 const root=path.resolve(fileURLToPath(new URL('../',import.meta.url)));
 const mime={'.vtt':'text/vtt; charset=utf-8','.txt':'text/plain; charset=utf-8','.mp4':'video/mp4','.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.pdf':'application/pdf','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.woff2':'font/woff2','.jpg':'image/jpeg','.zip':'application/zip','.ico':'image/x-icon','.xml':'application/xml'};
 http.createServer(async(req,res)=>{
-  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
   try{
     let pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
+    if(pathname.startsWith('/__portfolio-chat/')){
+      const target=pathname.slice('/__portfolio-chat'.length);
+      if(!['/health','/v1/chat/completions'].includes(target)||!['GET','POST','OPTIONS'].includes(req.method)){res.writeHead(404);res.end();return;}
+      const chunks=[];let size=0;for await(const chunk of req){size+=chunk.length;if(size>24000){res.writeHead(413);res.end();return;}chunks.push(chunk);}
+      const response=await fetch('https://irfan-portfolio-chat.cabalme4.workers.dev'+target,{method:req.method,headers:{Origin:'https://irfanfahmi.com','Content-Type':'application/json'},body:req.method==='POST'?Buffer.concat(chunks):undefined,signal:AbortSignal.timeout(60000)});
+      res.writeHead(response.status,{'Content-Type':response.headers.get('Content-Type')||'application/json','Cache-Control':'no-store'});
+      if(response.body)for await(const chunk of response.body)res.write(chunk);res.end();return;
+    }
+    if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
     if(pathname==='/smc/api/apk-stat'){const upstream=await fetch('https://irfanfahmi.com/smc/api/apk-stat',{signal:AbortSignal.timeout(8000),cache:'no-store'});res.writeHead(upstream.status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(await upstream.text());return;}
     if(pathname==='/')pathname='/index.html';
     const file=path.resolve(root,'.'+pathname);

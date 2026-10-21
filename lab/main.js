@@ -1,8 +1,8 @@
-import { initSMCLive } from './smc-live.js?v=atmosphere20261021';
-import { projects, approach } from './content.js?v=atmosphere20261021';
-import { initAssistant } from './assistant.js?v=atmosphere20261021';
-import { initContact } from './contact.js?v=atmosphere20261021';
-import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=atmosphere20261021';
+import { initSMCLive } from './smc-live.js?v=roots20261021';
+import { projects, approach } from './content.js?v=roots20261021';
+import { initAssistant } from './assistant.js?v=roots20261021';
+import { initContact } from './contact.js?v=roots20261021';
+import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=roots20261021';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -64,18 +64,19 @@ window.addEventListener('hashchange',readHash);readHash();
 const documentDialog = $('#document-dialog');
 let documentController;
 let previewManifest;
+const documentURL=url=>url+'?v=privacy20261021';
 export async function openDocument(url,title) {
   if(!/^(certificates\/[^/]+\.pdf|resume\/resume\.pdf)$/.test(url))return;
   documentController?.abort();
   documentController=new AbortController();
   const controller=documentController;
   $('#document-title').textContent=title;
-  $('#document-link').href=url;
+  $('#document-link').href=documentURL(url);
   $('#document-status').textContent='Loading document…';
   $('#document-frame').replaceChildren();
   if(!documentDialog.open)documentDialog.showModal();
   try{
-    const response=await fetch(url,{method:'HEAD',signal:controller.signal});
+    const response=await fetch(documentURL(url),{method:'HEAD',signal:controller.signal,cache:'no-store'});
     if(!response.ok)throw new Error('Document is unavailable. Please try again later.');
     if(!documentDialog.open || controller!==documentController)return;
     if(!previewManifest){const manifestResponse=await fetch('assets/documents/manifest.json',{signal:controller.signal});if(!manifestResponse.ok)throw new Error();previewManifest=await manifestResponse.json();}
@@ -88,7 +89,7 @@ export async function openDocument(url,title) {
     const zoom=document.createElement('button');zoom.textContent='Zoom in';zoom.className='text-button';zoom.setAttribute('aria-pressed','false');
     zoom.addEventListener('click',()=>{const enlarged=viewer.classList.toggle('enlarged');zoom.textContent=enlarged?'Fit page':'Zoom in';zoom.setAttribute('aria-pressed',String(enlarged));});
     tools.append(zoom);let pageIndex=0;
-    function showPage(){const page=pages[pageIndex];image.width=page.width;image.height=page.height;image.src=page.src;image.alt=`${title} — page ${pageIndex+1}`;$('#document-status').textContent=`Page ${pageIndex+1} of ${pages.length} · Loading preview…`;}
+    function showPage(){const page=pages[pageIndex];image.width=page.width;image.height=page.height;image.src=documentURL(page.src);image.alt=`${title} — page ${pageIndex+1}`;$('#document-status').textContent=`Page ${pageIndex+1} of ${pages.length} · Loading preview…`;}
     image.addEventListener('load',()=>{if(controller===documentController)$('#document-status').textContent=`Page ${pageIndex+1} of ${pages.length} · Rendered from the original PDF.`;});
     image.addEventListener('error',()=>{if(controller===documentController)$('#document-status').textContent='Preview unavailable. Open the original PDF using the link.';});
     if(pages.length>1){for(const [label,delta] of [['Previous page',-1],['Next page',1]]){const b=document.createElement('button');b.className='text-button';b.textContent=label;b.addEventListener('click',()=>{pageIndex=(pageIndex+delta+pages.length)%pages.length;showPage();});tools.append(b);}}

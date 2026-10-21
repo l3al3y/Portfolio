@@ -1,10 +1,11 @@
 // Contracts taken from the original app.js. No backend secrets belong in this file.
 export const gateway = Object.freeze({
   contact: 'https://contact-gate-worker.cabalme4.workers.dev/',
-  health: 'https://contact-gate-worker.cabalme4.workers.dev/health',
-  chat: 'https://contact-gate-worker.cabalme4.workers.dev/v1/chat/completions',
+  health: 'https://irfan-portfolio-chat.cabalme4.workers.dev/health',
+  chat: 'https://irfan-portfolio-chat.cabalme4.workers.dev/v1/chat/completions',
   sitekey: '0x4AAAAAAD9nlicfqO7QQsBk'
 });
+const chatURL=url=>['localhost','127.0.0.1'].includes(globalThis.location?.hostname)?new URL('/__portfolio-chat'+new URL(url).pathname,globalThis.location.origin).href:url;
 
 export function httpError(status) {
   if (status === 429) return 'The assistant is receiving too many requests. Please wait a moment and try again.';
@@ -14,9 +15,10 @@ export function httpError(status) {
 }
 
 export async function checkHealth(signal, fetcher = fetch) {
-  const response = await fetcher(gateway.health, { signal });
+  const response = await fetcher(chatURL(gateway.health), { signal });
   if (!response.ok) throw new Error(httpError(response.status));
   const data = await response.json();
+  if(data.status==='ready'&&data.configured===true)return 'Assistant ready. Ask about Irfan’s work.';
   if (data.maintenance === true || data.status === 'maintenance') return 'Service is under maintenance. Please try later.';
   if (data.has_active_model === false || data.status === 'offline') return 'Models are currently unavailable. Please try later.';
   if (data.has_active_model === true) return 'Gateway reports an active model.';
@@ -36,7 +38,7 @@ export async function readChatStream(body, onText, signal) {
     if (data === '[DONE]') { finished = true; return; }
     let record;
     try { record = JSON.parse(data); } catch { throw new Error('The gateway returned an unreadable response. Please retry.'); }
-    if (record.error) throw new Error('The model reported an error. Please try again later.');
+    if (record.error) throw new Error('The response was interrupted. Please retry.');
     const content = record.choices?.[0]?.delta?.content ?? record.choices?.[0]?.message?.content;
     if (typeof content === 'string') { text += content; onText(text); }
   }
@@ -62,9 +64,9 @@ export async function readChatStream(body, onText, signal) {
 }
 
 export async function requestChat(messages, onText, signal, fetcher = fetch) {
-  const response = await fetcher(gateway.chat, {
+  const response = await fetcher(chatURL(gateway.chat), {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, signal,
-    body: JSON.stringify({ model: 'auto', stream: true, messages, temperature: 0.5, max_tokens: 1024 })
+    body: JSON.stringify({ messages })
   });
   if (!response.ok) throw new Error(httpError(response.status));
   if ((response.headers.get('content-type') || '').includes('application/json')) {

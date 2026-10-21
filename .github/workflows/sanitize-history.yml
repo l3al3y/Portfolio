@@ -1,0 +1,31 @@
+name: Sanitize reviewed public history
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/sanitize-history.py']
+permissions:
+  contents: read
+concurrency:
+  group: privacy-history-rewrite
+  cancel-in-progress: false
+jobs:
+  sanitize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install official history filter
+        run: python -m pip install git-filter-repo==2.47.0
+      - name: Replace reviewed private payloads and publish with ref leases
+        run: python scripts/sanitize-history.py --publish
+      - name: Save sanitized receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-sanitization
+          path: ${{ runner.temp }}/history-sanitization.json
