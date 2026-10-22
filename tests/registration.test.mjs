@@ -3,12 +3,16 @@ import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
 import {professionalRegistrationContext} from '../lab/content.js';
 const root=new URL('../',import.meta.url);
-test('issued BEM registration and pending MBOT stay distinct across public entry points',async()=>{
+test('BEM and MBOT approvals preserve their distinct designations and document evidence',async()=>{
  for(const name of ['index.html','about/index.html']){
   const html=await readFile(new URL(name,root),'utf8');
   assert.ok(html.includes('BEM Graduate Engineer · Computer Engineering'));
   assert.ok(html.includes('Registered · Approved 15 October 2026.'));
-  assert.ok(html.includes('MBOT Graduate Technologist (IT)</strong> · Application submitted; certificate pending.'));
+  assert.ok(html.includes('MBOT Graduate Technologist · Information &amp; Communication Technology (IT)'));
+  assert.ok(html.includes('Registered · Approved 22 October 2026.'));
+  assert.ok(html.includes('GT26100872'));
+  assert.ok(html.includes('View MBOT approval letter'));
+  assert.ok(html.includes('Formal registration certificate issuance is pending according to the letter.'));
   assert.ok(html.includes('href="https://engineer.org.my/public/Engineers/Index/325542"'));
   assert.ok(html.includes('Verify BEM registration'));
   assert.ok(!html.includes('BEM_Graduate_Engineer_Redacted.pdf'));
@@ -16,7 +20,8 @@ test('issued BEM registration and pending MBOT stay distinct across public entry
   assert.ok(!html.includes('résumé'));
  }
  assert.match(professionalRegistrationContext,/registered Graduate Engineer in the Computer branch, approved 15 October 2026/);
- assert.match(professionalRegistrationContext,/MBOT:.*still pending/);
+ assert.match(professionalRegistrationContext,/MBOT: registered Graduate Technologist.*approved 22 October 2026, registration GT26100872/);
+ assert.match(professionalRegistrationContext,/formal registration certificate issuance is pending/);
  assert.doesNotMatch(professionalRegistrationContext,/Both certificates are pending/);
 });
 test('BEM certificate and preview are not included in the public document catalog',async()=>{

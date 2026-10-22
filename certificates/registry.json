@@ -1,5 +1,20 @@
 [
   {
+    "id": "cert-27",
+    "title": "MBOT - Graduate Technologist (IT) - Registration Approval",
+    "issuer": "Malaysia Board of Technologists (MBOT)",
+    "date": "22 October 2026 · Registration GT26100872",
+    "category": "professional",
+    "category_label": "PROFESSIONAL REGISTRATIONS",
+    "filename": "MBOT_Graduate_Technologist_Registration_Approval.pdf",
+    "thumbnail": "",
+    "registration_number": "GT26100872",
+    "technology_field": "Information & Communication Technology (IT)",
+    "approval_date": "2026-10-22",
+    "document_type": "Registration approval letter",
+    "status": "Approved"
+  },
+  {
     "id": "cert-1",
     "title": "Cisco Networking Academy — Enterprise Networking, Security, and Automation",
     "issuer": "Cisco Networking Academy",

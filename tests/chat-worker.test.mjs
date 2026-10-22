@@ -22,7 +22,7 @@ test('backend owns provider model, token budget, instructions and credential; br
  const text=await response.text(),body=JSON.parse(captured.options.body);
  assert.equal(captured.url,'https://rootsys.cloud/v1/chat/completions');assert.equal(captured.options.headers.Authorization,'Bearer test-secret-value');assert.equal(captured.options.redirect,'manual');
  assert.equal(body.model,'deepseek-v4.1-flash');assert.equal(body.max_tokens,1024);assert.equal(body.messages[0].role,'system');
- assert.match(body.messages[0].content,/MBOT remains pending/);assert.ok(!body.messages[0].content.includes(env.ROOTSYS_API_KEY));
+ assert.match(body.messages[0].content,/MBOT Graduate Technologist \(IT\) registration was approved 22 October 2026 \(GT26100872\)/);assert.ok(!body.messages[0].content.includes(env.ROOTSYS_API_KEY));
  assert.match(text,/Answer from public facts/);assert.ok(!text.includes(env.ROOTSYS_API_KEY));
 });
 test('upstream credential errors become generic errors without reflecting provider response bodies',async()=>{

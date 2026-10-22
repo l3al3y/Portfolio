@@ -29,7 +29,7 @@ The preview serves http://127.0.0.1:8000. `stage_site.py` requires a fresh outpu
 - `404.html`: recovery navigation for unknown URLs.
 - `lab/content.js`: source-backed project narratives and assistant context.
 - `lab/assistant.js`, `lab/contact.js`, `lab/integrations.js`: original assistant and Cloudflare verified-contact contracts.
-- `certificates/registry.json`: 26 credential documents, with original PDF previews in `assets/documents/`.
+- `certificates/registry.json`: 27 credential documents, with original PDF previews in `assets/documents/`.
 - `assets/irfan-employer-pitch-v3.mp4`, `assets/employer-pitch-v3-poster.jpg`: narrated 72-second, 1280 × 720, 30 fps Remotion introduction with animated clicks and SMC evidence. The original silent film remains available at its existing URL.
 - `assets/checkout-architecture.svg`: clearly labelled architecture illustration, not a live screenshot.
 
@@ -37,7 +37,7 @@ The Remotion source and MCP renderer are delivered separately from the static we
 
 ## Evidence and integrations
 
-Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM Graduate Engineer registration in Computer Engineering was approved on 15 October 2026; the portfolio links to the official BEM public directory for verification. The certificate is not published. MBOT remains an application with its certificate pending. Cisco Networking Academy documents are course completions. Degree completion has not been newly confirmed.
+Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM Graduate Engineer registration in Computer Engineering was approved on 15 October 2026; the portfolio links to the official BEM public directory for verification. The certificate is not published. MBOT Graduate Technologist registration in Information & Communication Technology (IT) was approved on 22 October 2026, registration GT26100872. Its supplied approval letter is available in the credential registry; the formal registration certificate is pending according to that letter. Cisco Networking Academy documents are course completions. Degree completion has not been newly confirmed.
 
 Resume and public email/LinkedIn links are available directly. Additional contact details retain Cloudflare verification. The assistant is optional, sends questions to the existing gateway on request, and keeps frontend history in memory. No backend keys are included.
 

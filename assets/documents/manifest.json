@@ -187,5 +187,12 @@
       "width": 990,
       "height": 1400
     }
+  ],
+  "certificates/MBOT_Graduate_Technologist_Registration_Approval.pdf": [
+    {
+      "src": "assets/documents/MBOT_Graduate_Technologist_Registration_Approval-1.webp",
+      "width": 1000,
+      "height": 1400
+    }
   ]
 }

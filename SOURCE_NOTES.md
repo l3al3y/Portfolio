@@ -1,3 +1,5 @@
+> Update, 22 October 2026: the user supplied an MBOT Graduate Technologist registration approval letter for Information & Communication Technology (IT), approved 22 October 2026, GT26100872. It states registration is valid and active at approval and that formal certificate issuance will follow. The supplied image is embedded unchanged in the downloadable PDF, with a PDF-rendered preview; no separate current portal verification or Professional Technologist/Ts. designation is claimed. BEM approval and its public-directory link are preserved. Earlier notes below describe historical checks.
+
 > Update, 21 October 2026: the supplied BEM certificate confirms Graduate Engineer registration in the Computer branch, approved 15 October 2026. The portfolio links to the official BEM directory entry at https://engineer.org.my/public/Engineers/Index/325542; the certificate is not published. MBOT remains pending. The notes below retain their historical check dates.
 
 # Source notes — checked 6 October 2026
