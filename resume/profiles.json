@@ -104,8 +104,8 @@
     "smc-crows": {
       "name": "SMC Crows / Android Release Engineering",
       "highlights": [
-        "Worked on Android compatibility investigation, release packaging, device testing and a community distribution portal.",
-        "Documented installation and account backup/recovery workflows; release-specific test records explain device and Android-version constraints."
+        "Contributed to the SMC Crows community through Android compatibility investigation, release packaging, device testing and installation and account recovery guidance.",
+        "Community distribution recorded 29,594 download requests across all release and setup versions as of 22 October 2026. Counts include retries."
       ]
     },
     "arcade": {
@@ -120,8 +120,8 @@
     {
       "id": "computer-engineering",
       "label": "Computer Engineering",
-      "headline": "Computer Engineering | AI, Software & Embedded Systems",
-      "pdf": "computer-engineering-20261022.pdf",
+      "headline": "Computer Engineering",
+      "pdf": "computer-engineering-20261022-community.pdf",
       "download_name": "Irfan_Fahmi_Computer_Engineering.pdf",
       "portfolio": "https://irfanfahmi.com/",
       "summary": "Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering and Arduino-based sensing, supported by technical troubleshooting experience.",
@@ -143,13 +143,17 @@
           "label": "Hardware & systems",
           "details": "Arduino, HX711, load cells, sensor integration, Android investigation, Windows troubleshooting, VLAN, OSPF, Wireshark."
         }
+      ],
+      "legacy_pdfs": [
+        "resume.pdf",
+        "computer-engineering-20261022.pdf"
       ]
     },
     {
       "id": "ai-ml",
       "label": "AI / ML Engineer",
-      "headline": "Computer Engineering | AI / ML Engineering",
-      "pdf": "ai-ml-engineer.pdf",
+      "headline": "Computer Engineering and Machine Learning",
+      "pdf": "ai-ml-engineer-20261022-plain.pdf",
       "download_name": "Irfan_Fahmi_AI_ML_Engineer.pdf",
       "portfolio": "https://irfanfahmi.com/careers/ai-ml/",
       "intro": "Models become useful when they meet a real input, a clear decision and a working interface.",
@@ -192,13 +196,16 @@
         "Feature engineering",
         "Model evaluation",
         "Inference integration"
+      ],
+      "legacy_pdfs": [
+        "ai-ml-engineer.pdf"
       ]
     },
     {
       "id": "software",
       "label": "Software Engineer",
-      "headline": "Computer Engineering | Software Engineering",
-      "pdf": "software-engineer.pdf",
+      "headline": "Computer Engineering and Software Engineering",
+      "pdf": "software-engineer-20261022-community.pdf",
       "download_name": "Irfan_Fahmi_Software_Engineer.pdf",
       "portfolio": "https://irfanfahmi.com/careers/software/",
       "intro": "Build the application. Understand the system around it. Support the people using it.",
@@ -241,13 +248,16 @@
         "Browser applications",
         "Systems integration",
         "Release engineering"
+      ],
+      "legacy_pdfs": [
+        "software-engineer.pdf"
       ]
     },
     {
       "id": "embedded-iot",
       "label": "Embedded / IoT Engineer",
-      "headline": "Computer Engineering | Embedded / IoT Engineering",
-      "pdf": "embedded-iot-engineer.pdf",
+      "headline": "Computer Engineering and Embedded Systems",
+      "pdf": "embedded-iot-engineer-20261022-community.pdf",
       "download_name": "Irfan_Fahmi_Embedded_IoT_Engineer.pdf",
       "portfolio": "https://irfanfahmi.com/careers/embedded-iot/",
       "intro": "Start at the signal. Follow it through firmware, processing and the interface.",
@@ -290,6 +300,9 @@
         "Sensor integration",
         "Signal handling",
         "Connected monitoring"
+      ],
+      "legacy_pdfs": [
+        "embedded-iot-engineer.pdf"
       ]
     }
   ]

@@ -2,15 +2,15 @@
 export const projects = [
   {
     id: 'smc-crows', number: '01', title: 'SMC Crows', category: 'Android systems · Community project',
-    summary: 'Release engineering for a community Android game: compatibility, distribution and account recovery.',
+    summary: 'Contributing to the SMC Crows community through Android compatibility, releases, distribution and player support.',
     image: '', alt: '', stack: ['Android', 'ARM64', 'Release tooling', 'Cloudflare'],
     problem: 'Keeping a legacy Android game usable on newer devices requires investigating runtime compatibility, packaging constraints and failures on real hardware.',
-    implementation: 'I work on Android compatibility investigation, release packaging, device testing and the SMC Crows distribution portal. The project also documents installation and account backup and recovery so players can follow the release process.',
+    implementation: 'I contribute to the SMC Crows community through Android compatibility investigation, release packaging, device testing and the distribution portal. Installation and account backup/recovery guides help community members set up releases and preserve their progress.',
     constraints: 'This is a community project built around a third-party game. Compatibility depends on the device, Android version and release; individual test results do not establish support for every device.',
-    outcome: 'The published SMC portal provides release information, setup guides, account recovery guidance and device-test records. Those release-specific records are the reference for compatibility and performance claims.',
-    result: 'Android release pipeline', resultNote: 'Community engineering · see release evidence',
+    outcome: 'The community distribution portal recorded 29,594 download-button requests across all listed release and setup versions as of 22 October 2026, summing direct, mirror and historical counters once each. Requests include retries; completed downloads, installations and unique players are not measured. The portal also provides release information, setup and recovery guidance, and device-test records.',
+    result: '29,594 download requests', resultNote: 'All release/setup versions · 22 Oct 2026 · retries included',
     links: [{label: 'Explore SMC Crows', url: 'smc/'}],
-    sources: [{label: 'Release documentation & device tests', url: 'https://irfanfahmi.com/smc/'}]
+    sources: [{label: 'Release documentation & device tests', url: 'https://irfanfahmi.com/smc/'}, {label: 'All-version download counters', url: 'https://irfanfahmi.com/smc/downloads/#download-counts'}]
   },
   {
     id: 'checkout', number: '02', title: 'Hybrid Self-Checkout', category: 'Computer vision · Capstone',
@@ -61,7 +61,7 @@ export const projects = [
     outcome: 'The team received Third Place for “Development of Livestock Weight Tracking System Based on IoT” at INOTEK 2025 (Series 1), held on 15 January 2025. The certificate verifies the team award; it does not validate sensor accuracy or a production deployment.',
     result: 'INOTEK 2025 · Third Place', resultNote: 'Documented team award · 15 January 2025',
     links: [{label: 'View award document', url: 'certificates/INOTEK_2025_Third_Place.pdf', preview: true}],
-    sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing resume', url: 'resume/computer-engineering-20261022.pdf'}]
+    sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing resume', url: 'resume/computer-engineering-20261022-community.pdf'}]
   },
   {
     id: 'arcade', number: '06', title: 'Mini Arcade', category: 'Interactive software · Web',

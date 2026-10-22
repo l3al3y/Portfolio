@@ -1,7 +1,7 @@
 cv:
   name: Muhammad Irfan Fahmi
-  headline: Computer Engineering | AI, Software & Embedded Systems
-  location: Klang Valley, Malaysia
+  headline: Computer Engineering
+  location: Klang Valley Malaysia
   email: cabalme4@gmail.com
   website: https://irfanfahmi.com/
   social_networks:
@@ -11,18 +11,17 @@ cv:
     username: l3al3y
   sections:
     Professional Summary:
-    - Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through
-      practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering
-      and Arduino-based sensing, supported by technical troubleshooting experience.
+    - Computer Engineering background at UTeM connecting software intelligent systems and hardware through
+      practical projects. Hands on work spans computer vision checkout validation Android release engineering
+      and Arduino based sensing supported by technical troubleshooting experience.
     Education:
-    - institution: Universiti Teknikal Malaysia Melaka (UTeM)
+    - institution: Universiti Teknikal Malaysia Melaka UTeM
       area: Bachelor of Computer Engineering with Honours
       start_date: 2022-10
       end_date: 2026-11
-      highlights:
-      - 'Graduation scheduled: 2 November 2026.'
+      summary: Graduation scheduled for 2 November 2026.
     - institution: Politeknik Port Dickson
-      area: Diploma in Electronic Engineering (Computer)
+      area: Diploma in Electronic Engineering Computer
       start_date: 2018-12
       end_date: 2022-05
     - institution: Kolej Komuniti Selandar
@@ -30,63 +29,59 @@ cv:
       start_date: 2017-07
       end_date: 2019-02
     Technical Skills:
-    - label: Programming & data
-      details: Python, C/C++, JavaScript, TypeScript, SQL, MySQL, Git.
+    - label: Programming and data
+      details: Python C and C++ JavaScript TypeScript SQL MySQL Git.
     - label: Intelligent systems
-      details: YOLOv8, OpenCV, MediaPipe, Random Forest, LLM orchestration.
-    - label: Hardware & systems
-      details: Arduino, HX711, load cells, sensor integration, Android investigation, Windows troubleshooting,
-        VLAN, OSPF, Wireshark.
+      details: YOLOv8 OpenCV MediaPipe Random Forest LLM orchestration.
+    - label: Hardware and systems
+      details: Arduino HX711 load cells sensor integration Android investigation Windows troubleshooting VLAN
+        OSPF Wireshark.
     Selected Projects:
-    - name: '[Hybrid Self-Checkout](https://irfanfahmi.com/projects/checkout/)'
-      highlights:
-      - Built a Python pipeline combining YOLOv8/OpenCV product detection, USB barcode input and MySQL
-        product/transaction data.
-      - 'Repository-reported evaluation: 77.4% precision and 72.0% recall after 50 epochs; tested visual verification
-        challenges including occlusion and similar packaging.'
-    - name: '[SMC Crows / Android Release Engineering](https://irfanfahmi.com/projects/smc-crows/)'
-      highlights:
-      - Worked on Android compatibility investigation, release packaging, device testing and a community
-        distribution portal.
-      - Documented installation and account backup/recovery workflows; release-specific test records explain
-        device and Android-version constraints.
+    - name: '[Hybrid Self Checkout](https://irfanfahmi.com/projects/checkout/)'
+      summary: Built a Python pipeline combining YOLOv8 and OpenCV product detection USB barcode input and
+        MySQL product and transaction data. Repository reported evaluation 77.4 percent precision and 72.0
+        percent recall after 50 epochs. Tested visual verification challenges including occlusion and similar
+        packaging.
+    - name: '[SMC Crows and Android Release Engineering](https://irfanfahmi.com/projects/smc-crows/)'
+      summary: Contributed to the SMC Crows community through Android compatibility investigation release
+        packaging device testing and installation and account recovery guidance. Community distribution
+        recorded 29594 download requests across all release and setup versions as of 22 October 2026. Counts
+        include retries.
     - name: '[IoT Livestock Weight Tracking](https://irfanfahmi.com/projects/livestock/)'
-      highlights:
-      - Contributed to a team weighing/monitoring platform using Arduino, HX711 load-cell amplifiers, C/C++
-        signal filtering and telemetry dashboards.
-      - Team awarded Third Place at INOTEK 2025 (Series 1), 15 January 2025, for Development of Livestock
-        Weight Tracking System Based on IoT.
+      summary: Contributed to a team weighing and monitoring platform using Arduino HX711 load cell amplifiers
+        C and C++ signal filtering and telemetry dashboards. Team awarded Third Place at INOTEK 2025 Series 1
+        15 January 2025 for Development of Livestock Weight Tracking System Based on IoT.
     Technical Experience:
     - company: Global Elite Ventures Sdn. Bhd
       position: Technical Staff
       start_date: 2021-09
       end_date: 2022-07
-      summary: Technical troubleshooting and hardware/software deployment.
-    - company: ARNN Technologies & Karar Solution
+      summary: Technical troubleshooting and hardware and software deployment.
+    - company: ARNN Technologies and Karar Solution
       position: Contract Assistant Engineer
       start_date: 2020-06
       end_date: 2020-07
-      summary: Engineering project support and technical problem-solving.
+      summary: Engineering project support and technical problem solving.
     - company: OKCS Seri Kembangan
       position: Technician
       start_date: 2018-06
       end_date: 2018-11
-      summary: Diagnostics, repairs, hardware maintenance and software configuration.
+      summary: Diagnostics repairs hardware maintenance and software configuration.
     Professional Registrations:
     - label: BEM
-      details: Graduate Engineer, Computer branch; approved 15 October 2026. [Public
+      details: Graduate Engineer Computer branch. Approved 15 October 2026. [Public
         directory](https://engineer.org.my/public/Engineers/Index/325542).
     - label: MBOT
-      details: Graduate Technologist, Information & Communication Technology (IT); GT26100872; approved 22
+      details: Graduate Technologist Information and Communication Technology IT. GT26100872. Approved 22
         October 2026.
     Selected Training:
-    - label: Festo / STDC
-      details: Industrial Automation with AI in Manufacturing, 14-16 July 2026.
+    - label: Festo and STDC
+      details: Industrial Automation with AI in Manufacturing 14 to 16 July 2026.
     - label: Cisco Networking Academy
-      details: Enterprise Networking, Security, and Automation; Switching, Routing, and Wireless Essentials
-        (23 February 2026). Course completions.
+      details: Enterprise Networking Security and Automation. Switching Routing and Wireless Essentials 23
+        February 2026. Course completions.
     Languages:
-    - Bahasa Malaysia (native); English (professional working proficiency).
+    - Bahasa Malaysia native. English professional working proficiency.
 design:
   theme: engineeringresumes
   page:
@@ -120,21 +115,41 @@ design:
     space_below_connections: 0.18cm
     connections:
       show_icons: false
-      separator: '|'
-      space_between_connections: 0.25cm
+      separator: ''
+      space_between_connections: 0.3cm
+  links:
+    underline: false
+    show_external_link_icon: false
   section_titles:
-    space_above: 0.28cm
-    space_below: 0.13cm
+    type: with_full_line
+    space_above: 0.23cm
+    space_below: 0.1cm
   sections:
     space_between_regular_entries: 0.15cm
     space_between_text_based_entries: 0.08cm
   entries:
-    date_and_location_width: 3.1cm
-    space_between_columns: 0.2cm
+    date_and_location_width: 0cm
+    space_between_columns: 0cm
+    summary:
+      space_above: 0.03cm
     highlights:
       space_above: 0.04cm
       space_between_items: 0.03cm
       space_left: 0cm
+  templates:
+    date_range: START_DATE to END_DATE
+    one_line_entry:
+      main_column: '**LABEL** DETAILS'
+    education_entry:
+      main_column: "**INSTITUTION** AREA\nDATE\nSUMMARY"
+      date_and_location_column: ''
+      degree_column:
+    experience_entry:
+      main_column: "**POSITION** COMPANY\nDATE\nSUMMARY"
+      date_and_location_column: ''
+    normal_entry:
+      main_column: "**NAME**\nSUMMARY"
+      date_and_location_column: ''
 locale:
   language: english
   month_abbreviations:

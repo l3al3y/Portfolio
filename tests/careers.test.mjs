@@ -20,7 +20,7 @@ test('each career route keeps the engineering foundation and links its matching 
   assert.ok(html.includes('Graduation scheduled: 2 November 2026'));
   assert.ok(html.includes(`<base href="../../">`));
   assert.ok(html.includes(`rel="canonical" href="https://irfanfahmi.com/careers/${id}/"`));
-  assert.ok(html.includes(`href="resume/${p.pdf}?v=resume20261022r2"`));
+  assert.ok(html.includes(`href="resume/${p.pdf}?v=community20261022"`));
   assert.ok(html.includes(`data-document="resume/${p.pdf}"`));
   assert.deepEqual([...html.matchAll(/data-career-project="([^"]+)"/g)].map(x=>x[1]),ids);
   for(const project of ids)assert.ok(html.includes(`href="projects/${project}/"`));
@@ -69,4 +69,24 @@ test('default resume buttons and assistant links avoid the previously cached PDF
  assert.equal(safeAnswerLink('https://irfanfahmi.com/'+current),'/'+current);
  const manifest=JSON.parse(await readFile(new URL('assets/documents/manifest.json',root),'utf8'));
  assert.ok(!manifest[current][0].src.endsWith('/resume-1.webp'));
+});
+
+test('community reach is the dated sum across all version counters and stays distinct from users',async()=>{
+ const impact=JSON.parse(await readFile(new URL('resume/community-impact.json',root),'utf8'));
+ assert.equal(impact.versions.length,9);
+ assert.equal(impact.total_requests,impact.versions.reduce((sum,row)=>sum+row.requests,0));
+ assert.ok(impact.versions.some(row=>row.label.includes('Setup')));
+ assert.match(impact.definition,/retries/);
+ const formatted=impact.total_requests.toLocaleString('en-MY');
+ for(const id of ['computer-engineering','software','embedded-iot']){
+  const source=await readFile(new URL('resume/source/'+id+'.yaml',root),'utf8');
+  assert.ok(source.replaceAll(',','').includes(String(impact.total_requests)),id);
+  assert.ok(source.includes('Contributed to the SMC Crows community'),id);
+  const profile=data.profiles.find(p=>p.id===id);
+  for(const alias of profile.legacy_pdfs)assert.equal(safeAnswerLink('https://irfanfahmi.com/resume/'+alias),'/resume/'+profile.pdf);
+ }
+ const casePage=await readFile(new URL('projects/smc-crows/index.html',root),'utf8');
+ assert.ok(casePage.includes(formatted));
+ assert.ok(casePage.includes('22 October 2026'));
+ assert.ok(casePage.includes('completed downloads, installations and unique players are not measured'));
 });

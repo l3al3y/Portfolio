@@ -19,7 +19,10 @@ test('case studies have required substance and preserved local destinations',asy
 });
 test('all documents have real rendered preview pages',async()=>{
   const manifest=JSON.parse(await readFile(new URL('assets/documents/manifest.json',root),'utf8'));
-  assert.equal(Object.keys(manifest).length,32); // 27 certificates, four CVs and the legacy CV alias.
+  const profiles=JSON.parse(await readFile(new URL('resume/profiles.json',root),'utf8')).profiles;
+  const registry=JSON.parse(await readFile(new URL('certificates/registry.json',root),'utf8'));
+  const expected=[...registry.map(c=>'certificates/'+c.filename),...profiles.flatMap(p=>[p.pdf,...(p.legacy_pdfs||[])].map(name=>'resume/'+name))];
+  assert.deepEqual(Object.keys(manifest).sort(),expected.sort());
   for(const [pdf,pages] of Object.entries(manifest)){
     assert.ok((await stat(new URL(pdf,root))).size>0);
     for(const page of pages){assert.ok(page.width>500);assert.ok(page.height>500);assert.ok((await stat(new URL(page.src,root))).size>0);}

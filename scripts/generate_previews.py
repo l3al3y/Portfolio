@@ -26,8 +26,9 @@ for filename in files:
         page.close()
     document.close()
     manifest[filename] = pages
-primary = next(p for p in profiles if p['id'] == 'computer-engineering')
-shutil.copyfile(root / 'resume' / primary['pdf'], root / 'resume/resume.pdf')
-manifest['resume/resume.pdf'] = manifest['resume/' + primary['pdf']]
+for profile in profiles:
+    for alias in profile.get('legacy_pdfs', []):
+        shutil.copyfile(root / 'resume' / profile['pdf'], root / 'resume' / alias)
+        manifest['resume/' + alias] = manifest['resume/' + profile['pdf']]
 (dest / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
 print(f'Rendered {sum(map(len, manifest.values()))} pages for {len(manifest)} documents.')

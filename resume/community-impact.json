@@ -1,0 +1,46 @@
+{
+  "observed_date": "2026-10-22",
+  "timezone": "Asia/Kuala_Lumpur",
+  "source": "https://irfanfahmi.com/smc/downloads/#download-counts",
+  "scope": "All displayed release and setup version download-button counters, including direct and mirror requests.",
+  "definition": "Website download-button requests, including retries. Completed transfers, installations and unique users are not measured.",
+  "versions": [
+    {
+      "label": "v3.0 Direct CURRENT\n19 October 2026",
+      "requests": 4618
+    },
+    {
+      "label": "v3.0 MediaFire mirror\n19 October 2026",
+      "requests": 1057
+    },
+    {
+      "label": "Previous v2.0 direct\n14 October 2026",
+      "requests": 11918
+    },
+    {
+      "label": "Previous v2.0 mirror",
+      "requests": 1212
+    },
+    {
+      "label": "Previous Setup\n12 October 2026",
+      "requests": 4248
+    },
+    {
+      "label": "Previous v1.0\n11 October 2026",
+      "requests": 1849
+    },
+    {
+      "label": "Earlier r4",
+      "requests": 4689
+    },
+    {
+      "label": "Earlier r2",
+      "requests": 2
+    },
+    {
+      "label": "Earlier v4",
+      "requests": 1
+    }
+  ],
+  "total_requests": 29594
+}

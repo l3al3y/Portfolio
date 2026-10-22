@@ -183,7 +183,7 @@
   ],
   "resume/resume.pdf": [
     {
-      "src": "assets/documents/computer-engineering-20261022-1.webp",
+      "src": "assets/documents/computer-engineering-20261022-community-1.webp",
       "width": 990,
       "height": 1400
     }
@@ -197,28 +197,56 @@
   ],
   "resume/ai-ml-engineer.pdf": [
     {
-      "src": "assets/documents/ai-ml-engineer-1.webp",
+      "src": "assets/documents/ai-ml-engineer-20261022-plain-1.webp",
       "width": 990,
       "height": 1400
     }
   ],
   "resume/software-engineer.pdf": [
     {
-      "src": "assets/documents/software-engineer-1.webp",
+      "src": "assets/documents/software-engineer-20261022-community-1.webp",
       "width": 990,
       "height": 1400
     }
   ],
   "resume/embedded-iot-engineer.pdf": [
     {
-      "src": "assets/documents/embedded-iot-engineer-1.webp",
+      "src": "assets/documents/embedded-iot-engineer-20261022-community-1.webp",
       "width": 990,
       "height": 1400
     }
   ],
   "resume/computer-engineering-20261022.pdf": [
     {
-      "src": "assets/documents/computer-engineering-20261022-1.webp",
+      "src": "assets/documents/computer-engineering-20261022-community-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/computer-engineering-20261022-community.pdf": [
+    {
+      "src": "assets/documents/computer-engineering-20261022-community-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/software-engineer-20261022-community.pdf": [
+    {
+      "src": "assets/documents/software-engineer-20261022-community-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/embedded-iot-engineer-20261022-community.pdf": [
+    {
+      "src": "assets/documents/embedded-iot-engineer-20261022-community-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/ai-ml-engineer-20261022-plain.pdf": [
+    {
+      "src": "assets/documents/ai-ml-engineer-20261022-plain-1.webp",
       "width": 990,
       "height": 1400
     }

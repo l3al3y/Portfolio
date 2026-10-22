@@ -23,8 +23,9 @@ for profile in data['profiles']:
         page.close()
     doc.close()
     manifest[relative] = pages
-primary = next(p for p in data['profiles'] if p['id'] == 'computer-engineering')
-shutil.copyfile(root / 'resume' / primary['pdf'], root / 'resume/resume.pdf')
-manifest['resume/resume.pdf'] = manifest['resume/' + primary['pdf']]
+for profile in data['profiles']:
+    for alias in profile.get('legacy_pdfs', []):
+        shutil.copyfile(root / 'resume' / profile['pdf'], root / 'resume' / alias)
+        manifest['resume/' + alias] = manifest['resume/' + profile['pdf']]
 path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
 print('Updated preview pages for four resumes; certificate previews preserved.')

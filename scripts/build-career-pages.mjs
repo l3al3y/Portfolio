@@ -4,7 +4,7 @@ import {projectMedia,escapeHtml as esc} from '../lab/project-view.js';
 const root=new URL('../',import.meta.url);
 const data=JSON.parse(await readFile(new URL('resume/profiles.json',root),'utf8'));
 const roles=data.profiles.filter(p=>p.id!=='computer-engineering');
-const version='resume20261022r2';
+const version='community20261022';
 const resumeButton=p=>`<button class="button" data-document="resume/${esc(p.pdf)}" data-title="${esc(data.name+' — '+p.label+' Resume')}">Preview resume ↗</button>`;
 const download=p=>`<a class="button primary" href="resume/${esc(p.pdf)}?v=${version}" download="${esc(p.download_name)}">Download resume ↓</a>`;
 const careerNav=current=>`<nav class="career-nav" aria-label="Career focus"><a href="careers/"${current==='overview'?' aria-current="page"':''}>Computer Engineering</a>${roles.map(p=>`<a href="careers/${p.id}/"${current===p.id?' aria-current="page"':''}>${esc(p.label)}</a>`).join('')}</nav>`;
@@ -44,7 +44,7 @@ home=home.includes('<!-- career-paths:start -->')?home.replace(/<!-- career-path
 home=home.replace('Practical AI.<br>Real-world<br><em>engineering.</em>','Computer<br>engineering.<br><em>In practice.</em>')
  .replace('I connect computer vision, software and hardware to build useful systems—and work through the details that make them run.','My foundation is a Bachelor of Computer Engineering with Honours at UTeM. I build across software, intelligent systems and hardware.')
  .replace('Seeking opportunities in AI, software and embedded systems.','Graduation scheduled: 2 November 2026 · Open to AI/ML, software and embedded/IoT opportunities.');
-home=home.replace('href="resume/computer-engineering-20261022.pdf" target="_blank" rel="noopener noreferrer">View resume ↗</a><a class="button" href="#projects"','href="resume/">Choose a resume ↗</a><a class="button" href="careers/"').replace('Explore my work ↓</a></div><div class="social-links"','Explore career portfolios ↗</a></div><div class="social-links"');
+home=home.replace('href="resume/computer-engineering-20261022-community.pdf" target="_blank" rel="noopener noreferrer">View resume ↗</a><a class="button" href="#projects"','href="resume/">Choose a resume ↗</a><a class="button" href="careers/"').replace('Explore my work ↓</a></div><div class="social-links"','Explore career portfolios ↗</a></div><div class="social-links"');
 await writeFile(new URL('index.html',root),home);
 
 // Keep established pages on the same navigation and document-viewer module.
