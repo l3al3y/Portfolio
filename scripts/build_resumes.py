@@ -68,7 +68,7 @@ for profile in data['profiles']:
         'design': {
             'theme':'engineeringresumes',
             'page': {'size':'a4','top_margin':'1.35cm','bottom_margin':'1.35cm','left_margin':'1.5cm','right_margin':'1.5cm','show_footer':False,'show_top_note':False},
-            'colors': {'body':'#1c2630','name':'#14324d','headline':'#14324d','section_titles':'#14324d','links':'#185a80','connections':'#34495b'},
+            'colors': {'body':'#000000','name':'#000000','headline':'#000000','section_titles':'#000000','links':'#000000','connections':'#000000'},
             'typography': {'font_family':'Source Sans 3','font_size':{'body':'10pt','name':'22pt','headline':'10.5pt','connections':'9pt','section_titles':'11pt'},'alignment':'left','line_spacing':'0.48em'},
             'header': {'space_below_name':'0.12cm','space_below_headline':'0.15cm','space_below_connections':'0.18cm','connections':{'show_icons':False,'separator':'','space_between_connections':'0.3cm'}},
             'links':{'underline':False,'show_external_link_icon':False},

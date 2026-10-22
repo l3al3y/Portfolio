@@ -20,7 +20,7 @@ test('each career route keeps the engineering foundation and links its matching 
   assert.ok(html.includes('Graduation scheduled: 2 November 2026'));
   assert.ok(html.includes(`<base href="../../">`));
   assert.ok(html.includes(`rel="canonical" href="https://irfanfahmi.com/careers/${id}/"`));
-  assert.ok(html.includes(`href="resume/${p.pdf}?v=community20261022"`));
+  assert.ok(html.includes(`href="resume/${p.pdf}?v=black20261022"`));
   assert.ok(html.includes(`data-document="resume/${p.pdf}"`));
   assert.deepEqual([...html.matchAll(/data-career-project="([^"]+)"/g)].map(x=>x[1]),ids);
   for(const project of ids)assert.ok(html.includes(`href="projects/${project}/"`));

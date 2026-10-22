@@ -1,5 +1,5 @@
-import {checkHealth,requestChat} from './integrations.js?v=community20261022';
-import {renderAnswer,conversationMessages} from './chat-render.js?v=community20261022';
+import {checkHealth,requestChat} from './integrations.js?v=black20261022';
+import {renderAnswer,conversationMessages} from './chat-render.js?v=black20261022';
 
 export function initAssistant(){
  const $=s=>document.querySelector(s),log=$('#chat-log'),input=$('#chat-input'),error=$('#chat-error'),retry=$('#chat-retry');

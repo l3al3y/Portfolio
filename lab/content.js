@@ -61,7 +61,7 @@ export const projects = [
     outcome: 'The team received Third Place for “Development of Livestock Weight Tracking System Based on IoT” at INOTEK 2025 (Series 1), held on 15 January 2025. The certificate verifies the team award; it does not validate sensor accuracy or a production deployment.',
     result: 'INOTEK 2025 · Third Place', resultNote: 'Documented team award · 15 January 2025',
     links: [{label: 'View award document', url: 'certificates/INOTEK_2025_Third_Place.pdf', preview: true}],
-    sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing resume', url: 'resume/computer-engineering-20261022-community.pdf'}]
+    sources: [{label: 'INOTEK team achievement certificate', url: 'certificates/INOTEK_2025_Third_Place.pdf'}, {label: 'Existing resume', url: 'resume/computer-engineering-20261022-black.pdf'}]
   },
   {
     id: 'arcade', number: '06', title: 'Mini Arcade', category: 'Interactive software · Web',

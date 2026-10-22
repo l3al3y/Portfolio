@@ -10,25 +10,25 @@ export const knowledge={
       "role": "Computer Engineering",
       "summary": "Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering and Arduino-based sensing, supported by technical troubleshooting experience.",
       "portfolio": "https://irfanfahmi.com/",
-      "resume": "https://irfanfahmi.com/resume/computer-engineering-20261022-community.pdf"
+      "resume": "https://irfanfahmi.com/resume/computer-engineering-20261022-black.pdf"
     },
     {
       "role": "AI / ML Engineer",
       "summary": "Computer Engineering background at UTeM with applied project work in object detection, hand-gesture classification and multi-model orchestration. Connects model inputs and evaluation to practical interfaces, data storage and observable system behaviour.",
       "portfolio": "https://irfanfahmi.com/careers/ai-ml/",
-      "resume": "https://irfanfahmi.com/resume/ai-ml-engineer-20261022-plain.pdf"
+      "resume": "https://irfanfahmi.com/resume/ai-ml-engineer-20261022-black.pdf"
     },
     {
       "role": "Software Engineer",
       "summary": "Computer Engineering background at UTeM with project experience across React/TypeScript interfaces, JavaScript browser interactions, Python integrations and Android release workflows. Brings technical troubleshooting experience and an interest in reliable, understandable software.",
       "portfolio": "https://irfanfahmi.com/careers/software/",
-      "resume": "https://irfanfahmi.com/resume/software-engineer-20261022-community.pdf"
+      "resume": "https://irfanfahmi.com/resume/software-engineer-20261022-black.pdf"
     },
     {
       "role": "Embedded / IoT Engineer",
       "summary": "Computer Engineering background at UTeM with practical project work in Arduino-based weighing, load-cell signal handling, hardware/software integration and connected monitoring. Combines C/C++ and Python experience with hands-on technical troubleshooting.",
       "portfolio": "https://irfanfahmi.com/careers/embedded-iot/",
-      "resume": "https://irfanfahmi.com/resume/embedded-iot-engineer-20261022-community.pdf"
+      "resume": "https://irfanfahmi.com/resume/embedded-iot-engineer-20261022-black.pdf"
     }
   ],
   "projects": [
@@ -164,7 +164,7 @@ export const knowledge={
         },
         {
           "label": "Existing resume",
-          "url": "resume/computer-engineering-20261022-community.pdf"
+          "url": "resume/computer-engineering-20261022-black.pdf"
         }
       ]
     },
@@ -196,7 +196,7 @@ export const knowledge={
   "links": {
     "careerViews": "https://irfanfahmi.com/careers/",
     "resumeHub": "https://irfanfahmi.com/resume/",
-    "resume": "https://irfanfahmi.com/resume/computer-engineering-20261022-community.pdf",
+    "resume": "https://irfanfahmi.com/resume/computer-engineering-20261022-black.pdf",
     "contact": "https://irfanfahmi.com/contact/",
     "experience": "https://irfanfahmi.com/about/",
     "credentials": "https://irfanfahmi.com/credentials/",

@@ -28,3 +28,5 @@ The SMC Crows community contribution uses the dated all-version counter snapshot
 All four CVs use a plain layout with no semicolons, bullet glyphs, decorative contact separators or date-range dashes. Essential email, URL and C++ characters are preserved. Dates use the word to. The dated AI/ML PDF is `ai-ml-engineer-20261022-plain.pdf`. This is a formatting preference, not a claim that ATS software rejects ordinary punctuation.
 
 Thin horizontal section dividers were restored at Irfan's request. They are visual rules, separate from the selectable CV text.
+
+All CV text, including the name, headings, links and contact details, is black at Irfan's request. Active PDFs use dated `-black.pdf` filenames and matching new preview filenames. Earlier filenames remain compatibility copies. The text content and thin section dividers are preserved.

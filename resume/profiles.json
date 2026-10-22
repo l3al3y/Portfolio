@@ -121,7 +121,7 @@
       "id": "computer-engineering",
       "label": "Computer Engineering",
       "headline": "Computer Engineering",
-      "pdf": "computer-engineering-20261022-community.pdf",
+      "pdf": "computer-engineering-20261022-black.pdf",
       "download_name": "Irfan_Fahmi_Computer_Engineering.pdf",
       "portfolio": "https://irfanfahmi.com/",
       "summary": "Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering and Arduino-based sensing, supported by technical troubleshooting experience.",
@@ -146,14 +146,15 @@
       ],
       "legacy_pdfs": [
         "resume.pdf",
-        "computer-engineering-20261022.pdf"
+        "computer-engineering-20261022.pdf",
+        "computer-engineering-20261022-community.pdf"
       ]
     },
     {
       "id": "ai-ml",
       "label": "AI / ML Engineer",
       "headline": "Computer Engineering and Machine Learning",
-      "pdf": "ai-ml-engineer-20261022-plain.pdf",
+      "pdf": "ai-ml-engineer-20261022-black.pdf",
       "download_name": "Irfan_Fahmi_AI_ML_Engineer.pdf",
       "portfolio": "https://irfanfahmi.com/careers/ai-ml/",
       "intro": "Models become useful when they meet a real input, a clear decision and a working interface.",
@@ -198,14 +199,15 @@
         "Inference integration"
       ],
       "legacy_pdfs": [
-        "ai-ml-engineer.pdf"
+        "ai-ml-engineer.pdf",
+        "ai-ml-engineer-20261022-plain.pdf"
       ]
     },
     {
       "id": "software",
       "label": "Software Engineer",
       "headline": "Computer Engineering and Software Engineering",
-      "pdf": "software-engineer-20261022-community.pdf",
+      "pdf": "software-engineer-20261022-black.pdf",
       "download_name": "Irfan_Fahmi_Software_Engineer.pdf",
       "portfolio": "https://irfanfahmi.com/careers/software/",
       "intro": "Build the application. Understand the system around it. Support the people using it.",
@@ -250,14 +252,15 @@
         "Release engineering"
       ],
       "legacy_pdfs": [
-        "software-engineer.pdf"
+        "software-engineer.pdf",
+        "software-engineer-20261022-community.pdf"
       ]
     },
     {
       "id": "embedded-iot",
       "label": "Embedded / IoT Engineer",
       "headline": "Computer Engineering and Embedded Systems",
-      "pdf": "embedded-iot-engineer-20261022-community.pdf",
+      "pdf": "embedded-iot-engineer-20261022-black.pdf",
       "download_name": "Irfan_Fahmi_Embedded_IoT_Engineer.pdf",
       "portfolio": "https://irfanfahmi.com/careers/embedded-iot/",
       "intro": "Start at the signal. Follow it through firmware, processing and the interface.",
@@ -302,7 +305,8 @@
         "Connected monitoring"
       ],
       "legacy_pdfs": [
-        "embedded-iot-engineer.pdf"
+        "embedded-iot-engineer.pdf",
+        "embedded-iot-engineer-20261022-community.pdf"
       ]
     }
   ]

@@ -93,12 +93,12 @@ design:
     show_footer: false
     show_top_note: false
   colors:
-    body: '#1c2630'
-    name: '#14324d'
-    headline: '#14324d'
-    section_titles: '#14324d'
-    links: '#185a80'
-    connections: '#34495b'
+    body: '#000000'
+    name: '#000000'
+    headline: '#000000'
+    section_titles: '#000000'
+    links: '#000000'
+    connections: '#000000'
   typography:
     font_family: Source Sans 3
     font_size:
