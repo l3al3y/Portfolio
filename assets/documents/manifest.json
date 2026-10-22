@@ -194,5 +194,26 @@
       "width": 1000,
       "height": 1400
     }
+  ],
+  "resume/ai-ml-engineer.pdf": [
+    {
+      "src": "assets/documents/ai-ml-engineer-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/software-engineer.pdf": [
+    {
+      "src": "assets/documents/software-engineer-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/embedded-iot-engineer.pdf": [
+    {
+      "src": "assets/documents/embedded-iot-engineer-1.webp",
+      "width": 990,
+      "height": 1400
+    }
   ]
 }

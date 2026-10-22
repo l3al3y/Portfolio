@@ -1,5 +1,5 @@
-import {projects} from './content.js?v=roots20261021';
-const allowed=new Set(['/','/ask/','/projects/','/about/','/credentials/','/contact/','/resume/resume.pdf','/smc/','/smc/downloads/#download-counts','https://engineer.org.my/public/Engineers/Index/325542']);
+import {projects} from './content.js?v=careers20261022';
+const allowed=new Set(['/careers/','/careers/ai-ml/','/careers/software/','/careers/embedded-iot/','/resume/','/resume/ai-ml-engineer.pdf','/resume/software-engineer.pdf','/resume/embedded-iot-engineer.pdf','/','/ask/','/projects/','/about/','/credentials/','/contact/','/resume/resume.pdf','/smc/','/smc/downloads/#download-counts','https://engineer.org.my/public/Engineers/Index/325542']);
 for(const p of projects){allowed.add('/projects/'+p.id+'/');for(const link of [...p.links,...p.sources]){try{const u=new URL(link.url,'https://irfanfahmi.com/');allowed.add(u.origin==='https://irfanfahmi.com'?u.pathname+u.search+u.hash:u.href);}catch{}}}
 export function safeAnswerLink(raw){
  try{const u=new URL(raw,'https://irfanfahmi.com/');if(u.protocol!=='https:'||u.username||u.password)return null;

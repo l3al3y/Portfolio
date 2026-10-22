@@ -39,6 +39,7 @@ jobs:
         run: |
           node scripts/build-project-pages.mjs
           node scripts/build-chat-pages.mjs
+          node scripts/build-career-pages.mjs
           node scripts/build-chat-worker.mjs
 
       - name: Test portfolio

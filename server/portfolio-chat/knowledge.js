@@ -3,8 +3,34 @@ export const knowledge={
   "name": "Muhammad Irfan Fahmi",
   "location": "Klang Valley, Malaysia",
   "availability": "Seeking AI, software and embedded systems opportunities; open to relocation.",
-  "background": "Computer engineering at Universiti Teknikal Malaysia Melaka (UTeM), Bachelor of Computer Engineering with Honours. Existing resume lists October 2022–Present; current degree completion date is not confirmed. Diploma in Electronic Engineering (Computer), Politeknik Port Dickson, December 2018–May 2022. Certificate in Computer Systems and Networking, Kolej Komuniti Selandar, July 2017–February 2019. Practical technical support, hardware deployment and troubleshooting experience; do not invent employer names or employment dates.",
+  "background": "Computer engineering at Universiti Teknikal Malaysia Melaka (UTeM), Bachelor of Computer Engineering with Honours. The degree runs October 2022–November 2026. Irfan confirmed on 22 October 2026 that graduation is scheduled for 2 November 2026. Lead with his Computer Engineering background; the AI/ML, software and embedded/IoT views are target roles, not claims of previous employment in those titles. Diploma in Electronic Engineering (Computer), Politeknik Port Dickson, December 2018–May 2022. Certificate in Computer Systems and Networking, Kolej Komuniti Selandar, July 2017–February 2019. Practical technical support, hardware deployment and troubleshooting experience; do not invent employer names or employment dates.",
   "registration": "BEM: registered Graduate Engineer in the Computer branch, approved 15 October 2026, supported by the supplied BEM Certificate of Registration of Graduate Engineer. The portfolio links to the official BEM public directory entry at https://engineer.org.my/public/Engineers/Index/325542 for verification. The certificate itself is not published. This is Graduate Engineer registration, not Professional Engineer or Ir. status. MBOT: registered Graduate Technologist in Information & Communication Technology (IT), approved 22 October 2026, registration GT26100872, supported by the supplied MBOT registration approval letter. The letter states registration is valid and active in MBOT records at approval. The supporting document is an approval letter; formal registration certificate issuance is pending according to the letter. Do not claim Professional Technologist or Ts. status. View the approval letter in the public credential registry.",
+  "career_views": [
+    {
+      "role": "Computer Engineering",
+      "summary": "Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering and Arduino-based sensing, supported by technical troubleshooting experience.",
+      "portfolio": "https://irfanfahmi.com/",
+      "resume": "https://irfanfahmi.com/resume/resume.pdf"
+    },
+    {
+      "role": "AI / ML Engineer",
+      "summary": "Computer Engineering background at UTeM with applied project work in object detection, hand-gesture classification and multi-model orchestration. Connects model inputs and evaluation to practical interfaces, data storage and observable system behaviour.",
+      "portfolio": "https://irfanfahmi.com/careers/ai-ml/",
+      "resume": "https://irfanfahmi.com/resume/ai-ml-engineer.pdf"
+    },
+    {
+      "role": "Software Engineer",
+      "summary": "Computer Engineering background at UTeM with project experience across React/TypeScript interfaces, JavaScript browser interactions, Python integrations and Android release workflows. Brings technical troubleshooting experience and an interest in reliable, understandable software.",
+      "portfolio": "https://irfanfahmi.com/careers/software/",
+      "resume": "https://irfanfahmi.com/resume/software-engineer.pdf"
+    },
+    {
+      "role": "Embedded / IoT Engineer",
+      "summary": "Computer Engineering background at UTeM with practical project work in Arduino-based weighing, load-cell signal handling, hardware/software integration and connected monitoring. Combines C/C++ and Python experience with hands-on technical troubleshooting.",
+      "portfolio": "https://irfanfahmi.com/careers/embedded-iot/",
+      "resume": "https://irfanfahmi.com/resume/embedded-iot-engineer.pdf"
+    }
+  ],
   "projects": [
     {
       "id": "smc-crows",
@@ -43,7 +69,7 @@ export const knowledge={
       "problem": "A barcode alone cannot tell whether the item in front of the camera is the item being scanned. Missed scans and item switching create gaps in conventional self-checkout.",
       "implementation": "I built a hybrid validation pipeline that identifies local retail products with YOLOv8 and compares detections with USB barcode scanner input. Python and OpenCV handle the video stream; MySQL stores product and transaction data. Split-view experiments address occlusion by observing products from multiple angles.",
       "constraints": "Similar packaging, overlapping items, lighting changes, and missed detections make visual verification difficult. The model was trained on a custom dataset of Malaysian retail items, including bread, tissues, toothpaste, and Maggi. Raising recall remains an improvement target.",
-      "outcome": "The project repository reports approximately 77.4% precision and 72.0% recall after 50 epochs. These are model evaluation figures, not a measured reduction in retail fraud. The portfolio and resume disagree on inference latency, so no latency figure is presented here.",
+      "outcome": "The project repository reports approximately 77.4% precision and 72.0% recall after 50 epochs. These are model evaluation figures, not a measured reduction in retail fraud. No independently validated end-to-end inference latency is claimed.",
       "result": "77.4% precision",
       "resultNote": "Reported model benchmark · 50 epochs",
       "url": "https://irfanfahmi.com/projects/checkout/",
@@ -122,7 +148,7 @@ export const knowledge={
       ],
       "problem": "Tracking livestock weight requires a repeatable way to turn physical measurements into readings that can be monitored over time.",
       "implementation": "The resume documents an IoT load-cell weighing platform using Arduino microcontrollers, HX711 amplifiers, C/C++ signal filtering firmware, and real-time telemetry dashboards. I contributed to the weighing and monitoring system as part of the team named on the INOTEK certificate.",
-      "constraints": "Calibration and signal stability matter as much as connectivity. The resume reports a measurement precision claim but supplies no test protocol or reference weights; it is therefore omitted from the headline results.",
+      "constraints": "Calibration and signal stability matter as much as connectivity. A reference-weight protocol is not documented in the supplied evidence, so a sensor-accuracy figure is not claimed.",
       "outcome": "The team received Third Place for “Development of Livestock Weight Tracking System Based on IoT” at INOTEK 2025 (Series 1), held on 15 January 2025. The certificate verifies the team award; it does not validate sensor accuracy or a production deployment.",
       "result": "INOTEK 2025 · Third Place",
       "resultNote": "Documented team award · 15 January 2025",
@@ -164,6 +190,8 @@ export const knowledge={
     }
   ],
   "links": {
+    "careerViews": "https://irfanfahmi.com/careers/",
+    "resumeHub": "https://irfanfahmi.com/resume/",
     "resume": "https://irfanfahmi.com/resume/resume.pdf",
     "contact": "https://irfanfahmi.com/contact/",
     "experience": "https://irfanfahmi.com/about/",

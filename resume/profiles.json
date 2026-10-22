@@ -1,0 +1,296 @@
+{
+  "updated": "2026-10-22",
+  "name": "Muhammad Irfan Fahmi",
+  "location": "Klang Valley, Malaysia",
+  "email": "cabalme4@gmail.com",
+  "graduation": "2026-11-02",
+  "degree": "Bachelor of Computer Engineering with Honours",
+  "institution": "Universiti Teknikal Malaysia Melaka (UTeM)",
+  "education": [
+    {
+      "institution": "Universiti Teknikal Malaysia Melaka (UTeM)",
+      "area": "Bachelor of Computer Engineering with Honours",
+      "start_date": "2022-10",
+      "end_date": "2026-11",
+      "highlights": [
+        "Graduation scheduled: 2 November 2026."
+      ]
+    },
+    {
+      "institution": "Politeknik Port Dickson",
+      "area": "Diploma in Electronic Engineering (Computer)",
+      "start_date": "2018-12",
+      "end_date": "2022-05"
+    },
+    {
+      "institution": "Kolej Komuniti Selandar",
+      "area": "Certificate in Computer Systems and Networking",
+      "start_date": "2017-07",
+      "end_date": "2019-02"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Global Elite Ventures Sdn. Bhd",
+      "position": "Technical Staff",
+      "start_date": "2021-09",
+      "end_date": "2022-07",
+      "summary": "Technical troubleshooting and hardware/software deployment."
+    },
+    {
+      "company": "ARNN Technologies & Karar Solution",
+      "position": "Contract Assistant Engineer",
+      "start_date": "2020-06",
+      "end_date": "2020-07",
+      "summary": "Engineering project support and technical problem-solving."
+    },
+    {
+      "company": "OKCS Seri Kembangan",
+      "position": "Technician",
+      "start_date": "2018-06",
+      "end_date": "2018-11",
+      "summary": "Diagnostics, repairs, hardware maintenance and software configuration."
+    }
+  ],
+  "registrations": [
+    {
+      "label": "BEM",
+      "details": "Graduate Engineer, Computer branch; approved 15 October 2026. [Public directory](https://engineer.org.my/public/Engineers/Index/325542)."
+    },
+    {
+      "label": "MBOT",
+      "details": "Graduate Technologist, Information & Communication Technology (IT); GT26100872; approved 22 October 2026."
+    }
+  ],
+  "training": [
+    {
+      "label": "Festo / STDC",
+      "details": "Industrial Automation with AI in Manufacturing, 14-16 July 2026."
+    },
+    {
+      "label": "Cisco Networking Academy",
+      "details": "Enterprise Networking, Security, and Automation; Switching, Routing, and Wireless Essentials (23 February 2026). Course completions."
+    }
+  ],
+  "projects": {
+    "checkout": {
+      "name": "Hybrid Self-Checkout",
+      "highlights": [
+        "Built a Python pipeline combining YOLOv8/OpenCV product detection, USB barcode input and MySQL product/transaction data.",
+        "Repository-reported evaluation: 77.4% precision and 72.0% recall after 50 epochs; tested visual verification challenges including occlusion and similar packaging."
+      ]
+    },
+    "gesture": {
+      "name": "Gesture Recognition / Touchless Reader",
+      "highlights": [
+        "Converted MediaPipe hand landmarks into 71-dimensional features and a 100-tree Random Forest for browser inference in JavaScript.",
+        "Implemented gesture navigation with cooldowns and virtual controls. Reported 98.6% cross-validation accuracy; not a real-world user accuracy measurement."
+      ]
+    },
+    "hermes": {
+      "name": "Hermes / Multi-Model Agent Orchestration",
+      "highlights": [
+        "Built a documented Python/Termux experiment with multi-model consensus routing, telemetry, watchdog recovery and post-mortem analysis on mobile hardware.",
+        "Separated serving and gateway processes and used telemetry to review model disagreement and unavailable-provider behaviour."
+      ]
+    },
+    "livestock": {
+      "name": "IoT Livestock Weight Tracking",
+      "highlights": [
+        "Contributed to a team weighing/monitoring platform using Arduino, HX711 load-cell amplifiers, C/C++ signal filtering and telemetry dashboards.",
+        "Team awarded Third Place at INOTEK 2025 (Series 1), 15 January 2025, for Development of Livestock Weight Tracking System Based on IoT."
+      ]
+    },
+    "smc-crows": {
+      "name": "SMC Crows / Android Release Engineering",
+      "highlights": [
+        "Worked on Android compatibility investigation, release packaging, device testing and a community distribution portal.",
+        "Documented installation and account backup/recovery workflows; release-specific test records explain device and Android-version constraints."
+      ]
+    },
+    "arcade": {
+      "name": "Mini Arcade / Interactive Web Applications",
+      "highlights": [
+        "Built a React/TypeScript arcade with minimax-based Tic Tac Toe, penalty-shootout and memory-game interactions, styled with Tailwind CSS.",
+        "Explored game-state transitions, decision logic and touch/desktop interaction through a publicly accessible browser application."
+      ]
+    }
+  },
+  "profiles": [
+    {
+      "id": "computer-engineering",
+      "label": "Computer Engineering",
+      "headline": "Computer Engineering | AI, Software & Embedded Systems",
+      "pdf": "resume.pdf",
+      "download_name": "Irfan_Fahmi_Computer_Engineering.pdf",
+      "portfolio": "https://irfanfahmi.com/",
+      "summary": "Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering and Arduino-based sensing, supported by technical troubleshooting experience.",
+      "projects": [
+        "checkout",
+        "smc-crows",
+        "livestock"
+      ],
+      "skills": [
+        {
+          "label": "Programming & data",
+          "details": "Python, C/C++, JavaScript, TypeScript, SQL, MySQL, Git."
+        },
+        {
+          "label": "Intelligent systems",
+          "details": "YOLOv8, OpenCV, MediaPipe, Random Forest, LLM orchestration."
+        },
+        {
+          "label": "Hardware & systems",
+          "details": "Arduino, HX711, load cells, sensor integration, Android investigation, Windows troubleshooting, VLAN, OSPF, Wireshark."
+        }
+      ]
+    },
+    {
+      "id": "ai-ml",
+      "label": "AI / ML Engineer",
+      "headline": "Computer Engineering | AI / ML Engineering",
+      "pdf": "ai-ml-engineer.pdf",
+      "download_name": "Irfan_Fahmi_AI_ML_Engineer.pdf",
+      "portfolio": "https://irfanfahmi.com/careers/ai-ml/",
+      "intro": "Models become useful when they meet a real input, a clear decision and a working interface.",
+      "summary": "Computer Engineering background at UTeM with applied project work in object detection, hand-gesture classification and multi-model orchestration. Connects model inputs and evaluation to practical interfaces, data storage and observable system behaviour.",
+      "projects": [
+        "checkout",
+        "gesture",
+        "hermes"
+      ],
+      "skills": [
+        {
+          "label": "Applied ML",
+          "details": "YOLOv8, OpenCV, MediaPipe Hands, Random Forest, feature engineering, precision/recall, cross-validation."
+        },
+        {
+          "label": "Programming & integration",
+          "details": "Python, JavaScript, SQL/MySQL, camera and barcode inputs, browser inference."
+        },
+        {
+          "label": "Agent systems",
+          "details": "Multi-model consensus, LLM orchestration, Termux/Linux, telemetry, watchdog recovery."
+        }
+      ],
+      "contributions": [
+        {
+          "title": "Connect models to inputs",
+          "text": "Camera streams, barcode scans and hand landmarks become inputs to a complete application, with practical constraints visible in the case studies."
+        },
+        {
+          "title": "Read evaluation honestly",
+          "text": "Precision, recall and cross-validation are presented with their test context, alongside occlusion, lighting and user-environment limits."
+        },
+        {
+          "title": "Make behaviour inspectable",
+          "text": "Consensus routing, telemetry and recovery mechanisms make the agent pipeline easier to review when providers disagree or fail."
+        }
+      ],
+      "focus": [
+        "Computer vision",
+        "Feature engineering",
+        "Model evaluation",
+        "Inference integration"
+      ]
+    },
+    {
+      "id": "software",
+      "label": "Software Engineer",
+      "headline": "Computer Engineering | Software Engineering",
+      "pdf": "software-engineer.pdf",
+      "download_name": "Irfan_Fahmi_Software_Engineer.pdf",
+      "portfolio": "https://irfanfahmi.com/careers/software/",
+      "intro": "Build the application. Understand the system around it. Support the people using it.",
+      "summary": "Computer Engineering background at UTeM with project experience across React/TypeScript interfaces, JavaScript browser interactions, Python integrations and Android release workflows. Brings technical troubleshooting experience and an interest in reliable, understandable software.",
+      "projects": [
+        "smc-crows",
+        "arcade",
+        "gesture"
+      ],
+      "skills": [
+        {
+          "label": "Application development",
+          "details": "JavaScript, TypeScript, React, Tailwind CSS, Python, browser events and application state."
+        },
+        {
+          "label": "Data & tooling",
+          "details": "SQL, MySQL, Git/GitHub, Cloudflare, release packaging and technical documentation."
+        },
+        {
+          "label": "Systems practice",
+          "details": "Android compatibility investigation, device testing, installation/recovery workflows, hardware/software troubleshooting."
+        }
+      ],
+      "contributions": [
+        {
+          "title": "Build usable interfaces",
+          "text": "Game controls and a touchless reader show application state, browser interactions and practical feedback for users."
+        },
+        {
+          "title": "Work through integration boundaries",
+          "text": "Projects combine browser code, Python processing, databases and device inputs rather than stopping at isolated components."
+        },
+        {
+          "title": "Ship with support in mind",
+          "text": "The SMC Crows work connects release packaging and device tests with installation guidance and account recovery documentation."
+        }
+      ],
+      "focus": [
+        "React & TypeScript",
+        "Browser applications",
+        "Systems integration",
+        "Release engineering"
+      ]
+    },
+    {
+      "id": "embedded-iot",
+      "label": "Embedded / IoT Engineer",
+      "headline": "Computer Engineering | Embedded / IoT Engineering",
+      "pdf": "embedded-iot-engineer.pdf",
+      "download_name": "Irfan_Fahmi_Embedded_IoT_Engineer.pdf",
+      "portfolio": "https://irfanfahmi.com/careers/embedded-iot/",
+      "intro": "Start at the signal. Follow it through firmware, processing and the interface.",
+      "summary": "Computer Engineering background at UTeM with practical project work in Arduino-based weighing, load-cell signal handling, hardware/software integration and connected monitoring. Combines C/C++ and Python experience with hands-on technical troubleshooting.",
+      "projects": [
+        "livestock",
+        "checkout",
+        "smc-crows"
+      ],
+      "skills": [
+        {
+          "label": "Embedded & sensing",
+          "details": "C/C++, Arduino, HX711 amplifiers, load cells, signal filtering, sensor integration, EasyEDA."
+        },
+        {
+          "label": "Connected applications",
+          "details": "Python, SQL/MySQL, telemetry dashboards, camera/barcode inputs and application integration."
+        },
+        {
+          "label": "Technical foundations",
+          "details": "Hardware diagnostics, software deployment, Windows troubleshooting, VLAN, OSPF and Wireshark; Festo industrial-automation training."
+        }
+      ],
+      "contributions": [
+        {
+          "title": "Connect physical signals to software",
+          "text": "The livestock project follows a physical load through Arduino and HX711 sensing into connected weight monitoring."
+        },
+        {
+          "title": "Consider the whole measurement path",
+          "text": "Calibration, signal stability and reference conditions matter alongside firmware and connectivity. The portfolio keeps those evidence limits explicit."
+        },
+        {
+          "title": "Bridge devices and applications",
+          "text": "The checkout pipeline and Android compatibility work add experience with peripherals, processing, deployment and behaviour on real devices."
+        }
+      ],
+      "focus": [
+        "C/C++ & Arduino",
+        "Sensor integration",
+        "Signal handling",
+        "Connected monitoring"
+      ]
+    }
+  ]
+}

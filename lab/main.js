@@ -1,8 +1,9 @@
-import { initSMCLive } from './smc-live.js?v=roots20261021';
-import { projects, approach } from './content.js?v=roots20261021';
-import { initAssistant } from './assistant.js?v=roots20261021';
-import { initContact } from './contact.js?v=roots20261021';
-import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=roots20261021';
+import { initSMCLive } from './smc-live.js?v=careers20261022';
+import { allowedDocumentPath } from './document-paths.js?v=careers20261022';
+import { projects, approach } from './content.js?v=careers20261022';
+import { initAssistant } from './assistant.js?v=careers20261022';
+import { initContact } from './contact.js?v=careers20261022';
+import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=careers20261022';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -64,9 +65,9 @@ window.addEventListener('hashchange',readHash);readHash();
 const documentDialog = $('#document-dialog');
 let documentController;
 let previewManifest;
-const documentURL=url=>url+'?v=privacy20261021';
+const documentURL=url=>url+'?v=careers20261022';
 export async function openDocument(url,title) {
-  if(!/^(certificates\/[^/]+\.pdf|resume\/resume\.pdf)$/.test(url))return;
+  if(!allowedDocumentPath(url))return;
   documentController?.abort();
   documentController=new AbortController();
   const controller=documentController;
@@ -79,7 +80,7 @@ export async function openDocument(url,title) {
     const response=await fetch(documentURL(url),{method:'HEAD',signal:controller.signal,cache:'no-store'});
     if(!response.ok)throw new Error('Document is unavailable. Please try again later.');
     if(!documentDialog.open || controller!==documentController)return;
-    if(!previewManifest){const manifestResponse=await fetch('assets/documents/manifest.json',{signal:controller.signal});if(!manifestResponse.ok)throw new Error();previewManifest=await manifestResponse.json();}
+    if(!previewManifest){const manifestResponse=await fetch('assets/documents/manifest.json',{signal:controller.signal,cache:'no-cache'});if(!manifestResponse.ok)throw new Error();previewManifest=await manifestResponse.json();}
     const pages=previewManifest[url];if(!pages?.length)throw new Error();
     if(!documentDialog.open || controller!==documentController)return;
     const viewer=document.createElement('div');viewer.className='document-page';

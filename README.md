@@ -37,7 +37,7 @@ The Remotion source and MCP renderer are delivered separately from the static we
 
 ## Evidence and integrations
 
-Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM Graduate Engineer registration in Computer Engineering was approved on 15 October 2026; the portfolio links to the official BEM public directory for verification. The certificate is not published. MBOT Graduate Technologist registration in Information & Communication Technology (IT) was approved on 22 October 2026, registration GT26100872. Its supplied approval letter is available in the credential registry; the formal registration certificate is pending according to that letter. Cisco Networking Academy documents are course completions. Degree completion has not been newly confirmed.
+Reported model benchmarks are labelled with their evaluation context. SMC compatibility and performance evidence lives in the current release portal; the portfolio avoids global device-support or uptime guarantees. BEM Graduate Engineer registration in Computer Engineering was approved on 15 October 2026; the portfolio links to the official BEM public directory for verification. The certificate is not published. MBOT Graduate Technologist registration in Information & Communication Technology (IT) was approved on 22 October 2026, registration GT26100872. Its supplied approval letter is available in the credential registry; the formal registration certificate is pending according to that letter. Cisco Networking Academy documents are course completions. Graduation is scheduled for 2 November 2026, as confirmed by Irfan on 22 October 2026.
 
 Resume and public email/LinkedIn links are available directly. Additional contact details retain Cloudflare verification. The assistant is optional, sends questions to the existing gateway on request, and keeps frontend history in memory. No backend keys are included.
 
@@ -48,3 +48,8 @@ Original demos, extension, telemetry, arcade, PDFs and legal pages remain availa
 Publish only intentional frontend and document assets. Keep provider credentials, private contact/account records, application databases, phone diagnostics, signing keys and build artifacts out of the repository. Run the credential guard before publication. Standard secret scanning and push protection are additional checks, not a substitute for reviewing public files.
 
 SMC private development belongs in `l3al3y/smc-crows-source`; current public SMC releases belong in `l3al3y/smc-crows-downloads`. This redesign does not alter SMC APKs or release resources.
+
+
+## Career views and RenderCV resumes
+
+The homepage leads with Computer Engineering. `/careers/` offers AI/ML, Software and Embedded/IoT portfolio views; `/resume/` offers a general resume and three matching role versions. All four PDFs have a Professional Summary at the top. Public source, generation commands and validation scope are documented in `resume/README.md`. Generate career routes with `node scripts/build-career-pages.mjs`; the Pages workflow includes this step.
