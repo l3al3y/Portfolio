@@ -1,5 +1,6 @@
 """Regenerate document previews. Requires pypdfium2 and Pillow; no browser dependency."""
 import json
+import shutil
 from pathlib import Path
 import pypdfium2 as pdfium
 
@@ -7,7 +8,8 @@ root = Path(__file__).resolve().parent.parent
 dest = root / 'assets' / 'documents'
 dest.mkdir(exist_ok=True)
 registry = json.loads((root / 'certificates' / 'registry.json').read_text(encoding='utf-8'))
-files = ['certificates/' + c['filename'] for c in registry] + ['resume/resume.pdf']
+profiles = json.loads((root / 'resume/profiles.json').read_text(encoding='utf-8'))['profiles']
+files = ['certificates/' + c['filename'] for c in registry] + ['resume/' + p['pdf'] for p in profiles]
 manifest = {}
 for filename in files:
     document = pdfium.PdfDocument(root / filename)
@@ -24,5 +26,8 @@ for filename in files:
         page.close()
     document.close()
     manifest[filename] = pages
+primary = next(p for p in profiles if p['id'] == 'computer-engineering')
+shutil.copyfile(root / 'resume' / primary['pdf'], root / 'resume/resume.pdf')
+manifest['resume/resume.pdf'] = manifest['resume/' + primary['pdf']]
 (dest / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
 print(f'Rendered {sum(map(len, manifest.values()))} pages for {len(manifest)} documents.')

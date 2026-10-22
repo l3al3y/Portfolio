@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
 import {allowedDocumentPath} from '../lab/document-paths.js';
+import {safeAnswerLink} from '../lab/chat-render.js';
 const root=new URL('../',import.meta.url);
 const data=JSON.parse(await readFile(new URL('resume/profiles.json',root),'utf8'));
 const expected={
@@ -19,7 +20,7 @@ test('each career route keeps the engineering foundation and links its matching 
   assert.ok(html.includes('Graduation scheduled: 2 November 2026'));
   assert.ok(html.includes(`<base href="../../">`));
   assert.ok(html.includes(`rel="canonical" href="https://irfanfahmi.com/careers/${id}/"`));
-  assert.ok(html.includes(`href="resume/${p.pdf}?v=careers20261022"`));
+  assert.ok(html.includes(`href="resume/${p.pdf}?v=resume20261022r2"`));
   assert.ok(html.includes(`data-document="resume/${p.pdf}"`));
   assert.deepEqual([...html.matchAll(/data-career-project="([^"]+)"/g)].map(x=>x[1]),ids);
   for(const project of ids)assert.ok(html.includes(`href="projects/${project}/"`));
@@ -52,5 +53,20 @@ test('all four public resumes have editable sources, original PDF previews and c
 
 test('document previews reject unlisted files, traversal and remote destinations',()=>{
  assert.ok(allowedDocumentPath('certificates/INOTEK_2025_Third_Place.pdf'));
- for(const bad of ['resume/other.pdf','resume/../private.pdf','certificates/../../secret.pdf','resume/resume.pdf?redirect=https://evil.example','https://evil.example/resume.pdf','resume/resume.pdf#x',null])assert.equal(allowedDocumentPath(bad),false);
+ for(const bad of ['resume/other.pdf','resume/../private.pdf','certificates/../../secret.pdf','resume/computer-engineering-20261022.pdf?redirect=https://evil.example','https://evil.example/resume.pdf','resume/computer-engineering-20261022.pdf#x',null])assert.equal(allowedDocumentPath(bad),false);
+});
+
+test('default resume buttons and assistant links avoid the previously cached PDF address',async()=>{
+ const current='resume/'+data.profiles[0].pdf;
+ assert.notEqual(current,'resume/resume.pdf');
+ const routes=['index.html','about/index.html','credentials/index.html','contact/index.html','projects/index.html','ask/index.html','resume/index.html','careers/index.html',...Object.keys(expected).map(id=>`careers/${id}/index.html`)];
+ for(const path of routes){
+  const html=await readFile(new URL(path,root),'utf8');
+  assert.ok(!html.includes('href="resume/resume.pdf"'),path+' still links the cached PDF');
+  assert.ok(html.includes(`href="${current}"`),path+' has no current View resume link');
+ }
+ assert.equal(safeAnswerLink('https://irfanfahmi.com/resume/resume.pdf'),'/'+current);
+ assert.equal(safeAnswerLink('https://irfanfahmi.com/'+current),'/'+current);
+ const manifest=JSON.parse(await readFile(new URL('assets/documents/manifest.json',root),'utf8'));
+ assert.ok(!manifest[current][0].src.endsWith('/resume-1.webp'));
 });

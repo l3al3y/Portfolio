@@ -10,7 +10,7 @@ export const knowledge={
       "role": "Computer Engineering",
       "summary": "Computer Engineering background at UTeM, connecting software, intelligent systems and hardware through practical projects. Hands-on work spans computer-vision checkout validation, Android release engineering and Arduino-based sensing, supported by technical troubleshooting experience.",
       "portfolio": "https://irfanfahmi.com/",
-      "resume": "https://irfanfahmi.com/resume/resume.pdf"
+      "resume": "https://irfanfahmi.com/resume/computer-engineering-20261022.pdf"
     },
     {
       "role": "AI / ML Engineer",
@@ -160,7 +160,7 @@ export const knowledge={
         },
         {
           "label": "Existing resume",
-          "url": "resume/resume.pdf"
+          "url": "resume/computer-engineering-20261022.pdf"
         }
       ]
     },
@@ -192,7 +192,7 @@ export const knowledge={
   "links": {
     "careerViews": "https://irfanfahmi.com/careers/",
     "resumeHub": "https://irfanfahmi.com/resume/",
-    "resume": "https://irfanfahmi.com/resume/resume.pdf",
+    "resume": "https://irfanfahmi.com/resume/computer-engineering-20261022.pdf",
     "contact": "https://irfanfahmi.com/contact/",
     "experience": "https://irfanfahmi.com/about/",
     "credentials": "https://irfanfahmi.com/credentials/",

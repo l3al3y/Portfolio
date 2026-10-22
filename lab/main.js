@@ -1,9 +1,9 @@
-import { initSMCLive } from './smc-live.js?v=careers20261022';
-import { allowedDocumentPath } from './document-paths.js?v=careers20261022';
-import { projects, approach } from './content.js?v=careers20261022';
-import { initAssistant } from './assistant.js?v=careers20261022';
-import { initContact } from './contact.js?v=careers20261022';
-import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=careers20261022';
+import { initSMCLive } from './smc-live.js?v=resume20261022r2';
+import { allowedDocumentPath } from './document-paths.js?v=resume20261022r2';
+import { projects, approach } from './content.js?v=resume20261022r2';
+import { initAssistant } from './assistant.js?v=resume20261022r2';
+import { initContact } from './contact.js?v=resume20261022r2';
+import {media,projectMedia,projectRow,filterProjects} from './project-view.js?v=resume20261022r2';
 
 const $ = selector => document.querySelector(selector);
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -29,7 +29,7 @@ const caseDialog = $('#case-dialog');
 function openCase(id) {
   const p=projects.find(p=>p.id===id);if(!p)return;
   $('#case-content').innerHTML=`<p class="project-meta">${p.category}</p><h2 id="case-title">${p.title}</h2><p class="case-lead">${p.summary}</p><div class="tags">${p.stack.map(t=>`<span>${t}</span>`).join('')}</div><figure class="case-media"><div>${projectMedia(p)}</div><figcaption>${media[p.id].caption}</figcaption></figure><div class="case-result"><strong>${p.result}</strong><small>${p.resultNote}</small></div><div class="case-sections">${['problem','implementation','constraints','outcome'].map(k=>`<section><h3>${k}</h3><p>${p[k]}</p></section>`).join('')}</div><div class="inline-links">${p.links.map(l=>l.preview?`<button class="button" data-document="${l.url}" data-title="INOTEK 2025 achievement certificate">${l.label} ↗</button>`:`<a class="button" href="${l.url}" ${external(l.url)}>${l.label} ↗</a>`).join('')}<button class="text-button" id="case-copy">Copy case-study link</button></div><div class="case-sources"><p>SOURCE NOTES</p>${p.sources.map(s=>`<a href="${s.url}" ${external(s.url)}>${s.label} ↗</a>`).join('')}</div>`;
-  $('#case-content').querySelectorAll('a[href="resume/resume.pdf"]').forEach(link=>{const button=document.createElement('button');button.className='text-button';button.dataset.resume='';button.textContent=link.textContent;link.replaceWith(button);});
+  $('#case-content').querySelectorAll('a[href="resume/computer-engineering-20261022.pdf"]').forEach(link=>{const button=document.createElement('button');button.className='text-button';button.dataset.resume='';button.textContent=link.textContent;link.replaceWith(button);});
   if(!caseDialog.open)caseDialog.showModal();
   caseDialog.scrollTop=0;
   $('#case-copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(new URL(`projects/${p.id}/`,document.baseURI).href);e.target.textContent='Link copied';}catch{e.target.textContent='Copy the URL from your browser to share this case study.';}});
@@ -65,7 +65,7 @@ window.addEventListener('hashchange',readHash);readHash();
 const documentDialog = $('#document-dialog');
 let documentController;
 let previewManifest;
-const documentURL=url=>url+'?v=careers20261022';
+const documentURL=url=>url+'?v=resume20261022r2';
 export async function openDocument(url,title) {
   if(!allowedDocumentPath(url))return;
   documentController?.abort();
@@ -140,6 +140,6 @@ if($('#certificates')&&'IntersectionObserver' in window){const observer=new Inte
 $('#theme-toggle').addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;try{localStorage.setItem('lab-theme',theme);}catch{}syncTheme();});
 function syncTheme(){$('#theme-toggle').setAttribute('aria-label',`Switch to ${document.documentElement.dataset.theme==='dark'?'light':'dark'} theme`);$('meta[name="theme-color"]').content=document.documentElement.dataset.theme==='dark'?'#101b2b':'#f3f4f0';}
 syncTheme();
-if($('#chat-log'))initAssistant();contact=initContact({onResume:()=>openDocument('resume/resume.pdf','Muhammad Irfan Fahmi — Resume')});
+if($('#chat-log'))initAssistant();contact=initContact({onResume:()=>openDocument('resume/computer-engineering-20261022.pdf','Muhammad Irfan Fahmi — Resume')});
 
 initSMCLive();

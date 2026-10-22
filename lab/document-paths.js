@@ -1,4 +1,5 @@
 export const resumeDocuments = new Set([
+  'resume/computer-engineering-20261022.pdf',
   'resume/resume.pdf',
   'resume/ai-ml-engineer.pdf',
   'resume/software-engineer.pdf',

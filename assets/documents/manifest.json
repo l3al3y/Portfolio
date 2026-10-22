@@ -183,7 +183,7 @@
   ],
   "resume/resume.pdf": [
     {
-      "src": "assets/documents/resume-1.webp",
+      "src": "assets/documents/computer-engineering-20261022-1.webp",
       "width": 990,
       "height": 1400
     }
@@ -212,6 +212,13 @@
   "resume/embedded-iot-engineer.pdf": [
     {
       "src": "assets/documents/embedded-iot-engineer-1.webp",
+      "width": 990,
+      "height": 1400
+    }
+  ],
+  "resume/computer-engineering-20261022.pdf": [
+    {
+      "src": "assets/documents/computer-engineering-20261022-1.webp",
       "width": 990,
       "height": 1400
     }

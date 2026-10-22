@@ -1,6 +1,6 @@
 # Computer Engineering resumes
 
-Four one-page A4 resumes share the public facts in `profiles.json`. The Computer Engineering version is the primary `resume.pdf`; AI/ML, Software and Embedded/IoT versions select different projects and skills. The Professional Summary is immediately below the contact details in every version.
+Four one-page A4 resumes share the public facts in `profiles.json`. The Computer Engineering version is the primary `computer-engineering-20261022.pdf`; AI/ML, Software and Embedded/IoT versions select different projects and skills. The Professional Summary is immediately below the contact details in every version. The legacy `resume.pdf` remains a compatibility copy; active links use the dated address to avoid previously cached copies. Use a new dated filename for a future primary CV revision.
 
 Generated with RenderCV 2.8, its engineeringresumes theme, Source Sans 3 and 10 pt body text. Editable YAML lives in `source/`. Graduation is scheduled for 2 November 2026, based on Irfan's confirmation on 22 October 2026. Contact information comes from the existing public portfolio; protected placeholders and private identifiers are excluded.
 

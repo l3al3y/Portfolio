@@ -48,7 +48,7 @@ test('health reports configuration without exposing credentials or claiming prov
 });
 test('answer links allow only known portfolio evidence and reject executable or unknown destinations',()=>{
  assert.equal(safeAnswerLink('https://irfanfahmi.com/projects/checkout/'),'/projects/checkout/');
- assert.equal(safeAnswerLink('/resume/resume.pdf'),'/resume/resume.pdf');
+ assert.equal(safeAnswerLink('/resume/computer-engineering-20261022.pdf'),'/resume/computer-engineering-20261022.pdf');
  for(const bad of ['javascript:alert(1)','data:text/html,test','https://evil.example/','https://irfanfahmi.com@evil.example/','/missing-project/'])assert.equal(safeAnswerLink(bad),null);
 });
 test('history stays within the backend budget and contains complete alternating turns',()=>{

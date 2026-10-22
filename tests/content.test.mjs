@@ -19,7 +19,7 @@ test('case studies have required substance and preserved local destinations',asy
 });
 test('all documents have real rendered preview pages',async()=>{
   const manifest=JSON.parse(await readFile(new URL('assets/documents/manifest.json',root),'utf8'));
-  assert.equal(Object.keys(manifest).length,31);
+  assert.equal(Object.keys(manifest).length,32); // 27 certificates, four CVs and the legacy CV alias.
   for(const [pdf,pages] of Object.entries(manifest)){
     assert.ok((await stat(new URL(pdf,root))).size>0);
     for(const page of pages){assert.ok(page.width>500);assert.ok(page.height>500);assert.ok((await stat(new URL(page.src,root))).size>0);}
