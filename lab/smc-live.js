@@ -1,28 +1,74 @@
-const historicalKeys=['previous_v2','previous_v2_mirror','previous_setup','previous_v1','previous_r4','previous_r2','historical_v4'];
-export function summarizeSMCMetrics(data){
-  if(!data||typeof data.version!=='string'||!data.version.startsWith('smc-crows-'))throw new Error('Unexpected release data');
-  for(const key of ['starts','mirror_requests','total_requests',...historicalKeys])if(!Number.isSafeInteger(data[key])||data[key]<0)throw new Error('Incomplete download counters');
-  if(data.total_requests!==data.starts+data.mirror_requests)throw new Error('Inconsistent download counters');
-  const total=historicalKeys.reduce((sum,key)=>sum+data[key],data.total_requests);
-  if(!Number.isSafeInteger(total))throw new Error('Download counter exceeds supported range');
-  return {total,current:data.total_requests,direct:data.starts,mirror:data.mirror_requests,release:data.version.match(/-(v\d+(?:\.\d+)*)-/)?.[1]||'Current release'};
+const historyLabels = {
+  starts: 'v3.0 Direct',
+  mirror_requests: 'v3.0 MediaFire',
+  previous_v2: 'v2.0 Direct',
+  previous_v2_mirror: 'v2.0 MediaFire',
+  previous_setup: 'v1.0 Setup',
+  previous_v1: 'v1.0',
+  previous_r4: 'Early build r4',
+  previous_r2: 'Early build r2',
+  historical_v4: 'Early download revision',
+};
+
+function readSMCCount(value) {
+  if (!Number.isSafeInteger(value) || value < 0) throw new Error('Invalid download count');
+  return value;
 }
+
+export function summarizeSMCMetrics(data) {
+  return {direct: readSMCCount(data?.direct), mirror: readSMCCount(data?.mirror)};
+}
+
+function initHistory(history, format) {
+  const status = history.querySelector('[data-smc-history-status]');
+  const list = history.querySelector('[data-smc-history-counts]');
+  let loading = false;
+
+  history.addEventListener('toggle', async () => {
+    if (!history.open || loading || !list.hidden) return;
+    loading = true;
+    status.textContent = 'Loading earlier download counts…';
+    try {
+      const response = await fetch('/smc/api/apk-stat', {
+        cache: 'no-store',
+        credentials: 'omit',
+        signal: AbortSignal.timeout(8000),
+      });
+      if (!response.ok) throw new Error('Download history unavailable');
+      const data = await response.json();
+      if (!data.version?.startsWith('smc-crows-v3.0-')) throw new Error('Unexpected history version');
+      const rows = Object.entries(historyLabels).map(([key, label]) => {
+        const row = document.createElement('li');
+        row.textContent = label + ': ' + format.format(readSMCCount(data[key]));
+        return row;
+      });
+      list.replaceChildren(...rows);
+      list.hidden = false;
+      status.textContent = '';
+    } catch {
+      status.textContent = 'Earlier counts are temporarily unavailable.';
+    } finally {
+      loading = false;
+    }
+  });
+}
+
 export function initSMCLive(root=document.querySelector('#smc-live')){
   if(!root)return;
   const status=root.querySelector('[data-smc-status]'),button=root.querySelector('[data-smc-refresh]');
   let busy=false,lastSuccess=null,visible=false,stopped=false,controller;
   const format=new Intl.NumberFormat('en-MY');
+  initHistory(root.querySelector('[data-smc-history]'), format);
   async function refresh(){
     if(busy||stopped)return;busy=true;button.disabled=true;controller=new AbortController();
     const timeout=setTimeout(()=>controller.abort(),8000);
     if(!lastSuccess)status.textContent='Fetching the latest SMC counts…';
     try{
-      const response=await fetch('/smc/api/apk-stat',{cache:'no-store',credentials:'omit',signal:controller.signal});
+      const response=await fetch('/smc/api/v4-download-counts',{cache:'no-store',credentials:'omit',signal:controller.signal});
       if(!response.ok)throw new Error('Download counters unavailable');
       const metrics=summarizeSMCMetrics(await response.json());
       if(stopped)return;
-      for(const key of ['total','current','direct','mirror'])root.querySelector(`[data-smc-count="${key}"]`).textContent=format.format(metrics[key]);
-      root.querySelector('[data-smc-release]').textContent=metrics.release;
+      for(const key of ['direct','mirror'])root.querySelector(`[data-smc-count="${key}"]`).textContent=format.format(metrics[key]);
       lastSuccess=new Date();
       const time=new Intl.DateTimeFormat('en-MY',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Kuala_Lumpur'}).format(lastSuccess);
       status.textContent=`Fetched ${time} MYT · refreshes every minute while visible`;
