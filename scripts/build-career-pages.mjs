@@ -52,7 +52,7 @@ const paths=['index.html','about/index.html','credentials/index.html','contact/i
 for(const path of paths){
  let html=await readFile(new URL(path,root),'utf8');
  html=html.replace('OCT 2022 – PRESENT','OCT 2022 – NOV 2026').replace('<p>Universiti Teknikal Malaysia Melaka (UTeM)</p></li>','<p>Universiti Teknikal Malaysia Melaka (UTeM)</p><p>Graduation scheduled: 2 November 2026.</p></li>');
- html=html.replace(/lab\/main.js\?v=[^\"]*/g,`lab/main.js?v=${version}`);
+ if (path !== 'index.html') html=html.replace(/lab\/main.js\?v=[^\"]*/g,`lab/main.js?v=${version}`);
  if(!html.includes('lab/careers.css'))html=html.replace('</head>',`<link rel="stylesheet" href="lab/careers.css?v=${version}"></head>`);
  const navStart=html.indexOf('<nav aria-label="Main navigation">');
  if(navStart>=0){const navEnd=html.indexOf('</nav>',navStart);let nav=html.slice(navStart,navEnd);if(!nav.includes('href="careers/"')){nav+='<a href="careers/">Career views</a>';html=html.slice(0,navStart)+nav+html.slice(navEnd);}}
