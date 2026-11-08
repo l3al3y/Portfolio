@@ -59,23 +59,59 @@ export function initSMCLive(root=document.querySelector('#smc-live')){
   let busy=false,lastSuccess=null,visible=false,stopped=false,controller;
   const format=new Intl.NumberFormat('en-MY');
   initHistory(root.querySelector('[data-smc-history]'), format);
-  async function refresh(){
-    if(busy||stopped)return;busy=true;button.disabled=true;controller=new AbortController();
-    const timeout=setTimeout(()=>controller.abort(),8000);
-    if(!lastSuccess)status.textContent='Fetching the latest SMC counts…';
-    try{
-      const response=await fetch('/smc/api/v4-download-counts',{cache:'no-store',credentials:'omit',signal:controller.signal});
-      if(!response.ok)throw new Error('Download counters unavailable');
-      const metrics=summarizeSMCMetrics(await response.json());
-      if(stopped)return;
-      for(const key of ['direct','mirror'])root.querySelector(`[data-smc-count="${key}"]`).textContent=format.format(metrics[key]);
-      lastSuccess=new Date();
-      const time=new Intl.DateTimeFormat('en-MY',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Kuala_Lumpur'}).format(lastSuccess);
-      status.textContent=`Fetched ${time} MYT · refreshes every minute while visible`;
-      root.dataset.state='live';
-    }catch{
-      if(!stopped){root.dataset.state=lastSuccess?'stale':'unavailable';status.textContent=lastSuccess?'Refresh unavailable. Showing the last fetched counts; try again.':'Live counts are temporarily unavailable. Try again or open the SMC download page.';}
-    }finally{clearTimeout(timeout);busy=false;button.disabled=false;}
+  async function fetchCounts(path) {
+    const response = await fetch(path, {
+      cache: 'no-store',
+      credentials: 'omit',
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error('Download counters unavailable');
+    return response.json();
+  }
+
+  async function refresh() {
+    if (busy || stopped) return;
+    busy = true;
+    button.disabled = true;
+    controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    if (!lastSuccess) status.textContent = 'Fetching the latest SMC counts…';
+
+    try {
+      const [android, pc] = await Promise.allSettled([
+        fetchCounts('/smc/api/v4-download-counts').then(summarizeSMCMetrics),
+        fetchCounts('/smc/api/pc/download-counts').then(data => ({pc: readSMCCount(data?.total)})),
+      ]);
+      if (stopped) return;
+
+      for (const result of [android, pc]) {
+        if (result.status !== 'fulfilled') continue;
+        for (const [key, value] of Object.entries(result.value)) {
+          root.querySelector(`[data-smc-count="${key}"]`).textContent = format.format(value);
+        }
+      }
+
+      if (android.status === 'rejected' || pc.status === 'rejected') {
+        const unavailable = android.status === 'rejected'
+          ? (pc.status === 'rejected' ? 'Android and PC' : 'Android')
+          : 'PC';
+        root.dataset.state = lastSuccess ? 'stale' : 'unavailable';
+        status.textContent = `${unavailable} counts could not be refreshed.`;
+        return;
+      }
+
+      lastSuccess = new Date();
+      const time = new Intl.DateTimeFormat('en-MY', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false, timeZone: 'Asia/Kuala_Lumpur',
+      }).format(lastSuccess);
+      status.textContent = `Fetched ${time} MYT · refreshes every minute while visible`;
+      root.dataset.state = 'live';
+    } finally {
+      clearTimeout(timeout);
+      busy = false;
+      button.disabled = false;
+    }
   }
   button.addEventListener('click',refresh);
   let observer;

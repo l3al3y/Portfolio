@@ -1,4 +1,4 @@
-import { initSMCLive } from './smc-live.js?v=smc-v4-20261108';
+import { initSMCLive } from './smc-live.js?v=smc-pc-20261108';
 import { allowedDocumentPath } from './document-paths.js?v=black20261022';
 import { projects, approach } from './content.js?v=black20261022';
 import { initAssistant } from './assistant.js?v=black20261022';
